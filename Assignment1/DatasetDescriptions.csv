@@ -1,1 +1,1 @@
-Your name; Your GitHub user; Dataset name; Dataset URL; Dataset brief description
+Alejandro Stoica Heghes; a-sheg; Cellosaurus; https://api.cellosaurus.org/rdf-ontology; Cellosaurus is a manually curated, comprehensive resource describing over 170,000 biomedical research cell lines. It provides detailed information on cell line identity, origin, genetics, contamination, diseases, STR profiles, and other key characteristics, modeled using the OWL Cellosaurus ontology.
