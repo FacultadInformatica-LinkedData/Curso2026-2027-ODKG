@@ -1,1 +1,2 @@
 Your name; Your GitHub user; Dataset name; Dataset URL; Dataset brief description
+Alejandra Chirinos; AleChirinos; OpenStreetMap as RDF (osm2rdf / QLever); https://osm2rdf.cs.uni-freiburg.de; Weekly-updated RDF (Turtle) conversion of the entire OpenStreetMap planet dataset, including precomputed spatial relations between objects, generated and maintained by volunteer citizen mappers worldwide (not by any government agency), queryable via a live SPARQL endpoint at qlever.dev/osm-planet.
