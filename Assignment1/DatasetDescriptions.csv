@@ -1,1 +1,2 @@
 Your name; Your GitHub user; Dataset name; Dataset URL; Dataset brief description
+Bilal Soussane;sousbila;Open Food Facts;https://world.openfoodfacts.org/;Crowdsourced database of food products worldwide, built and curated by volunteer contributors who scan and upload product data via mobile app (citizen-generated, not government data). Provides open data exports in multiple formats including an RDF distribution, alongside CSV and a live JSON API.
