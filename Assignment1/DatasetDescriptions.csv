@@ -1,1 +1,2 @@
 Your name; Your GitHub user; Dataset name; Dataset URL; Dataset brief description
+Arianna Balducci; ariannabalducci; OpenHistoricalMap; https://www.openhistoricalmap.org/about; OpenHistoricalMap is a volunteer-mapped database documenting how the geography of the world has changed over time, covering historical borders, settlements, transport networks and place names, each annotated with its validity dates. Available in RDF Turtle and through a public SPARQL endpoint. 
