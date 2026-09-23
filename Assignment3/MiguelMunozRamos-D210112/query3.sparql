@@ -1,0 +1,8 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?value
+WHERE {
+    ?politician rdf:type <http://dbpedia.org/ontology/Politician> .
+    ?politician ?property ?value .
+    FILTER (?property != rdf:type)
+}
