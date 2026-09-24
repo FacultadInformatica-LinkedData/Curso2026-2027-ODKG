@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "res": "https://example.org/resource/",
+        "prop":"https://example.org/property/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "hasCity":"prop:hasCity",
+        "hasPopulation":"prop:hasPopulation",
+        "hasUniversities":"prop:hasUniversities",
+        "hasName": "prop:hasName",
+        "hasAcronym": "prop:hasAcronym"
+    },
+
+    "@id":"res:Italy",
+    "hasCity": {
+        "@id":"res:Rome",
+        "hasPopulation":{
+            "@value":2750000,
+            "@type":"xsd:integer"
+        },
+        "hasUniversities":[
+            {
+        "@id": "res:SapienzaUniversityOfRome",
+        "hasName": "Sapienza University of Rome",
+        "hasAcronym": "Sapienza"
+    },
+    {
+        "@id": "res:UniversityOfTorvergata",
+        "hasName": "University of Torvergata",
+        "hasAcronym": "Torvergata"
+    }
+]
+        
+    }
+
+    
+
+}
