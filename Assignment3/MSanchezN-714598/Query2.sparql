@@ -1,0 +1,9 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?property WHERE{
+  ?politician a dbo:Politician .
+  ?politician ?property ?value .
+  FILTER (?property != rdf:type) .
+  
+}
+
