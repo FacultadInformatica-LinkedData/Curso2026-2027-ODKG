@@ -1,0 +1,23 @@
+{
+  "@context": {
+    "@vocab": "http://class01.gov/"
+  },
+  "@id": "Class01",
+  "includes": [
+    {
+      "@id": "Sensor029",
+      "hasMeasurement": {
+        "@id": "Measurement8401",
+        "hasTemperature": 29,
+        "atTime": "2010-06-12T12:00:12"
+      }
+    },
+    {
+      "@id": "Computer101",
+      "hasOwner": {
+        "@id": "User10A",
+        "hasName": "Pedro"
+      }
+    }
+  ]
+}
