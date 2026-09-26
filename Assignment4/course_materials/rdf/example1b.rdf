@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "vcard": "http://www.w3.org/2001/vcard-rdf/3.0#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "FN": { "@id": "vcard:FN", "@type": "xsd:string" },
+    "Given": { "@id": "vcard:Given", "@type": "xsd:string" },
+    "Family": { "@id": "vcard:Family", "@type": "xsd:string" },
+    "email": { "@id": "foaf:email", "@type": "xsd:string" },
+    "knows": { "@id": "foaf:knows", "@type": "@id" }
+  },
+  "@graph": [
+    {
+      "@id": "http://somewhere/JaneSmith",
+      "FN": "Jane Smith",
+      "Given": "Jane",
+      "Family": "Smith",
+      "email": "jSmith@somewhere.com",
+      "knows": [
+        "http://somewhere/JohnSmith",
+        "http://somewhere/SarahJones"
+      ]
+    },
+    {
+      "@id": "http://somewhere/JohnSmith",
+      "email": "johnSmith@somewhere.com",
+      "knows": "http://somewhere/MattJones"
+    },
+    {
+      "@id": "http://somewhere/RebeccaBrown",
+      "FN": "Rebecca Brown",
+      "Given": "Rebecca",
+      "Family": "Brown",
+      "email": "rBrown@somewhere.com",
+      "knows": "http://somewhere/JaneSmith"
+    }
+  ]
+}

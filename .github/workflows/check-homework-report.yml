@@ -1,0 +1,149 @@
+name: Check Homework Report
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - 'Assignment4/**'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v4
+        with:
+          path: submission
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout trusted files from the base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check submitted filenames
+        id: scripts
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          import subprocess
+
+          changed = subprocess.check_output(
+              ['git', '-C', 'submission', 'diff', '--name-only',
+               os.environ['BASE_SHA'], 'HEAD'], text=True
+          ).splitlines()
+          folders = set()
+          for filename in changed:
+              match = re.fullmatch(
+                  r'Assignment4/([^/\r\n]+)/(task06|task07)\.py', filename
+              )
+              if match is None:
+                  raise SystemExit(f'Unexpected changed file: {filename}')
+              folders.add(match.group(1))
+          if len(folders) != 1:
+              raise SystemExit('Submit both scripts in the same student folder')
+          folder = folders.pop()
+          expected = {f'Assignment4/{folder}/task0{number}.py'
+                      for number in (6, 7)}
+          if set(changed) != expected or len(changed) != 2:
+              raise SystemExit('Submit task06.py and task07.py, and no other files')
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
+              out.write(f'folder={folder}\n')
+          PY
+
+      - name: Install validator
+        run: |
+          python -m pip install \
+            ./trusted/.github/assignment4/wheels/oeg_sw_class-0.1.0-py3-none-any.whl \
+            'rdflib==7.6.0'
+
+      - name: Run scripts and check complete reports
+        env:
+          STUDENT_FOLDER: ${{ steps.scripts.outputs.folder }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          import subprocess
+          import sys
+          import tempfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          folder = root / 'submission' / 'Assignment4' / os.environ['STUDENT_FOLDER']
+          fixture = root / 'trusted' / '.github' / 'assignment4' / 'data07.ttl'
+          if not fixture.is_file():
+              raise SystemExit(f'Missing trusted fixture: {fixture}')
+
+          expected = {
+              '06': [f'TASK 6.{n} OK' for n in range(1, 8)],
+              '07': ['TASK 7.1a OK', 'TASK 7.1b OK', 'TASK 7.2a OK',
+                     'TASK 7.2b OK', 'TASK 7.3 OK', 'TASK 7.4 OK'],
+          }
+          errors = []
+          for number, lines in expected.items():
+              script = folder / f'task{number}.py'
+              if not script.is_file() or script.is_symlink():
+                  errors.append(f'Missing or invalid script: {script}')
+                  continue
+              with tempfile.TemporaryDirectory(prefix=f'task{number}-') as temp:
+                  work = Path(temp)
+                  (work / 'data').mkdir()
+                  shutil.copy2(fixture, work / 'data' / 'data07.ttl')
+                  shutil.copy2(fixture, work / 'data07.ttl')
+                  env = {k: v for k, v in os.environ.items()
+                         if not k.startswith(('GITHUB_', 'ACTIONS_', 'RUNNER_'))
+                         and k not in ('GH_TOKEN', 'GITHUB_TOKEN')}
+                  env['HOME'] = str(work)
+                  try:
+                      result = subprocess.run(
+                          [sys.executable, '-I', str(script.resolve())],
+                          cwd=work, env=env, text=True, capture_output=True,
+                          timeout=120, check=False,
+                      )
+                  except subprocess.TimeoutExpired:
+                      errors.append(f'task{number}.py timed out')
+                      continue
+                  print(f'--- task{number}.py ---')
+                  print(result.stdout[-4000:])
+                  print(result.stderr[-4000:], file=sys.stderr)
+                  if result.returncode:
+                      errors.append(f'task{number}.py exited with {result.returncode}')
+                      continue
+                  report = work / f'report_result_Task_{number}.txt'
+                  if not report.is_file():
+                      errors.append(f'Missing report: {report.name}')
+                      continue
+                  shutil.copy2(report, root / report.name)
+                  actual = report.read_text(encoding='utf-8').splitlines()
+                  if actual != lines:
+                      errors.append(f'{report.name}: expected all task OK lines; got {actual!r}')
+          if errors:
+              raise SystemExit('\n'.join(errors))
+          print('Tasks 06 and 07 passed all validations')
+          PY
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-reports
+          path: report_result_Task_*.txt
+          if-no-files-found: ignore
