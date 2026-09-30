@@ -1,3 +1,16 @@
+# Group07
+
+Hands-on exercise of the course *Open Data and Knowledge Graphs* (UPM, 2026-2027).
+
+## Group members
+
+| Name | GitHub user |
+|------|-------------|
+| Rosangeles Carrion | @RosangelesCarrion |
+| Alejandra Chirinos | @AlejandraChirinosValle |
+| Yinen Abdelkader | @Yinen-AH |
+| Jing Sun | @JingSnn |
+| Mengxia Zhou | @Chloe221201 |
 * The leader forks the main repository
 * Group members fork the leader repository
 
