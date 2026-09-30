@@ -8,6 +8,6 @@ Hands-on exercise of the course *Open Data and Knowledge Graphs* (UPM, 2026-2027
 |------|-------------|
 | Rosangeles Carrion | @RosangelesCarrion |
 | Alejandra Chirinos | @AlejandraChirinosValle |
-| Yinen Abdelkader | @yinen.ab@gmail.com |
+| Yinen Abdelkader | @Yinen-AH |
 | Jing Sun | @JingSnn |
 | Mengxia Zhou | @Chloe221201 |
