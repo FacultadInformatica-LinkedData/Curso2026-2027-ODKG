@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #172536; }
+    .title { font-size: 28px; font-weight: 700; fill: #ffffff; }
+    .subtitle { font-size: 14px; fill: #d9e6f0; }
+    .section { font-size: 18px; font-weight: 700; }
+    .small { font-size: 13px; fill: #5a6d7c; }
+    .label { font-size: 14px; font-weight: 600; }
+    .value { font-size: 17px; font-weight: 700; fill: #163e5d; }
+    .tablehead { font-size: 13px; font-weight: 700; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="820" fill="#f4f7fa"/>
+
+  <!-- Header -->
+  <rect x="30" y="30" width="1140" height="90" rx="16" fill="#16324f"/>
+  <text x="60" y="70" class="title">Station Detail</text>
+  <text x="60" y="98" class="subtitle">Nighttime acoustic measurements and nearby registered terraces</text>
+
+  <!-- Navigation / controls -->
+  <rect x="30" y="145" width="1140" height="70" rx="12" fill="#ffffff" stroke="#d9e1e9"/>
+
+  <rect x="55" y="162" width="230" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
+  <text x="72" y="186" class="label">Station: selected point</text>
+
+  <rect x="305" y="162" width="230" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
+  <text x="322" y="186" class="label">Month: selected snapshot</text>
+
+  <rect x="555" y="162" width="260" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
+  <text x="572" y="186" class="label">Night period: N (23:00–07:00)</text>
+
+  <text x="960" y="186" class="small">← Back to map</text>
+
+  <!-- Summary row 1 -->
+  <rect x="30" y="240" width="1140" height="95" rx="12" fill="#ffffff" stroke="#cfdae3"/>
+
+  <rect x="50" y="258" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
+  <text x="68" y="278" class="small">Station</text>
+  <text x="68" y="303" class="value">RF-XX · Station name</text>
+
+  <rect x="420" y="258" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
+  <text x="438" y="278" class="small">District · neighborhood</text>
+  <text x="438" y="303" class="value">From station catalogue</text>
+
+  <rect x="790" y="258" width="355" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
+  <text x="808" y="278" class="small">Linked district entity</text>
+  <text x="808" y="303" class="value">Wikidata ↗</text>
+
+  <!-- Summary row 2 -->
+  <rect x="30" y="355" width="1140" height="95" rx="12" fill="#ffffff" stroke="#cfdae3"/>
+
+  <rect x="50" y="373" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
+  <text x="68" y="393" class="small">Nearby open terraces</text>
+  <text x="68" y="418" class="value">Count from data</text>
+
+  <rect x="420" y="373" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
+  <text x="438" y="393" class="small">Nights with readings</text>
+  <text x="438" y="418" class="value">Coverage from data</text>
+
+  <rect x="790" y="373" width="355" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
+  <text x="808" y="393" class="small">Search radius</text>
+  <text x="808" y="418" class="value">250 m</text>
+
+  <!-- Chart section -->
+  <rect x="30" y="475" width="1140" height="220" rx="12" fill="#ffffff" stroke="#cfdae3"/>
+  <text x="55" y="510" class="section">Daily nighttime LAeq at this station</text>
+
+  <!-- Axes -->
+  <line x1="90" y1="545" x2="90" y2="650" stroke="#9aafbf" stroke-width="1"/>
+  <line x1="90" y1="650" x2="1120" y2="650" stroke="#9aafbf" stroke-width="1"/>
+
+  <line x1="90" y1="570" x2="1120" y2="570" stroke="#d7e1e8"/>
+  <line x1="90" y1="610" x2="1120" y2="610" stroke="#d7e1e8"/>
+
+  <text x="52" y="550" class="small">dB(A)</text>
+  <text x="500" y="676" class="small">Day of selected month</text>
+
+  <!-- Line before missing period -->
+  <polyline
+    points="110,620 180,600 250,625 320,575 390,590 460,610 530,565"
+    fill="none"
+    stroke="#125b91"
+    stroke-width="4"
+  />
+
+  <!-- Gap / missing data -->
+  <text x="555" y="625" class="small">missing data</text>
+
+  <!-- Line after missing period -->
+  <polyline
+    points="650,580 720,605 790,585 860,615 930,592 1010,608 1090,590"
+    fill="none"
+    stroke="#125b91"
+    stroke-width="4"
+  />
+
+  <!-- Nearby terraces table -->
+  <rect x="30" y="720" width="1140" height="75" rx="12" fill="#ffffff" stroke="#cfdae3"/>
+  <text x="55" y="748" class="section">Nearby terrace records</text>
+
+  <text x="55" y="776" class="tablehead">Terrace</text>
+  <text x="330" y="776" class="tablehead">Distance</text>
+  <text x="520" y="776" class="tablehead">Seasonal tables</text>
+  <text x="760" y="776" class="tablehead">Rest-of-year tables</text>
+
+  <!-- Footer note -->
+  <text x="30" y="812" class="small">
+    Illustrative wireframe. Missing readings are shown as gaps and no values are interpolated.
+  </text>
+</svg>
