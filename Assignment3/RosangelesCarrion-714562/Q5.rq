@@ -1,0 +1,13 @@
+# 5. For each of these applicable properties, except for rdf:type, how many distinct values do they take globally for all those instances?
+P
+#RDF base vocabulary namespace
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix dbo: <http://dbpedia.org/ontology/>
+select ?prop (count(distinct ?val) as ?numValues)
+where{
+  ?politician rdf:type dbo:Politician .
+  ?politician ?prop ?val .
+  filter(?prop != rdf:type)
+}
+group by ?prop
+order by desc(?numValues)

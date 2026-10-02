@@ -1,0 +1,10 @@
+# 1. Get all the properties that can be applied to instances of the Politician class
+
+# RDF base vocabulary namespace
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix dbo: <http://dbpedia.org/ontology/>
+select distinct ?prop
+where {
+  ?politician rdf:type dbo:Politician .
+  ?politician ?prop ?val
+}
