@@ -1,0 +1,42 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "ex": "https://example.org/torrejon/",
+    "city": "schema:City",
+    "name": "schema:name",
+    "population": "schema:population",
+    "populationDate": {
+      "@id": "ex:populationDate",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "country": "schema:country",
+    "universities": {
+      "@id": "ex:hasUniversity",
+      "@type": "@id"
+    },
+    "fullName": "schema:name",
+    "acronym": "ex:acronym"
+  },
+
+  "@id": "https://example.org/torrejon/torrejon-de-ardoz",
+  "@type": "city",
+  "name": "Torrejón de Ardoz",
+  "population": 143526,
+  "populationDate": "2025-01-01",
+  "country": "Spain",
+
+  "universities": [
+    {
+      "@id": "https://example.org/torrejon/universidad-de-alcala",
+      "@type": "schema:CollegeOrUniversity",
+      "fullName": "Universidad de Alcalá",
+      "acronym": "UAH"
+    },
+    {
+      "@id": "https://example.org/torrejon/universidad-catolica-san-antonio-de-murcia",
+      "@type": "schema:CollegeOrUniversity",
+      "fullName": "Universidad Católica San Antonio de Murcia",
+      "acronym": "UCAM"
+    }
+  ]
+}
