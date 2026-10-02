@@ -1,0 +1,13 @@
+# 3. Which different values exist for the properties, except for rdf:type, applicable to the instances of Politician?
+
+#RDF base vocabulary namespace
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix dbo: <http://dbpedia.org/ontology/>
+select distinct ?prop ?val
+where{
+  ?politician rdf:type dbo:Politician .
+  ?politician ?prop ?val .
+  filter(?prop != rdf:type)
+}
+order by ?prop
+

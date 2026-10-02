@@ -1,0 +1,14 @@
+# 4. For each of these applicable properties, except for rdf:type, which different values do they take globally for all those instances?
+
+#RDF base vocabulary namespace
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix dbo: <http://dbpedia.org/ontology/>
+#use of group_concat to combine the values in a column in a single text #chain
+select ?prop (group_concat(distinct ?val; separator=" | ") as ?Values)
+where {
+  ?politician rdf:type dbo:Politician .
+  ?politician ?prop ?val .
+  filter(?prop != rdf:type)
+}
+group by ?prop
+
