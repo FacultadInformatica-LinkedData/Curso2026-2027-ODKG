@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DB Delay Explorer — UI Mock-up</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --panel: #ffffff;
+      --border: #dfe3e8;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #ec1c24;
+      --accent-dark: #c0181f;
+      --good: #18a34a;
+      --warn: #e0a800;
+      --bad: #e05030;
+      --very-bad: #b91c1c;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+    .logo .db {
+      color: #fff;
+      background: var(--accent);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 460px;
+      display: flex;
+    }
+    .search input {
+      flex: 1;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-right: none;
+      border-radius: 6px 0 0 6px;
+      font-size: 14px;
+    }
+    .search button {
+      padding: 9px 16px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .toggle {
+      margin-left: auto;
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    .toggle button {
+      border: none;
+      background: var(--panel);
+      padding: 8px 14px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .toggle button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 16px;
+      padding: 16px 20px;
+      height: calc(100vh - 65px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: auto;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .card h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+
+    .filters label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 8px 0 4px;
+    }
+    .filters select, .filters input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .rank-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .rank-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .rank-list li:last-child { border-bottom: none; }
+    .rank-list .rank {
+      width: 20px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .rank-list .name { flex: 1; }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .delay-badge {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Map */
+    .map-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .map-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .map {
+      flex: 1;
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 40%, #eef2f7, #e2e8f0);
+      min-height: 320px;
+    }
+    .map-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(120,140,160,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120,140,160,.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .station-dot {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,.25);
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: transform .1s ease;
+    }
+    .station-dot:hover { transform: translate(-50%, -50%) scale(1.5); }
+    .station-dot.selected { outline: 3px solid rgba(30,58,138,.5); }
+
+    .legend {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .legend .item { display: flex; align-items: center; gap: 5px; }
+    .legend .swatch { width: 12px; height: 12px; border-radius: 3px; }
+
+    /* Detail panel overlay */
+    .detail {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 300px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+      padding: 16px;
+      font-size: 13px;
+    }
+    .detail h3 { margin: 0 0 2px; font-size: 16px; }
+    .detail .sub { color: var(--muted); margin: 0 0 12px; }
+    .detail .close {
+      float: right;
+      border: none;
+      background: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .metric { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed var(--border); }
+    .metric:last-child { border-bottom: none; }
+    .metric .val { font-weight: 700; }
+
+    .bar {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 4px 0 10px;
+    }
+    .bar > span { display: block; height: 100%; }
+
+    .tag {
+      display: inline-block;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 11px;
+      margin: 2px 2px 0 0;
+    }
+    .alert {
+      margin-top: 10px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 10px;
+      left: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><span class="db">DB</span> Delay Explorer</div>
+    <div class="search">
+      <input id="search" type="text" placeholder="Search station by name…" autocomplete="off">
+      <button onclick="doSearch()">Search</button>
+    </div>
+    <div class="toggle">
+      <button id="btnArr" class="active" onclick="setMode('arrival')">Arrival delay</button>
+      <button id="btnDep" onclick="setMode('departure')">Departure delay</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="card filters">
+        <h2>Filters</h2>
+        <label for="region">Region / State</label>
+        <select id="region" onchange="render()">
+          <option value="">All states</option>
+          <option>Berlin</option>
+          <option>Nordrhein-Westfalen</option>
+          <option>Baden-Württemberg</option>
+          <option>Bayern</option>
+          <option>Hamburg</option>
+          <option>Hessen</option>
+          <option>Niedersachsen</option>
+          <option>Sachsen</option>
+        </select>
+
+        <label for="line">Train line</label>
+        <input id="line" type="text" placeholder="e.g. RB33, RE2, 9, 45…" oninput="render()">
+
+        <label for="cat">Category</label>
+        <select id="cat" onchange="render()">
+          <option value="">All categories</option>
+          <option>Regional (RB/RE)</option>
+          <option>S-Bahn</option>
+          <option>Long-distance</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <h2>Most / least reliable</h2>
+        <ul class="rank-list" id="rankList"></ul>
+      </div>
+    </aside>
+
+    <section class="map-card">
+      <div class="map-header">
+        <strong id="mapTitle">Overview of stations</strong>
+        <span id="countLabel" style="color:var(--muted)"></span>
+      </div>
+      <div class="map">
+        <div class="map-grid"></div>
+        <div id="dots"></div>
+        <div class="hint">Click a dot to open the station detail view.</div>
+        <div id="detail" class="detail" hidden></div>
+      </div>
+      <div class="legend">
+        <span class="item"><span class="swatch" style="background:var(--good)"></span> &le; 2 min</span>
+        <span class="item"><span class="swatch" style="background:var(--warn)"></span> 2–5 min</span>
+        <span class="item"><span class="swatch" style="background:var(--bad)"></span> 5–10 min</span>
+        <span class="item"><span class="swatch" style="background:var(--very-bad)"></span> &gt; 10 min</span>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Sample data taken from DBtrainrides.csv (real lat/long, representative stats)
+    const stations = [
+      { id: 1, name: "Aachen Hbf", state: "Nordrhein-Westfalen", city: "Aachen", long: 6.0915, lat: 50.7678,
+        lines: ["RE", "RB20", "RB33"], category: "Regional (RB/RE)", trains: 34, arrival: 1.5, departure: 1.8, onTime: 88, info: "" },
+      { id: 2, name: "Berlin Köllnische Heide", state: "Berlin", city: "Berlin", long: 13.46, lat: 52.47,
+        lines: ["45", "S45"], category: "S-Bahn", trains: 41, arrival: 2.1, departure: 1.9, onTime: 82, info: "" },
+      { id: 3, name: "Bochum Hbf", state: "Nordrhein-Westfalen", city: "Bochum", long: 7.22, lat: 51.48,
+        lines: ["RE1", "RB40"], category: "Regional (RB/RE)", trains: 28, arrival: 6.4, departure: 6.9, onTime: 61, info: "Bauarbeiten. (Quelle: zuginfo.nrw)" },
+      { id: 4, name: "Alte Wöhr", state: "Hamburg", city: "Hamburg", long: 10.0354, lat: 53.598,
+        lines: ["1"], category: "S-Bahn", trains: 24, arrival: 0.8, departure: 0.7, onTime: 96, info: "" },
+      { id: 5, name: "München Hbf", state: "Bayern", city: "München", long: 11.56, lat: 48.14,
+        lines: ["RE5", "RB58", "NAV"], category: "Regional (RB/RE)", trains: 52, arrival: 3.2, departure: 3.6, onTime: 74, info: "" },
+      { id: 6, name: "Frankfurt (Main) Hbf", state: "Hessen", city: "Frankfurt", long: 8.66, lat: 50.11,
+        lines: ["RB75", "RE85"], category: "Regional (RB/RE)", trains: 47, arrival: 11.4, departure: 12.1, onTime: 52, info: "" },
+      { id: 7, name: "Köln Hbf", state: "Nordrhein-Westfalen", city: "Köln", long: 6.96, lat: 50.94,
+        lines: ["RE", "RB26"], category: "Regional (RB/RE)", trains: 39, arrival: 4.1, departure: 4.5, onTime: 70, info: "" },
+      { id: 8, name: "Stuttgart Hbf", state: "Baden-Württemberg", city: "Stuttgart", long: 9.18, lat: 48.78,
+        lines: ["1", "5"], category: "S-Bahn", trains: 36, arrival: 2.8, departure: 3.0, onTime: 79, info: "" },
+      { id: 9, name: "Leipzig Hbf", state: "Sachsen", city: "Leipzig", long: 12.38, lat: 51.35,
+        lines: ["20"], category: "Regional (RB/RE)", trains: 22, arrival: 1.2, departure: 1.1, onTime: 90, info: "" },
+      { id: 10, name: "Hannover Hbf", state: "Niedersachsen", city: "Hannover", long: 9.74, lat: 52.38,
+        lines: ["RE2", "RE60"], category: "Regional (RB/RE)", trains: 44, arrival: 8.6, departure: 9.2, onTime: 58, info: "" },
+      { id: 11, name: "Dresden Hbf", state: "Sachsen", city: "Dresden", long: 13.73, lat: 51.04,
+        lines: ["S1", "S2"], category: "S-Bahn", trains: 25, arrival: 1.9, departure: 1.6, onTime: 84, info: "" },
+      { id: 12, name: "Freiburg (Breisgau) Hbf", state: "Baden-Württemberg", city: "Freiburg", long: 7.84, lat: 47.99,
+        lines: ["RB27"], category: "Regional (RB/RE)", trains: 18, arrival: 5.8, departure: 6.3, onTime: 66, info: "" },
+    ];
+
+    // Germany bounding box
+    const MIN_LAT = 47.3, MAX_LAT = 55.1, MIN_LONG = 5.9, MAX_LONG = 15.0;
+
+    let mode = "arrival";
+    let selectedId = null;
+
+    function delay(st) { return mode === "arrival" ? st.arrival : st.departure; }
+
+    function colorOf(min) {
+      if (min <= 2) return "var(--good)";
+      if (min <= 5) return "var(--warn)";
+      if (min <= 10) return "var(--bad)";
+      return "var(--very-bad)";
+    }
+
+    function project(st) {
+      return {
+        x: (st.long - MIN_LONG) / (MAX_LONG - MIN_LONG) * 100,
+        y: (1 - (st.lat - MIN_LAT) / (MAX_LAT - MIN_LAT)) * 100,
+      };
+    }
+
+    function filtered() {
+      const region = document.getElementById("region").value;
+      const line = document.getElementById("line").value.trim().toLowerCase();
+      const cat = document.getElementById("cat").value;
+      return stations.filter(st => {
+        if (region && st.state !== region) return false;
+        if (line && !st.lines.some(l => l.toLowerCase().includes(line))) return false;
+        if (cat && st.category !== cat) return false;
+        return true;
+      });
+    }
+
+    function render() {
+      const list = filtered();
+      const map = document.getElementById("dots");
+      map.innerHTML = "";
+      list.forEach(st => {
+        const p = project(st);
+        const el = document.createElement("div");
+        el.className = "station-dot" + (st.id === selectedId ? " selected" : "");
+        el.style.left = p.x + "%";
+        el.style.top = p.y + "%";
+        el.style.background = colorOf(delay(st));
+        el.title = st.name + " (" + delay(st).toFixed(1) + " min)";
+        el.onclick = () => { selectedId = st.id; render(); openDetail(st); };
+        map.appendChild(el);
+      });
+
+      document.getElementById("countLabel").textContent = list.length + " stations";
+
+      // reliability ranking
+      const sorted = [...list].sort((a, b) => b.onTime - a.onTime);
+      const rank = document.getElementById("rankList");
+      rank.innerHTML = "";
+      if (sorted.length === 0) {
+        rank.innerHTML = '<li style="color:var(--muted)">No stations match.</li>';
+      } else {
+        const show = sorted.slice(0, 5).concat(sorted.slice(-2)).filter((v, i, a) => a.indexOf(v) === i);
+        show.forEach(st => {
+          const li = document.createElement("li");
+          const isTop = st.onTime >= sorted[0].onTime;
+          li.innerHTML = '<span class="rank">' + (isTop ? "★" : "") + '</span>' +
+            '<span class="dot" style="background:' + colorOf(delay(st)) + '"></span>' +
+            '<span class="name">' + st.name + '</span>' +
+            '<span class="delay-badge" style="color:' + colorOf(delay(st)) + '">' + delay(st).toFixed(1) + ' min</span>';
+          li.onclick = () => { selectedId = st.id; render(); openDetail(st); };
+          rank.appendChild(li);
+        });
+      }
+
+      // keep detail in sync if still selected
+      const still = stations.find(s => s.id === selectedId && list.includes(s));
+      if (still) openDetail(still);
+      else document.getElementById("detail").hidden = true;
+    }
+
+    function openDetail(st) {
+      const d = document.getElementById("detail");
+      const share = st.onTime;
+      d.innerHTML =
+        '<button class="close" onclick="closeDetail()">×</button>' +
+        '<h3>' + st.name + '</h3>' +
+        '<p class="sub">' + st.city + ' · ' + st.state + '</p>' +
+        '<div class="metric"><span>Trains (per day)</span><span class="val">' + st.trains + '</span></div>' +
+        '<div class="metric"><span>Avg. arrival delay</span><span class="val" style="color:' + colorOf(st.arrival) + '">' + st.arrival.toFixed(1) + ' min</span></div>' +
+        '<div class="metric"><span>Avg. departure delay</span><span class="val" style="color:' + colorOf(st.departure) + '">' + st.departure.toFixed(1) + ' min</span></div>' +
+        '<div class="metric"><span>On-time share</span><span class="val">' + st.onTime + '%</span></div>' +
+        '<div class="bar"><span style="width:' + share + '%;background:' + colorOf(delay(st)) + '"></span></div>' +
+        '<div>' + st.lines.map(l => '<span class="tag">' + l + '</span>').join('') + '</div>' +
+        (st.info ? '<div class="alert">⚠ ' + st.info + '</div>' : '');
+      d.hidden = false;
+    }
+
+    function closeDetail() { document.getElementById("detail").hidden = true; selectedId = null; render(); }
+    function setMode(m) {
+      mode = m;
+      document.getElementById("btnArr").classList.toggle("active", m === "arrival");
+      document.getElementById("btnDep").classList.toggle("active", m === "departure");
+      document.getElementById("mapTitle").textContent =
+        m === "arrival" ? "Average arrival delay" : "Average departure delay";
+      render();
+    }
+    function doSearch() {
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      const hit = stations.find(s => s.name.toLowerCase().includes(q));
+      if (hit) { selectedId = hit.id; render(); openDetail(hit); }
+      else alert("No station found for \"" + q + "\"");
+    }
+
+    document.getElementById("search").addEventListener("keydown", e => { if (e.key === "Enter") doSearch(); });
+
+    render();
+  </script>
+</body>
+</html>
