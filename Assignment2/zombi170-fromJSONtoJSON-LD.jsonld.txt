@@ -1,0 +1,16 @@
+{
+  "@context": {
+    "@vocab": "http://pecs.hu/schema#"
+  },
+  "@type": "City",
+  "@id": "Pécs",
+  "population": 139412,
+  "country": "Hungary",
+  "universities": [
+    {
+      "@type": "University",
+      "@id": "University of Pécs",
+      "acronym": "PTE"
+    }
+  ]
+}
