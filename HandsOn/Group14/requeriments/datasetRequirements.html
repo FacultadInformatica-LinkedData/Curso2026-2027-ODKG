@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Requirements</title>
+</head>
+<body>
+    <h1>Dataset Requirements - Drinking Water Fountains (Madrid)</h1>
+    <p><strong>Description:</strong> This dataset provides a comprehensive and daily-updated inventory of public drinking water fountains across the city of Madrid. It includes their exact locations across public streets, parks, and green spaces, as well as their current operational status (e.g., (OPERATIVO in service) or FUERA_DE_SERVICIO (out of service)).</p>
+    <p><strong>Source:</strong> <a href="https://datos.madrid.es/dataset/300051-0-fuentes/information" target="_blank">Drinking Water Fountains Dataset - Ayuntamiento de Madrid</a></p>
+
+    <h2>1. Dataset Requirements (R1 - R6)</h2>
+    <ul>
+        <li><strong>R1. Smart city domain:</strong> The dataset belongs to the "Smart Environment" and urban infrastructure domains. It provides critical information regarding public amenities (drinking water fountains) which is essential for smart city planning, public health, and citizen well-being.</li>
+        <li><strong>R2. CSV Format:</strong> The data is readily available in the attached CSV file format (<code>300051-26-fuentes.csv</code>), making it easy to parse, clean, and process using standard programming libraries.</li>
+        <li><strong>R3. Open License:</strong> The dataset is distributed under a <em>Creative Commons Attribution 4.0 International (CC BY 4.0)</em> license. This open license fully permits the use, modification, and publication of the data for our academic and development purposes.</li>
+        <li><strong>R4. Linkable with real-world entities:</strong> The fountains are located in specific public streets, parks, and gardens. Each entry contains geographical references and addresses that can be seamlessly geolocated and linked to other spatial datasets.</li>
+        <li><strong>R5. Documentation:</strong> There is associated documentation available on the data portal. A comprehensive PDF file ("Fuentes de agua para beber. Contenido y estructura del fichero") describes the structure, columns, and content of the dataset in detail.</li>
+        <li><strong>R6. Multiple data sources:</strong> The dataset can be easily combined with other open datasets. For example, it could be cross-referenced with green zones datasets, daily temperature data from AEMET (Spanish Meteorological Agency), or Madrid City Council's tourism data to provide enriched contextual information.</li>
+    </ul>
+
+    <h2>2. Licensing</h2>
+    <p>The selected dataset's license is <strong>CC BY 4.0 (Creative Commons Attribution 4.0 International)</strong>. This open-source framework allows us to freely share, adapt, and build upon the data for our application. The only strict requirement to comply with this license is to provide proper attribution to the original publisher, which in this case is the Madrid City Council (Ayuntamiento de Madrid).</p>
+
+    <h2>3. Entities to Link (Linking)</h2>
+    <ul>
+        <li><strong>Entities in our dataset that can be linked:</strong> The dataset contains several identifiable entities such as street names, public roads, city districts, and specific parks within the city of Madrid (e.g., Retiro, Tetuan).</li>
+        <li><strong>Entities in other datasets:</strong> We can link our localized data with large open knowledge bases like <em>Wikidata</em> or <em>DBpedia</em>. This will allow us to retrieve supplementary information about the neighborhoods, the historical background of the parks where the fountains are located, or even demographic data of the districts. Furthermore, it can be linked with standard street gazetteers (nomenclátor) for precise mapping.</li>
+    </ul>
+</body>
+</html>
