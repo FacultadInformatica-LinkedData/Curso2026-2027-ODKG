@@ -1,0 +1,9 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?property (COUNT(DISTINCT ?value) AS ?valueCount) WHERE{
+  ?politician a dbo:Politician .
+  ?politician ?property ?value .
+  FILTER (?property != rdf:type) .
+}
+
+GROUP BY ?property
