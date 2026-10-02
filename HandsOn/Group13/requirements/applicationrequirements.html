@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Occupancy Application Requirements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .mockup {
+            border: 1px solid black;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .box {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        select, input, button {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Parking Occupancy Application</h1>
+
+<h2>Application Description</h2>
+
+<p>
+This application will use parking occupancy data to allow users to explore
+information about public parking facilities.
+</p>
+
+<h2>Main Objective</h2>
+
+<p>
+The main objective is to create a simple web application where users can
+search, filter and visualize parking occupancy information.
+</p>
+<h2>Functional Requirements</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Requirement</th>
+    </tr>
+
+    <tr>
+        <td>R1</td>
+        <td>The application must display parking information.</td>
+    </tr>
+
+    <tr>
+        <td>R2</td>
+        <td>The user must be able to filter parking facilities by district.</td>
+    </tr>
+
+    <tr>
+        <td>R3</td>
+        <td>The user must be able to filter parking facilities by parking type.</td>
+    </tr>
+
+    <tr>
+        <td>R4</td>
+        <td>The user must be able to select a year and month.</td>
+    </tr>
+
+    <tr>
+        <td>R5</td>
+        <td>The application must show the parking occupancy percentage.</td>
+    </tr>
+
+    <tr>
+        <td>R6</td>
+        <td>The application must show the number of parking spaces.</td>
+    </tr>
+
+    <tr>
+        <td>R7</td>
+        <td>The application must support RDF data.</td>
+    </tr>
+
+    <tr>
+        <td>R8</td>
+        <td>The application must allow RDF data to be queried using SPARQL.</td>
+    </tr>
+
+    <tr>
+        <td>R9</td>
+        <td>The application must represent parking facilities, districts and occupancy records as RDF resources.</td>
+    </tr>
+
+    <tr>
+        <td>R10</td>
+        <td>The application must display the results of RDF/SPARQL queries in a simple table.</td>
+    </tr>
+</table>
+
+<h2>User Interface Mock-up</h2>
+
+<div class="mockup">
+
+    <h3>Parking Occupancy</h3>
+
+    <div>
+        District:
+        <select>
+            <option>All</option>
+            <option>Centro</option>
+            <option>Retiro</option>
+            <option>Latina</option>
+        </select>
+
+        Type:
+        <select>
+            <option>All</option>
+            <option>ROTACIONAL</option>
+            <option>MIXTO</option>
+        </select>
+
+        Month:
+        <select>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+        </select>
+
+        <button>Search</button>
+    </div>
+
+    <div class="box">
+        <b>Selected Parking:</b> Plaza Mayor<br>
+        District: Centro<br>
+        Spaces: 699<br>
+        Occupancy: 68.3%<br>
+        Daytime Occupancy: 79.0%
+    </div>
+
+    <h4>Parking Results</h4>
+
+    <table>
+        <tr>
+            <th>Parking</th>
+            <th>District</th>
+            <th>Spaces</th>
+            <th>Occupancy</th>
+        </tr>
+
+        <tr>
+            <td>Plaza Mayor</td>
+            <td>Centro</td>
+            <td>699</td>
+            <td>68.3%</td>
+        </tr>
+
+        <tr>
+            <td>Plaza de España</td>
+            <td>Centro</td>
+            <td>808</td>
+            <td>52.0%</td>
+        </tr>
+    </table>
+
+</div>
+<h2>Non-Functional Requirements</h2>
+
+<ul>
+    <li>The application should be simple and easy to use.</li>
+    <li>The application should work in modern web browsers.</li>
+    <li>The interface should work on desktop and mobile screens.</li>
+    <li>The RDF model should use clear URIs.</li>
+    <li>The application should return SPARQL query results in a readable format.</li>
+</ul>
+
+<h2>Expected Result</h2>
+
+<p>
+The final application should allow a user to explore the parking dataset
+using simple filters and also access the same information through an RDF
+model and SPARQL queries.
+</p>
+
+</body>
+</html>
