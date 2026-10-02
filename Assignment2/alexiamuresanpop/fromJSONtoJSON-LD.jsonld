@@ -1,0 +1,27 @@
+{
+    "@context": {
+        "schema": "https://schema.org/",
+        "name": "schema:name",
+        "population": "schema:population",
+        "universities": "schema:containsPlace",
+        "acronym": "schema:alternateName"
+    },
+    "@id": "https://www.wikidata.org/wiki/Q1757",
+    "@type": "schema:City",
+    "name": "Helsinki",
+    "population": 700000,
+    "universities": [
+        {
+            "@type": "schema:CollegeOrUniversity",
+            "@id": "https://www.wikidata.org/wiki/Q28695",
+            "name": "Helsingin yliopisto",
+            "acronym": "HY"
+        },
+        {
+            "@type": "schema:CollegeOrUniversity",
+            "@id": "https://www.wikidata.org/wiki/Q300980",
+            "name": "Aalto-yliopisto",
+            "acronym": "Aalto"
+        }
+    ]
+}
