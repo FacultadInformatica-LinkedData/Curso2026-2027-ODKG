@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application Requirements - Barcelona Heat Relief</title>
+<style>
+  :root { --fg:#1f2933; --muted:#5f6c7b; --line:#d5dbe3; --soft:#f4f7f9; --accent:#0b6e4f; --shelter:#0b6e4f; --fountain:#1d6fb8; --tree:#6a8f3a; --warn:#fff3cd; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--fg); max-width: 980px; margin: 2rem auto; padding: 0 1rem; line-height: 1.55; }
+  h1 { font-size: 1.7rem; margin-bottom: .2rem; }
+  h2 { font-size: 1.3rem; margin-top: 2.2rem; border-bottom: 2px solid var(--accent); padding-bottom: .2rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.6rem; }
+  .sub { color: var(--muted); margin-top: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid var(--line); padding: .45rem .6rem; text-align: left; vertical-align: top; font-size: .92rem; }
+  th { background: var(--soft); }
+  code { background: var(--soft); padding: 0 .25rem; border-radius: 3px; font-size: .9em; }
+  .todo { background: var(--warn); padding: 0 .25rem; border-radius: 3px; }
+
+  .mock { border: 1px solid var(--line); border-radius: 8px; margin: 1rem 0 .4rem; background: #fff; overflow: hidden; font-size: .85rem; }
+  .mock-bar { display: flex; gap: 1rem; align-items: center; padding: .5rem .8rem; background: var(--accent); color: #fff; }
+  .mock-bar strong { flex: 1; }
+  .tab { padding: .15rem .6rem; border-radius: 4px; background: rgba(255,255,255,.18); }
+  .tab.active { background: #fff; color: var(--accent); font-weight: 600; }
+  .mock-body { display: grid; grid-template-columns: 220px 1fr; min-height: 300px; }
+  .mock-side { border-right: 1px solid var(--line); padding: .7rem; background: var(--soft); }
+  .mock-main { padding: .7rem; }
+  .field { border: 1px solid var(--line); background: #fff; border-radius: 4px; padding: .25rem .5rem; margin: .25rem 0 .6rem; color: var(--muted); }
+  .label { font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+  .chk { display: flex; align-items: center; gap: .4rem; margin: .2rem 0; }
+  .box { width: .8rem; height: .8rem; border: 2px solid var(--fg); display: inline-block; }
+  .box.on { background: var(--fg); }
+  .sw { width: .8rem; height: .8rem; display: inline-block; }
+  .sw.shelter { background: var(--shelter); }
+  .sw.fountain { background: var(--fountain); border-radius: 50%; }
+  .sw.tree { background: var(--tree); border-radius: 50%; width: .5rem; height: .5rem; }
+  .caption { color: var(--muted); font-size: .85rem; margin: 0 0 1.4rem; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-bottom: .8rem; }
+  .tile { border: 1px solid var(--line); border-radius: 6px; padding: .5rem .7rem; background: var(--soft); }
+  .tile b { display: block; font-size: 1.3rem; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .bar { height: .7rem; background: var(--shelter); margin: .15rem 0 .45rem; }
+  .card { display: flex; gap: .6rem; border: 1px solid var(--line); border-radius: 6px; padding: .4rem; margin-bottom: .5rem; }
+  .img { width: 44px; height: 44px; background: #dde3ea; flex: none; }
+  .popup { border: 1px solid var(--fg); background: #fff; padding: .4rem .6rem; width: 210px; margin-top: .5rem; }
+  @media (max-width: 720px) { .mock-body { grid-template-columns: 1fr; } .mock-side { border-right: 0; border-bottom: 1px solid var(--line); } .cols, .tiles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>Application Requirements</h1>
+<p class="sub">Hands-on 1 &middot; Open Data and Knowledge Graphs &middot; Group 08 &middot; Barcelona Heat Relief</p>
+
+<h2>1. Purpose</h2>
+<p>A web application on top of a knowledge graph that lets users find and explore the public resources that Barcelona offers to cope with heat: climate shelters, drinking fountains and street trees. The application shows them on a map, lists them in a catalogue with filters and summarises each neighbourhood. Neighbourhoods and tree species are enriched with data from Wikidata.</p>
+
+<h2>2. Users and use cases</h2>
+<table>
+  <tr><th>User</th><th>Need</th></tr>
+  <tr><td>Resident or visitor</td><td>Find climate shelters and drinking fountains in a neighbourhood and know what kind of place each shelter is.</td></tr>
+  <tr><td>Urban planner or analyst</td><td>Compare neighbourhoods and districts by number and type of resources and by tree species.</td></tr>
+  <tr><td>Curious citizen</td><td>Discover which tree species grow in a neighbourhood and read about them.</td></tr>
+</table>
+
+<h2>3. Data used</h2>
+<table>
+  <tr><th>Dataset</th><th>Role in the application</th></tr>
+  <tr><td>D1 - Climate shelters network</td><td>Map layer and catalogue of shelters, filterable by category (derived from the name) and neighbourhood.</td></tr>
+  <tr><td>D2 - Drinking fountains</td><td>Map layer and catalogue of fountains.</td></tr>
+  <tr><td>D3 - Street trees</td><td>Map layer, species catalogue and counts per neighbourhood.</td></tr>
+  <tr><td>Wikidata</td><td>Descriptions and images of neighbourhoods, districts, species and well-known facilities.</td></tr>
+</table>
+
+<h2>4. Functional requirements</h2>
+<table>
+  <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+  <tr><td>FR1</td><td>Show shelters, fountains and trees as three map layers that the user can switch on and off.</td><td>Must</td></tr>
+  <tr><td>FR2</td><td>Filter resources by district and neighbourhood.</td><td>Must</td></tr>
+  <tr><td>FR3</td><td>Filter shelters by category (library, swimming pool, park or garden, market, pharmacy and others), derived from the shelter name because the dataset has no type column.</td><td>Must</td></tr>
+  <tr><td>FR4</td><td>Search tree species by scientific or common name.</td><td>Should</td></tr>
+  <tr><td>FR5</td><td>Show the details of a resource in a pop-up: name or species, category, address, neighbourhood and link to the linked entity when it exists.</td><td>Must</td></tr>
+  <tr><td>FR6</td><td>Show a catalogue (table) of resources with the same filters and free-text search.</td><td>Must</td></tr>
+  <tr><td>FR7</td><td>Show a neighbourhood page with the number of shelters, fountains and trees, the distribution of shelter categories and the most frequent tree species.</td><td>Should</td></tr>
+  <tr><td>FR8</td><td>Show a species card with data from Wikidata (common names, image, link).</td><td>Should</td></tr>
+  <tr><td>FR9</td><td>Compare resources per inhabitant across neighbourhoods using population data.</td><td>Could</td></tr>
+</table>
+
+<h2>5. Questions the knowledge graph must answer</h2>
+<ol>
+  <li>Which climate shelters are in a given neighbourhood and of what category are they?</li>
+  <li>How many drinking fountains does each district have?</li>
+  <li>Which are the most frequent tree species in a given neighbourhood?</li>
+  <li>Which neighbourhoods have no shelter of a given category (for example no library)?</li>
+  <li>How many trees were planted since a given year in each district?</li>
+  <li>Which resources (shelters, fountains) and how many trees are in a given neighbourhood?</li>
+  <li>Which shelters correspond to a facility that has a Wikidata item?</li>
+  <li>Which species of a neighbourhood are linked to Wikidata and what are their common names?</li>
+</ol>
+
+<h2>6. User interface</h2>
+<p>The application has three views reachable from a top navigation bar: Map, Catalogue and Neighbourhoods. The filters are shared between views. The mock-ups below are schematic.</p>
+
+<h3>6.1 Map view</h3>
+<div class="mock">
+  <div class="mock-bar"><strong>Barcelona Heat Relief</strong><span class="tab active">Map</span><span class="tab">Catalogue</span><span class="tab">Neighbourhoods</span></div>
+  <div class="mock-body">
+    <div class="mock-side">
+      <div class="label">Layers</div>
+      <div class="chk"><span class="box on"></span><span class="sw shelter"></span> Climate shelters</div>
+      <div class="chk"><span class="box on"></span><span class="sw fountain"></span> Drinking fountains</div>
+      <div class="chk"><span class="box"></span><span class="sw tree"></span> Street trees</div>
+      <div class="label" style="margin-top:.8rem">Shelter category</div>
+      <div class="field">All categories</div>
+      <div class="label">District</div>
+      <div class="field">All districts</div>
+      <div class="label">Neighbourhood</div>
+      <div class="field">All neighbourhoods</div>
+      <div class="label">Tree species</div>
+      <div class="field">Search species...</div>
+      <div>Results: 128 shelters, 214 fountains</div>
+    </div>
+    <div class="mock-main">
+      <svg viewBox="0 0 520 300" width="100%" role="img" aria-label="Schematic map with shelters, fountains and trees">
+        <rect width="520" height="300" fill="#e8eef3"/>
+        <path d="M0 220 L180 170 L330 190 L520 120" stroke="#c7d2dc" stroke-width="8" fill="none"/>
+        <path d="M120 0 L170 120 L150 300" stroke="#c7d2dc" stroke-width="8" fill="none"/>
+        <path d="M360 0 L330 190 L380 300" stroke="#c7d2dc" stroke-width="8" fill="none"/>
+        <rect x="95" y="90" width="12" height="12" fill="#0b6e4f"/>
+        <rect x="230" y="140" width="12" height="12" fill="#0b6e4f"/>
+        <rect x="300" y="70" width="12" height="12" fill="#0b6e4f"/>
+        <rect x="410" y="200" width="12" height="12" fill="#0b6e4f"/>
+        <rect x="190" y="235" width="12" height="12" fill="#0b6e4f"/>
+        <circle cx="140" cy="150" r="6" fill="#1d6fb8"/>
+        <circle cx="270" cy="95" r="6" fill="#1d6fb8"/>
+        <circle cx="350" cy="160" r="6" fill="#1d6fb8"/>
+        <circle cx="450" cy="90" r="6" fill="#1d6fb8"/>
+        <circle cx="60" cy="230" r="6" fill="#1d6fb8"/>
+        <circle cx="400" cy="250" r="6" fill="#1d6fb8"/>
+        <text x="12" y="20" font-size="12" fill="#5f6c7b">Map area: base map tiles and markers</text>
+      </svg>
+      <div class="popup">
+        <strong>Library (example)</strong><br>
+        Category: library<br>
+        Address: street and number<br>
+        Neighbourhood: name (district)<br>
+        Linked entity: Wikidata item
+      </div>
+    </div>
+  </div>
+</div>
+<p class="caption">Figure 1. Map with switchable layers, shared filters and a pop-up with the details of the selected resource. Values are illustrative.</p>
+
+<h3>6.2 Catalogue view</h3>
+<div class="mock">
+  <div class="mock-bar"><strong>Barcelona Heat Relief</strong><span class="tab">Map</span><span class="tab active">Catalogue</span><span class="tab">Neighbourhoods</span></div>
+  <div class="mock-main">
+    <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+      <div class="field" style="flex:2; min-width:180px;">Search by name, species or address...</div>
+      <div class="field" style="flex:1; min-width:120px;">Resource: all</div>
+      <div class="field" style="flex:1; min-width:120px;">District: all</div>
+      <div class="field" style="flex:1; min-width:120px;">Neighbourhood: all</div>
+    </div>
+    <table>
+      <tr><th>Name or species</th><th>Category</th><th>Address</th><th>Neighbourhood</th><th>Linked entity</th></tr>
+      <tr><td>Library (example)</td><td>Climate shelter - library</td><td>Street, number</td><td>Name</td><td>Wikidata</td></tr>
+      <tr><td>Fountain 1234 (example)</td><td>Drinking fountain</td><td>Street, number</td><td>Name</td><td>-</td></tr>
+      <tr><td>Platanus x hispanica (example)</td><td>Street tree</td><td>Street, number</td><td>Name</td><td>Wikidata</td></tr>
+      <tr><td>Market (example)</td><td>Climate shelter - market</td><td>Street, number</td><td>Name</td><td>Wikidata</td></tr>
+    </table>
+    <div style="text-align:right;">Page 1 of 20 &nbsp; Previous &nbsp; Next</div>
+  </div>
+</div>
+<p class="caption">Figure 2. Catalogue with free-text search, filters and a table that lists shelters, fountains and trees. Values are illustrative.</p>
+
+<h3>6.3 Neighbourhood view</h3>
+<div class="mock">
+  <div class="mock-bar"><strong>Barcelona Heat Relief</strong><span class="tab">Map</span><span class="tab">Catalogue</span><span class="tab active">Neighbourhoods</span></div>
+  <div class="mock-main">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div><strong style="font-size:1.1rem;">Neighbourhood name</strong><br>District name &middot; Wikidata link</div>
+      <div class="field" style="min-width:200px;">Select neighbourhood...</div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><b>12</b>Climate shelters</div>
+      <div class="tile"><b>25</b>Drinking fountains</div>
+      <div class="tile"><b>1,340</b>Street trees</div>
+    </div>
+    <div class="cols">
+      <div>
+        <div class="label">Shelter categories</div>
+        <div>Library</div><div class="bar" style="width:70%"></div>
+        <div>Market</div><div class="bar" style="width:40%"></div>
+        <div>Park</div><div class="bar" style="width:55%"></div>
+        <div>Swimming pool</div><div class="bar" style="width:20%"></div>
+      </div>
+      <div>
+        <div class="label">Most frequent species</div>
+        <div class="card"><div class="img"></div><div><strong>Scientific name</strong><br>Common name &middot; 320 trees &middot; Wikidata</div></div>
+        <div class="card"><div class="img"></div><div><strong>Scientific name</strong><br>Common name &middot; 210 trees &middot; Wikidata</div></div>
+        <div class="card"><div class="img"></div><div><strong>Scientific name</strong><br>Common name &middot; 150 trees &middot; Wikidata</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="caption">Figure 3. Neighbourhood summary with counts, distribution of shelter categories and species cards enriched with Wikidata. Values are illustrative.</p>
+
+<h2>7. Non-functional requirements and architecture</h2>
+<ul>
+  <li>The application queries a SPARQL endpoint that exposes the generated knowledge graph; it does not read the CSV files directly.</li>
+  <li>Web application with an interactive map. The technology will be decided in the next assignments.</li>
+  <li>Responsive layout usable on desktop and mobile screens.</li>
+  <li>Interface texts in English, with names of places and species as published in the datasets.</li>
+  <li>Attribution to Ajuntament de Barcelona (CC BY 4.0) and to Wikidata in the footer of the application.</li>
+</ul>
+
+<h2>8. Out of scope</h2>
+<ul>
+  <li>Real-time information (opening hours, availability of shelters, water quality).</li>
+  <li>Route planning between resources.</li>
+</ul>
+
+</body>
+</html>

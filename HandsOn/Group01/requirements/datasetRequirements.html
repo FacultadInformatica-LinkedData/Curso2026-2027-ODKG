@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Requirements</title>
+</head>
+<body>
+
+<h1>Dataset Requirements</h1>
+
+<h2>Dataset</h2>
+
+<p>
+The selected dataset is US Accidents (2016–2023), created by
+Sobhan Moosavi et al. For this project, we use a subset containing
+traffic accidents from New York City.
+</p>
+
+<p>
+The original dataset is very large, so it was not practical to include
+the complete dataset in the repository. Therefore, a subset containing
+only traffic accidents from New York City was created and used for this
+project, while preserving the original structure and attributes.
+</p>
+
+<p>
+Original source:
+<a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents">
+US Accidents (2016–2023) - Kaggle
+</a>
+</p>
+
+<h2>R1. Data are in the smart cities domain</h2>
+
+<p>
+The dataset satisfies this requirement because it contains information
+about traffic accidents and urban mobility, which are relevant topics
+in the Smart Cities domain.
+</p>
+
+<h2>R2. Data are available as a CSV file</h2>
+
+<p>
+The selected data are available in CSV format.
+</p>
+
+<h2>R3. Data have an open license so it can be published</h2>
+
+<p>
+This requirement is satisfied. The original US Accidents (2016–2023)
+dataset is distributed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0) license.
+</p>
+
+<p>
+This license allows the dataset to be reused, shared and adapted
+for non-commercial purposes, provided that appropriate attribution
+is given and derivative works are distributed under the same license.
+</p>
+
+<p>
+Original dataset:
+<a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents">
+US Accidents (2016–2023) - Kaggle
+</a>
+</p>
+
+<h2>R4. Data can be easily linked with generic real-world entities</h2>
+
+<p>
+The dataset contains geographic information such as latitude,
+longitude, street, city, county, state and postal code.
+These values can be linked with real-world entities such as
+New York City, streets, counties and geographic locations.
+</p>
+
+<h3>Entities in the dataset that can be linked</h3>
+
+<ul>
+    <li>
+        <strong>City:</strong> the City attribute can be linked with real-world
+        city entities, such as New York City.
+    </li>
+
+    <li>
+        <strong>County:</strong> the County attribute can be linked with county
+        entities, such as Kings County, Queens County or New York County.
+    </li>
+
+    <li>
+        <strong>State:</strong> the State attribute can be linked with the
+        New York State entity.
+    </li>
+
+    <li>
+        <strong>Street:</strong> street names can potentially be linked with
+        existing geographic entities representing streets and roads.
+    </li>
+
+    <li>
+        <strong>Geographic location:</strong> the Start_Lat and Start_Lng
+        attributes can be used to identify and link geographic locations.
+    </li>
+
+    <li>
+        <strong>Postal code:</strong> the Zipcode attribute can be linked with
+        geographic areas represented by postal codes.
+    </li>
+</ul>
+
+<h3>Entities in other datasets that can be linked</h3>
+
+<p>
+The geographic entities contained in the selected dataset can be linked
+with corresponding entities available in external Linked Data sources
+such as Wikidata and DBpedia.
+</p>
+
+<ul>
+    <li>
+        New York City can be linked with the corresponding New York City
+        entity in Wikidata or DBpedia.
+    </li>
+
+    <li>
+        New York State can be linked with the corresponding New York State
+        entity in Wikidata or DBpedia.
+    </li>
+
+    <li>
+        Counties such as New York County, Kings County, Queens County,
+        Bronx County and Richmond County can be linked with their corresponding
+        geographic entities in Wikidata or DBpedia.
+    </li>
+
+    <li>
+        Streets and other geographic locations may also be linked with
+        corresponding entities from external geographic datasets when available.
+    </li>
+</ul>
+
+<h2>R5. Documentation exists for the data</h2>
+
+<p>
+This requirement is satisfied. The original US Accidents (2016–2023)
+dataset includes detailed documentation on its Kaggle page.
+The documentation explains the purpose and origin of the dataset,
+the time period covered, the data collection process, and the meaning
+of the different attributes contained in the CSV file.
+</p>
+
+<p>
+For example, the dataset documentation describes attributes such as
+ID, Source, Severity, Start_Time, End_Time, geographic coordinates,
+street, city, county and state. The Kaggle page also references
+scientific publications that provide additional information about
+the creation and use of the dataset.
+</p>
+
+<p>
+Dataset documentation:
+<a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents/metadata">
+US Accidents (2016–2023) - Metadata and Documentation
+</a>
+</p>
+
+<h2>R6. Data can come from multiple data sources</h2>
+
+<p>
+This requirement is satisfied. According to the dataset documentation,
+the accident information was collected using multiple traffic APIs that
+provide streaming traffic incident data.
+</p>
+
+<p>
+These APIs aggregate information captured by different types of sources,
+including US and state departments of transportation, law enforcement
+agencies, traffic cameras and traffic sensors located within road networks.
+Therefore, although the final dataset is distributed as a single CSV file,
+the information originates from multiple data sources.
+</p>
+
+<p>
+Information about the data sources:
+<a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents/metadata">
+US Accidents (2016–2023) - Dataset Description
+</a>
+</p>
+
+</body>
+</html>

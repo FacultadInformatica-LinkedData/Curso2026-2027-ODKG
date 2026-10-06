@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dataset Requirements Analysis - Group 03</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #24292e;
+    }
+    h1 { border-bottom: 2px solid #eaecef; padding-bottom: 0.3em; }
+    h2 { margin-top: 24px; border-bottom: 1px solid #eaecef; padding-bottom: 0.2em; }
+    .req-card {
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 18px;
+      margin-bottom: 20px;
+      background: #fafbfc;
+    }
+    .req-title {
+      font-weight: bold;
+      color: #0366d6;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.8em;
+      font-weight: 600;
+      float: right;
+    }
+    .badge-mandatory { background-color: #d1f0d1; color: #155724; }
+    .badge-optional { background-color: #fff3cd; color: #856404; }
+    code { background-color: #f1f3f5; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+    ul { margin: 8px 0; }
+    .data-issue {
+      background-color: #fff8e6;
+      border-left: 4px solid #f0ad4e;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 0.92em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Dataset Requirements Analysis</h1>
+  <p><strong>Group:</strong> Group 03</p>
+  <p><strong>Primary Datasets:</strong> <a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido" target="_blank"><em>Contaminación acústica. Datos diarios</em></a> (215885, daily measurements) &amp; <a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas" target="_blank"><em>Contaminación acústica: Estaciones de medida</em></a> (211346, monitoring stations)</p>
+  <p><strong>Portal:</strong> <a href="https://datos.madrid.es" target="_blank">datos.madrid.es (Ayuntamiento de Madrid)</a></p>
+
+  <div class="req-card">
+    <div class="req-title">R1. Smart Cities Domain <span class="badge badge-mandatory">Mandatory</span></div>
+    <p><strong>Satisfied</strong> </p>
+    <p>The datasets monitor environmental noise pollution (acoustic quality) collected by urban sensor networks throughout the city of Madrid. Noise management, acoustic zoning, and monitoring citizen environmental health are essential pillars of modern smart city governance.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">R2. Available as CSV <span class="badge badge-mandatory">Mandatory</span></div>
+    <p><strong>Satisfied</strong> </p>
+    <p>Both datasets are published on the portal in CSV format. Our copies are in the <code>csv/</code> folder:</p>
+    <ul>
+      <li><strong>Measurements:</strong> <code>csv/contaminacion_acustica.csv</code> (extract of the portal file <code>215885-0-contaminacion-ruido.csv</code>, rows from 2020 on) — contains columns: <code>Estación;Año;Mes;Día;Periodo;LAeq;L1;L10;L50;L90;L99</code>. The <code>Periodo</code> field categorizes readings into <code>D</code> (daytime: 7-19h), <code>E</code> (evening: 19-23h), <code>N</code> (nighttime: 23-7h), and <code>T</code> (24-hour total).</li>
+      <li><strong>Stations Catalog:</strong> <code>csv/estaciones_acusticas.csv</code> (full copy of the portal file <code>211346-4-estaciones-acusticas-csv.csv</code>, 31 stations) — contains columns: <code>ESTACIÓN;NOMBRE;UBICACIÓN;DISTRITO;BARRIO;LONGITUD;LATITUD;X;Y;ALTITUD;FECHA ALTA</code> (station ID, name, street address, district, neighborhood, geographic and UTM coordinates, altitude and start date).</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">R3. Open License for Republication <span class="badge badge-mandatory">Mandatory</span></div>
+    <p><strong>Satisfied</strong></p>
+    <p>The datasets are released under the <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> license via <em>datos.madrid.es</em>. This permits copying, distribution, transformation, and online publishing for educational and commercial purposes with attribution.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">R4. Linkable to Real-World Entities <span class="badge badge-mandatory">Mandatory</span></div>
+    <p><strong>Satisfied</strong> </p>
+    <p>The station catalog enables direct linking to external knowledge graphs (Wikidata, DBpedia, GeoNames):</p>
+    <ul>
+      <li><strong>Geographical Entities:</strong> Station records contain district and neighborhood names (e.g., <code>Centro</code> &rarr; Wikidata <code>wd:Q1763376</code>, <code>Justicia</code> &rarr; Wikidata <code>wd:Q1992319</code>, and the city itself <code>Madrid</code> &rarr; Wikidata <code>wd:Q2807</code>).</li>
+      <li><strong>Spatial Coordinates:</strong> UTM coordinates (<code>X</code> and <code>Y</code> columns) and geographic coordinates permit geospatial linking (WGS84 / GeoSPARQL).</li>
+      <li><strong>Semantic Ontologies:</strong> Noise sensor readings map cleanly to standard ontologies such as SOSA/SSN (Sensor, Observation, Sample, and Actuation) and QUDT (Quantities, Units, Dimensions, and Types) using decibels (dB(A)).</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">R5. Documentation Exists <span class="badge badge-optional">Optional</span></div>
+    <p><strong>Partially Satisfied</strong> </p>
+    <p>Official technical documentation (PDF format) is provided on the portal defining the 11 schema columns and statistical percentiles (L1, L10, L50, L90, L99, LAeq). The time interval definitions for periods D, E, N, and T are standardized under Spanish acoustic regulation (Real Decreto 1367/2007).</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">R6. Multiple Data Sources <span class="badge badge-optional">Optional</span></div>
+    <p><strong>Satisfied</strong> </p>
+    <p>We integrate an additional open dataset from Madrid's data portal: <a href="https://datos.madrid.es/dataset/200085-0-censo-locales" target="_blank"><em>Censo de locales, sus actividades y terrazas de hostelería y restauración</em></a> (200085, census of premises, activities, and hospitality terraces). This dataset publishes four files (activities, premises, premises with licence information, and terraces). <strong>We only use the terraces file</strong>, which is the one needed for our application; the other three are not used.</p>
+    <ul>
+      <li><strong>Terraces:</strong> <code>csv/terrazas_hosteleria.csv</code> (full copy of the portal file <code>200085-6-censo-locales.csv</code>, 6,594 terraces, 117 columns). It supplies the terrace identifier (<code>id_terraza</code>), UTM coordinates (<code>coordenada_x_local</code>, <code>coordenada_y_local</code>), district and neighborhood, authorized table and chair counts (<code>mesas_es</code>, <code>sillas_es</code>, <code>mesas_ra</code>, <code>sillas_ra</code>) and opening hours. Terraces will be cross-referenced with nighttime acoustic noise (<code>Periodo = N</code>).</li>
+    </ul>
+  </div>
+
+  <h2>Data Preprocessing &amp; Cleansing Steps</h2>
+  <div class="data-issue">
+    <ul>
+      <li><strong>Identifier Reconciliation:</strong> Daily measurements identify stations via numeric IDs (<code>2</code>, <code>3</code>...), while the station catalog uses labels like <code>RF-02</code>, <code>RF-03</code>. We map <code>{n} &rarr; RF-{n}</code>, with <code>{n}</code> padded to two digits (<code>2 &rarr; RF-02</code>, <code>86 &rarr; RF-86</code>), during preprocessing.</li>
+      <li><strong>Coordinate Correction:</strong> Geographic coordinates in the catalog use period separators erroneously (e.g., <code>-3.691.877</code> instead of <code>-3.691877</code>). We rely on the correctly formatted UTM (X, Y) coordinates and project them to WGS84.</li>
+      <li><strong>Missing Values &amp; Numbers:</strong> Missing entries flagged as <code>N/D</code> will be mapped to null triples, and European decimal commas (<code>68,9</code>) are converted to standard floating-point numbers (<code>68.9</code>).</li>
+      <li><strong>Subset Selection:</strong> Because the raw daily noise history spans from 1998 to present (about 45&nbsp;MB, over one million rows), our repository includes an extract (<code>csv/contaminacion_acustica.csv</code>) with all rows from 2020 on (01/01/2020 to the last day published, 295,853 rows), kept in the original encoding and format.</li>
+    </ul>
+  </div>
+
+</body>
+</html>

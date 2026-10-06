@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Analysis - Group 03</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #24292e;
+    }
+    h1 { border-bottom: 2px solid #eaecef; padding-bottom: 0.3em; }
+    h2 { margin-top: 32px; border-bottom: 1px solid #eaecef; padding-bottom: 0.2em; }
+    .req-card {
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 18px;
+      margin-bottom: 20px;
+      background: #fafbfc;
+    }
+    .req-title {
+      font-weight: bold;
+      color: #0366d6;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+    code { background-color: #f1f3f5; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+    pre { background-color: #f1f3f5; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+    pre code { background: none; padding: 0; }
+    ul { margin: 8px 0; }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9em; margin: 10px 0; background: #fff; }
+    th, td { border: 1px solid #e1e4e8; padding: 6px 10px; text-align: left; vertical-align: top; }
+    th { background-color: #f1f3f5; }
+    .data-issue {
+      background-color: #fff8e6;
+      border-left: 4px solid #f0ad4e;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 0.92em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Data Analysis</h1>
+  <p><strong>Group:</strong> Group 03</p>
+  <p><strong>Primary Dataset:</strong> <a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido" target="_blank">Contaminación acústica. Datos diarios (215885)</a></p>
+  <p><strong>Complementary Datasets:</strong> <a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas" target="_blank">Contaminación acústica. Estaciones de medida (211346)</a> &amp; <a href="https://datos.madrid.es/dataset/200085-0-censo-locales" target="_blank">Censo de locales, sus actividades y terrazas de hostelería y restauración (200085)</a> (terraces file only)</p>
+  <p><strong>Analysis date:</strong> 5 October 2026. Figures were computed on the full CSV file downloaded from the portal on that date. The file in <code>csv/contaminacion_acustica.csv</code> is an extract of the original file with all rows from 2020 on (01/01/2020 – 04/10/2026): 295,853 rows, 31 stations, about 13&nbsp;MB, same encoding and format as the original.</p>
+
+  <!-- ===================================================== -->
+  <h2>1. Data and Schema Analysis</h2>
+
+  <div class="req-card">
+    <div class="req-title">1.1 File Format and Encoding</div>
+    <ul>
+      <li><strong>File:</strong> <code>215885-0-contaminacion-ruido.csv</code>, about <strong>44.7&nbsp;MB</strong>.</li>
+      <li><strong>Encoding:</strong> ISO-8859-1 (Latin-1), not UTF-8. The header <code>Estación;Año;Mes;Día</code> is broken if read as UTF-8.</li>
+      <li><strong>Separator:</strong> semicolon (<code>;</code>). <strong>Line endings:</strong> CRLF.</li>
+      <li><strong>Decimal mark:</strong> comma (<code>68,9</code>). Values have at most one decimal; whole values have none (<code>68</code>).</li>
+      <li><strong>Missing values:</strong> the string <code>N/D</code> (<em>no disponible</em>).</li>
+      <li><strong>Update:</strong> daily, except weekends and public holidays. The last day in the file is 04/10/2026.</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.2 Schema of the Daily Measurements (215885)</div>
+    <p>Each row is the value of one station, for one day and one period. The key of a row is <code>(Estación, Año, Mes, Día, Periodo)</code>; no duplicate keys were found.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>#</th><th>Column</th><th>Meaning (official documentation)</th><th>Type in file</th><th>Target type (RDF)</th></tr>
+      <tr><td>1</td><td><code>Estación</code></td><td>Code of the measuring station</td><td>Integer (1–86)</td><td>Link to a station resource</td></tr>
+      <tr><td>2</td><td><code>Año</code></td><td>Year</td><td>Integer</td><td rowspan="3">Joined into one <code>xsd:date</code></td></tr>
+      <tr><td>3</td><td><code>Mes</code></td><td>Month</td><td>Integer (1–12)</td></tr>
+      <tr><td>4</td><td><code>Día</code></td><td>Day</td><td>Integer (1–31)</td></tr>
+      <tr><td>5</td><td><code>Periodo</code></td><td>Day (<code>D</code>, 7–19h), evening (<code>E</code>, 19–23h), night (<code>N</code>, 23–7h) or total (<code>T</code>, 24h)</td><td>Code</td><td>Link to a period resource</td></tr>
+      <tr><td>6</td><td><code>LAeq</code></td><td>Equivalent continuous sound level of the period</td><td>Decimal, dB(A)</td><td><code>xsd:decimal</code></td></tr>
+      <tr><td>7–11</td><td><code>L1</code>, <code>L10</code>, <code>L50</code>, <code>L90</code>, <code>L99</code></td><td>Sound level exceeded during 1%, 10%, 50%, 90% and 99% of the time</td><td>Decimal, dB(A), or <code>N/D</code></td><td><code>xsd:decimal</code> (omitted when <code>N/D</code>)</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.3 Quantities</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Measure</th><th>Value</th></tr>
+      <tr><td>Rows</td><td><strong>1,037,100</strong></td></tr>
+      <tr><td>Time span</td><td>01/11/1998 – 04/10/2026 (29 years)</td></tr>
+      <tr><td>Distinct station codes</td><td>36 (31 still active in 2026)</td></tr>
+      <tr><td>Station-days</td><td>260,910</td></tr>
+      <tr><td>Rows per period</td><td>D: 258,433 · E: 258,289 · N: 259,976 · T: 260,402</td></tr>
+      <tr><td>Rows per year</td><td>From 3,428 (1998, two months) and ~25,000–36,000 (1999–2014) to ~42,000–45,000 per year since 2015 (44,633 in 2025)</td></tr>
+      <tr><td>Rows with percentiles (L1…L99)</td><td>680,611 (65.6%). Percentiles only exist from 2009 on. Since 2015 only 0.3% of rows have <code>N/D</code>.</td></tr>
+      <tr><td>Station-days with fewer than 4 periods</td><td>3,501 (1.3%)</td></tr>
+    </table>
+    </div>
+    <p>Stations with the most rows (more than 40,000 each): 11, 12, 16, 18, 19 and 20. Station codes <code>7</code>, <code>9</code>, <code>21</code>, <code>22</code> and <code>23</code> only have data in 2009–2010 (between 645 and 743 rows each); they were temporary stations.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.4 Value Ranges</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Column</th><th>Min</th><th>Max</th><th>Mean</th><th>Median</th></tr>
+      <tr><td><code>LAeq</code> – Day (D)</td><td>24.2</td><td>95.7</td><td>62.9</td><td>63.1</td></tr>
+      <tr><td><code>LAeq</code> – Evening (E)</td><td>20.4</td><td>96.8</td><td>62.4</td><td>62.7</td></tr>
+      <tr><td><code>LAeq</code> – Night (N)</td><td>22.1</td><td>140.2</td><td>57.4</td><td>57.7</td></tr>
+      <tr><td><code>LAeq</code> – Total (T)</td><td>23.7</td><td>138.1</td><td>61.9</td><td>62.0</td></tr>
+      <tr><td><code>L1</code></td><td>0.0</td><td>106.3</td><td>68.2</td><td>–</td></tr>
+      <tr><td><code>L10</code></td><td>0.0</td><td>96.3</td><td>62.5</td><td>–</td></tr>
+      <tr><td><code>L50</code></td><td>0.0</td><td>90.1</td><td>56.2</td><td>–</td></tr>
+      <tr><td><code>L90</code></td><td>0.0</td><td>83.3</td><td>49.7</td><td>–</td></tr>
+      <tr><td><code>L99</code></td><td>0.0</td><td>108.2</td><td>46.1</td><td>–</td></tr>
+    </table>
+    </div>
+    <p>All values are in dB(A). Night values are about 5 dB lower than day values, as expected. In 2025 the night <code>LAeq</code> ranged from 41.3 to 85.0 dB(A) (mean 56.1), and 53% of the night values were above 55 dB(A), the night-time quality objective for residential areas in Real Decreto 1367/2007. This is the indicator our application uses.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.5 Schema of the Station Catalog (211346)</div>
+    <p>File <code>csv/estaciones_acusticas.csv</code> (copy of the portal file <code>211346-4-estaciones-acusticas-csv.csv</code>): 31 rows (one per active station), ISO-8859-1, semicolon separator.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Column</th><th>Content</th><th>Example</th></tr>
+      <tr><td><code>ESTACIÓN</code></td><td>Station code</td><td><code>RF-02</code></td></tr>
+      <tr><td><code>NOMBRE</code></td><td>Station name</td><td>Carlos V</td></tr>
+      <tr><td><code>UBICACIÓN</code></td><td>Free-text location</td><td>Plaza del Emperador Carlos V, junto al n1…</td></tr>
+      <tr><td><code>DISTRITO</code></td><td>District (17 distinct of the 21 in Madrid)</td><td>Retiro</td></tr>
+      <tr><td><code>BARRIO</code></td><td>Neighbourhood (30 distinct)</td><td>Jerónimos</td></tr>
+      <tr><td><code>LONGITUD</code>, <code>LATITUD</code></td><td>WGS84 coordinates, badly formatted</td><td><code>-3.691.509</code>, <code>40.409.121</code></td></tr>
+      <tr><td><code>X</code>, <code>Y</code></td><td>UTM coordinates (zone 30N), in metres</td><td>441327, 4473397</td></tr>
+      <tr><td><code>ALTITUD</code></td><td>Altitude in metres (601–728)</td><td>629</td></tr>
+      <tr><td><code>FECHA ALTA</code></td><td>Start date (<code>dd/mm/yyyy</code>)</td><td>01/12/1998</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <h2>Data Quality Issues Found</h2>
+  <div class="data-issue">
+    <ul>
+      <li><strong>Different station codes:</strong> the measurements use integers (<code>2</code>), the catalog uses <code>RF-02</code>. Mapping: <code>n &rarr; RF-</code> + <code>n</code> padded to two digits.</li>
+      <li><strong>Stations without catalog entry:</strong> codes 7, 9, 21, 22 and 23 (2009–2010) are not in the catalog, so they have no name or coordinates.</li>
+      <li><strong>Outliers:</strong> 4 rows above 100 dB(A) (stations 18 and 13, April and August 2007, up to 140.2) and 39 rows below 35 dB(A). They are physically doubtful; we keep them but will flag them.</li>
+      <li><strong>Percentile issues:</strong> 4 rows contain <code>0</code> in a percentile, and in 4,262 rows (0.6%) the order <code>L1 &ge; L10 &ge; L50 &ge; L90 &ge; L99</code> is not respected.</li>
+      <li><strong>Catalog formatting:</strong> broken coordinates (<code>-3.691.877</code>); a trailing space in <code>"Carabanchel "</code>; neighbourhood <code>Quitana</code> should be <code>Quintana</code>; RF-01 has <code>FECHA ALTA</code> 07/03/2011 although station 1 has data since 1998.</li>
+    </ul>
+  </div>
+
+  <!-- ===================================================== -->
+  <h2>2. Licensing of the Data Source</h2>
+
+  <div class="req-card">
+    <div class="req-title">2.1 Publisher</div>
+    <p>The dataset is published on the open data portal of the city, <a href="https://datos.madrid.es" target="_blank">datos.madrid.es</a>. In the DCAT metadata of the dataset, <code>dct:publisher</code> and <code>dct:creator</code> are both <code>http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796</code>, which is the DIR3 code of the <strong>Ayuntamiento de Madrid</strong>.</p>
+    <p>The unit responsible for the data (<em>Responsable del conjunto de datos</em>) is the <strong>Dirección General de Sostenibilidad y Control Ambiental</strong> (Departamento de Control Acústico, Área de Urbanismo, Medio Ambiente y Movilidad). The data comes from its SIVCA network (Sistema Integral de Vigilancia de la Contaminación Acústica).</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">2.2 Rightsholder</div>
+    <p>The rightsholder is the <strong>Ayuntamiento de Madrid</strong>. The portal's terms of use apply to the reuse of "documents held by the Ayuntamiento de Madrid", and the station catalog (211346) and terraces census (200085) belong to the same body.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">2.3 Licence of the Source Datasets</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Dataset</th><th>Responsible unit</th><th>Licence</th></tr>
+      <tr><td>215885 – Daily noise data</td><td>D.G. de Sostenibilidad y Control Ambiental</td><td>CC BY 4.0</td></tr>
+      <tr><td>211346 – Noise stations</td><td>D.G. de Sostenibilidad y Control Ambiental</td><td>CC BY 4.0</td></tr>
+      <tr><td>200085 – Premises and terraces census</td><td>D.G. de Contratación y Servicios – S.G. de Estadística</td><td>CC BY 4.0</td></tr>
+    </table>
+    </div>
+    <p>All sources use the <strong><a href="https://creativecommons.org/licenses/by/4.0/legalcode.es" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></strong> licence. It allows copying, redistribution and adaptation, also for commercial purposes, if we:</p>
+    <ul>
+      <li>give credit to the source (Ayuntamiento de Madrid) and link to the licence;</li>
+      <li>indicate that changes were made (here, the conversion to RDF and the cleaning described above);</li>
+      <li>do not suggest that the Ayuntamiento de Madrid endorses our work;</li>
+      <li>do not add legal terms or technical measures that restrict what the licence allows.</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">2.4 Licence for the Generated Dataset</div>
+    <p>We will publish the generated RDF dataset and our ontology under <strong>CC BY 4.0</strong> (<code>https://creativecommons.org/licenses/by/4.0/</code>).</p>
+    <ul>
+      <li>The generated data is an adaptation of CC BY 4.0 data, so the attribution to the Ayuntamiento de Madrid must stay with it. Using the same licence keeps this clear and creates no conflict.</li>
+      <li>A public-domain licence (CC0) is not a good choice: users of our data would no longer be told that they must credit the original source.</li>
+      <li>A more restrictive licence (for example NC or ND) would limit the reuse of open data, and would go against the spirit of the source.</li>
+    </ul>
+    <p><strong>Attribution text:</strong> "Contains data from the Ayuntamiento de Madrid (datos.madrid.es), CC BY 4.0. Data converted to RDF and cleaned by Group 03 (UPM)."</p>
+    <p>The licence and source will be stated in the dataset metadata (DCAT):</p>
+<pre><code>&lt;https://madridnoise.linkeddata.es/dataset/daily-noise&gt;
+    a dcat:Dataset ;
+    dct:title "Madrid daily noise measurements (Linked Data)"@en ;
+    dct:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    dct:rightsHolder &lt;http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796&gt; ;
+    dct:source &lt;https://datos.madrid.es/dataset/215885-0-contaminacion-ruido&gt; ,
+               &lt;https://datos.madrid.es/dataset/211346-0-estaciones-acusticas&gt; ;
+    prov:wasDerivedFrom &lt;https://datos.madrid.es/dataset/215885-0-contaminacion-ruido&gt; .</code></pre>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "res": "http://example.org/sensors/resource/",
+    "ont": "http://example.org/sensors/ontology#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "includes": { "@id": "ont:includes", "@type": "@id" },
+    "hasMeasurement": { "@id": "ont:hasMeasurement", "@type": "@id" },
+    "hasTemperature": { "@id": "ont:hasTemperature", "@type": "xsd:integer" },
+    "atTime": { "@id": "ont:atTime", "@type": "xsd:dateTime" },
+    "hasOwner": { "@id": "ont:hasOwner", "@type": "@id" },
+    "hasName": { "@id": "ont:hasName" }
+    },
+    
+    "@id": "res:Class01",
+    
+    "includes": 
+    [
+      {
+        "@id": "res:Sensor029",
+        "hasMeasurement": 
+        {
+          "@id": "res:Measurement8401",
+          "hasTemperature": "29",
+          "atTime": "2010-06-12T12:00:12"
+        }
+      },
+      {
+        "@id": "res:Computer101",
+        "hasOwner": {
+          "@id": "res:User10A",
+          "hasName": "Pedro"
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute Madrid - Application Requirements</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 35px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-radius: 12px;
+        }
+        h1 {
+            color: #1a365d;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        h2 {
+            color: #2b6cb0;
+            margin-top: 32px;
+            font-size: 1.3rem;
+        }
+        p {
+            color: #4a5568;
+            font-size: 1.05rem;
+        }
+        ol {
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 12px;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+        .mockup-container {
+            border: 1px dashed #cbd5e0;
+            background-color: #f8fafc;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .mockup-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+        .mockup-caption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #718096;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SafeRoute Madrid - Application Requirements</h1>
+        <p>Application requirements for the smart navigation system designed to warn drivers about accident-prone locations across the city of Madrid, utilizing open-source routing data and predictive accident analysis models.</p>
+
+        <h2>Functional Requirements:</h2>
+        <ol>
+            <li>Allow users to input their starting point and destination point within or around Madrid.</li>
+            <li>Enable users to specify their type of vehicle (e.g., car, motorcycle, truck, bicycle) for tailored risk assessments.</li>
+            <li>Integrate with a routing API (such as OpenRouteService) to calculate optimal paths.</li>
+            <li>Apply predictive analytics algorithms on historical Madrid accident data to identify high-risk zones along or near the route.</li>
+            <li>Generate real-time safety warnings and risk scores when routes pass through accident-prone areas, emphasizing vehicle-specific hazards.</li>
+            <li>Offer alternative route suggestions or deviation options to bypass dangerous blackspots.</li>
+        </ol>
+
+        <h2>Mock-ups:</h2>
+        <div class="mockup-container">
+            <img src="Mock-ups.jpg" alt="SafeRoute Madrid App Mock-ups: Screen 1 Trip Configuration, Screen 2 Route Overview & Hazard Warnings, Screen 3 Alternative Route Comparison">
+        </div>
+    </div>
+</body>
+</html>

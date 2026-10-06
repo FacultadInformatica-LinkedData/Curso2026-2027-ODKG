@@ -1,0 +1,16 @@
+ @prefix ao: <http://group01.opendata.upm.es/ontology/accidents#> .
+  @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+  <http://group01.opendata.upm.es/resource/streets/E-74th-St> a ao:Street ;
+      ao:streetName "E 74th St" .
+
+  <http://group01.opendata.upm.es/resource/accidents/A-194408> a ao:TrafficAccident ;
+      ao:severity 2 ;
+      ao:startTime "2016-12-01T08:21:11"^^xsd:dateTime ;
+      ao:endTime "2016-12-01T08:50:48"^^xsd:dateTime ;
+      ao:latitude 40.770107 ;
+      ao:longitude -73.957397 ;
+      ao:description "Accident school bus involved on 2nd Ave both ways at 74th St." ;
+      ao:hasTrafficSignal true ;
+      ao:locatedOn <http://group01.opendata.upm.es/resource/streets/E-74th-St> .
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dataset Requirements, Madrid Sports Facilities and Classes</title>
+<style>
+  :root { --txt:#1f2328; --muted:#57606a; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa; --ok:#1a7f37; --part:#9a6700; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--txt); background:var(--bg); max-width:980px; margin:0 auto; padding:32px 16px 64px; line-height:1.55; }
+  h1 { font-size:1.8rem; margin-bottom:.2rem; }
+  h2 { margin-top:2.5rem; border-bottom:1px solid var(--line); padding-bottom:.3rem; }
+  h3 { margin-top:1.6rem; }
+  .sub { color:var(--muted); margin-top:0; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); }
+  code { background:var(--soft); padding:1px 5px; border-radius:4px; font-size:.9em; }
+  .ok { color:var(--ok); font-weight:600; }
+  .part { color:var(--part); font-weight:600; }
+  .box { background:var(--soft); border-left:4px solid var(--line); padding:10px 14px; margin:1rem 0; }
+  a { color:#0969da; }
+</style>
+</head>
+<body>
+
+<h1>Dataset Requirements</h1>
+<p class="sub">Hands-on 1, Open Data and Knowledge Graphs, Domain: urban environment and sports facilities in the city of Madrid</p>
+
+<h2>1. Selected datasets</h2>
+<table>
+  <tr><th>#</th><th>Dataset</th><th>File (<code>csv/</code> directory)</th><th>Publisher</th></tr>
+  <tr>
+    <td>D1</td>
+    <td>Sports Centers Information</td>
+    <td><code>sports_centers_info.csv</code></td>
+    <td>Madrid City Council</td>
+  </tr>
+  <tr>
+    <td>D2</td>
+    <td>Open Classes</td>
+    <td><code>open_classes.csv</code></td>
+    <td>Madrid City Council</td>
+  </tr>
+  <tr>
+    <td>D3</td>
+    <td>Closed Classes</td>
+    <td><code>closed_classes.csv</code></td>
+    <td>Madrid City Council</td>
+  </tr>
+</table>
+
+<h2>2. Compliance summary</h2>
+<table>
+  <tr><th>Requirement</th><th>D1, Facilities</th><th>D2, Open Classes</th><th>D3, Closed Classes</th></tr>
+  <tr><td>R1. Smart city domain</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R2. Available as CSV</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R3. Open license</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R4. Linkable to real-world entities</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied (via D1)</td><td class="ok">✔ Satisfied (via D1)</td></tr>
+  <tr><td>R5. Documentation (optional)</td><td class="ok">✔ High</td><td class="ok">✔ High</td><td class="ok">✔ High</td></tr>
+  <tr><td>R6. Multiple datasets (optional)</td><td colspan="3" class="ok">✔ Satisfied</td></tr>
+</table>
+
+<h2>3. D1, Sports Centers Information</h2>
+
+<h3>R1. Smart city domain <span class="ok">✔</span></h3>
+<p>The dataset belongs to the urban public services domain. It contains the inventory of municipal sports facilities in Madrid, providing essential infrastructure data for citizens.</p>
+
+<h3>R2. Available as CSV <span class="ok">✔</span></h3>
+<p>The dataset is available as a standard CSV file.</p>
+
+<h3>R3. Open license <span class="ok">✔</span></h3>
+<p>Creative Commons Attribution 4.0 International (CC BY 4.0), allowing the data to be copied, transformed, and redistributed.</p>
+
+<h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+<p>This dataset contains geospatial coordinates, addresses, and district identifiers, allowing it to be linked directly to Wikidata entities representing Madrid districts and neighborhoods.</p>
+
+<h2>4. D2, Open Classes</h2>
+
+<h3>R1. Smart city domain <span class="ok">✔</span></h3>
+<p>The dataset describes the public activities available to citizens, directly contributing to public health and urban life management.</p>
+
+<h3>R2. Available as CSV <span class="ok">✔</span></h3>
+<p>The dataset is available as a standard CSV file.</p>
+
+<h3>R3. Open license <span class="ok">✔</span></h3>
+<p>CC BY 4.0, with the same conditions as D1.</p>
+
+<h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+<p>This dataset contains the types of sports, which can be linked to Wikidata entities representing sports (e.g., swimming, tennis). It links geographically through its relationship with D1.</p>
+
+<h2>5. D3, Closed Classes</h2>
+
+<h3>R1. Smart city domain <span class="ok">✔</span></h3>
+<p>Similar to D2, this dataset provides information about the saturation and usage of public services.</p>
+
+<h3>R2. Available as CSV <span class="ok">✔</span></h3>
+<p>The dataset is available as a standard CSV file.</p>
+
+<h3>R3. Open license <span class="ok">✔</span></h3>
+<p>CC BY 4.0, with the same conditions as D1.</p>
+
+<h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+<p>This dataset links to specific sports on Wikidata and connects to physical locations via D1.</p>
+
+<h2>6. How the datasets are linked</h2>
+<div class="box">
+  <p><strong>D1 ↔ D2:</strong> Each open class in D2 references a specific facility in D1 using a facility identifier.</p>
+  <p><strong>D1 ↔ D3:</strong> Each closed class in D3 references a specific facility in D1 using a facility identifier.</p>
+  <p><strong>All ↔ Wikidata:</strong> The datasets link to Wikidata for districts, sports, and transit stations.</p>
+</div>
+
+<h2>7. Conclusion</h2>
+<p>All three datasets satisfy the mandatory requirements R1 to R4. The integration of a facility dataset with class availability datasets provides a robust knowledge graph for the assignment.</p>
+
+</body>
+</html>

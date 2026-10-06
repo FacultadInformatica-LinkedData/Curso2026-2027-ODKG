@@ -1,0 +1,32 @@
+ESTACIÓN;NOMBRE;UBICACIÓN;DISTRITO;BARRIO;LONGITUD;LATITUD;X;Y;ALTITUD;FECHA ALTA
+RF-01;Paseo de Recoletos;Frente al n23 del Paseo de Recoletos;Centro;Justicia;-3.691.877;40.422.599;441307;4474893;648;07/03/2011
+RF-02;Carlos V;Plaza del Emperador Carlos V, junto al n1 del Paseo de la Infanta Isabel;Retiro;Jerónimos;-3.691.509;40.409.121;441327;4473397;629;01/12/1998
+RF-03;Plaza del Carmen;Plaza del Carmen frente al n3 de la Calle de la Salud;Centro;Sol;-3.703.175;40.419.251;440346;4474529;657;01/11/1999
+RF-04;Plaza de España;Frente al n18 de la Plaza de España;Moncloa - Aravaca;Argüelles;-3.712.253;40.424.005;439580;4475063;637;01/12/1998
+RF-05;Barrio del Pilar;Parque de La Vaguada semiesquina de Avenida Monforte de Lemos con Calle Ginzo de Limia;Fuencarral - El Pardo;Pilar;-3.711.543;40.478.197;439688;4481078;673;07/06/1999
+RF-06;Gregorio Marañón;Frente al Paseo de la Castellana n51;Chamberí;Almagro;-3.690.758;40.437.548;441415;4476552;669;01/06/1999
+RF-08;Escuelas Aguirre;Junto a Calle Alcalá 62 (Dentro del recinto de la Casa Arabe);Salamanca;Recoletos;-3.682.377;40.421.575;442112;4474773;672;01/12/1998
+RF-10;Cuatro Caminos;Frente al n18 de la Avenida Pablo Iglesias;Chamberí;Vallehermoso;-3.707.157;40.445.581;440031;4477454;699;25/03/1999
+RF-11;Ramón y Cajal;Parque de Berlín junto al n210 de la Calle Príncipe de Vergara;Chamartín;Ciudad Jardín;-3.677.359;40.451.522;442563;4478094;708;01/12/1998
+RF-12;Manuel Becerra;Junto a la entrada del Parque María Eva Duarte De Perón en la Plaza de Manuel Becerra;Salamanca;Guindalera;-3.668.584;40.428.741;443288;4475560;678;01/12/1998
+RF-13;Vallecas;Frente al n26 de la Calle del Río San Lorenzo;Puente de Vallecas;Portazgo;-3.651.506;40.388.116;444704;4471039;677;11/11/1999
+RF-14;Plaza Elíptica;Frente al n4 de la Avenida de Oporto;Carabanchel;Abrantes;-3.718.807;40.384.978;438989;4470735;605;22/12/2009
+RF-16;Arturo Soria;Frente al n2 de la Calle del Vizconde de los Asilos;Ciudad Lineal;Quitana;-3.639.284;40.440.013;445783;4476792;698;01/12/1998
+RF-17;Villaverde;Frente al n61 de la Calle de Palomares;Villaverde;Casco histórico de Villaverde;-3.713.312;40.347.100;439421;4466527;601;01/12/1998
+RF-18;Farolillo;Frente al n1 de la Calle Farolillo;Carabanchel ;San Isidro;-3.731.786;40.394.788;437896;4471833;625;01/12/1998
+RF-19;Alto Extremadura;Frente al n4 de la Calle Hilario Sangrador;Latina;Lucero;-3.741.950;40.407.871;437046;4473293;632;01/12/1998
+RF-20;Avenida de Moratalaz;Junto al lateral del n109 de la Calle Camino de los Vinateros;Moratalaz;Vinateros;-3.645.215;40.408.028;445254;4473246;671;01/12/1998
+RF-24;Casa de Campo;Mirador junto a la Estación Teleférico Terminal;Moncloa - Aravaca;Casa de Campo;-3.747.319;40.419.390;436601;4474575;645;01/12/1998
+RF-25;Santa Eugenia;Parque junto al n1 de la Calle Poza de la Sal;Villa de Vallecas;Santa Eugenia;-3.602.561;40.379.072;448851;4470006;653;01/12/1998
+RF-26;Embajada;Parque junto al n2 de la Calle Soto Hidalgo;Barajas;Alameda de Osuna;-3.580.128;40.459.331;450814;4478902;618;03/03/2011
+RF-27;Barajas Pueblo;Frente al n21 de la Calle Júpiter;Barajas;Casco histórico de Barajas;-3.580.101;40.476.929;450829;4480855;627;24/05/2002
+RF-28;Cuatro Vientos;Esquina de la Avenida de la Aviación con Calle Navalmoral de la Mata;Latina;Águilas;-3.777.830;40.375.250;433969;4469698;678;30/04/2003
+RF-29;El Pardo;Parque del Concejal Miguel Martín Vela;Fuencarral - El Pardo;El Pardo;-3.774.551;40.517.989;434387;4485540;616;01/10/2003
+RF-30;Campo de las Naciones;Frente al n27 de la Calle Ribera del Sena;Barajas;Corralejos;-3.616.317;40.460.761;447747;4479082;687;10/11/2003
+RF-31;Sanchinarro;Junto al n14 de la Calle María Tudor;Hortaleza;Valdefuentes;-3.660.454;40.494.254;444032;4482826;700;14/07/2009
+RF-47;Mendez Álvaro;Frente al n13 de la Calle Juan de Mariana;Arganzuela;Delicias;-3.686.808;40.398.022;441716;4472162;609;18/01/2010
+RF-48;Castellana;Jardin de Las Bellas Artes a la altura del n2 de la Calle José Gutierrez Abascal;Chamartín;El Viso;-3.690.302;40.439.854;441456;4476807;685;04/05/2010
+RF-50;Plaza de Castilla;Frente al n9 de la Plaza Castilla;Chamartín;Nueva España;-3.688.719;40.465.628;441612;4479667;728;28/02/2011
+RF-54;Ensanche de Vallecas;Esquina entre la Avenida de la Gavia y la Avenida de las Suertes;Villa de Vallecas;Ensanche de Vallecas;-3.612.100;40.372.993;448037;4469337;619;15/12/2009
+RF-55;Urb Embajada 2;Frente al n13 de la Calle Riano;Barajas;Alameda de Osuna;-3.580.599;40.462.298;450776;4479232;619;17/03/2010
+RF-86;Tres Olivos;Frente al n23 de la Avenida del Campo de Calatrava;Fuencarral - El Pardo;Valverde;-3.689.643;40.500.598;441564;4483550;715;08/02/2010

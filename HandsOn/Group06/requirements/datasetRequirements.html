@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Requirements</title>
+    <style>
+        body {
+            margin: 0;
+            background: #fff;
+            color: #222;
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.55;
+        }
+
+        main {
+            max-width: 42em;
+            margin: 2.5em auto 4em;
+            padding: 0 1.25em;
+        }
+
+        h1 {
+            font-size: 1.7em;
+            font-weight: normal;
+            margin: 0 0 0.8em;
+            padding-bottom: 0.4em;
+            border-bottom: 1px solid #ccc;
+        }
+
+        h2 {
+            font-size: 1.15em;
+            margin: 1.8em 0 0.5em;
+        }
+
+        h3 {
+            font-size: 1em;
+            margin: 1.1em 0 0.4em;
+        }
+
+        p, ul {
+            margin: 0 0 0.8em;
+        }
+
+        ul {
+            padding-left: 1.3em;
+        }
+
+        li {
+            margin-bottom: 0.35em;
+        }
+
+        a {
+            color: #0645ad;
+        }
+
+        a:visited {
+            color: #0b0080;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Dataset Requirements</h1>
+
+        <h2>Dataset</h2>
+        <p>
+            We work with <strong>MyLA311 Service Request Data 2025</strong>, an open
+            government dataset maintained by the City of Los Angeles Information
+            Technology Agency. Each row describes a 311 ticket opened by residents
+            or city staff (bulky item collection, graffiti cleanup, street repairs,
+            and similar municipal issues).
+        </p>
+        <p>
+            Because the live portal dataset is refreshed daily and contains a very
+            large number of records, the repository keeps a CSV extract for 2025.
+            Column names and semantics match those published on the portal.
+        </p>
+        <p>
+            Portal page:
+            <a href="https://data.lacity.org/City-Infrastructure-Service-Requests/MyLA311-Service-Request-Data-2025/h73f-gn57">
+                Los Angeles Open Data — MyLA311 2025
+            </a>
+        </p>
+
+        <h2>R1. Data are in the smart cities domain</h2>
+        <p>
+            MyLA311 records how citizens interact with city services and how
+            departments respond to infrastructure problems. That kind of
+            operational city data clearly belongs to the smart cities domain.
+        </p>
+
+        <h2>R2. Data are available as a CSV file</h2>
+        <p>
+            The Los Angeles Open Data portal (Socrata) exposes the full table as a
+            downloadable CSV, which is the format used in this project.
+        </p>
+
+        <h2>R3. Data have an open license so it can be published</h2>
+        <p>
+            Licensing is open: the portal publishes the dataset under
+            <strong>CC0 1.0 Universal (Public Domain Dedication)</strong>. There are
+            no copyright barriers to converting the data to RDF, linking it, or
+            redistributing derived Linked Open Data.
+        </p>
+        <p>
+            License text:
+            <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>
+        </p>
+        <p>
+            Dataset page (license stated under Licensing and Attribution):
+            <a href="https://data.lacity.org/City-Infrastructure-Service-Requests/MyLA311-Service-Request-Data-2025/h73f-gn57/about_data">
+                About this Dataset
+            </a>
+        </p>
+
+        <h2>R4. Data can be easily linked with generic real-world entities</h2>
+        <p>
+            Linking is straightforward because tickets carry both map coordinates
+            and named administrative areas used by the City of Los Angeles.
+        </p>
+
+        <h3>Entities in the dataset that can be linked</h3>
+        <ul>
+            <li><strong>Los Angeles (city):</strong> every request is scoped to the City of Los Angeles.</li>
+            <li><strong>Address / street:</strong> fields such as Address, HouseNumber, Direction, StreetName and Suffix identify physical streets.</li>
+            <li><strong>Coordinates:</strong> Latitude and Longitude (and Location) pinpoint where the issue was reported.</li>
+            <li><strong>ZipCode:</strong> US postal areas inside Los Angeles.</li>
+            <li><strong>Council district:</strong> CD (district number) and CDMember (council member name).</li>
+            <li><strong>Neighborhood council:</strong> NC / NCName.</li>
+            <li><strong>Police precinct:</strong> PolicePrecinct (LAPD area).</li>
+            <li><strong>Responsible agency:</strong> Owner (e.g. LASAN) and AssignTo identify the department or work group handling the ticket.</li>
+        </ul>
+
+        <h3>Entities in other datasets that can be linked</h3>
+        <p>Those local identifiers can be aligned with well-known external resources, for example:</p>
+        <ul>
+            <li>Wikidata / DBpedia entries for the City of Los Angeles and, where published, council districts or LAPD divisions.</li>
+            <li>GeoNames (or similar gazetteers) for zip codes and place names.</li>
+            <li>OpenStreetMap ways and nodes for streets and reported locations.</li>
+            <li>Official City of Los Angeles open datasets describing neighborhood councils, council districts or departmental organization charts.</li>
+        </ul>
+
+        <h2>R5. Documentation exists for the data (optional)</h2>
+        <p>
+            The dataset is accompanied by official
+            documentation on the Los Angeles Open Data portal. The “About this Dataset”
+            page and the column catalogue describe the main fields
+            (SRNumber, RequestType, Status, RequestSource, CreatedDate, and the
+            geographic columns), together with their types and brief definitions.
+            Status values such as Open, Closed and Pending, as well as the request
+            channels, are also documented. This is sufficient to prepare an RDF
+            mapping without having to infer the meaning of the attributes. There is
+            no standalone technical report beyond the portal metadata; even so, we
+            regard the requirement as satisfied to a high degree.
+        </p>
+        <p>
+            Documentation:
+            <a href="https://data.lacity.org/City-Infrastructure-Service-Requests/MyLA311-Service-Request-Data-2025/h73f-gn57/about_data">
+                MyLA311 2025 – column descriptions and metadata
+            </a>
+        </p>
+
+        <h2>R6. Data can come from multiple data sources (optional)</h2>
+        <p>
+            The published file is a single CSV issued by
+            one organisation (the City of Los Angeles), so the requirement is not
+            met in the strict sense of combining several independent datasets.
+            At the same time, the records themselves are not produced by a single
+            intake process. According to the portal, MyLA311 collects reports from
+            3-1-1 telephone calls, call centres, email, the mobile application, the
+            website and related channels (RequestSource). Fulfilment is also shared
+            among departments, as shown by Owner and AssignTo (for example LASAN
+            versus other bureaus). On this basis we consider R6 satisfied only to a
+            medium degree: multiple sources contribute to the table, but they are
+            already merged by the city before publication.
+        </p>
+        <p>
+            Described on:
+            <a href="https://data.lacity.org/City-Infrastructure-Service-Requests/MyLA311-Service-Request-Data-2025/h73f-gn57/about_data">
+                MyLA311 2025 – about / data sources
+            </a>
+        </p>
+    </main>
+</body>
+</html>
