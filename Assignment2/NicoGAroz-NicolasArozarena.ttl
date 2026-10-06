@@ -1,0 +1,126 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix exVocab: <https://nico.aro.exercise2a.com/Ontology>
+@prefix exData: <https://nico.aro.exercise2a.com/Data>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+exVocab:Place a rdfs:Class ;
+	rdfs:label "Place"@en ;
+	rdfs:label "Lugar"@es .
+
+exVocab:PointOfInterest a rdfs:Class ;
+	rdfs:subClassOf exVocab:Place .
+	rdfs:label "Point of interest"@en ,
+		"Punto de interés"@es .
+
+exVocab:TouristicPlace a rdfs:Class ;
+    rdfs:subClassOf exVocab:PointOfInterest ;
+    rdfs:label "Touristic Place"@en ,
+    	"Lugar Turístico"@es .
+
+exVocab:Location a rdfs:Class ;
+	rdfs:label "Location"@en ,
+		"Localización"@es .
+
+exVocab:Cathedral a rdfs:Class ;
+    rdfs:subClassOf exVocab:TouristicPlace ;
+    rdfs:label "Cathedral"@en , "Catedral"@es .
+
+exVocab:Palace a rdfs:Class ;
+    rdfs:subClassOf exVocab:TouristicPlace ;
+    rdfs:label "Palace"@en , "Palacio"@es .
+
+exVocab:Church a rdfs:Class ;
+    rdfs:subClassOf exVocab:TouristicPlace ;
+    rdfs:label "Church"@en , "Iglesia"@es .
+
+exVocab:Hotel a rdfs:Class ;
+    rdfs:subClassOf exVocab:AccommodationPlace ;
+    rdfs:label "Hotel"@en , "Hotel"@es .
+
+exVocab:Hostel a rdfs:Class ;
+    rdfs:subClassOf exVocab:AccommodationPlace ;
+    rdfs:label "Hostel"@en , "Hostal"@es .
+
+exVocab:AutonomousCommunity a rdfs:Class ;
+    rdfs:label "Autonomous Community"@en , "Comunidad Autónoma"@es .
+
+exVocab:Province a rdfs:Class ;
+    rdfs:label "Province"@en , "Provincia"@es .
+
+exVocab:Municipality a rdfs:Class ;
+    rdfs:label "Municipality"@en , "Municipio"@es .
+
+exVocab:City a rdfs:Class ;
+    rdfs:label "City"@en , "Ciudad"@es .
+
+exVocab:Bar a rdfs:Class ;
+	rdfs:subClassOf exVocab:Place ;
+    rdfs:label "Bar"@en , "Bar"@es .
+
+
+#Properties
+
+exVocab:hasLocation a rdf:Property ;
+	rdfs:domain exVocab:Place ;
+	rdfs:range exVocab:Location ;
+	rdfs:label "has location"@en ,
+		"tiene localización"@es .
+
+exVocab:streetName a rdf:Property ;
+	rdfs:domain exVocab:Location ;
+	rdfs:range xsd:string .
+	rdfs:label "street name"@en ,
+		"nombre de la calle"@es .
+
+exVocab:streetNumber a rdf:Property ;
+    rdfs:domain exVocab:Location ;
+    rdfs:range xsd:integer ;
+    rdfs:label "street number"@en , "número de calle"@es .
+
+exVocab:foundIn a rdf:Property ;
+	rdfs:domain exVocab:Location ;
+	rdfs:label "found in"@en , "se encuentra en"@es .
+
+exVocab:belongsTo a rdf:Property ;
+	rdfs:label "belongs to"@en , "pertenece a"@es .
+
+exVocab:hasBorderWith a rdf:Property ;
+    rdfs:domain exVocab:Muncipality ;
+    rdfs:range exVocab:Municipality ;
+    rdfs:label "has border with"@en , "hace frontera con"@es .
+
+exVocab:population a rdf:Property ;
+	rdfs:label "population"@en , "población" @es ;
+	rdfs:domain [a owl:Class ;
+					owl:unionOf (exVocab:Municipality exVocab:City )] .  # Nota: los corvhetes indican que es una clase temporal (blanc node)
+
+
+# Data
+
+exData:Church1Location a exVocab:Location ;
+	rdfs:label "Church 1 Location"@en , "Localización de Iglesia 1"@es ;
+	exVocab:streetName "C/Alcalá"
+	exVocab:streetNumber 43 .
+
+exData:Curch1 a exData:Church ;
+	rdfs:label "Church 1"@en , "Iglesia 1"@es ;
+	exData:hasLocation exData:Church1Locaation .
+
+exData:LaMiranda a exVocab:Bar ;
+    rdfs:label "La Miranda Bar"@en , "Bar La Miranda"@es ;
+    exVocab:hasLocation exData:LaMirandaLocation .
+
+exData:LaMirandaLocation a exVocab:Location ;
+    rdfs:label "La Miranda Bar Location"@en , "Ubicación de Bar La Miranda"@es ;
+    exVocab:streetName "Plaza Dos de Mayo" ;
+    exVocab:streetNumber 4 .
+
+exData:Madrid a exVocab:City ;
+    rdfs:label "Madrid"@en , "Madrid"@es ;
+    exVocab:population 3166000 ;
+    exVocab:belongsTo exData:ComunidadDeMadrid .
+
+exData:ComunidadDeMadrid a exVocab:AutonomousCommunity ;
+    rdfs:label "Community of Madrid"@en , "Comunidad de Madrid"@es .
