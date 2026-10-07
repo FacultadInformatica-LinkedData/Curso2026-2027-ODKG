@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "aq": "https://w3id.org/valencia-airquality/ontology/airquality#",
+    "city": "https://w3id.org/valencia-airquality/resource/City/",
+    "station": "https://w3id.org/valencia-airquality/resource/MonitoringStation/",
+    "prop": "https://w3id.org/valencia-airquality/resource/ObservableProperty/",
+    "obs": "https://w3id.org/valencia-airquality/resource/Observation/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "stationName": { "@id": "aq:stationName", "@type": "xsd:string" },
+    "locatedInCity": { "@id": "aq:locatedInCity", "@type": "@id" },
+    "hasStation": { "@id": "aq:hasStation", "@type": "@id" },
+    "observedProperty": { "@id": "aq:observedProperty", "@type": "@id" },
+    "resultTime": { "@id": "aq:resultTime", "@type": "xsd:dateTime" },
+    "resultValue": { "@id": "aq:resultValue", "@type": "xsd:decimal" }
+  },
+  "@graph": [
+    { "@id": "city:Valencia", "@type": "aq:City" },
+    {
+      "@id": "station:AvdaFrancia",
+      "@type": "aq:MonitoringStation",
+      "stationName": "Avda. Francia",
+      "locatedInCity": "city:Valencia"
+    },
+    { "@id": "prop:NO2", "@type": "aq:ObservableProperty" },
+    {
+      "@id": "obs:AvdaFrancia_20200101T0100_NO2",
+      "@type": "aq:Observation",
+      "hasStation": "station:AvdaFrancia",
+      "observedProperty": "prop:NO2",
+      "resultTime": "2020-01-01T01:00:00",
+      "resultValue": "37"
+    }
+  ]
+}
