@@ -9,7 +9,7 @@ Original file is located at
 # **Task 06: Modifying RDF(s)**
 """
 
-!pip install rdflib
+# !pip install rdflib
 !pip install oeg-sw-class
 
 """Spanish: Importar la librería RDFLib
