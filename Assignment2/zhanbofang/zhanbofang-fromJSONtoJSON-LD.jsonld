@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    
+    "exo": "http://example.org/ontology/",
+    "hasUniversity": { 
+        "@id": "exo:hasUniversity"
+    },
+    "acronym": "exo:acronym",
+    "homepage": {
+        "@id"  : "WebSite",
+        "@type": "@id" 
+    },
+
+    "dbo": "http://dbpedia.org/ontology/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "population": { 
+        "@id": "dbo:populationTotal", 
+        "@type": "xsd:integer" 
+    }
+  },
+
+  "@id": "https://www.wikidata.org/entity/Q8686",
+  "@type": "City",
+
+  "name": "Shanghai",
+  "population": 24802600,
+  "country": {
+    "@id": "https://www.wikidata.org/entity/Q148",
+    "@type": "Country",
+    
+    "name": "China"
+  },
+  
+  "hasUniversity": [
+    {
+        "@id": "https://www.wikidata.org/entity/Q495015",
+        "@type": "CollegeOrUniversity",
+
+        "name": "Fudan University",
+        "acronym": "FDU",
+        "homepage": "https://www.fudan.edu.cn/en/"
+    },
+    {
+        "@id": "https://www.wikidata.org/entity/Q525169",
+        "@type": "CollegeOrUniversity",
+
+        "name": "Shanghai Jiao Tong University",
+        "acronym": "SJTU",
+        "homepage": "https://en.sjtu.edu.cn/"
+    },
+    {
+        "@id": "https://www.wikidata.org/entity/Q16947",
+        "@type": "CollegeOrUniversity",
+
+        "name": "Tongji University",
+        "acronym": "Tongji",
+        "homepage": "https://en.tongji.edu.cn/"
+    },
+    {
+        "@id": "https://www.wikidata.org/entity/Q2034790",
+        "@type": "CollegeOrUniversity",
+
+        "name": "East China Normal University",
+        "acronym": "ECNU",
+        "homepage": "https://english.ecnu.edu.cn/"
+    },
+    {
+        "@id": "https://www.wikidata.org/entity/Q2655352",
+        "@type": "CollegeOrUniversity",
+
+        "name": "East China University of Science and Technology",
+        "acronym": "ECUST",
+        "homepage": "https://www.ecust.edu.cn/en/"
+    },
+    {
+        "@id": "https://www.wikidata.org/entity/Q1343386",
+        "@type": "CollegeOrUniversity",
+
+        "name": "Shanghai University",
+        "acronym": "SHU",
+        "homepage": "https://en.shu.edu.cn/"
+    }
+  ]
+}
