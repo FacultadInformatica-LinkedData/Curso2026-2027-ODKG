@@ -8,7 +8,7 @@
     },
     "acronym": "exo:acronym",
     "homepage": {
-        "@id"  : "WebSite",
+        "@id"  : "url",
         "@type": "@id" 
     },
 
