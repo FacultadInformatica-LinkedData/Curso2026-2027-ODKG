@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "ontology": "http://example.org/ontology/",
+    "resource": "http://example.org/resource/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "resource:Barcelona",
+      "@type": "ontology:City",
+      "ontology:name": {"@value": "Barcelona", "@language": "es"},
+      "ontology:population": {"@value": 1730000, "@type": "xsd:integer"},
+      "ontology:belongsTo": {"@id": "resource:Spain"},
+      "ontology:hasUniversity": [
+        {"@id": "resource:UB"},
+        {"@id": "resource:UAB"},
+        {"@id": "resource:UPC"},
+        {"@id": "resource:UPF"},
+        {"@id": "resource:UOC"},
+        {"@id": "resource:UIC"}
+      ]
+    },
+    {
+      "@id": "resource:Spain",
+      "@type": "ontology:Country",
+      "ontology:name": {"@value": "España", "@language": "es"}
+    },
+    {
+      "@id": "resource:UB",
+      "@type": "ontology:University",
+      "ontology:fullName": {"@value": "Universitat de Barcelona", "@language": "ca"},
+      "ontology:acronym": {"@value": "UB", "@type": "xsd:string"}
+    },
+    {
+      "@id": "resource:UAB",
+      "@type": "ontology:University",
+      "ontology:fullName": {"@value": "Universitat Autònoma de Barcelona", "@language": "ca"},
+      "ontology:acronym": {"@value": "UAB", "@type": "xsd:string"}
+    },
+
+    {
+      "@id": "resource:UPC",
+      "@type": "ontology:University",
+      "ontology:fullName": {"@value": "Universitat Politècnica de Catalunya", "@language": "ca"},
+      "ontology:acronym": {"@value": "UPC", "@type": "xsd:string"}
+    },
+    {
+      "@id": "resource:UPF",
+      "@type": "ontology:University",
+      "ontology:fullName": {"@value": "Universitat Pompeu Fabra", "@language": "ca"},
+      "ontology:acronym": {"@value": "UPF", "@type": "xsd:string"}
+    },
+    {
+      "@id": "resource:UOC",
+      "@type": "ontology:University",
+      "ontology:fullName": {"@value": "Universitat Oberta de Catalunya", "@language": "ca"},
+      "ontology:acronym": {"@value": "UOC", "@type": "xsd:string"}
+    },
+    {
+      "@id": "resource:UIC",
+      "@type": "ontology:University",
+      "ontology:fullName": {"@value": "Universitat Internacional de Catalunya", "@language": "ca"},
+      "ontology:acronym": {"@value": "UIC", "@type": "xsd:string"}
+    }
+  ]
+}

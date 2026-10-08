@@ -1,0 +1,38 @@
+{ 
+  "@context": { 
+    "ontology": "http://example.org/ontology/", 
+    "resource": "http://example.org/resource/", 
+    "xsd": "http://www.w3.org/2001/XMLSchema#" 
+  }, 
+  "@graph": [ 
+    { 
+      "@id": "resource:Class01", 
+      "@type": "ontology:Class", 
+      "ontology:includes": [ 
+        {"@id": "resource:Sensor029"}, 
+        {"@id": "resource:Computer101"} 
+      ] 
+    }, 
+    { 
+      "@id": "resource:Computer101", 
+      "@type": "ontology:Computer", 
+      "ontology:hasOwner": {"@id": "resource:User10A"} 
+    }, 
+    { 
+      "@id": "resource:User10A", 
+      "@type": "ontology:User", 
+      "ontology:hasName": {"@value": "Pedro", "@language": "es"} 
+    }, 
+    { 
+      "@id": "resource:Sensor029", 
+      "@type": "ontology:Sensor", 
+      "ontology:hasMeasurement": {"@id":"resource:Measurement8401"} 
+    }, 
+    { 
+      "@id": "resource:Measurement8401", 
+      "@type": "ontology:Measurement", 
+      "ontology:hasTemperature": {"@value": 29, "@type": "xsd:integer"},
+      "ontology:atTime": {"@value": "2010-06-12T12:00:12", "@type": "xsd:date"} 
+    } 
+  ] 
+}
