@@ -1,0 +1,158 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "expression": "grel:if(isBlank(value), value, value.trim())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Street usando la expresión grel:if(isBlank(value), value, value.trim())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "City",
+    "expression": "grel:if(isBlank(value), value, value.trim())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna City usando la expresión grel:if(isBlank(value), value, value.trim())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Weather_Condition",
+    "expression": "grel:if(isBlank(value), value, value.trim())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Weather_Condition usando la expresión grel:if(isBlank(value), value, value.trim())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "County",
+    "expression": "grel:if(isBlank(value), value, value.trim())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna County usando la expresión grel:if(isBlank(value), value, value.trim())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Start_Lat",
+    "expression": "grel:if(isBlank(value), value, value.toNumber().round(6))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Start_Lat usando la expresión grel:if(isBlank(value), value, value.toNumber().round(6))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Start_Lng",
+    "expression": "grel:if(isBlank(value), value, value.toNumber().round(6))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Start_Lng usando la expresión grel:if(isBlank(value), value, value.toNumber().round(6))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Start_Time",
+    "expression": "grel:value.toString().replace(/\\.\\d+$/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Start_Time usando la expresión grel:value.toString().replace(/\\.\\d+$/, \"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "End_Time",
+    "expression": "grel:value.toString().replace(/\\.\\d+$/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna End_Time usando la expresión grel:value.toString().replace(/\\.\\d+$/, \"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Wind_Direction",
+    "expression": "grel:with(value, v,\n  if(isBlank(v), v,\n    with(v.toString().trim(), s,\n      if(s == \"CALM\", \"Calm\",\n      if(s == \"VAR\", \"Variable\",\n      if(s == \"North\", \"N\",\n      if(s == \"South\", \"S\",\n      if(s == \"East\", \"E\",\n      if(s == \"West\", \"W\", s))))))))\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Wind_Direction usando la expresión grel:with(value, v,\n  if(isBlank(v), v,\n    with(v.toString().trim(), s,\n      if(s == \"CALM\", \"Calm\",\n      if(s == \"VAR\", \"Variable\",\n      if(s == \"North\", \"N\",\n      if(s == \"South\", \"S\",\n      if(s == \"East\", \"E\",\n      if(s == \"West\", \"W\", s))))))))\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "expression": "grel:if(isBlank(value), value, value.trim())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Street usando la expresión grel:if(isBlank(value), value, value.trim())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Precipitation(in)",
+    "expression": "grel:if(\n  isBlank(value),\n  value,\n  if(value.toNumber() > 5, null, value)\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Precipitation(in) usando la expresión grel:if(\n  isBlank(value),\n  value,\n  if(value.toNumber() > 5, null, value)\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Temperature(F)",
+    "expression": "grel:if(\n  and(cells[\"ID\"].value == \"A-3008090\", value.toNumber() == -77.8),\n  null,\n  value\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Temperature(F) usando la expresión grel:if(\n  and(cells[\"ID\"].value == \"A-3008090\", value.toNumber() == -77.8),\n  null,\n  value\n)"
+  }
+]
