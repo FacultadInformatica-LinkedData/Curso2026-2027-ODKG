@@ -1,0 +1,20 @@
+{
+  "city": {
+    "name": "Torrejón de Ardoz",
+    "population": {
+      "value": 143526,
+      "date": "2025-01-01"
+    },
+    "country": "Spain",
+    "universities": [
+      {
+        "fullName": "Universidad de Alcalá",
+        "acronym": "UAH"
+      },
+      {
+        "fullName": "Universidad Católica San Antonio de Murcia",
+        "acronym": "UCAM"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+    "@context": {
+        "res": "http://example.org/resource/",
+        "prop":"http://example.org/property/",
+        "xsd":"http://www.w3.org/2001/XMLSchema#", 
+
+        "includes": "prop:includes",
+        "hasMeasurement":"prop:hasMeasurement",
+        "hasTemperature":"prop:hasTemperature",
+        "hasOwner":"prop:hasOwner",
+        "hasName":"prop:hasName",
+        "atTime":"prop:atTime"
+    },
+
+    "@id": "res:Class01",
+
+    "includes":[
+        {
+            "@id": "res:Sensor029",
+            "hasMeasurement":{
+                "@id": "res:Measurement8401",
+                "hasTemperature":{
+                    "@value":29,
+                    "@type":"xsd:integer"
+                },
+                "atTime":{
+                    "@value": "2010-06-12T12:00:12",
+                    "@type": "xsd:dateTime"
+                }
+
+            }
+        },
+        {
+            "@id": "res:Computer101",
+            "hasOwner":{
+                "@id":"res:User10A",
+                "hasName":{
+                    "@value": "Pedro",
+                    "@type": "xsd:string"
+                }
+            }
+        }
+    ]
+}
