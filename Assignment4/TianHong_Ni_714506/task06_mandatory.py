@@ -10,7 +10,7 @@ Original file is located at
 """
 
 # !pip install rdflib
-!pip install oeg-sw-class
+# !pip install oeg-sw-class
 
 """Spanish: Importar la librería RDFLib
 

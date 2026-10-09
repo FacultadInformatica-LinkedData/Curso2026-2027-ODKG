@@ -10,7 +10,7 @@ Original file is located at
 """
 
 # !pip install rdflib
-!pip install oeg-sw-class
+# !pip install oeg-sw-class
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2026-2027-ODKG/master/Assignment4/course_materials"
 
 """Spanish: Primero leemos los ficheros RDF
