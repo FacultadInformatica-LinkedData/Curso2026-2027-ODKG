@@ -156,22 +156,30 @@ English: Create the individuals shown in the diagram under "Datos". Link them wi
 """
 
 # Individuals and relationships shown in the data diagram
+import unicodedata
+
 university = Namespace("http://oeg.fi.upm.es/resource/university/")
 g.bind("university", university)
+
+def remove_accents(text):
+    return ''.join(
+        c for c in unicodedata.normalize('NFKD', text)
+        if not unicodedata.combining(c)
+    )
 
 '''
 schema
  key - (role, colleagues_list, institution, home_page, name)
 '''
 faculties = {
-    "Raúl"  : (ontology.FullProfessor,      ["Juan"], None, "http://www.garcia-castro.com/", None),
+    "Raúl"  : (ontology.FullProfessor, ["Juan"], None, "http://oeg.fi.upm.es", None),
     "Juan"  : (ontology.AssistantProfessor, ["Sven"], None, None, "Juan Cano de Benito"),
-    "Sven"  : (None, [], university.Manheim, None, None),
+    "Sven"  : (None, [], "Mannheim", None, None),
 }
 
 for label, (role, colleagues_list, institution, home_page, name) in faculties.items():
     # resolve to person entity
-    faculty = URIRef(person[label])
+    faculty = URIRef(person[remove_accents(label)])
 
     # add role to person entity
     if role is not None:
@@ -179,11 +187,11 @@ for label, (role, colleagues_list, institution, home_page, name) in faculties.it
 
     # add colleague to person entity
     for colleague in colleagues_list:
-        g.add((faculty, ontology.hasColleague, URIRef(colleague)))
+        g.add((faculty, ontology.hasColleague, person[colleague]))
 
     # add institution to person entity
     if institution is not None:
-        g.add((faculty, ontology.affiliatedWith, URIRef(university[institution])))
+        g.add((faculty, ontology.affiliatedWith, university[institution]))
 
     # add home page to person entity
     if home_page is not None:
@@ -195,6 +203,7 @@ for label, (role, colleagues_list, institution, home_page, name) in faculties.it
 
     # add label to person entity
     g.add((faculty, RDFS.label, Literal(label, datatype=XSD.string)))
+
 
 # Visualize the results
 for s, p, o in g:
