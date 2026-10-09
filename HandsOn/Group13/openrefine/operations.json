@@ -1,0 +1,110 @@
+[
+  [
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "value.replace(\"%\",\"\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression value.replace(\"%\",\"\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "value.replace(\"#\",\"\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression value.replace(\"#\",\"\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "value.replace(\"%\",\"\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression value.replace(\"%\",\"\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "value.toNumber()",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression value.toNumber()"
+    }
+  ],
+  [
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "value.replace(\",\",\".\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression value.replace(\",\",\".\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "grel:value.toNumber() / 100",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression grel:value.toNumber() / 100"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "value.replace(\",\",\".\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression value.replace(\",\",\".\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "grel:value.toNumber() / 100",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression grel:value.toNumber() / 100"
+    }
+  ]
+]
