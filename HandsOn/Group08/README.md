@@ -8,7 +8,7 @@ Hands-on project - Open Data and Knowledge Graphs 2026-2027 (UPM, ETSI Informati
 |------|-------------|
 | Bilal Soussane | sousbila |
 | Livia Scoppola | LiviaScoppola |
-| Arianna Balducci | ariannaBalducci |
+| Arianna Balducci | ariannabalducci |
 | Valentin Blin | ValYu777 |
 
 ## Project summary

@@ -1,0 +1,146 @@
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix dcat:          <http://www.w3.org/ns/dcat#> .
+@prefix mn:            <https://madridnoise.linkeddata.es/ontology#> .
+@prefix station:       <https://madridnoise.linkeddata.es/resource/station/> .
+@prefix observation:   <https://madridnoise.linkeddata.es/resource/observation/> .
+@prefix terrace:       <https://madridnoise.linkeddata.es/resource/terrace/> .
+@prefix district:      <https://madridnoise.linkeddata.es/resource/district/> .
+@prefix neighbourhood: <https://madridnoise.linkeddata.es/resource/neighbourhood/> .
+@prefix period:        <https://madridnoise.linkeddata.es/resource/period/> .
+@prefix dataset:       <https://madridnoise.linkeddata.es/dataset/> .
+@prefix sourceDataset: <https://datos.madrid.es/dataset/> .
+@prefix cc:            <https://creativecommons.org/licenses/by/4.0/> .
+
+# Instance assertions only: ontology terms and domains/ranges are in ontology.ttl.
+# --- Dataset Metadata ---
+
+_:madridCouncil a dcterms:Agent ;
+    rdfs:label "Ayuntamiento de Madrid"@es .
+
+_:group03 a dcterms:Agent ;
+    rdfs:label "ODKG 2026-2027 Group03"@en .
+
+dataset:daily-noise a dcat:Dataset ;
+    dcterms:title "Madrid daily noise measurements (Linked Data)"@en ;
+    dcterms:description "RDF adaptation of the selected 295,853-row daily-noise CSV extract, covering 2020-01-01 to 2026-10-04. The example measurements retain the source station, reporting date, period and numeric values."@en ;
+    dcterms:license cc: ;
+    dcterms:publisher _:group03 ;
+    dcterms:creator _:group03 ;
+    dcterms:modified "2026-10-05"^^xsd:date ;
+    dcterms:source sourceDataset:215885-0-contaminacion-ruido .
+
+dataset:stations a dcat:Dataset ;
+    dcterms:title "Madrid acoustic station catalog (Linked Data)"@en ;
+    dcterms:description "RDF adaptation of the selected station catalog; station identifiers and coordinate strings are normalized."@en ;
+    dcterms:license cc: ;
+    dcterms:publisher _:group03 ;
+    dcterms:creator _:group03 ;
+    dcterms:modified "2026-10-05"^^xsd:date ;
+    dcterms:source sourceDataset:211346-0-estaciones-acusticas .
+
+dataset:terraces a dcat:Dataset ;
+    dcterms:title "Madrid hospitality terraces (Linked Data)"@en ;
+    dcterms:description "RDF adaptation of the selected terraces census snapshot. The sample terrace row has source load date fx_carga=2026-10-04. Premises coordinates are transformed from EPSG:25830 to EPSG:4326 as a location proxy; this snapshot does not establish a terrace's existence on every historical noise date."@en ;
+    dcterms:license cc: ;
+    dcterms:publisher _:group03 ;
+    dcterms:creator _:group03 ;
+    dcterms:modified "2026-10-05"^^xsd:date ;
+    dcterms:source sourceDataset:200085-0-censo-locales .
+
+# The source publisher and rightsholder are distinct from the RDF adaptation publisher.
+sourceDataset:215885-0-contaminacion-ruido a dcat:Dataset ;
+    dcterms:publisher _:madridCouncil ;
+    dcterms:rightsHolder _:madridCouncil ;
+    dcterms:license cc: .
+
+sourceDataset:211346-0-estaciones-acusticas a dcat:Dataset ;
+    dcterms:publisher _:madridCouncil ;
+    dcterms:rightsHolder _:madridCouncil ;
+    dcterms:license cc: .
+
+sourceDataset:200085-0-censo-locales a dcat:Dataset ;
+    dcterms:publisher _:madridCouncil ;
+    dcterms:rightsHolder _:madridCouncil ;
+    dcterms:license cc: .
+
+# --- Station Instance ---
+# RF-02 source LONGITUD/LATITUD: -3.691.509 / 40.409.121.
+
+station:RF-02 a mn:NoiseMonitoringStation ;
+    rdfs:label "Carlos V"@es ;
+    mn:stationCode "RF-02" ;
+    mn:stationName "Carlos V" ;
+    mn:latitude 40.409121 ;
+    mn:longitude -3.691509 ;
+    dcterms:isPartOf dataset:stations .
+
+# --- Controlled Period Instances ---
+
+period:D a mn:DayPeriod ;
+    rdfs:label "Day (07:00-19:00)"@en ;
+    mn:periodCode "D" .
+
+period:E a mn:DayPeriod ;
+    rdfs:label "Evening (19:00-23:00)"@en ;
+    mn:periodCode "E" .
+
+period:N a mn:DayPeriod ;
+    rdfs:label "Night (23:00-07:00)"@en ;
+    mn:periodCode "N" .
+
+period:T a mn:DayPeriod ;
+    rdfs:label "Total (24h)"@en ;
+    mn:periodCode "T" .
+
+# --- Day Observation Instance ---
+# Estación/Año/Mes/Día/Periodo: 2 / 2020 / 1 / 1 / D.
+# LAeq/L1/L10/L50/L90/L99: 67 / 72,6 / 69,4 / 65,6 / 60,5 / 57,4.
+
+observation:RF-02-2020-01-01-D a mn:DailyNoiseObservation ;
+    mn:recordedAt station:RF-02 ;
+    mn:forPeriod period:D ;
+    mn:observationDate "2020-01-01"^^xsd:date ;
+    mn:laeq 67.0 ;
+    mn:las01 72.6 ;
+    mn:las10 69.4 ;
+    mn:las50 65.6 ;
+    mn:las90 60.5 ;
+    mn:las99 57.4 ;
+    dcterms:isPartOf dataset:daily-noise .
+
+# --- Night Observation Instance ---
+# Estación/Año/Mes/Día/Periodo: 2 / 2020 / 1 / 1 / N.
+# LAeq/L1/L10/L50/L90/L99: 69,4 / 78,5 / 71 / 67,3 / 61,5 / 57,6.
+
+observation:RF-02-2020-01-01-N a mn:DailyNoiseObservation ;
+    mn:recordedAt station:RF-02 ;
+    mn:forPeriod period:N ;
+    mn:observationDate "2020-01-01"^^xsd:date ;
+    mn:laeq 69.4 ;
+    mn:las01 78.5 ;
+    mn:las10 71.0 ;
+    mn:las50 67.3 ;
+    mn:las90 61.5 ;
+    mn:las99 57.6 ;
+    dcterms:isPartOf dataset:daily-noise .
+
+# --- Terrace Instance ---
+# Row id_terraza=37: premises X/Y=447209.53/4470130.43 (EPSG:25830).
+# Converted to WGS84, retaining nine decimal places; source fx_carga=2026-10-04.
+
+terrace:37 a mn:Terrace ;
+    rdfs:label "Terrace 37"@en ;
+    mn:terraceId 37 ;
+    mn:hasDistrict district:18 ;
+    mn:hasNeighbourhood neighbourhood:1801 ;
+    mn:latitude 40.380089408 ;
+    mn:longitude -3.621907141 ;
+    dcterms:isPartOf dataset:terraces .
+
+district:18 a mn:District ;
+    rdfs:label "VILLA DE VALLECAS"@es .
+
+neighbourhood:1801 a mn:Neighbourhood ;
+    rdfs:label "CASCO H.VALLECAS"@es .

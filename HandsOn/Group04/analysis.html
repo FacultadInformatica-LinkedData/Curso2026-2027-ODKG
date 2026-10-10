@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breathe &amp; Play Madrid – Data Analysis</title>
+<style>
+  :root { --fg:#1d2433; --muted:#5b6475; --line:#d9dee7; --bg:#ffffff; --soft:#f4f6fa; --accent:#1f6f5c; --warn:#a15c00; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; }
+  h2 { margin-top: 48px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+  h3 { margin-top: 32px; color: var(--accent); }
+  h4 { margin: 24px 0 8px; }
+  .subtitle { color: var(--muted); margin: 0 0 24px; }
+  nav { background: var(--soft); border:1px solid var(--line); border-radius:8px; padding: 12px 20px; }
+  nav ol { margin: 0; padding-left: 20px; }
+  table { width:100%; border-collapse: collapse; margin: 12px 0 20px; font-size: .9rem; }
+  th, td { border:1px solid var(--line); padding: 6px 9px; text-align:left; vertical-align: top; }
+  th { background: var(--soft); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  code { background: var(--soft); padding: 1px 5px; border-radius: 4px; font-size: .88em; }
+  pre { background: var(--soft); border:1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow-x: auto; font-size: .85rem; line-height: 1.45; }
+  .issue { border-left: 4px solid var(--warn); background: #fff7ea; padding: 8px 14px; margin: 12px 0; }
+  .note { border-left: 4px solid var(--accent); background: #eef7f4; padding: 8px 14px; margin: 12px 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 16px 0; }
+  .kpi { border:1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  .kpi b { display:block; font-size: 1.4rem; }
+  .kpi span { color: var(--muted); font-size: .85rem; }
+  .scroll { overflow-x: auto; }
+  footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Breathe &amp; Play Madrid – Data analysis, licensing and resource naming strategy</h1>
+<p class="subtitle">Hands-on 2 · Open Data and Knowledge Graphs · MSc in Data Science (UPM) · Group 04 · Application: Breathe &amp; Play Madrid</p>
+
+<nav>
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#overview">Overview of the data sources</a></li>
+    <li><a href="#dataset">Data set analysis</a>
+      <ol>
+        <li><a href="#d1">Air quality – daily data 2024</a></li>
+        <li><a href="#d2">Air quality – monitoring stations</a></li>
+        <li><a href="#d3">Basic municipal sports facilities</a></li>
+        <li><a href="#links">Relations between the data sets</a></li>
+      </ol>
+    </li>
+    <li><a href="#licensing">Licensing analysis</a></li>
+    <li><a href="#naming">Resource naming strategy</a></li>
+  </ol>
+</nav>
+
+<!-- ========================================================= -->
+<h2 id="overview">1. Overview of the data sources</h2>
+
+<p>The application <em>Breathe &amp; Play Madrid</em> combines three datasets from the Madrid City Council open data portal (<a href="https://datos.madrid.es">datos.madrid.es</a>) to tell users how clean the air is around the outdoor sports facilities of the city.</p>
+
+<table>
+  <tr><th>#</th><th>Dataset</th><th>File (in <code>csv/</code>)</th><th class="num">Rows</th><th class="num">Columns</th><th>Encoding / separator</th></tr>
+  <tr><td>D1</td><td><a href="https://datos.madrid.es/dataset/201410-0-calidad-aire-diario">Calidad del aire. Datos diarios</a> (year 2024)</td><td><code>calidad-aire-diario-2024.csv</code></td><td class="num">1,411</td><td class="num">69</td><td>UTF-8 · <code>;</code></td></tr>
+  <tr><td>D2</td><td><a href="https://datos.madrid.es/dataset/212629-0-estaciones-control-aire">Calidad del aire. Estaciones de control</a></td><td><code>212629-0-estaciones-control-aire.csv</code></td><td class="num">24</td><td class="num">25</td><td>UTF-8 with BOM · <code>;</code></td></tr>
+  <tr><td>D3</td><td><a href="https://datos.madrid.es/dataset/200215-0-instalaciones-deportivas">Instalaciones deportivas municipales básicas</a></td><td><code>200215-0-instalaciones-deportivas-csv.csv</code></td><td class="num">607</td><td class="num">32</td><td>ISO-8859-1 (had to be transformed to UTF-8) · <code>;</code></td></tr>
+</table>
+
+<p>Each dataset comes with official documentation published on the portal, which has been used to interpret codes, units and fields:</p>
+<ul>
+  <li>D1: <em>Intérprete de ficheros de datos horarios, diarios y tiempo real</em> (file structure, Annex I station codes, Annex II magnitudes, units and measurement techniques).</li>
+  <li>D2: <em>Estructura del conjunto de datos – Calidad del aire. Estaciones de control</em> (version March 2023, Servicio de Calidad del Aire).</li>
+  <li>D3: <em>Estructura para conjuntos de datos provenientes de www.madrid.es</em> (generic structure shared by all facility datasets coming from the municipal website, updated May 2019).</li>
+</ul>
+
+
+<div class="kpis" style="display: grid; grid-template-columns: repeat(3, 1fr); justify-content: center; max-width: 900px; margin: 0 auto; gap: 20px;">
+  <div class="kpi" ><b>24</b><span>air quality stations</span></div>
+  <div class="kpi"><b>11</b><span>pollutants measured</span></div>
+  <div class="kpi"><b>131</b><span>sampling points (station × pollutant)</span></div>
+  <div class="kpi"><b>43,741</b><span>daily value cells in 2024 file</span></div>
+  <div class="kpi"><b>607</b><span>sports facilities</span></div>
+  <div class="kpi"><b>21</b><span>districts covered</span></div>
+</div>
+
+<!-- ========================================================= -->
+<h2 id="dataset">2. Data set analysis</h2>
+
+<h3 id="d1">2.1 D1 – Air quality, daily data 2024</h3>
+
+<h4>Schema</h4>
+<p>The file uses a <strong>wide format</strong>: one row per station, pollutant and month, with 31 pairs of columns (<code>Dxx</code> value, <code>Vxx</code> validity flag), one per day of the month. The documentation says that daily files contain 28, 29, 30 or 31 day columns depending on the month, but the CSV always has 31 pairs and fills non-existent days with <code>0</code> / <code>N</code>.</p>
+<table>
+  <tr><th>Column</th><th>Type</th><th>Description</th><th>Values found</th></tr>
+  <tr><td><code>PROVINCIA</code></td><td>integer code</td><td>INE province code</td><td>always <code>28</code> (Madrid)</td></tr>
+  <tr><td><code>MUNICIPIO</code></td><td>integer code (3 digits)</td><td>INE municipality code</td><td>always <code>079</code> (Madrid)</td></tr>
+  <tr><td><code>ESTACION</code></td><td>integer code</td><td>Short station code (joins with D2 <code>CODIGO_CORTO</code>)</td><td>24 distinct: 4, 8, 11, 16–18, 24, 27, 35, 36, 38–40, 47–50, 54–60</td></tr>
+  <tr><td><code>MAGNITUD</code></td><td>integer code</td><td>Measured pollutant (code list in the dataset documentation)</td><td>11 distinct (see table below)</td></tr>
+  <tr><td><code>PUNTO_MUESTREO</code></td><td>string</td><td>Sampling point: full station code (province + municipality + station) + magnitude + measurement technique code (<code>{station}_{magnitude}_{technique}</code>)</td><td>131 distinct, e.g. <code>28079004_8_8</code>; 6 technique codes used (see below)</td></tr>
+  <tr><td><code>ANO</code></td><td>year</td><td>Year of measurement</td><td>always <code>2024</code></td></tr>
+  <tr><td><code>MES</code></td><td>month (2 digits)</td><td>Month of measurement</td><td><code>01</code>–<code>11</code></td></tr>
+  <tr><td><code>D01</code>…<code>D31</code></td><td>decimal</td><td>Daily mean value of the pollutant</td><td>see ranges below</td></tr>
+  <tr><td><code>V01</code>…<code>V31</code></td><td>flag</td><td>Validity of the daily value</td><td><code>V</code> (valid) / <code>N</code> (not valid)</td></tr>
+</table>
+<p>Unlike the hourly files, the daily files do not have a <code>DIA</code> column: the day is given by the column suffix. Hourly data in the source is in Madrid local time, and the daily value is the mean of the hourly values (23 values on the day of the spring time change).</p>
+
+<h4>Quantities</h4>
+<ul>
+  <li>1,411 rows = 131 time series (one per sampling point) × up to 11 months.</li>
+  <li>128 series cover January–November; 3 series (benzene, toluene and ethylbenzene at station 24) only appear in January.</li>
+  <li>43,741 value cells: 42,273 flagged <code>V</code> and 1,468 flagged <code>N</code>. Of the <code>N</code> cells, 768 correspond to non-existent dates (e.g. 30 and 31 February), stored as <code>0;N</code>, and 700 are real days with invalid measurements. Valid coverage over real days is therefore <strong>98.4&nbsp;%</strong>.</li>
+  <li>Rows per month: 131 in January, 128 in February–November. <strong>December 2024 is not present</strong> in the data set.</li>
+</ul>
+
+<h4>Value ranges per pollutant (valid daily values only)</h4>
+<p>Codes, abbreviations, units and techniques are taken from Annex II of the documentation. The code list has 18 magnitudes; only 11 appear in the 2024 daily file.</p>
+<div class="scroll">
+<table>
+  <tr><th>Code</th><th>Pollutant</th><th>Abbr.</th><th>Unit</th><th>Technique (code)</th><th class="num">Stations</th><th class="num">Valid values</th><th class="num">Min</th><th class="num">Mean</th><th class="num">Median</th><th class="num">Max</th></tr>
+  <tr><td>1</td><td>Sulphur dioxide</td><td>SO₂</td><td>µg/m³</td><td>UV fluorescence (38)</td><td class="num">3</td><td class="num">950</td><td class="num">1.0</td><td class="num">2.53</td><td class="num">2.0</td><td class="num">7.0</td></tr>
+  <tr><td>6</td><td>Carbon monoxide</td><td>CO</td><td>mg/m³</td><td>Infrared absorption (48)</td><td class="num">4</td><td class="num">1,330</td><td class="num">0.1</td><td class="num">0.31</td><td class="num">0.3</td><td class="num">0.9</td></tr>
+  <tr><td>7</td><td>Nitrogen monoxide</td><td>NO</td><td>µg/m³</td><td>Chemiluminescence (08)</td><td class="num">24</td><td class="num">8,000</td><td class="num">1.0</td><td class="num">7.72</td><td class="num">3.0</td><td class="num">195.0</td></tr>
+  <tr><td>8</td><td>Nitrogen dioxide</td><td>NO₂</td><td>µg/m³</td><td>Chemiluminescence (08)</td><td class="num">24</td><td class="num">8,000</td><td class="num">1.0</td><td class="num">21.79</td><td class="num">19.0</td><td class="num">89.0</td></tr>
+  <tr><td>9</td><td>Particles &lt; 2.5 µm</td><td>PM2.5</td><td>µg/m³</td><td>Microbalance / spectrometry (47)</td><td class="num">8</td><td class="num">2,640</td><td class="num">1.0</td><td class="num">8.49</td><td class="num">7.0</td><td class="num">38.0</td></tr>
+  <tr><td>10</td><td>Particles &lt; 10 µm</td><td>PM10</td><td>µg/m³</td><td>Microbalance / spectrometry (47)</td><td class="num">13</td><td class="num">4,282</td><td class="num">1.0</td><td class="num">19.01</td><td class="num">16.0</td><td class="num">160.0</td></tr>
+  <tr><td>12</td><td>Nitrogen oxides</td><td>NOx</td><td>µg/m³</td><td>Chemiluminescence (08)</td><td class="num">24</td><td class="num">8,000</td><td class="num">3.0</td><td class="num">33.64</td><td class="num">24.0</td><td class="num">358.0</td></tr>
+  <tr><td>14</td><td>Ozone</td><td>O₃</td><td>µg/m³</td><td>UV absorption (06)</td><td class="num">13</td><td class="num">4,324</td><td class="num">2.0</td><td class="num">59.69</td><td class="num">64.0</td><td class="num">124.0</td></tr>
+  <tr><td>20</td><td>Toluene</td><td>TOL</td><td>µg/m³</td><td>Gas chromatography (59)</td><td class="num">6</td><td class="num">1,582</td><td class="num">0.1</td><td class="num">1.97</td><td class="num">1.6</td><td class="num">14.4</td></tr>
+  <tr><td>30</td><td>Benzene</td><td>BEN</td><td>µg/m³</td><td>Gas chromatography (59)</td><td class="num">6</td><td class="num">1,587</td><td class="num">0.1</td><td class="num">0.38</td><td class="num">0.3</td><td class="num">3.1</td></tr>
+  <tr><td>35</td><td>Ethylbenzene</td><td>EBE</td><td>µg/m³</td><td>Gas chromatography (59)</td><td class="num">6</td><td class="num">1,578</td><td class="num">0.1</td><td class="num">0.29</td><td class="num">0.2</td><td class="num">2.4</td></tr>
+</table>
+</div>
+<p>All technique codes found in <code>PUNTO_MUESTREO</code> match the technique that Annex II assigns to each magnitude. Since 2024 the particle analysers (code 47) use two different methods (microbalance or optical aerosol spectrometry), which share the same code.</p>
+
+<h4>Data quality and transformation notes</h4>
+<div class="issue">
+  <ul>
+    <li><strong>Wide format.</strong> Each row has to be unpivoted into up to 31 daily observations (one per <code>Dxx</code>/<code>Vxx</code> pair). The date is built from <code>ANO</code> + <code>MES</code> + the column suffix.</li>
+    <li><strong>Placeholder values.</strong> Non-existent dates contain <code>0</code> with flag <code>N</code>; they must be discarded, not converted to zero measurements.</li>
+    <li><strong>Invalid values.</strong> 700 real-day values are flagged <code>N</code>. We keep the flag as a property of the observation instead of dropping the value silently.</li>
+    <li><strong>Units are not in the file.</strong> They come from Annex II of the documentation (all µg/m³ except CO in mg/m³) and are added in the mapping.</li>
+    <li><strong>Reasons for missing values.</strong> According to the documentation, values are missing or invalidated because of equipment maintenance, anomalous data removed during validation, or failures in power supply, communications or the analyser.</li>
+    <li><strong>Station codes changed in 2010.</strong> Annex I shows that stations 35, 36, 38, 39 and 40 used codes 03, 20, 10, 05 and 13 until January 2010, to adapt to the national coding. This does not affect 2024 data, but matters if older years are added.</li>
+    <li><strong>Redundant columns.</strong> <code>PROVINCIA</code>, <code>MUNICIPIO</code> and <code>ANO</code> are constant; the station and pollutant are also encoded inside <code>PUNTO_MUESTREO</code>.</li>
+  </ul>
+</div>
+
+<h3 id="d2">2.2 D2 – Air quality monitoring stations</h3>
+
+<h4>Schema</h4>
+<div class="scroll">
+<table>
+  <tr><th>Column</th><th>Type</th><th>Description</th><th>Values found</th></tr>
+  <tr><td><code>CODIGO</code></td><td>integer (8 digits)</td><td>National station code (province + municipality + station)</td><td>24 unique, e.g. <code>28079004</code></td></tr>
+  <tr><td><code>CODIGO_CORTO</code></td><td>integer</td><td>Last digits of the national code (without leading zeros), joins with D1 <code>ESTACION</code></td><td>24 unique; 100&nbsp;% match with D1</td></tr>
+  <tr><td><code>ESTACION</code></td><td>string</td><td>Station name</td><td>e.g. <em>Plaza de España</em>, <em>Escuelas Aguirre</em></td></tr>
+  <tr><td><code>DIRECCION</code></td><td>string</td><td>Free-text address</td><td>24 unique</td></tr>
+  <tr><td><code>LONGITUD_ETRS89</code>, <code>LATITUD_ETRS89</code></td><td>string (DMS)</td><td>Longitude / latitude in the ETRS89 system, in degrees-minutes-seconds</td><td>e.g. <code>3°42'43.91"O</code></td></tr>
+  <tr><td><code>ALTITUD</code></td><td>integer (m)</td><td>Altitude above sea level</td><td>600–730 m</td></tr>
+  <tr><td><code>COD_TIPO</code> / <code>NOM_TIPO</code></td><td>code / label</td><td>Station type</td><td><code>UF</code> Urbana fondo (12), <code>UT</code> Urbana tráfico (9), <code>S</code> Suburbana (3)</td></tr>
+  <tr><td><code>NO2</code>, <code>SO2</code>, <code>CO</code>, <code>PM10</code>, <code>PM2_5</code>, <code>O3</code>, <code>BTX</code></td><td>flag (<code>X</code> / empty)</td><td>Pollutants measured at the station (<code>X</code> = measured)</td><td>NO2 24, PM10 13, O3 13, PM2.5 8, BTX 5, SO2 4, CO 4</td></tr>
+  <tr><td><code>COD_VIA</code></td><td>integer</td><td>Street code in the municipal street directory</td><td>24 unique</td></tr>
+  <tr><td><code>VIA_CLASE</code>, <code>VIA_PAR</code>, <code>VIA_NOMBRE</code></td><td>string</td><td>Street type, particle and name</td><td>1–2 empty values</td></tr>
+  <tr><td><code>Fecha alta</code></td><td>date (dd/mm/yyyy)</td><td>Commissioning date</td><td>1998–2010</td></tr>
+  <tr><td><code>COORDENADA_X_ETRS89</code>, <code>COORDENADA_Y_ETRS89</code></td><td>decimal (comma)</td><td>Projected X / Y coordinates in ETRS89 (UTM zone 30N)</td><td>e.g. <code>439579,3291</code></td></tr>
+  <tr><td><code>LONGITUD</code>, <code>LATITUD</code></td><td>decimal</td><td>WGS84 decimal coordinates</td><td>complete for all 24 stations</td></tr>
+</table>
+</div>
+
+<h4>Data quality and transformation notes</h4>
+<div class="issue">
+  <ul>
+    <li><strong>Three coordinate systems</strong> for the same point (DMS, UTM, decimal). We only use the decimal <code>LATITUD</code>/<code>LONGITUD</code> and drop the rest.</li>
+    <li><strong>Non-uniform formats:</strong> UTM values use a decimal comma; the date is <code>dd/mm/yyyy</code> and must be converted to <code>xsd:date</code>; the column header <code>Fecha alta</code> contains a space; the file starts with a BOM.</li>
+    <li><strong>Pollutant flags as columns.</strong> The seven <code>X</code> columns become a multi-valued "measures pollutant" relation. <code>BTX</code> groups three pollutants (benzene, toluene, ethylbenzene) and <code>NO2</code> also implies NO and NOx in D1.</li>
+    <li><strong>Inconsistency with D1:</strong> station 24 (Casa de Campo) reports BTX values in January 2024 but is not flagged as BTX in D2, consistent with the series stopping after January.</li>
+    <li><strong>Commissioning date vs. code change:</strong> for stations 35, 36, 38, 39 and 40, <code>Fecha alta</code> (1998–1999) is the original start date, earlier than the 2010 code change shown in Annex I of D1.</li>
+    <li><strong>Different station names across sources:</strong> D2 and Annex I of D1 use slightly different names (e.g. <em>Barajas Pueblo</em> vs <em>Barajas</em>, <em>Juan Carlos I</em> vs <em>Parque Juan Carlos I</em>). D2 is taken as the reference for labels.</li>
+  </ul>
+</div>
+
+<h3 id="d3">2.3 D3 – Basic municipal sports facilities</h3>
+
+<h4>Schema</h4>
+<div class="scroll">
+<table>
+  <tr><th>Column</th><th>Type</th><th>Description</th><th class="num">Empty</th><th>Values found</th></tr>
+  <tr><td><code>PK</code></td><td>integer</td><td>Key of the record in the municipal website (internal use)</td><td class="num">0</td><td>607 unique</td></tr>
+  <tr><td><code>NOMBRE</code></td><td>string</td><td>Facility name</td><td class="num">0</td><td>607 unique</td></tr>
+  <tr><td><code>EQUIPAMIENTO</code></td><td>free text</td><td>Courts and equipment available</td><td class="num">0</td><td>339 distinct texts</td></tr>
+  <tr><td><code>TRANSPORTE</code></td><td>free text</td><td>Nearby public transport</td><td class="num">3</td><td>e.g. <em>Metro: El Capricho (línea 5).</em></td></tr>
+  <tr><td><code>ACCESIBILIDAD</code></td><td>code 0–6</td><td>Accessibility for people with reduced mobility</td><td class="num">0</td><td>0 not accessible: 410 · 1 accessible: 39 · 2 partially accessible: 152 · 3 no information: 6 (codes 4–6, sign language, tactile paving and induction loop, do not appear)</td></tr>
+  <tr><td><code>CONTENT-URL</code></td><td>URL</td><td>Facility page on madrid.es</td><td class="num">0</td><td>607 unique</td></tr>
+  <tr><td><code>CLASE-VIAL</code>, <code>NOMBRE-VIA</code>, <code>TIPO-NUM</code>, <code>NUM</code></td><td>string</td><td>Address components</td><td class="num">7 / 6 / 0 / 50</td><td>17 street types (CALLE 429, AVENIDA 77…)</td></tr>
+  <tr><td><code>ORIENTACION</code></td><td>free text</td><td>Location hint</td><td class="num">520</td><td></td></tr>
+  <tr><td><code>LOCALIDAD</code>, <code>PROVINCIA</code></td><td>string</td><td>Town / province</td><td class="num">0</td><td>always <code>MADRID</code></td></tr>
+  <tr><td><code>CODIGO-POSTAL</code></td><td>string (5 digits)</td><td>Postal code</td><td class="num">27</td><td>51 distinct</td></tr>
+  <tr><td><code>COD-DISTRITO</code> / <code>DISTRITO</code></td><td>code / label</td><td>District</td><td class="num">32 / 0</td><td>21 districts (codes 1–21)</td></tr>
+  <tr><td><code>COD-BARRIO</code> / <code>BARRIO</code></td><td>code / label</td><td>Neighbourhood (code relative to the district)</td><td class="num">35 / 26</td><td>codes 1–9; 120 names</td></tr>
+  <tr><td><code>COORDENADA-X</code>, <code>COORDENADA-Y</code></td><td>integer (6 / 7 digits)</td><td>UTM zone 30 coordinates in ETRS89</td><td class="num">7</td><td></td></tr>
+  <tr><td><code>LATITUD</code>, <code>LONGITUD</code></td><td>decimal</td><td>WGS84 coordinates</td><td class="num">0</td><td>lat 40.334–40.535; lon −3.792 to −3.557 (after correction)</td></tr>
+  <tr><td><code>TIPO</code></td><td>path string</td><td>Facility typology, found at the end of the path string</td><td class="num">0</td><td>24 categories</td></tr>
+  <tr><td><code>HORARIO</code>, <code>DESCRIPCION</code>, <code>DESCRIPCION-ENTIDAD</code>, <code>TELEFONO</code>, <code>EMAIL</code>, <code>PUERTA</code></td><td>string</td><td>Opening hours and contact data</td><td class="num">≥ 593</td><td>almost always empty</td></tr>
+  <tr><td><code>PLANTA</code>, <code>ESCALERAS</code>, <code>FAX</code></td><td>string</td><td>Floor, stairs, fax</td><td class="num">607</td><td>always empty</td></tr>
+</table>
+</div>
+
+<p>According to the documentation, this structure is <strong>generic for all datasets coming from www.madrid.es</strong>, which explains why many columns (floor, stairs, fax…) are empty for sports facilities. <code>HORARIO</code>, <code>EQUIPAMIENTO</code>, <code>TRANSPORTE</code> and <code>DESCRIPCION</code> are originally HTML text with the tags removed, so they are unstructured. The column <code>DESCRIPCION-ENTIDAD</code> appears in the file but is not described in the documentation.</p>
+
+<h4>Distributions</h4>
+<table>
+  <tr><th>Facility category (<code>TIPO</code>)</th><th class="num">Facilities</th><th>District (<code>DISTRITO</code>)</th><th class="num">Facilities</th></tr>
+  <tr><td>InstalacionesDeportivasBasicas</td><td class="num">182</td><td>Hortaleza</td><td class="num">72</td></tr>
+  <tr><td>CamposEstadiosFutbol</td><td class="num">97</td><td>Usera</td><td class="num">53</td></tr>
+  <tr><td>PistaFutbolSala</td><td class="num">75</td><td>Fuencarral-El Pardo</td><td class="num">50</td></tr>
+  <tr><td>PistasPatinaje</td><td class="num">68</td><td>Carabanchel</td><td class="num">46</td></tr>
+  <tr><td>PistaBolosPetancaCalvaChito</td><td class="num">63</td><td>Puente de Vallecas</td><td class="num">41</td></tr>
+  <tr><td>Calistenia</td><td class="num">35</td><td>Villa de Vallecas</td><td class="num">37</td></tr>
+  <tr><td>18 other categories</td><td class="num">87</td><td>15 other districts + 21 without district</td><td class="num">308</td></tr>
+</table>
+<p>In <code>EQUIPAMIENTO</code>, the most frequent equipment is basketball courts (137 facilities), multi-sport courts (119), football pitches (106), skating rinks (86) and calisthenics areas (63). 482 facilities (79&nbsp;%) are explicitly free access.</p>
+
+<h4>Data quality and transformation notes</h4>
+<div class="issue">
+  <ul>
+    <li><strong>Missing district:</strong> 21 rows have the literal value <code>DISTRITO</code> as district name and 32 rows have no <code>COD-DISTRITO</code> (mostly facilities inside large parks). The district can be recovered from the coordinates with a point-in-polygon test against the official district boundaries.</li>
+    <li><strong>Neighbourhood code is not global:</strong> <code>COD-BARRIO</code> (1–9) is only unique inside a district, so the neighbourhood identifier must combine both codes (e.g. district 21 + barrio 3 → <code>213</code>).</li>
+    <li><strong>Accessibility codes:</strong> 410 facilities (68&nbsp;%) are coded as not accessible. The code is mapped to a small controlled list of accessibility levels instead of a bare number.</li>
+    <li><strong>Unstable identifier:</strong> <code>PK</code> is an internal key of the municipal website, not an official facility code. It is the only unique identifier available, so we use it, but it could change if the website is migrated.</li>
+    <li><strong>Coordinate error:</strong> one facility (Parque Forestal…) has longitude <code>+3.641</code> instead of <code>−3.641</code>, placing it outside Spain; the sign is corrected during transformation.</li>
+    <li><strong>Duplicated locations:</strong> 32 facilities share their exact coordinates with another one (several facilities in the same park).</li>
+    <li><strong>Free text:</strong> <code>EQUIPAMIENTO</code> and <code>TRANSPORTE</code> mix several items in a single string; we keep them as literals rather than parsing them into resources.</li>
+    <li><strong>Unused columns:</strong> 9 columns are empty or almost empty and are not mapped. <code>TIPO</code> is a portal path; only its last segment is used as the category.</li>
+    <li><strong>Encoding:</strong> the original file on the portal (and the copy in <code>csv/</code>) is ISO-8859-1; it is converted to UTF-8 before the RDF transformation.</li>
+  </ul>
+</div>
+
+<h3 id="links">2.4 Relations between the data sets</h3>
+<table>
+  <tr><th>From</th><th>To</th><th>Link</th><th>Quality</th></tr>
+  <tr><td>D1 <code>ESTACION</code></td><td>D2 <code>CODIGO_CORTO</code></td><td>Exact key join</td><td>All 24 codes match in both directions</td></tr>
+  <tr><td>D1 <code>PUNTO_MUESTREO</code></td><td>D2 <code>CODIGO</code></td><td>First 8 characters of the sampling point</td><td>Exact</td></tr>
+  <tr><td>D3 <code>LATITUD</code>/<code>LONGITUD</code></td><td>D2 <code>LATITUD</code>/<code>LONGITUD</code></td><td>Spatial join: nearest station (haversine distance)</td><td>No shared key; computed during transformation</td></tr>
+  <tr><td>D3 <code>COD-DISTRITO</code></td><td>Wikidata districts of Madrid</td><td>District code / name</td><td>21 districts; 32 facilities need spatial recovery</td></tr>
+  <tr><td>D1 <code>MAGNITUD</code></td><td>Wikidata chemical entities (NO₂, O₃, PM10…)</td><td>Manual mapping of 11 codes</td><td>Exact (small closed list)</td></tr>
+</table>
+
+<!-- ========================================================= -->
+<h2 id="licensing">3. Licensing analysis</h2>
+
+<h3>3.1 Source data</h3>
+<table>
+  <tr><th></th><th>D1 · D2 · D3</th></tr>
+  <tr><td><strong>Publisher</strong></td><td>Ayuntamiento de Madrid, through its open data portal <a href="https://datos.madrid.es">datos.madrid.es</a>. D1 and D2 are produced by the Servicio de Calidad del Aire (Dirección General de Sostenibilidad y Control Ambiental, Área de Gobierno de Medio Ambiente y Movilidad), which runs the air quality monitoring network. D3 is generated from the content of the municipal website www.madrid.es.</td></tr>
+  <tr><td><strong>Rights holder</strong></td><td>Ayuntamiento de Madrid (Madrid City Council).</td></tr>
+  <tr><td><strong>Licence</strong></td><td><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>, as stated in the portal's <a href="https://datos.madrid.es/pages/condiciones-de-uso">terms of use</a>. Commercial and non-commercial reuse are allowed; the only obligation is to attribute the source. None of our three datasets is among the exceptions with extra conditions (library catalogue, EMT, Madrid Destino).</td></tr>
+  <tr><td><strong>Obligations</strong></td><td>Cite the source (Ayuntamiento de Madrid), link to the licence, indicate if changes were made, and do not suggest that the City Council endorses our use.</td></tr>
+</table>
+<p>External data: Wikidata is published under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>, so linking to it and reusing its data adds no conditions.</p>
+
+
+<h3>3.2 Licence of the generated data set</h3>
+<p>We will publish both the ontology and the generated RDF data under <strong>CC BY 4.0</strong>:</p>
+<ul>
+  <li>CC BY 4.0 is a "BY" licence, so publishing under the same licence trivially satisfies the attribution obligation and keeps the data as open as the original.</li>
+  <li>A more restrictive licence (e.g. CC BY-SA or CC BY-NC) would be legally possible but would reduce reuse without any benefit; CC0 is not possible because we cannot waive the attribution required by the source.</li>
+  <li>The dataset metadata will include the attribution: "Contains data from the Madrid City Council open data portal (datos.madrid.es), CC BY 4.0. Data transformed into RDF by Group04."</li>
+  <li>The RDF transformation (unpivoting, unit annotation, spatial links, coordinate correction) is a <em>change</em> to the original data and will be stated in the metadata.</li>
+</ul>
+<p>The licence and provenance will be declared in the dataset and ontology metadata:</p>
+<pre>&lt;https://w3id.org/breatheplay-madrid/dataset&gt; a dcat:Dataset ;
+    dcterms:title     "Breathe &amp; Play Madrid Linked Data"@en ;
+    dcterms:license   &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    dcterms:publisher "Group 04 – MSc in Data Science, UPM" ;
+    dcterms:source    &lt;https://datos.madrid.es/dataset/201410-0-calidad-aire-diario&gt; ,
+                      &lt;https://datos.madrid.es/dataset/212629-0-estaciones-control-aire&gt; ,
+                      &lt;https://datos.madrid.es/dataset/200215-0-instalaciones-deportivas&gt; ;
+    dcterms:rights "Contains data from Ayuntamiento de Madrid (datos.madrid.es), CC BY 4.0. Data transformed to RDF."@en .</pre>
+
+<!-- ========================================================= -->
+<h2 id="naming">4. Resource naming strategy</h2>
+
+<h3>4.1 Domain</h3>
+<p>We use the <strong>w3id.org</strong> persistent identifier service as base domain:</p>
+<pre>https://w3id.org/breatheplay-madrid/</pre>
+<ul>
+  <li>The URIs do not depend on where the data is hosted (GitHub Pages now, a triple store later): only the redirection rules in the w3id repository have to change.</li>
+  <li>The domain does not belong to the City Council, so we do not mint URIs in a domain we do not control.</li>
+  <li>HTTPS is used for all URIs.</li>
+</ul>
+
+<h3>4.2 Ontology URIs: hash</h3>
+<p>The ontology is small (around 10 classes and 30 properties), so it is served as a single document and its terms use <strong>hash URIs</strong>. One request returns the whole vocabulary.</p>
+<table>
+  <tr><th>Element</th><th>Pattern</th><th>Example</th></tr>
+  <tr><td>Ontology</td><td><code>https://w3id.org/breatheplay-madrid/ontology</code></td><td>prefix <code>bpm:</code> → <code>https://w3id.org/breatheplay-madrid/ontology#</code></td></tr>
+  <tr><td>Version</td><td><code>…/ontology/{major.minor.patch}</code> (<code>owl:versionIRI</code>)</td><td><code>…/ontology/1.0.0</code></td></tr>
+  <tr><td>Class</td><td><code>…/ontology#{UpperCamelCase}</code></td><td><code>bpm:MonitoringStation</code>, <code>bpm:SportsFacility</code>, <code>bpm:DailyObservation</code></td></tr>
+  <tr><td>Object property</td><td><code>…/ontology#{lowerCamelCase verb}</code></td><td><code>bpm:hasStation</code>, <code>bpm:measuresPollutant</code>, <code>bpm:hasNearestStation</code></td></tr>
+  <tr><td>Datatype property</td><td><code>…/ontology#{lowerCamelCase}</code></td><td><code>bpm:value</code>, <code>bpm:isValid</code>, <code>bpm:altitude</code></td></tr>
+</table>
+
+<h3>4.3 Data URIs: slash</h3>
+<p>Instances use <strong>slash URIs</strong> under <code>/resource/</code>, because there are tens of thousands of them and each one must be retrievable on its own. Patterns follow <code>/resource/{type}/{id}</code>, where <code>{id}</code> reuses the identifier from the source whenever one exists, so the URIs are stable and can be regenerated from the CSV.</p>
+<div class="scroll">
+<table>
+  <tr><th>Resource</th><th>Pattern</th><th>Source of <code>{id}</code></th><th>Example</th></tr>
+  <tr><td>Monitoring station</td><td><code>/resource/station/{id}</code></td><td>D2 <code>CODIGO</code> (8 digits)</td><td><code>/resource/station/28079004</code></td></tr>
+  <tr><td>Station type</td><td><code>/resource/station-type/{id}</code></td><td>D2 <code>COD_TIPO</code>, lowercase</td><td><code>/resource/station-type/ut</code></td></tr>
+  <tr><td>Pollutant</td><td><code>/resource/pollutant/{id}</code></td><td>D1 <code>MAGNITUD</code></td><td><code>/resource/pollutant/8</code> (NO₂)</td></tr>
+  <tr><td>Sampling point</td><td><code>/resource/sampling-point/{id}</code></td><td>D1 <code>PUNTO_MUESTREO</code></td><td><code>/resource/sampling-point/28079004_8_8</code></td></tr>
+  <tr><td>Measurement technique</td><td><code>/resource/technique/{id}</code></td><td>Third part of <code>PUNTO_MUESTREO</code>, 2 digits</td><td><code>/resource/technique/08</code> (chemiluminescence)</td></tr>
+  <tr><td>Daily observation</td><td><code>/resource/observation/{sampling-point}/{yyyy-mm-dd}</code></td><td><code>PUNTO_MUESTREO</code> + <code>ANO</code>-<code>MES</code>-day</td><td><code>/resource/observation/28079004_8_8/2024-01-15</code></td></tr>
+  <tr><td>Sports facility</td><td><code>/resource/sports-facility/{id}</code></td><td>D3 <code>PK</code></td><td><code>/resource/sports-facility/12009978</code></td></tr>
+  <tr><td>Facility type</td><td><code>/resource/facility-type/{id}</code></td><td>Last segment of D3 <code>TIPO</code>, kebab-case</td><td><code>/resource/facility-type/pista-futbol-sala</code></td></tr>
+  <tr><td>Accessibility level</td><td><code>/resource/accessibility-level/{id}</code></td><td>D3 <code>ACCESIBILIDAD</code></td><td><code>/resource/accessibility-level/2</code> (partially accessible)</td></tr>
+  <tr><td>District</td><td><code>/resource/district/{id}</code></td><td>D3 <code>COD-DISTRITO</code>, 2 digits</td><td><code>/resource/district/21</code> (Barajas)</td></tr>
+  <tr><td>Neighbourhood</td><td><code>/resource/neighbourhood/{id}</code></td><td><code>COD-DISTRITO</code> (2 digits) + <code>COD-BARRIO</code></td><td><code>/resource/neighbourhood/213</code></td></tr>
+</table>
+</div>
+<p>All paths above are relative to <code>https://w3id.org/breatheplay-madrid</code>. Example of a complete URI: <code>https://w3id.org/breatheplay-madrid/resource/station/28079004</code>.</p>
+
+<h3>4.4 Naming conventions</h3>
+<ul>
+  <li><strong>Language:</strong> English for all ontology terms; original Spanish names are kept as <code>rdfs:label "…"@es</code>, with English labels <code>@en</code> where useful.</li>
+  <li><strong>Ontology terms:</strong> classes in <code>UpperCamelCase</code> and singular; properties in <code>lowerCamelCase</code>, starting with a verb (<code>has…</code>, <code>is…</code>, <code>measures…</code>).</li>
+  <li><strong>Instance paths:</strong> type segments in lowercase <code>kebab-case</code> and singular; identifiers only with characters <code>[a-z0-9_-]</code>, no accents or spaces.</li>
+  <li><strong>Opaque, stable identifiers:</strong> source codes are used instead of names (station names or facility names can change; codes do not), so URIs never have to be renamed. For stations we use the current 8-digit national code; the codes that changed in 2010 can be kept as an extra literal property if older years are added. For facilities, <code>PK</code> is the only identifier available (see the note in 2.3).</li>
+  <li><strong>Reuse of external URIs:</strong> pollutants and districts are linked to existing Wikidata entities with <code>owl:sameAs</code>, and standard vocabularies (e.g. SOSA/SSN, GeoSPARQL, <code>dcterms</code>) are reused where they fit, instead of redefining their terms.</li>
+</ul>
+
+<h3>4.5 Content negotiation</h3>
+<p>We follow the <strong>303 See Other</strong> pattern for slash URIs: the resource URI identifies the real-world thing (a station, a court) and redirects to a document that describes it, in the format requested by the client in the <code>Accept</code> header.</p>
+<table>
+  <tr><th><code>Accept</code> header</th><th>Redirect target (example for <code>/resource/station/28079004</code>)</th></tr>
+  <tr><td><code>text/html</code> (browsers, default)</td><td><code>/page/station/28079004</code></td></tr>
+  <tr><td><code>text/turtle</code></td><td><code>/data/station/28079004.ttl</code></td></tr>
+  <tr><td><code>application/ld+json</code></td><td><code>/data/station/28079004.jsonld</code></td></tr>
+  <tr><td><code>application/rdf+xml</code></td><td><code>/data/station/28079004.rdf</code></td></tr>
+</table>
+<p>For the ontology, <code>https://w3id.org/breatheplay-madrid/ontology</code> redirects to the HTML documentation (e.g. generated with WIDOCO) for browsers and to the <code>.ttl</code> file for RDF clients. Since the terms use hash URIs, the fragment is resolved on the client after retrieving the document. The rules are implemented in the <code>.htaccess</code> file of the w3id repository:</p>
+<pre>RewriteEngine on
+# Ontology
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^ontology$ https://&lt;group-pages&gt;/ontology/breatheplay.ttl [R=303,L]
+RewriteRule ^ontology$ https://&lt;group-pages&gt;/ontology/doc/index.html [R=303,L]
+# Instances
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^resource/(.+)$ https://&lt;group-pages&gt;/data/$1.ttl [R=303,L]
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^resource/(.+)$ https://&lt;group-pages&gt;/data/$1.jsonld [R=303,L]
+RewriteRule ^resource/(.+)$ https://&lt;group-pages&gt;/page/$1 [R=303,L]</pre>
+
+<h3>4.6 Example</h3>
+<pre>@prefix bpm: &lt;https://w3id.org/breatheplay-madrid/ontology#&gt; .
+@prefix res: &lt;https://w3id.org/breatheplay-madrid/resource/&gt; .
+
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+res:station/28079004 a bpm:MonitoringStation ;
+    rdfs:label "Plaza de España"@es ;
+    bpm:hasStationType res:station-type/ut .
+
+res:observation/28079004_8_8/2024-01-15 a bpm:DailyObservation ;
+    bpm:hasSamplingPoint res:sampling-point/28079004_8_8 ;
+    bpm:date "2024-01-15"^^xsd:date ;
+    bpm:value 22.0 ;
+    bpm:isValid true .
+
+res:sports-facility/12009978 a bpm:SportsFacility ;
+    bpm:hasNearestStation res:station/28079027 ;   # Barajas Pueblo
+    bpm:locatedInDistrict res:district/21 .</pre>
+
+<p class="note">Note: in Turtle, local names containing <code>/</code> must be escaped (<code>res:station\/28079004</code>) or written as full IRIs; the compact form above is for readability.</p>
+
+<footer>
+  Data sources: Ayuntamiento de Madrid – datos.madrid.es (CC BY 4.0). Analysis computed directly over the CSV files stored in <code>csv/</code>.
+</footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,52 @@
+@prefix : <http://smartcity.chicago.es/ontology/ParkExplorer#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+# Example 1: Indian Boundary Park (Park No. 165)
+#################################################################
+
+<http://smartcity.chicago.es/resource/Park/165> a :ChicagoPark ;
+    :parkName "INDIAN BOUNDARY" ;
+    :parkNumber 165 ;
+    :hasArtwork <http://smartcity.chicago.es/resource/Artwork/1> .
+
+### Artwork: River Suite located in Indian Boundary Park ###
+<http://smartcity.chicago.es/resource/Artwork/1> a :Artwork ;
+    :artworkName "River Suite" ;
+    :objectId 1 ;
+    :artworkGisObjectId "5856" ;
+    :owner "CPD" ;
+    :madeBy <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> ;
+    schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_1> .
+
+### Coordinates of the Artwork ###
+<http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_1> a schema:GeoCoordinates ;
+    schema:latitude "42.010165"^^xsd:float ;
+    schema:longitude "-87.69382"^^xsd:float .
+
+### Artist: Phil Schuster ###
+<http://smartcity.chicago.es/resource/Artist/Phil_Schuster> a :Artist ;
+    :artistName "Phil Schuster" .
+
+
+#################################################################
+# Example 2: Alexander Hamilton Park (Park No. 9)
+#################################################################
+
+<http://smartcity.chicago.es/resource/Park/9> a :ChicagoPark ;
+    :parkName "HAMILTON (ALEXANDER)" ;
+    :parkNumber 9 ;
+    :hasFacility <http://smartcity.chicago.es/resource/Facility/2494> .
+
+### Facility: Cultural Center in Hamilton Park ###
+<http://smartcity.chicago.es/resource/Facility/2494> a :Facility ;
+    :facilityName "CULTURAL CENTER" ;
+    :facilityType "SPECIAL" ;
+    :facilityGisObjectId "2494" ;
+    schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Facility_2494> .
+
+### Coordinates of the Facility ###
+<http://smartcity.chicago.es/resource/GeoCoordinates/Facility_2494> a schema:GeoCoordinates ;
+    schema:latitude "41.762999"^^xsd:float ;
+    schema:longitude "-87.637698"^^xsd:float .

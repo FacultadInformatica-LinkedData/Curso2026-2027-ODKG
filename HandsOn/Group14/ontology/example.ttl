@@ -1,0 +1,25 @@
+@prefix vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#> .
+@prefix fountain: <http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/> .
+@prefix district: <http://smartcity.linkeddata.es/madrid/fountains/resource/District/> .
+@prefix neighbourhood: <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ---------------------------------------------------------
+# Instanciación de conceptos contextuales (Distrito y Barrio)
+# ---------------------------------------------------------
+
+district:Retiro a vocab:District .
+
+neighbourhood:Jeronimos a vocab:Neighbourhood .
+
+# ---------------------------------------------------------
+# Instanciación de una fila del CSV (Fuente de agua)
+# ---------------------------------------------------------
+
+fountain:10234 a vocab:Fountain ;
+    vocab:hasStatus "OPERATIVO"^^xsd:string ;
+    vocab:hasLatitude "40.4168"^^xsd:float ;
+    vocab:hasLongitude "-3.6823"^^xsd:float ;
+    vocab:hasStreetName "Parque del Retiro"^^xsd:string ;
+    vocab:hasDistrict district:Retiro ;
+    vocab:hasNeighbourhood neighbourhood:Jeronimos .

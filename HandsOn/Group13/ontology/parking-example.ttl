@@ -1,0 +1,41 @@
+@prefix mp: <http://parking.linkeddata.upm.es/ontology/> .
+@prefix prop: <http://parking.linkeddata.upm.es/property/> .
+@prefix res: <http://parking.linkeddata.upm.es/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+# District
+
+res:district/7
+    a mp:District ;
+    prop:districtName "CHAMBERÍ" .
+
+
+# Parking type
+
+res:parking-type/rotational
+    a mp:ParkingType .
+
+
+# Parking facility
+
+res:parking/5000
+    a mp:ParkingFacility ;
+    prop:parkingName "ALMAGRO" ;
+    prop:locatedIn res:district/7 ;
+    prop:hasParkingType res:parking-type/rotational ;
+    prop:hasObservation res:observation/5000/2026/01 .
+
+
+# Monthly observation
+
+res:observation/5000/2026/01
+    a mp:OccupancyObservation ;
+    prop:observationOf res:parking/5000 ;
+    prop:year "2026"^^xsd:gYear ;
+    prop:month 1 ;
+    prop:numberOfSpaces 453 ;
+    prop:calculationDays 31 ;
+    prop:averageVehiclesPerDay 177.0 ;
+    prop:occupancyPercentage 39.1 ;
+    prop:daytimeOccupancyPercentage 52.1 .

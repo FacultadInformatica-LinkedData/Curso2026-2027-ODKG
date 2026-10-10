@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Madrid - Dataset Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+        <!-- Header -->
+        <header class="bg-blue-900 text-white p-8 md:p-10">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Active Madrid - Dataset Analysis</h1>
+        </header>
+
+        <div class="p-8 md:p-10 space-y-12">
+            
+            <!-- SECTION 1: Data Set Analysis -->
+            <section id="dataset-analysis">
+                <h2 class="text-2xl font-semibold text-blue-800 border-b-2 border-blue-100 pb-2 mb-6">1. Analyse Data Set</h2>
+                <div class="space-y-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">1.1. Closed Classes Dataset</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The <code>closed_classes.csv</code> dataset contains <strong>98,082 rows</strong>
+and <strong>12 columns</strong>. Some
+columns contain placeholder values or formatting inconsistencies that should be
+considered during the data preparation stage.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+<tr>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Column</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Type</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Comments / Range</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Problems</th>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Año</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">2025–2026; 2 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Mes</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">1–12; 12 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Clase</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">13,834 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">151 rows contain leading or trailing whitespace. Class information is encoded as free text and may contain several pieces of information in the same value.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Actividad</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">100 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">638 rows contain the placeholder value <code>---</code>.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Categoría</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">7 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">2,092 rows contain the placeholder value <code>----</code>.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Distrito</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">20 distinct districts</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">All values contain trailing whitespace that should be removed.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Centro deportivo</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">66 distinct sports centres</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Names should be checked against the sports centres dataset before linking.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Nº Plazas Ofertadas</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">1–500; 119 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Nº Plazas Ocupadas</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">1–225; 131 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Nº Plazas Libres</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">0–489; 135 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Nº Plazas Ocupadas (Masculino)</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">0–147; 91 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Nº Plazas Ocupadas (Femenino)</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">0–146; 82 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+</table></div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Regarding availability, <strong>57,807 rows have at least one available place</strong>,
+whereas <strong>40,275 rows have zero available places</strong>.
+</p>
+
+
+<h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">1.2. Open Classes Dataset</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The <code>open_classes.csv</code> dataset contains <strong>735,709 rows</strong>
+and <strong>13 columns</strong>.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+<tr>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Column</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Type</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Comments / Range</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Problems</th>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Año</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">2025–2026</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Mes</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">1–12</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Fecha</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Date</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">01/09/2025–31/08/2026; 364 distinct dates</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">It should be converted to a date datatype.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Día de la semana</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">7 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Hora inicial</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Time</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">191 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">It should be converted to a time datatype.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Hora final</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Time</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">225 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">It should be converted to a time datatype.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Actividad</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">748 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">10,317 rows contain leading or trailing whitespace.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Centro deportivo</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">66 distinct sports centres</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Names should be reconciled with the sports centres dataset.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Plazas</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">0–220; 76 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">16,011 rows have a total capacity of 0 and should be analysed.</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Ocupadas</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">0–130; 131 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Libres</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">0–201; 135 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Tipo de actividad</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">String</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">6 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
+</tr>
+<tr>
+    <td class="border border-gray-300 px-3 py-2 align-top">Nº de sesiones</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">1–1; 1 distinct value</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Always equal to 1</td>
+</tr>
+</table></div>
+
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Regarding availability, <strong>519,402 rows have available places</strong>,
+whereas <strong>216,307 rows have zero available places</strong>.
+Therefore, belonging to the open classes dataset does not necessarily imply
+that a particular class currently has available places.
+</p>
+
+
+<h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">1.3. Sports Centres Dataset</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The <code>sports_centers_info.csv</code> dataset contains
+<strong>82 rows</strong> and <strong>32 columns</strong>. Each row represents
+a municipal sports centre. Unlike the other two datasets, this dataset contains
+a significant number of missing values in some attributes.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+<tr>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Column</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Type</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Comments / Range</th>
+    <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Problems</th>
+</tr>
+
+<tr><td class="border border-gray-300 px-3 py-2 align-top">PK</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">82 distinct identifiers</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">NOMBRE</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">82 distinct names</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">DESCRIPCION-ENTIDAD</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">1 non-empty value</td><td class="border border-gray-300 px-3 py-2 align-top">81 of 82 values are empty</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">HORARIO</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">81 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">Long unstructured text</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">EQUIPAMIENTO</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">82 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">Long unstructured text containing multiple pieces of information</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">TRANSPORTE</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">81 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">Stored as unstructured text</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">DESCRIPCION</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">10 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">72 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">ACCESIBILIDAD</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">8 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">Several accessibility codes can appear in the same cell, e.g. <code>1,5,6</code></td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">CONTENT-URL</td><td class="border border-gray-300 px-3 py-2 align-top">URL / String</td><td class="border border-gray-300 px-3 py-2 align-top">82 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">NOMBRE-VIA</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">79 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">CLASE-VIAL</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">7 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">TIPO-NUM</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">3 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">NUM</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">1–376</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">PLANTA</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">1 non-empty value</td><td class="border border-gray-300 px-3 py-2 align-top">81 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">PUERTA</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">No values</td><td class="border border-gray-300 px-3 py-2 align-top">82 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">ESCALERAS</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">No values</td><td class="border border-gray-300 px-3 py-2 align-top">82 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">ORIENTACION</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">5 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">76 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">LOCALIDAD</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">2 textual forms</td><td class="border border-gray-300 px-3 py-2 align-top"><code>MADRID</code> appears 81 times and <code>Madrid</code> once; values should be normalised</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">PROVINCIA</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">Madrid is the only non-empty value</td><td class="border border-gray-300 px-3 py-2 align-top">1 empty value</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">CODIGO-POSTAL</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">28002–28054; 39 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">COD-BARRIO</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">1–7; 7 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">2 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">BARRIO</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">64 distinct neighbourhoods</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">COD-DISTRITO</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">1–21; 21 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">2 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">DISTRITO</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">21 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">COORDENADA-X</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">433581–450176; 82 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">COORDENADA-Y</td><td class="border border-gray-300 px-3 py-2 align-top">Integer</td><td class="border border-gray-300 px-3 py-2 align-top">4466022–4483276; 82 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">LATITUD</td><td class="border border-gray-300 px-3 py-2 align-top">Decimal</td><td class="border border-gray-300 px-3 py-2 align-top">40.342673–40.498095; 82 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">LONGITUD</td><td class="border border-gray-300 px-3 py-2 align-top">Decimal</td><td class="border border-gray-300 px-3 py-2 align-top">-3.783283–-3.587693; 82 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">None detected</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">TELEFONO</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">80 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">2 empty values; some cells contain more than one telephone number</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">FAX</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">3 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">79 empty values; one value (<code>idmpnuevo@madrid.es</code>) appears to be an email address rather than a fax number</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">EMAIL</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">78 non-empty distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">3 empty values</td></tr>
+<tr><td class="border border-gray-300 px-3 py-2 align-top">TIPO</td><td class="border border-gray-300 px-3 py-2 align-top">String</td><td class="border border-gray-300 px-3 py-2 align-top">15 distinct values</td><td class="border border-gray-300 px-3 py-2 align-top">Values are represented as URL-like paths rather than simple categories</td></tr>
+
+</table></div>
+
+
+<h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">1.4. General Observations</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The three datasets share information about sports centres, which will later
+allow their records to be connected. However, centre names should first be
+normalised and reconciled because the same real-world facility may not always
+be represented using exactly the same string in every dataset.
+</p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Licensing Analysis -->
+            <section id="licensing-analysis">
+                <h1 class="text-2xl font-semibold text-blue-800 border-b-2 border-blue-100 pb-2 mb-6">2. Analyse Licensing of the Data Set</h1>
+                
+                <div class="space-y-8">
+                    <!-- Publisher & Rightsholder -->
+                    <div>
+                        <h2 class="text-xl font-medium text-gray-800 mb-3">2.1. Publisher and Rightsholder</h2>
+                        <p class="text-gray-700 leading-relaxed mb-3">
+                            <strong>Publisher:</strong> Ayuntamiento de Madrid
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-3">
+                            This is verified within the dataset's metadata. The creator and publisher are indicated as follows:
+                        </p>
+                        <div class="bg-gray-800 text-gray-100 p-4 rounded-md overflow-x-auto text-sm font-mono mb-3 shadow-inner">
+                            &lt;dct:creator rdf:resource="http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796"/&gt;<br>
+                            &lt;dct:publisher rdf:resource="http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796"/&gt;
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            The URI corresponds to the <em>Ayuntamiento de Madrid</em> (Madrid City Council). Since there is no specific <code>rightsholder</code> indicated in the metadata, we assume that the rightsholder is the creator of the dataset.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Current License -->
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
+                            <h3 class="text-lg font-bold text-blue-900 mb-2">Current License</h3>
+                            <p class="font-semibold text-blue-800 mb-4">Creative Commons Attribution 4.0 International (CC BY 4.0)</p>
+                            
+                            <h4 class="font-semibold text-gray-800 mt-4 mb-2">You are free to:</h4>
+                            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700 mb-4">
+                                <li><strong>Share</strong> — copy and redistribute the material in any medium or format for any purpose, even commercially.</li>
+                                <li><strong>Adapt</strong> — remix, transform, and build upon the material for any purpose, even commercially.</li>
+                            </ul>
+                            <p class="text-xs text-gray-500 italic mb-4">The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
+
+                            <h4 class="font-semibold text-gray-800 mt-4 mb-2">Under the following terms:</h4>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                                <li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li>
+                                <li><strong>No additional restrictions</strong> — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Target License -->
+                        <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg shadow-sm">
+                            <h3 class="text-lg font-bold text-green-900 mb-2">Target License (Generated Dataset)</h3>
+                            <p class="font-semibold text-green-800 mb-4">Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</p>
+                            
+                            <h4 class="font-semibold text-gray-800 mt-4 mb-2">You are free to:</h4>
+                            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700 mb-4">
+                                <li><strong>Share</strong> — copy and redistribute the material in any medium or format.</li>
+                                <li><strong>Adapt</strong> — remix, transform, and build upon the material.</li>
+                            </ul>
+                            <p class="text-xs text-gray-500 italic mb-4">The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
+
+                            <h4 class="font-semibold text-gray-800 mt-4 mb-2">Under the following terms:</h4>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                                <li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li>
+                                <li><strong class="text-green-700">NonCommercial</strong> — You may not use the material for commercial purposes.</li>
+                                <li><strong>No additional restrictions</strong> — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Resource Naming Strategy -->
+            <section id="naming-strategy">
+                <h2 class="text-2xl font-semibold text-blue-800 border-b-2 border-blue-100 pb-2 mb-6">3. Define Resource Naming Strategy</h2>
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.1. Base domain</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The proposed base domain for the project is:
+</p>
+
+<pre class="bg-gray-800 text-gray-100 p-4 rounded-md overflow-x-auto text-sm font-mono mb-4 shadow-inner">
+https://w3id.org/active-madrid/
+</pre>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The use of a persistent namespace such as <code>w3id.org</code> helps to avoid
+depending on a temporary local domain and provides a stable base for the URIs.
+</p>
+
+
+<h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.2. URI form</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Two different URI forms will be used:
+</p>
+
+<ul class="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+    <li>
+        <strong>Hash URIs</strong> for ontology terms such as classes and properties.
+    </li>
+    <li>
+        <strong>Slash URIs</strong> for data resources contained in the datasets.
+    </li>
+</ul>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The ontology namespace will be:
+</p>
+
+<pre class="bg-gray-800 text-gray-100 p-4 rounded-md overflow-x-auto text-sm font-mono mb-4 shadow-inner">
+https://w3id.org/active-madrid/ontology#
+</pre>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The base URI for data resources will be:
+</p>
+
+<pre class="bg-gray-800 text-gray-100 p-4 rounded-md overflow-x-auto text-sm font-mono mb-4 shadow-inner">
+https://w3id.org/active-madrid/resource/
+</pre>
+
+
+<h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.3. Ontology URI patterns</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Classes and properties defined specifically for Active Madrid will share the
+ontology namespace but will follow different naming conventions.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+    <tr>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Resource type</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Pattern</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Example</th>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Class</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/ontology#[ClassName]</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/ontology#SportsClass</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/ontology#[propertyName]</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/ontology#availablePlaces</code>
+        </td>
+    </tr>
+</table></div>
+
+
+<h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.4. Data URI patterns</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Data resources will use slash URIs. The type of the resource will form part of
+the path so that resources belonging to different classes have different URI
+patterns.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+    <tr>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Resource type</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Pattern</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Example</th>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Sports facility</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/SportsFacility/[identifier]</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/SportsFacility/12345</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Sports class</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/SportsClass/[identifier]</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/SportsClass/98765</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Sport activity</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/SportActivity/[identifier]</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/SportActivity/swimming</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">District</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/District/[identifier]</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>https://w3id.org/active-madrid/resource/District/retiro</code>
+        </td>
+    </tr>
+</table></div>
+
+
+<h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.5. Naming conventions</h3>
+
+<ul class="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+    <li>
+        Class names defined in the Active Madrid ontology will start with a
+        capital letter and use <strong>UpperCamelCase</strong>, for example
+        <code>SportsFacility</code>, <code>SportsClass</code>,
+        <code>SportActivity</code> and <code>District</code>.
+    </li>
+
+    <li>
+        Properties defined in the Active Madrid ontology will start with a
+        lowercase letter and use <strong>lowerCamelCase</strong>, for example
+        <code>availablePlaces</code>, <code>occupiedPlaces</code>,
+        <code>takesPlaceAt</code> and <code>locatedInDistrict</code>.
+    </li>
+
+    <li>
+        Resource identifiers should be stable and should not contain information
+        that may change over time.
+    </li>
+
+    <li>
+        Whenever an identifier already exists in the original dataset, such as
+        the identifier of a sports facility, it should be preferred over a
+        label or name when constructing its URI.
+    </li>
+</ul>
+
+
+<h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.6. Reuse of existing vocabularies</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The Active Madrid ontology will follow a hybrid approach. Existing standard
+vocabularies will be reused whenever they provide an appropriate semantic
+representation. New Active Madrid terms will only be created for concepts and
+relationships that are specific to the selected datasets.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The following vocabularies are considered for reuse:
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+    <tr>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Vocabulary</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Prefix</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Purpose in Active Madrid</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Examples</th>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Schema.org</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>schema:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Representation of sports facilities, addresses, names and contact
+            information.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>schema:SportsActivityLocation</code>,
+            <code>schema:PostalAddress</code>,
+            <code>schema:name</code>,
+            <code>schema:address</code>,
+            <code>schema:telephone</code>,
+            <code>schema:email</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">WGS84 Geo Positioning</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>geo:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Representation of the geographical coordinates of sports facilities.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>geo:lat</code>,
+            <code>geo:long</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">OWL-Time</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>time:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Representation of temporal information associated with sports
+            classes, such as their starting and ending times.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>time:Interval</code>,
+            <code>time:Instant</code>,
+            <code>time:hasTime</code>,
+            <code>time:hasBeginning</code>,
+            <code>time:hasEnd</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Dublin Core Metadata Elements</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>dc:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Description of ontology metadata such as its creator and title.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>dc:creator</code>,
+            <code>dc:title</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">MOD (Metadata for Ontology Description)</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>mod:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Description of metadata about the ontology development process.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>mod:createdWith</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">OWL</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>owl:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Definition of the ontology, classes, properties and restrictions.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>owl:Ontology</code>,
+            <code>owl:Class</code>,
+            <code>owl:ObjectProperty</code>,
+            <code>owl:DatatypeProperty</code>,
+            <code>owl:Restriction</code>,
+            <code>owl:versionInfo</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">RDF Schema</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>rdfs:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Definition of labels, class hierarchies, domains and ranges.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>rdfs:label</code>,
+            <code>rdfs:subClassOf</code>,
+            <code>rdfs:domain</code>,
+            <code>rdfs:range</code>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">XML Schema Datatypes</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>xsd:</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Definition of datatypes for literal values.
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>xsd:string</code>,
+            <code>xsd:nonNegativeInteger</code>,
+            <code>xsd:decimal</code>,
+            <code>xsd:dateTime</code>
+        </td>
+    </tr>
+</table></div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+In addition to vocabularies used to model the domain data, the ontology also
+reuses Dublin Core and MOD for ontology metadata, OWL for the formal definition
+of classes, properties and restrictions, and RDFS for labels, subclass
+relationships, domains and ranges.
+</p>
+
+
+<h3 class="text-xl font-semibold text-gray-800 mt-8 mb-3">3.7. Hybrid ontology conceptualization</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The ontology combines reused concepts from existing vocabularies with a small
+number of terms created specifically for Active Madrid.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The central resource is a <strong>sports class</strong>. A sports class represents
+an activity offered at a particular sports facility and contains information
+about its capacity, availability and schedule.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+    <tr>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Concept</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Representation</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Origin</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Description</th>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Sports class</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsClass</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Active Madrid</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            A particular sports class or activity offering contained in the
+            classes datasets.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Sports facility</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>am:SportsFacility</code><br>
+            subclass of <code>schema:SportsActivityLocation</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Active Madrid + Schema.org</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            A municipal facility where sports activities take place.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Sport activity</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportActivity</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Active Madrid</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            A type of sport or activity, such as swimming, tennis or judo.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">District</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:District</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Active Madrid</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            A district of Madrid in which a sports facility is located.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Address</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>schema:PostalAddress</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Schema.org</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Structured address information associated with a sports facility.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Geographical coordinates</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            <code>geo:lat</code>,
+            <code>geo:long</code>
+        </td>
+        <td class="border border-gray-300 px-3 py-2 align-top">WGS84</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Latitude and longitude of a sports facility.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top">Schedule</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>time:Interval</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">OWL-Time</td>
+        <td class="border border-gray-300 px-3 py-2 align-top">
+            Temporal interval describing when a sports class starts and ends.
+        </td>
+    </tr>
+</table></div>
+
+
+<h4 class="text-lg font-semibold text-gray-800 mt-6 mb-3">Active Madrid properties</h4>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Only properties that cannot be adequately represented using the reused
+vocabularies are defined in the Active Madrid namespace.
+</p>
+
+<div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
+    <tr>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Property</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Type</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Domain</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Range</th>
+        <th class="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold">Description</th>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:takesPlaceAt</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Object property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsClass</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsFacility</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Links a sports class to the facility where it takes place.</td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:hasActivity</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Object property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsClass</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportActivity</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Associates a sports class with its sport or activity.</td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:locatedInDistrict</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Object property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsFacility</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:District</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Links a sports facility to the district where it is located.</td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:offeredPlaces</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Datatype property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsClass</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>xsd:nonNegativeInteger</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Total number of places offered for the class.</td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:occupiedPlaces</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Datatype property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsClass</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>xsd:nonNegativeInteger</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Number of places currently occupied.</td>
+    </tr>
+
+    <tr>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:availablePlaces</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Datatype property</td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>am:SportsClass</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top"><code>xsd:nonNegativeInteger</code></td>
+        <td class="border border-gray-300 px-3 py-2 align-top">Number of places currently available.</td>
+    </tr>
+</table></div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Other information will reuse existing Schema.org properties whenever possible.
+For example, the name of a facility will use <code>schema:name</code>, its
+address will use <code>schema:address</code>, its telephone number will use
+<code>schema:telephone</code>, and its email will use <code>schema:email</code>.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+The geographical position of a sports facility will be represented using
+the WGS84 vocabulary through <code>geo:lat</code> and <code>geo:long</code>,
+reusing directly the latitude and longitude values available in the dataset.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+Temporal information can be associated with a sports class using
+<code>time:hasTime</code> and represented through <code>time:Interval</code>,
+<code>time:hasBeginning</code> and <code>time:hasEnd</code>.
+</p>
+                </div>
+            </section>
+
+        </div>
+        
+        <!-- Footer -->
+        <footer class="bg-gray-100 text-center text-gray-500 py-6 text-sm border-t border-gray-200">
+            &copy; 2026 Dataset Analysis Project
+        </footer>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+@prefix : <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Declaración de la Ontología
+<http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#> a owl:Ontology ;
+    rdfs:label "Madrid Drinking Water Fountains Ontology"@en .
+
+# ---------------------------------------------------------
+# Clases
+# ---------------------------------------------------------
+
+:Fountain a owl:Class ;
+    rdfs:label "Fountain"@en .
+
+:Neighbourhood a owl:Class ;
+    rdfs:label "Neighbourhood"@en .
+
+:District a owl:Class ;
+    rdfs:label "District"@en .
+
+# ---------------------------------------------------------
+# Object Properties (Relacionan clases con clases)
+# ---------------------------------------------------------
+
+:hasNeighbourhood a owl:ObjectProperty ;
+    rdfs:label "has neighbourhood"@en ;
+    rdfs:domain :Fountain ;
+    rdfs:range :Neighbourhood .
+
+:hasDistrict a owl:ObjectProperty ;
+    rdfs:label "has district"@en ;
+    rdfs:domain :Fountain ;
+    rdfs:range :District .
+
+# ---------------------------------------------------------
+# Datatype Properties (Relacionan clases con valores)
+# ---------------------------------------------------------
+
+:hasStatus a owl:DatatypeProperty ;
+    rdfs:label "has status"@en ;
+    rdfs:domain :Fountain ;
+    rdfs:range xsd:string .
+
+:hasLatitude a owl:DatatypeProperty ;
+    rdfs:label "has latitude"@en ;
+    rdfs:domain :Fountain ;
+    rdfs:range xsd:float .
+
+:hasLongitude a owl:DatatypeProperty ;
+    rdfs:label "has longitude"@en ;
+    rdfs:domain :Fountain ;
+    rdfs:range xsd:float .
+
+:hasStreetName a owl:DatatypeProperty ;
+    rdfs:label "has street name"@en ;
+    rdfs:domain :Fountain ;
+    rdfs:range xsd:string .

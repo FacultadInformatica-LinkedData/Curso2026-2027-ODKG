@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hands-on assignment 2 - Analysis (Group 05)</title>
+<style>
+  body { font-family: sans-serif; max-width: 1000px; margin: 2em auto; padding: 0 1em; line-height: 1.5; color: #222; }
+  h1 { border-bottom: 2px solid #444; padding-bottom: .2em; }
+  h2 { margin-top: 2em; border-bottom: 1px solid #aaa; }
+  table { border-collapse: collapse; margin: 1em 0; width: 100%; font-size: .92em; }
+  th, td { border: 1px solid #999; padding: 4px 8px; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  td.n { text-align: right; white-space: nowrap; }
+  code { background: #f3f3f3; padding: 0 3px; }
+  pre { background: #f3f3f3; padding: .8em; overflow-x: auto; }
+  .note { background: #fff8e1; border-left: 4px solid #e0a800; padding: .5em 1em; }
+</style>
+</head>
+<body>
+
+<h1>Hands-on assignment 2 &ndash; Analysis of the data source</h1>
+<p>
+  Group 05 &ndash; Open Data and Knowledge Graphs, 2026&ndash;2027.<br>
+  Dataset: <strong>Hourly air quality data since 2016</strong>,
+  <a href="https://opendata.vlci.valencia.es/dataset/hourly-air-quality-data-since-2016">https://opendata.vlci.valencia.es/dataset/hourly-air-quality-data-since-2016</a><br>
+  Resource analysed: <code>csv/rvvcca.-datos-horarios-valencia-2016-2021-curt-cas.csv</code>
+</p>
+
+<h2>1. Analysis of the data set</h2>
+
+<h3>1.1 General figures</h3>
+<table>
+  <tr><th>Aspect</th><th>Value</th></tr>
+  <tr><td>Number of rows</td><td>449,026 (one row per station and hour)</td></tr>
+  <tr><td>Number of columns</td><td>27 (5 identifying columns and 22 measured magnitudes)</td></tr>
+  <tr><td>Time period covered</td><td>1 January 2016 to 31 December 2021, hourly resolution</td></tr>
+  <tr><td>Number of stations</td><td>12 (10 air quality stations and 2 meteorological stations)</td></tr>
+  <tr><td>Non-empty measured values</td><td>6,037,812 (each of them will become one observation in the RDF dataset)</td></tr>
+  <tr><td>File size</td><td>47.4 MB</td></tr>
+  <tr><td>Encoding and format</td><td>UTF-8 with byte order mark (BOM), fields separated by <code>;</code>, decimal separator <code>.</code>, empty cells for missing values</td></tr>
+  <tr><td>Duplicated rows</td><td>None (no repeated combination of station, date and hour)</td></tr>
+</table>
+
+<h3>1.2 Schema of the data</h3>
+<p>The first five columns identify each row; the remaining 22 contain the measured values.</p>
+<table>
+  <tr><th>Column</th><th>Type</th><th>Content</th></tr>
+  <tr><td><code>Fecha</code></td><td>Date</td><td>Date of the measurement in ISO 8601 form (<code>2020-01-01T00:00:00</code>). The time part is always <code>00:00:00</code>.</td></tr>
+  <tr><td><code>Día de la semana</code></td><td>String</td><td>Day of the week, in Spanish (<code>Lunes</code> to <code>Domingo</code>).</td></tr>
+  <tr><td><code>Día del mes</code></td><td>Integer</td><td>Day of the month (1&ndash;31).</td></tr>
+  <tr><td><code>Hora</code></td><td>String</td><td>Hour of the measurement, without leading zero (<code>0:00:00</code> to <code>23:00:00</code>).</td></tr>
+  <tr><td><code>Estación</code></td><td>String</td><td>Name of the station (12 different values). There is no station code and no coordinates.</td></tr>
+</table>
+
+<p>Measured magnitudes (all numeric). The CSV file does not state units; the units below are the ones used by the air quality network following EU Directive 2008/50/EC, and are consistent with the observed value ranges.</p>
+<table>
+  <tr><th>Column</th><th>Meaning</th><th>Unit</th><th>Values</th><th>Missing&nbsp;%</th><th>Min</th><th>Max</th><th>Mean</th></tr>
+<tr><td><code>PM1</code></td><td>Particulate matter &lt; 1 µm</td><td>µg/m3</td><td class=n>74,900</td><td class=n>83.3</td><td class=n>0</td><td class=n>177</td><td class=n>9.31</td></tr>
+<tr><td><code>PM2.5</code></td><td>Particulate matter &lt; 2.5 µm</td><td>µg/m3</td><td class=n>222,412</td><td class=n>50.5</td><td class=n>0</td><td class=n>193</td><td class=n>11.72</td></tr>
+<tr><td><code>PM10</code></td><td>Particulate matter &lt; 10 µm</td><td>µg/m3</td><td class=n>222,417</td><td class=n>50.5</td><td class=n>0</td><td class=n>372</td><td class=n>18.36</td></tr>
+<tr><td><code>NO</code></td><td>Nitric oxide</td><td>µg/m3</td><td class=n>335,438</td><td class=n>25.3</td><td class=n>1</td><td class=n>532</td><td class=n>10.33</td></tr>
+<tr><td><code>NO2</code></td><td>Nitrogen dioxide</td><td>µg/m3</td><td class=n>352,794</td><td class=n>21.4</td><td class=n>0</td><td class=n>229</td><td class=n>24.28</td></tr>
+<tr><td><code>NOx</code></td><td>Nitrogen oxides</td><td>µg/m3</td><td class=n>335,439</td><td class=n>25.3</td><td class=n>2</td><td class=n>987</td><td class=n>39.68</td></tr>
+<tr><td><code>O3</code></td><td>Ozone</td><td>µg/m3</td><td class=n>326,129</td><td class=n>27.4</td><td class=n>0.1</td><td class=n>172</td><td class=n>51.02</td></tr>
+<tr><td><code>SO2</code></td><td>Sulphur dioxide</td><td>µg/m3</td><td class=n>324,138</td><td class=n>27.8</td><td class=n>0</td><td class=n>167</td><td class=n>3.79</td></tr>
+<tr><td><code>CO</code></td><td>Carbon monoxide</td><td>mg/m3</td><td class=n>150,749</td><td class=n>66.4</td><td class=n>0.1</td><td class=n>1.8</td><td class=n>0.16</td></tr>
+<tr><td><code>Velocidad del viento</code></td><td>Wind speed</td><td>m/s</td><td class=n>433,194</td><td class=n>3.5</td><td class=n>0</td><td class=n>26.4</td><td class=n>2.35</td></tr>
+<tr><td><code>Dirección del viento</code></td><td>Wind direction</td><td>degrees</td><td class=n>435,584</td><td class=n>3.0</td><td class=n>0</td><td class=n>360</td><td class=n>199.78</td></tr>
+<tr><td><code>NH3</code></td><td>Ammonia</td><td>µg/m3</td><td class=n>47,719</td><td class=n>89.4</td><td class=n>0</td><td class=n>75</td><td class=n>5.15</td></tr>
+<tr><td><code>C7H8</code></td><td>Toluene</td><td>µg/m3</td><td class=n>46,786</td><td class=n>89.6</td><td class=n>0.1</td><td class=n>231.7</td><td class=n>4.56</td></tr>
+<tr><td><code>C6H6</code></td><td>Benzene</td><td>µg/m3</td><td class=n>46,366</td><td class=n>89.7</td><td class=n>0.2</td><td class=n>30</td><td class=n>1.41</td></tr>
+<tr><td><code>Ruido</code></td><td>Noise level</td><td>dB(A)</td><td class=n>51,702</td><td class=n>88.5</td><td class=n>6</td><td class=n>250</td><td class=n>59.74</td></tr>
+<tr><td><code>C8H10</code></td><td>Xylene</td><td>µg/m3</td><td class=n>46,939</td><td class=n>89.5</td><td class=n>0.1</td><td class=n>177.6</td><td class=n>2.12</td></tr>
+<tr><td><code>Temperatura</code></td><td>Temperature</td><td>ºC</td><td class=n>432,199</td><td class=n>3.7</td><td class=n>0.7</td><td class=n>41.6</td><td class=n>18.35</td></tr>
+<tr><td><code>Humedad relativa</code></td><td>Relative humidity</td><td>%</td><td class=n>416,999</td><td class=n>7.1</td><td class=n>11</td><td class=n>107</td><td class=n>65.04</td></tr>
+<tr><td><code>Presión</code></td><td>Atmospheric pressure</td><td>hPa</td><td class=n>435,273</td><td class=n>3.1</td><td class=n>976</td><td class=n>1,033</td><td class=n>1,004.95</td></tr>
+<tr><td><code>Radiación</code></td><td>Solar radiation</td><td>W/m2</td><td class=n>432,844</td><td class=n>3.6</td><td class=n>-7</td><td class=n>1,129</td><td class=n>201.54</td></tr>
+<tr><td><code>Precipitación</code></td><td>Precipitation</td><td>mm</td><td class=n>434,501</td><td class=n>3.2</td><td class=n>0</td><td class=n>37.6</td><td class=n>0.05</td></tr>
+<tr><td><code>Velocidad máxima del viento</code></td><td>Maximum wind speed</td><td>m/s</td><td class=n>433,290</td><td class=n>3.5</td><td class=n>0</td><td class=n>42.5</td><td class=n>5.82</td></tr>
+</table>
+
+<h3>1.3 Stations</h3>
+<p>Not every station measures every magnitude. The table lists the pollutants each station actually reports (more than 5% of its hours with a value).</p>
+<table>
+  <tr><th>Station</th><th>Rows</th><th>Period</th><th>Pollutants measured</th></tr>
+<tr><td>Avda. Francia</td><td class=n>52,608</td><td>2016-01-01 to 2021-12-31</td><td>PM2.5, PM10, NO, NO2, NOx, O3, SO2, CO</td></tr>
+<tr><td>Bulevard Sud</td><td class=n>52,608</td><td>2016-01-01 to 2021-12-31</td><td>NO, NO2, NOx, O3, SO2, NH3</td></tr>
+<tr><td>Consellería Meteo</td><td class=n>52,608</td><td>2016-01-01 to 2021-12-31</td><td><em>none (meteorological only)</em></td></tr>
+<tr><td>Pista Silla</td><td class=n>52,608</td><td>2016-01-01 to 2021-12-31</td><td>PM1, PM2.5, PM10, NO, NO2, NOx, O3, SO2, CO, C7H8, C6H6, C8H10, Ruido</td></tr>
+<tr><td>Politécnico</td><td class=n>52,608</td><td>2016-01-01 to 2021-12-31</td><td>PM1, PM2.5, PM10, NO, NO2, NOx, O3, SO2</td></tr>
+<tr><td>Viveros</td><td class=n>52,608</td><td>2016-01-01 to 2021-12-31</td><td>NO, NO2, NOx, O3, SO2</td></tr>
+<tr><td>Molí del Sol</td><td class=n>43,848</td><td>2016-01-01 to 2021-12-31</td><td>PM1, PM2.5, PM10, NO, NO2, NOx, O3, SO2, CO</td></tr>
+<tr><td>Valencia Centro</td><td class=n>28,162</td><td>2018-01-11 to 2021-12-31</td><td>PM2.5, PM10, NO, NO2, NOx</td></tr>
+<tr><td>Puerto Valencia</td><td class=n>26,304</td><td>2017-01-01 to 2020-12-31</td><td>PM2.5, PM10, NO, NO2, NOx, O3, SO2, CO</td></tr>
+<tr><td>Nazaret Meteo</td><td class=n>17,544</td><td>2020-01-01 to 2021-12-31</td><td><em>none (meteorological only)</em></td></tr>
+<tr><td>Puerto Moll Trans. Ponent</td><td class=n>8,760</td><td>2021-01-01 to 2021-12-31</td><td>PM2.5, PM10, NO, NO2, NOx, O3, SO2, CO</td></tr>
+<tr><td>Puerto llit antic Túria</td><td class=n>8,760</td><td>2021-01-01 to 2021-12-31</td><td>PM2.5, PM10, NO, NO2, NOx, O3, SO2, CO</td></tr>
+</table>
+<p>All stations, including the two meteorological ones, report the meteorological magnitudes (wind, temperature, humidity, pressure, radiation and precipitation).</p>
+
+<h3>1.4 Data quality issues found</h3>
+<ul>
+  <li><strong>Date and hour are split.</strong> <code>Fecha</code> always contains midnight and the actual hour is in <code>Hora</code>, without a leading zero. Both columns must be combined into a single <code>xsd:dateTime</code> value (e.g., <code>2020-01-01T13:00:00</code>) before generating RDF.</li>
+  <li><strong>Missing values have two different causes.</strong> Most empty cells are <em>structural</em>: the station does not have that sensor (for example, CO is only measured at 6 stations, and the benzene/toluene/xylene/noise columns only at Pista Silla). The rest are real gaps in a sensor that normally measures. 83,605 rows have no pollutant value at all; 70,152 of them belong to the two meteorological stations. Empty cells will not generate any observation; they must never be converted into zeros.</li>
+  <li><strong>Incomplete series.</strong> Several stations do not cover the whole period: Valencia Centro starts in January 2018, Puerto Valencia covers only 2017&ndash;2020, Nazaret Meteo starts in 2020, and the two new port stations only cover 2021 (Puerto llit antic Túria has values for less than half of its hours). Molí del Sol has 43,848 rows instead of 52,608.</li>
+  <li><strong>Out-of-range values.</strong> 63 relative humidity values are above 100% (maximum 107%), 198 solar radiation values are negative (minimum -7 W/m2) and 60 noise values are above 140 dB(A) (maximum 250), while 99% of noise values are below 73 dB(A). These values are physically implausible and will be flagged during data preparation (Assignment 3).</li>
+  <li><strong>Redundant columns.</strong> <code>Día de la semana</code> and <code>Día del mes</code> can be derived from the date and will not be transformed.</li>
+  <li><strong>No identifiers for stations.</strong> Stations are identified only by their name, which contains spaces, accents and abbreviations (e.g., <code>Puerto Moll Trans. Ponent</code>). Identifiers for stations will therefore have to be derived from their names.</li>
+  <li><strong>Column headers in Spanish.</strong> Headers mix chemical formulae (<code>NO2</code>) and Spanish names (<code>Temperatura</code>, <code>Ruido</code>). The ontology will need English labels for them, and the original header can be kept as the code of each measured magnitude.</li>
+</ul>
+
+<p class="note">The analysis shows that the dataset contains 12 stations and 22 measured magnitudes, more than the 5 stations and 8 pollutants identified in Assignment 1 from the portal description.</p>
+
+<h3>1.5 Entities that will be linked to other datasets</h3>
+<table>
+  <tr><th>Entity in our data</th><th>External resource</th><th>Link</th></tr>
+  <tr><td>City of València</td><td><a href="https://www.wikidata.org/wiki/Q8818">wd:Q8818</a></td><td><code>owl:sameAs</code></td></tr>
+  <tr><td>NO2</td><td><a href="https://www.wikidata.org/wiki/Q207895">wd:Q207895</a> nitrogen dioxide</td><td>observed substance</td></tr>
+  <tr><td>NO</td><td><a href="https://www.wikidata.org/wiki/Q207843">wd:Q207843</a> nitric oxide</td><td>observed substance</td></tr>
+  <tr><td>O3</td><td><a href="https://www.wikidata.org/wiki/Q36933">wd:Q36933</a> ozone</td><td>observed substance</td></tr>
+  <tr><td>SO2</td><td><a href="https://www.wikidata.org/wiki/Q5282">wd:Q5282</a> sulfur dioxide</td><td>observed substance</td></tr>
+  <tr><td>CO</td><td><a href="https://www.wikidata.org/wiki/Q2025">wd:Q2025</a> carbon monoxide</td><td>observed substance</td></tr>
+  <tr><td>PM10</td><td><a href="https://www.wikidata.org/wiki/Q48035511">wd:Q48035511</a> PM10</td><td>observed substance</td></tr>
+  <tr><td>PM2.5</td><td><a href="https://www.wikidata.org/wiki/Q48035814">wd:Q48035814</a> PM 2.5</td><td>observed substance</td></tr>
+  <tr><td>Politécnico station</td><td><a href="https://www.wikidata.org/wiki/Q2003976">wd:Q2003976</a> Universitat Politècnica de València</td><td>the station is located on the campus (not the same entity, so not <code>owl:sameAs</code>)</td></tr>
+</table>
+<p>NOx is not a single substance but the sum of NO and NO2, so it has no direct equivalent in Wikidata and will remain a local resource.</p>
+
+<!-- ============================================================
+     Section 2: Licensing of the data source
+     (publisher, rightsholder, licence, potential licence of the generated dataset)
+     ============================================================ -->
+
+<h2>2. License analysis</h2>
+
+<h3>2.1 Publisher and rightsholder</h3>
+<p>The publisher is the Ajuntament de València (València City Council). 
+The official dataset page identifies "Ajuntament de València" as the organization responsible for publishing the dataset.</p>
+<p>The Ajuntament de València can also be considered the rightsholder for the published dataset. 
+The data are made available under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence. 
+The dataset itself identifies the Red Valenciana de Vigilancia y Control de la Contaminación Atmosférica as the source of the air-quality data, 
+but the open-data portal attributes the dataset to the City Council.</p>
+
+<h3>2.2 License</h3>
+<p>The Valencia hourly air-quality dataset is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence. 
+This allows the data to be reused, shared, and adapted, provided that appropriate attribution is given to the original source. 
+The licence is explicitly stated on the official València Open Data dataset and CSV resource pages.</p>
+
+<h3>2.3 License used for the generated dataset</h3>
+<p>Creative Commons Attribution 4.0 International (CC BY 4.0), 
+since our generated dataset/application uses and processes the dataset under the terms of this licence, 
+with appropriate attribution to the Ajuntament de València.</p>
+<p><strong>Attribution:</strong> Our application is derived from the 
+<a href="https://opendata.vlci.valencia.es/en/dataset/hourly-air-quality-data-since-2016">
+València Open Data hourly air quality dataset</a>, published by the Ajuntament de València, 
+licensed under CC BY 4.0.</p>
+
+<!-- ============================================================
+     Section 3: Resource naming strategy
+     (URI domain, paths for ontology and individuals, patterns, content negotiation)
+     ============================================================ -->
+
+<h2>3. Resource naming strategy</h2>
+
+<h3>3.1 URI form</h3>
+<ul>
+  <li><strong>Ontology terms: hash URIs.</strong> The ontology is small (a few classes and properties), rarely changes and is always retrieved as a whole, so a single HTTP GET on the ontology URI returns every term.</li>
+  <li><strong>Individuals: slash URIs.</strong> The dataset is large: 449,026 hourly records from 12 stations, with 6,037,812 non-empty measured values, each of which becomes an observation. Slash URIs allow every resource to be retrieved individually or in groups, without downloading the whole dataset.</li>
+</ul>
+
+<h3>3.2 Domain</h3>
+<p>All resources are published under <code>https://w3id.org/valencia-airquality/</code>. We use the w3id.org permanent identifier service so that the URIs are persistent and do not depend on the server that hosts the data: if the hosting changes, only the w3id redirection rules have to be updated, never the URIs. This domain is different from the default IRI assigned by Protégé (<code>http://www.semanticweb.org/...</code>).</p>
+
+<h3>3.3 Paths</h3>
+<table>
+  <tr><th>Resources</th><th>Path</th><th>Base URI</th></tr>
+  <tr><td>Ontology (classes and properties)</td><td><code>ontology/airquality#</code></td><td><code>https://w3id.org/valencia-airquality/ontology/airquality#</code></td></tr>
+  <tr><td>Individuals (data)</td><td><code>resource/</code></td><td><code>https://w3id.org/valencia-airquality/resource/</code></td></tr>
+</table>
+<p>Ontology terms and individuals are kept under different paths, so the ontology model is separated from its instances.</p>
+
+<h3>3.4 Patterns</h3>
+<table>
+  <tr><th>Resource</th><th>Pattern</th><th>Example</th></tr>
+  <tr><td>Class</td><td><code>https://w3id.org/valencia-airquality/ontology/airquality#[ClassName]</code></td><td><code>https://w3id.org/valencia-airquality/ontology/airquality#MonitoringStation</code></td></tr>
+  <tr><td>Property</td><td><code>https://w3id.org/valencia-airquality/ontology/airquality#[propertyName]</code></td><td><code>https://w3id.org/valencia-airquality/ontology/airquality#hasStation</code></td></tr>
+  <tr><td>Individual</td><td><code>https://w3id.org/valencia-airquality/resource/[ClassName]/[identifier]</code></td><td><code>https://w3id.org/valencia-airquality/resource/MonitoringStation/AvdaFrancia</code></td></tr>
+</table>
+<ul>
+  <li>Class names use UpperCamelCase and property names use lowerCamelCase. All terms are named in English.</li>
+  <li>Property URIs are defined directly in the ontology namespace and do not depend on any class URI (<code>#hasStation</code>, not <code>#MonitoringStation/hasStation</code>).</li>
+  <li>Individual URIs are defined under <code>resource/</code> and not derived from the class URIs of the ontology. The class name is only used as a path segment, so that individuals of different classes never share the same path.</li>
+</ul>
+
+<p>Patterns for the individuals generated from the dataset:</p>
+<table>
+  <tr><th>Class</th><th>Pattern</th><th>Example</th></tr>
+  <tr><td>MonitoringStation</td><td><code>resource/MonitoringStation/[station]</code></td><td><code>resource/MonitoringStation/PistaSilla</code></td></tr>
+  <tr><td>Observation</td><td><code>resource/Observation/[station]_[yyyyMMdd]T[HHmm]_[magnitude]</code></td><td><code>resource/Observation/AvdaFrancia_20200101T1300_NO2</code></td></tr>
+  <tr><td>ObservableProperty</td><td><code>resource/ObservableProperty/[magnitude]</code></td><td><code>resource/ObservableProperty/PM2_5</code></td></tr>
+  <tr><td>City</td><td><code>resource/City/[city]</code></td><td><code>resource/City/Valencia</code></td></tr>
+</table>
+
+<h3>3.5 Rules for building identifiers</h3>
+<ul>
+  <li><strong>[station]</strong>: the value of <code>Estación</code> without accents, spaces or punctuation, in UpperCamelCase (see table below).</li>
+  <li><strong>[yyyyMMdd]T[HHmm]</strong>: the date of <code>Fecha</code> combined with <code>Hora</code>; the hour is padded to two digits (<code>2020-01-01T00:00:00</code> + <code>13:00:00</code> &rarr; <code>20200101T1300</code>).</li>
+  <li><strong>[magnitude]</strong>: the column header; chemical formulae are kept, characters that are not valid in a URI path are replaced by <code>_</code> and Spanish names are translated into English UpperCamelCase (see table below).</li>
+  <li>No observation URI is created for an empty cell, so missing values are never represented as zeros.</li>
+  <li>Identifiers depend only on the data (station, date, hour and magnitude) and never on state information, so running the transformation again always produces the same URIs.</li>
+</ul>
+
+<table>
+  <tr><th>Estación</th><th>[station]</th><th>Estación</th><th>[station]</th></tr>
+  <tr><td>Avda. Francia</td><td><code>AvdaFrancia</code></td><td>Molí del Sol</td><td><code>MoliDelSol</code></td></tr>
+  <tr><td>Bulevard Sud</td><td><code>BulevardSud</code></td><td>Valencia Centro</td><td><code>ValenciaCentro</code></td></tr>
+  <tr><td>Consellería Meteo</td><td><code>ConselleriaMeteo</code></td><td>Puerto Valencia</td><td><code>PuertoValencia</code></td></tr>
+  <tr><td>Pista Silla</td><td><code>PistaSilla</code></td><td>Nazaret Meteo</td><td><code>NazaretMeteo</code></td></tr>
+  <tr><td>Politécnico</td><td><code>Politecnico</code></td><td>Puerto Moll Trans. Ponent</td><td><code>PuertoMollTransPonent</code></td></tr>
+  <tr><td>Viveros</td><td><code>Viveros</code></td><td>Puerto llit antic Túria</td><td><code>PuertoLlitAnticTuria</code></td></tr>
+</table>
+
+<table>
+  <tr><th>Column</th><th>[magnitude]</th><th>Column</th><th>[magnitude]</th></tr>
+  <tr><td>PM1</td><td><code>PM1</code></td><td>Dirección del viento</td><td><code>WindDirection</code></td></tr>
+  <tr><td>PM2.5</td><td><code>PM2_5</code></td><td>NH3</td><td><code>NH3</code></td></tr>
+  <tr><td>PM10</td><td><code>PM10</code></td><td>C7H8</td><td><code>C7H8</code></td></tr>
+  <tr><td>NO</td><td><code>NO</code></td><td>C6H6</td><td><code>C6H6</code></td></tr>
+  <tr><td>NO2</td><td><code>NO2</code></td><td>Ruido</td><td><code>Noise</code></td></tr>
+  <tr><td>NOx</td><td><code>NOx</code></td><td>C8H10</td><td><code>C8H10</code></td></tr>
+  <tr><td>O3</td><td><code>O3</code></td><td>Temperatura</td><td><code>Temperature</code></td></tr>
+  <tr><td>SO2</td><td><code>SO2</code></td><td>Humedad relativa</td><td><code>RelativeHumidity</code></td></tr>
+  <tr><td>CO</td><td><code>CO</code></td><td>Presión</td><td><code>Pressure</code></td></tr>
+  <tr><td>Velocidad del viento</td><td><code>WindSpeed</code></td><td>Radiación</td><td><code>SolarRadiation</code></td></tr>
+  <tr><td></td><td></td><td>Precipitación</td><td><code>Precipitation</code></td></tr>
+  <tr><td></td><td></td><td>Velocidad máxima del viento</td><td><code>MaxWindSpeed</code></td></tr>
+</table>
+
+<h3>3.6 Content negotiation</h3>
+<p>Every individual URI identifies a real-world thing (a station, an observation), not a document. When it is dereferenced, the w3id redirection rules answer with <code>303 See Other</code> and redirect according to the <code>Accept</code> header of the request:</p>
+<table>
+  <tr><th>Request</th><th>Redirected to</th></tr>
+  <tr><td><code>Accept: text/html</code></td><td><code>https://w3id.org/valencia-airquality/page/[ClassName]/[identifier]</code> (human-readable page)</td></tr>
+  <tr><td><code>Accept: text/turtle</code> or <code>application/rdf+xml</code></td><td><code>https://w3id.org/valencia-airquality/data/[ClassName]/[identifier]</code> (RDF description)</td></tr>
+</table>
+<p>The ontology URI <code>https://w3id.org/valencia-airquality/ontology/airquality</code> returns the HTML documentation of the ontology for <code>text/html</code> and the Turtle file for <code>text/turtle</code>. Because ontology terms use hash URIs, the fragment is removed by the client and the whole ontology is returned.</p>
+
+</body>
+</html>

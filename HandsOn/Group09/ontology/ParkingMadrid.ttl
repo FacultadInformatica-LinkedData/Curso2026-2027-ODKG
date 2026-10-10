@@ -1,0 +1,237 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pm: <https://parking-madrid.example.org/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+owl:versionInfo a owl:AnnotationProperty .
+
+<https://parking-madrid.example.org/ontology> a owl:Ontology ;
+    dc:creator "Group9, Mario Fernández Fernández" ;
+    dc:title "Madrid parking occupancy ontology" ;
+    owl:versionInfo "0.1" ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+# ---------------------------------------------------------------- Classes
+
+schema:ParkingFacility a owl:Class ;
+    rdfs:label "Parking Facility"@en .
+
+pm:ParkingFacility a owl:Class ;
+    rdfs:label "Parking Facility"@en ;
+    rdfs:comment "A municipal car park of Madrid, identified by its PAR code."@en ;
+    rdfs:subClassOf schema:ParkingFacility,
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasParCode ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasParkingName ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasStreetAddress ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasRotationSpaces ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasResidentSpaces ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasTotalSpaces ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasNumberOfFloors ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasCadastralReference ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:isPrivate ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasOperationalStatus ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty geo:lat ],
+        [ a owl:Restriction ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty geo:long ] .
+
+pm:RotationalParkingFacility a owl:Class ;
+    rdfs:label "Rotational Parking Facility"@en ;
+    rdfs:comment "A car park whose spaces are only for short-term use."@en ;
+    rdfs:subClassOf pm:ParkingFacility .
+
+pm:MixedParkingFacility a owl:Class ;
+    rdfs:label "Mixed Parking Facility"@en ;
+    rdfs:comment "A car park with both rotation spaces and resident spaces."@en ;
+    rdfs:subClassOf pm:ParkingFacility .
+
+pm:District a owl:Class ;
+    rdfs:label "District"@en ;
+    rdfs:comment "An administrative district of Madrid."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasDistrictCode ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasDistrictName ] .
+
+pm:Neighbourhood a owl:Class ;
+    rdfs:label "Neighbourhood"@en ;
+    rdfs:comment "A neighbourhood of Madrid, belonging to one district."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasNeighbourhoodCode ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasNeighbourhoodName ] .
+
+pm:MonthlyOccupancy a owl:Class ;
+    rdfs:label "Monthly Occupancy"@en ;
+    rdfs:comment "The occupancy of one car park during one month."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasReferencePeriod ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasNumberOfSpaces ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasCalculationDays ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasAverageDailyVehicles ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasOccupancyRate ],
+        [ a owl:Restriction ; owl:cardinality "1"^^xsd:nonNegativeInteger ; owl:onProperty pm:hasDaytimeOccupancyRate ] .
+
+# -------------------------------------------------------- Object properties
+
+pm:locatedInDistrict a owl:ObjectProperty ;
+    rdfs:label "located in district"@en ;
+    rdfs:comment "Links a car park to the district where it is located."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range pm:District .
+
+pm:locatedInNeighbourhood a owl:ObjectProperty ;
+    rdfs:label "located in neighbourhood"@en ;
+    rdfs:comment "Links a car park to the neighbourhood where it is located."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range pm:Neighbourhood .
+
+pm:belongsToDistrict a owl:ObjectProperty ;
+    rdfs:label "belongs to district"@en ;
+    rdfs:comment "Links a neighbourhood to its district."@en ;
+    rdfs:domain pm:Neighbourhood ;
+    rdfs:range pm:District .
+
+pm:isOccupancyOf a owl:ObjectProperty ;
+    rdfs:label "is occupancy of"@en ;
+    rdfs:comment "Links a monthly occupancy record to its car park."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range pm:ParkingFacility .
+
+# ------------------------------------------------------- Datatype properties
+
+pm:hasParCode a owl:DatatypeProperty ;
+    rdfs:label "has par code"@en ;
+    rdfs:comment "Numeric code that identifies the car park (PAR code)."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:integer .
+
+pm:hasParkingName a owl:DatatypeProperty ;
+    rdfs:label "has parking name"@en ;
+    rdfs:comment "Name of the car park."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:string .
+
+pm:hasStreetAddress a owl:DatatypeProperty ;
+    rdfs:label "has street address"@en ;
+    rdfs:comment "Street address of the car park."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:string .
+
+pm:hasRotationSpaces a owl:DatatypeProperty ;
+    rdfs:label "has rotation spaces"@en ;
+    rdfs:comment "Number of spaces for short-term (rotation) use."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:integer .
+
+pm:hasResidentSpaces a owl:DatatypeProperty ;
+    rdfs:label "has resident spaces"@en ;
+    rdfs:comment "Number of spaces reserved for residents."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:integer .
+
+pm:hasTotalSpaces a owl:DatatypeProperty ;
+    rdfs:label "has total spaces"@en ;
+    rdfs:comment "Total number of spaces of the car park."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:integer .
+
+pm:hasNumberOfFloors a owl:DatatypeProperty ;
+    rdfs:label "has number of floors"@en ;
+    rdfs:comment "Number of floors of the car park."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:integer .
+
+pm:hasCadastralReference a owl:DatatypeProperty ;
+    rdfs:label "has cadastral reference"@en ;
+    rdfs:comment "Cadastral reference code of the car park."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:string .
+
+pm:isPrivate a owl:DatatypeProperty ;
+    rdfs:label "is private"@en ;
+    rdfs:comment "True if the car park is privately owned."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:boolean .
+
+pm:hasOperationalStatus a owl:DatatypeProperty ;
+    rdfs:label "has operational status"@en ;
+    rdfs:comment "Current status of the car park, for example open or under works."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:string .
+
+geo:lat a owl:DatatypeProperty ;
+    rdfs:label "lat"@en ;
+    rdfs:comment "Latitude of the car park in decimal degrees (WGS84)."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:decimal .
+
+geo:long a owl:DatatypeProperty ;
+    rdfs:label "long"@en ;
+    rdfs:comment "Longitude of the car park in decimal degrees (WGS84)."@en ;
+    rdfs:domain pm:ParkingFacility ;
+    rdfs:range xsd:decimal .
+
+pm:hasDistrictCode a owl:DatatypeProperty ;
+    rdfs:label "has district code"@en ;
+    rdfs:comment "Official numeric code of the district."@en ;
+    rdfs:domain pm:District ;
+    rdfs:range xsd:integer .
+
+pm:hasDistrictName a owl:DatatypeProperty ;
+    rdfs:label "has district name"@en ;
+    rdfs:comment "Name of the district."@en ;
+    rdfs:domain pm:District ;
+    rdfs:range xsd:string .
+
+pm:hasNeighbourhoodCode a owl:DatatypeProperty ;
+    rdfs:label "has neighbourhood code"@en ;
+    rdfs:comment "Numeric code of the neighbourhood, unique only within its district."@en ;
+    rdfs:domain pm:Neighbourhood ;
+    rdfs:range xsd:integer .
+
+pm:hasNeighbourhoodName a owl:DatatypeProperty ;
+    rdfs:label "has neighbourhood name"@en ;
+    rdfs:comment "Name of the neighbourhood."@en ;
+    rdfs:domain pm:Neighbourhood ;
+    rdfs:range xsd:string .
+
+pm:hasReferencePeriod a owl:DatatypeProperty ;
+    rdfs:label "has reference period"@en ;
+    rdfs:comment "Year and month the occupancy refers to, in ISO format, for example 2025-01."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range xsd:string .
+
+pm:hasNumberOfSpaces a owl:DatatypeProperty ;
+    rdfs:label "has number of spaces"@en ;
+    rdfs:comment "Number of spaces the car park had in that month; it can change over time."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range xsd:integer .
+
+pm:hasCalculationDays a owl:DatatypeProperty ;
+    rdfs:label "has calculation days"@en ;
+    rdfs:comment "Number of days used to calculate the monthly values."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range xsd:integer .
+
+pm:hasAverageDailyVehicles a owl:DatatypeProperty ;
+    rdfs:label "has average daily vehicles"@en ;
+    rdfs:comment "Average number of vehicles per day in the month."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range xsd:integer .
+
+pm:hasOccupancyRate a owl:DatatypeProperty ;
+    rdfs:label "has occupancy rate"@en ;
+    rdfs:comment "Average occupancy as a percentage, so 41.7 means 41.7 %."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range xsd:decimal .
+
+pm:hasDaytimeOccupancyRate a owl:DatatypeProperty ;
+    rdfs:label "has daytime occupancy rate"@en ;
+    rdfs:comment "Average occupancy between 9:00 and 21:00, as a percentage."@en ;
+    rdfs:domain pm:MonthlyOccupancy ;
+    rdfs:range xsd:decimal .

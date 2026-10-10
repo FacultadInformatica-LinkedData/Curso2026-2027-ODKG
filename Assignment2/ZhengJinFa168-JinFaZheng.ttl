@@ -1,0 +1,24 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ont:  <http://www.zhengjinfa.org/sensors/ontology#> .
+@prefix res:  <http://www.zhengjinfa.org/sensors/resource/> .
+
+# Assignment 2a - Exercise 1.b: Turtle serialization of the sensor graph
+# Author: Jin Fa Zheng (ZhengJinFa168)
+
+res:Class01
+    ont:includes res:Sensor029 , res:Computer101 .
+
+res:Sensor029
+    ont:hasMeasurement res:Measurement8401 .
+
+res:Measurement8401
+    ont:hasTemperature "29"^^xsd:integer ;
+    ont:atTime "2010-06-12T12:00:12"^^xsd:dateTime .
+
+res:Computer101
+    ont:hasOwner res:User10A .
+
+res:User10A
+    ont:hasName "Pedro"^^xsd:string .

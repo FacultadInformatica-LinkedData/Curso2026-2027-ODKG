@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Analysis - Group 03</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #24292e;
+    }
+    h1 { border-bottom: 2px solid #eaecef; padding-bottom: 0.3em; }
+    h2 { margin-top: 32px; border-bottom: 1px solid #eaecef; padding-bottom: 0.2em; }
+    .req-card {
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 18px;
+      margin-bottom: 20px;
+      background: #fafbfc;
+    }
+    .req-title {
+      font-weight: bold;
+      color: #0366d6;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+    code { background-color: #f1f3f5; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; overflow-wrap: anywhere; }
+    pre { background-color: #f1f3f5; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+    pre code { background: none; padding: 0; }
+    ul { margin: 8px 0; }
+    .table-wrap { overflow-x: auto; }
+    .table-wrap table { min-width: 760px; }
+    .table-wrap code { overflow-wrap: normal; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9em; margin: 10px 0; background: #fff; }
+    th, td { border: 1px solid #e1e4e8; padding: 6px 10px; text-align: left; vertical-align: top; }
+    th { background-color: #f1f3f5; }
+    .data-issue {
+      background-color: #fff8e6;
+      border-left: 4px solid #f0ad4e;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 0.92em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Data Analysis</h1>
+  <p><strong>Group:</strong> Group 03</p>
+  <p><strong>Primary Dataset:</strong> <a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido" target="_blank">Contaminación acústica. Datos diarios (215885)</a></p>
+  <p><strong>Complementary Datasets:</strong> <a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas" target="_blank">Contaminación acústica. Estaciones de medida (211346)</a> &amp; <a href="https://datos.madrid.es/dataset/200085-0-censo-locales" target="_blank">Censo de locales, sus actividades y terrazas de hostelería y restauración (200085)</a> (terraces file only)</p>
+  <p><strong>Analysis date:</strong> 5 October 2026. The full-history figures in Sections 1.3 and 1.4 describe the original noise CSV downloaded from the portal on that date. The submitted file <code>csv/contaminacion_acustica.csv</code> contains only its rows from 2020 on (01/01/2020 – 04/10/2026): 295,853 rows, 31 stations, about 13&nbsp;MB, with the same encoding and format. Section 1.4a reports checks on this committed extract. The station catalog and terraces are submitted portal snapshots; the terrace loading date is 04/10/2026, while the station file contains no snapshot-date field.</p>
+
+  <!-- ===================================================== -->
+  <h2>1. Data and Schema Analysis</h2>
+
+  <div class="req-card">
+    <div class="req-title">1.1 File Format and Encoding</div>
+    <ul>
+      <li><strong>Full source file:</strong> <code>215885-0-contaminacion-ruido.csv</code>, about <strong>44.7&nbsp;MB</strong>; the committed extract is <code>csv/contaminacion_acustica.csv</code> (11 columns).</li>
+      <li><strong>Encoding:</strong> ISO-8859-1 (Latin-1), not UTF-8. The header <code>Estación;Año;Mes;Día</code> is broken if read as UTF-8.</li>
+      <li><strong>Separator:</strong> semicolon (<code>;</code>). <strong>Line endings:</strong> CRLF.</li>
+      <li><strong>Decimal mark:</strong> comma (<code>68,9</code>). Values have at most one decimal; whole values have none (<code>68</code>).</li>
+      <li><strong>Missing values:</strong> the string <code>N/D</code> (<em>no disponible</em>).</li>
+      <li><strong>Update:</strong> daily, except weekends and public holidays. The last day in the file is 04/10/2026.</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.2 Schema of the Daily Measurements (215885)</div>
+    <p>Each row is the value of one station, for one day and one period. The key of a row is <code>(Estación, Año, Mes, Día, Periodo)</code>; no duplicate keys were found.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>#</th><th>Column</th><th>Meaning (official documentation)</th><th>Type in file</th><th>Target type (RDF)</th></tr>
+      <tr><td>1</td><td><code>Estación</code></td><td>Code of the measuring station</td><td>Integer (1–86)</td><td>Link to a station resource</td></tr>
+      <tr><td>2</td><td><code>Año</code></td><td>Year</td><td>Integer</td><td rowspan="3">Joined into one <code>xsd:date</code></td></tr>
+      <tr><td>3</td><td><code>Mes</code></td><td>Month</td><td>Integer (1–12)</td></tr>
+      <tr><td>4</td><td><code>Día</code></td><td>Day</td><td>Integer (1–31)</td></tr>
+      <tr><td>5</td><td><code>Periodo</code></td><td>Day (<code>D</code>, 7–19h), evening (<code>E</code>, 19–23h), night (<code>N</code>, 23–7h) or total (<code>T</code>, 24h)</td><td>Code</td><td>Link to a period resource</td></tr>
+      <tr><td>6</td><td><code>LAeq</code></td><td>Equivalent continuous sound level of the period</td><td>Decimal, dB(A)</td><td><code>xsd:decimal</code></td></tr>
+      <tr><td>7–11</td><td><code>L1</code>, <code>L10</code>, <code>L50</code>, <code>L90</code>, <code>L99</code></td><td>Sound level exceeded during 1%, 10%, 50%, 90% and 99% of the time</td><td>Decimal, dB(A), or <code>N/D</code></td><td><code>xsd:decimal</code> (omitted when <code>N/D</code>)</td></tr>
+    </table>
+    </div>
+    <p>Validate the three calendar components and join them as <code>YYYY-MM-DD</code> for <code>mn:observationDate</code>. Parse sound levels after replacing the decimal comma with a point; omit unavailable percentile values rather than assigning zero. The application selects <code>Periodo=N</code> and <code>LAeq</code> for its night-time indicator; D, E, N and T describe different periods.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.3 Quantities — Full Noise Source (1998–2026)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Measure</th><th>Value</th></tr>
+      <tr><td>Rows</td><td><strong>1,037,100</strong></td></tr>
+      <tr><td>Time span</td><td>01/11/1998 – 04/10/2026 (nearly 28 years, covering 29 calendar years)</td></tr>
+      <tr><td>Distinct station codes</td><td>36 (31 still active in 2026)</td></tr>
+      <tr><td>Station-days</td><td>260,910</td></tr>
+      <tr><td>Rows per period</td><td>D: 258,433 · E: 258,289 · N: 259,976 · T: 260,402</td></tr>
+      <tr><td>Rows per year</td><td>From 3,428 (1998, two months) and ~25,000–36,000 (1999–2014) to ~42,000–45,000 per year since 2015 (44,633 in 2025)</td></tr>
+      <tr><td>Rows with percentiles (L1…L99)</td><td>680,611 (65.6%). Percentiles only exist from 2009 on. Since 2015 only 0.3% of rows have <code>N/D</code>.</td></tr>
+      <tr><td>Station-days with fewer than 4 periods</td><td>3,501 (1.3%)</td></tr>
+    </table>
+    </div>
+    <p>Stations with the most rows (more than 40,000 each): 11, 12, 16, 18, 19 and 20. Station codes <code>7</code>, <code>9</code>, <code>21</code>, <code>22</code> and <code>23</code> only have data in 2009–2010 (between 645 and 743 rows each); they were temporary stations.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.4 Value Ranges — Full Noise Source (1998–2026)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Column</th><th>Min</th><th>Max</th><th>Mean</th><th>Median</th></tr>
+      <tr><td><code>LAeq</code> – Day (D)</td><td>24.2</td><td>95.7</td><td>62.9</td><td>63.1</td></tr>
+      <tr><td><code>LAeq</code> – Evening (E)</td><td>20.4</td><td>96.8</td><td>62.4</td><td>62.7</td></tr>
+      <tr><td><code>LAeq</code> – Night (N)</td><td>22.1</td><td>140.2</td><td>57.4</td><td>57.7</td></tr>
+      <tr><td><code>LAeq</code> – Total (T)</td><td>23.7</td><td>138.1</td><td>61.9</td><td>62.0</td></tr>
+      <tr><td><code>L1</code></td><td>0.0</td><td>106.3</td><td>68.2</td><td>–</td></tr>
+      <tr><td><code>L10</code></td><td>0.0</td><td>96.3</td><td>62.5</td><td>–</td></tr>
+      <tr><td><code>L50</code></td><td>0.0</td><td>90.1</td><td>56.2</td><td>–</td></tr>
+      <tr><td><code>L90</code></td><td>0.0</td><td>83.3</td><td>49.7</td><td>–</td></tr>
+      <tr><td><code>L99</code></td><td>0.0</td><td>108.2</td><td>46.1</td><td>–</td></tr>
+    </table>
+    </div>
+    <p>All values are in dB(A). The full-history mean night value is about 5 dB lower than the mean day value. In 2025, which is also included in the submitted extract, night <code>LAeq</code> ranged from 41.3 to 85.0 dB(A), with mean 56.1; 53.4% of daily night values exceeded 55 dB(A). This is a descriptive threshold comparison, not a legal compliance assessment. The application uses the N-period LAeq measurement.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.4a Quantities, Ranges and Quality — Committed Noise Extract (2020–2026)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Measure</th><th>Value in <code>csv/contaminacion_acustica.csv</code></th></tr>
+      <tr><td>Rows / columns</td><td>295,853 / 11</td></tr>
+      <tr><td>Dates</td><td>2020-01-01 – 2026-10-04; all calendar dates parse successfully</td></tr>
+      <tr><td>Distinct stations / station-days</td><td>31 / 74,231</td></tr>
+      <tr><td>Observation key</td><td>295,853 unique station/date/period keys; no duplicates or missing key components</td></tr>
+      <tr><td>Rows per period</td><td>D: 73,980 · E: 73,944 · N: 73,940 · T: 73,989</td></tr>
+      <tr><td>Incomplete station-days</td><td>581 have fewer than four periods; 1,071 period observations are absent</td></tr>
+      <tr><td>Missing sound levels</td><td>No missing LAeq values. Each of L1, L10, L50, L90 and L99 has 563 <code>N/D</code> values (0.19%), on the same 563 rows</td></tr>
+      <tr><td>Station catalog join</td><td>All 31 measurement codes match the current catalog after <code>n → RF-</code> plus two-digit padding</td></tr>
+    </table>
+    </div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Indicator, dB(A)</th><th>Min</th><th>Max</th><th>Mean</th><th>Median</th></tr>
+      <tr><td>LAeq — D</td><td>36.9</td><td>90.2</td><td>61.6</td><td>61.7</td></tr>
+      <tr><td>LAeq — E</td><td>35.1</td><td>90.2</td><td>60.8</td><td>61.0</td></tr>
+      <tr><td>LAeq — N</td><td>32.1</td><td>86.9</td><td>55.5</td><td>55.1</td></tr>
+      <tr><td>LAeq — T</td><td>36.4</td><td>87.2</td><td>60.4</td><td>60.5</td></tr>
+      <tr><td>L1</td><td>0.0</td><td>102.8</td><td>67.9</td><td>68.0</td></tr>
+      <tr><td>L10</td><td>0.0</td><td>95.2</td><td>61.9</td><td>62.4</td></tr>
+      <tr><td>L50</td><td>0.0</td><td>88.6</td><td>55.6</td><td>56.4</td></tr>
+      <tr><td>L90</td><td>0.0</td><td>83.3</td><td>49.5</td><td>49.5</td></tr>
+      <tr><td>L99</td><td>0.0</td><td>108.2</td><td>46.1</td><td>45.6</td></tr>
+    </table>
+    </div>
+    <p>Percentile statistics omit <code>N/D</code>. LAeq spans 32.1–90.2 overall: no submitted row exceeds 100 dB(A), and 19 are below 35 dB(A). Four rows contain a zero percentile; 4,198 of the 295,290 rows with percentiles (1.42%) violate <code>L1 ≥ L10 ≥ L50 ≥ L90 ≥ L99</code>. These values remain source data and require quality flags and inspection rather than automatic replacement. Incomplete days and missing percentiles must not be filled with invented observations.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.5 Schema of the Station Catalog (211346)</div>
+    <p>File <code>csv/estaciones_acusticas.csv</code> (copy of the portal file <code>211346-4-estaciones-acusticas-csv.csv</code>): 31 rows (one per cataloged station), 11 columns, ISO-8859-1, semicolon separator and CRLF line endings. All 31 <code>ESTACIÓN</code> identifiers are unique, and no field is empty. Text fields require whitespace trimming; coordinates and altitude are numeric after the repair below; <code>FECHA ALTA</code> uses <code>dd/mm/yyyy</code> and ranges from 01/12/1998 to 07/03/2011.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Column</th><th>Content</th><th>Example</th></tr>
+      <tr><td><code>ESTACIÓN</code></td><td>Station code</td><td><code>RF-02</code></td></tr>
+      <tr><td><code>NOMBRE</code></td><td>Station name</td><td>Carlos V</td></tr>
+      <tr><td><code>UBICACIÓN</code></td><td>Free-text location</td><td>Plaza del Emperador Carlos V, junto al n1…</td></tr>
+      <tr><td><code>DISTRITO</code></td><td>District (17 distinct of the 21 in Madrid)</td><td>Retiro</td></tr>
+      <tr><td><code>BARRIO</code></td><td>Neighbourhood (30 distinct)</td><td>Jerónimos</td></tr>
+      <tr><td><code>LONGITUD</code>, <code>LATITUD</code></td><td>WGS84 coordinates, badly formatted</td><td><code>-3.691.509</code>, <code>40.409.121</code></td></tr>
+      <tr><td><code>X</code>, <code>Y</code></td><td>ETRS89 / UTM zone 30N (EPSG:25830), in metres</td><td>441327, 4473397</td></tr>
+      <tr><td><code>ALTITUD</code></td><td>Altitude in metres (601–728)</td><td>629</td></tr>
+      <tr><td><code>FECHA ALTA</code></td><td>Date from which the station measures during 50% of the observation time, according to the source schema (<code>dd/mm/yyyy</code>)</td><td>01/12/1998</td></tr>
+    </table>
+    </div>
+    <p>The <a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas/resource/211346-2-estaciones-acusticas/download/211346-2-estaciones-acusticas.pdf" target="_blank">official station schema</a> identifies geographic coordinates as WGS84 and projected X/Y as ETRS89. Use ETRS89 / UTM 30N (EPSG:25830) for metre-based distance calculations, transforming to WGS84 (EPSG:4326) for map latitude/longitude. Catalog X spans 433,969–450,829 m and Y spans 4,466,527–4,485,540 m.</p>
+    <p>All 31 geographic coordinate pairs contain an extra dot in the fractional part. For the observed pattern, preserve the sign and first decimal point and concatenate the following digit groups: <code>-3.691.509 → -3.691509</code> and <code>40.409.121 → 40.409121</code>. Validate the pattern and geographic bounds, and check against the transformed X/Y pair before using a repaired value. Other unexpected formats require inspection.</p>
+    <p>There are 18 raw district spellings and 17 after trimming, plus 30 distinct neighbourhood names. For station district links, trim, uppercase, remove accents for comparison and normalize spaces around hyphens. Each of the 17 normalized district names maps uniquely to the terrace census <code>id_distrito_local</code>: Centro 1; Arganzuela 2; Retiro 3; Salamanca 4; Chamartín 5; Chamberí 7; Fuencarral–El Pardo 8; Moncloa–Aravaca 9; Latina 10; Carabanchel 11; Puente de Vallecas 13; Moratalaz 14; Ciudad Lineal 15; Hortaleza 16; Villaverde 17; Villa de Vallecas 18; Barajas 21. Preserve source labels as text. The catalog therefore covers 17 of the 21 districts; results describe the monitored locations rather than a complete census of neighbourhood noise.</p>
+    <p>Neighbourhood names need a separate checked mapping within their district: abbreviations such as <code>Pilar</code> and the spelling <code>Quitana</code> do not automatically match census labels. Geographic names and the verified district reconciliation are analysed for future enrichment. The current lightweight station model represents identifier, name and coordinates; station district/neighbourhood links, location description, altitude and registration date are outside its current scope.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">1.6 Terraces File (200085)</div>
+    <p>File <code>csv/terrazas_hosteleria.csv</code> (copy of the portal file <code>200085-6-censo-locales.csv</code>, the "Terrazas" resource of the dataset): <strong>6,594 rows</strong> (one per terrace), <strong>117 columns</strong>, about 5.2&nbsp;MB, data loaded on 04/10/2026 (column <code>fx_carga</code>).</p>
+    <ul>
+      <li><strong>Format:</strong> UTF-8 with BOM (different from the two noise files, which are ISO-8859-1), semicolon separator and CRLF line endings. Headers and text values are quoted; numeric and boolean values are generally unquoted.</li>
+      <li><strong>Decimal mark:</strong> point (<code>16.70</code>), not comma. Booleans are written <code>True</code> / <code>False</code>.</li>
+      <li><strong>Key:</strong> <code>id_terraza</code> is unique (no duplicates). One premise (<code>id_local</code>) can have several terraces (6,438 premises for 6,594 terraces).</li>
+      <li><strong>Missing values and dates:</strong> empty strings or whitespace-only fields mean unavailable/not applicable; numerical zero remains a source value, except the invalid coordinate sentinel <code>(0,0)</code>. <code>S/R</code> is a missing business-name marker. <code>fx_carga</code> uses <code>dd/mm/yyyy</code>; <code>Fecha_confir_ult_decreto_resol</code> contains timestamps such as <code>2014-04-07 09:27:35.943</code>, recording an administrative resolution rather than a historical opening date.</li>
+      <li><strong>Suffixes:</strong> columns ending in <code>_es</code> refer to the seasonal period and columns ending in <code>_ra</code> to the rest of the year. According to the <a href="https://datos.madrid.es/dataset/200085-0-censo-locales/resource/200085-10-censo-locales/download/200085-10-censo-locales.pdf" target="_blank">official terrace schema</a>, <code>LJ</code> covers Sunday–Thursday and <code>VS</code> covers Friday, Saturday and holiday eves. Hours use <code>HH:mm:ss</code> (target datatype <code>xsd:time</code> if later modelled).</li>
+    </ul>
+    <p>The following inventory describes relevant source fields. The lightweight ontology represents terrace ID, location, district and neighbourhood, supporting the application's count of registered terraces near stations. Access type determines which coordinates can be used. Business names, administrative status, seasonal periods, capacity, surface and schedules are analysed as context but are outside the current model. Furniture, heaters, awnings, planning zones and the remaining administrative fields are also excluded because the current application requires terrace counts rather than those attributes.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Column</th><th>Content</th><th>Values</th></tr>
+      <tr><td><code>id_terraza</code></td><td>Terrace identifier</td><td>Integer, 8–20881</td></tr>
+      <tr><td><code>coordenada_x_local</code>, <code>coordenada_y_local</code></td><td>Approximate premise entrance in ETRS89 / UTM 30N (EPSG:25830), in metres; valid only for street-access premises that are not in <code>Baja</code></td><td>Nonzero source X: 432,689–453,291 · Y: 4,465,220–4,487,142; 112 pairs are <code>(0,0)</code>. Apply the access-type checks below</td></tr>
+      <tr><td><code>id_tipo_acceso_local</code>, <code>coordenada_x_agrupacion</code>, <code>coordenada_y_agrupacion</code></td><td>Access type and approximate grouping entrance used for grouped premises</td><td>6,465 street-access (<code>1</code>), 104 grouped (<code>0</code>), 25 other access types; 91 grouped terraces have nonzero grouping coordinates</td></tr>
+      <tr><td><code>id_distrito_local</code>, <code>desc_distrito_local</code>, <code>id_barrio_local</code>, <code>desc_barrio_local</code></td><td>Integer geographic identifiers and text labels, trimmed before comparison</td><td>21 districts, 129 neighbourhoods; no missing geographic keys. Most terraces: Centro (813), Chamberí (579), Salamanca (512)</td></tr>
+      <tr><td><code>rotulo</code></td><td>Name of the business</td><td>Free text (<code>S/R</code> when there is no name)</td></tr>
+      <tr><td><code>desc_periodo_terraza</code></td><td>Annual or seasonal terrace</td><td>Anual: 5,589 · Estacional: 1,005</td></tr>
+      <tr><td><code>desc_situacion_terraza</code></td><td>Status</td><td>Abierta: 6,570 · Suspension temporal: 24</td></tr>
+      <tr><td><code>desc_ubicacion_terraza</code></td><td>Where the terrace is placed</td><td>8 values; Acera (sidewalk): 5,125, Calle peatonal: 433, Plaza peatonal: 401…</td></tr>
+      <tr><td><code>mesas_es</code>, <code>sillas_es</code></td><td>Authorized tables and chairs (seasonal period)</td><td>Tables 0–105 (mean 9.8) · Chairs 0–420 (mean 31.4, median 24)</td></tr>
+      <tr><td><code>mesas_ra</code>, <code>sillas_ra</code></td><td>Authorized tables and chairs (rest of the year)</td><td>Tables 0–84 (mean 8.1) · Chairs 0–320 (mean 25.7); empty in 131 rows</td></tr>
+      <tr><td><code>Superficie_ES</code>, <code>Superficie_RA</code></td><td>Decimal surface in m²</td><td>Both nonempty ranges: 0.75–824; means ES: 30.0, RA: 28.9. <code>Superficie_RA</code> is empty for the 1,005 seasonal terraces</td></tr>
+      <tr><td><code>hora_fin_LJ_es</code>, <code>hora_fin_VS_es</code></td><td>Closing time (seasonal period)</td><td>Most frequent: 01:00 (Sun–Thu), 01:30 and 02:30 (Fri/Sat/holiday eves)</td></tr>
+    </table>
+    </div>
+    <p>The official schema states that current terrace coordinates use ETRS89; ED50 applied before 15 September 2017. This 2026 snapshot therefore uses EPSG:25830, matching the station X/Y system. Use <code>coordenada_x/y_local</code> only for street-access premises (<code>id_tipo_acceso_local=1</code>) that are not in <code>Baja</code>, and <code>coordenada_x/y_agrupacion</code> for grouped premises (<code>id_tipo_acceso_local=0</code>). Require both coordinates to be present and nonzero and inspect values outside the Madrid extent. Local-coordinate values supplied for other access types are invalid according to the source documentation.</p>
+    <p>With these checks, 6,443 street-access terraces and 91 grouped terraces have usable approximate locations: <strong>6,534 located terraces and 60 without a usable location</strong>. Of the 112 zero local-coordinate pairs, 53 can be recovered through nonzero grouping coordinates. Conversely, 39 nonzero local-coordinate pairs belong to 38 grouped terraces and one interior premise and must not be accepted as local entrance coordinates. Unlocated terraces retain their identifiers and geographic area links but are excluded from distance counts. A premise or grouping entrance is a location proxy, not a measured terrace centroid or polygon; 1,476 rows have a terrace address identifier different from the building address identifier, so counts near a radius boundary have positional uncertainty.</p>
+    <p>Schedules provide context for the night-time question: in the seasonal period, 94.7% of LJ closing times and 99.0% of VS closing times lie between 00:00 and 02:30, inside the noise N period (23–7h). These figures describe authorized schedules in the snapshot, not verified actual operation.</p>
+    <p><strong>Temporal limitation:</strong> all terrace rows were loaded on 04/10/2026, whereas submitted noise measurements span 2020–2026. This single snapshot cannot identify which terraces existed or operated, or their capacities and hours, on each historical noise date. A correlation using historical noise compares it with the 2026 registered-terrace distribution; it must be presented with that limitation. A study of contemporaneous activity would require historical terrace inventories and verified dates. The current model counts registered terraces, including temporarily suspended registrations, and does not infer actual activity from capacity or opening hours.</p>
+  </div>
+
+  <h2>Data Quality Issues Found</h2>
+  <div class="data-issue">
+    <ul>
+      <li><strong>Different station codes:</strong> the measurements use integers (<code>2</code>), the catalog uses <code>RF-02</code>. Mapping: <code>n &rarr; RF-</code> + <code>n</code> padded to two digits.</li>
+      <li><strong>Full-history stations without catalog entries:</strong> codes 7, 9, 21, 22 and 23 (2009–2010) have no description in the current catalog. They are absent from the submitted extract, whose 31 station codes all match.</li>
+      <li><strong>Full-history outliers:</strong> 4 LAeq rows exceed 100 dB(A) (stations 18 and 13, April and August 2007, up to 140.2) and 39 fall below 35 dB(A). Retain source values and flag them for inspection. The extract has no LAeq above 100 and 19 below 35.</li>
+      <li><strong>Percentile issues:</strong> the full history has 4 rows with a zero percentile and 4,262 rows with inconsistent percentile order (0.6% of rows with percentiles). The committed extract has 4 and 4,198 respectively, as quantified in Section 1.4a.</li>
+      <li><strong>Catalog formatting and history:</strong> apply the coordinate repair and district normalization in Section 1.5. The spelling <code>Quitana</code> requires a checked neighbourhood mapping. RF-01's <code>FECHA ALTA</code> is 07/03/2011 although station code 1 has older observations; the source documents station relocations, and this field must not be assumed to date the first historical observation or prove that all older measurements used today's location.</li>
+      <li><strong>Terrace location quality:</strong> use the access-type and grouping-coordinate rules in Section 1.6; 6,534 rows have usable entrance proxies, and 60 remain outside distance counts.</li>
+    </ul>
+  </div>
+
+  <!-- ===================================================== -->
+  <h2>2. Licensing of the Data Source</h2>
+
+  <div class="req-card">
+    <div class="req-title">2.1 Publisher</div>
+    <p>All three selected datasets are published by the <strong>Ayuntamiento de Madrid</strong> through its open data portal, <a href="https://datos.madrid.es" target="_blank">datos.madrid.es</a>. The municipality is identified in the portal's DCAT metadata by <code>http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796</code>, used for <code>dcterms:publisher</code> and <code>dcterms:creator</code>.</p>
+    <p>The noise measurements and station catalog are the responsibility of the <strong>Dirección General de Sostenibilidad y Control Ambiental</strong> (Departamento de Control Acústico, Área de Urbanismo, Medio Ambiente y Movilidad) and come from its SIVCA network (Sistema Integral de Vigilancia de la Contaminación Acústica). The terraces census has a different responsible municipal unit, identified in the source table below. These units maintain the data; the municipality is the publisher.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">2.2 Rightsholder</div>
+    <p>The identified rightsholder for the selected municipal datasets is the <strong>Ayuntamiento de Madrid</strong>. The portal's <a href="https://datos.madrid.es/pages/condiciones-de-uso" target="_blank">reuse terms</a> describe the reuse of documents held by the municipality; all three dataset pages identify municipal responsibility and the source licence.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">2.3 Licence of the Source Datasets</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Dataset</th><th>Responsible unit</th><th>Licence</th></tr>
+      <tr><td><a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido" target="_blank">215885 – Daily noise data</a></td><td>D.G. de Sostenibilidad y Control Ambiental</td><td>CC BY 4.0</td></tr>
+      <tr><td><a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas" target="_blank">211346 – Noise stations</a></td><td>D.G. de Sostenibilidad y Control Ambiental</td><td>CC BY 4.0</td></tr>
+      <tr><td><a href="https://datos.madrid.es/dataset/200085-0-censo-locales" target="_blank">200085 – Premises and terraces census</a></td><td>D.G. de Contratación y Servicios – S.G. de Estadística</td><td>CC BY 4.0</td></tr>
+    </table>
+    </div>
+    <p>All sources use the <strong><a href="https://creativecommons.org/licenses/by/4.0/legalcode.es" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></strong> licence. It allows copying, redistribution and adaptation, also for commercial purposes, if we:</p>
+    <ul>
+      <li>give credit to the source (Ayuntamiento de Madrid) and link to the licence;</li>
+      <li>indicate changes when publishing the derived data, including RDF conversion and any cleaning actually performed;</li>
+      <li>do not suggest that the Ayuntamiento de Madrid endorses our work;</li>
+      <li>do not add legal terms or technical measures that restrict what the licence allows.</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">2.4 Licence for the Generated Dataset</div>
+    <p>The proposed licence for the generated RDF data is <strong><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></strong>. All three sources permit adaptation under CC BY 4.0, and retaining that licence supports redistribution while preserving source attribution, the licence link and notices of changes. CC BY does not require adaptations to use the same licence; this is our chosen output licence. We separately license our original ontology under CC BY 4.0, as recorded in <code>ontology/ontology.ttl</code>.</p>
+    <p><strong>Planned attribution text for the generated data:</strong> "Contains data from the Ayuntamiento de Madrid (datos.madrid.es), CC BY 4.0. Data converted to RDF by Group 03 (UPM), with identifier normalization and coordinate handling as documented in the accompanying analysis." The published notice will link the three source pages and the licence and describe the transformations actually applied.</p>
+    <p>The following proposed DCAT metadata keeps each generated dataset's source and derivation explicit; it is a publication design, not a claim that RDF conversion has already been completed:</p>
+<pre><code>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .
+
+&lt;https://madridnoise.linkeddata.es/dataset/daily-noise&gt;
+    a dcat:Dataset ;
+    dcterms:title "Madrid daily noise measurements (Linked Data)"@en ;
+    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    dcterms:rightsHolder &lt;http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796&gt; ;
+    dcterms:source &lt;https://datos.madrid.es/dataset/215885-0-contaminacion-ruido&gt; ;
+    prov:wasDerivedFrom &lt;https://datos.madrid.es/dataset/215885-0-contaminacion-ruido&gt; .
+
+&lt;https://madridnoise.linkeddata.es/dataset/stations&gt;
+    a dcat:Dataset ;
+    dcterms:title "Madrid acoustic station catalog (Linked Data)"@en ;
+    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    dcterms:rightsHolder &lt;http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796&gt; ;
+    dcterms:source &lt;https://datos.madrid.es/dataset/211346-0-estaciones-acusticas&gt; ;
+    prov:wasDerivedFrom &lt;https://datos.madrid.es/dataset/211346-0-estaciones-acusticas&gt; .
+
+&lt;https://madridnoise.linkeddata.es/dataset/terraces&gt;
+    a dcat:Dataset ;
+    dcterms:title "Madrid registered hospitality terraces (Linked Data)"@en ;
+    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    dcterms:rightsHolder &lt;http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796&gt; ;
+    dcterms:source &lt;https://datos.madrid.es/dataset/200085-0-censo-locales&gt; ;
+    prov:wasDerivedFrom &lt;https://datos.madrid.es/dataset/200085-0-censo-locales&gt; .</code></pre>
+  </div>
+
+  <!-- ===================================================== -->
+  <h2 id="resource-naming">3. Resource Naming Strategy</h2>
+
+  <div class="req-card">
+    <div class="req-title">3.1 Domain and URI Form</div>
+    <p>We adopt <code>https://madridnoise.linkeddata.es</code> as the designed base URI for our Madrid noise and terraces dataset. This keeps the naming strategy consistent with the dataset identifier in Section 2.4 and uses a project domain rather than the namespace generated by default in Protégé. All identifiers are absolute HTTPS URIs.</p>
+    <p><strong>Publication status:</strong> this is the namespace selected for the ontology and the RDF data to be generated. DNS delegation, permission to use the subdomain, HTTPS hosting and the HTTP routes described below must be arranged before publication. The assignment defines their intended behaviour; it does not claim that these URLs currently resolve.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Purpose</th><th>URI or pattern</th></tr>
+      <tr><td>Ontology identifier and describing document</td><td><code>https://madridnoise.linkeddata.es/ontology</code></td></tr>
+      <tr><td>Ontology term namespace</td><td><code>https://madridnoise.linkeddata.es/ontology#</code></td></tr>
+      <tr><td>Data entity identifiers</td><td><code>https://madridnoise.linkeddata.es/resource/{entity-type}/{identifier}</code></td></tr>
+      <tr><td>Dataset identifiers</td><td><code>https://madridnoise.linkeddata.es/dataset/{dataset-name}</code></td></tr>
+      <tr><td>HTML descriptions of data entities</td><td><code>https://madridnoise.linkeddata.es/page/{entity-type}/{identifier}</code></td></tr>
+      <tr><td>RDF descriptions of data entities</td><td><code>https://madridnoise.linkeddata.es/data/{entity-type}/{identifier}</code></td></tr>
+    </table>
+    </div>
+    <p>Braces in the patterns denote placeholders and are not part of an actual URI. Entity identifiers have no file extensions, query parameters or trailing slash. Paths and identifiers are case-sensitive. The <code>/page/</code> and <code>/data/</code> paths identify describing documents; the <code>/resource/</code> paths identify the things described.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">3.2 Ontology Terms and Prefixes</div>
+    <p>The ontology uses <strong>hash URIs</strong>: a locally defined class or property is named by appending its local name to <code>https://madridnoise.linkeddata.es/ontology#</code>. The implemented classes use English <strong>PascalCase</strong>: <code>NoiseMonitoringStation</code>, <code>DailyNoiseObservation</code>, <code>DayPeriod</code>, <code>Terrace</code>, <code>District</code> and <code>Neighbourhood</code>. Properties start with a lowercase letter, with <strong>lowerCamelCase</strong> for multiword names, such as <code>recordedAt</code>, <code>forPeriod</code> and <code>observationDate</code>. Section 4 documents the final terms, domains, ranges and source-field mappings.</p>
+    <p>A property URI is independent of the class using it: <code>https://madridnoise.linkeddata.es/ontology#recordedAt</code>, rather than a property nested under a class URI. Individual URIs are also independent of class URIs: <code>https://madridnoise.linkeddata.es/resource/station/RF-02</code>, rather than an identifier appended to <code>.../ontology#NoiseMonitoringStation</code>. Ontology terms and individuals therefore occupy different paths.</p>
+    <p>The following prefixes identify the same namespaces wherever they are used in the ontology and its sample instantiation:</p>
+<pre><code>@prefix mn:            &lt;https://madridnoise.linkeddata.es/ontology#&gt; .
+@prefix station:       &lt;https://madridnoise.linkeddata.es/resource/station/&gt; .
+@prefix observation:   &lt;https://madridnoise.linkeddata.es/resource/observation/&gt; .
+@prefix terrace:       &lt;https://madridnoise.linkeddata.es/resource/terrace/&gt; .
+@prefix district:      &lt;https://madridnoise.linkeddata.es/resource/district/&gt; .
+@prefix neighbourhood: &lt;https://madridnoise.linkeddata.es/resource/neighbourhood/&gt; .
+@prefix period:        &lt;https://madridnoise.linkeddata.es/resource/period/&gt; .
+@prefix dataset:       &lt;https://madridnoise.linkeddata.es/dataset/&gt; .
+@prefix sourceDataset: &lt;https://datos.madrid.es/dataset/&gt; .</code></pre>
+    <p><code>dataset:</code> names our generated datasets; <code>sourceDataset:</code> names the official source datasets. For example, <code>dataset:daily-noise</code> and <code>sourceDataset:215885-0-contaminacion-ruido</code> have different expanded URIs. Standard vocabulary prefixes retain their authoritative namespaces: <code>owl:</code> = <code>http://www.w3.org/2002/07/owl#</code>, <code>rdf:</code> = <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>, <code>rdfs:</code> = <code>http://www.w3.org/2000/01/rdf-schema#</code>, <code>xsd:</code> = <code>http://www.w3.org/2001/XMLSchema#</code>, <code>dcterms:</code> = <code>http://purl.org/dc/terms/</code>, <code>dcat:</code> = <code>http://www.w3.org/ns/dcat#</code>, <code>sosa:</code> = <code>http://www.w3.org/ns/sosa/</code> and <code>geo:</code> = <code>http://www.w3.org/2003/01/geo/wgs84_pos#</code>.</p>
+    <p>Prefix names are abbreviations only: the expanded URI determines identity. Reused classes and properties retain their original vocabulary URIs; the <code>mn:</code> namespace is for terms defined by our group. Ontology labels and comments will consistently use English with <code>@en</code>; Spanish station and place names remain source data values.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">3.3 Patterns for Individuals and Datasets</div>
+    <p>Each main entity type has its own lowercase path, separating individuals of different classes. Identifiers come from source keys rather than row numbers, labels, coordinates or measured values.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Resource</th><th>Path below the base URI</th><th>Identifier construction and example</th></tr>
+      <tr><td>Station</td><td><code>/resource/station/{station-code}</code></td><td>Convert the numeric measurement code to <code>RF-</code> plus an integer padded to at least two digits; normalize catalog codes to the same form. Both <code>2</code> and <code>RF-02</code> identify <code>station:RF-02</code>.</td></tr>
+      <tr><td>Noise observation</td><td><code>/resource/observation/{station-code}-{date}-{period-code}</code></td><td>Use the composite row key: canonical station code, ISO date <code>YYYY-MM-DD</code>, and uppercase D/E/N/T. The first noise CSV row becomes <code>observation:RF-02-2020-01-01-D</code>. A night observation for that date uses <code>observation:RF-02-2020-01-01-N</code>.</td></tr>
+      <tr><td>Terrace</td><td><code>/resource/terrace/{terrace-id}</code></td><td>Use <code>id_terraza</code> as a decimal integer without leading zeros, for example <code>terrace:37</code>. Do not use <code>id_local</code>: a premises can have several terraces.</td></tr>
+      <tr><td>District</td><td><code>/resource/district/{district-id}</code></td><td>Use <code>id_distrito_local</code> as a decimal integer without leading zeros, for example <code>district:18</code> for Villa de Vallecas. Station district names must be reconciled to those codes.</td></tr>
+      <tr><td>Neighbourhood</td><td><code>/resource/neighbourhood/{neighbourhood-id}</code></td><td>Use the census field <code>id_barrio_local</code> as a decimal integer without leading zeros, for example <code>neighbourhood:1801</code> from the row for terrace 37. Preserve the census coding scheme; do not truncate it or substitute a code from another register without a verified mapping.</td></tr>
+      <tr><td>Measurement period</td><td><code>/resource/period/{period-code}</code></td><td>Use exactly <code>D</code>, <code>E</code>, <code>N</code> or <code>T</code>, for example <code>period:N</code>. These controlled resources denote the periods defined in Section 1.2.</td></tr>
+      <tr><td>Daily-noise dataset</td><td><code>/dataset/daily-noise</code></td><td><code>dataset:daily-noise</code>, matching Section 2.4.</td></tr>
+      <tr><td>Station-catalog dataset</td><td><code>/dataset/stations</code></td><td><code>dataset:stations</code>.</td></tr>
+      <tr><td>Terraces dataset</td><td><code>/dataset/terraces</code></td><td><code>dataset:terraces</code>.</td></tr>
+    </table>
+    </div>
+    <p>For example, <code>station:RF-02</code> expands to <code>https://madridnoise.linkeddata.es/resource/station/RF-02</code>, and <code>terrace:37</code> expands to <code>https://madridnoise.linkeddata.es/resource/terrace/37</code>. A resource keeps its URI if it later receives an additional class or a class name changes; its identity does not depend on an ontology class URI.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">3.4 Normalization, Missing Identifiers and Collisions</div>
+    <ul>
+      <li><strong>Source keys:</strong> trim surrounding whitespace, parse integer identifiers, and apply the canonical formats above. Validate date components as a real calendar date and normalize period codes to uppercase. Keep historical station codes even if the current catalog does not describe those stations.</li>
+      <li><strong>Geographic reconciliation:</strong> match station place names to census codes within their district. Whitespace, case and accents can be normalized for comparison, but the resulting URI uses the verified numeric code. Abbreviations and spelling differences require an explicit checked mapping. If a match is absent or ambiguous, retain the source name as a literal and defer the coded relationship; do not invent a geographic identifier.</li>
+      <li><strong>URI-safe characters:</strong> the selected keys use ASCII digits, letters and hyphens, so they require no escaping. Future identifiers containing other characters must be encoded as UTF-8 and percent-encoded within their own path segment; reserved characters such as <code>/</code>, <code>#</code> and <code>?</code> must not become separators. Do not derive identifiers by deleting accents from names.</li>
+      <li><strong>Missing keys:</strong> do not mint a shared <code>unknown</code>, empty or <code>N/D</code> identifier, or substitute the CSV row number. Rows without a valid required key must be reported and deferred until their identity is resolved. Missing measurement values do not invalidate an otherwise valid observation key and must not form part of its URI.</li>
+      <li><strong>Uniqueness:</strong> check uniqueness after normalization. Repeated rows with the same source key describe the same entity; conflicting values must be reviewed rather than resolved by adding an arbitrary suffix. Different entity types cannot collide because their paths differ. If a future source uses overlapping identifiers for different entities of the same type, define a source-qualified pattern before minting them.</li>
+    </ul>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">3.5 Content Negotiation and Dereferencing</div>
+    <p>The publication design offers HTML for people and Turtle for RDF clients. Ontology terms use hash URIs because the lightweight vocabulary can be described in one document. Data entities use slash URIs and <code>303 See Other</code> redirects to their describing documents. This follows the distinction between resources and descriptions in <a href="https://www.w3.org/TR/cooluris/#hashuri" target="_blank">W3C hash URIs</a> and <a href="https://www.w3.org/TR/cooluris/#r303uri" target="_blank">W3C 303 URIs</a>.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Requested URI</th><th>Preferred representation</th><th>Planned HTTP response</th></tr>
+      <tr><td><code>/ontology#NoiseMonitoringStation</code> or another ontology term</td><td><code>text/html</code></td><td>The fragment is not sent to the server. <code>GET /ontology</code> returns <code>200 OK</code> and the HTML vocabulary description, with <code>Content-Type: text/html; charset=utf-8</code>.</td></tr>
+      <tr><td><code>/ontology#NoiseMonitoringStation</code> or another ontology term</td><td><code>text/turtle</code></td><td><code>GET /ontology</code> returns <code>200 OK</code> and the ontology in Turtle, with <code>Content-Type: text/turtle; charset=utf-8</code>.</td></tr>
+      <tr><td><code>/resource/station/RF-02</code></td><td><code>text/html</code></td><td><code>303 See Other</code> to <code>/page/station/RF-02</code>; the subsequent request returns <code>200 OK</code> with an HTML description.</td></tr>
+      <tr><td><code>/resource/station/RF-02</code></td><td><code>text/turtle</code></td><td><code>303 See Other</code> to <code>/data/station/RF-02</code>; the subsequent request returns <code>200 OK</code> with a Turtle description.</td></tr>
+    </table>
+    </div>
+    <p>The same redirect pattern applies to observations, terraces, districts, neighbourhoods and periods. Dataset identifiers use <code>/page/dataset/{dataset-name}</code> and <code>/data/dataset/{dataset-name}</code> for their HTML and RDF metadata descriptions. The latter describes the dataset; it is not the URI of a complete data download.</p>
+    <p>The server will select a supported representation using the request's <code>Accept</code> header and quality preferences. Missing <code>Accept</code> or an unrestricted wildcard defaults to HTML; ties favour HTML. If neither HTML nor Turtle is acceptable, return <code>406 Not Acceptable</code>. Responses selected by negotiation, including redirects, include <code>Vary: Accept</code>. A final HTML document has <code>Content-Type: text/html; charset=utf-8</code>; a final RDF document has <code>Content-Type: text/turtle; charset=utf-8</code>. Requests for identifiers absent from the published data return <code>404 Not Found</code>.</p>
+    <p>For example, an RDF client requesting a station would receive this redirect before retrieving its description:</p>
+<pre><code>GET /resource/station/RF-02 HTTP/1.1
+Host: madridnoise.linkeddata.es
+Accept: text/turtle
+
+HTTP/1.1 303 See Other
+Location: https://madridnoise.linkeddata.es/data/station/RF-02
+Vary: Accept</code></pre>
+    <p>The describing RDF document makes assertions about <code>https://madridnoise.linkeddata.es/resource/station/RF-02</code>, not about <code>.../data/station/RF-02</code> as though that document were the station. All responses above are the agreed design for the later publication stage, not implemented hosting in this assignment. See <a href="https://www.w3.org/TR/cooluris/#conneg" target="_blank">W3C content negotiation</a>.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">3.6 Persistence and External Resources</div>
+    <p>Once minted, an identifier is retained across CSV reorderings, added records, corrected labels, corrected measurements and changes in implementation. A corrected value for the same station/date/period updates the existing observation; a genuinely different observation key identifies a different observation. Retired stations retain their identifiers and available historical descriptions. Ontology or dataset release dates may be recorded in metadata without inserting a release version into every term or entity URI.</p>
+    <p>Ontology terms must not be repurposed for incompatible meanings. New terms receive new local names; deprecated terms keep their original identifiers. If the publication infrastructure changes, preserve the public base and routes or maintain redirects and document any unavoidable migration.</p>
+    <p>Links to external entities and reused vocabularies keep the external provider's URI unchanged. Districts and neighbourhoods are intended as geographic linking resources for later assignments. Identity links will be added only after verification; a similar name or nearby coordinates alone do not establish identity. Our local identifier remains stable when an external link is added.</p>
+    <p>The separation of vocabulary, entity and document paths and the use of source keys follow the <a href="https://www.w3.org/TR/ld-bp/#uri-design-principles" target="_blank">W3C URI design principles</a> and <a href="https://www.w3.org/TR/ld-bp/#uri-policy-for-persistence" target="_blank">URI persistence guidance</a>.</p>
+  </div>
+
+  <h2 id="ontology-model">4. Ontology Model</h2>
+
+  <div class="req-card">
+    <div class="req-title">4.1 Classes and Application Coverage</div>
+    <p><code>ontology/ontology.ttl</code> defines six local classes and seventeen local application properties. Each property has one explicit domain and one explicit range. Labels and comments use English for the course self-assessment; Spanish source names remain data values. Domain and range statements infer types and are not validation constraints.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Class</th><th>Meaning and source</th><th>Role in the application</th></tr>
+      <tr><td><code>mn:NoiseMonitoringStation</code></td><td>A fixed noise-monitoring site from the station catalog; subclass of <code>sosa:Platform</code> and <code>geo:SpatialThing</code>.</td><td>Station identity, name and map location.</td></tr>
+      <tr><td><code>mn:DailyNoiseObservation</code></td><td>The acoustic indicators in one station/date/period CSV row; subclass of <code>sosa:Observation</code>.</td><td>Retrieve the <code>N</code>-period LAeq for a station and date range.</td></tr>
+      <tr><td><code>mn:DayPeriod</code></td><td>The controlled D/E/N/T reporting periods.</td><td>Keep daytime, evening, night and total measurements distinct.</td></tr>
+      <tr><td><code>mn:Terrace</code></td><td>A registered terrace identified by <code>id_terraza</code>; subclass of <code>geo:SpatialThing</code>.</td><td>Count distinct terrace IDs within a radius using usable approximate locations.</td></tr>
+      <tr><td><code>mn:District</code></td><td>A Madrid district identified by a verified census district code.</td><td>Geographic resource intended for later external linking.</td></tr>
+      <tr><td><code>mn:Neighbourhood</code></td><td>A Madrid neighbourhood identified by a verified census neighbourhood code.</td><td>Geographic resource intended for later external linking.</td></tr>
+    </table>
+    </div>
+    <p>Radius-dependent counts, averages and correlations are computed from these facts by the later application. The lightweight model retains station code/name/location, noise date/period/indicators, and terrace ID/location/district/neighbourhood. Station geographic names require reconciliation before coded relationships are added; the current <code>hasDistrict</code> and <code>hasNeighbourhood</code> properties describe terraces.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">4.2 Properties and Source-Field Mappings</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Property</th><th>Kind</th><th>Domain</th><th>Range</th><th>Meaning and source mapping</th></tr>
+      <tr><td><code>mn:recordedAt</code></td><td>Object</td><td><code>mn:DailyNoiseObservation</code></td><td><code>mn:NoiseMonitoringStation</code></td><td>Station link obtained by normalizing <code>Estación</code> to the catalog's RF code.</td></tr>
+      <tr><td><code>mn:forPeriod</code></td><td>Object</td><td><code>mn:DailyNoiseObservation</code></td><td><code>mn:DayPeriod</code></td><td><code>Periodo</code> mapped to <code>period:D/E/N/T</code>.</td></tr>
+      <tr><td><code>mn:hasDistrict</code></td><td>Object</td><td><code>mn:Terrace</code></td><td><code>mn:District</code></td><td>Verified <code>id_distrito_local</code>.</td></tr>
+      <tr><td><code>mn:hasNeighbourhood</code></td><td>Object</td><td><code>mn:Terrace</code></td><td><code>mn:Neighbourhood</code></td><td>Verified <code>id_barrio_local</code>, preserving the census coding scheme.</td></tr>
+      <tr><td><code>mn:stationCode</code></td><td>Datatype</td><td><code>mn:NoiseMonitoringStation</code></td><td><code>xsd:string</code></td><td>Canonical catalog <code>ESTACIÓN</code>, for example RF-02.</td></tr>
+      <tr><td><code>mn:stationName</code></td><td>Datatype</td><td><code>mn:NoiseMonitoringStation</code></td><td><code>xsd:string</code></td><td>Catalog <code>NOMBRE</code>; Spanish proper names are preserved.</td></tr>
+      <tr><td><code>mn:observationDate</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:date</code></td><td><code>Año</code>, <code>Mes</code> and <code>Día</code> joined as YYYY-MM-DD; the source reporting date, without inventing a timestamp.</td></tr>
+      <tr><td><code>mn:periodCode</code></td><td>Datatype</td><td><code>mn:DayPeriod</code></td><td><code>xsd:string</code></td><td>The uppercase controlled D/E/N/T code.</td></tr>
+      <tr><td><code>mn:laeq</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:decimal</code></td><td><code>LAeq</code>: equivalent continuous A-weighted sound level over the reporting period, in dB(A).</td></tr>
+      <tr><td><code>mn:las01</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:decimal</code></td><td><code>L1</code>: sound level exceeded for 1% of the period, in dB(A).</td></tr>
+      <tr><td><code>mn:las10</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:decimal</code></td><td><code>L10</code>: sound level exceeded for 10% of the period, in dB(A).</td></tr>
+      <tr><td><code>mn:las50</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:decimal</code></td><td><code>L50</code>: sound level exceeded for 50% of the period, in dB(A).</td></tr>
+      <tr><td><code>mn:las90</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:decimal</code></td><td><code>L90</code>: sound level exceeded for 90% of the period, in dB(A).</td></tr>
+      <tr><td><code>mn:las99</code></td><td>Datatype</td><td><code>mn:DailyNoiseObservation</code></td><td><code>xsd:decimal</code></td><td><code>L99</code>: sound level exceeded for 99% of the period, in dB(A).</td></tr>
+      <tr><td><code>mn:terraceId</code></td><td>Datatype</td><td><code>mn:Terrace</code></td><td><code>xsd:integer</code></td><td><code>id_terraza</code>, rather than the premises identifier.</td></tr>
+      <tr><td><code>mn:latitude</code></td><td>Datatype</td><td><code>geo:SpatialThing</code></td><td><code>xsd:decimal</code></td><td>WGS84 latitude in decimal degrees; subproperty of <code>geo:lat</code>. Use repaired station geographic values or transform valid ETRS89 / UTM 30N coordinates.</td></tr>
+      <tr><td><code>mn:longitude</code></td><td>Datatype</td><td><code>geo:SpatialThing</code></td><td><code>xsd:decimal</code></td><td>WGS84 longitude in decimal degrees; subproperty of <code>geo:long</code>. Apply the same coordinate-source rule as latitude.</td></tr>
+    </table>
+    </div>
+    <p>Decimal commas become dots in RDF literals. Unavailable measurements are omitted rather than asserted as zero or <code>"N/D"^^xsd:decimal</code>. Geographic source names can be attached as <code>rdfs:label</code> values. Standard annotation and dataset-metadata properties retain their external definitions; we do not redefine their domains or ranges.</p>
+  </div>
+
+  <div class="req-card">
+    <div class="req-title">4.3 Vocabulary Reuse and Documentation</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Vocabulary and reference</th><th>Reuse and rationale</th></tr>
+      <tr><td><a href="https://www.w3.org/TR/vocab-ssn/" target="_blank">SOSA/SSN, W3C Recommendation (2017)</a></td><td>Extend <code>sosa:Platform</code> for monitoring sites and <code>sosa:Observation</code> for reporting observations. <code>recordedAt</code> links to a station platform; it is not substituted with <code>sosa:madeBySensor</code>, because the selected catalog does not identify individual hosted sensors. Local indicator properties preserve the six fields carried by each source row.</td></tr>
+      <tr><td><a href="https://www.w3.org/2003/01/geo/" target="_blank">W3C Basic Geo vocabulary</a></td><td>Reuse <code>geo:SpatialThing</code> and align coordinates through <code>rdfs:subPropertyOf</code>. Local coordinate properties keep an explicit shared domain and decimal range for the assignment, while retaining the WGS84 semantics of <code>geo:lat</code> and <code>geo:long</code>.</td></tr>
+      <tr><td><a href="https://www.w3.org/TR/vocab-dcat-3/" target="_blank">DCAT 3</a> and <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/" target="_blank">DCMI Metadata Terms</a></td><td>Describe generated datasets with <code>dcat:Dataset</code> and retain source, licence, publisher, creator and date metadata using existing terms.</td></tr>
+    </table>
+    </div>
+    <p>External vocabulary namespaces are reused unchanged; there is no claim that we maintain those vocabularies. Their authoritative specifications above identify the versions and semantics considered for this model. Local classes and properties supply the source-specific identities, reporting periods and indicators. Each local term has an English label and definition in Turtle, with this section supplying the human-readable model documentation.</p>
+    <p>The ontology records its creator and version. Section 3.6 defines the local compatibility and URI-persistence policy. Group 03 is responsible for retaining identifiers and maintaining the publication routes when hosting is arranged. Domain permission and operational publication remain prerequisites for that later stage.</p>
+    <p><code>ontology/ontology-example.ttl</code> demonstrates station RF-02, its real day and night observations on 2020-01-01, terrace 37, the D/E/N/T periods and the terrace's district/neighbourhood resources. Measurements come from the selected CSV rows. Terrace coordinates are transformed from the documented projected CRS; station coordinates are repaired from the source geographic strings. Dataset metadata records the extract and snapshot scope. These are instance assertions; class/property declarations belong in the ontology file.</p>
+  </div>
+
+</body>
+</html>

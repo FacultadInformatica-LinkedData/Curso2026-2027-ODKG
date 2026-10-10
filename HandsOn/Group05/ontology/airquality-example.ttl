@@ -1,0 +1,24 @@
+@prefix aq:      <https://w3id.org/valencia-airquality/ontology/airquality#> .
+@prefix city:    <https://w3id.org/valencia-airquality/resource/City/> .
+@prefix station: <https://w3id.org/valencia-airquality/resource/MonitoringStation/> .
+@prefix prop:    <https://w3id.org/valencia-airquality/resource/ObservableProperty/> .
+@prefix obs:     <https://w3id.org/valencia-airquality/resource/Observation/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+# City
+city:Valencia a aq:City .
+
+# Monitoring station
+station:AvdaFrancia a aq:MonitoringStation ;
+    aq:stationName "Avda. Francia"^^xsd:string ;
+    aq:locatedInCity city:Valencia .
+
+# Observable property
+prop:NO2 a aq:ObservableProperty .
+
+# Observation: NO2 at Avda. Francia on 2020-01-01 at 01:00 (value 37 in the CSV)
+obs:AvdaFrancia_20200101T0100_NO2 a aq:Observation ;
+    aq:hasStation station:AvdaFrancia ;
+    aq:observedProperty prop:NO2 ;
+    aq:resultTime "2020-01-01T01:00:00"^^xsd:dateTime ;
+    aq:resultValue "37"^^xsd:decimal .

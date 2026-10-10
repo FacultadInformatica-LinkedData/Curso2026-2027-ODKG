@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Analysis, License Analysis and Resource Naming Strategy</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 25px;
+            color: #222;
+            background: #fff;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 6px;
+        }
+        h3 {
+            margin-top: 28px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 9px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f2f2f2;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, monospace;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+        .note {
+            background: #f7f7f7;
+            border-left: 4px solid #777;
+            padding: 12px 15px;
+            margin: 18px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Dataset Analysis, License Analysis and Resource Naming Strategy</h1>
+
+<h2>1. Analyze the Dataset</h2>
+
+<h3>1.1 Dataset description</h3>
+
+<p>
+The dataset used in this project is <strong>"Aparcamientos públicos municipales (rotacionales).
+Histórico de ocupación"</strong>, published by the Ayuntamiento de Madrid, from Jan 2019 to August 2026. 
+It contains monthly information about the occupancy of municipal public car parks
+that operate as rotational or mixed-use car parks.
+</p>
+
+<p>
+The information is supplied by the companies responsible for managing the car parks.
+The dataset is provided as yearly CSV files. The available files cover the years
+2019 to 2026, with the 2026 data being partial because the year is still in progress.
+
+For the detailed analysis below, we will use the year 2025 dataset.
+</p>
+
+<p>
+There is also a related dataset, <strong>"Aparcamientos municipales. Número de plazas"</strong>,
+which contains information about the municipal car parks, including their locations.
+This dataset can be useful for adding more information to the occupancy data.
+</p>
+
+<h3>1.2 Dataset size</h3>
+
+<p>
+The 2025 file contains 606 data rows, excluding an empty line at the end of the file.
+It contain 12 columns and information about 52 car parks located in 12 different
+districts of Madrid.
+</p>
+
+<ul>
+    <li><strong>Time period:</strong> January to December 2025</li>
+    <li><strong>Car parks:</strong> 52</li>
+    <li><strong>Districts:</strong> 12</li>
+    <li><strong>Total capacity:</strong> 16,238 parking spaces</li>
+    <li><strong>Columns:</strong> 12</li>
+</ul>
+
+<h3>1.3 Schema</h3>
+
+<p>
+The main columns in the dataset are:
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Column</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>AÑO</code></td>
+            <td>Integer</td>
+            <td>Year of the observation.</td>
+        </tr>
+        <tr>
+            <td><code>MES</code></td>
+            <td>Integer</td>
+            <td>Month of the observation, from 1 to 12.</td>
+        </tr>
+        <tr>
+            <td><code>NOMBRE DEL APARCAMIENTO</code></td>
+            <td>String</td>
+            <td>Name of the car park.</td>
+        </tr>
+        <tr>
+            <td><code>CÓDIDO PAR</code></td>
+            <td>Integer</td>
+            <td>PAR code identifying the car park. The column name contains a typo in the original source.</td>
+        </tr>
+        <tr>
+            <td><code>TIPO</code></td>
+            <td>String</td>
+            <td>Type of car park. The values in the analysed file are <code>ROT</code>.</td>
+        </tr>
+        <tr>
+            <td><code>NUM PLAZAS</code></td>
+            <td>Integer</td>
+            <td>Number of parking spaces.</td>
+        </tr>
+        <tr>
+            <td><code>CÓDIGO DISTRITO</code></td>
+            <td>Integer</td>
+            <td>Code of the Madrid district.</td>
+        </tr>
+        <tr>
+            <td><code>DISTRITO</code></td>
+            <td>String</td>
+            <td>Name of the Madrid district.</td>
+        </tr>
+        <tr>
+            <td><code>Días Cálculo</code></td>
+            <td>Integer</td>
+            <td>Number of days used to calculate the monthly values.</td>
+        </tr>
+        <tr>
+            <td><code>Vehículos día (media)</code></td>
+            <td>Integer</td>
+            <td>Average number of vehicles per day.</td>
+        </tr>
+        <tr>
+            <td><code>Ocupación (%)</code></td>
+            <td>String</td>
+            <td>Occupancy percentage for the calculation period, stored using a comma as the decimal separator and including the percent sign.</td>
+        </tr>
+        <tr>
+            <td><code>Ocupación 9h-21h (%)</code></td>
+            <td>String</td>
+            <td>Occupancy percentage between 09:00 and 21:00.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+The occupancy columns are stored as text in the original CSV, for example
+<code>38,3%</code>. For the RDF representation, the percentage sign and comma
+decimal separator will need to be converted so that the value can be represented
+as a decimal.
+</p>
+
+<h3>1.4 What does one row represent?</h3>
+
+<p>
+Each row represents the occupancy information for <strong>one car park during one month</strong>.
+Therefore, an observation can be identified using the car park code, year and month.
+For example, the combination <code>5000 + 2025 + 01</code> represents the January
+2025 occupancy information for the Almagro car park.
+</p>
+
+<p>
+This structure is also useful when creating identifiers for the monthly occupancy
+records. A combination of the car park code, year and month provides a stable way
+to distinguish one monthly observation from another.
+</p>
+
+<h3>1.5 Data quality and preprocessing</h3>
+
+<p>
+Several characteristics of the source data were considered before using the dataset.
+</p>
+
+<ul>
+    <li>
+        <strong>Empty line:</strong> the 2025 file contains an empty trailing line,
+        which is ignored during the analysis.
+    </li>
+    <li>
+        <strong>Column name:</strong> the source contains the header
+        <code>CÓDIDO PAR</code>. The original spelling is preserved when describing
+        the source, while the PAR code itself is used as the identifier.
+    </li>
+    <li>
+        <strong>Occupancy percentages:</strong> values such as <code>38,3%</code>
+        are stored as strings and should be converted to decimal values for RDF.
+    </li>
+    <li>
+        <strong>District names:</strong> some district values contain trailing spaces.
+        Districts should therefore be identified primarily using their district code.
+    </li>
+    <li>
+        <strong>Accents:</strong> Spanish accents and names are kept when representing
+        the original values, but they are not used to construct URIs.
+    </li>
+    <li>
+        <strong>Missing months:</strong> not every car park necessarily has an observation
+        for every month. Missing observations should not automatically be treated as zero.
+    </li>
+    <li>
+        <strong>Partial calculation periods:</strong> some observations are calculated
+        using fewer days than a complete month. The <code>Días Cálculo</code> value is
+        therefore preserved.
+    </li>
+    <li>
+        <strong>Occupancy above 100%:</strong> at least one value is above 100%.
+        For example, Almagro has an occupancy of 126.2% in August 2025. This value
+        is kept because a rotational car park can serve more vehicles during a day
+        than the number of physical parking spaces.
+    </li>
+    <li>
+        <strong>Zero average vehicles:</strong> four rows have a value of zero for
+        average daily vehicles. These rows are kept rather than removed.
+    </li>
+    <li>
+        <strong>Car park type:</strong> the analysed rows contain <code>ROT</code>.
+        The catalogue describes Plaza Mayor and Montalbán as mixed-use car parks,
+        so this difference is documented rather than silently changed.
+    </li>
+</ul>
+
+<h3>1.6 Combining the yearly files</h3>
+
+<p>
+The yearly files can be combined after checking that they follow the same general
+structre. The 2026 file is partial and should therefore be treated differently
+from complete years.
+</p>
+
+<p>
+A monthly observation can be identified by combining the <strong>PAR code, year and
+month</strong>. The PAR code is particularly useful because it provides a more stable
+identifier for a car park than its name, which may contain accents, spaces, or could
+change over time.
+</p>
+
+<p>
+The dataset is also updated monthly, so the process used to generate the RDF data
+should be repeatable. New monthly observations can be added without changing the
+identifiers of existing car parks.
+</p>
+
+<h3>1.7 Possible links to other datasets</h3>
+
+<p>
+The PAR code can be used to connect the occupancy dataset with the companion
+municipal parking dataset containing information such as the location of the
+car parks.
+</p>
+
+<p>
+Districts can also be connected to external resources representing Madrid's
+administrative areas. These links would connect one entity to another entity
+rather than simply adding external information as a literal value.
+</p>
+
+
+<h2>2. Analyze the License</h2>
+
+<h3>2.1 Publisher and rightsholder</h3>
+
+<p>
+The dataset is published by the <strong>Ayuntamiento de Madrid</strong>. The
+municipality is therefore identified as the publisher/rightsholder of the
+source dataset in the project documentation.
+</p>
+
+<h3>2.2 License of the source dataset</h3>
+
+<p>
+The source dataset is published under the <strong>Creative Commons Attribution 4.0
+International (CC BY 4.0)</strong> license.
+</p>
+
+<p>
+This license allows the data to be reused, copied, redistributed and adapted,
+including for commercial purposes, provided that the required attribution is
+given. When the data is modified, the changes should also be indicated.
+</p>
+
+<p>
+The main requirements when reusing the dataset are therefore:
+</p>
+
+<ul>
+    <li>Give appropriate attribution to the source.</li>
+    <li>Provide a link to the license.</li>
+    <li>Indicate if changes were made to the original data.</li>
+</ul>
+
+<h3>2.3 License for the generated dataset</h3>
+
+<p>
+For the dataset generated in this project, we propose using the same
+<strong>CC BY 4.0</strong> license. This allows the resulting dataset to remain
+open and reusable while requiring users to provide appropriate attribution.
+</p>
+
+<p>
+The generted dataset should include attribution to the Ayuntamiento de Madrid
+and should make clear that the data has been transformed as part of this project.
+The license and source information can also be represented in machine-readable
+form using metadata such as the dataset's license, source and publisher.
+</p>
+
+
+<h2>3. Define a Resource Naming Strategy</h2>
+
+<h3>3.1 Base domain</h3>
+
+<p>
+The project uses the following domain as a placeholder:
+</p>
+
+<pre>https://parking-madrid.example.org/</pre>
+
+<div class="note">
+    <strong>Important:</strong> <code>example.org</code> is only a placeholder and
+    should be replaced with the real domain that will be used when the dataset
+    is published.
+</div>
+
+<p>
+HTTPS is used as the URI scheme. The strategy separates the URIs used for the
+ontology from the URIs used for the individual resources represented by the data.
+</p>
+
+<h3>3.2 URI structure</h3>
+
+<p>
+A different path is used for the ontology and for individual resources. This makes
+it easy to distinguish the concepts defined by the project from the actual
+resources represented in the dataset.
+</p>
+
+<p><strong>Ontology:</strong></p>
+
+<pre>https://parking-madrid.example.org/ontology#</pre>
+
+<p><strong>Car parks:</strong></p>
+
+<pre>https://parking-madrid.example.org/resource/parking/{parCode}</pre>
+
+<p><strong>Districts:</strong></p>
+
+<pre>https://parking-madrid.example.org/resource/district/{districtCode}</pre>
+
+<p><strong>Monthly occupancy observations:</strong></p>
+
+<pre>https://parking-madrid.example.org/resource/occupancy/{parCode}-{yyyy}-{mm}</pre>
+
+<p><strong>Datasets:</strong></p>
+
+<pre>https://parking-madrid.example.org/resource/dataset/{name}</pre>
+
+<h3>3.3 Naming rules</h3>
+
+<ul>
+    <li>
+        <strong>Car parks:</strong> use the PAR code rather than the car park name.
+        For example, PAR code <code>5000</code> becomes
+        <code>/resource/parking/5000</code>.
+    </li>
+    <li>
+        <strong>Districts:</strong> use the district code rather than the district name.
+    </li>
+    <li>
+        <strong>Occupancy observations:</strong> use the PAR code, year and month.
+        This makes each monthly observation distinguishable.
+    </li>
+    <li>
+        <strong>Ontology terms:</strong> use the <code>/ontology#</code> namespace.
+    </li>
+    <li>
+        <strong>Individuals:</strong> use the <code>/resource/</code> path.
+    </li>
+    <li>
+        <strong>Classes:</strong> use UpperCamelCase, for example
+        <code>ParkingFacility</code>.
+    </li>
+    <li>
+        <strong>Properties:</strong> use lowerCamelCase, for example
+        <code>hasName</code> or <code>locatedInDistrict</code>.
+    </li>
+    <li>
+        Avoid spaces, accents and special characters in URIs.
+    </li>
+    <li>
+        Do not use the human-readable name of a car park as its main identifier.
+        Names are less suitable because they can contain spaces and accents and
+        may change over time.
+    </li>
+    <li>
+        Property URIs are defined directly under the ontology namespace rather
+        than being placed underneath the URI of a particular class.
+    </li>
+</ul>
+
+<h3>3.4 Examples</h3>
+
+<p>
+Using the proposed strategy, the Almagro car park with PAR code 5000 would have:
+</p>
+
+<pre>https://parking-madrid.example.org/resource/parking/5000</pre>
+
+<p>
+District 7 would have:
+</p>
+
+<pre>https://parking-madrid.example.org/resource/district/7</pre>
+
+<p>
+The January 2025 occupancy observation for PAR code 5000 would have:
+</p>
+
+<pre>https://parking-madrid.example.org/resource/occupancy/5000-2025-01</pre>
+
+<p>
+An ontology class would use the ontology namespace, for example:
+</p>
+
+<pre>https://parking-madrid.example.org/ontology#ParkingFacility</pre>
+
+<p>
+An ontology property would also use the ontology namespace:
+</p>
+
+<pre>https://parking-madrid.example.org/ontology#locatedInDistrict</pre>
+
+<p>
+This naming strategy provides stable and predictable identifiers for the resources
+in the dataset while keeping ontology terms and individual data resources clearly
+separated.
+</p>
+
+</body>
+</html>

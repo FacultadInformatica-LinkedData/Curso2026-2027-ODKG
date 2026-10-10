@@ -1,0 +1,56 @@
+{
+    "@context":{
+        "ex": "http://example.org/",
+        "schema": "http://schema.org/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "population": "ex:population",
+        "country": "ex:country",
+        "universities": "ex:universities",
+        "fullName": "ex:fullName",
+        "acronym": "ex:acronym"
+    },
+    "@id": "ex:Seville",
+    "@type": "schema:City",
+    "population": {
+        "@value": 689423,
+        "@type": "xsd:integer"
+    },
+    "country": {
+        "@id": "ex:Spain",
+        "@type": "schema:Country"
+    },
+    "universities":[
+        {
+            "@id": "ex:University_of_Seville",
+            "@type": "schema:CollegeOrUniversity",
+            "fullName": "University of Seville",
+            "acronym": "US"
+        },
+        {
+            "@id": "ex:University_of_Pablo_de_Olavide",
+            "@type": "schema:CollegeOrUniversity",
+            "fullName": "University of Pablo de Olavide",
+            "acronym": "UPO"
+        },
+        {
+            "@id": "ex:University_of_Loyola",
+            "@type": "schema:CollegeOrUniversity",
+            "fullName": "University of Loyola",
+            "acronym": "ULA"
+        },
+        {
+            "@id": "ex:International_University_of_Andalusia",
+            "@type": "schema:CollegeOrUniversity",
+            "fullName": "International University of Andalusia",
+            "acronym": "UNIA"
+        },
+        {
+            "@id": "ex:CEU_University_Fernando_III",
+            "@type": "schema:CollegeOrUniversity",
+            "fullName": "CEU University Fernando III",
+            "acronym": "CEU"
+        }
+    ]
+
+
+}

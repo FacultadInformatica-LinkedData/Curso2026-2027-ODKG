@@ -1,0 +1,227 @@
+@prefix hr:      <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+#################################################################
+#    Ontology
+#################################################################
+
+<https://w3id.org/barcelona-heat-relief/ontology/HeatRelief> rdf:type owl:Ontology ;
+    dcterms:title "Barcelona Heat Relief Ontology"@en ;
+    dcterms:description "Lightweight ontology describing climate shelters, drinking fountains and street trees of Barcelona, and the neighbourhoods and districts where they are."@en ;
+    dcterms:created "2026-10-05T00:00:00"^^xsd:dateTime ;
+    dcterms:creator "Group 08" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    vann:preferredNamespacePrefix "hr" ;
+    vann:preferredNamespaceUri "https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#" ;
+    owl:versionInfo "1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+dcterms:title rdf:type owl:AnnotationProperty .
+dcterms:description rdf:type owl:AnnotationProperty .
+dcterms:created rdf:type owl:AnnotationProperty .
+dcterms:creator rdf:type owl:AnnotationProperty .
+dcterms:license rdf:type owl:AnnotationProperty .
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+skos:broadMatch rdf:type owl:AnnotationProperty .
+
+#################################################################
+#    Classes
+#################################################################
+
+geo:SpatialThing rdf:type owl:Class ;
+    rdfs:label "Spatial thing"@en ;
+    rdfs:comment "Anything with a spatial extent or position, from the W3C Basic Geo vocabulary."@en .
+
+hr:UrbanElement rdf:type owl:Class ;
+    rdfs:subClassOf geo:SpatialThing ;
+    rdfs:label "Urban element"@en ;
+    rdfs:comment "A physical element of the city that helps people to cope with heat: a climate shelter, a drinking fountain or a street tree."@en .
+
+hr:ClimateShelter rdf:type owl:Class ;
+    rdfs:subClassOf hr:UrbanElement ;
+    rdfs:label "Climate shelter"@en ;
+    rdfs:comment "A place of the climate shelter network of Barcelona, where people can protect themselves from heat."@en .
+
+hr:DrinkingFountain rdf:type owl:Class ;
+    rdfs:subClassOf hr:UrbanElement ;
+    rdfs:label "Drinking fountain"@en ;
+    rdfs:comment "A public drinking fountain of Barcelona."@en .
+
+hr:StreetTree rdf:type owl:Class ;
+    rdfs:subClassOf hr:UrbanElement ;
+    rdfs:label "Street tree"@en ;
+    rdfs:comment "A tree or a palm of the street tree inventory of Barcelona."@en .
+
+[] rdf:type owl:AllDisjointClasses ;
+    owl:members ( hr:ClimateShelter hr:DrinkingFountain hr:StreetTree ) .
+
+hr:ShelterCategory rdf:type owl:Class ;
+    rdfs:label "Shelter category"@en ;
+    rdfs:comment "A kind of place used as a climate shelter, such as a library, a swimming pool or a market. It is derived from the name of the shelter."@en .
+
+hr:Facility rdf:type owl:Class ;
+    rdfs:label "Facility"@en ;
+    rdfs:comment "A place, such as a library, a market or a park, that hosts a climate shelter. Facilities are identified by their Wikidata items."@en .
+
+hr:TreeSpecies rdf:type owl:Class ;
+    rdfs:label "Tree species"@en ;
+    rdfs:comment "A tree species as catalogued by the city of Barcelona. An entry can also be a cultivar, a variety or a form of a species. Entries are linked to Wikidata taxa."@en .
+
+hr:Neighbourhood rdf:type owl:Class ;
+    rdfs:label "Neighbourhood"@en ;
+    rdfs:comment "One of the 73 neighbourhoods (barris) of Barcelona, identified by its two-digit code. Neighbourhoods are linked to their Wikidata items."@en .
+
+hr:District rdf:type owl:Class ;
+    rdfs:label "District"@en ;
+    rdfs:comment "One of the 10 districts of Barcelona, identified by its two-digit code. Districts are linked to their Wikidata items."@en .
+
+#################################################################
+#    Object properties
+#################################################################
+
+hr:isLocatedInNeighbourhood rdf:type owl:ObjectProperty ;
+    rdfs:domain hr:UrbanElement ;
+    rdfs:range hr:Neighbourhood ;
+    rdfs:label "is located in neighbourhood"@en ;
+    rdfs:comment "Links an urban element to the neighbourhood where it is."@en .
+
+hr:isPartOfDistrict rdf:type owl:ObjectProperty ;
+    rdfs:domain hr:Neighbourhood ;
+    rdfs:range hr:District ;
+    rdfs:label "is part of district"@en ;
+    rdfs:comment "Links a neighbourhood to the district that contains it."@en .
+
+hr:hasShelterCategory rdf:type owl:ObjectProperty ;
+    rdfs:domain hr:ClimateShelter ;
+    rdfs:range hr:ShelterCategory ;
+    rdfs:label "has shelter category"@en ;
+    rdfs:comment "Links a climate shelter to its category, derived from its name."@en .
+
+hr:isHostedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain hr:ClimateShelter ;
+    rdfs:range hr:Facility ;
+    rdfs:label "is hosted by"@en ;
+    rdfs:comment "Links a climate shelter to the place that hosts it, identified by its Wikidata item."@en .
+
+hr:hasSpecies rdf:type owl:ObjectProperty ;
+    rdfs:domain hr:StreetTree ;
+    rdfs:range hr:TreeSpecies ;
+    rdfs:label "has species"@en ;
+    rdfs:comment "Links a street tree to its species."@en .
+
+#################################################################
+#    Datatype properties
+#################################################################
+
+hr:streetAddress rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:UrbanElement ;
+    rdfs:range xsd:string ;
+    rdfs:label "street address"@en ;
+    rdfs:comment "Street and number of the urban element, as written in the source."@en .
+
+hr:etrs89X rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:UrbanElement ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "ETRS89 X coordinate"@en ;
+    rdfs:comment "Easting in ETRS89 / UTM zone 31N (EPSG:25831), in metres."@en .
+
+hr:etrs89Y rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:UrbanElement ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "ETRS89 Y coordinate"@en ;
+    rdfs:comment "Northing in ETRS89 / UTM zone 31N (EPSG:25831), in metres."@en .
+
+geo:lat rdf:type owl:DatatypeProperty ;
+    rdfs:domain geo:SpatialThing ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "latitude"@en ;
+    rdfs:comment "WGS84 latitude in decimal degrees, from the W3C Basic Geo vocabulary."@en .
+
+geo:long rdf:type owl:DatatypeProperty ;
+    rdfs:domain geo:SpatialThing ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "longitude"@en ;
+    rdfs:comment "WGS84 longitude in decimal degrees, from the W3C Basic Geo vocabulary."@en .
+
+hr:openingHours rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:ClimateShelter ;
+    rdfs:range xsd:string ;
+    rdfs:label "opening hours"@en ;
+    rdfs:comment "Opening hours of the climate shelter as plain text, converted from the HTML table of the source."@en .
+
+hr:email rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:ClimateShelter ;
+    rdfs:range xsd:string ;
+    rdfs:label "e-mail"@en ;
+    rdfs:comment "Contact e-mail address of the climate shelter."@en .
+
+hr:website rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:ClimateShelter ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "website"@en ;
+    rdfs:comment "Web page of the climate shelter."@en .
+
+hr:telephone rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:ClimateShelter ;
+    rdfs:range xsd:string ;
+    rdfs:label "telephone"@en ;
+    rdfs:comment "Contact telephone number of the climate shelter, as written in the source."@en .
+
+hr:treeCategory rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:StreetTree ;
+    rdfs:range xsd:string ;
+    rdfs:label "tree category"@en ;
+    rdfs:comment "Category of the tree in the inventory of the city (EXEMPLAR, PRIMERA, SEGONA or TERCERA)."@en .
+
+hr:plantingDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:StreetTree ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "planting date"@en ;
+    rdfs:comment "Date on which the tree was planted. The source gives only the day, so the time is always 00:00:00; xsd:dateTime is used because xsd:date is not in the OWL 2 datatype map and reasoners such as HermiT reject it."@en .
+
+hr:irrigationType rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:StreetTree ;
+    rdfs:range xsd:string ;
+    rdfs:label "irrigation type"@en ;
+    rdfs:comment "Type of irrigation of the tree, such as drip irrigation or hose."@en .
+
+hr:irrigationWaterType rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:StreetTree ;
+    rdfs:range xsd:string ;
+    rdfs:label "irrigation water type"@en ;
+    rdfs:comment "Type of water used to irrigate the tree, such as drinking water or regenerated water."@en .
+
+hr:greenSpace rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:StreetTree ;
+    rdfs:range xsd:string ;
+    rdfs:label "green space"@en ;
+    rdfs:comment "Name of the green space that the tree belongs to."@en .
+
+hr:scientificName rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:TreeSpecies ;
+    rdfs:range xsd:string ;
+    rdfs:label "scientific name"@en ;
+    rdfs:comment "Scientific name of the species, as written by the city."@en .
+
+hr:spanishName rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:TreeSpecies ;
+    rdfs:range xsd:string ;
+    rdfs:label "Spanish name"@en ;
+    rdfs:comment "Common name of the species in Spanish."@en .
+
+hr:catalanName rdf:type owl:DatatypeProperty ;
+    rdfs:domain hr:TreeSpecies ;
+    rdfs:range xsd:string ;
+    rdfs:label "Catalan name"@en ;
+    rdfs:comment "Common name of the species in Catalan."@en .

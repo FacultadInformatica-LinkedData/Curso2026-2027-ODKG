@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis & Resource Naming Strategy</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; line-height: 1.6; margin: 40px; color: #333; max-width: 1000px; }
+        h1, h2, h3, h4 { color: #2c3e50; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 30px; }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 14px; }
+        th, td { border: 1px solid #ffffff; padding: 10px; text-align: left; vertical-align: top; }
+        th { background-color: #2b78e4; color: white; font-weight: bold; }
+        tr:nth-child(odd) { background-color: #dbe5f1; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        td:first-child { font-weight: bold; }
+        code { background-color: rgba(0,0,0,0.05); padding: 2px 4px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>Dataset & Licensing Analysis</h1>
+
+    <h2>1. Dataset Analysis</h2>
+    <p>We analyzed two datasets from the Chicago Data Portal: <strong>CPD_Facilities</strong> and <strong>CPD_Park_Art</strong>.</p>
+
+    <h3>1.1. Facilities Dataset</h3>
+    <p>Each row is one facility (a playground, a tennis court, a gymnasium, etc.) located in a park.</p>
+    <ul>
+        <li><strong>Quantities:</strong> 4,467 rows and 9 columns.</li>
+        <li><strong>Null Values:</strong> Very clean data. The only missing values are one blank <code>FACILITY_N</code> and one blank <code>FACILITY_T</code>, and both belong to the same row (<code>OBJECTID_1</code> 4482, Gately Park). That row describes no facility and will be removed.</li>
+        <li><strong>Unique Values:</strong> 549 distinct park numbers (<code>PARK_NO</code>) but 562 distinct park names (<code>PARK</code>), 75 distinct facility names and 3 facility categories.</li>
+        
+        <li><strong>Data Type Issues:</strong>
+            <ul>
+                <li>The identifier columns <code>OBJECTID_1</code>, <code>PARK_NO</code> and <code>GISOBJID</code> use a non-breaking space as thousands separator (e.g. <code>1&nbsp;111</code>), which is why they import as text.</li>
+                <li>The coordinate columns (<code>X_COORD</code>, <code>Y_COORD</code>) use commas as decimal separators (e.g. <code>-87,52486664</code>).</li>
+            </ul>
+        </li>
+        <li><strong>Consistency Issues:</strong>
+            <ul>
+                <li>Several park numbers appear with more than one name. Most are spelling or formatting variants (<code>MARQUETTE (jACQUES)</code>, <code>PALMER ( POTTER)</code>, <code>GATELY</code>/<code>GATLEY</code>, <code>MORAN (TERRANCE)</code>/<code>MORAN (TERRENCE)</code>).</li>
+                <li>Some park numbers carry genuinely different parks: 19 (Jackson / Garfield), 168 (Matanky / Renaissance), 213 (Harrison / Stanton). Conversely, Garfield appears under 19 and 204, and Stanton under 109 and 213. Since Park URIs are built from <code>PARK_NO</code>, these rows must be checked and corrected manually.</li>
+                <li><code>the_geom</code> duplicates <code>X_COORD</code>/<code>Y_COORD</code>, and the two disagree by more than 1 m in 66 rows (up to about 200 m).</li>
+                <li><code>GISOBJID</code> is not a reliable identifier: it contains two <code>0</code> placeholders.</li>
+                <li>The <code>FACILITY_N</code> column has some rows with similar names that represent the same facility (e.g. <code>FITNESS CENTER</code>/<code>FITNESS COURSE</code>).</li>
+            </ul>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Comments / Range</th>
+                <th>Problems</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>the_geom</td>
+                <td>String (Point)</td>
+                <td>Spatial point in WKT format, e.g. <code>POINT (-87.6377 41.7630)</code></td>
+                <td>Redundant with <code>X_COORD</code>/<code>Y_COORD</code>; differs from them by up to ~200 m in some rows.</td>
+            </tr>
+            <tr>
+                <td>OBJECTID_1</td>
+                <td>Integer</td>
+                <td>Unique row identifier. Range 1 to 4,511 (44 gaps, so the maximum is not the row count).</td>
+                <td>Non-breaking space as thousands separator. Needs cleanup and conversion to Integer.</td>
+            </tr>
+            <tr>
+                <td>PARK</td>
+                <td>String</td>
+                <td>Name of the park (562 distinct values for 549 park numbers)</td>
+                <td>Case and spacing variants, misspellings, and a few genuinely different names under the same <code>PARK_NO</code>.</td>
+            </tr>
+            <tr>
+                <td>PARK_NO</td>
+                <td>Integer</td>
+                <td>Park identifier. Range 2 to 1,288; 549 distinct parks.</td>
+                <td>Non-breaking space as thousands separator. Some numbers are shared by different parks.</td>
+            </tr>
+            <tr>
+                <td>FACILITY_N</td>
+                <td>String</td>
+                <td>Facility name (75 distinct values, e.g. <code>PLAYGROUND</code>, <code>TENNIS COURT</code>)</td>
+                <td>1 missing value (same row as the missing <code>FACILITY_T</code>).</td>
+            </tr>
+            <tr>
+                <td>FACILITY_T</td>
+                <td>String</td>
+                <td>Facility category: OUTDOOR (4,016), INDOOR (297), SPECIAL (153)</td>
+                <td>1 missing value.</td>
+            </tr>
+            <tr>
+                <td>X_COORD</td>
+                <td>Float</td>
+                <td>Longitude. Range -87.84 to -87.52</td>
+                <td>Uses comma (,) as decimal separator. Needs conversion to numeric.</td>
+            </tr>
+            <tr>
+                <td>Y_COORD</td>
+                <td>Float</td>
+                <td>Latitude. Range 41.65 to 42.02</td>
+                <td>Uses comma (,) as decimal separator. Needs conversion to numeric.</td>
+            </tr>
+            <tr>
+                <td>GISOBJID</td>
+                <td>Integer</td>
+                <td>Internal CPD GIS identifier. Range 1,428 to 6,810</td>
+                <td>Non-breaking space as thousands separator; 2 rows with placeholder <code>0</code>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>1.2. Park Art Dataset</h3>
+    <p>Each row is one public artwork (sculpture, mural, fountain, memorial, etc.) located in a park.</p>
+    <ul>
+        <li><strong>Quantities:</strong> 346 rows and 11 columns.</li>
+        <li><strong>Null Values:</strong> Missing data in <code>ARTIST</code> (15 blanks), <code>OWNER</code> (53 blanks) and <code>OFFICIAL_N</code> (164 blanks).</li>
+        <li><strong>Unique Values:</strong> 117 distinct park numbers (119 distinct park names), 325 distinct artwork names and 263 distinct artist values.</li>
+        <li><strong>Data Type Issues:</strong>
+            <ul>
+                <li>As in the facilities data, <code>PARK_NO</code> and <code>GISOBJID</code> use a non-breaking space as thousands separator, and <code>X_COORD</code>/<code>Y_COORD</code> use commas as decimal separators. The same transformations apply.</li>
+            </ul>
+        </li>
+        <li><strong>Consistency Issues:</strong>
+            <ul>
+                <li><strong>Artists:</strong> besides the 15 blanks, 10 rows contain the literal value "Unknown". 55 cells list several artists or a firm (e.g. <code>Frederick &amp; Elisabeth Hibbard</code>, <code>Adler &amp; Sullivan</code>), and the same person is sometimes written differently (<code>Frederick C. Hibbard</code> / <code>Frederick Cleveland Hibbard</code>). Some names contain characters that are not URI-safe (<code>&amp;</code>, commas, <code>ø</code>).</li>
+                <li><strong>Owners:</strong> the same organisation appears under several labels (<code>CPD</code>, <code>City of Chicago</code>, <code>COC</code>, <code>City of Chicago &amp; CPD</code>), there are typos (<code>On loan to Notebaert Musuem</code>), and a few owners are individuals.</li>
+                <li><strong>Artwork names:</strong> <code>NAME</code> is not unique ("Playground Art" appears 10 times, "Mosaic" 5 times), so it cannot be used in URIs. <code>OFFICIAL_N</code> is an optional formal title: identical to <code>NAME</code> in 122 rows and different in 60, so it is modelled as an alternative label.</li>
+                <li><strong>Parks:</strong> a few park names vary under the same number (<code>McKINLEY</code>/<code>MCKINLEY</code>, <code>LINCOLN</code>/<code>LINCOLN (ABRAHAM)</code>), and King Park appears under both 265 and 334.</li>
+                <li><code>GISOBJID</code> contains 38 placeholder <code>0</code> values.</li>
+            </ul>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Comments / Range</th>
+                <th>Problems</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>the_geom</td>
+                <td>String (Point)</td>
+                <td>Spatial point in WKT format</td>
+                <td>Redundant with <code>X_COORD</code>/<code>Y_COORD</code>; small differences (up to ~24 m).</td>
+            </tr>
+            <tr>
+                <td>OBJECTID</td>
+                <td>Integer</td>
+                <td>Unique row identifier. Range 1 to 354 (8 gaps)</td>
+                <td>Imported as String by default. Needs conversion to Integer.</td>
+            </tr>
+            <tr>
+                <td>PARK</td>
+                <td>String</td>
+                <td>Name of the park (119 distinct values for 117 park numbers)</td>
+                <td>Case variants and inconsistent naming under the same <code>PARK_NO</code>.</td>
+            </tr>
+            <tr>
+                <td>PARK_NO</td>
+                <td>Integer</td>
+                <td>Park identifier, shared with the facilities dataset. Range 4 to 1,270</td>
+                <td>Non-breaking space as thousands separator. Needs cleanup and conversion to Integer.</td>
+            </tr>
+            <tr>
+                <td>NAME</td>
+                <td>String</td>
+                <td>Name of the artwork (325 distinct values)</td>
+                <td>Not unique: 27 rows share a name with another artwork.</td>
+            </tr>
+            <tr>
+                <td>X_COORD</td>
+                <td>Float</td>
+                <td>Longitude. Range -87.82 to -87.53</td>
+                <td>Uses comma (,) as decimal separator. Needs conversion to numeric.</td>
+            </tr>
+            <tr>
+                <td>Y_COORD</td>
+                <td>Float</td>
+                <td>Latitude. Range 41.67 to 42.02</td>
+                <td>Uses comma (,) as decimal separator. Needs conversion to numeric.</td>
+            </tr>
+            <tr>
+                <td>ARTIST</td>
+                <td>String</td>
+                <td>Name of the artist(s) (263 distinct values)</td>
+                <td>15 blanks and 10 "Unknown"; 55 multi-artist or firm cells; name variants; URI-unsafe characters.</td>
+            </tr>
+            <tr>
+                <td>OWNER</td>
+                <td>String</td>
+                <td>Owner entity (24 distinct values; CPD owns 231 artworks)</td>
+                <td>53 missing values; inconsistent labels and typos.</td>
+            </tr>
+            <tr>
+                <td>GISOBJID</td>
+                <td>Integer</td>
+                <td>Internal CPD GIS identifier. Range 1,231 to 6,777</td>
+                <td>Non-breaking space as thousands separator; 38 rows with placeholder <code>0</code>. Not used as an identifier.</td>
+            </tr>
+            <tr>
+                <td>OFFICIAL_N</td>
+                <td>String</td>
+                <td>Official title of the artwork, when different or formalised</td>
+                <td>164 missing values; equal to <code>NAME</code> in 122 rows.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>1.3. Relationship Between the Datasets</h3>
+    <ul>
+        <li><strong>Join key:</strong> <code>PARK_NO</code> links both datasets. A park has many facilities and many artworks, so <strong>Park</strong> is the central entity of the graph.</li>
+        <li><strong>Overlap:</strong> 111 of the 117 parks with art also appear in the facilities dataset. The other 6 (e.g. Ogden Plaza, Washington Square, Mid-North) only appear in the art data, so Park resources are generated from the union of both datasets: 555 distinct parks.</li>
+        <li><strong>Name agreement:</strong> for 7 park numbers present in both datasets the names never match. Most are spelling variants (<code>PETERSON (PAHR SAMUEL)</code> / <code>PETERSON (PEHR SAMUEL)</code>, <code>GARIBALDI (GIUSEPPE)</code> / <code>GARIBALDI (GIUSEPPI)</code>), but parks 115 and 265 carry completely different names and need manual review.</li>
+    </ul>
+
+    <h2>2. Licensing Analysis</h2>
+    <ul>
+        <li><strong>Publisher:</strong> City of Chicago (Chicago Data Portal)</li>
+        <li><strong>Rightsholder:</strong> Chicago Park District</li>
+        <li><strong>Original License:</strong> The data portal provides the raw datasets under a "Public Domain" designation. However, their Terms of Use states that secondary applications utilizing modified data must feature a specific legal disclaimer acknowledging the City of Chicago as the source and disclaiming liability.</li>
+        <li><strong>Proposed License:</strong> Because the source data is Public Domain, we will publish the generated RDF datasets under a <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> license. This satisfies the requirement to credit the City of Chicago while allowing the data to be freely shared, linked, and adapted.</li>
+    </ul>
+
+    <h2>3. Resource Naming Strategy</h2>
+    <ul>
+        <li><strong>Hash URIs</strong> for ontological terms, <strong>slash URIs</strong> for data individuals.</li>
+        <li><strong>Ontological terms path:</strong> <code>http://smartcity.chicago.es/ontology/ParkExplorer#</code></li>
+        <li><strong>Individuals path:</strong> <code>http://smartcity.chicago.es/resource/</code></li>
+    </ul>
+
+    <h3>3.1. URI Component Breakdown</h3>
+    <p>Following the structural patterns defined in the methodology, the URIs are composed as follows:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Pattern</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Class</strong></td>
+                <td><code>[ontologyName]#[className]</code></td>
+                <td><code>.../ontology/ParkExplorer#ChicagoPark</code></td>
+            </tr>
+            <tr>
+                <td><strong>Property</strong></td>
+                <td><code>[ontologyName]#[propertyName]</code></td>
+                <td><code>.../ontology/ParkExplorer#hasFacility</code></td>
+            </tr>
+            <tr>
+                <td><strong>Individual</strong></td>
+                <td><code>[className]/[identifier]</code></td>
+                <td><code>.../resource/ChicagoPark/165</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.2. Individual Identifier Mapping</h3>
+    <p>The <code>[identifier]</code> for each individual is derived directly from the source datasets:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Target Class</th>
+                <th>Identifier Source</th>
+                <th>Example URI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>:ChicagoPark</code></td>
+                <td>Cleaned integer from <code>PARK_NO</code></td>
+                <td><code>.../resource/ChicagoPark/165</code></td>
+            </tr>
+            <tr>
+                <td><code>:Facility</code></td>
+                <td>Cleaned integer from <code>OBJECTID_1</code></td>
+                <td><code>.../resource/Facility/2494</code></td>
+            </tr>
+            <tr>
+                <td><code>:Artwork</code></td>
+                <td>Cleaned integer from <code>OBJECTID</code></td>
+                <td><code>.../resource/Artwork/1</code></td>
+            </tr>
+            <tr>
+                <td><code>:Artist</code></td>
+                <td>Sanitized artist name string (URI-safe)</td>
+                <td><code>.../resource/Artist/Phil_Schuster</code></td>
+            </tr>
+            <tr>
+                <td><code>schema:GeoCoordinates</code></td>
+                <td>Associated entity Class and ID</td>
+                <td><code>.../resource/GeoCoordinates/Artwork_1</code></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,148 @@
+@prefix am: <https://w3id.org/active-madrid/ontology#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix geo1: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+schema1:address a owl:ObjectProperty ;
+    rdfs:label "address" ;
+    rdfs:domain am:SportsFacility ;
+    rdfs:range schema1:PostalAddress .
+
+owl:versionInfo a owl:AnnotationProperty .
+
+am: a owl:Ontology ;
+    dc:creator "Group12" ;
+    dc:title "Active Madrid Ontology" ;
+    owl:versionInfo "1.0" ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+am:hasActivity a owl:ObjectProperty ;
+    rdfs:label "has activity" ;
+    rdfs:domain am:SportsClass ;
+    rdfs:range am:SportActivity .
+
+am:locatedInDistrict a owl:ObjectProperty ;
+    rdfs:label "located in district" ;
+    rdfs:domain am:SportsFacility ;
+    rdfs:range am:District .
+
+am:takesPlaceAt a owl:ObjectProperty ;
+    rdfs:label "takes place at" ;
+    rdfs:domain am:SportsClass ;
+    rdfs:range am:SportsFacility .
+
+schema1:PostalAddress a owl:Class ;
+    rdfs:label "Postal Address" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:streetAddress ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:postalCode ] .
+
+schema1:SportsActivityLocation a owl:Class ;
+    rdfs:label "Sports Activity Location" .
+
+schema1:email a owl:DatatypeProperty ;
+    rdfs:label "email" .
+
+schema1:postalCode a owl:DatatypeProperty ;
+    rdfs:label "postal code" .
+
+schema1:streetAddress a owl:DatatypeProperty ;
+    rdfs:label "street address" .
+
+schema1:telephone a owl:DatatypeProperty ;
+    rdfs:label "telephone" .
+
+geo1:lat a owl:DatatypeProperty ;
+    rdfs:label "lat" .
+
+geo1:long a owl:DatatypeProperty ;
+    rdfs:label "long" .
+
+time:Interval a owl:Class ;
+    rdfs:label "Interval" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty time:hasBeginning ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty time:hasEnd ] .
+
+time:hasBeginning a owl:DatatypeProperty ;
+    rdfs:label "has beginning" .
+
+time:hasEnd a owl:DatatypeProperty ;
+    rdfs:label "has end" .
+
+time:hasTime a owl:ObjectProperty ;
+    rdfs:label "has time" .
+
+am:District a owl:Class ;
+    rdfs:label "District" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:name ] .
+
+am:SportActivity a owl:Class ;
+    rdfs:label "Sport Activity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:name ] .
+
+am:availablePlaces a owl:DatatypeProperty ;
+    rdfs:label "available places" .
+
+am:occupiedPlaces a owl:DatatypeProperty ;
+    rdfs:label "occupied places" .
+
+am:offeredPlaces a owl:DatatypeProperty ;
+    rdfs:label "offered places" .
+
+schema1:name a owl:DatatypeProperty ;
+    rdfs:label "name" .
+
+am:SportsClass a owl:Class ;
+    rdfs:label "Sports Class" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty am:offeredPlaces ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty am:occupiedPlaces ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty am:availablePlaces ],
+        [ a owl:Restriction ;
+            owl:someValuesFrom time:Interval ;
+            owl:onProperty time:hasTime ] .
+
+am:SportsFacility a owl:Class ;
+    rdfs:label "Sports Facility" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:email ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty geo1:lat ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty geo1:long ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:telephone ],
+        schema1:SportsActivityLocation .
+
