@@ -1,11 +1,4 @@
-﻿AÑO;MES;"NOMBRE DEL
-APARCAMIENTO";"CÓDIDO
-PAR";TIPO;"NUM
-PLAZAS";"CÓDIGO
-DISTRITO";DISTRITO;"Días
-Cálculo";"Vehículos
-día (media)";Ocupación (%);"Ocupación
-9h-21h (%)"
+﻿AÑO;MES;"NOMBRE DEL APARCAMIENTO";"CÓDIDO PAR";TIPO;"NUM PLAZAS";"CÓDIGO DISTRITO";DISTRITO;"Días Cálculo";"Vehículos día (media)";Ocupación (%);"Ocupación 9h-21h (%)"
 2025;1;ALMAGRO;5000;ROT;453;7;CHAMBERI            ;31;173;38,3%;51,5%
 2025;2;ALMAGRO;5000;ROT;453;7;CHAMBERI            ;28;184;40,7%;56,0%
 2025;3;ALMAGRO;5000;ROT;453;7;CHAMBERI            ;31;192;42,4%;57,7%

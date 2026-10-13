@@ -80,37 +80,67 @@ that operate as rotational or mixed-use car parks.
 </p>
 
 <p>
-The information is supplied by the companies responsible for managing the car parks.
-The dataset is provided as yearly CSV files. The available files cover the years
-2019 to 2026, with the 2026 data being partial because the year is still in progress.
-
-For the detailed analysis below, we will use the year 2025 dataset.
+The information is supplied by the companies responsible for managing the car parks. The dataset is provided as yearly CSV files. 
+The available files cover the years 2019 to 2026, with the 2026 data being partial because the year is still in progress. These data 
+sources files are renamed to <code><i>year</i>-aparcamientos-ocupa-historico.csv</code> for convenience.
 </p>
 
 <p>
 There is also a related dataset, <strong>"Aparcamientos municipales. Número de plazas"</strong>,
 which contains information about the municipal car parks, including their locations.
-This dataset can be useful for adding more information to the occupancy data.
+This dataset can be useful for adding more information to the occupancy data. Theis data source 
+file is renamed to <code>2026-inventario-pars-agos.csv</code> for convenience.
 </p>
 
 <h3>1.2 Dataset size</h3>
 
+<h4>1.2.1 Aparcamientos públicos municipales (rotacionales). Histórico de ocupación</h4>
 <p>
-The 2025 file contains 606 data rows, excluding an empty line at the end of the file.
-It contain 12 columns and information about 52 car parks located in 12 different
-districts of Madrid.
+With bash command <code>cat *-aparcamientos-* | wc -l</code>, we found that the approximately total number of lines is 4765 
+in all historical data files. After excluding the headlines, the rough number of data rows are 4757 (without data cleaning). 
+<br>
+<br>
+Since each historical data file shares an identical schema, for the detailed analysis below, we will use the year 2025 dataset. 
+In <code>2025-aparcamientos-ocupa-historico.csv</code>, it contain 12 columns and information about 52 car parks located in 12 
+different districts of Madrid. 
 </p>
 
 <ul>
     <li><strong>Time period:</strong> January to December 2025</li>
     <li><strong>Car parks:</strong> 52</li>
-    <li><strong>Districts:</strong> 12</li>
+    <li><strong>Number of Districts:</strong> 12</li>
     <li><strong>Total capacity:</strong> 16,238 parking spaces</li>
     <li><strong>Columns:</strong> 12</li>
 </ul>
 
+<h4>1.2.2 Inventario de aparcamientos públicos municipales</h4>
+<p>
+In <code>2026-inventario-pars-agos.csv</code>, the dataset contains 301
+records and 22 columns.
+Each record describes a car park in Madrid, including its identifying
+information, parking capacity, operational status, administrative location,
+and geographic coordinates.
+</p>
+
+<ul>
+    <li><strong>Car parks:</strong> 301</li>
+    <li><strong>Columns:</strong> 22</li>
+    <li><strong>Most common type:</strong> RESIDENCIAL (233 car parks)</li>
+    <li><strong>Operational status:</strong> 294 car parks are ABIERTO (open)</li>
+    <li><strong>Private car parks:</strong> 3</li>
+    <li><strong>Number of Districts:</strong> 21</li>
+</ul>
+
+<p>
+The dataset also contains missing values in some attributes, particularly
+<code>PZS DISUASORIAS</code>, which has 294 missing values. Overall, the
+dataset is relatively small and suitable for RDF transformation and
+integration with the historical parking occupancy dataset.
+</p>
+
 <h3>1.3 Schema</h3>
 
+<h4>1.3.1 Aparcamientos públicos municipales (rotacionales). Histórico de ocupación</h4>
 <p>
 The main columns in the dataset are:
 </p>
@@ -193,6 +223,153 @@ The occupancy columns are stored as text in the original CSV, for example
 decimal separator will need to be converted so that the value can be represented
 as a decimal.
 </p>
+
+<h4>1.3.2 Inventario de aparcamientos públicos municipales</h4>
+
+<p>
+The main columns in the dataset are:
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Column</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>CÓDIGO APARC</code></td>
+            <td>Integer</td>
+            <td>Unique identifier of the car park.</td>
+        </tr>
+        <tr>
+            <td><code>NOMBRE APARC</code></td>
+            <td>String</td>
+            <td>Name of the car park.</td>
+        </tr>
+        <tr>
+            <td><code>TIPO</code></td>
+            <td>String</td>
+            <td>Type of car park. The values include <code>RESIDENCIAL</code>, <code>MIXTO</code>, <code>ROTACIONAL</code>, and <code>DISUASORIO</code>.</td>
+        </tr>
+        <tr>
+            <td><code>PZS ROTACIÓN</code></td>
+            <td>Decimal</td>
+            <td>Number of parking spaces for rotational parking. Some records have missing values.</td>
+        </tr>
+        <tr>
+            <td><code>PZS RESIDENTES</code></td>
+            <td>Integer</td>
+            <td>Number of parking spaces allocated to residents.</td>
+        </tr>
+        <tr>
+            <td><code>PZS DISUASORIAS</code></td>
+            <td>Decimal</td>
+            <td>Number of parking spaces for dissuasive parking (park-and-ride). Most records have missing values.</td>
+        </tr>
+        <tr>
+            <td><code>PZS TOTALES</code></td>
+            <td>Integer</td>
+            <td>Total number of parking spaces in the car park.</td>
+        </tr>
+        <tr>
+            <td><code>NUM PLANTAS</code></td>
+            <td>Integer</td>
+            <td>Number of floors in the car park.</td>
+        </tr>
+        <tr>
+            <td><code>ESTADO</code></td>
+            <td>String</td>
+            <td>Operational status of the car park. The values include <code>ABIERTO</code> (open), <code>EN OBRAS</code> (under construction), <code>CERRADO</code> (closed), and <code>OTROS</code> (other).</td>
+        </tr>
+        <tr>
+            <td><code>PRIVADO</code></td>
+            <td>String</td>
+            <td>Indicates whether the car park is private, using <code>SÍ</code> or <code>NO</code>.</td>
+        </tr>
+        <tr>
+            <td><code>DISUASORIO</code></td>
+            <td>String</td>
+            <td>Indicates whether the car park is classified as dissuasive (park-and-ride), using <code>SÍ</code> or <code>NO</code>.</td>
+        </tr>
+        <tr>
+            <td><code>COD DISTRITO</code></td>
+            <td>Integer</td>
+            <td>Code identifying the Madrid district where the car park is located.</td>
+        </tr>
+        <tr>
+            <td><code>DISTRITO</code></td>
+            <td>String</td>
+            <td>Name of the Madrid district.</td>
+        </tr>
+        <tr>
+            <td><code>COD BARRIO</code></td>
+            <td>Integer</td>
+            <td>Code identifying the neighbourhood associated with the car park.</td>
+        </tr>
+        <tr>
+            <td><code>BARRIO</code></td>
+            <td>String</td>
+            <td>Name of the neighbourhood where the car park is located.</td>
+        </tr>
+        <tr>
+            <td><code>COD SER</code></td>
+            <td>Integer</td>
+            <td>Additional identifier associated with the car park in the source dataset.</td>
+        </tr>
+        <tr>
+            <td><code>LATITUD</code></td>
+            <td>Decimal</td>
+            <td>Geographic latitude of the car park.</td>
+        </tr>
+        <tr>
+            <td><code>LONGITUD</code></td>
+            <td>Decimal</td>
+            <td>Geographic longitude of the car park.</td>
+        </tr>
+        <tr>
+            <td><code>COD CATASTRO</code></td>
+            <td>String</td>
+            <td>Cadastral reference identifying the associated property. This field may contain missing values.</td>
+        </tr>
+        <tr>
+            <td><code>URL</code></td>
+            <td>String</td>
+            <td>URL linking to additional information about the car park. Some records do not provide a URL.</td>
+        </tr>
+        <tr>
+            <td><code>COD PK</code></td>
+            <td>Integer</td>
+            <td>Additional parking-related identifier provided by the source dataset.</td>
+        </tr>
+        <tr>
+            <td><code>DIRECCIÓN</code></td>
+            <td>String</td>
+            <td>Postal address of the car park, including street information and, where available, the postal code and city.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+The dataset contains missing values in several columns, particularly
+<code>PZS ROTACIÓN</code>, <code>PZS DISUASORIAS</code>,
+<code>COD CATASTRO</code>, <code>URL</code>, and <code>COD PK</code>.
+These missing values should be handled appropriately when transforming
+the CSV data into an RDF representation.
+</p>
+
+<p>
+For the RDF representation, numeric capacity and geographic coordinates
+can be represented using appropriate XML Schema datatypes, such as
+<code>xsd:integer</code> and <code>xsd:decimal</code>. Identifiers,
+cadastral references, addresses, and URLs should be represented according
+to their semantics rather than converted indiscriminately into numeric
+values. In particular, cadastral references should remain strings because
+they contain letters as well as digits.
+</p>
+
 
 <h3>1.4 What does one row represent?</h3>
 
