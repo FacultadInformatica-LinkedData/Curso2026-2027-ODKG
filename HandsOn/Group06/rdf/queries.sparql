@@ -1,0 +1,143 @@
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# Q1. Number of individuals per class
+SELECT ?class (COUNT(?s) AS ?individuals)
+WHERE {
+  ?s a ?class .
+}
+GROUP BY ?class
+ORDER BY DESC(?individuals)
+
+
+# Q2. Full view of a service request with its linked entities
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?sr ?requestType ?status ?created ?organization ?service ?agent ?address ?latitude ?longitude ?region
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:requestType ?requestType ;
+      la311:status ?status ;
+      la311:createdDate ?created ;
+      la311:responsible/la311:name ?organization ;
+      la311:reportedBy/rdfs:label ?agent ;
+      la311:hasLocation ?location .
+  ?location la311:address ?address ;
+            la311:latitude ?latitude ;
+            la311:longitude ?longitude .
+  OPTIONAL { ?sr la311:assignedTo/la311:name ?service }
+  OPTIONAL { ?location la311:isWithin/rdfs:label ?region }
+}
+LIMIT 10
+
+
+# Q3. Number of service requests per request type
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+
+SELECT ?requestType (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:requestType ?requestType .
+}
+GROUP BY ?requestType
+ORDER BY DESC(?requests)
+
+
+# Q4. Number of service requests per status
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+
+SELECT ?status (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:status ?status .
+}
+GROUP BY ?status
+ORDER BY DESC(?requests)
+
+
+# Q5. Number of service requests per responsible organization
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+
+SELECT ?organization (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:responsible ?org .
+  ?org la311:name ?organization .
+}
+GROUP BY ?organization
+ORDER BY DESC(?requests)
+
+
+# Q6. Top 10 neighborhood councils by number of service requests
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+
+SELECT ?ncName ?cd ?cdMember (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr la311:hasLocation/la311:isWithin ?region .
+  ?region la311:ncName ?ncName ;
+          la311:cd ?cd .
+  OPTIONAL { ?region la311:cdMember ?cdMember }
+}
+GROUP BY ?ncName ?cd ?cdMember
+ORDER BY DESC(?requests)
+LIMIT 10
+
+
+# Q7. Number of service requests created per month
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+
+SELECT ?month (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:createdDate ?created .
+  BIND (MONTH(?created) AS ?month)
+}
+GROUP BY ?month
+ORDER BY ?month
+
+
+# Q8. Check: individuals without a type or without a label (should return 0)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (COUNT(DISTINCT ?s) AS ?withoutTypeOrLabel)
+WHERE {
+  ?s ?p ?o .
+  FILTER (NOT EXISTS { ?s a ?class } || NOT EXISTS { ?s rdfs:label ?label })
+}
+
+
+# Q9. Check: literals without the expected datatype (should return no rows)
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?p (COUNT(?o) AS ?wrongDatatype)
+WHERE {
+  VALUES (?p ?expected) {
+    (la311:createdDate xsd:dateTime)
+    (la311:updatedDate xsd:dateTime)
+    (la311:serviceDate xsd:dateTime)
+    (la311:closedDate xsd:dateTime)
+    (la311:latitude xsd:decimal)
+    (la311:longitude xsd:decimal)
+    (la311:cd xsd:integer)
+    (la311:nc xsd:integer)
+    (la311:srNumber xsd:string)
+    (la311:status xsd:string)
+  }
+  ?s ?p ?o .
+  FILTER (DATATYPE(?o) != ?expected)
+}
+GROUP BY ?p
+
+
+# Q10. Check: requests closed before being created (should return no rows)
+PREFIX la311: <http://www.owl-ontologies.com/la311#>
+
+SELECT ?sr ?created ?closed
+WHERE {
+  ?sr la311:createdDate ?created ;
+      la311:closedDate ?closed .
+  FILTER (?closed < ?created)
+}

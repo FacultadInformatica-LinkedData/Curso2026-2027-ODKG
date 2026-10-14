@@ -4,49 +4,110 @@
 
 #################################################################
 # Example 1: Indian Boundary Park (Park No. 165)
+# One artwork, one artist, one owner
 #################################################################
 
-<http://smartcity.chicago.es/resource/Park/165> a :ChicagoPark ;
+<http://smartcity.chicago.es/resource/ChicagoPark/165> a :ChicagoPark ;
     :parkName "INDIAN BOUNDARY" ;
     :parkNumber 165 ;
     :hasArtwork <http://smartcity.chicago.es/resource/Artwork/1> .
 
-### Artwork: River Suite located in Indian Boundary Park ###
+### Artwork: River Suite (ARTWORK_ID 1) ###
 <http://smartcity.chicago.es/resource/Artwork/1> a :Artwork ;
     :artworkName "River Suite" ;
-    :objectId 1 ;
-    :artworkGisObjectId "5856" ;
-    :owner "CPD" ;
+    :artworkGisObjectId 5856 ;
+    :owner <http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> ;
     :madeBy <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> ;
     schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_1> .
 
-### Coordinates of the Artwork ###
 <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_1> a schema:GeoCoordinates ;
-    schema:latitude "42.010165"^^xsd:float ;
-    schema:longitude "-87.69382"^^xsd:float .
+    schema:latitude "42.0101658765"^^xsd:double ;
+    schema:longitude "-87.6938203714"^^xsd:double .
 
-### Artist: Phil Schuster ###
+### Artist: Phil Schuster (ARTIST_ID = slug of ARTIST_NAME) ###
 <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> a :Artist ;
     :artistName "Phil Schuster" .
 
+### Owner: Chicago Park District (OWNER_ID = slug of OWNER_NAME) ###
+<http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> a :Owner ;
+    :ownerName "Chicago Park District" .
+
 
 #################################################################
-# Example 2: Alexander Hamilton Park (Park No. 9)
+# Example 2: Lincoln Park (Park No. 100)
+# An artwork with an official name, created by a firm
 #################################################################
 
-<http://smartcity.chicago.es/resource/Park/9> a :ChicagoPark ;
+<http://smartcity.chicago.es/resource/ChicagoPark/100> a :ChicagoPark ;
+    :parkName "LINCOLN (ABRAHAM)" ;
+    :parkNumber 100 ;
+    :hasArtwork <http://smartcity.chicago.es/resource/Artwork/85> .
+
+### Artwork: City Hall Relic (Finial) (ARTWORK_ID 85) ###
+<http://smartcity.chicago.es/resource/Artwork/85> a :Artwork ;
+    :artworkName "City Hall Relic (Finial)" ;
+    :officialName "City Hall Relic" ;
+    :artworkGisObjectId 1316 ;
+    :owner <http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> ;
+    :madeBy <http://smartcity.chicago.es/resource/Artist/Jenney_Loring> ;
+    schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_85> .
+
+<http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_85> a schema:GeoCoordinates ;
+    schema:latitude "41.9188563043"^^xsd:double ;
+    schema:longitude "-87.6361069978"^^xsd:double .
+
+### Artist: the architecture firm Jenney & Loring (kept as one creator) ###
+<http://smartcity.chicago.es/resource/Artist/Jenney_Loring> a :Artist ;
+    :artistName "Jenney & Loring" .
+
+
+#################################################################
+# Example 3: Jane Addams Memorial Park (Park No. 1224)
+# An artwork with two owners (one :owner triple each)
+#################################################################
+
+<http://smartcity.chicago.es/resource/ChicagoPark/1224> a :ChicagoPark ;
+    :parkName "ADDAMS (JANE) MEML." ;
+    :parkNumber 1224 ;
+    :hasArtwork <http://smartcity.chicago.es/resource/Artwork/248> .
+
+### Artwork: Jane Addams Mosaic (ARTWORK_ID 248) ###
+<http://smartcity.chicago.es/resource/Artwork/248> a :Artwork ;
+    :artworkName "Jane Addams Mosaic" ;
+    :artworkGisObjectId 6169 ;
+    :owner <http://smartcity.chicago.es/resource/Owner/City_of_Chicago>,
+           <http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> ;
+    :madeBy <http://smartcity.chicago.es/resource/Artist/Mirtes_Zwierzynski> ;
+    schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_248> .
+
+<http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_248> a schema:GeoCoordinates ;
+    schema:latitude "41.8927674856"^^xsd:double ;
+    schema:longitude "-87.6137508666"^^xsd:double .
+
+<http://smartcity.chicago.es/resource/Artist/Mirtes_Zwierzynski> a :Artist ;
+    :artistName "Mirtes Zwierzynski" .
+
+<http://smartcity.chicago.es/resource/Owner/City_of_Chicago> a :Owner ;
+    :ownerName "City of Chicago" .
+
+
+#################################################################
+# Example 4: Alexander Hamilton Park (Park No. 9)
+# A facility (URI built from FACILITY_ID, not from the GIS id)
+#################################################################
+
+<http://smartcity.chicago.es/resource/ChicagoPark/9> a :ChicagoPark ;
     :parkName "HAMILTON (ALEXANDER)" ;
     :parkNumber 9 ;
-    :hasFacility <http://smartcity.chicago.es/resource/Facility/2494> .
+    :hasFacility <http://smartcity.chicago.es/resource/Facility/1> .
 
-### Facility: Cultural Center in Hamilton Park ###
-<http://smartcity.chicago.es/resource/Facility/2494> a :Facility ;
+### Facility: Cultural Center in Hamilton Park (FACILITY_ID 1) ###
+<http://smartcity.chicago.es/resource/Facility/1> a :Facility ;
     :facilityName "CULTURAL CENTER" ;
     :facilityType "SPECIAL" ;
-    :facilityGisObjectId "2494" ;
-    schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Facility_2494> .
+    :facilityGisObjectId 2494 ;
+    schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Facility_1> .
 
-### Coordinates of the Facility ###
-<http://smartcity.chicago.es/resource/GeoCoordinates/Facility_2494> a schema:GeoCoordinates ;
-    schema:latitude "41.762999"^^xsd:float ;
-    schema:longitude "-87.637698"^^xsd:float .
+<http://smartcity.chicago.es/resource/GeoCoordinates/Facility_1> a schema:GeoCoordinates ;
+    schema:latitude "41.76299921"^^xsd:double ;
+    schema:longitude "-87.63769763"^^xsd:double .

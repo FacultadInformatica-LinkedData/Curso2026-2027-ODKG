@@ -1,0 +1,327 @@
+@prefix district: <https://w3id.org/barcelona-heat-relief/resource/District/> .
+@prefix hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@prefix neighbourhood: <https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+neighbourhood:01 a hr:Neighbourhood ;
+    rdfs:label "el Raval"@ca ;
+    hr:isPartOfDistrict district:01 .
+
+neighbourhood:02 a hr:Neighbourhood ;
+    rdfs:label "el Barri Gòtic"@ca ;
+    hr:isPartOfDistrict district:01 .
+
+neighbourhood:03 a hr:Neighbourhood ;
+    rdfs:label "la Barceloneta"@ca ;
+    hr:isPartOfDistrict district:01 .
+
+neighbourhood:04 a hr:Neighbourhood ;
+    rdfs:label "Sant Pere, Santa Caterina i la Ribera"@ca ;
+    hr:isPartOfDistrict district:01 .
+
+neighbourhood:05 a hr:Neighbourhood ;
+    rdfs:label "el Fort Pienc"@ca ;
+    hr:isPartOfDistrict district:02 .
+
+neighbourhood:06 a hr:Neighbourhood ;
+    rdfs:label "la Sagrada Família"@ca ;
+    hr:isPartOfDistrict district:02 .
+
+neighbourhood:07 a hr:Neighbourhood ;
+    rdfs:label "la Dreta de l'Eixample"@ca ;
+    hr:isPartOfDistrict district:02 .
+
+neighbourhood:08 a hr:Neighbourhood ;
+    rdfs:label "l'Antiga Esquerra de l'Eixample"@ca ;
+    hr:isPartOfDistrict district:02 .
+
+neighbourhood:09 a hr:Neighbourhood ;
+    rdfs:label "la Nova Esquerra de l'Eixample"@ca ;
+    hr:isPartOfDistrict district:02 .
+
+neighbourhood:10 a hr:Neighbourhood ;
+    rdfs:label "Sant Antoni"@ca ;
+    hr:isPartOfDistrict district:02 .
+
+neighbourhood:11 a hr:Neighbourhood ;
+    rdfs:label "el Poble-sec"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:12 a hr:Neighbourhood ;
+    rdfs:label "la Marina del Prat Vermell"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:13 a hr:Neighbourhood ;
+    rdfs:label "la Marina de Port"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:14 a hr:Neighbourhood ;
+    rdfs:label "la Font de la Guatlla"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:15 a hr:Neighbourhood ;
+    rdfs:label "Hostafrancs"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:16 a hr:Neighbourhood ;
+    rdfs:label "la Bordeta"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:17 a hr:Neighbourhood ;
+    rdfs:label "Sants - Badal"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:18 a hr:Neighbourhood ;
+    rdfs:label "Sants"@ca ;
+    hr:isPartOfDistrict district:03 .
+
+neighbourhood:19 a hr:Neighbourhood ;
+    rdfs:label "les Corts"@ca ;
+    hr:isPartOfDistrict district:04 .
+
+neighbourhood:20 a hr:Neighbourhood ;
+    rdfs:label "la Maternitat i Sant Ramon"@ca ;
+    hr:isPartOfDistrict district:04 .
+
+neighbourhood:21 a hr:Neighbourhood ;
+    rdfs:label "Pedralbes"@ca ;
+    hr:isPartOfDistrict district:04 .
+
+neighbourhood:22 a hr:Neighbourhood ;
+    rdfs:label "Vallvidrera, el Tibidabo i les Planes"@ca ;
+    hr:isPartOfDistrict district:05 .
+
+neighbourhood:23 a hr:Neighbourhood ;
+    rdfs:label "Sarrià"@ca ;
+    hr:isPartOfDistrict district:05 .
+
+neighbourhood:24 a hr:Neighbourhood ;
+    rdfs:label "les Tres Torres"@ca ;
+    hr:isPartOfDistrict district:05 .
+
+neighbourhood:25 a hr:Neighbourhood ;
+    rdfs:label "Sant Gervasi - la Bonanova"@ca ;
+    hr:isPartOfDistrict district:05 .
+
+neighbourhood:26 a hr:Neighbourhood ;
+    rdfs:label "Sant Gervasi - Galvany"@ca ;
+    hr:isPartOfDistrict district:05 .
+
+neighbourhood:27 a hr:Neighbourhood ;
+    rdfs:label "el Putxet i el Farró"@ca ;
+    hr:isPartOfDistrict district:05 .
+
+neighbourhood:28 a hr:Neighbourhood ;
+    rdfs:label "Vallcarca i els Penitents"@ca ;
+    hr:isPartOfDistrict district:06 .
+
+neighbourhood:29 a hr:Neighbourhood ;
+    rdfs:label "el Coll"@ca ;
+    hr:isPartOfDistrict district:06 .
+
+neighbourhood:30 a hr:Neighbourhood ;
+    rdfs:label "la Salut"@ca ;
+    hr:isPartOfDistrict district:06 .
+
+neighbourhood:31 a hr:Neighbourhood ;
+    rdfs:label "la Vila de Gràcia"@ca ;
+    hr:isPartOfDistrict district:06 .
+
+neighbourhood:32 a hr:Neighbourhood ;
+    rdfs:label "el Camp d'en Grassot i Gràcia Nova"@ca ;
+    hr:isPartOfDistrict district:06 .
+
+neighbourhood:33 a hr:Neighbourhood ;
+    rdfs:label "el Baix Guinardó"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:34 a hr:Neighbourhood ;
+    rdfs:label "Can Baró"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:35 a hr:Neighbourhood ;
+    rdfs:label "el Guinardó"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:36 a hr:Neighbourhood ;
+    rdfs:label "la Font d'en Fargues"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:37 a hr:Neighbourhood ;
+    rdfs:label "el Carmel"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:38 a hr:Neighbourhood ;
+    rdfs:label "la Teixonera"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:39 a hr:Neighbourhood ;
+    rdfs:label "Sant Genís dels Agudells"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:40 a hr:Neighbourhood ;
+    rdfs:label "Montbau"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:41 a hr:Neighbourhood ;
+    rdfs:label "la Vall d'Hebron"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:42 a hr:Neighbourhood ;
+    rdfs:label "la Clota"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:43 a hr:Neighbourhood ;
+    rdfs:label "Horta"@ca ;
+    hr:isPartOfDistrict district:07 .
+
+neighbourhood:44 a hr:Neighbourhood ;
+    rdfs:label "Vilapicina i la Torre Llobeta"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:45 a hr:Neighbourhood ;
+    rdfs:label "Porta"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:46 a hr:Neighbourhood ;
+    rdfs:label "el Turó de la Peira"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:47 a hr:Neighbourhood ;
+    rdfs:label "Can Peguera"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:48 a hr:Neighbourhood ;
+    rdfs:label "la Guineueta"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:49 a hr:Neighbourhood ;
+    rdfs:label "Canyelles"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:50 a hr:Neighbourhood ;
+    rdfs:label "les Roquetes"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:51 a hr:Neighbourhood ;
+    rdfs:label "Verdun"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:52 a hr:Neighbourhood ;
+    rdfs:label "la Prosperitat"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:53 a hr:Neighbourhood ;
+    rdfs:label "la Trinitat Nova"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:54 a hr:Neighbourhood ;
+    rdfs:label "Torre Baró"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:55 a hr:Neighbourhood ;
+    rdfs:label "Ciutat Meridiana"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:56 a hr:Neighbourhood ;
+    rdfs:label "Vallbona"@ca ;
+    hr:isPartOfDistrict district:08 .
+
+neighbourhood:57 a hr:Neighbourhood ;
+    rdfs:label "la Trinitat Vella"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:58 a hr:Neighbourhood ;
+    rdfs:label "Baró de Viver"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:59 a hr:Neighbourhood ;
+    rdfs:label "el Bon Pastor"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:60 a hr:Neighbourhood ;
+    rdfs:label "Sant Andreu"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:61 a hr:Neighbourhood ;
+    rdfs:label "la Sagrera"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:62 a hr:Neighbourhood ;
+    rdfs:label "el Congrés i els Indians"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:63 a hr:Neighbourhood ;
+    rdfs:label "Navas"@ca ;
+    hr:isPartOfDistrict district:09 .
+
+neighbourhood:64 a hr:Neighbourhood ;
+    rdfs:label "el Camp de l'Arpa del Clot"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:65 a hr:Neighbourhood ;
+    rdfs:label "el Clot"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:66 a hr:Neighbourhood ;
+    rdfs:label "el Parc i la Llacuna del Poblenou"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:67 a hr:Neighbourhood ;
+    rdfs:label "la Vila Olímpica del Poblenou"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:68 a hr:Neighbourhood ;
+    rdfs:label "el Poblenou"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:69 a hr:Neighbourhood ;
+    rdfs:label "Diagonal Mar i el Front Marítim del Poblenou"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:70 a hr:Neighbourhood ;
+    rdfs:label "el Besòs i el Maresme"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:71 a hr:Neighbourhood ;
+    rdfs:label "Provençals del Poblenou"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:72 a hr:Neighbourhood ;
+    rdfs:label "Sant Martí de Provençals"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+neighbourhood:73 a hr:Neighbourhood ;
+    rdfs:label "la Verneda i la Pau"@ca ;
+    hr:isPartOfDistrict district:10 .
+
+district:04 a hr:District ;
+    rdfs:label "Les Corts"@ca .
+
+district:01 a hr:District ;
+    rdfs:label "Ciutat Vella"@ca .
+
+district:06 a hr:District ;
+    rdfs:label "Gràcia"@ca .
+
+district:02 a hr:District ;
+    rdfs:label "Eixample"@ca .
+
+district:05 a hr:District ;
+    rdfs:label "Sarrià-Sant Gervasi"@ca .
+
+district:09 a hr:District ;
+    rdfs:label "Sant Andreu"@ca .
+
+district:03 a hr:District ;
+    rdfs:label "Sants-Montjuïc"@ca .
+
+district:10 a hr:District ;
+    rdfs:label "Sant Martí"@ca .
+
+district:07 a hr:District ;
+    rdfs:label "Horta-Guinardó"@ca .
+
+district:08 a hr:District ;
+    rdfs:label "Nou Barris"@ca .
+

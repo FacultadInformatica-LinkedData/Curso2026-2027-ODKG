@@ -1,0 +1,669 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EQUIPAMIENTO",
+    "expression": "grel:value.unescape(\"html\").unescape(\"html\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column EQUIPAMIENTO using expression grel:value.unescape(\"html\").unescape(\"html\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "grel:value.unescape(\"html\").unescape(\"html\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TRANSPORTE using expression grel:value.unescape(\"html\").unescape(\"html\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE-VIA",
+    "expression": "grel:value.unescape(\"html\").unescape(\"html\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NOMBRE-VIA using expression grel:value.unescape(\"html\").unescape(\"html\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NOMBRE using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NOMBRE using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EQUIPAMIENTO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column EQUIPAMIENTO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EQUIPAMIENTO",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column EQUIPAMIENTO using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TRANSPORTE using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TRANSPORTE using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CLASE-VIAL using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CLASE-VIAL using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE-VIA",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NOMBRE-VIA using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE-VIA",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NOMBRE-VIA using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NUM",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NUM using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NUM",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NUM using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BARRIO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BARRIO using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DISTRITO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DISTRITO using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODIGO-POSTAL",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CODIGO-POSTAL using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODIGO-POSTAL",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CODIGO-POSTAL using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COD-BARRIO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column COD-BARRIO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COD-BARRIO",
+    "expression": "grel:value.replace(/\\s+/, ' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column COD-BARRIO using expression grel:value.replace(/\\s+/, ' ')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "NOMBRE-VIA",
+    "expression": "grel:join(filter([cells.get(\"CLASE-VIAL\").value, value, cells.NUM.value], v, isNonBlank(v)), \" \")",
+    "onError": "set-to-blank",
+    "newColumnName": "DIRECCION",
+    "columnInsertIndex": 9,
+    "description": "Create column DIRECCION at index 9 based on column NOMBRE-VIA using expression grel:join(filter([cells.get(\"CLASE-VIAL\").value, value, cells.NUM.value], v, isNonBlank(v)), \" \")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "grel:if(value == \"DISTRITO\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DISTRITO using expression grel:if(value == \"DISTRITO\", null, value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COD-DISTRITO",
+    "expression": "grel:if(isBlank(cells.DISTRITO.value), null, '{\"CENTRO\": \"01\", \"ARGANZUELA\": \"02\", \"RETIRO\": \"03\", \"SALAMANCA\": \"04\", \"CHAMARTIN\": \"05\", \"TETUAN\": \"06\", \"CHAMBERI\": \"07\", \"FUENCARRAL-EL PARDO\": \"08\", \"MONCLOA-ARAVACA\": \"09\", \"LATINA\": \"10\", \"CARABANCHEL\": \"11\", \"USERA\": \"12\", \"PUENTE DE VALLECAS\": \"13\", \"MORATALAZ\": \"14\", \"CIUDAD LINEAL\": \"15\", \"HORTALEZA\": \"16\", \"VILLAVERDE\": \"17\", \"VILLA DE VALLECAS\": \"18\", \"VICALVARO\": \"19\", \"SAN BLAS-CANILLEJAS\": \"20\", \"BARAJAS\": \"21\"}'.parseJson().get(cells.DISTRITO.value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column COD-DISTRITO using expression grel:if(isBlank(cells.DISTRITO.value), null, '{\"CENTRO\": \"01\", \"ARGANZUELA\": \"02\", \"RETIRO\": \"03\", \"SALAMANCA\": \"04\", \"CHAMARTIN\": \"05\", \"TETUAN\": \"06\", \"CHAMBERI\": \"07\", \"FUENCARRAL-EL PARDO\": \"08\", \"MONCLOA-ARAVACA\": \"09\", \"LATINA\": \"10\", \"CARABANCHEL\": \"11\", \"USERA\": \"12\", \"PUENTE DE VALLECAS\": \"13\", \"MORATALAZ\": \"14\", \"CIUDAD LINEAL\": \"15\", \"HORTALEZA\": \"16\", \"VILLAVERDE\": \"17\", \"VILLA DE VALLECAS\": \"18\", \"VICALVARO\": \"19\", \"SAN BLAS-CANILLEJAS\": \"20\", \"BARAJAS\": \"21\"}'.parseJson().get(cells.DISTRITO.value))"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "SAN FERMÍN"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "SAN FERMIN"
+      },
+      {
+        "from": [
+          "MOSCARDÓ"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "MOSCARDO"
+      },
+      {
+        "from": [
+          "CONCEPCION"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "LA CONCEPCION"
+      },
+      {
+        "from": [
+          "LOS ANGELES"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ANGELES"
+      }
+    ],
+    "description": "Mass edit cells in column BARRIO"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "COD-BARRIO",
+    "expression": "grel:with('{\"LEGAZPI\": \"024\", \"SAN FERMIN\": \"123\", \"MOSCARDO\": \"125\", \"SANTA EUGENIA\": \"182\", \"EL SALVADOR\": \"208\", \"PALOMERAS SURESTE\": \"134\"}'.parseJson().get(if(isBlank(cells.BARRIO.value), \"\", cells.BARRIO.value)), fix, if(isNonBlank(fix), fix, if(and(isNonBlank(value), isNonBlank(cells.get(\"COD-DISTRITO\").value)), cells.get(\"COD-DISTRITO\").value + value, null)))",
+    "onError": "set-to-blank",
+    "newColumnName": "BARRIO_ID",
+    "columnInsertIndex": 20,
+    "description": "Create column BARRIO_ID at index 20 based on column COD-BARRIO using expression grel:with('{\"LEGAZPI\": \"024\", \"SAN FERMIN\": \"123\", \"MOSCARDO\": \"125\", \"SANTA EUGENIA\": \"182\", \"EL SALVADOR\": \"208\", \"PALOMERAS SURESTE\": \"134\"}'.parseJson().get(if(isBlank(cells.BARRIO.value), \"\", cells.BARRIO.value)), fix, if(isNonBlank(fix), fix, if(and(isNonBlank(value), isNonBlank(cells.get(\"COD-DISTRITO\").value)), cells.get(\"COD-DISTRITO\").value + value, null)))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "TIPO",
+    "expression": "grel:value.substring(value.lastIndexOf(\"/\") + 1).replace(/([a-z])([A-Z])/, \"$1 $2\")",
+    "onError": "set-to-blank",
+    "newColumnName": "TIPO_NOMBRE",
+    "columnInsertIndex": 32,
+    "description": "Create column TIPO_NOMBRE at index 32 based on column TIPO using expression grel:value.substring(value.lastIndexOf(\"/\") + 1).replace(/([a-z])([A-Z])/, \"$1 $2\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TIPO",
+    "expression": "grel:value.substring(value.lastIndexOf(\"/\") + 1).replace(/([a-z])([A-Z])/, \"$1-$2\").toLowercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TIPO using expression grel:value.substring(value.lastIndexOf(\"/\") + 1).replace(/([a-z])([A-Z])/, \"$1-$2\").toLowercase()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "TIPO",
+    "newColumnName": "TIPO_ID",
+    "description": "Rename column TIPO to TIPO_ID"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "ACCESIBILIDAD",
+    "expression": "grel:'{\"0\":\"No accesible\",\"1\":\"Accesible\",\"2\":\"Parcialmente accesible\",\"3\":\"Sin información\"}'.parseJson().get(value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "ACCESIBILIDAD_NOMBRE",
+    "columnInsertIndex": 8,
+    "description": "Create column ACCESIBILIDAD_NOMBRE at index 8 based on column ACCESIBILIDAD using expression grel:'{\"0\":\"No accesible\",\"1\":\"Accesible\",\"2\":\"Parcialmente accesible\",\"3\":\"Sin información\"}'.parseJson().get(value.trim())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PK",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PK using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ACCESIBILIDAD",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ACCESIBILIDAD using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CONTENT-URL",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CONTENT-URL using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LATITUD",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column LATITUD using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LONGITUD",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column LONGITUD using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TIPO_ID",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TIPO_ID using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LONGITUD",
+    "expression": "grel:if(toNumber(value) > 0, \"-\" + value, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column LONGITUD using expression grel:if(toNumber(value) > 0, \"-\" + value, value)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LONGITUD",
+    "expression": "jython:import math\nstations = [('28079004', 40.4238823, -3.7122567), ('28079008', 40.4215533, -3.6823158), ('28079011', 40.4514734, -3.6773491), ('28079016', 40.4400457, -3.6392422), ('28079017', 40.347147, -3.7133167), ('28079018', 40.3947825, -3.7318356), ('28079024', 40.4193577, -3.7473445), ('28079027', 40.4769179, -3.5800258), ('28079035', 40.4192091, -3.7031662), ('28079036', 40.4079517, -3.6453104), ('28079038', 40.4455439, -3.7071303), ('28079039', 40.4782322, -3.7115364), ('28079040', 40.3881478, -3.6515286), ('28079047', 40.3980991, -3.6868138), ('28079048', 40.4398904, -3.6903729), ('28079049', 40.4144444, -3.6824999), ('28079050', 40.4655841, -3.6887449), ('28079054', 40.3730118, -3.6121394), ('28079055', 40.4623628, -3.5805649), ('28079056', 40.3850336, -3.7187679), ('28079057', 40.4942012, -3.6605173), ('28079058', 40.5180701, -3.7746101), ('28079059', 40.465144, -3.609031), ('28079060', 40.5005477, -3.6897308)]\nlat = math.radians(float(cells['LATITUD']['value']))\nlon = math.radians(float(value))\nbest = None\nfor code, slat, slon in stations:\n    p, q = math.radians(slat), math.radians(slon)\n    a = math.sin((p - lat) / 2) ** 2 + math.cos(lat) * math.cos(p) * math.sin((q - lon) / 2) ** 2\n    d = 2 * 6371.0 * math.asin(math.sqrt(a))\n    if best is None or d < best[0]:\n        best = (d, code)\nreturn best[1]",
+    "onError": "set-to-blank",
+    "newColumnName": "ESTACION_CERCANA",
+    "columnInsertIndex": 30,
+    "description": "Create column ESTACION_CERCANA at index 30 based on column LONGITUD using expression jython:import math\nstations = [('28079004', 40.4238823, -3.7122567), ('28079008', 40.4215533, -3.6823158), ('28079011', 40.4514734, -3.6773491), ('28079016', 40.4400457, -3.6392422), ('28079017', 40.347147, -3.7133167), ('28079018', 40.3947825, -3.7318356), ('28079024', 40.4193577, -3.7473445), ('28079027', 40.4769179, -3.5800258), ('28079035', 40.4192091, -3.7031662), ('28079036', 40.4079517, -3.6453104), ('28079038', 40.4455439, -3.7071303), ('28079039', 40.4782322, -3.7115364), ('28079040', 40.3881478, -3.6515286), ('28079047', 40.3980991, -3.6868138), ('28079048', 40.4398904, -3.6903729), ('28079049', 40.4144444, -3.6824999), ('28079050', 40.4655841, -3.6887449), ('28079054', 40.3730118, -3.6121394), ('28079055', 40.4623628, -3.5805649), ('28079056', 40.3850336, -3.7187679), ('28079057', 40.4942012, -3.6605173), ('28079058', 40.5180701, -3.7746101), ('28079059', 40.465144, -3.609031), ('28079060', 40.5005477, -3.6897308)]\nlat = math.radians(float(cells['LATITUD']['value']))\nlon = math.radians(float(value))\nbest = None\nfor code, slat, slon in stations:\n    p, q = math.radians(slat), math.radians(slon)\n    a = math.sin((p - lat) / 2) ** 2 + math.cos(lat) * math.cos(p) * math.sin((q - lon) / 2) ** 2\n    d = 2 * 6371.0 * math.asin(math.sqrt(a))\n    if best is None or d < best[0]:\n        best = (d, code)\nreturn best[1]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LONGITUD",
+    "expression": "jython:import math\nstations = [('28079004', 40.4238823, -3.7122567), ('28079008', 40.4215533, -3.6823158), ('28079011', 40.4514734, -3.6773491), ('28079016', 40.4400457, -3.6392422), ('28079017', 40.347147, -3.7133167), ('28079018', 40.3947825, -3.7318356), ('28079024', 40.4193577, -3.7473445), ('28079027', 40.4769179, -3.5800258), ('28079035', 40.4192091, -3.7031662), ('28079036', 40.4079517, -3.6453104), ('28079038', 40.4455439, -3.7071303), ('28079039', 40.4782322, -3.7115364), ('28079040', 40.3881478, -3.6515286), ('28079047', 40.3980991, -3.6868138), ('28079048', 40.4398904, -3.6903729), ('28079049', 40.4144444, -3.6824999), ('28079050', 40.4655841, -3.6887449), ('28079054', 40.3730118, -3.6121394), ('28079055', 40.4623628, -3.5805649), ('28079056', 40.3850336, -3.7187679), ('28079057', 40.4942012, -3.6605173), ('28079058', 40.5180701, -3.7746101), ('28079059', 40.465144, -3.609031), ('28079060', 40.5005477, -3.6897308)]\nlat = math.radians(float(cells['LATITUD']['value']))\nlon = math.radians(float(value))\nbest = None\nfor code, slat, slon in stations:\n    p, q = math.radians(slat), math.radians(slon)\n    a = math.sin((p - lat) / 2) ** 2 + math.cos(lat) * math.cos(p) * math.sin((q - lon) / 2) ** 2\n    d = 2 * 6371.0 * math.asin(math.sqrt(a))\n    if best is None or d < best[0]:\n        best = (d, code)\nreturn '%.3f' % best[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "DISTANCIA_ESTACION_KM",
+    "columnInsertIndex": 31,
+    "description": "Create column DISTANCIA_ESTACION_KM at index 31 based on column LONGITUD using expression jython:import math\nstations = [('28079004', 40.4238823, -3.7122567), ('28079008', 40.4215533, -3.6823158), ('28079011', 40.4514734, -3.6773491), ('28079016', 40.4400457, -3.6392422), ('28079017', 40.347147, -3.7133167), ('28079018', 40.3947825, -3.7318356), ('28079024', 40.4193577, -3.7473445), ('28079027', 40.4769179, -3.5800258), ('28079035', 40.4192091, -3.7031662), ('28079036', 40.4079517, -3.6453104), ('28079038', 40.4455439, -3.7071303), ('28079039', 40.4782322, -3.7115364), ('28079040', 40.3881478, -3.6515286), ('28079047', 40.3980991, -3.6868138), ('28079048', 40.4398904, -3.6903729), ('28079049', 40.4144444, -3.6824999), ('28079050', 40.4655841, -3.6887449), ('28079054', 40.3730118, -3.6121394), ('28079055', 40.4623628, -3.5805649), ('28079056', 40.3850336, -3.7187679), ('28079057', 40.4942012, -3.6605173), ('28079058', 40.5180701, -3.7746101), ('28079059', 40.465144, -3.609031), ('28079060', 40.5005477, -3.6897308)]\nlat = math.radians(float(cells['LATITUD']['value']))\nlon = math.radians(float(value))\nbest = None\nfor code, slat, slon in stations:\n    p, q = math.radians(slat), math.radians(slon)\n    a = math.sin((p - lat) / 2) ** 2 + math.cos(lat) * math.cos(p) * math.sin((q - lon) / 2) ** 2\n    d = 2 * 6371.0 * math.asin(math.sqrt(a))\n    if best is None or d < best[0]:\n        best = (d, code)\nreturn '%.3f' % best[0]"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "PK",
+      "NOMBRE",
+      "TIPO_ID",
+      "TIPO_NOMBRE",
+      "EQUIPAMIENTO",
+      "TRANSPORTE",
+      "ACCESIBILIDAD",
+      "ACCESIBILIDAD_NOMBRE",
+      "CONTENT-URL",
+      "DIRECCION",
+      "CODIGO-POSTAL",
+      "COD-DISTRITO",
+      "DISTRITO",
+      "BARRIO_ID",
+      "BARRIO",
+      "LATITUD",
+      "LONGITUD",
+      "ESTACION_CERCANA",
+      "DISTANCIA_ESTACION_KM"
+    ],
+    "description": "Reorder columns"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "PESETA"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ABRANTES"
+      }
+    ],
+    "description": "Mass edit cells in column BARRIO"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODIGO-POSTAL",
+    "expression": "jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'28005', '10915705': u'28012', '10915708': u'28005', '10967954': u'28044', '12032809': u'28026', '4527560': u'28011', '4584500': u'28038', '50220483': u'28042', '50220526': u'28042', '50239346': u'28045', '50240888': u'28027', '50244518': u'28048', '50245818': u'28014', '50246052': u'28028', '50256193': u'28019', '50262529': u'28011', '50285989': u'28027', '50308096': u'28045', '50313608': u'28029', '50313622': u'28029', '50327858': u'28052', '50331126': u'28027', '6206528': u'28045', '6336549': u'28047', '7107982': u'28045'}\nreturn fix.get(cells['PK']['value'], value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CODIGO-POSTAL using expression jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'28005', '10915705': u'28012', '10915708': u'28005', '10967954': u'28044', '12032809': u'28026', '4527560': u'28011', '4584500': u'28038', '50220483': u'28042', '50220526': u'28042', '50239346': u'28045', '50240888': u'28027', '50244518': u'28048', '50245818': u'28014', '50246052': u'28028', '50256193': u'28019', '50262529': u'28011', '50285989': u'28027', '50308096': u'28045', '50313608': u'28029', '50313622': u'28029', '50327858': u'28052', '50331126': u'28027', '6206528': u'28045', '6336549': u'28047', '7107982': u'28045'}\nreturn fix.get(cells['PK']['value'], value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COD-DISTRITO",
+    "expression": "jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'01', '10915705': u'01', '10915708': u'01', '10967954': u'10', '12032809': u'12', '4527560': u'09', '4584500': u'13', '50220483': u'21', '50220526': u'21', '50239346': u'02', '50240888': u'15', '50244518': u'08', '50245818': u'03', '50246052': u'04', '50256193': u'11', '50262529': u'09', '50327858': u'19', '50331126': u'20', '6206528': u'02', '6336549': u'10', '7107982': u'02'}\nreturn fix.get(cells['PK']['value'], value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column COD-DISTRITO using expression jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'01', '10915705': u'01', '10915708': u'01', '10967954': u'10', '12032809': u'12', '4527560': u'09', '4584500': u'13', '50220483': u'21', '50220526': u'21', '50239346': u'02', '50240888': u'15', '50244518': u'08', '50245818': u'03', '50246052': u'04', '50256193': u'11', '50262529': u'09', '50327858': u'19', '50331126': u'20', '6206528': u'02', '6336549': u'10', '7107982': u'02'}\nreturn fix.get(cells['PK']['value'], value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'CENTRO', '10915705': u'CENTRO', '10915708': u'CENTRO', '10967954': u'LATINA', '12032809': u'USERA', '4527560': u'MONCLOA-ARAVACA', '4584500': u'PUENTE DE VALLECAS', '50220483': u'BARAJAS', '50220526': u'BARAJAS', '50239346': u'ARGANZUELA', '50240888': u'CIUDAD LINEAL', '50244518': u'FUENCARRAL-EL PARDO', '50245818': u'RETIRO', '50246052': u'SALAMANCA', '50256193': u'CARABANCHEL', '50262529': u'MONCLOA-ARAVACA', '50327858': u'VICALVARO', '50331126': u'SAN BLAS-CANILLEJAS', '6206528': u'ARGANZUELA', '6336549': u'LATINA', '7107982': u'ARGANZUELA'}\nreturn fix.get(cells['PK']['value'], value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DISTRITO using expression jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'CENTRO', '10915705': u'CENTRO', '10915708': u'CENTRO', '10967954': u'LATINA', '12032809': u'USERA', '4527560': u'MONCLOA-ARAVACA', '4584500': u'PUENTE DE VALLECAS', '50220483': u'BARAJAS', '50220526': u'BARAJAS', '50239346': u'ARGANZUELA', '50240888': u'CIUDAD LINEAL', '50244518': u'FUENCARRAL-EL PARDO', '50245818': u'RETIRO', '50246052': u'SALAMANCA', '50256193': u'CARABANCHEL', '50262529': u'MONCLOA-ARAVACA', '50327858': u'VICALVARO', '50331126': u'SAN BLAS-CANILLEJAS', '6206528': u'ARGANZUELA', '6336549': u'LATINA', '7107982': u'ARGANZUELA'}\nreturn fix.get(cells['PK']['value'], value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO_ID",
+    "expression": "jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'011', '10915705': u'012', '10915708': u'012', '10967954': u'107', '4527560': u'091', '4584500': u'136', '50220483': u'215', '50220526': u'215', '50239346': u'024', '50240888': u'155', '50244518': u'081', '50245818': u'035', '50246052': u'043', '50256193': u'113', '50262529': u'091', '50313608': u'085', '50313622': u'085', '50315352': u'011', '50327858': u'194', '50331126': u'208', '5716920': u'053', '5870223': u'091', '6206528': u'024', '6336549': u'104', '7107982': u'024'}\nreturn fix.get(cells['PK']['value'], value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BARRIO_ID using expression jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'011', '10915705': u'012', '10915708': u'012', '10967954': u'107', '4527560': u'091', '4584500': u'136', '50220483': u'215', '50220526': u'215', '50239346': u'024', '50240888': u'155', '50244518': u'081', '50245818': u'035', '50246052': u'043', '50256193': u'113', '50262529': u'091', '50313608': u'085', '50313622': u'085', '50315352': u'011', '50327858': u'194', '50331126': u'208', '5716920': u'053', '5870223': u'091', '6206528': u'024', '6336549': u'104', '7107982': u'024'}\nreturn fix.get(cells['PK']['value'], value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'PALACIO', '10915705': u'EMBAJADORES', '10915708': u'EMBAJADORES', '10967954': u'LAS AGUILAS', '4527560': u'CASA DE CAMPO', '4584500': u'NUMANCIA', '50220483': u'CORRALEJOS', '50220526': u'CORRALEJOS', '50239346': u'LEGAZPI', '50240888': u'SAN PASCUAL', '50244518': u'EL PARDO', '50245818': u'LOS JERONIMOS', '50246052': u'FUENTE DEL BERRO', '50256193': u'SAN ISIDRO', '50262529': u'CASA DE CAMPO', '50313608': u'LA PAZ', '50313622': u'LA PAZ', '50315352': u'PALACIO', '50327858': u'EL CAÑAVERAL', '50331126': u'EL SALVADOR', '5716920': u'CIUDAD JARDIN', '5870223': u'CASA DE CAMPO', '6206528': u'LEGAZPI', '6336549': u'ALUCHE', '7107982': u'LEGAZPI'}\nreturn fix.get(cells['PK']['value'], value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BARRIO using expression jython:# Values completed by hand (Group04), keyed by facility PK\nfix = {'10915659': u'PALACIO', '10915705': u'EMBAJADORES', '10915708': u'EMBAJADORES', '10967954': u'LAS AGUILAS', '4527560': u'CASA DE CAMPO', '4584500': u'NUMANCIA', '50220483': u'CORRALEJOS', '50220526': u'CORRALEJOS', '50239346': u'LEGAZPI', '50240888': u'SAN PASCUAL', '50244518': u'EL PARDO', '50245818': u'LOS JERONIMOS', '50246052': u'FUENTE DEL BERRO', '50256193': u'SAN ISIDRO', '50262529': u'CASA DE CAMPO', '50313608': u'LA PAZ', '50313622': u'LA PAZ', '50315352': u'PALACIO', '50327858': u'EL CAÑAVERAL', '50331126': u'EL SALVADOR', '5716920': u'CIUDAD JARDIN', '5870223': u'CASA DE CAMPO', '6206528': u'LEGAZPI', '6336549': u'ALUCHE', '7107982': u'LEGAZPI'}\nreturn fix.get(cells['PK']['value'], value)"
+  }
+]

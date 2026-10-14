@@ -76,7 +76,7 @@ outliers discussed in the data-quality section.
     <li>The source misspells <code>CÓDIGO PAR</code> as <code>CÓDIDO PAR</code>; it is interpreted as the parking identifier.</li>
     <li>The files for 2019-2023 contain a thirteenth descriptive column whose data values are empty. It will be discarded.</li>
     <li>Three completely blank records will be ignored.</li>
-    <li>Parking types will be normalized: <code>ROT</code> to <code>ROTACIONAL</code> and <code>MIX</code> to <code>MIXTO</code>.</li>
+    <li>Parking types will be normalized to URI-safe English slugs: <code>ROT</code> and <code>ROTACIONAL</code> to <code>rotational</code>, and <code>MIX</code> and <code>MIXTO</code> to <code>mixed</code>.</li>
     <li>District names will be trimmed and normalized to their accented forms, for example <code>CHAMBERI</code> to <code>CHAMBERÍ</code>.</li>
     <li>Decimal commas will be converted to decimal points and percent signs removed before creating typed literals.</li>
     <li>Thirty parking identifiers have more than one historical capacity. Therefore, the number of spaces is attached to each monthly observation rather than treated as an unchanging facility value.</li>

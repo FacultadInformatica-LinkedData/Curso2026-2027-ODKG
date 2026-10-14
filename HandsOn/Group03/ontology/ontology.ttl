@@ -14,7 +14,7 @@ base:ontology a owl:Ontology ;
     dcterms:title "Madrid urban noise ontology"@en ;
     dcterms:description "A lightweight ontology for station/date/period noise measurements and registered hospitality terraces in Madrid."@en ;
     dcterms:creator [ a dcterms:Agent ; rdfs:label "ODKG 2026-2027 Group03"@en ] ;
-    dcterms:modified "2026-10-05"^^xsd:date ;
+    dcterms:modified "2026-10-12"^^xsd:date ;
     dcterms:license cc: ;
     dcterms:source sourceDataset:215885-0-contaminacion-ruido ,
                    sourceDataset:211346-0-estaciones-acusticas ,
@@ -22,7 +22,7 @@ base:ontology a owl:Ontology ;
     rdfs:seeAlso <https://www.w3.org/TR/vocab-ssn/> ,
                  <https://www.w3.org/2003/01/geo/> ;
     rdfs:comment "SOSA classes and Geo classes/properties are reused through subclass and subproperty relations. Local properties retain explicit application domains/ranges; the complete external ontologies are not imported."@en ;
-    owl:versionInfo "1.0" .
+    owl:versionInfo "1.1" .
 
 # --- Classes ---
 
@@ -143,6 +143,12 @@ mn:las99 a owl:DatatypeProperty , owl:FunctionalProperty ;
     rdfs:label "Sound level exceeded for 99% of the period"@en ;
     rdfs:comment "The A-weighted sound level exceeded during 99% of the observation period, in dB(A), from CSV L99. N/D values are omitted."@en .
 
+mn:percentileOrderViolation a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain mn:DailyNoiseObservation ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "Percentile order violation"@en ;
+    rdfs:comment "True if all five percentiles are available and violate L1 >= L10 >= L50 >= L90 >= L99; false if ordered; omitted if incomplete."@en .
+
 # --- Datatype Properties: Terrace ---
 
 mn:terraceId a owl:DatatypeProperty , owl:FunctionalProperty ;
@@ -158,14 +164,14 @@ mn:latitude a owl:DatatypeProperty ;
     rdfs:domain geo:SpatialThing ;
     rdfs:range xsd:decimal ;
     rdfs:label "latitude"@en ;
-    rdfs:comment "Latitude in WGS84 decimal degrees. Station LATITUD strings are normalized; terrace coordinates are converted from ETRS89 / UTM zone 30N (EPSG:25830) to WGS84 (EPSG:4326). Census premises coordinates are a location proxy for the terrace; unusable zero coordinates are omitted."@en .
+    rdfs:comment "Latitude in WGS84 decimal degrees. Station LATITUD strings are normalized; terrace coordinates are converted from ETRS89 / UTM zone 30N (EPSG:25830) to WGS84 (EPSG:4326). Terraces use premises coordinates for street access when the premises is not in Baja status, or grouping coordinates for grouped premises. These entrance locations are proxies for the terrace; unavailable or zero coordinates are omitted."@en .
 
 mn:longitude a owl:DatatypeProperty ;
     rdfs:subPropertyOf geo:long ;
     rdfs:domain geo:SpatialThing ;
     rdfs:range xsd:decimal ;
     rdfs:label "longitude"@en ;
-    rdfs:comment "Longitude in WGS84 decimal degrees. Station LONGITUD strings are normalized; terrace coordinates are converted from ETRS89 / UTM zone 30N (EPSG:25830) to WGS84 (EPSG:4326). Census premises coordinates are a location proxy for the terrace; unusable zero coordinates are omitted."@en .
+    rdfs:comment "Longitude in WGS84 decimal degrees. Station LONGITUD strings are normalized; terrace coordinates are converted from ETRS89 / UTM zone 30N (EPSG:25830) to WGS84 (EPSG:4326). Terraces use premises coordinates for street access when the premises is not in Baja status, or grouping coordinates for grouped premises. These entrance locations are proxies for the terrace; unavailable or zero coordinates are omitted."@en .
 
 # --- Controlled Individuals ---
 

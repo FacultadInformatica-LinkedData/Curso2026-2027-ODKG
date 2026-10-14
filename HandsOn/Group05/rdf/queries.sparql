@@ -1,0 +1,139 @@
+# SPARQL queries to verify rdf/rvvcca-datos-horarios-valencia-2016-2021-curt-cas.ttl
+# Each query is independent and has its own PREFIX declarations; run them one by one.
+
+# Q1. Total number of triples in the graph
+
+SELECT (COUNT(*) AS ?totalTriples)
+WHERE {
+  ?s ?p ?o .
+}
+
+#------------------------------------------------------------------
+# Q2. Number of resources per RDF type
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?type (COUNT(DISTINCT ?resource) AS ?resourceCount)
+WHERE {
+  ?resource rdf:type ?type .
+}
+GROUP BY ?type
+ORDER BY DESC(?resourceCount)
+
+#------------------------------------------------------------------
+# Q3. Monitoring stations, their names and the city where they are located
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?station ?name ?cityName
+WHERE {
+  ?station rdf:type aq:MonitoringStation ;
+           aq:stationName ?name ;
+           aq:locatedInCity ?city .
+  ?city rdfs:label ?cityName .
+}
+ORDER BY ?name
+
+#------------------------------------------------------------------
+# Q4. Number of observations per station (related with Q2)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?stationName (COUNT(?observation) AS ?totalObservations)
+WHERE {
+  ?observation rdf:type aq:Observation ;
+               aq:hasStation ?station .
+  ?station aq:stationName ?stationName .
+}
+GROUP BY ?stationName
+ORDER BY DESC(?totalObservations)
+
+#------------------------------------------------------------------
+# Q5. First and last date-time of the observations
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT (MIN(?time) AS ?firstDate) (MAX(?time) AS ?lastDate)
+WHERE {
+  ?observation rdf:type aq:Observation ;
+               aq:resultTime ?time .
+}
+
+#------------------------------------------------------------------
+# Q6. Sample of observations with their station, property, time and value
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?observation ?stationName ?propertyName ?time ?value
+WHERE {
+  ?observation rdf:type aq:Observation ;
+               aq:observedProperty ?property ;
+               aq:hasStation ?station ;
+               aq:resultTime ?time ;
+               aq:resultValue ?value .
+  ?station aq:stationName ?stationName .
+  ?property rdfs:label ?propertyName .
+}
+ORDER BY ?time ?stationName
+LIMIT 1000
+
+#------------------------------------------------------------------
+# Q7. Average NO2 per station
+
+PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?stationName (AVG(?value) AS ?avgNO2) (COUNT(?value) AS ?measurements)
+WHERE {
+  ?observation aq:observedProperty <https://w3id.org/valencia-airquality/resource/ObservableProperty/NO2> ;
+               aq:hasStation/aq:stationName ?stationName ;
+               aq:resultValue ?value .
+}
+GROUP BY ?stationName
+ORDER BY DESC(?avgNO2)
+
+#------------------------------------------------------------------
+# Quality checks (each of them must return 0)
+
+# Q8. Resources without label
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (COUNT(DISTINCT ?resource) AS ?withoutLabel)
+WHERE {
+  ?resource rdf:type ?type .
+  FILTER NOT EXISTS { ?resource rdfs:label ?label }
+}
+
+#------------------------------------------------------------------
+# Q9. Observations without value or without time
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT (COUNT(?observation) AS ?incomplete)
+WHERE {
+  ?observation rdf:type aq:Observation .
+  FILTER NOT EXISTS { ?observation aq:resultValue ?value ; aq:resultTime ?time }
+}
+
+#------------------------------------------------------------------
+# Q10. Values with a datatype different from the one in the ontology
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT (COUNT(*) AS ?wrongDatatype)
+WHERE {
+  { ?s aq:resultValue ?o . FILTER (datatype(?o) != xsd:decimal) }
+  UNION
+  { ?s aq:resultTime ?o . FILTER (datatype(?o) != xsd:dateTime) }
+  UNION
+  { ?s aq:stationName ?o . FILTER (datatype(?o) != xsd:string) }
+}

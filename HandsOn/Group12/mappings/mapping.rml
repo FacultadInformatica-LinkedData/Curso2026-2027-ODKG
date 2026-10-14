@@ -1,0 +1,535 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix map: <http://mapping.example.com/> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix am: <https://w3id.org/active-madrid/ontology#> .
+@prefix res: <https://w3id.org/active-madrid/resource/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix mod: <https://w3id.org/mod#> .
+
+map:jc_000 rr:child "Centro deportivo" ;
+	rr:parent "NOMBRE" .
+
+map:jc_001 rr:child "Centro deportivo" ;
+	rr:parent "NOMBRE" .
+
+map:map_triplesmapClosedClasses_000 rml:logicalSource map:source_007 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapClosedClasses" ;
+	rr:predicateObjectMap map:pom_028, map:pom_029, map:pom_030, map:pom_031, map:pom_032, map:pom_033, map:pom_034 ;
+	rr:subjectMap map:s_007 .
+
+map:map_triplesmapDistrict_000 rml:logicalSource map:source_002 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapDistrict" ;
+	rr:predicateObjectMap map:pom_011, map:pom_012 ;
+	rr:subjectMap map:s_002 .
+
+map:map_triplesmapOpenClasses_000 rml:logicalSource map:source_006 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapOpenClasses" ;
+	rr:predicateObjectMap map:pom_020, map:pom_021, map:pom_022, map:pom_023, map:pom_024, map:pom_025, map:pom_026, map:pom_027 ;
+	rr:subjectMap map:s_006 .
+
+map:map_triplesmapPostalAddress_000 rml:logicalSource map:source_001 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapPostalAddress" ;
+	rr:predicateObjectMap map:pom_008, map:pom_009, map:pom_010 ;
+	rr:subjectMap map:s_001 .
+
+map:map_triplesmapSportActivity_000 rml:logicalSource map:source_003 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapSportActivity" ;
+	rr:predicateObjectMap map:pom_013, map:pom_014 ;
+	rr:subjectMap map:s_003 .
+
+map:map_triplesmapSportActivity_001 rml:logicalSource map:source_004 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapSportActivity" ;
+	rr:predicateObjectMap map:pom_015, map:pom_016 ;
+	rr:subjectMap map:s_004 .
+
+map:map_triplesmapSportsFacility_000 rml:logicalSource map:source_000 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapSportsFacility" ;
+	rr:predicateObjectMap map:pom_000, map:pom_001, map:pom_002, map:pom_003, map:pom_004, map:pom_005, map:pom_006, map:pom_007 ;
+	rr:subjectMap map:s_000 .
+
+map:map_triplesmapTimeIntervals_000 rml:logicalSource map:source_005 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "triplesmapTimeIntervals" ;
+	rr:predicateObjectMap map:pom_017, map:pom_018, map:pom_019 ;
+	rr:subjectMap map:s_005 .
+
+map:om_000 rdf:type rr:ObjectMap ;
+	rr:constant am:SportsFacility ;
+	rr:termType rr:IRI .
+
+map:om_001 rml:reference "NOMBRE" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_002 rdf:type rr:ObjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/PostalAddress/{PK}" ;
+	rr:termType rr:IRI .
+
+map:om_003 rdf:type rr:ObjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/District/{DISTRITO}" ;
+	rr:termType rr:IRI .
+
+map:om_004 rml:reference "LATITUD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_005 rml:reference "LONGITUD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_006 rml:reference "TELEFONO" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_007 rml:reference "EMAIL" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_008 rdf:type rr:ObjectMap ;
+	rr:constant schema:PostalAddress ;
+	rr:termType rr:IRI .
+
+map:om_009 rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:template "{CLASE-VIAL} {NOMBRE-VIA}, {NUM}" ;
+	rr:termType rr:Literal .
+
+map:om_010 rml:reference "CODIGO-POSTAL" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_011 rdf:type rr:ObjectMap ;
+	rr:constant am:District ;
+	rr:termType rr:IRI .
+
+map:om_012 rml:reference "DISTRITO" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_013 rdf:type rr:ObjectMap ;
+	rr:constant am:SportActivity ;
+	rr:termType rr:IRI .
+
+map:om_014 rml:reference "Actividad" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_015 rdf:type rr:ObjectMap ;
+	rr:constant am:SportActivity ;
+	rr:termType rr:IRI .
+
+map:om_016 rml:reference "Actividad" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_017 rdf:type rr:ObjectMap ;
+	rr:constant time:Interval ;
+	rr:termType rr:IRI .
+
+map:om_018 rml:reference "Hora inicial" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:time ;
+	rr:termType rr:Literal .
+
+map:om_019 rml:reference "Hora final" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:time ;
+	rr:termType rr:Literal .
+
+map:om_020 rdf:type rr:ObjectMap ;
+	rr:constant am:SportsClass ;
+	rr:termType rr:IRI .
+
+map:om_021 rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:template "{Actividad} - {Día de la semana} de {Hora inicial} a {Hora final}" ;
+	rr:termType rr:Literal .
+
+map:om_022 rml:reference "Plazas" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:nonNegativeInteger ;
+	rr:termType rr:Literal .
+
+map:om_023 rml:reference "Ocupadas" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:nonNegativeInteger ;
+	rr:termType rr:Literal .
+
+map:om_024 rml:reference "Libres" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:nonNegativeInteger ;
+	rr:termType rr:Literal .
+
+map:om_025 rdf:type rr:ObjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportActivity/{Actividad}" ;
+	rr:termType rr:IRI .
+
+map:om_026 rdf:type rr:ObjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/TimeInterval/{Hora inicial}-{Hora final}" ;
+	rr:termType rr:IRI .
+
+map:om_027 rdf:type rr:ObjectMap ;
+	rr:constant am:SportsClass ;
+	rr:termType rr:IRI .
+
+map:om_028 rml:reference "Clase" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_029 rml:reference "Nº Plazas Ofertadas" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:nonNegativeInteger ;
+	rr:termType rr:Literal .
+
+map:om_030 rml:reference "Nº Plazas Ocupadas" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:nonNegativeInteger ;
+	rr:termType rr:Literal .
+
+map:om_031 rml:reference "Nº Plazas Libres" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:nonNegativeInteger ;
+	rr:termType rr:Literal .
+
+map:om_032 rdf:type rr:ObjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportActivity/{Actividad}" ;
+	rr:termType rr:IRI .
+
+map:om_033 rdf:type rr:ObjectMap ;
+	rr:joinCondition map:jc_000 ;
+	rr:parentTriplesMap map:map_triplesmapSportsFacility_000 .
+
+map:om_034 rdf:type rr:ObjectMap ;
+	rr:joinCondition map:jc_001 ;
+	rr:parentTriplesMap map:map_triplesmapSportsFacility_000 .
+
+map:pm_000 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_001 rdf:type rr:PredicateMap ;
+	rr:constant schema:name .
+
+map:pm_002 rdf:type rr:PredicateMap ;
+	rr:constant schema:address .
+
+map:pm_003 rdf:type rr:PredicateMap ;
+	rr:constant am:locatedInDistrict .
+
+map:pm_004 rdf:type rr:PredicateMap ;
+	rr:constant geo:lat .
+
+map:pm_005 rdf:type rr:PredicateMap ;
+	rr:constant geo:long .
+
+map:pm_006 rdf:type rr:PredicateMap ;
+	rr:constant schema:telephone .
+
+map:pm_007 rdf:type rr:PredicateMap ;
+	rr:constant schema:email .
+
+map:pm_008 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_009 rdf:type rr:PredicateMap ;
+	rr:constant schema:streetAddress .
+
+map:pm_010 rdf:type rr:PredicateMap ;
+	rr:constant schema:postalCode .
+
+map:pm_011 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_012 rdf:type rr:PredicateMap ;
+	rr:constant schema:name .
+
+map:pm_013 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_014 rdf:type rr:PredicateMap ;
+	rr:constant schema:name .
+
+map:pm_015 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_016 rdf:type rr:PredicateMap ;
+	rr:constant schema:name .
+
+map:pm_017 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_018 rdf:type rr:PredicateMap ;
+	rr:constant time:hasBeginning .
+
+map:pm_019 rdf:type rr:PredicateMap ;
+	rr:constant time:hasEnd .
+
+map:pm_020 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_021 rdf:type rr:PredicateMap ;
+	rr:constant schema:name .
+
+map:pm_022 rdf:type rr:PredicateMap ;
+	rr:constant am:offeredPlaces .
+
+map:pm_023 rdf:type rr:PredicateMap ;
+	rr:constant am:occupiedPlaces .
+
+map:pm_024 rdf:type rr:PredicateMap ;
+	rr:constant am:availablePlaces .
+
+map:pm_025 rdf:type rr:PredicateMap ;
+	rr:constant am:hasActivity .
+
+map:pm_026 rdf:type rr:PredicateMap ;
+	rr:constant time:hasTime .
+
+map:pm_027 rdf:type rr:PredicateMap ;
+	rr:constant am:takesPlaceAt .
+
+map:pm_028 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_029 rdf:type rr:PredicateMap ;
+	rr:constant schema:name .
+
+map:pm_030 rdf:type rr:PredicateMap ;
+	rr:constant am:offeredPlaces .
+
+map:pm_031 rdf:type rr:PredicateMap ;
+	rr:constant am:occupiedPlaces .
+
+map:pm_032 rdf:type rr:PredicateMap ;
+	rr:constant am:availablePlaces .
+
+map:pm_033 rdf:type rr:PredicateMap ;
+	rr:constant am:hasActivity .
+
+map:pm_034 rdf:type rr:PredicateMap ;
+	rr:constant am:takesPlaceAt .
+
+map:pom_000 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_000 ;
+	rr:predicateMap map:pm_000 .
+
+map:pom_001 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_001 ;
+	rr:predicateMap map:pm_001 .
+
+map:pom_002 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_002 ;
+	rr:predicateMap map:pm_002 .
+
+map:pom_003 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_003 ;
+	rr:predicateMap map:pm_003 .
+
+map:pom_004 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_004 ;
+	rr:predicateMap map:pm_004 .
+
+map:pom_005 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_005 ;
+	rr:predicateMap map:pm_005 .
+
+map:pom_006 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_006 ;
+	rr:predicateMap map:pm_006 .
+
+map:pom_007 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_007 ;
+	rr:predicateMap map:pm_007 .
+
+map:pom_008 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_008 ;
+	rr:predicateMap map:pm_008 .
+
+map:pom_009 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_009 ;
+	rr:predicateMap map:pm_009 .
+
+map:pom_010 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_010 ;
+	rr:predicateMap map:pm_010 .
+
+map:pom_011 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_011 ;
+	rr:predicateMap map:pm_011 .
+
+map:pom_012 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_012 ;
+	rr:predicateMap map:pm_012 .
+
+map:pom_013 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_013 ;
+	rr:predicateMap map:pm_013 .
+
+map:pom_014 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_014 ;
+	rr:predicateMap map:pm_014 .
+
+map:pom_015 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_015 ;
+	rr:predicateMap map:pm_015 .
+
+map:pom_016 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_016 ;
+	rr:predicateMap map:pm_016 .
+
+map:pom_017 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_017 ;
+	rr:predicateMap map:pm_017 .
+
+map:pom_018 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_018 ;
+	rr:predicateMap map:pm_018 .
+
+map:pom_019 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_019 ;
+	rr:predicateMap map:pm_019 .
+
+map:pom_020 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_020 ;
+	rr:predicateMap map:pm_020 .
+
+map:pom_021 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_021 ;
+	rr:predicateMap map:pm_021 .
+
+map:pom_022 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_022 ;
+	rr:predicateMap map:pm_022 .
+
+map:pom_023 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_023 ;
+	rr:predicateMap map:pm_023 .
+
+map:pom_024 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_024 ;
+	rr:predicateMap map:pm_024 .
+
+map:pom_025 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_025 ;
+	rr:predicateMap map:pm_025 .
+
+map:pom_026 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_026 ;
+	rr:predicateMap map:pm_026 .
+
+map:pom_027 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_033 ;
+	rr:predicateMap map:pm_027 .
+
+map:pom_028 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_027 ;
+	rr:predicateMap map:pm_028 .
+
+map:pom_029 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_028 ;
+	rr:predicateMap map:pm_029 .
+
+map:pom_030 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_029 ;
+	rr:predicateMap map:pm_030 .
+
+map:pom_031 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_030 ;
+	rr:predicateMap map:pm_031 .
+
+map:pom_032 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_031 ;
+	rr:predicateMap map:pm_032 .
+
+map:pom_033 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_032 ;
+	rr:predicateMap map:pm_033 .
+
+map:pom_034 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_034 ;
+	rr:predicateMap map:pm_034 .
+
+map:rules_000 <http://rdfs.org/ns/void#exampleResource> map:map_triplesmapClosedClasses_000, map:map_triplesmapDistrict_000, map:map_triplesmapOpenClasses_000, map:map_triplesmapPostalAddress_000, map:map_triplesmapSportActivity_000, map:map_triplesmapSportActivity_001, map:map_triplesmapSportsFacility_000, map:map_triplesmapTimeIntervals_000 ;
+	rdf:type <http://rdfs.org/ns/void#Dataset> .
+
+map:s_000 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportsFacility/{PK}" .
+
+map:s_001 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/PostalAddress/{PK}" .
+
+map:s_002 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/District/{DISTRITO}" .
+
+map:s_003 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportActivity/{Actividad}" .
+
+map:s_004 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportActivity/{Actividad}" .
+
+map:s_005 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/TimeInterval/{Hora inicial}-{Hora final}" .
+
+map:s_006 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportsClass/OPEN_{Centro deportivo}_{Fecha}_{Hora inicial}_{Actividad}" .
+
+map:s_007 rdf:type rr:SubjectMap ;
+	rr:template "https://w3id.org/active-madrid/resource/SportsClass/CLOSED_{Centro deportivo}_{Clase}_{Año}_{Mes}" .
+
+map:source_000 rml:referenceFormulation ql:CSV ;
+	rml:source "sports_centers_info_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_001 rml:referenceFormulation ql:CSV ;
+	rml:source "sports_centers_info_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_002 rml:referenceFormulation ql:CSV ;
+	rml:source "sports_centers_info_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_003 rml:referenceFormulation ql:CSV ;
+	rml:source "open_classes_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_004 rml:referenceFormulation ql:CSV ;
+	rml:source "closed_classes_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_005 rml:referenceFormulation ql:CSV ;
+	rml:source "open_classes_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_006 rml:referenceFormulation ql:CSV ;
+	rml:source "open_classes_updated.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_007 rml:referenceFormulation ql:CSV ;
+	rml:source "closed_classes_updated.csv" ;
+	rdf:type rml:LogicalSource .

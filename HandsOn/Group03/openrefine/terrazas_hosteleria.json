@@ -1,0 +1,167 @@
+[
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "id_terraza",
+      "id_distrito_local",
+      "desc_distrito_local",
+      "id_barrio_local",
+      "desc_barrio_local",
+      "coordenada_x_local",
+      "coordenada_y_local",
+      "id_tipo_acceso_local",
+      "id_situacion_local",
+      "coordenada_x_agrupacion",
+      "coordenada_y_agrupacion"
+    ],
+    "description": "Keep identifiers, labels and all inputs needed to select valid entrance coordinates"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "id_terraza",
+    "expression": "grel:value.toNumber().toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column id_terraza using expression grel:value.toNumber().toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "id_distrito_local",
+    "expression": "grel:value.toNumber().toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column id_distrito_local using expression grel:value.toNumber().toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "id_barrio_local",
+    "expression": "grel:value.toNumber().toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column id_barrio_local using expression grel:value.toNumber().toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "desc_distrito_local",
+    "expression": "grel:value.trim().replace(/\\s+/, \" \")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column desc_distrito_local using expression grel:value.trim().replace(/\\s+/, \" \")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "desc_barrio_local",
+    "expression": "grel:value.trim().replace(/\\s+/, \" \")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column desc_barrio_local using expression grel:value.trim().replace(/\\s+/, \" \")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "coordenada_x_local",
+    "expression": "jython:import math\ndef number(column):\n    try:\n        return float(cells[column][\"value\"])\n    except Exception:\n        return None\naccess = number(\"id_tipo_acceso_local\")\nstatus = number(\"id_situacion_local\")\nif access == 1 and status is not None and status not in (8, 9):\n    x = number(\"coordenada_x_local\")\n    y = number(\"coordenada_y_local\")\nelif access == 0:\n    x = number(\"coordenada_x_agrupacion\")\n    y = number(\"coordenada_y_agrupacion\")\nelse:\n    return None\nif x is None or y is None or x <= 0 or y <= 0:\n    return None\na = 6378137.0; f = 1 / 298.257222101; k0 = 0.9996\nn = f / (2 - f)\nA = a / (1 + n) * (1 + n**2 / 4 + n**4 / 64)\nbeta = [n/2 - 2*n**2/3 + 37*n**3/96, n**2/48 + n**3/15, 17*n**3/480]\ndelta = [2*n - 2*n**2/3 - 2*n**3, 7*n**2/3 - 8*n**3/5, 56*n**3/15]\nxi = y / (k0 * A); eta = (x - 500000.0) / (k0 * A)\nxp = xi; ep = eta\nfor j in range(1, 4):\n    xp -= beta[j-1] * math.sin(2*j*xi) * math.cosh(2*j*eta)\n    ep -= beta[j-1] * math.cos(2*j*xi) * math.sinh(2*j*eta)\nchi = math.asin(math.sin(xp) / math.cosh(ep))\nlat = chi\nfor j in range(1, 4):\n    lat += delta[j-1] * math.sin(2*j*chi)\nlat = math.degrees(lat)\nlon = math.degrees(math.radians(-3) + math.atan2(math.sinh(ep), math.cos(xp)))\nif not (40.2 < lat < 40.7 and -4.0 < lon < -3.4):\n    return None\nreturn \"%.9f\" % (lat if True else lon)",
+    "onError": "set-to-blank",
+    "newColumnName": "latitude",
+    "columnInsertIndex": 7,
+    "description": "Convert valid street or grouping entrance coordinates from EPSG:25830 to latitude"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "coordenada_x_local",
+    "expression": "jython:import math\ndef number(column):\n    try:\n        return float(cells[column][\"value\"])\n    except Exception:\n        return None\naccess = number(\"id_tipo_acceso_local\")\nstatus = number(\"id_situacion_local\")\nif access == 1 and status is not None and status not in (8, 9):\n    x = number(\"coordenada_x_local\")\n    y = number(\"coordenada_y_local\")\nelif access == 0:\n    x = number(\"coordenada_x_agrupacion\")\n    y = number(\"coordenada_y_agrupacion\")\nelse:\n    return None\nif x is None or y is None or x <= 0 or y <= 0:\n    return None\na = 6378137.0; f = 1 / 298.257222101; k0 = 0.9996\nn = f / (2 - f)\nA = a / (1 + n) * (1 + n**2 / 4 + n**4 / 64)\nbeta = [n/2 - 2*n**2/3 + 37*n**3/96, n**2/48 + n**3/15, 17*n**3/480]\ndelta = [2*n - 2*n**2/3 - 2*n**3, 7*n**2/3 - 8*n**3/5, 56*n**3/15]\nxi = y / (k0 * A); eta = (x - 500000.0) / (k0 * A)\nxp = xi; ep = eta\nfor j in range(1, 4):\n    xp -= beta[j-1] * math.sin(2*j*xi) * math.cosh(2*j*eta)\n    ep -= beta[j-1] * math.cos(2*j*xi) * math.sinh(2*j*eta)\nchi = math.asin(math.sin(xp) / math.cosh(ep))\nlat = chi\nfor j in range(1, 4):\n    lat += delta[j-1] * math.sin(2*j*chi)\nlat = math.degrees(lat)\nlon = math.degrees(math.radians(-3) + math.atan2(math.sinh(ep), math.cos(xp)))\nif not (40.2 < lat < 40.7 and -4.0 < lon < -3.4):\n    return None\nreturn \"%.9f\" % (lat if False else lon)",
+    "onError": "set-to-blank",
+    "newColumnName": "longitude",
+    "columnInsertIndex": 8,
+    "description": "Convert valid street or grouping entrance coordinates from EPSG:25830 to longitude"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "id_terraza",
+    "expression": "grel:\"Terrace \" + value",
+    "onError": "set-to-blank",
+    "newColumnName": "terrace_label",
+    "columnInsertIndex": 1,
+    "description": "Create column terrace_label at index 1 based on column id_terraza using expression grel:\"Terrace \" + value"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "id_terraza",
+    "newColumnName": "terrace_id",
+    "description": "Rename column id_terraza to terrace_id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "id_distrito_local",
+    "newColumnName": "district_id",
+    "description": "Rename column id_distrito_local to district_id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "desc_distrito_local",
+    "newColumnName": "district_label",
+    "description": "Rename column desc_distrito_local to district_label"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "id_barrio_local",
+    "newColumnName": "neighbourhood_id",
+    "description": "Rename column id_barrio_local to neighbourhood_id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "desc_barrio_local",
+    "newColumnName": "neighbourhood_label",
+    "description": "Rename column desc_barrio_local to neighbourhood_label"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "terrace_id",
+      "terrace_label",
+      "district_id",
+      "district_label",
+      "neighbourhood_id",
+      "neighbourhood_label",
+      "latitude",
+      "longitude"
+    ],
+    "description": "Reorder columns"
+  }
+]
