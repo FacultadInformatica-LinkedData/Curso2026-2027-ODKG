@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "name": "schema:name",
+    "population": "schema:populationTotal",
+    "populationAsOf": "schema:dateModified",
+    "country": {"@id": "schema:containedInPlace", "@type": "@id"},
+    "universities": {"@id": "schema:containsPlace", "@type": "@id"},
+    "fullName": "schema:name",
+    "acronym": "schema:alternateName"
+  },
+  "@graph": [
+    {
+      "@id": "https://www.wikidata.org/entity/Q2807",
+      "@type": "schema:City",
+      "name": "Madrid",
+      "population": 3506730,
+      "populationAsOf": "2025-01-01",
+      "country": "https://www.wikidata.org/entity/Q29",
+      "universities": [
+        "https://www.wikidata.org/entity/Q13123",
+        "https://www.wikidata.org/entity/Q153006",
+        "https://www.wikidata.org/entity/Q153015"
+      ]
+    },
+    {
+      "@id": "https://www.wikidata.org/entity/Q29",
+      "@type": "schema:Country",
+      "name": "Spain"
+    },
+    {
+      "@id": "https://www.wikidata.org/entity/Q13123",
+      "@type": "schema:College",
+      "fullName": "Universidad Complutense de Madrid",
+      "acronym": "UCM"
+    },
+    {
+      "@id": "https://www.wikidata.org/entity/Q153006",
+      "@type": "schema:College",
+      "fullName": "Universidad Politécnica de Madrid",
+      "acronym": "UPM"
+    },
+    {
+      "@id": "https://www.wikidata.org/entity/Q153015",
+      "@type": "schema:College",
+      "fullName": "Universidad Autónoma de Madrid",
+      "acronym": "UAM"
+    }
+  ]
+}
