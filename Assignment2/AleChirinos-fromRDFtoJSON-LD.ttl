@@ -1,0 +1,17 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix res:  <http://example.org/odkg/resource/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+res:dataset01 a dcat:Dataset ;
+    dct:title "Madrid Air Quality Data" ;
+    dct:publisher res:publisher01 ;
+    dct:issued "2026-01-15"^^xsd:date ;
+    dcat:distribution res:distribution01 .
+
+res:publisher01 a dct:Agent ;
+    dct:title "Ayuntamiento de Madrid" .
+
+res:distribution01 a dcat:Distribution ;
+    dcat:accessURL <https://datos.madrid.es/egob/catalogo/calidad-aire> ;
+    dcat:mediaType "text/csv" .
