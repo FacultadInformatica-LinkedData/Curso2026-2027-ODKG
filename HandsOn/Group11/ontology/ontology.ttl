@@ -1,0 +1,190 @@
+@prefix ns:        <https://w3id.org/saferoutemadrid/ontology#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+
+#################################################################
+# Ontology header
+#################################################################
+
+<https://w3id.org/saferoutemadrid/ontology> a owl:Ontology ;
+    dcterms:title "SafeRoute Madrid Ontology" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:versionInfo "1.0" .
+ #Hopefully, our last version of this part :)
+
+#################################################################
+# Main classes
+#################################################################
+
+ns:TrafficAccident a rdf:Class ;
+    rdfs:label "Traffic accident" .
+
+ns:Person a rdf:Class ;
+    rdfs:label "Person" .
+
+ns:Vehicle a rdf:Class ;
+    rdfs:label "Vehicle" .
+
+ns:Location a rdf:Class ;
+    rdfs:subClassOf geo:Feature ;
+    rdfs:label "Location" .
+
+ns:District a rdf:Class ;
+    rdfs:subClassOf ns:Location ;
+    rdfs:label "District" .
+
+#################################################################
+# Controlled-vocabulary classes
+#################################################################
+
+ns:AccidentType a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Accident type" .
+
+ns:WeatherCondition a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Weather condition" .
+
+ns:VehicleType a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Vehicle type" .
+
+ns:PersonType a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Person type" .
+
+ns:AgeRange a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Age range" .
+
+ns:Sex a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Sex" .
+
+ns:InjurySeverity a rdf:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Injury severity" .
+
+#################################################################
+# Object properties
+#################################################################
+
+ns:occursAt a rdf:Property ;
+    rdfs:label "occurs at" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range ns:Location .
+
+ns:locatedIn a rdf:Property ;
+    rdfs:label "located in" ;
+    rdfs:domain ns:Location ;
+    rdfs:range ns:District .
+
+ns:involvesPerson a rdf:Property ;
+    rdfs:label "involves person" ;
+    rdfs:domain ns:Vehicle ;
+    rdfs:range ns:Person .
+
+ns:involvesVehicle a rdf:Property ;
+    rdfs:label "involves vehicle" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range ns:Vehicle .
+
+
+
+ns:hasAccidentType a rdf:Property ;
+    rdfs:label "has accident type" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range ns:AccidentType .
+
+ns:hasWeatherCondition a rdf:Property ;
+    rdfs:label "has weather condition" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range ns:WeatherCondition .
+
+ns:hasVehicleType a rdf:Property ;
+    rdfs:label "has vehicle type" ;
+    rdfs:domain ns:Vehicle ;
+    rdfs:range ns:VehicleType .
+
+ns:hasPersonType a rdf:Property ;
+    rdfs:label "has person type" ;
+    rdfs:domain ns:Person ;
+    rdfs:range ns:PersonType .
+
+ns:hasAgeRange a rdf:Property ;
+    rdfs:label "has age range" ;
+    rdfs:domain ns:Person ;
+    rdfs:range ns:AgeRange .
+
+ns:hasSex a rdf:Property ;
+    rdfs:label "has sex" ;
+    rdfs:domain ns:Person ;
+    rdfs:range ns:Sex .
+
+ns:hasInjurySeverity a rdf:Property ;
+    rdfs:label "has injury severity" ;
+    rdfs:domain ns:Person ;
+    rdfs:range ns:InjurySeverity .
+
+#################################################################
+# Datatype properties
+#################################################################
+
+ns:accidentDate a owl:DatatypeProperty ;
+    rdfs:label "accident date" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range xsd:date .
+
+ns:accidentTime a owl:DatatypeProperty ;
+    rdfs:label "accident time" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range xsd:time .
+
+ns:streetName a owl:DatatypeProperty ;
+    rdfs:label "street name" ;
+    rdfs:domain ns:Location ;
+    rdfs:range xsd:string .
+
+ns:streetNumber a owl:DatatypeProperty ;
+    rdfs:label "street number" ;
+    rdfs:domain ns:Location ;
+    rdfs:range xsd:string .
+
+ns:districtCode a owl:DatatypeProperty ;
+    rdfs:label "district code" ;
+    rdfs:domain ns:District ;
+    rdfs:range xsd:integer .
+
+ns:districtName a owl:DatatypeProperty ;
+    rdfs:label "district name" ;
+    rdfs:domain ns:District ;
+    rdfs:range xsd:string .
+
+ns:xCoordinate a owl:DatatypeProperty ;
+    rdfs:label "X coordinate" ;
+    rdfs:domain ns:Location ;
+    rdfs:range xsd:double .
+
+ns:yCoordinate a owl:DatatypeProperty ;
+    rdfs:label "Y coordinate" ;
+    rdfs:domain ns:Location ;
+    rdfs:range xsd:double .
+
+ns:positiveAlcohol a owl:DatatypeProperty ;
+    rdfs:label "positive alcohol" ;
+    rdfs:domain ns:Person ;
+    rdfs:range xsd:boolean .
+
+ns:positiveDrug a owl:DatatypeProperty ;
+    rdfs:label "positive drug" ;
+    rdfs:domain ns:Person ;
+    rdfs:range xsd:boolean .
+ns:accidentID a owl:DatatypeProperty ;
+    rdfs:label "Accident ID" ;
+    rdfs:domain ns:TrafficAccident ;
+    rdfs:range xsd:string .

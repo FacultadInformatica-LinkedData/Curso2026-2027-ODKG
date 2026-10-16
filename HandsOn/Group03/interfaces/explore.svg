@@ -20,10 +20,10 @@
   <rect x="30" y="145" width="1140" height="75" rx="12" fill="#ffffff" stroke="#d9e1e9"/>
 
   <rect x="55" y="164" width="220" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
-  <text x="72" y="188" class="label">Month: selected snapshot ▾</text>
+  <text x="72" y="188" class="label">Noise: 1 Jan–30 Jun 2025 ▾</text>
 
   <rect x="295" y="164" width="200" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
-  <text x="312" y="188" class="label">District: all ▾</text>
+  <text x="312" y="188" class="label">Night period: N</text>
 
   <rect x="515" y="164" width="150" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
   <text x="532" y="188" class="label">Radius: 250 m</text>
@@ -39,20 +39,20 @@
   <!-- Station 1 selected -->
   <rect x="50" y="355" width="280" height="70" rx="8" fill="#e8f1f8" stroke="#125b91"/>
   <text x="68" y="382" class="label">RF-XX · Station name</text>
-  <text x="68" y="405" class="small">Open terraces within 250 m: from data</text>
+  <text x="68" y="405" class="small">Registered within 250 m: from data</text>
 
   <!-- Station 2 -->
   <rect x="50" y="440" width="280" height="70" rx="8" fill="#ffffff" stroke="#cfdae3"/>
   <text x="68" y="467" class="label">RF-XX · Station name</text>
-  <text x="68" y="490" class="small">Open terraces within 250 m: from data</text>
+  <text x="68" y="490" class="small">Registered within 250 m: from data</text>
 
   <!-- Station 3 -->
   <rect x="50" y="525" width="280" height="70" rx="8" fill="#ffffff" stroke="#cfdae3"/>
   <text x="68" y="552" class="label">RF-XX · Station name</text>
-  <text x="68" y="575" class="small">Open terraces within 250 m: from data</text>
+  <text x="68" y="575" class="small">Registered within 250 m: from data</text>
 
-  <text x="55" y="640" class="small">Snapshot date and data coverage</text>
-  <text x="55" y="658" class="small">appear with the selected result.</text>
+  <text x="55" y="640" class="small">Terrace snapshot: 4 Oct 2026</text>
+  <text x="55" y="658" class="small">Noise: selected date range</text>
 
   <!-- Map panel -->
   <rect x="375" y="245" width="795" height="455" rx="12" fill="#ffffff" stroke="#cfdae3"/>

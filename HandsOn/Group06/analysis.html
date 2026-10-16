@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Analysis | LA 311 Fieldnotes</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #202b35;
+            --muted: #65727a;
+            --paper: #fbfaf6;
+            --panel: #ffffff;
+            --line: #deded5;
+            --teal: #176d68;
+            --teal-dark: #164d4c;
+            --coral: #cf654b;
+            --gold: #e4b34d;
+            --wash: #edf3ef;
+            --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.6;
+        }
+        main { max-width: 1000px; margin: 0 auto; padding: 36px 24px 72px; }
+        a { color: var(--teal); }
+        .eyebrow, nav, .tag, .req-id, figcaption, .mock-label, .note, .meta, .small, th, td, .code-text, button, .field-desc {
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+        .eyebrow {
+            margin: 0 0 12px;
+            color: var(--teal);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        header { padding: 8px 0 26px; border-bottom: 1px solid var(--line); }
+        h1 { max-width: 720px; margin: 0; font-size: clamp(2.3rem, 6vw, 4.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.04em; }
+        .dek { max-width: 710px; margin: 18px 0 0; color: var(--muted); font-size: 1.13rem; }
+        nav { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 24px; font-size: .86rem; }
+        nav a { text-decoration: none; }
+        section { margin-top: 44px; }
+        h2 { margin: 0 0 14px; font-size: 1.7rem; font-weight: 500; letter-spacing: -.02em; }
+        h3 { margin: 0 0 7px; font-size: 1.1rem; }
+        p { margin: 0 0 14px; }
+        .intro-grid { display: grid; grid-template-columns: 1.35fr .85fr; gap: 28px; align-items: start; }
+        .dataset-note { padding: 18px 20px; background: var(--wash); border-left: 4px solid var(--teal); }
+        .dataset-note strong { color: var(--teal-dark); }
+        .plain-list { padding-left: 1.2rem; }
+        .plain-list li { margin: 0 0 8px; color: var(--muted); font-size: .9rem; }
+        .plain-list strong { color: var(--ink); }
+        
+        /* Interactive Table Styles */
+        .interactive-table-container { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 7px; padding: 18px; }
+        .toggle-controls { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .toggle-btn {
+            background: var(--wash); color: var(--teal-dark);
+            border: 1px solid var(--line); padding: 8px 16px;
+            border-radius: 5px; cursor: pointer; font-size: .85rem; font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .toggle-btn:hover { background: #e2ebe6; }
+        .toggle-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+        
+        table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+        th { text-align: left; padding: 12px 10px; border-bottom: 2px solid var(--line); color: var(--muted); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+        td { padding: 14px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+        .code-text { font-family: var(--mono); font-size: .88rem; color: var(--teal-dark); font-weight: 600; }
+        .field-desc { display: block; margin-top: 6px; font-size: .82rem; color: var(--muted); line-height: 1.4; }
+        .null-warning { color: var(--coral); font-weight: 600; }
+        .data-detail { color: var(--muted); font-size: .85rem; margin-bottom: 6px; display: block; font-weight: 500; }
+        
+        /* Dynamic Visibility Classes */
+        .view-type, .view-ranges { display: none; }
+        .show-type .view-type { display: block; }
+        .show-ranges .view-ranges { display: block; }
+        
+        .col-null-count, .col-null-pct { display: none; }
+        .show-nulls .col-dynamic { display: none; }
+        .show-nulls .col-null-count, .show-nulls .col-null-pct { display: table-cell; }
+
+        /* Date & Numeric Distributions */
+        .dist-container { margin-top: 6px; max-width: 340px; }
+        .dist-track { position: relative; height: 6px; background: #e7e9e2; border-radius: 3px; margin: 6px 0; }
+        .dist-iqr { position: absolute; height: 100%; background: var(--teal); opacity: 0.35; border-radius: 3px; }
+        .dist-median { position: absolute; height: 12px; width: 2px; background: var(--teal-dark); top: -3px; }
+        .dist-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
+        .dist-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 2px; font-weight: 600; text-align: center; }
+
+        /* Categorical Distributions */
+        .cat-dist-container { margin-top: 4px; display: flex; flex-direction: column; gap: 6px; max-width: 340px; }
+        .cat-row { display: flex; align-items: center; font-size: .75rem; }
+        .cat-label { width: 35%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); }
+        .cat-bar-bg { flex-grow: 1; height: 6px; background: #e7e9e2; border-radius: 3px; margin: 0 8px; position: relative; }
+        .cat-bar-fill { position: absolute; height: 100%; left: 0; top: 0; background: var(--teal); border-radius: 3px; }
+        .cat-pct { width: 15%; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+        
+        footer { margin-top: 46px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: .84rem; }
+        
+        @media (max-width: 680px) {
+            main { padding: 24px 16px 48px; }
+            .intro-grid { grid-template-columns: 1fr; gap: 16px; }
+            .toggle-btn { flex: 1; text-align: center; }
+            .interactive-table-container { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <p class="eyebrow">Group 06 · Hands-on 1 · Open Data and Knowledge Graphs</p>
+        <h1>Data Analysis &amp; Licensing</h1>
+        <p class="dek">An exploration of the full 2025 extract of the MyLA311 Service Request Data, detailing its licensing, internal schema, and comprehensive data profiling.</p>
+        <nav aria-label="Page sections">
+            <a href="#overview">Overview</a>
+            <a href="#licensing">Licensing Analysis</a>
+            <a href="#dictionary">Interactive Data Dictionary</a>
+            <a href="#naming">Resource Naming Strategy</a>
+        </nav>
+    </header>
+
+    <section id="overview">
+        <p class="eyebrow">01 · Source Data</p>
+        <h2>Dataset Overview</h2>
+        <div class="intro-grid">
+            <div>
+                <p>The dataset analyzed here represents a complete snapshot of service requests filed within the City of Los Angeles in 2025.</p>
+                <p><strong>Note on Analysis Scope:</strong> Due to GitHub memory constraints and the sheer volume of the data, this comprehensive profiling was executed locally via a Python script directly on the full <strong>423,053-row CSV file</strong>. This contrasts with the uploaded lightweight dataset, which is a truncated sample designed specifically for web performance and quick graphical previews.</p>
+            </div>
+            <aside class="dataset-note">
+                <h3>Dataset Footprint</h3>
+                <ul class="plain-list" style="margin-top: 8px;">
+                    <li><strong>Total Rows:</strong> 423,053</li>
+                    <li><strong>Columns:</strong> 34</li>
+                    <li><strong>Format:</strong> CSV</li>
+                    <li><strong>Time Span:</strong> Jan 1, 2025 – Nov 3, 2025</li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+
+    <section id="licensing">
+        <p class="eyebrow">02 · Legal Framework</p>
+        <h2>Licensing Analysis</h2>
+        <div class="intro-grid">
+            <div>
+                <p>Establishing a clear licensing framework is crucial for opening our knowledge graph to researchers, journalists, and civic developers. Because the original service request dataset is released into the public domain, we are entirely free to apply a new open license to our derived semantic models and applications.</p>
+                
+                <h3>Motivations for our chosen license</h3>
+                <p>We have chosen to license the <em>LA 311 Fieldnotes</em> knowledge graph and SPARQL endpoint under <strong>CC BY 4.0 (Creative Commons Attribution 4.0 International)</strong>. This aligns directly with our application's non-functional requirements and <strong>FR5</strong>, which strictly mandates displaying source attribution.</p>
+                <p>By applying CC BY 4.0, we ensure that everyone can freely query our SPARQL endpoint, share, adapt, and even commercialize our mapped materials. In return, users must attribute our group for the semantic modeling and Linked Data generation, while continuing to acknowledge the City of Los Angeles as the authoritative source of the raw civic data.</p>
+            </div>
+            <aside class="dataset-note">
+                <h3>Source Data Licensing</h3>
+                <ul class="plain-list" style="margin-top: 8px;">
+                    <li><strong>Publisher:</strong> City of Los Angeles - Information Technology Agency (via DataLA)</li>
+                    <li><strong>Rightsholder:</strong> City of Los Angeles</li>
+                    <li><strong>License:</strong> CC0 1.0 Universal (Public Domain Dedication). This promotes transparency and encourages free usage, analysis, and application development without copyright restrictions.</li>
+                </ul>
+                <h3 style="margin-top: 24px;">Project Licensing</h3>
+                <ul class="plain-list" style="margin-top: 8px;">
+                    <li><strong>License Applied:</strong> CC BY 4.0</li>
+                    <li><strong>Condition:</strong> Requires proper attribution for our derived semantic work, while preserving the acknowledgment of the City of Los Angeles as the source.</li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+
+    <section id="dictionary">
+        <p class="eyebrow">03 · Schema &amp; Profiling</p>
+        <h2>Interactive Data Dictionary</h2>
+        <p>Use the controls below to dynamically explore the schema types, missing data concentrations, and statistical distributions for every column. Where relevant, cardinality (unique value counts) is listed for categorical and textual data to assist with knowledge graph structuring.</p>
+        
+        <div class="interactive-table-container">
+            <div class="toggle-controls" aria-label="Data Views">
+                <button class="toggle-btn active" id="btn-type" onclick="setView('type')">Schema (Data Types)</button>
+                <button class="toggle-btn" id="btn-nulls" onclick="setView('nulls')">Missing Values</button>
+                <button class="toggle-btn" id="btn-ranges" onclick="setView('ranges')">Value Ranges &amp; Distributions</button>
+            </div>
+
+            <div id="data-table-wrapper" class="show-type">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 45%;">Field Name &amp; Official Description</th>
+                            <th class="col-dynamic">Dynamic Analysis</th>
+                            <th class="col-null-count">Missing Count</th>
+                            <th class="col-null-pct">Missing %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="code-text">SRNumber</span>
+                                <span class="field-desc">Service Request Number.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (String)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">423,053 unique IDs</span>
+                                    Primary key format (e.g., 1-5167495871)
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">CreatedDate</span>
+                                <span class="field-desc">Date that the request was created.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Datetime)</span>
+                                <span class="view-ranges">
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 2025-02-19</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 7.5%; width: 17%;"></div>
+                                            <div class="dist-median" style="left: 16%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>2025-01-01</span><span>2025-11-03</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">UpdatedDate</span>
+                                <span class="field-desc">Date that the request was most recently updated.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Datetime)</span>
+                                <span class="view-ranges">
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 2025-02-24</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 8.8%; width: 16.6%;"></div>
+                                            <div class="dist-median" style="left: 17.6%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>2025-01-01</span><span>2025-11-03</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">ActionTaken</span>
+                                <span class="field-desc">No official description.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">3 unique actions</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">SR Created</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 99.9%;"></div></div><span class="cat-pct">99.9%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Owner</span>
+                                <span class="field-desc">City agency or department assigned to this ticket.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">10 unique departments</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">LASAN</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 63.1%;"></div></div><span class="cat-pct">63.1%</span></div>
+                                        <div class="cat-row"><span class="cat-label">OCB</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 32.7%;"></div></div><span class="cat-pct">32.7%</span></div>
+                                        <div class="cat-row"><span class="cat-label">BSL</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 3.4%;"></div></div><span class="cat-pct">3.4%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">1</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">RequestType</span>
+                                <span class="field-desc">The name of the service request type. See MyLA311.lacity.org for the full list.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">12 unique types</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Bulky Items</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 39.6%;"></div></div><span class="cat-pct">39.6%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Graffiti Removal</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 32.7%;"></div></div><span class="cat-pct">32.7%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Illegal Dumping</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 7.7%;"></div></div><span class="cat-pct">7.7%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Status</span>
+                                <span class="field-desc">Current state of the ticket (e.g., Open, Pending, Forward, Closed, Canceled, Referred Out).</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">6 unique statuses</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Closed</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 91.8%;"></div></div><span class="cat-pct">91.8%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Cancelled</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 5.0%;"></div></div><span class="cat-pct">5.0%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Open</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 2.3%;"></div></div><span class="cat-pct">2.3%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">RequestSource</span>
+                                <span class="field-desc">The source that the service request was received.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">14 unique channels</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Mobile App</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 33.6%;"></div></div><span class="cat-pct">33.6%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Call</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 30.7%;"></div></div><span class="cat-pct">30.7%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Driver Self Report</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 20.0%;"></div></div><span class="cat-pct">20.0%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">CreatedByUserOrganization</span>
+                                <span class="field-desc">Shows which department the service request creator is from.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">13 unique organizations</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Self Service</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 45.6%;"></div></div><span class="cat-pct">45.6%</span></div>
+                                        <div class="cat-row"><span class="cat-label">LASAN</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 23.1%;"></div></div><span class="cat-pct">23.1%</span></div>
+                                        <div class="cat-row"><span class="cat-label">OCB</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 20.0%;"></div></div><span class="cat-pct">20.0%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">MobileOS</span>
+                                <span class="field-desc">If the request source is Mobile App, this displays either iOS or Android.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">2 unique OS types</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">iOS</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 81.7%;"></div></div><span class="cat-pct">81.7%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Android</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 18.3%;"></div></div><span class="cat-pct">18.3%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count"><span class="null-warning">280,970</span></td>
+                            <td class="col-null-pct"><span class="null-warning">66.41%</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Anonymous</span>
+                                <span class="field-desc">Was the ticket submitted anonymously? Y/N.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Boolean)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">2 unique values</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">N</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 87.4%;"></div></div><span class="cat-pct">87.4%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Y</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 12.6%;"></div></div><span class="cat-pct">12.6%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">AssignTo</span>
+                                <span class="field-desc">The specific group that is assigned to this request.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">44 unique assignments</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">NC</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 13.5%;"></div></div><span class="cat-pct">13.5%</span></div>
+                                        <div class="cat-row"><span class="cat-label">EV</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 13.4%;"></div></div><span class="cat-pct">13.4%</span></div>
+                                        <div class="cat-row"><span class="cat-label">SLA</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 10.7%;"></div></div><span class="cat-pct">10.7%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">5,591</td>
+                            <td class="col-null-pct">1.32%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">ServiceDate</span>
+                                <span class="field-desc">The scheduled service date for Sanitation service types.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Datetime)</span>
+                                <span class="view-ranges">
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 2025-02-25</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 59.8%; width: 7.7%;"></div>
+                                            <div class="dist-median" style="left: 64.0%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>2023-12-19</span><span>2025-10-27</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">58,005</td>
+                            <td class="col-null-pct">13.71%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">ClosedDate</span>
+                                <span class="field-desc">Date the request was closed. Not all request types use this field.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Datetime)</span>
+                                <span class="view-ranges">
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 2025-02-24</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 8.8%; width: 16.6%;"></div>
+                                            <div class="dist-median" style="left: 17.6%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>2025-01-01</span><span>2025-11-03</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">13,181</td>
+                            <td class="col-null-pct">3.12%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">AddressVerified</span>
+                                <span class="field-desc">Was the address within the City boundaries and validated with GIS data? Y/N.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">3 unique values</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Y</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 99.5%;"></div></div><span class="cat-pct">99.5%</span></div>
+                                        <div class="cat-row"><span class="cat-label">M</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 0.5%;"></div></div><span class="cat-pct">0.5%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">0</td>
+                            <td class="col-null-pct">0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">ApproximateAddress</span>
+                                <span class="field-desc">Y if location created by moving map pin; N if exact intersection/address.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Boolean)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">2 unique values</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">N</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 98.0%;"></div></div><span class="cat-pct">98.0%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Y</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 2.0%;"></div></div><span class="cat-pct">2.0%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count"><span class="null-warning">209,297</span></td>
+                            <td class="col-null-pct"><span class="null-warning">49.47%</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Address</span>
+                                <span class="field-desc">Full validated address string.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (String)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">197,500 unique addresses</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">WILSHIRE BLVD AT ALVARADO ST...</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 0.2%;"></div></div><span class="cat-pct">0.2%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">87</td>
+                            <td class="col-null-pct">0.02%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">HouseNumber</span>
+                                <span class="field-desc">Numeric identifier of the reported address. No official description provided.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Numeric)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">19,721 unique values</span>
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 7.7</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 0.2%; width: 1.3%;"></div>
+                                            <div class="dist-median" style="left: 0.6%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>1.0</span><span>999.0</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count"><span class="null-warning">109,719</span></td>
+                            <td class="col-null-pct"><span class="null-warning">25.94%</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Direction</span>
+                                <span class="field-desc">No official description.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">5 unique directions</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">W</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 37.6%;"></div></div><span class="cat-pct">37.6%</span></div>
+                                        <div class="cat-row"><span class="cat-label">N</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 29.3%;"></div></div><span class="cat-pct">29.3%</span></div>
+                                        <div class="cat-row"><span class="cat-label">S</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 23.1%;"></div></div><span class="cat-pct">23.1%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">33,748</td>
+                            <td class="col-null-pct">7.98%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">StreetName</span>
+                                <span class="field-desc">No official description.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (String)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">6,527 unique streets</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">SHERMAN</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 0.7%;"></div></div><span class="cat-pct">0.7%</span></div>
+                                        <div class="cat-row"><span class="cat-label">WESTERN</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 0.6%;"></div></div><span class="cat-pct">0.6%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count"><span class="null-warning">109,719</span></td>
+                            <td class="col-null-pct"><span class="null-warning">25.94%</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Suffix</span>
+                                <span class="field-desc">No official description.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">39 unique suffixes</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">AVE</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 36.6%;"></div></div><span class="cat-pct">36.6%</span></div>
+                                        <div class="cat-row"><span class="cat-label">ST</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 35.7%;"></div></div><span class="cat-pct">35.7%</span></div>
+                                        <div class="cat-row"><span class="cat-label">BLVD</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 14.9%;"></div></div><span class="cat-pct">14.9%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">40,656</td>
+                            <td class="col-null-pct">9.61%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">ZipCode</span>
+                                <span class="field-desc">No official description.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">132 unique ZIP codes</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">91342</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 10%;"></div></div><span class="cat-pct">Top</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,318</td>
+                            <td class="col-null-pct">0.55%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Latitude</span>
+                                <span class="field-desc">Raw GPS coordinate.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Numeric)</span>
+                                <span class="view-ranges">
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 34.0713</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 50.3%; width: 25.3%;"></div>
+                                            <div class="dist-median" style="left: 58.1%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>33.7061</span><span>34.3343</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,266</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Longitude</span>
+                                <span class="field-desc">Raw GPS coordinate.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Numeric)</span>
+                                <span class="view-ranges">
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: -118.3215</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 45.1%; width: 31.4%;"></div>
+                                            <div class="dist-median" style="left: 67.5%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>-118.6678</span><span>-118.1555</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,266</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">Location</span>
+                                <span class="field-desc">Use this composite field to map the request. WKT Format.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (WKT String)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">203,673 unique WKT strings</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">POINT (-118.2759 34.0579)</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 10%;"></div></div><span class="cat-pct">Top</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,266</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">TBMPage</span>
+                                <span class="field-desc">Thomas Bros map page.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Numeric ID)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">56 unique pages</span>
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: ~632.0</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 62.2%; width: 16.2%;"></div>
+                                            <div class="dist-median" style="left: 73.8%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>4.64</span><span>854.0</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,266</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">TBMColumn</span>
+                                <span class="field-desc">Thomas Bros Map Column.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">10 unique columns</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">B</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 13.5%;"></div></div><span class="cat-pct">13.5%</span></div>
+                                        <div class="cat-row"><span class="cat-label">J</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 13.3%;"></div></div><span class="cat-pct">13.3%</span></div>
+                                        <div class="cat-row"><span class="cat-label">A</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 13.1%;"></div></div><span class="cat-pct">13.1%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,266</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">TBMRow</span>
+                                <span class="field-desc">Thomas Bros Map Row.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Numeric)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">7 unique rows</span>
+                                    <div class="dist-container">
+                                        <div class="dist-meta">Median: 4.0</div>
+                                        <div class="dist-track">
+                                            <div class="dist-iqr" style="left: 33.3%; width: 50%;"></div>
+                                            <div class="dist-median" style="left: 50%;"></div>
+                                        </div>
+                                        <div class="dist-labels"><span>1.0</span><span>7.0</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,266</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">APC</span>
+                                <span class="field-desc">Area Planning Commissions.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">7 unique commissions</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Central</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 21.3%;"></div></div><span class="cat-pct">21.3%</span></div>
+                                        <div class="cat-row"><span class="cat-label">South LA</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 19.1%;"></div></div><span class="cat-pct">19.1%</span></div>
+                                        <div class="cat-row"><span class="cat-label">South Valley</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 17.0%;"></div></div><span class="cat-pct">17.0%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,295</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">CD</span>
+                                <span class="field-desc">Council District.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">15 unique districts</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">14.0</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 9.9%;"></div></div><span class="cat-pct">9.9%</span></div>
+                                        <div class="cat-row"><span class="cat-label">13.0</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 9.5%;"></div></div><span class="cat-pct">9.5%</span></div>
+                                        <div class="cat-row"><span class="cat-label">8.0</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 7.5%;"></div></div><span class="cat-pct">7.5%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,268</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">CDMember</span>
+                                <span class="field-desc">City Council Member.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">17 unique members</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">E. Hernandez</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 8.1%;"></div></div><span class="cat-pct">8.1%</span></div>
+                                        <div class="cat-row"><span class="cat-label">H. Soto-Martinez</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 8.1%;"></div></div><span class="cat-pct">8.1%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Heather Hutt</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 8.0%;"></div></div><span class="cat-pct">8.0%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count"><span class="null-warning">84,528</span></td>
+                            <td class="col-null-pct"><span class="null-warning">19.98%</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">NC</span>
+                                <span class="field-desc">Neighborhood Council Code.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">float64 (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">99 unique councils</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">50.0</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 4.3%;"></div></div><span class="cat-pct">4.3%</span></div>
+                                        <div class="cat-row"><span class="cat-label">5.0</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 3.0%;"></div></div><span class="cat-pct">3.0%</span></div>
+                                        <div class="cat-row"><span class="cat-label">52.0</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 2.7%;"></div></div><span class="cat-pct">2.7%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">7,265</td>
+                            <td class="col-null-pct">1.72%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">NCName</span>
+                                <span class="field-desc">Neighborhood Council Name.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">100 unique council names</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">Boyle Heights</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 4.3%;"></div></div><span class="cat-pct">4.3%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Sylmar</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 3.0%;"></div></div><span class="cat-pct">3.0%</span></div>
+                                        <div class="cat-row"><span class="cat-label">Downtown LA</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 2.7%;"></div></div><span class="cat-pct">2.7%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">7,265</td>
+                            <td class="col-null-pct">1.72%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="code-text">PolicePrecinct</span>
+                                <span class="field-desc">Police Precinct.</span>
+                            </td>
+                            <td class="col-dynamic">
+                                <span class="view-type">object (Categorical)</span>
+                                <span class="view-ranges">
+                                    <span class="data-detail">21 unique precincts</span>
+                                    <div class="cat-dist-container">
+                                        <div class="cat-row"><span class="cat-label">HOLLENBECK</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 6.5%;"></div></div><span class="cat-pct">6.5%</span></div>
+                                        <div class="cat-row"><span class="cat-label">RAMPART</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 6.2%;"></div></div><span class="cat-pct">6.2%</span></div>
+                                        <div class="cat-row"><span class="cat-label">NORTHEAST</span><div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 6.1%;"></div></div><span class="cat-pct">6.1%</span></div>
+                                    </div>
+                                </span>
+                            </td>
+                            <td class="col-null-count">2,286</td>
+                            <td class="col-null-pct">0.54%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="naming">
+        <p class="eyebrow">04 · Resource Naming</p>
+        <h2>Resource Naming Strategy</h2>
+        <div>
+            <p>To ensure consistency, interoperability, and alignment with Linked Data best practices, the <em>LA 311 Fieldnotes</em> knowledge graph follows a well-defined resource naming strategy. It separates the vocabulary (ontology) from the actual dataset instances (resources) using distinct HTTP paths.</p>
+
+            <h3>Base Namespace</h3>
+            <p>All resources are minted under a dedicated domain controlled by our project, distinct from standard application defaults:</p>
+            <p><code style="font-family: var(--mono); font-size: .9rem; background: var(--wash); padding: 4px 8px; border-radius: 4px; color: var(--teal-dark);">http://linkeddata.la311.com</code></p>
+
+            <h3>1 · Ontology URIs (Vocabulary)</h3>
+            <p>Path: <code style="font-family: var(--mono); font-size: .85rem; background: var(--wash); padding: 2px 6px; border-radius: 3px;">http://linkeddata.la311.com/ontology#</code></p>
+            <p>We use hash URIs for defining classes and properties so the entire lightweight vocabulary can be retrieved in a single HTTP request. They match our exported schema exactly:</p>
+            <ul class="plain-list">
+                <li><strong>Classes (UpperCamelCase):</strong>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#ServiceRequest</code>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#Organization</code>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#AdministrativeRegion</code>
+                </li>
+                <li><strong>Properties (lowerCamelCase):</strong>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#hasLocation</code> <span style="color: var(--muted);">(object)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#isWithin</code> <span style="color: var(--muted);">(object)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#srNumber</code> <span style="color: var(--muted);">(datatype)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#createdDate</code> <span style="color: var(--muted);">(datatype)</span>
+                </li>
+            </ul>
+
+            <h3>2 · Data URIs (Individuals)</h3>
+            <p>Path: <code style="font-family: var(--mono); font-size: .85rem; background: var(--wash); padding: 2px 6px; border-radius: 3px;">http://linkeddata.la311.com/resource/</code></p>
+            <p>We use slash URIs for the generated data instances, mapping them directly to their class and a unique dataset identifier:</p>
+            <ul class="plain-list">
+                <li><strong>Service Requests</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/ServiceRequest/{SRNumber}</code><br>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/ServiceRequest/1-5167495871</span></li>
+                <li><strong>Organizations</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/Organization/{Nome}</code><br>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/Organization/LASAN</span></li>
+                <li><strong>Administrative Regions</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/AdministrativeRegion/{NC}_{CD}</code><br>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/AdministrativeRegion/50_14</span></li>
+                <li><strong>Locations</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/Location/{Latitude},{Longitude}</code><br>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/Location/34.0579,-118.2759</span></li>
+            </ul>
+
+            <h3>3 · Content Negotiation</h3>
+            <p>Because Data URIs identify real-world concepts (like a physical civic issue or a department), we use <strong>303 See Other</strong> HTTP redirects to resolve them based on the requesting client:</p>
+            <ul class="plain-list">
+                <li><strong>Human Request</strong> (Accept: <code style="font-family: var(--mono); font-size: .82rem;">text/html</code>): Server redirects to an HTML page (e.g., <code style="font-family: var(--mono); font-size: .82rem;">/page/ServiceRequest/1234567</code>) displaying the ticket details.</li>
+                <li><strong>Machine Request</strong> (Accept: <code style="font-family: var(--mono); font-size: .82rem;">application/rdf+xml</code>): Server redirects to a data document (e.g., <code style="font-family: var(--mono); font-size: .82rem;">/data/ServiceRequest/1234567</code>) containing the raw semantic triples.</li>
+            </ul>
+
+            <h3>4 · External Linking Strategy</h3>
+            <p>To integrate our local knowledge graph with the broader Linked Open Data cloud, specific classes have been designated to link our data instances to external authoritative entities (such as Wikidata, DBpedia, or GeoNames) using <code style="font-family: var(--mono); font-size: .85rem; background: var(--wash); padding: 2px 6px; border-radius: 3px;">owl:sameAs</code>:</p>
+            <ul class="plain-list">
+                <li><strong>la311:AdministrativeRegion:</strong> Civic and geographic instances, such as specific Neighborhood Councils (e.g., Boyle Heights) or Police Precincts, will be linked to their corresponding geographic entities in Wikidata.</li>
+                <li><strong>la311:Organization:</strong> Instances representing Los Angeles city departments (e.g., LASAN, BSL) will link to their official Wikidata or DBpedia public agency records.</li>
+                <li><strong>la311:Location:</strong> Verified geographic identifiers, such as ZIP Codes, will link to external geographical databases like GeoNames.</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        function setView(viewName) {
+            document.getElementById('data-table-wrapper').className = 'show-' + viewName;
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + viewName).classList.add('active');
+        }
+    </script>
+</main>
+</body>
+</html>

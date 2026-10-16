@@ -1,0 +1,139 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix hr:   <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@base <https://w3id.org/barcelona-heat-relief/mappings/xarxa-refugis-climatics#> .
+
+# Climate shelters (D1, csv/xarxa-refugis-climatics-updated.csv) and their categories.
+# Paths are relative to the HandsOn/Group08 directory, where Morph-KGC is run.
+#
+# The logical sources are SQL views over the CSV file (rml:query, executed by Morph-KGC with DuckDB),
+# so that values that need more than one column can be built without leaving holes:
+#   - street_address: street, plus the street number or number range when the source has it.
+#     The placeholder numbers 0 and 9999 are treated as missing, so the shelters that have only
+#     a blank or a placeholder number (4 in total) keep the street only;
+#   - timetable: the hidden character U+FEFF is removed and the control character U+0092 is replaced
+#     by the apostrophe it stands for (U+2019);
+#   - empty cells, which DuckDB reads as NULL, are turned into empty strings, so that Morph-KGC
+#     generates no triple for them;
+#   - category_label: readable label of the category, e.g. SwimmingPool -> "Swimming pool".
+
+#################################################################
+#    Climate shelters
+#################################################################
+
+<#ClimateShelter> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT coalesce(COLUMNS(*), '') FROM (
+      SELECT * REPLACE (replace(replace(timetable, chr(65279), ''), chr(146), chr(8217)) AS timetable),
+        CASE
+          WHEN addresses_start_street_number IS NULL
+            OR addresses_start_street_number IN ('0', '9999') THEN addresses_road_name
+          WHEN addresses_end_street_number IS NULL
+            OR addresses_end_street_number IN ('0', '9999')
+            OR addresses_end_street_number = addresses_start_street_number
+            THEN addresses_road_name || ', ' || addresses_start_street_number
+          ELSE addresses_road_name || ', ' || addresses_start_street_number || '-' || addresses_end_street_number
+        END AS street_address
+      FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
+      )
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/ClimateShelter/{register_id}" ;
+    rr:class hr:ClimateShelter
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "name" ; rr:language "ca" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:hasShelterCategory ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/ShelterCategory/{category}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:streetAddress ;
+    rr:objectMap [ rml:reference "street_address" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:etrs89X ;
+    rr:objectMap [ rml:reference "geo_epgs_25831_x" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:etrs89Y ;
+    rr:objectMap [ rml:reference "geo_epgs_25831_y" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate geo:lat ;
+    rr:objectMap [ rml:reference "geo_epgs_4326_lat" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate geo:long ;
+    rr:objectMap [ rml:reference "geo_epgs_4326_lon" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:openingHours ;
+    rr:objectMap [ rml:reference "timetable" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:email ;
+    rr:objectMap [ rml:reference "email" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:website ;
+    rr:objectMap [ rml:reference "website" ; rr:datatype xsd:anyURI ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:telephone ;
+    rr:objectMap [ rml:reference "telephone" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:isLocatedInNeighbourhood ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{addresses_neighborhood_id}" ]
+  ] .
+
+#################################################################
+#    Shelter categories
+#################################################################
+
+<#ShelterCategory> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT category,
+        upper(left(spaced, 1)) || lower(substr(spaced, 2)) AS category_label
+      FROM (
+        SELECT category, regexp_replace(category, '([a-z])([A-Z])', '\\1 \\2', 'g') AS spaced
+        FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
+      )
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/ShelterCategory/{category}" ;
+    rr:class hr:ShelterCategory
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "category_label" ; rr:language "en" ]
+  ] .

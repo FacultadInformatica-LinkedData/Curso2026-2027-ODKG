@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Analysis - Group 14</title>
+</head>
+<body>
+
+    <h1>Data Analysis - Group 14</h1>
+    <p><strong>Primary Dataset:</strong> Fuentes de agua para beber (300051)</p>
+    <p><strong>Domain:</strong> Smart City (Madrid Hydration Map)</p>
+
+    <h2>1. Data and Schema Analysis</h2>
+
+    <h3>1.1 File Format and Overview</h3>
+    <ul>
+        <li><strong>File:</strong> <code>300051-26-fuentes.csv</code></li>
+        <li><strong>Quantities:</strong> 2,308 rows (drinking water fountains).</li>
+        <li><strong>Coordinates Range:</strong> Latitude ranges from 40.333127 to 40.591954. Longitude ranges from -3.831162 to -3.546849.</li>
+        <li><strong>Key Statuses:</strong> According to the dataset structure, the expected values are <code>OPERATIVO</code> (in service), <code>NO OPERATIVO</code> (out of service), and <code>CERRADA TEMPORALMENTE</code> (temporarily closed).</li>
+    </ul>
+
+    <h3>1.2 Full Schema Analysis</h3>
+    
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>Column</th>
+            <th>Description</th>
+            <th>Target type (RDF) / Relevance</th>
+        </tr>
+        <tr><td>1</td><td><code>ID</code></td><td>Asset number from the MINT application, sequential number.</td><td>Link to a <code>Fountain</code> resource (URI identifier)</td></tr>
+        <tr><td>2</td><td><code>DESC_CLASIFICACION</code></td><td>Element classification (Drinking fountains).</td><td>Discarded (Constant administrative classification)</td></tr>
+        <tr><td>3</td><td><code>COD_BARRIO</code></td><td>Code corresponding to the Administrative Neighbourhood.</td><td>Discarded</td></tr>
+        <tr><td>4</td><td><code>BARRIO</code></td><td>Name of the Administrative Neighbourhood.</td><td>Link to a <code>Neighbourhood</code> resource</td></tr>
+        <tr><td>5</td><td><code>COD_DISTRITO</code></td><td>Code corresponding to the Administrative District.</td><td>Discarded</td></tr>
+        <tr><td>6</td><td><code>DISTRITO</code></td><td>Name of the Administrative District.</td><td>Link to a <code>District</code> resource</td></tr>
+        <tr><td>7</td><td><code>ESTADO</code></td><td>Status of the fountain at the time of data collection.</td><td><code>xsd:string</code> (Operational status)</td></tr>
+        <tr><td>8</td><td><code>COORD_GIS_X</code></td><td>GIS X location coordinate.</td><td>Discarded (Using WGS84 Lat/Lon instead)</td></tr>
+        <tr><td>9</td><td><code>COORD_GIS_Y</code></td><td>GIS Y location coordinate.</td><td>Discarded (Using WGS84 Lat/Lon instead)</td></tr>
+        <tr><td>10</td><td><code>SISTEMA_COORD</code></td><td>Coordinate system (ETRS89).</td><td>Discarded</td></tr>
+        <tr><td>11</td><td><code>LATITUD</code></td><td>Geographic latitude.</td><td><code>xsd:float</code> (WGS84 coordinate)</td></tr>
+        <tr><td>12</td><td><code>LONGITUD</code></td><td>Geographic longitude.</td><td><code>xsd:float</code> (WGS84 coordinate)</td></tr>
+        <tr><td>13</td><td><code>TIPO_VIA</code></td><td>Type of street/road where it is located.</td><td><code>xsd:string</code> (e.g., Calle, Plaza)</td></tr>
+        <tr><td>14</td><td><code>NOM_VIA</code></td><td>Name of the street/road where it is located.</td><td><code>xsd:string</code> (Street/Park name)</td></tr>
+        <tr><td>15</td><td><code>NUM_VIA</code></td><td>Street number where it is located.</td><td><code>xsd:string</code></td></tr>
+        <tr><td>16</td><td><code>COD_POSTAL</code></td><td>Postal code where it is located.</td><td>Discarded</td></tr>
+        <tr><td>17</td><td><code>DIRECCION_AUX</code></td><td>Address complement (notable aspects of the area).</td><td>Discarded</td></tr>
+        <tr><td>18</td><td><code>NDP</code></td><td>Police number, code corresponding to the address.</td><td>Discarded (Internal identifier)</td></tr>
+        <tr><td>19</td><td><code>FECHA_INSTALACION</code></td><td>Installation date of the element.</td><td>Discarded</td></tr>
+        <tr><td>20</td><td><code>CODIGO_INTERNO</code></td><td>Drinking fountain code.</td><td>Discarded</td></tr>
+        <tr><td>21</td><td><code>CONTRATO_COD</code></td><td>Maintenance contract of the element.</td><td>Discarded</td></tr>
+        <tr><td>22</td><td><code>UBICACION</code></td><td>Location of the fountain in a green zone (ZV) or public street (VP).</td><td>Discarded (We rely on location context)</td></tr>
+        <tr><td>23</td><td><code>USO</code></td><td>Type of use of the fountain (People/Pets).</td><td>Discarded</td></tr>
+        <tr><td>24</td><td><code>MODELO</code></td><td>Type of fountain model.</td><td>Discarded</td></tr>
+    </table>
+
+    <h2>2. Licensing of the Data Source</h2>
+    <ul>
+        <li><strong>Publisher:</strong> Dirección General de Gestión del Agua y Zonas Verdes (Ayuntamiento de Madrid).</li>
+        <li><strong>Original License:</strong> Creative Commons Attribution 4.0 International (CC BY 4.0).</li>
+        <li><strong>Potential license of the dataset to be generated:</strong> The new Linked Data (RDF) dataset and ontology generated in this project will also be published under the <strong>CC BY 4.0</strong> license. This ensures users of our RDF dataset know they must still credit the Ayuntamiento de Madrid as the primary data source, while also acknowledging our group's work in transforming the data.</li>
+    </ul>
+
+    <h2>3. Resource Naming Strategy</h2>
+    <p>We have defined a resource naming strategy that clearly separates the conceptual ontology from the data instances, avoiding default generic URIs.</p>
+    <ul>
+        <li><strong>Base Domain:</strong> <code>http://smartcity.linkeddata.es/madrid/fountains/</code></li>
+        <li><strong>Ontology URI (Classes and Properties):</strong> <code>http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#</code>
+            <ul>
+                <li><em>Class Example:</em> <code>http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#Fountain</code></li>
+                <li><em>Property Example:</em> <code>http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#hasStatus</code></li>
+            </ul>
+        </li>
+        <li><strong>Instance URIs (Data / Resources):</strong> <code>http://smartcity.linkeddata.es/madrid/fountains/resource/&lt;ClassName&gt;/&lt;identifier&gt;</code>
+            <ul>
+                <li><em>Fountain Example:</em> <code>http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/10234</code></li>
+                <li><em>District Example:</em> <code>http://smartcity.linkeddata.es/madrid/fountains/resource/District/Retiro</code></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

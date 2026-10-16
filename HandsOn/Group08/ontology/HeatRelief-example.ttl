@@ -1,0 +1,229 @@
+@prefix hr:            <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@prefix shelter:       <https://w3id.org/barcelona-heat-relief/resource/ClimateShelter/> .
+@prefix shelterCat:    <https://w3id.org/barcelona-heat-relief/resource/ShelterCategory/> .
+@prefix fountain:      <https://w3id.org/barcelona-heat-relief/resource/DrinkingFountain/> .
+@prefix tree:          <https://w3id.org/barcelona-heat-relief/resource/StreetTree/> .
+@prefix species:       <https://w3id.org/barcelona-heat-relief/resource/TreeSpecies/> .
+@prefix neighbourhood: <https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/> .
+@prefix district:      <https://w3id.org/barcelona-heat-relief/resource/District/> .
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix wd:            <http://www.wikidata.org/entity/> .
+
+# Sample instantiation of the Barcelona Heat Relief ontology with real records
+# of the three source files (Open Data BCN, CC BY 4.0). Values are copied from
+# the CSV files; blank values and placeholders ("SENSE INFORMAR") produce no triple.
+
+# The file imports the ontology, so that tools such as Protégé read the property values with
+# their declared types. Until the w3id IRI is registered, catalog-v001.xml maps it to HeatRelief.ttl.
+[] rdf:type owl:Ontology ;
+    owl:imports <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief> .
+
+#################################################################
+#    Climate shelters (xarxa-refugis-climatics.csv)
+#################################################################
+
+shelter:99400780928 rdf:type hr:ClimateShelter ;
+    rdfs:label "Refugi climàtic"@ca ;
+    hr:hasShelterCategory shelterCat:Other ;
+    hr:streetAddress "Plaça de Valentí Almirall, 1" ;
+    hr:etrs89X 432466.9569089691 ;
+    hr:etrs89Y 4584469.3650011495 ;
+    geo:lat 41.40893542278706 ;
+    geo:long 2.191994563654206 ;
+    hr:openingHours "De dilluns a divendres: de 08.30 h a 14.30 h" ;
+    hr:website "http://ajuntament.barcelona.cat/santmarti"^^xsd:anyURI ;
+    hr:isLocatedInNeighbourhood neighbourhood:65 .
+
+# Opening hours omitted in this sample: the source holds a table with several periods.
+shelter:1138134103 rdf:type hr:ClimateShelter ;
+    rdfs:label "Biblioteca La Barceloneta - La Fraternitat"@ca ;
+    hr:hasShelterCategory shelterCat:Library ;
+    hr:isHostedBy wd:Q85692758 ;
+    hr:streetAddress "Carrer de Felícia Fuster i Viladecans, 8" ;
+    hr:etrs89X 432175.07040835434 ;
+    hr:etrs89Y 4581174.244089535 ;
+    geo:lat 41.379232628875926 ;
+    geo:long 2.1888716402624535 ;
+    hr:email "b.barcelona.b@diba.cat" ;
+    hr:isLocatedInNeighbourhood neighbourhood:03 .
+
+# A generic name that the source repeats (analysis 1.4 #11). Its host, the Centre Esportiu Municipal
+# de Sant Sebastià, has no Wikidata item, so there is no hr:isHostedBy link. Opening hours omitted:
+# the source table mixes hours, prices and notes.
+shelter:98110133629 rdf:type hr:ClimateShelter ;
+    rdfs:label "Piscina Descoberta"@ca ;
+    hr:hasShelterCategory shelterCat:SwimmingPool ;
+    hr:streetAddress "Plaça del Mar, 1" ;
+    hr:etrs89X 432253.3517315788 ;
+    hr:etrs89Y 4580755.282194903 ;
+    geo:lat 41.3754657408768 ;
+    geo:long 2.1898545572534602 ;
+    hr:telephone "932210506" ;
+    hr:isLocatedInNeighbourhood neighbourhood:03 .
+
+#################################################################
+#    Shelter categories
+#################################################################
+
+shelterCat:Library rdf:type hr:ShelterCategory ;
+    rdfs:label "Library"@en .
+
+shelterCat:Other rdf:type hr:ShelterCategory ;
+    rdfs:label "Other"@en .
+
+shelterCat:SwimmingPool rdf:type hr:ShelterCategory ;
+    rdfs:label "Swimming pool"@en .
+
+#################################################################
+#    Facilities (Wikidata items)
+#################################################################
+
+wd:Q85692758 rdf:type hr:Facility ;
+    rdfs:label "Biblioteca La Barceloneta - La Fraternitat"@ca .
+
+#################################################################
+#    Drinking fountains (fonts-beure-2026.csv)
+#################################################################
+
+fountain:01-004 rdf:type hr:DrinkingFountain ;
+    rdfs:label "Sant Carles"@ca ;
+    hr:streetAddress "C COMTE DE SANTA CLARA, 11" ;
+    hr:etrs89X 432182.782442075 ;
+    hr:etrs89Y 4581164.507911981 ;
+    geo:lat 41.379145587 ;
+    geo:long 2.188964950 ;
+    hr:isLocatedInNeighbourhood neighbourhood:03 .
+
+#################################################################
+#    Street trees (arbrat-viari.csv)
+#################################################################
+
+tree:0000423AR rdf:type hr:StreetTree ;
+    hr:hasSpecies species:108 ;
+    hr:treeCategory "EXEMPLAR" ;
+    hr:irrigationType "GOTEIG AVARIAT" ;
+    hr:greenSpace "Central de Nou Barris, Parc" ;
+    hr:streetAddress "Pg Fabra i Puig, 423" ;
+    hr:etrs89X 430250.886 ;
+    hr:etrs89Y 4587703.209 ;
+    geo:lat 41.4378722 ;
+    geo:long 2.1651098 ;
+    hr:isLocatedInNeighbourhood neighbourhood:48 .
+
+tree:0017853AR rdf:type hr:StreetTree ;
+    hr:hasSpecies species:126 ;
+    hr:treeCategory "PRIMERA" ;
+    hr:plantingDate "2017-12-20T00:00:00"^^xsd:dateTime ;
+    hr:greenSpace "Diagonal, av. (Selva de Mar, c. - Josep Pla, c.)" ;
+    hr:streetAddress "Av Diagonal, 53" ;
+    hr:etrs89X 434051.881 ;
+    hr:etrs89Y 4584492.099 ;
+    geo:lat 41.4092718 ;
+    geo:long 2.2109533 ;
+    hr:isLocatedInNeighbourhood neighbourhood:69 .
+
+# The backslash of the source address is escaped as \\ in Turtle.
+tree:0164742AR rdf:type hr:StreetTree ;
+    hr:hasSpecies species:5286580 ;
+    hr:treeCategory "SEGONA" ;
+    hr:greenSpace "Diagonal, av. (Lepant, c. - Nàpols, c.)" ;
+    hr:streetAddress "C\\ València, 382" ;
+    hr:etrs89X 430921.038 ;
+    hr:etrs89Y 4583525.241 ;
+    geo:lat 41.4003006 ;
+    geo:long 2.1736079 ;
+    hr:isLocatedInNeighbourhood neighbourhood:06 .
+
+# The composite water type "FREÀTICA / POTABLE" is split into two values (analysis 1.4 #4).
+tree:0102204AR rdf:type hr:StreetTree ;
+    hr:hasSpecies species:126 ;
+    hr:treeCategory "PRIMERA" ;
+    hr:plantingDate "2025-03-19T00:00:00"^^xsd:dateTime ;
+    hr:irrigationType "GOTEIG" ;
+    hr:irrigationWaterType "FREÀTICA" , "POTABLE" ;
+    hr:greenSpace "Diagonal, av. (Lepant, c. - Nàpols, c.)" ;
+    hr:streetAddress "Av Diagonal, 253" ;
+    hr:etrs89X 431455.517 ;
+    hr:etrs89Y 4583678.622 ;
+    geo:lat 41.4017278 ;
+    geo:long 2.1799838 ;
+    hr:isLocatedInNeighbourhood neighbourhood:06 .
+
+#################################################################
+#    Tree species
+#################################################################
+
+species:108 rdf:type hr:TreeSpecies ;
+    rdfs:label "Pinus pinea" ;
+    hr:scientificName "Pinus pinea" ;
+    hr:spanishName "Pino piñonero" ;
+    hr:catalanName "Pi pinyoner" , "pi pinyer" ;
+    owl:sameAs wd:Q106094 .
+
+# Same taxon as Platanus × hispanica, the name used in Wikidata.
+species:126 rdf:type hr:TreeSpecies ;
+    rdfs:label "Platanus × acerifolia" ;
+    hr:scientificName "Platanus × acerifolia" ;
+    hr:spanishName "Plátano" ;
+    hr:catalanName "Plàtan" ;
+    owl:sameAs wd:Q161374 .
+
+# A cultivar: linked to the item of its species with skos:broadMatch, not owl:sameAs.
+species:5286580 rdf:type hr:TreeSpecies ;
+    rdfs:label "Platanus × acerifolia 'Alphen's Globe'" ;
+    hr:scientificName "Platanus × acerifolia 'Alphen's Globe'" ;
+    skos:broadMatch wd:Q161374 .
+
+#################################################################
+#    Neighbourhoods
+#################################################################
+
+neighbourhood:03 rdf:type hr:Neighbourhood ;
+    rdfs:label "la Barceloneta"@ca ;
+    hr:isPartOfDistrict district:01 ;
+    owl:sameAs wd:Q377070 .
+
+neighbourhood:06 rdf:type hr:Neighbourhood ;
+    rdfs:label "la Sagrada Família"@ca ;
+    hr:isPartOfDistrict district:02 ;
+    owl:sameAs wd:Q2470217 .
+
+neighbourhood:48 rdf:type hr:Neighbourhood ;
+    rdfs:label "la Guineueta"@ca ;
+    hr:isPartOfDistrict district:08 ;
+    owl:sameAs wd:Q2736697 .
+
+neighbourhood:65 rdf:type hr:Neighbourhood ;
+    rdfs:label "el Clot"@ca ;
+    hr:isPartOfDistrict district:10 ;
+    owl:sameAs wd:Q2979686 .
+
+neighbourhood:69 rdf:type hr:Neighbourhood ;
+    rdfs:label "Diagonal Mar i el Front Marítim del Poblenou"@ca ;
+    hr:isPartOfDistrict district:10 ;
+    owl:sameAs wd:Q2736444 .
+
+#################################################################
+#    Districts
+#################################################################
+
+district:01 rdf:type hr:District ;
+    rdfs:label "Ciutat Vella"@ca ;
+    owl:sameAs wd:Q941385 .
+
+district:02 rdf:type hr:District ;
+    rdfs:label "Eixample"@ca ;
+    owl:sameAs wd:Q64124 .
+
+district:08 rdf:type hr:District ;
+    rdfs:label "Nou Barris"@ca ;
+    owl:sameAs wd:Q1641049 .
+
+district:10 rdf:type hr:District ;
+    rdfs:label "Sant Martí"@ca ;
+    owl:sameAs wd:Q250935 .

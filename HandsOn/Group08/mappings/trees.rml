@@ -1,0 +1,159 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix hr:   <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@base <https://w3id.org/barcelona-heat-relief/mappings/trees#> .
+
+# Street trees (D3, csv/arbrat-viari-updated.csv) and their species.
+# Paths are relative to the HandsOn/Group08 directory, where Morph-KGC is run.
+#
+# The logical source of the trees is a SQL view over the CSV file (rml:query, executed by Morph-KGC with DuckDB):
+#   - the placeholder street numbers 0 and 9999 at the end of adreca (", 0" and ", 9999") are removed,
+#     so that those trees keep the street only;
+#   - empty cells, which DuckDB reads as NULL, are turned into empty strings, so that Morph-KGC
+#     generates no triple for them.
+# The logical source of the species is the CSV file itself (rml:source); there empty cells generate no triple.
+#   - label of a tree: scientific name of the species followed by the tree code;
+#   - hr:plantingDate: the source gives only the day, so "T00:00:00" is appended (xsd:dateTime, see the ontology);
+#   - the species are read from the same file: every species id has a single scientific name and a single
+#     set of common names, so each species is described once;
+#   - the tree 0345745AR has no neighbourhood in the source, so it has no hr:isLocatedInNeighbourhood link.
+
+#################################################################
+#    Street trees
+#################################################################
+
+<#StreetTree> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT coalesce(COLUMNS(*), '') FROM (
+      SELECT * REPLACE (regexp_replace(adreca, ', (0|9999)$', '') AS adreca)
+      FROM read_csv('csv/arbrat-viari-updated.csv', header = true, all_varchar = true)
+      )
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/StreetTree/{codi}" ;
+    rr:class hr:StreetTree
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:template "{cat_nom_cientific} {codi}" ; rr:termType rr:Literal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:hasSpecies ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/TreeSpecies/{cat_especie_id}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:treeCategory ;
+    rr:objectMap [ rml:reference "categoria_arbrat" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:irrigationType ;
+    rr:objectMap [ rml:reference "tipus_reg" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:irrigationWaterType ;
+    rr:objectMap [ rml:reference "tipus_aigua 1" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:irrigationWaterType ;
+    rr:objectMap [ rml:reference "tipus_aigua 2" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:greenSpace ;
+    rr:objectMap [ rml:reference "espai_verd" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:streetAddress ;
+    rr:objectMap [ rml:reference "adreca" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:etrs89X ;
+    rr:objectMap [ rml:reference "x_etrs89" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:etrs89Y ;
+    rr:objectMap [ rml:reference "y_etrs89" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate geo:lat ;
+    rr:objectMap [ rml:reference "latitud" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate geo:long ;
+    rr:objectMap [ rml:reference "longitud" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:plantingDate ;
+    rr:objectMap [ rr:template "{data_plantacio}T00:00:00" ; rr:termType rr:Literal ; rr:datatype xsd:dateTime ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:isLocatedInNeighbourhood ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{codi_barri}" ]
+  ] .
+
+#################################################################
+#    Tree species
+#################################################################
+
+<#TreeSpecies> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/arbrat-viari-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/TreeSpecies/{cat_especie_id}" ;
+    rr:class hr:TreeSpecies
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "cat_nom_cientific" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:scientificName ;
+    rr:objectMap [ rml:reference "cat_nom_cientific" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:spanishName ;
+    rr:objectMap [ rml:reference "cat_nom_castella 1" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:spanishName ;
+    rr:objectMap [ rml:reference "cat_nom_castella 2" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:catalanName ;
+    rr:objectMap [ rml:reference "cat_nom_catala 1" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:catalanName ;
+    rr:objectMap [ rml:reference "cat_nom_catala 2" ; rr:datatype xsd:string ]
+  ] .

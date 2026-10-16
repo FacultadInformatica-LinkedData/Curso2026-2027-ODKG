@@ -1,0 +1,526 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "OBJECTID_1",
+    "expression": "grel:value.replace(/[^0-9]/, '').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column OBJECTID_1 using expression grel:value.replace(/[^0-9]/, '').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PARK_NO",
+    "expression": "grel:value.replace(/[^0-9]/, '').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PARK_NO using expression grel:value.replace(/[^0-9]/, '').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "GISOBJID",
+    "expression": "grel:value.replace(/[^0-9]/, '').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column GISOBJID using expression grel:value.replace(/[^0-9]/, '').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "X_COORD",
+    "expression": "grel:value.trim().replace(',', '.').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column X_COORD using expression grel:value.trim().replace(',', '.').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Y_COORD",
+    "expression": "grel:value.trim().replace(',', '.').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Y_COORD using expression grel:value.trim().replace(',', '.').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "GISOBJID",
+    "expression": "grel:if(value == 0, null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column GISOBJID using expression grel:if(value == 0, null, value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PARK",
+    "expression": "grel:value.replace(/\\s+/, ' ').trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PARK using expression grel:value.replace(/\\s+/, ' ').trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FACILITY_N",
+    "expression": "grel:value.replace(/\\s+/, ' ').trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column FACILITY_N using expression grel:value.replace(/\\s+/, ' ').trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FACILITY_T",
+    "expression": "grel:value.replace(/\\s+/, ' ').trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column FACILITY_T using expression grel:value.replace(/\\s+/, ' ').trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PARK",
+    "expression": "grel:value.toUppercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PARK using expression grel:value.toUppercase()"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "the_geom",
+    "description": "Remove column the_geom"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "OBJECTID_1",
+    "newColumnName": "FACILITY_ID",
+    "description": "Rename column OBJECTID_1 to FACILITY_ID"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "PARK",
+    "newColumnName": "PARK_NAME",
+    "description": "Rename column PARK to PARK_NAME"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "FACILITY_N",
+    "newColumnName": "FACILITY_NAME",
+    "description": "Rename column FACILITY_N to FACILITY_NAME"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "FACILITY_T",
+    "newColumnName": "FACILITY_TYPE",
+    "description": "Rename column FACILITY_T to FACILITY_TYPE"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "X_COORD",
+    "newColumnName": "LONGITUDE",
+    "description": "Rename column X_COORD to LONGITUDE"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Y_COORD",
+    "newColumnName": "LATITUDE",
+    "description": "Rename column Y_COORD to LATITUDE"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "GISOBJID",
+    "newColumnName": "GIS_OBJECT_ID",
+    "description": "Rename column GISOBJID to GIS_OBJECT_ID"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PARK_NAME",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "PALMER ( POTTER)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "PALMER (POTTER)"
+      },
+      {
+        "from": [
+          "GATLEY (JAMES)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "GATELY (JAMES)"
+      },
+      {
+        "from": [
+          "MORAN (TERRENCE)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "MORAN (TERRANCE)"
+      },
+      {
+        "from": [
+          "DOUGLAS (STEPHEN)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DOUGLASS (ANNA & FREDERICK)"
+      },
+      {
+        "from": [
+          "LE CLAIRE - HEARST COMM. CTR"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "LE CLAIRE COURTS - HEARST COMM. CTR."
+      },
+      {
+        "from": [
+          "WILLIAMS-DAVIS (HATTIE KAY,IZORA)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "WILLIAMS-DAVIS (HATTIE KAY, IZORA)"
+      },
+      {
+        "from": [
+          "NORTH PARK NATURE CENTER"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "NORTH PARK VILLAGE NATURE CENTER"
+      },
+      {
+        "from": [
+          "PARK NO. 564"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BIG MARSH"
+      },
+      {
+        "from": [
+          "PARK NO.584"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "PARK NO. 584"
+      },
+      {
+        "from": [
+          "MUNROE"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "MUNROE (ROY)"
+      },
+      {
+        "from": [
+          "GARIBALDI (GIUSEPPI)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "GARIBALDI (GIUSEPPE)"
+      }
+    ],
+    "description": "Mass edit cells in column PARK_NAME"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PARK_NO",
+    "expression": "grel:if(cells.get(\"PARK_NAME\").value == 'GARFIELD (JAMES)', 204, if(cells.get(\"PARK_NAME\").value == 'STANTON (EDWIN)', 109, if(cells.get(\"PARK_NAME\").value == 'RENAISSANCE', 509, value)))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PARK_NO using expression grel:if(cells.get(\"PARK_NAME\").value == 'GARFIELD (JAMES)', 204, if(cells.get(\"PARK_NAME\").value == 'STANTON (EDWIN)', 109, if(cells.get(\"PARK_NAME\").value == 'RENAISSANCE', 509, value)))"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "FACILITY_NAME",
+          "expression": "grel:isBlank(value)",
+          "columnName": "FACILITY_NAME",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FACILITY_NAME",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "SPORT ROLLER COIRT"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "SPORT ROLLER COURT"
+      },
+      {
+        "from": [
+          "ART TURF - REGULATION"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ARTIFICIAL TURF REG"
+      },
+      {
+        "from": [
+          "NATURE PLAY AREA"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "NATURAL PLAY AREA"
+      }
+    ],
+    "description": "Mass edit cells in column FACILITY_NAME"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FACILITY_NAME",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "POOL (INDOOR)",
+          "POOL (OUTDOOR)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "POOL"
+      },
+      {
+        "from": [
+          "HANDBALL/RACQUET (IN)",
+          "HANDBALL/RACQUET (OUT)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "HANDBALL/RACQUET"
+      },
+      {
+        "from": [
+          "FITNESS COURSE",
+          "FITNESS STATION",
+          "GYMNASTIC CENTER"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FITNESS CENTER"
+      },
+      {
+        "from": [
+          "BOAT LAUNCH MOTORIZED",
+          "BOAT LAUNCH NON-MOTORIZED"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BOAT LAUNCH"
+      },
+      {
+        "from": [
+          "BASKETBALL BACKBOARD"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BASKETBALL COURT"
+      },
+      {
+        "from": [
+          "ARTIFICIAL TURF REG",
+          "ARTIFICIAL TURF JR"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ARTIFICIAL TURF"
+      },
+      {
+        "from": [
+          "WATER SLIDE"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "WATER PLAYGROUND"
+      },
+      {
+        "from": [
+          "GOLF COURSE",
+          "GOLF COURSE MINIATURE",
+          "GOLF PUTTING GREEN",
+          "GOLF DRIVING RANGE"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "GOLF"
+      },
+      {
+        "from": [
+          "BASEBALL JR/SOFTBALL",
+          "BASEBALL SR"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BASEBALL"
+      }
+    ],
+    "description": "Mass edit cells in column FACILITY_NAME"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FACILITY_NAME",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "BASEBALL BATTING CAGE"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BASEBALL"
+      }
+    ],
+    "description": "Mass edit cells in column FACILITY_NAME"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PARK_NAME",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "LOGAN SQUARE SKATE PARK"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "LOGAN SQUARE SKATE"
+      }
+    ],
+    "description": "Mass edit cells in column PARK_NAME"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FACILITY_NAME",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "ICESKATING"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ICE SKATING"
+      },
+      {
+        "from": [
+          "WHEELCHR ACCSSBLE BALLFLD"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "WHEELCHAIR ACCESSIBLE BALLFIELD"
+      },
+      {
+        "from": [
+          "FOOTBALL/SOCCER COMBO FLD"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FOOTBALL/SOCCER COMBO FIELD"
+      }
+    ],
+    "description": "Mass edit cells in column FACILITY_NAME"
+  }
+]

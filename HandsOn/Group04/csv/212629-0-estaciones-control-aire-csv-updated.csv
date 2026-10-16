@@ -1,0 +1,25 @@
+CODIGO,ESTACION,DIRECCION,ALTITUD,COD_TIPO,NOM_TIPO,FECHA_ALTA,LATITUD,LONGITUD
+28079004,Plaza de España,Plaza de España,637,ut,Urbana tráfico,1998-12-01,40.4238823,-3.7122567
+28079008,Escuelas Aguirre,Entre C/ Alcalá y C/ O’ Donell,672,ut,Urbana tráfico,1998-12-01,40.4215533,-3.6823158
+28079011,Ramón y Cajal,Avda. Ramón y Cajal esq. C/ Príncipe de Vergara,709,ut,Urbana tráfico,1998-12-01,40.4514734,-3.6773491
+28079016,Arturo Soria,C/ Arturo Soria esq. C/ Vizconde de los Asilos,695,uf,Urbana fondo,1998-12-01,40.4400457,-3.6392422
+28079017,Villaverde,C/ Juan Peñalver,601,uf,Urbana fondo,1998-12-01,40.347147,-3.7133167
+28079018,Farolillo,C/ Farolillo - C/ Ervigio,625,uf,Urbana fondo,2001-03-31,40.3947825,-3.7318356
+28079024,Casa de Campo,Casa de Campo (Terminal del Teleférico),645,s,Suburbana,1998-12-01,40.4193577,-3.7473445
+28079027,Barajas Pueblo,"C/ Júpiter, 21",619,uf,Urbana fondo,2002-12-31,40.4769179,-3.5800258
+28079035,Plaza del Carmen,Plaza del Carmen esq. Tres Cruces,660,uf,Urbana fondo,1999-11-01,40.4192091,-3.7031662
+28079036,Moratalaz,Avda. Moratalaz esq. Camino de los Vinateros,671,ut,Urbana tráfico,1998-12-01,40.4079517,-3.6453104
+28079038,Cuatro Caminos,Avda. Pablo Iglesias esq. C/ Marqués de Lema,699,ut,Urbana tráfico,1998-11-01,40.4455439,-3.7071303
+28079039,Barrio del Pilar,Avda. Betanzos esq. C/ Monforte de Lemos,675,ut,Urbana tráfico,1998-05-01,40.4782322,-3.7115364
+28079040,Vallecas,C/ Arroyo del Olivar esq. C/ Río Grande.,678,uf,Urbana fondo,1999-09-30,40.3881478,-3.6515286
+28079047,Méndez Álvaro,C/ Juan de Mariana / Plaza Amanecer Méndez Álvaro,600,uf,Urbana fondo,2009-12-21,40.3980991,-3.6868138
+28079048,Castellana,C/ José Gutiérrez Abascal,678,ut,Urbana tráfico,2010-02-01,40.4398904,-3.6903729
+28079049,Parque del Retiro,Paseo Venezuela- Palacio de Velázquez,658,uf,Urbana fondo,2010-01-01,40.4144444,-3.6824999
+28079050,Plaza Castilla,Plaza Castilla (Canal),730,ut,Urbana tráfico,2010-02-01,40.4655841,-3.6887449
+28079054,Ensanche de Vallecas,Avda. La Gavia / Avda. Las Suertes,628,uf,Urbana fondo,2009-12-11,40.3730118,-3.6121394
+28079055,Urb. Embajada,C/ Riaño (Barajas),614,uf,Urbana fondo,2010-01-20,40.4623628,-3.5805649
+28079056,Plaza Elíptica,Plaza Elíptica - Avda. Oporto,605,ut,Urbana tráfico,2010-01-18,40.3850336,-3.7187679
+28079057,Sanchinarro,C/ Princesa de Éboli esq. C/ María Tudor,700,uf,Urbana fondo,2009-11-23,40.4942012,-3.6605173
+28079058,El Pardo,Avda. La Guardia,611,s,Suburbana,2009-12-01,40.5180701,-3.7746101
+28079059,Juan Carlos I,Parque Juan Carlos I (frente oficinas mantenimiento),660,s,Suburbana,2009-12-14,40.465144,-3.609031
+28079060,Tres Olivos,Plaza Tres Olivos,709,uf,Urbana fondo,2010-02-08,40.5005477,-3.6897308

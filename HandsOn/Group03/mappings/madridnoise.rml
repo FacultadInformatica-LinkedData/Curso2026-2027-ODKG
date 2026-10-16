@@ -1,0 +1,249 @@
+@prefix rr:      <http://www.w3.org/ns/r2rml#> .
+@prefix rml:     <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:      <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix mn:      <https://madridnoise.linkeddata.es/ontology#> .
+@prefix station:       <https://madridnoise.linkeddata.es/resource/station/> .
+@prefix observation:   <https://madridnoise.linkeddata.es/resource/observation/> .
+@prefix period:        <https://madridnoise.linkeddata.es/resource/period/> .
+@prefix terrace:       <https://madridnoise.linkeddata.es/resource/terrace/> .
+@prefix district:      <https://madridnoise.linkeddata.es/resource/district/> .
+@prefix neighbourhood: <https://madridnoise.linkeddata.es/resource/neighbourhood/> .
+@prefix dataset:       <https://madridnoise.linkeddata.es/dataset/> .
+@base <https://madridnoise.linkeddata.es/mapping#> .
+
+# Run from Group03: java -jar rmlmapper.jar -m mappings/madridnoise.rml -s turtle -o rdf/madridnoise.ttl
+
+# ---------------------------------------------------------------- Stations
+
+<#StationMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/estaciones_acusticas-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://madridnoise.linkeddata.es/resource/station/{station_code}" ;
+    rr:class mn:NoiseMonitoringStation
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "station_name" ; rr:language "es" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:stationCode ;
+    rr:objectMap [ rml:reference "station_code" ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:stationName ;
+    rr:objectMap [ rml:reference "station_name" ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:latitude ;
+    rr:objectMap [ rml:reference "latitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:longitude ;
+    rr:objectMap [ rml:reference "longitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:object dataset:stations
+  ] .
+
+# ----------------------------------------------------------------- Periods
+
+<#PeriodMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/periods.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://madridnoise.linkeddata.es/resource/period/{period}" ;
+    rr:class mn:DayPeriod
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "label" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:periodCode ;
+    rr:objectMap [ rml:reference "period" ; rr:datatype xsd:string ]
+  ] .
+
+# ------------------------------------------------------ Noise observations
+
+<#ObservationMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/contaminacion_acustica-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://madridnoise.linkeddata.es/resource/observation/{observation_id}" ;
+    rr:class mn:DailyNoiseObservation
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rr:template "Noise observation {station_code} {date} {period}" ;
+      rr:termType rr:Literal ;
+      rr:language "en"
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:recordedAt ;
+    rr:objectMap [
+      rr:template "https://madridnoise.linkeddata.es/resource/station/{station_code}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:forPeriod ;
+    rr:objectMap [
+      rr:template "https://madridnoise.linkeddata.es/resource/period/{period}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:observationDate ;
+    rr:objectMap [ rml:reference "date" ; rr:datatype xsd:date ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:laeq ;
+    rr:objectMap [ rml:reference "laeq" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las01 ;
+    rr:objectMap [ rml:reference "l1" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las10 ;
+    rr:objectMap [ rml:reference "l10" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las50 ;
+    rr:objectMap [ rml:reference "l50" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las90 ;
+    rr:objectMap [ rml:reference "l90" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las99 ;
+    rr:objectMap [ rml:reference "l99" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:percentileOrderViolation ;
+    rr:objectMap [ rml:reference "percentile_order_violation" ; rr:datatype xsd:boolean ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:object dataset:daily-noise
+  ] .
+
+# ---------------------------------------------------------------- Terraces
+
+<#TerraceMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://madridnoise.linkeddata.es/resource/terrace/{terrace_id}" ;
+    rr:class mn:Terrace
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "terrace_label" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:terraceId ;
+    rr:objectMap [ rml:reference "terrace_id" ; rr:datatype xsd:integer ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:hasDistrict ;
+    rr:objectMap [ rr:parentTriplesMap <#DistrictMap> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:hasNeighbourhood ;
+    rr:objectMap [ rr:parentTriplesMap <#NeighbourhoodMap> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:latitude ;
+    rr:objectMap [ rml:reference "latitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:longitude ;
+    rr:objectMap [ rml:reference "longitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:object dataset:terraces
+  ] .
+
+# Districts and neighbourhoods
+
+<#DistrictMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://madridnoise.linkeddata.es/resource/district/{district_id}" ;
+    rr:class mn:District
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "district_label" ; rr:language "es" ]
+  ] .
+
+<#NeighbourhoodMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://madridnoise.linkeddata.es/resource/neighbourhood/{neighbourhood_id}" ;
+    rr:class mn:Neighbourhood
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "neighbourhood_label" ; rr:language "es" ]
+  ] .
+
+# Datasets
+
+<#NoiseDatasetMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/periods.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:constant dataset:daily-noise ; rr:class dcat:Dataset ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Madrid daily noise measurements (Linked Data)" ; rr:language "en" ]
+  ] .
+
+<#StationsDatasetMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/periods.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:constant dataset:stations ; rr:class dcat:Dataset ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Madrid acoustic station catalog (Linked Data)" ; rr:language "en" ]
+  ] .
+
+<#TerracesDatasetMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/periods.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:constant dataset:terraces ; rr:class dcat:Dataset ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Madrid hospitality terraces (Linked Data)" ; rr:language "en" ]
+  ] .

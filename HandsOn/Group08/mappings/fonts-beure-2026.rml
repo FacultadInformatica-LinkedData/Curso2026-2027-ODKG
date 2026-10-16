@@ -1,0 +1,77 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix hr:   <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@base <https://w3id.org/barcelona-heat-relief/mappings/fonts-beure-2026#> .
+
+# Drinking fountains (D2, csv/fonts-beure-2026-updated.csv).
+# Paths are relative to the HandsOn/Group08 directory, where Morph-KGC is run.
+#
+# The logical source is a SQL view over the CSV file (rml:query, executed by Morph-KGC with DuckDB):
+#   - label: the name of the fountain; the 353 fountains without a name in the source (349 empty cells, 4 cells
+#     with the placeholder "-") get "Font <code>", so that every individual has a label;
+#   - street_address: street, plus the street number when the source has it
+#     (66 fountains have a street but no number and 2 have the placeholder number 0: all of them keep
+#     the street only; 3 have neither street nor number and get no address);
+#   - empty cells, which DuckDB reads as NULL, are turned into empty strings, so that Morph-KGC
+#     generates no triple for them.
+
+<#DrinkingFountain> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT coalesce(COLUMNS(*), '') FROM (
+      SELECT *,
+        coalesce(NULLIF(NOM, '-'), 'Font ' || CODI) AS label,
+        CASE
+          WHEN NUMERO_CARRER IS NULL OR NUMERO_CARRER = '0' THEN CARRER
+          ELSE CARRER || ', ' || NUMERO_CARRER
+        END AS street_address
+      FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+      )
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/DrinkingFountain/{CODI}" ;
+    rr:class hr:DrinkingFountain
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "label" ; rr:language "ca" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:streetAddress ;
+    rr:objectMap [ rml:reference "street_address" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:etrs89X ;
+    rr:objectMap [ rml:reference "X_ETRS89" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:etrs89Y ;
+    rr:objectMap [ rml:reference "Y_ETRS89" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate geo:lat ;
+    rr:objectMap [ rml:reference "LATITUD" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate geo:long ;
+    rr:objectMap [ rml:reference "LONGITUD" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:isLocatedInNeighbourhood ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{CODI_BARRI}" ]
+  ] .

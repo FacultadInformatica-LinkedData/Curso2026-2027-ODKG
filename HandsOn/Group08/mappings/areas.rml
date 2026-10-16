@@ -1,0 +1,67 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hr:   <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@base <https://w3id.org/barcelona-heat-relief/mappings/areas#> .
+
+# Neighbourhoods and districts of Barcelona.
+# Paths are relative to the HandsOn/Group08 directory, where Morph-KGC is run.
+#
+# The areas are taken from the climate shelters (D1) and the drinking fountains (D2). After the
+# OpenRefine cleaning (hands-on 3) both files use the official codes and names, and together with the
+# street trees (D3) they contain the same 73 neighbourhoods and 10 districts, so every
+# hr:isLocatedInNeighbourhood link of the three datasets points to a neighbourhood described here.
+
+<#Neighbourhood> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT addresses_neighborhood_id AS neighbourhood_code,
+                      addresses_neighborhood_name AS neighbourhood_name,
+                      addresses_district_id AS district_code
+      FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
+      UNION
+      SELECT DISTINCT CODI_BARRI, NOM_BARRI, CODI_DISTRICTE
+      FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_code}" ;
+    rr:class hr:Neighbourhood
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "neighbourhood_name" ; rr:language "ca" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:isPartOfDistrict ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_code}" ]
+  ] .
+
+<#District> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT addresses_district_id AS district_code,
+                      addresses_district_name AS district_name
+      FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
+      UNION
+      SELECT DISTINCT CODI_DISTRICTE, NOM_DISTRICTE
+      FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_code}" ;
+    rr:class hr:District
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "district_name" ; rr:language "ca" ]
+  ] .

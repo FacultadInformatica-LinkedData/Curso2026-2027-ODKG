@@ -1,0 +1,66 @@
+@prefix : <http://linkeddata.la311.com/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://linkeddata.la311.com/ontology#> .
+
+<http://linkeddata.la311.com/ontology#> rdf:type owl:Ontology .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://linkeddata.la311.com/resource/AdministrativeRegion/79_10
+<http://linkeddata.la311.com/resource/AdministrativeRegion/79_10> rdf:type owl:NamedIndividual ,
+                                                                           :AdministrativeRegion ;
+                                                                  :apc "South Los Angeles APC"^^xsd:string ;
+                                                                  :cdMember "Heather Hutt"^^xsd:string ;
+                                                                  :ncName "Empowerment Congress West"^^xsd:string ;
+                                                                  :policePrecinct "SOUTHWEST"^^xsd:string ;
+                                                                  :cd 10 ;
+                                                                  :nc 79 .
+
+
+###  http://linkeddata.la311.com/resource/Agent/Reporter_1-5167495871
+<http://linkeddata.la311.com/resource/Agent/Reporter_1-5167495871> rdf:type owl:NamedIndividual ,
+                                                                            :Agent .
+
+
+###  http://linkeddata.la311.com/resource/Location/34.0134245232,-118.35811811
+<http://linkeddata.la311.com/resource/Location/34.0134245232,-118.35811811> rdf:type owl:NamedIndividual ,
+                                                                                     :Location ;
+                                                                            :isWithin <http://linkeddata.la311.com/resource/AdministrativeRegion/79_10> ;
+                                                                            :address "5165 W VERONICA ST, 90008"^^xsd:string ;
+                                                                            :latitude 34.0134245232 ;
+                                                                            :longitude -118.35811811 .
+
+
+###  http://linkeddata.la311.com/resource/Organization/LASAN
+<http://linkeddata.la311.com/resource/Organization/LASAN> rdf:type owl:NamedIndividual ,
+                                                                   :Organization ;
+                                                          :name "LASAN"^^xsd:string .
+
+
+###  http://linkeddata.la311.com/resource/Service/WLA
+<http://linkeddata.la311.com/resource/Service/WLA> rdf:type owl:NamedIndividual ,
+                                                            :Service ;
+                                                   :name "WLA"^^xsd:string .
+
+
+###  http://linkeddata.la311.com/resource/ServiceRequest/1-5167495871
+<http://linkeddata.la311.com/resource/ServiceRequest/1-5167495871> rdf:type owl:NamedIndividual ,
+                                                                            :ServiceRequest ;
+                                                                   :assignedTo <http://linkeddata.la311.com/resource/Service/WLA> ;
+                                                                   :hasLocation <http://linkeddata.la311.com/resource/Location/34.0134245232,-118.35811811> ;
+                                                                   :reportedBy <http://linkeddata.la311.com/resource/Agent/Reporter_1-5167495871> ;
+                                                                   :responsible <http://linkeddata.la311.com/resource/Organization/LASAN> ;
+                                                                   :actionTaken "SR Created"^^xsd:string ;
+                                                                   :requestType "Bulky Items"^^xsd:string ;
+                                                                   :srNumber "1-5167495871"^^xsd:string ;
+                                                                   :status "Closed"^^xsd:string ;
+                                                                   :closedDate "2025-02-07T07:20:47"^^xsd:dateTime ;
+                                                                   :createdDate "2025-02-06T20:23:50"^^xsd:dateTime ;
+                                                                   :serviceDate "2025-02-07T00:00:00"^^xsd:dateTime ;
+                                                                   :updatedDate "2025-02-07T20:17:42"^^xsd:dateTime .

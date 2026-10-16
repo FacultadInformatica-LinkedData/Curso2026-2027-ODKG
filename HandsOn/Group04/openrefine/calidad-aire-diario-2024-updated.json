@@ -1,0 +1,220 @@
+[
+  {
+    "op": "core/transpose-columns-into-rows",
+    "startColumnName": "D01",
+    "columnCount": 62,
+    "ignoreBlankCells": false,
+    "fillDown": true,
+    "separator": null,
+    "keyColumnName": "CLAVE",
+    "valueColumnName": "VALOR",
+    "description": "Transpose cells in 62 column(s) starting with D01 into rows in two new columns named CLAVE and VALOR"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CLAVE",
+    "expression": "grel:value.substring(1)",
+    "onError": "set-to-blank",
+    "newColumnName": "DIA",
+    "columnInsertIndex": 8,
+    "description": "Create column DIA at index 8 based on column CLAVE using expression grel:value.substring(1)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLAVE",
+    "expression": "grel:value.substring(0,1)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CLAVE using expression grel:value.substring(0,1)"
+  },
+  {
+    "op": "core/key-value-columnize",
+    "keyColumnName": "CLAVE",
+    "valueColumnName": "VALOR",
+    "noteColumnName": "",
+    "description": "Columnize by key column CLAVE and value column VALOR with note column "
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "DIA",
+          "expression": "grel:toNumber(value) > toNumber(\"31,29,31,30,31,30,31,31,30,31,30,31\".split(\",\")[toNumber(cells.MES.value) - 1])",
+          "columnName": "DIA",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DIA",
+    "expression": "grel:cells.ANO.value + \"-\" + cells.MES.value + \"-\" + value",
+    "onError": "set-to-blank",
+    "newColumnName": "FECHA",
+    "columnInsertIndex": 8,
+    "description": "Create column FECHA at index 8 based on column DIA using expression grel:cells.ANO.value + \"-\" + cells.MES.value + \"-\" + value"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "D",
+    "newColumnName": "VALOR",
+    "description": "Rename column D to VALOR"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "VALOR",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column VALOR using expression grel:value.trim()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "V",
+    "newColumnName": "VALIDO",
+    "description": "Rename column V to VALIDO"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "VALIDO",
+    "expression": "grel:if(value.trim() == \"V\", \"true\", \"false\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column VALIDO using expression grel:if(value.trim() == \"V\", \"true\", \"false\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "PUNTO_MUESTREO",
+    "expression": "grel:value.split(\"_\")[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "ESTACION_CODIGO",
+    "columnInsertIndex": 5,
+    "description": "Create column ESTACION_CODIGO at index 5 based on column PUNTO_MUESTREO using expression grel:value.split(\"_\")[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "PUNTO_MUESTREO",
+    "expression": "grel:with(value.split(\"_\")[2], t, if(t.length() < 2, \"0\" + t, t))",
+    "onError": "set-to-blank",
+    "newColumnName": "TECNICA",
+    "columnInsertIndex": 5,
+    "description": "Create column TECNICA at index 5 based on column PUNTO_MUESTREO using expression grel:with(value.split(\"_\")[2], t, if(t.length() < 2, \"0\" + t, t))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "PUNTO_MUESTREO",
+    "expression": "grel:value + \"_\" + cells.FECHA.value",
+    "onError": "set-to-blank",
+    "newColumnName": "OBSERVACION_ID",
+    "columnInsertIndex": 0,
+    "description": "Create column OBSERVACION_ID at index 0 based on column PUNTO_MUESTREO using expression grel:value + \"_\" + cells.FECHA.value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "MAGNITUD",
+    "expression": "grel:'{\"1\":\"Dióxido de azufre\",\"6\":\"Monóxido de carbono\",\"7\":\"Monóxido de nitrógeno\",\"8\":\"Dióxido de nitrógeno\",\"9\":\"Partículas < 2,5 µm\",\"10\":\"Partículas < 10 µm\",\"12\":\"Óxidos de nitrógeno\",\"14\":\"Ozono\",\"20\":\"Tolueno\",\"30\":\"Benceno\",\"35\":\"Etilbenceno\"}'.parseJson()[value]",
+    "onError": "set-to-blank",
+    "newColumnName": "CONTAMINANTE",
+    "columnInsertIndex": 5,
+    "description": "Create column CONTAMINANTE at index 5 based on column MAGNITUD using expression grel:'{\"1\":\"Dióxido de azufre\",\"6\":\"Monóxido de carbono\",\"7\":\"Monóxido de nitrógeno\",\"8\":\"Dióxido de nitrógeno\",\"9\":\"Partículas < 2,5 µm\",\"10\":\"Partículas < 10 µm\",\"12\":\"Óxidos de nitrógeno\",\"14\":\"Ozono\",\"20\":\"Tolueno\",\"30\":\"Benceno\",\"35\":\"Etilbenceno\"}'.parseJson()[value]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "MAGNITUD",
+    "expression": "grel:if(value == \"6\", \"mg/m³\", \"µg/m³\")",
+    "onError": "set-to-blank",
+    "newColumnName": "UNIDAD",
+    "columnInsertIndex": 5,
+    "description": "Create column UNIDAD at index 5 based on column MAGNITUD using expression grel:if(value == \"6\", \"mg/m³\", \"µg/m³\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "TECNICA",
+    "expression": "grel:'{\"06\":\"Absorción ultravioleta\",\"08\":\"Quimioluminiscencia\",\"38\":\"Fluorescencia ultravioleta\",\"47\":\"Microbalanza / espectrometría\",\"48\":\"Absorción infrarroja\",\"59\":\"Cromatografía de gases\"}'.parseJson()[value]",
+    "onError": "set-to-blank",
+    "newColumnName": "TECNICA_NOMBRE",
+    "columnInsertIndex": 5,
+    "description": "Create column TECNICA_NOMBRE at index 5 based on column TECNICA using expression grel:'{\"06\":\"Absorción ultravioleta\",\"08\":\"Quimioluminiscencia\",\"38\":\"Fluorescencia ultravioleta\",\"47\":\"Microbalanza / espectrometría\",\"48\":\"Absorción infrarroja\",\"59\":\"Cromatografía de gases\"}'.parseJson()[value]"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "OBSERVACION_ID",
+      "FECHA",
+      "VALOR",
+      "VALIDO",
+      "PUNTO_MUESTREO",
+      "ESTACION_CODIGO",
+      "MAGNITUD",
+      "CONTAMINANTE",
+      "UNIDAD",
+      "TECNICA",
+      "TECNICA_NOMBRE"
+    ],
+    "description": "Reorder columns"
+  }
+]

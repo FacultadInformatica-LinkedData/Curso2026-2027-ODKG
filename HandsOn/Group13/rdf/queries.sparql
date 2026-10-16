@@ -1,0 +1,34 @@
+#Count Parking
+PREFIX mp: <http://parking.linkeddata.upm.es/ontology/>
+
+SELECT (COUNT(?parking) AS ?totalParkings)
+WHERE {
+  ?parking a mp:ParkingFacility .
+}
+
+#Count districts
+PREFIX mp: <http://parking.linkeddata.upm.es/ontology/>
+
+SELECT (COUNT(?district) AS ?totalDistricts)
+WHERE {
+  ?district a mp:District .
+}
+
+#Count Occupancy
+PREFIX mp: <http://parking.linkeddata.upm.es/ontology/>
+
+SELECT (COUNT(?obs) AS ?totalObservations)
+WHERE {
+  ?obs a mp:OccupancyObservation .
+}
+
+#Names
+PREFIX mp: <http://parking.linkeddata.upm.es/ontology/>
+PREFIX prop: <http://parking.linkeddata.upm.es/property/>
+
+SELECT ?parking ?name
+WHERE {
+  ?parking a mp:ParkingFacility ;
+           prop:parkingName ?name .
+}
+LIMIT 10

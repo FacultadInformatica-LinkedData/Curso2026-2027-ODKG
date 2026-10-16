@@ -1,0 +1,69 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  pe: http://smartcity.chicago.es/ontology/ParkExplorer#
+
+mappings:
+
+  # ---------- Artwork ----------
+  artwork:
+    sources:
+      - [csv/CPD_Park_Art_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/Artwork/$(ARTWORK_ID)
+    po:
+      - [a, pe:Artwork]
+      - [rdfs:label, $(ARTWORK_NAME), xsd:string]
+      - [pe:artworkName, $(ARTWORK_NAME), xsd:string]
+      - [pe:officialName, $(OFFICIAL_NAME), xsd:string]
+      - [pe:artworkGisObjectId, $(GIS_OBJECT_ID), xsd:integer]
+      - [pe:owner, http://smartcity.chicago.es/resource/Owner/$(OWNER_ID)~iri]
+      - [pe:madeBy, http://smartcity.chicago.es/resource/Artist/$(ARTIST_ID)~iri]
+      - [schema:geo, http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_$(ARTWORK_ID)~iri]
+
+  # ---------- Coordinates of each artwork ----------
+  artworkGeo:
+    sources:
+      - [csv/CPD_Park_Art_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_$(ARTWORK_ID)
+    po:
+      - [a, schema:GeoCoordinates]
+      - [rdfs:label, Coordinates of $(ARTWORK_NAME) in $(PARK_NAME), xsd:string]
+      - [schema:latitude, $(LATITUDE), xsd:decimal]
+      - [schema:longitude, $(LONGITUDE), xsd:decimal]
+
+  # ---------- Artist (rows without ARTIST_ID produce no artist) ----------
+  artist:
+    sources:
+      - [csv/CPD_Park_Art_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/Artist/$(ARTIST_ID)
+    po:
+      - [a, pe:Artist]
+      - [rdfs:label, $(ARTIST_NAME), xsd:string]
+      - [pe:artistName, $(ARTIST_NAME), xsd:string]
+
+  # ---------- Owner (rows without OWNER_ID produce no owner) ----------
+  owner:
+    sources:
+      - [csv/CPD_Park_Art_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/Owner/$(OWNER_ID)
+    po:
+      - [a, pe:Owner]
+      - [rdfs:label, $(OWNER_NAME), xsd:string]
+      - [pe:ownerName, $(OWNER_NAME), xsd:string]
+
+  # ---------- Park: links each park to its artworks ----------
+  parkFromArt:
+    sources:
+      - [csv/CPD_Park_Art_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/ChicagoPark/$(PARK_NO)
+    po:
+      - [a, pe:ChicagoPark]
+      - [rdfs:label, $(PARK_NAME), xsd:string]
+      - [pe:parkName, $(PARK_NAME), xsd:string]
+      - [pe:parkNumber, $(PARK_NO), xsd:integer]
+      - [pe:hasArtwork, http://smartcity.chicago.es/resource/Artwork/$(ARTWORK_ID)~iri]

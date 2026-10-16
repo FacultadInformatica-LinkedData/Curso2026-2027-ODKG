@@ -1,0 +1,113 @@
+prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  mn: https://madridnoise.linkeddata.es/ontology#
+  station: https://madridnoise.linkeddata.es/resource/station/
+  observation: https://madridnoise.linkeddata.es/resource/observation/
+  period: https://madridnoise.linkeddata.es/resource/period/
+  terrace: https://madridnoise.linkeddata.es/resource/terrace/
+  district: https://madridnoise.linkeddata.es/resource/district/
+  neighbourhood: https://madridnoise.linkeddata.es/resource/neighbourhood/
+  dataset: https://madridnoise.linkeddata.es/dataset/
+
+mappings:
+  station:
+    sources:
+      - [csv/estaciones_acusticas-updated.csv~csv]
+    s: station:$(station_code)
+    po:
+      - [a, mn:NoiseMonitoringStation]
+      - [rdfs:label, $(station_name), es~lang]
+      - [mn:stationCode, $(station_code), xsd:string]
+      - [mn:stationName, $(station_name), xsd:string]
+      - [mn:latitude, $(latitude), xsd:decimal]
+      - [mn:longitude, $(longitude), xsd:decimal]
+      - [dcterms:isPartOf, dataset:stations~iri]
+
+  period:
+    sources:
+      - [csv/periods.csv~csv]
+    s: period:$(period)
+    po:
+      - [a, mn:DayPeriod]
+      - [rdfs:label, $(label), en~lang]
+      - [mn:periodCode, $(period), xsd:string]
+
+  observation:
+    sources:
+      - [csv/contaminacion_acustica-updated.csv~csv]
+    s: observation:$(observation_id)
+    po:
+      - [a, mn:DailyNoiseObservation]
+      - [rdfs:label, Noise observation $(station_code) $(date) $(period), en~lang]
+      - [mn:recordedAt, station:$(station_code)~iri]
+      - [mn:forPeriod, period:$(period)~iri]
+      - [mn:observationDate, $(date), xsd:date]
+      - [mn:laeq, $(laeq), xsd:decimal]
+      - [mn:las01, $(l1), xsd:decimal]
+      - [mn:las10, $(l10), xsd:decimal]
+      - [mn:las50, $(l50), xsd:decimal]
+      - [mn:las90, $(l90), xsd:decimal]
+      - [mn:las99, $(l99), xsd:decimal]
+      - [mn:percentileOrderViolation, $(percentile_order_violation), xsd:boolean]
+      - [dcterms:isPartOf, dataset:daily-noise~iri]
+
+  terrace:
+    sources:
+      - [csv/terrazas_hosteleria-updated.csv~csv]
+    s: terrace:$(terrace_id)
+    po:
+      - [a, mn:Terrace]
+      - [rdfs:label, $(terrace_label), en~lang]
+      - [mn:terraceId, $(terrace_id), xsd:integer]
+      - p: mn:hasDistrict
+        o:
+          mapping: district
+      - p: mn:hasNeighbourhood
+        o:
+          mapping: neighbourhood
+      - [mn:latitude, $(latitude), xsd:decimal]
+      - [mn:longitude, $(longitude), xsd:decimal]
+      - [dcterms:isPartOf, dataset:terraces~iri]
+
+  district:
+    sources:
+      - [csv/terrazas_hosteleria-updated.csv~csv]
+    s: district:$(district_id)
+    po:
+      - [a, mn:District]
+      - [rdfs:label, $(district_label), es~lang]
+
+  neighbourhood:
+    sources:
+      - [csv/terrazas_hosteleria-updated.csv~csv]
+    s: neighbourhood:$(neighbourhood_id)
+    po:
+      - [a, mn:Neighbourhood]
+      - [rdfs:label, $(neighbourhood_label), es~lang]
+
+  noise_dataset:
+    sources:
+      - [csv/periods.csv~csv]
+    s: dataset:daily-noise
+    po:
+      - [a, dcat:Dataset]
+      - [rdfs:label, Madrid daily noise measurements (Linked Data), en~lang]
+
+  stations_dataset:
+    sources:
+      - [csv/periods.csv~csv]
+    s: dataset:stations
+    po:
+      - [a, dcat:Dataset]
+      - [rdfs:label, Madrid acoustic station catalog (Linked Data), en~lang]
+
+  terraces_dataset:
+    sources:
+      - [csv/periods.csv~csv]
+    s: dataset:terraces
+    po:
+      - [a, dcat:Dataset]
+      - [rdfs:label, Madrid hospitality terraces (Linked Data), en~lang]

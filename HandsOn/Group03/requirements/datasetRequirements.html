@@ -107,8 +107,8 @@
   <div class="data-issue">
     <ul>
       <li><strong>Identifier Reconciliation:</strong> Daily measurements identify stations via numeric IDs (<code>2</code>, <code>3</code>...), while the station catalog uses labels like <code>RF-02</code>, <code>RF-03</code>. We map <code>{n} &rarr; RF-{n}</code>, with <code>{n}</code> padded to two digits (<code>2 &rarr; RF-02</code>, <code>86 &rarr; RF-86</code>), during preprocessing.</li>
-      <li><strong>Coordinate Correction:</strong> Geographic coordinates in the catalog use period separators erroneously (e.g., <code>-3.691.877</code> instead of <code>-3.691877</code>). We rely on the correctly formatted UTM (X, Y) coordinates and project them to WGS84.</li>
-      <li><strong>Missing Values &amp; Numbers:</strong> Missing entries flagged as <code>N/D</code> will be mapped to null triples, and European decimal commas (<code>68,9</code>) are converted to standard floating-point numbers (<code>68.9</code>).</li>
+      <li><strong>Coordinate Correction:</strong> Geographic coordinates in the catalog use period separators erroneously (e.g., <code>-3.691.877</code> instead of <code>-3.691877</code>). Repair the observed geographic format and check it against ETRS89 / UTM 30N (EPSG:25830) X/Y transformed to WGS84. Terrace locations use valid local or grouping coordinates according to access type; the precise selection rules and limitations are documented in <a href="../analysis.html">analysis.html</a>.</li>
+      <li><strong>Missing Values &amp; Numbers:</strong> Assertions for missing entries flagged as <code>N/D</code> are omitted. European decimal commas (<code>68,9</code>) become decimal dots in typed RDF literals (<code>"68.9"^^xsd:decimal</code>).</li>
       <li><strong>Subset Selection:</strong> Because the raw daily noise history spans from 1998 to present (about 45&nbsp;MB, over one million rows), our repository includes an extract (<code>csv/contaminacion_acustica.csv</code>) with all rows from 2020 on (01/01/2020 to the last day published, 295,853 rows), kept in the original encoding and format.</li>
     </ul>
   </div>

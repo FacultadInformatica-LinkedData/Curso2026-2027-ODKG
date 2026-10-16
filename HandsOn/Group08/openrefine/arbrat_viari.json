@@ -1,0 +1,691 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "codi",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne codi à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "x_etrs89",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne x_etrs89 à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "y_etrs89",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne y_etrs89 à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "latitud",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne latitud à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "latitud",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne latitud à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "longitud",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne longitud à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_element",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne tipus_element à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_element",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne tipus_element à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "espai_verd",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne espai_verd à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "espai_verd",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne espai_verd à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "adreca",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne adreca à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_especie_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_especie_id à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_cientific",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_cientific à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_castella",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_castella à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_catala à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_catala à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "categoria_arbrat",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne categoria_arbrat à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "data_plantacio",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne data_plantacio à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_aigua",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne tipus_aigua à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_reg",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne tipus_reg à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geom",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne geom à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "catalogacio",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne catalogacio à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "codi_barri",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne codi_barri à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nom_barri",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne nom_barri à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "codi_districte",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne codi_districte à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nom_districte",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne nom_districte à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "espai_verd",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne espai_verd à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_reg",
+    "expression": "grel:if(value==\"SENSE INFORMAR\", \"\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne tipus_reg à laide de lexpression grel:if(value==\"SENSE INFORMAR\", \"\", value)"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_aigua",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": "/",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Diviser la colonne tipus_aigua par le séparateur"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_castella",
+    "expression": "grel:value.replace(/\\s*;\\s*/, \";\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_castella à laide de lexpression grel:value.replace(/\\s*;\\s*/, \";\")"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_castella",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": ";",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Diviser la colonne cat_nom_castella par le séparateur"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala",
+    "expression": "grel:value.replace(/\\s*;\\s*/, \";\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_catala à laide de lexpression grel:value.replace(/\\s*;\\s*/, \";\")"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": ";",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Diviser la colonne cat_nom_catala par le séparateur"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "data_plantacio",
+    "expression": "grel:if(value[0,4].toNumber() < 1950, \"\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne data_plantacio à laide de lexpression grel:if(value[0,4].toNumber() < 1950, \"\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "cat_especie_id",
+          "expression": "value",
+          "columnName": "cat_especie_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "2764",
+                "l": "2764"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "cat_especie_id",
+    "expression": "grel:589",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_especie_id à laide de lexpression grel:589"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_cientific",
+    "expression": "grel:if(value.startsWith(\"X \"), value, value.replace(\" x \", \" × \"))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne cat_nom_cientific à laide de lexpression grel:if(value.startsWith(\"X \"), value, value.replace(\" x \", \" × \"))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nom_districte",
+    "expression": "grel:with(cells[\"codi_districte\"].value, c, if(isBlank(c), value, with('{\"01\":\"Ciutat Vella\",\"02\":\"Eixample\",\"03\":\"Sants-Montjuïc\",\"04\":\"Les Corts\",\"05\":\"Sarrià-Sant Gervasi\",\"06\":\"Gràcia\",\"07\":\"Horta-Guinardó\",\"08\":\"Nou Barris\",\"09\":\"Sant Andreu\",\"10\":\"Sant Martí\"}'.parseJson()[c.toString()], n, if(isBlank(n), value, n))))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna nom_districte utilizzando l'espressione grel:with(cells[\"codi_districte\"].value, c, if(isBlank(c), value, with('{\"01\":\"Ciutat Vella\",\"02\":\"Eixample\",\"03\":\"Sants-Montjuïc\",\"04\":\"Les Corts\",\"05\":\"Sarrià-Sant Gervasi\",\"06\":\"Gràcia\",\"07\":\"Horta-Guinardó\",\"08\":\"Nou Barris\",\"09\":\"Sant Andreu\",\"10\":\"Sant Martí\"}'.parseJson()[c.toString()], n, if(isBlank(n), value, n))))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nom_barri",
+    "expression": "grel:with(cells[\"codi_barri\"].value, c, if(isBlank(c), value, with('{\"01\":\"el Raval\",\"02\":\"el Barri Gòtic\",\"03\":\"la Barceloneta\",\"04\":\"Sant Pere, Santa Caterina i la Ribera\",\"05\":\"el Fort Pienc\",\"06\":\"la Sagrada Família\",\"07\":\"la Dreta de l\\'Eixample\",\"08\":\"l\\'Antiga Esquerra de l\\'Eixample\",\"09\":\"la Nova Esquerra de l\\'Eixample\",\"10\":\"Sant Antoni\",\"11\":\"el Poble-sec\",\"12\":\"la Marina del Prat Vermell\",\"13\":\"la Marina de Port\",\"14\":\"la Font de la Guatlla\",\"15\":\"Hostafrancs\",\"16\":\"la Bordeta\",\"17\":\"Sants - Badal\",\"18\":\"Sants\",\"19\":\"les Corts\",\"20\":\"la Maternitat i Sant Ramon\",\"21\":\"Pedralbes\",\"22\":\"Vallvidrera, el Tibidabo i les Planes\",\"23\":\"Sarrià\",\"24\":\"les Tres Torres\",\"25\":\"Sant Gervasi - la Bonanova\",\"26\":\"Sant Gervasi - Galvany\",\"27\":\"el Putxet i el Farró\",\"28\":\"Vallcarca i els Penitents\",\"29\":\"el Coll\",\"30\":\"la Salut\",\"31\":\"la Vila de Gràcia\",\"32\":\"el Camp d\\'en Grassot i Gràcia Nova\",\"33\":\"el Baix Guinardó\",\"34\":\"Can Baró\",\"35\":\"el Guinardó\",\"36\":\"la Font d\\'en Fargues\",\"37\":\"el Carmel\",\"38\":\"la Teixonera\",\"39\":\"Sant Genís dels Agudells\",\"40\":\"Montbau\",\"41\":\"la Vall d\\'Hebron\",\"42\":\"la Clota\",\"43\":\"Horta\",\"44\":\"Vilapicina i la Torre Llobeta\",\"45\":\"Porta\",\"46\":\"el Turó de la Peira\",\"47\":\"Can Peguera\",\"48\":\"la Guineueta\",\"49\":\"Canyelles\",\"50\":\"les Roquetes\",\"51\":\"Verdun\",\"52\":\"la Prosperitat\",\"53\":\"la Trinitat Nova\",\"54\":\"Torre Baró\",\"55\":\"Ciutat Meridiana\",\"56\":\"Vallbona\",\"57\":\"la Trinitat Vella\",\"58\":\"Baró de Viver\",\"59\":\"el Bon Pastor\",\"60\":\"Sant Andreu\",\"61\":\"la Sagrera\",\"62\":\"el Congrés i els Indians\",\"63\":\"Navas\",\"64\":\"el Camp de l\\'Arpa del Clot\",\"65\":\"el Clot\",\"66\":\"el Parc i la Llacuna del Poblenou\",\"67\":\"la Vila Olímpica del Poblenou\",\"68\":\"el Poblenou\",\"69\":\"Diagonal Mar i el Front Marítim del Poblenou\",\"70\":\"el Besòs i el Maresme\",\"71\":\"Provençals del Poblenou\",\"72\":\"Sant Martí de Provençals\",\"73\":\"la Verneda i la Pau\"}'.parseJson()[c.toString()], n, if(isBlank(n), value, n))))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna nom_barri utilizzando l'espressione grel:with(cells[\"codi_barri\"].value, c, if(isBlank(c), value, with('{\"01\":\"el Raval\",\"02\":\"el Barri Gòtic\",\"03\":\"la Barceloneta\",\"04\":\"Sant Pere, Santa Caterina i la Ribera\",\"05\":\"el Fort Pienc\",\"06\":\"la Sagrada Família\",\"07\":\"la Dreta de l\\'Eixample\",\"08\":\"l\\'Antiga Esquerra de l\\'Eixample\",\"09\":\"la Nova Esquerra de l\\'Eixample\",\"10\":\"Sant Antoni\",\"11\":\"el Poble-sec\",\"12\":\"la Marina del Prat Vermell\",\"13\":\"la Marina de Port\",\"14\":\"la Font de la Guatlla\",\"15\":\"Hostafrancs\",\"16\":\"la Bordeta\",\"17\":\"Sants - Badal\",\"18\":\"Sants\",\"19\":\"les Corts\",\"20\":\"la Maternitat i Sant Ramon\",\"21\":\"Pedralbes\",\"22\":\"Vallvidrera, el Tibidabo i les Planes\",\"23\":\"Sarrià\",\"24\":\"les Tres Torres\",\"25\":\"Sant Gervasi - la Bonanova\",\"26\":\"Sant Gervasi - Galvany\",\"27\":\"el Putxet i el Farró\",\"28\":\"Vallcarca i els Penitents\",\"29\":\"el Coll\",\"30\":\"la Salut\",\"31\":\"la Vila de Gràcia\",\"32\":\"el Camp d\\'en Grassot i Gràcia Nova\",\"33\":\"el Baix Guinardó\",\"34\":\"Can Baró\",\"35\":\"el Guinardó\",\"36\":\"la Font d\\'en Fargues\",\"37\":\"el Carmel\",\"38\":\"la Teixonera\",\"39\":\"Sant Genís dels Agudells\",\"40\":\"Montbau\",\"41\":\"la Vall d\\'Hebron\",\"42\":\"la Clota\",\"43\":\"Horta\",\"44\":\"Vilapicina i la Torre Llobeta\",\"45\":\"Porta\",\"46\":\"el Turó de la Peira\",\"47\":\"Can Peguera\",\"48\":\"la Guineueta\",\"49\":\"Canyelles\",\"50\":\"les Roquetes\",\"51\":\"Verdun\",\"52\":\"la Prosperitat\",\"53\":\"la Trinitat Nova\",\"54\":\"Torre Baró\",\"55\":\"Ciutat Meridiana\",\"56\":\"Vallbona\",\"57\":\"la Trinitat Vella\",\"58\":\"Baró de Viver\",\"59\":\"el Bon Pastor\",\"60\":\"Sant Andreu\",\"61\":\"la Sagrera\",\"62\":\"el Congrés i els Indians\",\"63\":\"Navas\",\"64\":\"el Camp de l\\'Arpa del Clot\",\"65\":\"el Clot\",\"66\":\"el Parc i la Llacuna del Poblenou\",\"67\":\"la Vila Olímpica del Poblenou\",\"68\":\"el Poblenou\",\"69\":\"Diagonal Mar i el Front Marítim del Poblenou\",\"70\":\"el Besòs i el Maresme\",\"71\":\"Provençals del Poblenou\",\"72\":\"Sant Martí de Provençals\",\"73\":\"la Verneda i la Pau\"}'.parseJson()[c.toString()], n, if(isBlank(n), value, n))))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala 1",
+    "expression": "grel:if(value==\"-\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Blank \"-\" placeholder in cat_nom_catala 1"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_castella 1",
+    "expression": "grel:if(value==\"-\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Blank \"-\" placeholder in cat_nom_castella 1"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala 2",
+    "expression": "grel:if(value==\"-\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Blank \"-\" placeholder in cat_nom_catala 2"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_castella 2",
+    "expression": "grel:if(value==\"-\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Blank \"-\" placeholder in cat_nom_castella 2"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "espai_verd",
+    "expression": "grel:value.replace(/\\s+/, \" \").trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Collapse multiple spaces in espai_verd"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "espai_verd",
+    "expression": "grel:with('{\"Marítim de la Barceloneta, Pg.\":\"Marítim de la Barceloneta, PG.\",\"MIG DE CAN CLOS, PL\":\"Mig de Can Clos, Pl.\",\"MAGORIA\":\"Magòria\"}'.parseJson(), m, if(isNonBlank(m[value]), m[value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Unify Barceloneta Pg./PG. variant and proper-case ALL-CAPS espai_verd values"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cat_nom_catala 1",
+    "expression": "grel:if(value==\"om de Sibèria\", \"Om de Sibèria\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Capitalise om de Sibèria"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "codi_barri",
+    "expression": "grel:with('{\"0037796AR\":\"73\",\"0038124AR\":\"73\",\"0240094AR\":\"13\",\"0286581AR\":\"13\",\"0315892AR\":\"73\",\"0337504AR\":\"70\",\"0337507AR\":\"70\"}'.parseJson(), m, if(and(isBlank(value), isNonBlank(m[cells[\"codi\"].value])), m[cells[\"codi\"].value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Fill blank codi_barri from nearest tree on same street within 50 m"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nom_barri",
+    "expression": "grel:with('{\"0037796AR\":\"la Verneda i la Pau\",\"0038124AR\":\"la Verneda i la Pau\",\"0240094AR\":\"la Marina de Port\",\"0286581AR\":\"la Marina de Port\",\"0315892AR\":\"la Verneda i la Pau\",\"0337504AR\":\"el Besòs i el Maresme\",\"0337507AR\":\"el Besòs i el Maresme\"}'.parseJson(), m, if(and(isBlank(value), isNonBlank(m[cells[\"codi\"].value])), m[cells[\"codi\"].value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Fill blank nom_barri from nearest tree on same street within 50 m"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "codi_districte",
+    "expression": "grel:with('{\"0037796AR\":\"10\",\"0038124AR\":\"10\",\"0240094AR\":\"03\",\"0286581AR\":\"03\",\"0315892AR\":\"10\",\"0337504AR\":\"10\",\"0337507AR\":\"10\"}'.parseJson(), m, if(and(isBlank(value), isNonBlank(m[cells[\"codi\"].value])), m[cells[\"codi\"].value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Fill blank codi_districte from nearest tree on same street within 50 m"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nom_districte",
+    "expression": "grel:with('{\"0037796AR\":\"Sant Martí\",\"0038124AR\":\"Sant Martí\",\"0240094AR\":\"Sants-Montjuïc\",\"0286581AR\":\"Sants-Montjuïc\",\"0315892AR\":\"Sant Martí\",\"0337504AR\":\"Sant Martí\",\"0337507AR\":\"Sant Martí\"}'.parseJson(), m, if(and(isBlank(value), isNonBlank(m[cells[\"codi\"].value])), m[cells[\"codi\"].value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Fill blank nom_districte from nearest tree on same street within 50 m"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_aigua 1",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column tipus_aigua 1 using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipus_aigua 2",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column tipus_aigua 2 using expression grel:value.trim()"
+  }
+]
