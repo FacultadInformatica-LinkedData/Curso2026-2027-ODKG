@@ -1,7 +1,10 @@
 @prefix bpm: <https://w3id.org/breatheplay-madrid/ontology#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -12,18 +15,53 @@
     dcterms:title "Breathe and Play Madrid ontology"@en ;
     vann:preferredNamespacePrefix "bpm" ;
     vann:preferredNamespaceUri "https://w3id.org/breatheplay-madrid/ontology#" ;
-    owl:versionIRI <https://w3id.org/breatheplay-madrid/ontology/1.0.0> ;
-    owl:versionInfo "1.0.0" .
+    owl:versionIRI <https://w3id.org/breatheplay-madrid/ontology/1.1.0> ;
+    owl:versionInfo "1.1.0" .
+
+#################################################################
+#    Reused terms (SOSA, WGS84 Geo Positioning, schema.org)
+#    Only the terms used are declared; their definitions are those
+#    of the source vocabularies (no owl:imports).
+#################################################################
+
+sosa:Observation a owl:Class .
+
+sosa:Sensor a owl:Class .
+
+sosa:Platform a owl:Class .
+
+sosa:ObservableProperty a owl:Class .
+
+sosa:Procedure a owl:Class .
+
+schema:SportsActivityLocation a owl:Class .
+
+geo:SpatialThing a owl:Class .
+
+sosa:madeBySensor a owl:ObjectProperty .
+
+sosa:observedProperty a owl:ObjectProperty .
+
+sosa:isHostedBy a owl:ObjectProperty .
+
+sosa:observes a owl:ObjectProperty .
+
+sosa:hasSimpleResult a owl:DatatypeProperty .
+
+geo:lat a owl:DatatypeProperty .
+
+geo:long a owl:DatatypeProperty .
+
+geo:alt a owl:DatatypeProperty .
+
+#################################################################
+#    Breathe and Play Madrid terms
+#################################################################
 
 bpm:address a owl:DatatypeProperty ;
     rdfs:label "address"@en ;
     rdfs:domain bpm:Place ;
     rdfs:range xsd:string .
-
-bpm:altitude a owl:DatatypeProperty ;
-    rdfs:label "altitude"@en ;
-    rdfs:domain bpm:MonitoringStation ;
-    rdfs:range xsd:integer .
 
 bpm:contentURL a owl:DatatypeProperty ;
     rdfs:label "content URL"@en ;
@@ -70,16 +108,6 @@ bpm:hasNearestStation a owl:ObjectProperty ;
     rdfs:domain bpm:SportsFacility ;
     rdfs:range bpm:MonitoringStation .
 
-bpm:hasSamplingPoint a owl:ObjectProperty ;
-    rdfs:label "has sampling point"@en ;
-    rdfs:domain bpm:DailyObservation ;
-    rdfs:range bpm:SamplingPoint .
-
-bpm:hasStation a owl:ObjectProperty ;
-    rdfs:label "has station"@en ;
-    rdfs:domain bpm:SamplingPoint ;
-    rdfs:range bpm:MonitoringStation .
-
 bpm:hasStationType a owl:ObjectProperty ;
     rdfs:label "has station type"@en ;
     rdfs:domain bpm:MonitoringStation ;
@@ -95,11 +123,6 @@ bpm:isValid a owl:DatatypeProperty ;
     rdfs:domain bpm:DailyObservation ;
     rdfs:range xsd:boolean .
 
-bpm:latitude a owl:DatatypeProperty ;
-    rdfs:label "latitude"@en ;
-    rdfs:domain bpm:Place ;
-    rdfs:range xsd:decimal .
-
 bpm:locatedInDistrict a owl:ObjectProperty ;
     rdfs:label "located in district"@en ;
     rdfs:domain bpm:Place ;
@@ -109,16 +132,6 @@ bpm:locatedInNeighbourhood a owl:ObjectProperty ;
     rdfs:label "located in neighbourhood"@en ;
     rdfs:domain bpm:Place ;
     rdfs:range bpm:Neighbourhood .
-
-bpm:longitude a owl:DatatypeProperty ;
-    rdfs:label "longitude"@en ;
-    rdfs:domain bpm:Place ;
-    rdfs:range xsd:decimal .
-
-bpm:measuresPollutant a owl:ObjectProperty ;
-    rdfs:label "measures pollutant"@en ;
-    rdfs:domain bpm:SamplingPoint ;
-    rdfs:range bpm:Pollutant .
 
 bpm:neighbourhoodCode a owl:DatatypeProperty ;
     rdfs:label "neighbourhood code"@en ;
@@ -170,11 +183,6 @@ bpm:usesTechnique a owl:ObjectProperty ;
     rdfs:domain bpm:SamplingPoint ;
     rdfs:range bpm:MeasurementTechnique .
 
-bpm:value a owl:DatatypeProperty ;
-    rdfs:label "value"@en ;
-    rdfs:domain bpm:DailyObservation ;
-    rdfs:range xsd:decimal .
-
 bpm:AccessibilityLevel a owl:Class ;
     rdfs:label "Accessibility Level"@en .
 
@@ -185,7 +193,8 @@ bpm:StationType a owl:Class ;
     rdfs:label "Station Type"@en .
 
 bpm:MeasurementTechnique a owl:Class ;
-    rdfs:label "Measurement Technique"@en .
+    rdfs:label "Measurement Technique"@en ;
+    rdfs:subClassOf sosa:Procedure .
 
 bpm:District a owl:Class ;
     rdfs:label "District"@en .
@@ -194,22 +203,27 @@ bpm:Neighbourhood a owl:Class ;
     rdfs:label "Neighbourhood"@en .
 
 bpm:Pollutant a owl:Class ;
-    rdfs:label "Pollutant"@en .
+    rdfs:label "Pollutant"@en ;
+    rdfs:subClassOf sosa:ObservableProperty .
 
 bpm:DailyObservation a owl:Class ;
-    rdfs:label "Daily Observation"@en .
+    rdfs:label "Daily Observation"@en ;
+    rdfs:subClassOf sosa:Observation .
 
 bpm:SamplingPoint a owl:Class ;
-    rdfs:label "Sampling Point"@en .
+    rdfs:label "Sampling Point"@en ;
+    rdfs:subClassOf sosa:Sensor .
 
 bpm:MonitoringStation a owl:Class ;
     rdfs:label "Monitoring Station"@en ;
-    rdfs:subClassOf bpm:Place .
+    rdfs:subClassOf bpm:Place ;
+    rdfs:subClassOf sosa:Platform .
 
 bpm:Place a owl:Class ;
-    rdfs:label "Place"@en .
+    rdfs:label "Place"@en ;
+    rdfs:subClassOf geo:SpatialThing .
 
 bpm:SportsFacility a owl:Class ;
     rdfs:label "Sports Facility"@en ;
-    rdfs:subClassOf bpm:Place .
-
+    rdfs:subClassOf bpm:Place ;
+    rdfs:subClassOf schema:SportsActivityLocation .

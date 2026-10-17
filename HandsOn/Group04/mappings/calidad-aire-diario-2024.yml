@@ -1,0 +1,88 @@
+# Group04 - Breathe & Play Madrid
+# YARRRML version of calidad-aire-diario-2024.rml (same rules, same RDF).
+# Dataset: Calidad del aire. Datos diarios 2024 (Ayuntamiento de Madrid)
+# Source:  csv/calidad-aire-diario-2024-csv-updated.csv
+# Run from the HandsOn/Group04 directory (python mappings/generate_rdf.py yml),
+# so that the csv/ paths resolve.
+
+prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  bpm: https://w3id.org/breatheplay-madrid/ontology#
+  sosa: http://www.w3.org/ns/sosa/
+  res: https://w3id.org/breatheplay-madrid/resource/
+
+mappings:
+
+  # Daily observations
+  DailyObservation:
+    sources:
+      - [csv/calidad-aire-diario-2024-csv-updated.csv~csv]
+    s: res:observation/$(PUNTO_MUESTREO)/$(FECHA)
+    po:
+      - [a, bpm:DailyObservation]
+      - [a, sosa:Observation]
+      - [rdfs:label, "Observación diaria de $(CONTAMINANTE) en el punto de muestreo $(PUNTO_MUESTREO) el $(FECHA)", es~lang]
+      - [bpm:date, $(FECHA), xsd:date]
+      - [sosa:hasSimpleResult, $(VALOR), xsd:decimal]
+      - [bpm:isValid, $(VALIDO), xsd:boolean]
+      # SOSA pattern: the observed property of each observation is its pollutant
+      - [sosa:observedProperty, res:pollutant/$(MAGNITUD)~iri]
+      - [sosa:madeBySensor, res:sampling-point/$(PUNTO_MUESTREO)~iri]
+
+  # Sampling points (station + pollutant + technique)
+  SamplingPoint:
+    sources:
+      - [csv/calidad-aire-diario-2024-csv-updated.csv~csv]
+    s: res:sampling-point/$(PUNTO_MUESTREO)
+    po:
+      - [a, bpm:SamplingPoint]
+      - [a, sosa:Sensor]
+      - [rdfs:label, "Punto de muestreo $(PUNTO_MUESTREO) ($(CONTAMINANTE))", es~lang]
+      - [bpm:samplingPointCode, $(PUNTO_MUESTREO), xsd:string]
+      # Link to the air quality stations dataset:
+      # join ESTACION_CODIGO (this CSV) = CODIGO (stations CSV)
+      - p: sosa:isHostedBy
+        o:
+          mapping: MonitoringStation
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(ESTACION_CODIGO), s]
+              - [str2, $(CODIGO), o]
+      - [sosa:observes, res:pollutant/$(MAGNITUD)~iri]
+      - [bpm:usesTechnique, res:technique/$(TECNICA)~iri]
+
+  # Monitoring stations (parent of the join above). Same IRI pattern and label
+  # as in estaciones-control-aire.yml, so the resources merge across datasets.
+  MonitoringStation:
+    sources:
+      - [csv/212629-0-estaciones-control-aire-csv-updated.csv~csv]
+    s: res:station/$(CODIGO)
+    po:
+      - [a, bpm:MonitoringStation]
+      - [a, sosa:Platform]
+      - [rdfs:label, $(ESTACION), es~lang]
+
+  # Pollutants
+  Pollutant:
+    sources:
+      - [csv/calidad-aire-diario-2024-csv-updated.csv~csv]
+    s: res:pollutant/$(MAGNITUD)
+    po:
+      - [a, bpm:Pollutant]
+      - [a, sosa:ObservableProperty]
+      - [bpm:pollutantCode, $(MAGNITUD), xsd:string]
+      - [rdfs:label, $(CONTAMINANTE), es~lang]
+      - [bpm:unit, $(UNIDAD), xsd:string]
+
+  # Measurement techniques
+  MeasurementTechnique:
+    sources:
+      - [csv/calidad-aire-diario-2024-csv-updated.csv~csv]
+    s: res:technique/$(TECNICA)
+    po:
+      - [a, bpm:MeasurementTechnique]
+      - [a, sosa:Procedure]
+      - [bpm:techniqueCode, $(TECNICA), xsd:string]
+      - [rdfs:label, $(TECNICA_NOMBRE), es~lang]

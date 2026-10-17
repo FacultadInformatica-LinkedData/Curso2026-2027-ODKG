@@ -74,7 +74,6 @@ report.validate_07_1b(query,g)
 Spanish: Enumera todos los individuos de "Person" con RDFLib (ten en cuenta las subclases). Devuelve los URI de los individuos en una lista llamada "individuals".
 
 English: List all individuals of "Person" with RDFLib (remember the subClasses). Return the individual URIs in a list called "individuals"
-
 """
 
 ns = Namespace("http://oeg.fi.upm.es/def/people#")
