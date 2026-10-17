@@ -1,0 +1,2113 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q55488",
+        "name": "railway station"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column station to type Q55488"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Ahlten (Han)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4695202",
+      "name": "Ahlten station",
+      "types": [
+        "Q1793804"
+      ],
+      "score": 75
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Alexanderplatz",
+    "judgment": "matched",
+    "match": {
+      "id": "Q698497",
+      "name": "Berlin Alexanderplatz station",
+      "types": [
+        "Q55490",
+        "Q11670533"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Anderten-Misburg",
+    "judgment": "matched",
+    "match": {
+      "id": "Q437740",
+      "name": "Hannover-Anderten-Misburg railway station",
+      "types": [
+        "Q55488"
+      ],
+      "score": 80
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Arnsberg (Westf)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q800396",
+      "name": "Arnsberg (Westfalen) station",
+      "types": [
+        "Q55488"
+      ],
+      "score": 88
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Aschersleben Pbf",
+    "judgment": "matched",
+    "match": {
+      "id": "Q55604288",
+      "name": "Aschersleben railway station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Auggen",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2106629",
+      "name": "Auggen railway stop",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Babelsberg",
+    "judgment": "matched",
+    "match": {
+      "id": "Q801326",
+      "name": "Potsdam-Babelsberg station",
+      "types": [
+        "Q55488",
+        "Q110977521"
+      ],
+      "score": 71
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bad Säckingen",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4840444",
+      "name": "Bad Säckingen railway station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bergisch Gladbach",
+    "judgment": "matched",
+    "match": {
+      "id": "Q322307",
+      "name": "Bergisch Gladbach station",
+      "types": [
+        "Q55485"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin Anhalter Bahnhof",
+    "judgment": "matched",
+    "match": {
+      "id": "Q695244",
+      "name": "Berlin Anhalter Bahnhof",
+      "types": [
+        "Q19860854",
+        "Q55485",
+        "Q55491",
+        "Q4663385",
+        "Q22808403"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin Gesundbrunnen",
+    "judgment": "matched",
+    "match": {
+      "id": "Q678286",
+      "name": "Berlin-Gesundbrunnen station",
+      "types": [
+        "Q1406904",
+        "Q1147171",
+        "Q60982053"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin Ostbahnhof",
+    "judgment": "matched",
+    "match": {
+      "id": "Q683239",
+      "name": "Berlin Ostbahnhof railway station",
+      "types": [
+        "Q55490",
+        "Q1406904",
+        "Q22808404",
+        "Q55485",
+        "Q1793804"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Nordbahnhof",
+    "judgment": "matched",
+    "match": {
+      "id": "Q673721",
+      "name": "Berlin Nordbahnhof",
+      "types": [
+        "Q55491",
+        "Q110977521",
+        "Q22808403"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin Zoologischer Garten",
+    "judgment": "matched",
+    "match": {
+      "id": "Q681785",
+      "name": "Berlin Zoologischer Garten railway station",
+      "types": [
+        "Q55490",
+        "Q11670533"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Charlottenburg",
+    "judgment": "matched",
+    "match": {
+      "id": "Q702596",
+      "name": "Berlin-Charlottenburg railway station",
+      "types": [
+        "Q2138274",
+        "Q55488"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Halensee",
+    "judgment": "matched",
+    "match": {
+      "id": "Q800476",
+      "name": "Berlin-Halensee station",
+      "types": [
+        "Q110977521"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Karow",
+    "judgment": "matched",
+    "match": {
+      "id": "Q800480",
+      "name": "Berlin-Karow railway station",
+      "types": [
+        "Q55488"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Lichterfelde West",
+    "judgment": "matched",
+    "match": {
+      "id": "Q800483",
+      "name": "Berlin-Lichterfelde West station",
+      "types": [
+        "Q55488"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Neukölln",
+    "judgment": "matched",
+    "match": {
+      "id": "Q569905",
+      "name": "Berlin-Neukölln station",
+      "types": [
+        "Q22808404",
+        "Q55488"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Pankow",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4892366",
+      "name": "Berlin-Pankow-Heinersdorf station",
+      "types": [
+        "Q110977521"
+      ],
+      "score": 68
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Spandau",
+    "judgment": "matched",
+    "match": {
+      "id": "Q654980",
+      "name": "Berlin-Spandau railway station",
+      "types": [
+        "Q2451577",
+        "Q11670533",
+        "Q55488"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Spindlersfeld",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4892371",
+      "name": "Berlin-Spindlersfeld station",
+      "types": [
+        "Q110977521"
+      ],
+      "score": 83
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Tempelhof",
+    "judgment": "matched",
+    "match": {
+      "id": "Q571405",
+      "name": "Berlin-Tempelhof station",
+      "types": [
+        "Q27996460",
+        "Q60982053"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berlin-Wannsee",
+    "judgment": "matched",
+    "match": {
+      "id": "Q567336",
+      "name": "Berlin-Wannsee railway station",
+      "types": [
+        "Q55488",
+        "Q1402443",
+        "Q456362"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Berliner Tor",
+    "judgment": "matched",
+    "match": {
+      "id": "Q827138",
+      "name": "Berliner Tor station",
+      "types": [
+        "Q1793804"
+      ],
+      "score": 75
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bernburg Hbf",
+    "judgment": "matched",
+    "match": {
+      "id": "Q23933722",
+      "name": "Bernburg Hauptbahnhof",
+      "types": [
+        "Q55488",
+        "Q18543139"
+      ],
+      "score": 80
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bietigheim (Baden)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q440067",
+      "name": "Bietigheim-Bissingen station",
+      "types": [
+        "Q27996466",
+        "Q2451577"
+      ],
+      "score": 64
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bingen-Gaulsheim",
+    "judgment": "matched",
+    "match": {
+      "id": "Q116019006",
+      "name": "Bingen-Gaulsheim station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bochum-Langendreer West",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2949629",
+      "name": "Bochum-Langendreer West station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bremen-Oslebshausen",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4960520",
+      "name": "Bremen-Oslebshausen station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bremen-Walle",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4960526",
+      "name": "Bremen-Walle station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Bühl (Baden)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q116024916",
+      "name": "Bühl (Baden)",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "station",
+    "similarValue": "Burgdorf (Han)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19601270",
+      "name": "Burgdorf station",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "station: jugement",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "station",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "matched",
+                "l": "matched"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "station",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_station",
+    "columnInsertIndex": 6,
+    "description": "Créer la colonne same_as_wikidata_station à l’index 6 sur la base de la colonne station à l’aide de l’expression grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "state",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q1221156",
+        "name": "federated state of Germany"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column state to type Q1221156"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "state",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_state",
+    "columnInsertIndex": 8,
+    "description": "Créer la colonne same_as_wikidata_state à l’index 8 sur la base de la colonne state à l’aide de l’expression grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q262166",
+        "name": "municipality in Germany"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column city to type Q262166"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "same_as_wikidata_state",
+    "expression": "grel:value.replace(/.*\\//, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "QID",
+    "columnInsertIndex": 9,
+    "description": "Créer la colonne QID à l’index 9 sur la base de la colonne same_as_wikidata_state à l’aide de l’expression grel:value.replace(/.*\\//, \"\")"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q262166",
+        "name": "municipality in Germany"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [
+        {
+          "column": "QID",
+          "propertyName": "SPARQL: P131|P131/P131|P131/P131/P131",
+          "propertyID": "P131|P131/P131|P131/P131/P131"
+        }
+      ],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column city to type Q262166"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Bexbach",
+    "judgment": "matched",
+    "match": {
+      "id": "Q504022",
+      "name": "Bexbach",
+      "types": [
+        "Q42744322"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Böbingen (Rems)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q574269",
+      "name": "Böbingen an der Rems",
+      "types": [
+        "Q116457956"
+      ],
+      "score": 88.57142857142858
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "lat",
+    "expression": "grel:cells[\"lat\"].value + \",\" + cells[\"long\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "coordinates",
+    "columnInsertIndex": 14,
+    "description": "Créer la colonne coordinates à l’index 14 sur la base de la colonne lat à l’aide de l’expression grel:cells[\"lat\"].value + \",\" + cells[\"long\"].value"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q262166",
+        "name": "municipality in Germany"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [
+        {
+          "column": "QID",
+          "propertyName": "SPARQL: P131|P131/P131|P131/P131/P131",
+          "propertyID": "P131|P131/P131|P131/P131/P131"
+        },
+        {
+          "column": "coordinates",
+          "propertyName": "coordinate location",
+          "propertyID": "P625"
+        }
+      ],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column city to type Q262166"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Amberg",
+    "judgment": "matched",
+    "match": {
+      "id": "Q7042",
+      "name": "Amberg",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Bad Kösen",
+    "judgment": "matched",
+    "match": {
+      "id": "Q574451",
+      "name": "Bad Kösen",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Bingen-Gaulsheim",
+    "judgment": "matched",
+    "match": {
+      "id": "Q53889478",
+      "name": "Gaulsheim",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Buchholz i.d.Nordheide",
+    "judgment": "matched",
+    "match": {
+      "id": "Q14892",
+      "name": "Buchholz in der Nordheide",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Friedberg (Hess.)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q516485",
+      "name": "Friedberg",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Hannover-Anderten",
+    "judgment": "matched",
+    "match": {
+      "id": "Q97842946",
+      "name": "Anderten",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Hohen Neuendorf OTBorgsdo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q893566",
+      "name": "Borgsdorf",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Hückelhoven-Baal",
+    "judgment": "matched",
+    "match": {
+      "id": "Q797469",
+      "name": "Baal",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Nottuln-Appelhülsen",
+    "judgment": "matched",
+    "match": {
+      "id": "Q620755",
+      "name": "Appelhülsen",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "city: jugement",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "city",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "city",
+    "similarValue": "Senden-Bösensell",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1020097",
+      "name": "Bösensell",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "city",
+    "expression": "grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_city",
+    "columnInsertIndex": 11,
+    "description": "Créer la colonne same_as_wikidata_city à l’index 11 sur la base de la colonne city à l’aide de l’expression grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "QID",
+    "description": "Supprimer la colonne QID"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "coordinates",
+    "description": "Supprimer la colonne coordinates"
+  }
+]

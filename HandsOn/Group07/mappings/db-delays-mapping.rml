@@ -1,0 +1,277 @@
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix dbd: <https://example.org/db-delays/ontology/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+
+
+
+# state class
+
+<#StateMap> a rr:TriplesMap ;
+    rml:logicalSource [ rml:source "../csv/DBtrainrides.csv";
+                       rml:referenceFormulation ql:CSV ] ;
+    rr:subjectMap [
+        rr:template "https://example.org/db-delays/resource/State/{state}" ;
+        rr:class dbd:State ;
+        rr:termType rr:IRI;
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "state" ;
+        rr:datatype xsd:string
+    ]
+] .
+
+
+
+# city class
+
+<#CityMap> a rr:TriplesMap ;
+rml:logicalSource [
+    rml:source "../csv/DBtrainrides.csv";
+    rml:referenceFormulation ql:CSV;
+  ];
+
+rr:subjectMap [
+    rr:template "https://example.org/db-delays/resource/City/{state}/{city}";
+    rr:class dbd:City;
+];
+
+rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+        rml:reference "city";
+        rr:datatype xsd:string
+    ]
+];
+
+rr:predicateObjectMap [
+    rr:predicate dbd:inState;
+    rr:objectMap [
+        rr:parentTriplesMap <#StateMap>
+    ]
+].
+
+
+
+# trainstop class
+<#TrainStopMap> a rr:TriplesMap ;
+rml:logicalSource [
+    rml:source "../csv/DBtrainrides.csv";
+    rml:referenceFormulation ql:CSV;
+  ];
+
+rr:subjectMap [
+    rr:template "https://example.org/db-delays/resource/TrainStop/{ID}";
+    rr:class dbd:TrainStop;
+];
+
+# name for the recorded stop
+rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rr:template "Train stop {ID}" ;
+        rr:termType rr:Literal ;
+        rr:datatype xsd:string
+    ]
+];
+
+# ontology: atStation, csv: eva_nr
+rr:predicateObjectMap [
+        rr:predicate dbd:atStation ;
+        rr:objectMap [
+            rr:parentTriplesMap <#StationMap>
+        ]
+];
+
+# ontology: stopId, csv: ID
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:stopId;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "ID";
+        rr:termType rr:Literal;
+        rr:datatype xsd:string];
+
+];
+
+# ontology: lineLabel, csv: line
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:lineLabel;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "line";
+        rr:termType rr:Literal;
+        rr:datatype xsd:string];
+
+];
+
+# ontology: previousStations, csv: path
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:previousStations;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "path";
+        rr:termType rr:Literal;
+        rr:datatype xsd:string];
+];
+
+# ontology: plannedArrival, csv: arrival_plan
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:plannedArrival;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "arrival_plan";
+        rr:termType rr:Literal;
+        rr:datatype xsd:dateTime];
+];
+
+# ontology: plannedDeparture, csv: departure_plan
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:plannedDeparture;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "departure_plan";
+        rr:termType rr:Literal;
+        rr:datatype xsd:dateTime];
+];
+
+# ontology: updatedArrival, csv: arrival_change
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:updatedArrival;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "arrival_change";
+        rr:termType rr:Literal;
+        rr:datatype xsd:dateTime];
+];
+
+# ontology: updatedDeparture, csv: departure_change
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:updatedDeparture;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "departure_change";
+        rr:termType rr:Literal;
+        rr:datatype xsd:dateTime];
+];
+
+# ontology: arrivalDelayMinutes, csv: arrival_delay_m
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:arrivalDelayMinutes;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "arrival_delay_m";
+        rr:termType rr:Literal;
+        rr:datatype xsd:integer];
+];
+
+# ontology: departureDelayMinutes, csv: departure_delay_m
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:departureDelayMinutes;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "departure_delay_m";
+        rr:termType rr:Literal;
+        rr:datatype xsd:integer];
+];
+
+# ontology: arrivalStatus, csv: arrival_delay_check
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:arrivalStatus;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "arrival_delay_check";
+        rr:termType rr:Literal;
+        rr:datatype xsd:string];
+];
+
+# ontology: departureStatus, csv: departure_delay_check
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:departureStatus;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "departure_delay_check";
+        rr:termType rr:Literal;
+        rr:datatype xsd:string];
+];
+
+# ontology: information, csv: info
+rr:predicateObjectMap [
+    rr:predicateMap [rr:constant dbd:information;
+        rr:termType rr:IRI];
+    rr:objectMap [rml:reference "info";
+        rr:termType rr:Literal;
+        rr:datatype xsd:string];
+].
+
+
+
+# station class
+<#StationMap> a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source "../csv/DBtrainrides.csv";
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "https://example.org/db-delays/resource/Station/{eva_nr}";
+        rr:class dbd:Station
+    ];
+
+# ontology: inCity, csv: state + city
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant dbd:inCity;
+            rr:termType rr:IRI];
+        rr:objectMap [
+            rr:parentTriplesMap <#CityMap>
+        ]
+    ];
+
+# ontology: evaNumber, csv: eva_nr
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant dbd:evaNumber;
+            rr:termType rr:IRI];
+        rr:objectMap [rml:reference "eva_nr";
+            rr:termType rr:Literal;
+            rr:datatype xsd:string]
+    ];
+
+# ontology: rdfs:label, csv: station
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant rdfs:label;
+            rr:termType rr:IRI];
+        rr:objectMap [rml:reference "station";
+            rr:termType rr:Literal;
+            rr:datatype xsd:string
+        ]
+    ];
+
+# ontology: stationCategory, csv: category
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant dbd:stationCategory;
+            rr:termType rr:IRI];
+        rr:objectMap [rml:reference "category";
+            rr:termType rr:Literal;
+            rr:datatype xsd:integer]
+    ];
+
+# ontology: postalCode, csv: zip
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant dbd:postalCode;
+            rr:termType rr:IRI];
+        rr:objectMap [rml:reference "zip";
+            rr:termType rr:Literal;
+            rr:datatype xsd:string]
+    ];
+
+# ontology: longitude, csv: long
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant dbd:longitude;
+            rr:termType rr:IRI];
+        rr:objectMap [rml:reference "long";
+            rr:termType rr:Literal;
+            rr:datatype xsd:decimal]
+    ];
+
+# ontology: latitude, csv: lat
+    rr:predicateObjectMap [
+        rr:predicateMap [rr:constant dbd:latitude;
+            rr:termType rr:IRI];
+        rr:objectMap [rml:reference "lat";
+            rr:termType rr:Literal;
+            rr:datatype xsd:decimal]
+    ].
