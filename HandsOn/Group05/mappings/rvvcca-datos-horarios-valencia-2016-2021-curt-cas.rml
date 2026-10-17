@@ -1,0 +1,187 @@
+# RML version of mappings/rvvcca-datos-horarios-valencia-2016-2021-curt-cas.yml
+# (Valencia hourly air quality, Group 05). Both files produce the same triples.
+#
+# Input : csv/rvvcca-datos-horarios-valencia-2016-2021-curt-cas-updated.csv (output of Assignment 3)
+# Run   : python -m morph_kgc config.ini
+#
+# The logical source is a SQL query over the CSV (executed by Morph-KGC with DuckDB)
+# that turns every non-empty measured value into one row, so an observation is only
+# generated when there is a value. It also builds the identifiers of the resource
+# naming strategy (analysis.html, section 3) and the xsd:dateTime of each observation.
+
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix aq:   <https://w3id.org/valencia-airquality/ontology/airquality#> .
+@prefix city: <https://w3id.org/valencia-airquality/resource/City/> .
+
+<#ObservationsSource>
+  rml:referenceFormulation ql:CSV ;
+  rml:query """
+WITH src AS (
+    SELECT trim("Estación") AS station_name,
+           trim(CAST("Fecha" AS VARCHAR)) AS fecha,
+           lpad(split_part(trim("Hora"), ':', 1), 2, '0') AS hh,
+           "PM1", "PM2.5", "PM10", "NO", "NO2", "NOx", "O3", "SO2", "CO", "Velocidad del viento", "Dirección del viento", "NH3", "C7H8", "C6H6", "Ruido", "C8H10", "Temperatura", "Humedad relativa", "Presión", "Radiación", "Precipitación", "Velocidad máxima del viento"
+    FROM read_csv('csv/rvvcca-datos-horarios-valencia-2016-2021-curt-cas-updated.csv', header = true, all_varchar = true)
+    -- SAMPLE: only 1-15 January 2020 is transformed, so that the Turtle file stays
+    -- below GitHub's 25 MB web-upload limit. Remove this WHERE clause to transform the
+    -- whole 2016-2021 dataset (about 6 million observations).
+    WHERE "Fecha" BETWEEN '2020-01-01' AND '2020-01-15'
+),
+long AS (
+    UNPIVOT src ON "PM1", "PM2.5", "PM10", "NO", "NO2", "NOx", "O3", "SO2", "CO", "Velocidad del viento", "Dirección del viento", "NH3", "C7H8", "C6H6", "Ruido", "C8H10", "Temperatura", "Humedad relativa", "Presión", "Radiación", "Precipitación", "Velocidad máxima del viento" INTO NAME col VALUE val
+)
+SELECT
+    CASE station_name
+        WHEN 'Avda. Francia' THEN 'AvdaFrancia'
+        WHEN 'Bulevard Sud' THEN 'BulevardSud'
+        WHEN 'Consellería Meteo' THEN 'ConselleriaMeteo'
+        WHEN 'Pista Silla' THEN 'PistaSilla'
+        WHEN 'Politécnico' THEN 'Politecnico'
+        WHEN 'Viveros' THEN 'Viveros'
+        WHEN 'Molí del Sol' THEN 'MoliDelSol'
+        WHEN 'Valencia Centro' THEN 'ValenciaCentro'
+        WHEN 'Puerto Valencia' THEN 'PuertoValencia'
+        WHEN 'Nazaret Meteo' THEN 'NazaretMeteo'
+        WHEN 'Puerto Moll Trans. Ponent' THEN 'PuertoMollTransPonent'
+        WHEN 'Puerto llit antic Túria' THEN 'PuertoLlitAnticTuria'
+    END AS station_id,
+    station_name,
+    CASE col
+        WHEN 'PM1' THEN 'PM1'
+        WHEN 'PM2.5' THEN 'PM2_5'
+        WHEN 'PM10' THEN 'PM10'
+        WHEN 'NO' THEN 'NO'
+        WHEN 'NO2' THEN 'NO2'
+        WHEN 'NOx' THEN 'NOx'
+        WHEN 'O3' THEN 'O3'
+        WHEN 'SO2' THEN 'SO2'
+        WHEN 'CO' THEN 'CO'
+        WHEN 'Velocidad del viento' THEN 'WindSpeed'
+        WHEN 'Dirección del viento' THEN 'WindDirection'
+        WHEN 'NH3' THEN 'NH3'
+        WHEN 'C7H8' THEN 'C7H8'
+        WHEN 'C6H6' THEN 'C6H6'
+        WHEN 'Ruido' THEN 'Noise'
+        WHEN 'C8H10' THEN 'C8H10'
+        WHEN 'Temperatura' THEN 'Temperature'
+        WHEN 'Humedad relativa' THEN 'RelativeHumidity'
+        WHEN 'Presión' THEN 'Pressure'
+        WHEN 'Radiación' THEN 'SolarRadiation'
+        WHEN 'Precipitación' THEN 'Precipitation'
+        WHEN 'Velocidad máxima del viento' THEN 'MaxWindSpeed'
+    END AS property_id,
+    CASE col
+        WHEN 'PM1' THEN 'Particulate matter PM1'
+        WHEN 'PM2.5' THEN 'Particulate matter PM2.5'
+        WHEN 'PM10' THEN 'Particulate matter PM10'
+        WHEN 'NO' THEN 'Nitric oxide (NO)'
+        WHEN 'NO2' THEN 'Nitrogen dioxide (NO2)'
+        WHEN 'NOx' THEN 'Nitrogen oxides (NOx)'
+        WHEN 'O3' THEN 'Ozone (O3)'
+        WHEN 'SO2' THEN 'Sulphur dioxide (SO2)'
+        WHEN 'CO' THEN 'Carbon monoxide (CO)'
+        WHEN 'Velocidad del viento' THEN 'Wind speed'
+        WHEN 'Dirección del viento' THEN 'Wind direction'
+        WHEN 'NH3' THEN 'Ammonia (NH3)'
+        WHEN 'C7H8' THEN 'Toluene (C7H8)'
+        WHEN 'C6H6' THEN 'Benzene (C6H6)'
+        WHEN 'Ruido' THEN 'Noise level'
+        WHEN 'C8H10' THEN 'Xylene (C8H10)'
+        WHEN 'Temperatura' THEN 'Temperature'
+        WHEN 'Humedad relativa' THEN 'Relative humidity'
+        WHEN 'Presión' THEN 'Atmospheric pressure'
+        WHEN 'Radiación' THEN 'Solar radiation'
+        WHEN 'Precipitación' THEN 'Precipitation'
+        WHEN 'Velocidad máxima del viento' THEN 'Maximum wind speed'
+    END AS property_label,
+    replace(fecha, '-', '') || 'T' || hh || '00' AS time_id,
+    fecha || 'T' || hh || ':00:00' AS result_time,
+    trim(val) AS result_value
+FROM long
+WHERE val IS NOT NULL AND trim(val) <> ''
+  -- Physically implausible values found in the analysis (analysis.html, 1.4)
+  -- are not transformed into observations.
+  AND NOT (col = 'Humedad relativa' AND CAST(val AS DOUBLE) > 100)
+  AND NOT (col = 'Radiación' AND CAST(val AS DOUBLE) < 0)
+  AND NOT (col = 'Ruido' AND CAST(val AS DOUBLE) > 140)
+""" .
+
+# --- Observations (one per non-empty measured value) ----------------------------
+<#ObservationMap>
+  a rr:TriplesMap ;
+  rml:logicalSource <#ObservationsSource> ;
+  rr:subjectMap [
+    rr:template "https://w3id.org/valencia-airquality/resource/Observation/{station_id}_{time_id}_{property_id}" ;
+    rr:class aq:Observation
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:template "{property_label} at {station_name}, {result_time}" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate aq:hasStation ;
+    rr:objectMap [ rr:template "https://w3id.org/valencia-airquality/resource/MonitoringStation/{station_id}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate aq:observedProperty ;
+    rr:objectMap [ rr:template "https://w3id.org/valencia-airquality/resource/ObservableProperty/{property_id}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate aq:resultTime ;
+    rr:objectMap [ rml:reference "result_time" ; rr:datatype xsd:dateTime ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate aq:resultValue ;
+    rr:objectMap [ rml:reference "result_value" ; rr:datatype xsd:decimal ]
+  ] .
+
+# --- Monitoring stations ---------------------------------------------------------
+<#MonitoringStationMap>
+  a rr:TriplesMap ;
+  rml:logicalSource <#ObservationsSource> ;
+  rr:subjectMap [
+    rr:template "https://w3id.org/valencia-airquality/resource/MonitoringStation/{station_id}" ;
+    rr:class aq:MonitoringStation
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "station_name" ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate aq:stationName ;
+    rr:objectMap [ rml:reference "station_name" ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate aq:locatedInCity ;
+    rr:objectMap [ rr:constant city:Valencia ]
+  ] .
+
+# --- Observable properties (pollutants and meteorological variables) ------------
+<#ObservablePropertyMap>
+  a rr:TriplesMap ;
+  rml:logicalSource <#ObservationsSource> ;
+  rr:subjectMap [
+    rr:template "https://w3id.org/valencia-airquality/resource/ObservableProperty/{property_id}" ;
+    rr:class aq:ObservableProperty
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "property_label" ; rr:datatype xsd:string ]
+  ] .
+
+# --- City (all the stations are in Valencia) ------------------------------------
+<#CityMap>
+  a rr:TriplesMap ;
+  rml:logicalSource <#ObservationsSource> ;
+  rr:subjectMap [
+    rr:constant city:Valencia ;
+    rr:class aq:City
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Valencia" ; rr:datatype xsd:string ]
+  ] .

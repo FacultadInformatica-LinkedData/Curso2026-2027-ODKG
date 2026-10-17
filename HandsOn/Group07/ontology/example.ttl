@@ -1,0 +1,121 @@
+@base <https://example.org/db-delays/resource/> .
+@prefix dbd: <https://example.org/db-delays/ontology/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Sample individuals from DBtrainrides.csv, using db-delays.ttl.
+# Relative IRIs resolve against the resource base above.
+# Empty source cells produce no triples. No ontology terms are defined here.
+# A source zero delay without an updated time is not proof of observed punctuality.
+
+# Source data row 1 (header excluded).
+<TrainStop/1573967790757085557-2407072312-14/observation/1>
+    a dbd:TrainStop ;
+    dbd:atStation <Station/8000001> ;
+    dbd:stopId "1573967790757085557-2407072312-14"^^xsd:string ;
+    dbd:lineLabel "20"^^xsd:string ;
+    dbd:previousStations "Stolberg(Rheinl)Hbf Gl.44|Eschweiler-St.Jöris|Alsdorf Poststraße|Alsdorf-Mariadorf|Alsdorf-Kellersberg|Alsdorf-Annapark|Alsdorf-Busch|Herzogenrath-August-Schmidt-Platz|Herzogenrath-Alt-Merkstein|Herzogenrath|Kohlscheid|Aachen West|Aachen Schanz"^^xsd:string ;
+    dbd:plannedArrival "2024-07-08T00:00:00"^^xsd:dateTime ;
+    dbd:plannedDeparture "2024-07-08T00:01:00"^^xsd:dateTime ;
+    dbd:updatedArrival "2024-07-08T00:03:00"^^xsd:dateTime ;
+    dbd:updatedDeparture "2024-07-08T00:04:00"^^xsd:dateTime ;
+    dbd:arrivalDelayMinutes "3"^^xsd:integer ;
+    dbd:departureDelayMinutes "3"^^xsd:integer ;
+    dbd:arrivalStatus "on_time"^^xsd:string ;
+    dbd:departureStatus "on_time"^^xsd:string .
+
+# Source data row 2 (header excluded).
+<TrainStop/349781417030375472-2407080017-1/observation/1>
+    a dbd:TrainStop ;
+    dbd:atStation <Station/8000001> ;
+    dbd:stopId "349781417030375472-2407080017-1"^^xsd:string ;
+    dbd:lineLabel "18"^^xsd:string ;
+    dbd:plannedDeparture "2024-07-08T00:17:00"^^xsd:dateTime ;
+    dbd:arrivalDelayMinutes "0"^^xsd:integer ;
+    dbd:departureDelayMinutes "0"^^xsd:integer ;
+    dbd:arrivalStatus "on_time"^^xsd:string ;
+    dbd:departureStatus "on_time"^^xsd:string .
+
+# Source data row 3 (header excluded).
+<TrainStop/7157250219775883918-2407072120-25/observation/1>
+    a dbd:TrainStop ;
+    dbd:atStation <Station/8000406> ;
+    dbd:stopId "7157250219775883918-2407072120-25"^^xsd:string ;
+    dbd:lineLabel "1"^^xsd:string ;
+    dbd:previousStations "Hamm(Westf)Hbf|Kamen|Kamen-Methler|Dortmund-Kurl|Dortmund-Scharnhorst|Dortmund Hbf|Bochum Hbf|Wattenscheid|Essen Hbf|Mülheim(Ruhr)Hbf|Duisburg Hbf|Düsseldorf Flughafen|Düsseldorf Hbf|Düsseldorf-Benrath|Leverkusen Mitte|Köln-Mülheim|Köln Messe/Deutz|Köln Hbf|Köln-Ehrenfeld|Horrem|Düren|Langerwehe|Eschweiler Hbf|Stolberg(Rheinl)Hbf"^^xsd:string ;
+    dbd:plannedArrival "2024-07-08T00:03:00"^^xsd:dateTime ;
+    dbd:plannedDeparture "2024-07-08T00:04:00"^^xsd:dateTime ;
+    dbd:updatedArrival "2024-07-08T00:03:00"^^xsd:dateTime ;
+    dbd:updatedDeparture "2024-07-08T00:04:00"^^xsd:dateTime ;
+    dbd:arrivalDelayMinutes "0"^^xsd:integer ;
+    dbd:departureDelayMinutes "0"^^xsd:integer ;
+    dbd:arrivalStatus "on_time"^^xsd:string ;
+    dbd:departureStatus "on_time"^^xsd:string .
+
+# Source data row 13 (header excluded).
+<TrainStop/1640260421649276864-2407080004-5/observation/1>
+    a dbd:TrainStop ;
+    dbd:atStation <Station/8000443> ;
+    dbd:stopId "1640260421649276864-2407080004-5"^^xsd:string ;
+    dbd:lineLabel "7"^^xsd:string ;
+    dbd:previousStations "Hannover Hbf|Hannover-Kleefeld|Hannover Karl-Wiechert-Allee|Hannover Anderten-Misburg"^^xsd:string ;
+    dbd:plannedArrival "2024-07-08T00:16:00"^^xsd:dateTime ;
+    dbd:plannedDeparture "2024-07-08T00:16:00"^^xsd:dateTime ;
+    dbd:updatedArrival "2024-07-08T00:24:00"^^xsd:dateTime ;
+    dbd:updatedDeparture "2024-07-08T00:24:00"^^xsd:dateTime ;
+    dbd:arrivalDelayMinutes "8"^^xsd:integer ;
+    dbd:departureDelayMinutes "8"^^xsd:integer ;
+    dbd:arrivalStatus "delay"^^xsd:string ;
+    dbd:departureStatus "delay"^^xsd:string ;
+    dbd:information "Information"^^xsd:string .
+
+# Shared station and place resources.
+
+<Station/8000001>
+    a dbd:Station ;
+    dbd:inCity <City/Nordrhein-Westfalen/Aachen> ;
+    dbd:evaNumber "8000001"^^xsd:string ;
+    dbd:stationName "Aachen Hbf"^^xsd:string ;
+    dbd:stationCategory "2"^^xsd:integer ;
+    dbd:postalCode "52064"^^xsd:string ;
+    dbd:longitude "6.091499"^^xsd:decimal ;
+    dbd:latitude "50.7678"^^xsd:decimal .
+
+<Station/8000406>
+    a dbd:Station ;
+    dbd:inCity <City/Nordrhein-Westfalen/Aachen> ;
+    dbd:evaNumber "8000406"^^xsd:string ;
+    dbd:stationName "Aachen-Rothe Erde"^^xsd:string ;
+    dbd:stationCategory "4"^^xsd:integer ;
+    dbd:postalCode "52066"^^xsd:string ;
+    dbd:longitude "6.116475"^^xsd:decimal ;
+    dbd:latitude "50.770202"^^xsd:decimal .
+
+<Station/8000443>
+    a dbd:Station ;
+    dbd:inCity <City/Niedersachsen/Lehrte> ;
+    dbd:evaNumber "8000443"^^xsd:string ;
+    dbd:stationName "Ahlten (Han)"^^xsd:string ;
+    dbd:stationCategory "5"^^xsd:integer ;
+    dbd:postalCode "31275"^^xsd:string ;
+    dbd:longitude "9.904613"^^xsd:decimal ;
+    dbd:latitude "52.376062"^^xsd:decimal .
+
+<City/Nordrhein-Westfalen/Aachen>
+    a dbd:City ;
+    rdfs:label "Aachen"@de ;
+    dbd:inState <State/Nordrhein-Westfalen> .
+
+<City/Niedersachsen/Lehrte>
+    a dbd:City ;
+    rdfs:label "Lehrte"@de ;
+    dbd:inState <State/Niedersachsen> .
+
+<State/Nordrhein-Westfalen>
+    a dbd:State ;
+    rdfs:label "Nordrhein-Westfalen"@de .
+
+<State/Niedersachsen>
+    a dbd:State ;
+    rdfs:label "Niedersachsen"@de .
+

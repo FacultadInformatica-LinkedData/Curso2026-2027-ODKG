@@ -25,7 +25,7 @@
   <text x="72" y="186" class="label">Station: selected point</text>
 
   <rect x="305" y="162" width="230" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
-  <text x="322" y="186" class="label">Month: selected snapshot</text>
+  <text x="322" y="186" class="label">Noise: 1 Jan–30 Jun 2025 ▾</text>
 
   <rect x="555" y="162" width="260" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
   <text x="572" y="186" class="label">Night period: N (23:00–07:00)</text>
@@ -40,18 +40,18 @@
   <text x="68" y="303" class="value">RF-XX · Station name</text>
 
   <rect x="420" y="258" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
-  <text x="438" y="278" class="small">District · neighborhood</text>
-  <text x="438" y="303" class="value">From station catalogue</text>
+  <text x="438" y="278" class="small">Average nightly LAeq, dB(A)</text>
+  <text x="438" y="303" class="value">From data</text>
 
   <rect x="790" y="258" width="355" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
-  <text x="808" y="278" class="small">Linked district entity</text>
-  <text x="808" y="303" class="value">Wikidata ↗</text>
+  <text x="808" y="278" class="small">Terrace snapshot</text>
+  <text x="808" y="303" class="value">4 Oct 2026</text>
 
   <!-- Summary row 2 -->
   <rect x="30" y="355" width="1140" height="95" rx="12" fill="#ffffff" stroke="#cfdae3"/>
 
   <rect x="50" y="373" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
-  <text x="68" y="393" class="small">Nearby open terraces</text>
+  <text x="68" y="393" class="small">Nearby registered terraces</text>
   <text x="68" y="418" class="value">Count from data</text>
 
   <rect x="420" y="373" width="345" height="58" rx="8" fill="#f8fafc" stroke="#cfdae3"/>
@@ -74,7 +74,7 @@
   <line x1="90" y1="610" x2="1120" y2="610" stroke="#d7e1e8"/>
 
   <text x="52" y="550" class="small">dB(A)</text>
-  <text x="500" y="676" class="small">Day of selected month</text>
+  <text x="500" y="676" class="small">Date in selected range</text>
 
   <!-- Line before missing period -->
   <polyline
@@ -101,8 +101,8 @@
 
   <text x="55" y="776" class="tablehead">Terrace</text>
   <text x="330" y="776" class="tablehead">Distance</text>
-  <text x="520" y="776" class="tablehead">Seasonal tables</text>
-  <text x="760" y="776" class="tablehead">Rest-of-year tables</text>
+  <text x="520" y="776" class="tablehead">District</text>
+  <text x="760" y="776" class="tablehead">Neighbourhood</text>
 
   <!-- Footer note -->
   <text x="30" y="812" class="small">

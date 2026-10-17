@@ -1,0 +1,47 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  pe: http://smartcity.chicago.es/ontology/ParkExplorer#
+
+mappings:
+
+  # ---------- Facility: one per row ----------
+  facility:
+    sources:
+      - [csv/CPD_Facilities_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/Facility/$(FACILITY_ID)
+    po:
+      - [a, pe:Facility]
+      - [rdfs:label, $(FACILITY_NAME), xsd:string]
+      - [pe:facilityName, $(FACILITY_NAME), xsd:string]
+      - [pe:facilityType, $(FACILITY_TYPE), xsd:string]
+      - [pe:facilityGisObjectId, $(GIS_OBJECT_ID), xsd:integer]
+      - [schema:geo, http://smartcity.chicago.es/resource/GeoCoordinates/Facility_$(FACILITY_ID)~iri]
+
+  # ---------- Coordinates of each facility ----------
+  facilityGeo:
+    sources:
+      - [csv/CPD_Facilities_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/GeoCoordinates/Facility_$(FACILITY_ID)
+    po:
+      - [a, schema:GeoCoordinates]
+      - [rdfs:label, Coordinates of $(FACILITY_NAME) in $(PARK_NAME), xsd:string]
+      - [schema:latitude, $(LATITUDE), xsd:decimal]
+      - [schema:longitude, $(LONGITUDE), xsd:decimal]
+
+  # ---------- Park: one per PARK_NO (repeated rows collapse into one resource) ----------
+  parkFromFacilities:
+    sources:
+      - [csv/CPD_Facilities_20261001-updated.csv~csv]
+    s: http://smartcity.chicago.es/resource/ChicagoPark/$(PARK_NO)
+    po:
+      - [a, pe:ChicagoPark]
+      - [rdfs:label, $(PARK_NAME), xsd:string]
+      - [pe:parkName, $(PARK_NAME), xsd:string]
+      - [pe:parkNumber, $(PARK_NO), xsd:integer]
+      - [pe:hasFacility, http://smartcity.chicago.es/resource/Facility/$(FACILITY_ID)~iri]

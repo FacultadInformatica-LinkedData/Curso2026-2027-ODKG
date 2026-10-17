@@ -1,0 +1,94 @@
+# ==========================================
+# SAFEROUTEMADRID - RDF DATA VALIDATION QUERIES
+# ==========================================
+
+# 1. Conteo por Clases (Estadísticas generales de entidades)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?rdfClass (COUNT(?s) AS ?total)
+WHERE {
+  ?s rdf:type ?rdfClass.
+}
+GROUP BY ?rdfClass
+ORDER BY DESC(?total);
+
+# 2. Muestra de Accidentes, Fechas y Calles
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?accident ?date ?time ?street
+WHERE {
+  ?accident a ns:TrafficAccident ;
+            ns:accidentDate ?date ;
+            ns:accidentTime ?time ;
+            ns:occursAt ?loc .
+  OPTIONAL { ?loc ns:streetName ?street . }
+}
+LIMIT 5;
+
+# 3. Relaciones encadenadas de Accidentes, Vehículos y Personas
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?accident ?vehicle ?person ?severity
+WHERE {
+  ?accident ns:involvesVehicle ?vehicle .
+  ?vehicle ns:involvesPerson ?person .
+  ?person ns:hasInjurySeverity ?severity .
+}
+LIMIT 10;
+
+# 4. Personas con positivo en alcohol o drogas
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?person ?alcohol ?drug
+WHERE {
+  ?person a ns:Person ;
+          ns:positiveAlcohol ?alcohol ;
+          ns:positiveDrug ?drug .
+  FILTER(?alcohol = true || ?drug = true)
+}
+LIMIT 10;
+
+# 5. Auditoría: Accidentes sin fecha registrada
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?accident
+WHERE {
+  ?accident a ns:TrafficAccident .
+  FILTER NOT EXISTS { ?accident ns:accidentDate ?date . }
+};
+
+# 6. Auditoría: Vehículos huérfanos (sin accidente asociado)
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?vehicle
+WHERE {
+  ?vehicle a ns:Vehicle .
+  FILTER NOT EXISTS {
+    ?accident ns:involvesVehicle ?vehicle .
+  }
+};
+
+# 7. Auditoría: Personas huérfanas (sin vehículo/accidente asociado)
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?person
+WHERE {
+  ?person a ns:Person .
+  FILTER NOT EXISTS {
+    ?vehicle ns:involvesPerson ?person .
+  }
+};
+
+# 8. Auditoría: Ubicaciones sin accidente asociado
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?location
+WHERE {
+  ?location a ns:Location .
+  FILTER NOT EXISTS {
+    ?accident ns:occursAt ?location .
+  }
+};
+
+# 9. Auditoría: Ubicaciones con distritos mal enlazados o inexistentes
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?location ?district
+WHERE {
+  ?location a ns:Location ;
+            ns:locatedIn ?district .
+  FILTER NOT EXISTS {
+    ?district a ns:District .
+  }
+};

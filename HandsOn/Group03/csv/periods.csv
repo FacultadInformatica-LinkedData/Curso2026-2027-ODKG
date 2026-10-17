@@ -1,0 +1,5 @@
+period,label
+D,Day (07:00-19:00)
+E,Evening (19:00-23:00)
+N,Night (23:00-07:00)
+T,Total (24h)

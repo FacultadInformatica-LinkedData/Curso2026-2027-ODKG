@@ -1,0 +1,165 @@
+@prefix dbd: <https://example.org/db-delays/ontology/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/db-delays/ontology/> a owl:Ontology ;
+    rdfs:label "Deutsche Bahn delays ontology"@en ;
+    rdfs:comment "A lightweight vocabulary for recorded train stops, stations, cities and German federal states in DBtrainrides.csv. Missing values are omitted from instance data. Domain and range declarations support type inference, not mandatory-field validation. Individual identifiers follow the resource naming strategy in analysis.html."@en ;
+    owl:versionInfo "1.0" ;
+    rdfs:seeAlso <https://www.kaggle.com/datasets/nokkyu/deutsche-bahn-db-delays/data> .
+
+# Classes
+
+dbd:TrainStop a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "Train stop"@en ;
+    rdfs:comment "A recorded train stop at a station. Source records with different values are separate observations, even when they share the same source ID."@en .
+
+dbd:Station a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "Station"@en ;
+    rdfs:comment "A railway station identified by its EVA number. This class is a candidate for links to external station entities after identity verification."@en .
+
+dbd:City a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "City"@en ;
+    rdfs:comment "A city or locality represented by its cleaned source label and federal state. Its administrative identity must be verified before linking to an external place entity. Use rdfs:label for its name."@en .
+
+dbd:State a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "State"@en ;
+    rdfs:comment "A German federal state (Land), suitable for external linking after identity verification. Use rdfs:label for its name."@en .
+
+# Object properties
+
+dbd:atStation a owl:ObjectProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range dbd:Station ;
+    rdfs:label "at station"@en ;
+    rdfs:comment "Links a recorded stop to its station, using the source eva_nr value."@en .
+
+dbd:inCity a owl:ObjectProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range dbd:City ;
+    rdfs:label "in city"@en ;
+    rdfs:comment "Links a station to its city or locality, identified using the source city and state labels."@en .
+
+dbd:inState a owl:ObjectProperty ;
+    rdfs:domain dbd:City ;
+    rdfs:range dbd:State ;
+    rdfs:label "in state"@en ;
+    rdfs:comment "Links a city or locality to its German federal state, using the source state label."@en .
+
+# TrainStop datatype properties
+
+dbd:stopId a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "stop ID"@en ;
+    rdfs:comment "The complete original ID column value. It may repeat across observations and is not declared a unique OWL key."@en .
+
+dbd:lineLabel a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "line label"@en ;
+    rdfs:comment "The source line label. It does not uniquely identify a train, journey or route across the network."@en .
+
+dbd:previousStations a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "previous stations"@en ;
+    rdfs:comment "The source path string of previous stations separated by |, preserving their order."@en .
+
+dbd:plannedArrival a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "planned arrival"@en ;
+    rdfs:comment "Scheduled arrival time from arrival_plan. Convert to ISO 8601 without inventing a time-zone offset."@en .
+
+dbd:plannedDeparture a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "planned departure"@en ;
+    rdfs:comment "Scheduled departure time from departure_plan. Convert to ISO 8601 without inventing a time-zone offset."@en .
+
+dbd:updatedArrival a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "updated arrival"@en ;
+    rdfs:comment "Updated arrival time known at collection, from arrival_change; not necessarily a verified actual arrival."@en .
+
+dbd:updatedDeparture a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "updated departure"@en ;
+    rdfs:comment "Updated departure time known at collection, from departure_change; not necessarily a verified actual departure."@en .
+
+dbd:arrivalDelayMinutes a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:integer ;
+    rdfs:label "arrival delay minutes"@en ;
+    rdfs:comment "Reported arrival delay in minutes, from arrival_delay_m. A zero without an updated arrival time does not prove an observed on-time event."@en .
+
+dbd:departureDelayMinutes a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:integer ;
+    rdfs:label "departure delay minutes"@en ;
+    rdfs:comment "Reported departure delay in minutes, from departure_delay_m. A zero without an updated departure time does not prove an observed on-time event."@en .
+
+dbd:arrivalStatus a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "arrival status"@en ;
+    rdfs:comment "The source arrival_delay_check label: on_time for delays of at most 5 minutes, or delay for more than 5 minutes."@en .
+
+dbd:departureStatus a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "departure status"@en ;
+    rdfs:comment "The source departure_delay_check label: on_time for delays of at most 5 minutes, or delay for more than 5 minutes."@en .
+
+dbd:information a owl:DatatypeProperty ;
+    rdfs:domain dbd:TrainStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "information"@en ;
+    rdfs:comment "The operational message from info. An absent message does not establish absence of disruption."@en .
+
+# Station datatype properties
+
+dbd:evaNumber a owl:DatatypeProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range xsd:string ;
+    rdfs:label "EVA number"@en ;
+    rdfs:comment "The station identifier from eva_nr, preserved as text rather than a numerical quantity."@en .
+
+dbd:stationName a owl:DatatypeProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range xsd:string ;
+    rdfs:label "station name"@en ;
+    rdfs:comment "The original station name from station, retaining German characters."@en .
+
+dbd:stationCategory a owl:DatatypeProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range xsd:integer ;
+    rdfs:label "station category"@en ;
+    rdfs:comment "The station category from category, with observed values 1 to 5. It is not a train type."@en .
+
+dbd:postalCode a owl:DatatypeProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range xsd:string ;
+    rdfs:label "postal code"@en ;
+    rdfs:comment "The postal code from zip, kept as text to preserve leading zeros. Validate incomplete codes before correction."@en .
+
+dbd:longitude a owl:DatatypeProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "longitude"@en ;
+    rdfs:comment "Longitude in decimal degrees, from long. The source metadata does not explicitly specify the coordinate reference system."@en .
+
+dbd:latitude a owl:DatatypeProperty ;
+    rdfs:domain dbd:Station ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "latitude"@en ;
+    rdfs:comment "Latitude in decimal degrees, from lat. The source metadata does not explicitly specify the coordinate reference system."@en .

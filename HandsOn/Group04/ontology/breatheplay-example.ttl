@@ -1,0 +1,176 @@
+@prefix bpm:      <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix station:  <https://w3id.org/breatheplay-madrid/resource/station/> .
+@prefix sttype:   <https://w3id.org/breatheplay-madrid/resource/station-type/> .
+@prefix sp:       <https://w3id.org/breatheplay-madrid/resource/sampling-point/> .
+@prefix tech:     <https://w3id.org/breatheplay-madrid/resource/technique/> .
+@prefix pol:      <https://w3id.org/breatheplay-madrid/resource/pollutant/> .
+@prefix fac:      <https://w3id.org/breatheplay-madrid/resource/sports-facility/> .
+@prefix factype:  <https://w3id.org/breatheplay-madrid/resource/facility-type/> .
+@prefix access:   <https://w3id.org/breatheplay-madrid/resource/accessibility-level/> .
+@prefix district: <https://w3id.org/breatheplay-madrid/resource/district/> .
+@prefix nbh:      <https://w3id.org/breatheplay-madrid/resource/neighbourhood/> .
+@prefix wd:       <http://www.wikidata.org/entity/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+# Sample instantiation of the Breathe and Play Madrid ontology (Group04).
+# Values are taken from the CSV files in csv/:
+#   D1 calidad-aire-diario-2024.csv               (1st row + one NO2 value + one invalid value)
+#   D2 212629-0-estaciones-control-aire.csv       (1st row + station 28079027)
+#   D3 200215-0-instalaciones-deportivas-csv.csv  (1st row)
+# Observation URIs contain "/" in their identifier, so they are written as full IRIs.
+
+#################################################################
+#    Daily observations (D1, one per sampling point and day)
+#################################################################
+
+# 1st row of D1, day 01: CO at Plaza de España on 2024-01-01 (0.5, flag V)
+<https://w3id.org/breatheplay-madrid/resource/observation/28079004_6_48/2024-01-01>
+    a bpm:DailyObservation ;
+    bpm:hasSamplingPoint sp:28079004_6_48 ;
+    bpm:date "2024-01-01"^^xsd:date ;
+    bpm:value 0.5 ;
+    bpm:isValid true .
+
+# NO2 at Plaza de España on 2024-01-15 (22, flag V)
+<https://w3id.org/breatheplay-madrid/resource/observation/28079004_8_8/2024-01-15>
+    a bpm:DailyObservation ;
+    bpm:hasSamplingPoint sp:28079004_8_8 ;
+    bpm:date "2024-01-15"^^xsd:date ;
+    bpm:value 22.0 ;
+    bpm:isValid true .
+
+# Value flagged as not valid in the source: CO on 2024-03-21 (0.4, flag N)
+<https://w3id.org/breatheplay-madrid/resource/observation/28079004_6_48/2024-03-21>
+    a bpm:DailyObservation ;
+    bpm:hasSamplingPoint sp:28079004_6_48 ;
+    bpm:date "2024-03-21"^^xsd:date ;
+    bpm:value 0.4 ;
+    bpm:isValid false .
+
+#################################################################
+#    Sampling points, techniques and pollutants (D1)
+#################################################################
+
+sp:28079004_6_48
+    a bpm:SamplingPoint ;
+    bpm:samplingPointCode "28079004_6_48" ;
+    bpm:hasStation station:28079004 ;
+    bpm:measuresPollutant pol:6 ;
+    bpm:usesTechnique tech:48 .
+
+sp:28079004_8_8
+    a bpm:SamplingPoint ;
+    bpm:samplingPointCode "28079004_8_8" ;
+    bpm:hasStation station:28079004 ;
+    bpm:measuresPollutant pol:8 ;
+    bpm:usesTechnique tech:08 .
+
+tech:48
+    a bpm:MeasurementTechnique ;
+    rdfs:label "infrared absorption"@en ;
+    bpm:techniqueCode "48" .
+
+tech:08
+    a bpm:MeasurementTechnique ;
+    rdfs:label "chemiluminescence"@en ;
+    bpm:techniqueCode "08" .
+
+pol:6
+    a bpm:Pollutant ;
+    rdfs:label "carbon monoxide"@en ;
+    bpm:pollutantCode "6" ;
+    bpm:unit "mg/m3" ;
+    owl:sameAs wd:Q2025 .
+
+pol:8
+    a bpm:Pollutant ;
+    rdfs:label "nitrogen dioxide"@en ;
+    bpm:pollutantCode "8" ;
+    bpm:unit "µg/m3" ;
+    owl:sameAs wd:Q207895 .
+
+#################################################################
+#    Monitoring stations and station types (D2)
+#################################################################
+
+# 1st row of D2
+station:28079004
+    a bpm:MonitoringStation ;
+    rdfs:label "Plaza de España"@es ;
+    bpm:stationCode "28079004" ;
+    bpm:hasStationType sttype:ut ;
+    bpm:altitude 637 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:address "Plaza de España" ;
+    bpm:latitude 40.4238823 ;
+    bpm:longitude -3.7122567 .
+
+# Nearest station to the first sports facility of D3
+station:28079027
+    a bpm:MonitoringStation ;
+    rdfs:label "Barajas Pueblo"@es ;
+    bpm:stationCode "28079027" ;
+    bpm:hasStationType sttype:uf ;
+    bpm:altitude 619 ;
+    bpm:startDate "2002-12-31"^^xsd:date ;
+    bpm:address "C/ Júpiter, 21" ;
+    bpm:latitude 40.4769179 ;
+    bpm:longitude -3.5800258 ;
+    bpm:locatedInDistrict district:21 .
+
+sttype:ut
+    a bpm:StationType ;
+    rdfs:label "Urbana tráfico"@es , "urban traffic"@en .
+
+sttype:uf
+    a bpm:StationType ;
+    rdfs:label "Urbana fondo"@es , "urban background"@en .
+
+#################################################################
+#    Sports facility (D3, 1st row: PK 12009978)
+#################################################################
+
+fac:12009978
+    a bpm:SportsFacility ;
+    rdfs:label "Instalación Deportiva Municipal Básica Acuario"@es ;
+    bpm:facilityId "12009978" ;
+    bpm:hasFacilityType factype:circuito-vida ;
+    bpm:hasAccessibilityLevel access:1 ;
+    bpm:equipment "Circuito de vida Pista de patinaje Acceso libre." ;
+    bpm:transportInfo "Metro: El Capricho (línea 5)." ;
+    bpm:contentURL "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e30c5d9606508810VgnVCM1000001d4a900aRCRD"^^xsd:anyURI ;
+    bpm:address "CALLE TROPICO 10" ;
+    bpm:postalCode "28042" ;
+    bpm:latitude 40.47402643691105 ;
+    bpm:longitude -3.5801328372492223 ;
+    bpm:locatedInDistrict district:21 ;
+    bpm:locatedInNeighbourhood nbh:213 ;
+    bpm:hasNearestStation station:28079027 ;
+    bpm:distanceToNearestStation 0.322 .
+
+factype:circuito-vida
+    a bpm:FacilityType ;
+    rdfs:label "Circuito de vida"@es , "fitness trail"@en .
+
+access:1
+    a bpm:AccessibilityLevel ;
+    rdfs:label "Accesible"@es , "accessible"@en .
+
+#################################################################
+#    Administrative areas (D3) linked to Wikidata
+#################################################################
+
+district:21
+    a bpm:District ;
+    rdfs:label "Barajas"@es ;
+    bpm:districtCode "21" ;
+    owl:sameAs wd:Q807230 .
+
+nbh:213
+    a bpm:Neighbourhood ;
+    rdfs:label "Casco Histórico de Barajas"@es ;
+    bpm:neighbourhoodCode "213" ;
+    bpm:isPartOfDistrict district:21 ;
+    owl:sameAs wd:Q9701730 .

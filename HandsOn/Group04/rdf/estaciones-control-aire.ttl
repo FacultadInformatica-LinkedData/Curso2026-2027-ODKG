@@ -1,0 +1,255 @@
+@prefix bpm: <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix station: <https://w3id.org/breatheplay-madrid/resource/station/> .
+@prefix sttype: <https://w3id.org/breatheplay-madrid/resource/station-type/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+station:28079004 a bpm:MonitoringStation ;
+    rdfs:label "Plaza de España"@es ;
+    bpm:address "Plaza de España"^^xsd:string ;
+    bpm:altitude 637 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4238823 ;
+    bpm:longitude -3.7122567 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079004"^^xsd:string .
+
+station:28079008 a bpm:MonitoringStation ;
+    rdfs:label "Escuelas Aguirre"@es ;
+    bpm:address "Entre C/ Alcalá y C/ O’ Donell"^^xsd:string ;
+    bpm:altitude 672 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4215533 ;
+    bpm:longitude -3.6823158 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079008"^^xsd:string .
+
+station:28079011 a bpm:MonitoringStation ;
+    rdfs:label "Ramón y Cajal"@es ;
+    bpm:address "Avda. Ramón y Cajal esq. C/ Príncipe de Vergara"^^xsd:string ;
+    bpm:altitude 709 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4514734 ;
+    bpm:longitude -3.6773491 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079011"^^xsd:string .
+
+station:28079016 a bpm:MonitoringStation ;
+    rdfs:label "Arturo Soria"@es ;
+    bpm:address "C/ Arturo Soria esq. C/ Vizconde de los Asilos"^^xsd:string ;
+    bpm:altitude 695 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.4400457 ;
+    bpm:longitude -3.6392422 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079016"^^xsd:string .
+
+station:28079017 a bpm:MonitoringStation ;
+    rdfs:label "Villaverde"@es ;
+    bpm:address "C/ Juan Peñalver"^^xsd:string ;
+    bpm:altitude 601 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.347147 ;
+    bpm:longitude -3.7133167 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079017"^^xsd:string .
+
+station:28079018 a bpm:MonitoringStation ;
+    rdfs:label "Farolillo"@es ;
+    bpm:address "C/ Farolillo - C/ Ervigio"^^xsd:string ;
+    bpm:altitude 625 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.3947825 ;
+    bpm:longitude -3.7318356 ;
+    bpm:startDate "2001-03-31"^^xsd:date ;
+    bpm:stationCode "28079018"^^xsd:string .
+
+station:28079024 a bpm:MonitoringStation ;
+    rdfs:label "Casa de Campo"@es ;
+    bpm:address "Casa de Campo (Terminal del Teleférico)"^^xsd:string ;
+    bpm:altitude 645 ;
+    bpm:hasStationType sttype:s ;
+    bpm:latitude 40.4193577 ;
+    bpm:longitude -3.7473445 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079024"^^xsd:string .
+
+station:28079027 a bpm:MonitoringStation ;
+    rdfs:label "Barajas Pueblo"@es ;
+    bpm:address "C/ Júpiter, 21"^^xsd:string ;
+    bpm:altitude 619 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.4769179 ;
+    bpm:longitude -3.5800258 ;
+    bpm:startDate "2002-12-31"^^xsd:date ;
+    bpm:stationCode "28079027"^^xsd:string .
+
+station:28079035 a bpm:MonitoringStation ;
+    rdfs:label "Plaza del Carmen"@es ;
+    bpm:address "Plaza del Carmen esq. Tres Cruces"^^xsd:string ;
+    bpm:altitude 660 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.4192091 ;
+    bpm:longitude -3.7031662 ;
+    bpm:startDate "1999-11-01"^^xsd:date ;
+    bpm:stationCode "28079035"^^xsd:string .
+
+station:28079036 a bpm:MonitoringStation ;
+    rdfs:label "Moratalaz"@es ;
+    bpm:address "Avda. Moratalaz esq. Camino de los Vinateros"^^xsd:string ;
+    bpm:altitude 671 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4079517 ;
+    bpm:longitude -3.6453104 ;
+    bpm:startDate "1998-12-01"^^xsd:date ;
+    bpm:stationCode "28079036"^^xsd:string .
+
+station:28079038 a bpm:MonitoringStation ;
+    rdfs:label "Cuatro Caminos"@es ;
+    bpm:address "Avda. Pablo Iglesias esq. C/ Marqués de Lema"^^xsd:string ;
+    bpm:altitude 699 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4455439 ;
+    bpm:longitude -3.7071303 ;
+    bpm:startDate "1998-11-01"^^xsd:date ;
+    bpm:stationCode "28079038"^^xsd:string .
+
+station:28079039 a bpm:MonitoringStation ;
+    rdfs:label "Barrio del Pilar"@es ;
+    bpm:address "Avda. Betanzos esq. C/ Monforte de Lemos"^^xsd:string ;
+    bpm:altitude 675 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4782322 ;
+    bpm:longitude -3.7115364 ;
+    bpm:startDate "1998-05-01"^^xsd:date ;
+    bpm:stationCode "28079039"^^xsd:string .
+
+station:28079040 a bpm:MonitoringStation ;
+    rdfs:label "Vallecas"@es ;
+    bpm:address "C/ Arroyo del Olivar esq. C/ Río Grande."^^xsd:string ;
+    bpm:altitude 678 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.3881478 ;
+    bpm:longitude -3.6515286 ;
+    bpm:startDate "1999-09-30"^^xsd:date ;
+    bpm:stationCode "28079040"^^xsd:string .
+
+station:28079047 a bpm:MonitoringStation ;
+    rdfs:label "Méndez Álvaro"@es ;
+    bpm:address "C/ Juan de Mariana / Plaza Amanecer Méndez Álvaro"^^xsd:string ;
+    bpm:altitude 600 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.3980991 ;
+    bpm:longitude -3.6868138 ;
+    bpm:startDate "2009-12-21"^^xsd:date ;
+    bpm:stationCode "28079047"^^xsd:string .
+
+station:28079048 a bpm:MonitoringStation ;
+    rdfs:label "Castellana"@es ;
+    bpm:address "C/ José Gutiérrez Abascal"^^xsd:string ;
+    bpm:altitude 678 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4398904 ;
+    bpm:longitude -3.6903729 ;
+    bpm:startDate "2010-02-01"^^xsd:date ;
+    bpm:stationCode "28079048"^^xsd:string .
+
+station:28079049 a bpm:MonitoringStation ;
+    rdfs:label "Parque del Retiro"@es ;
+    bpm:address "Paseo Venezuela- Palacio de Velázquez"^^xsd:string ;
+    bpm:altitude 658 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.4144444 ;
+    bpm:longitude -3.6824999 ;
+    bpm:startDate "2010-01-01"^^xsd:date ;
+    bpm:stationCode "28079049"^^xsd:string .
+
+station:28079050 a bpm:MonitoringStation ;
+    rdfs:label "Plaza Castilla"@es ;
+    bpm:address "Plaza Castilla (Canal)"^^xsd:string ;
+    bpm:altitude 730 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.4655841 ;
+    bpm:longitude -3.6887449 ;
+    bpm:startDate "2010-02-01"^^xsd:date ;
+    bpm:stationCode "28079050"^^xsd:string .
+
+station:28079054 a bpm:MonitoringStation ;
+    rdfs:label "Ensanche de Vallecas"@es ;
+    bpm:address "Avda. La Gavia / Avda. Las Suertes"^^xsd:string ;
+    bpm:altitude 628 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.3730118 ;
+    bpm:longitude -3.6121394 ;
+    bpm:startDate "2009-12-11"^^xsd:date ;
+    bpm:stationCode "28079054"^^xsd:string .
+
+station:28079055 a bpm:MonitoringStation ;
+    rdfs:label "Urb. Embajada"@es ;
+    bpm:address "C/ Riaño (Barajas)"^^xsd:string ;
+    bpm:altitude 614 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.4623628 ;
+    bpm:longitude -3.5805649 ;
+    bpm:startDate "2010-01-20"^^xsd:date ;
+    bpm:stationCode "28079055"^^xsd:string .
+
+station:28079056 a bpm:MonitoringStation ;
+    rdfs:label "Plaza Elíptica"@es ;
+    bpm:address "Plaza Elíptica - Avda. Oporto"^^xsd:string ;
+    bpm:altitude 605 ;
+    bpm:hasStationType sttype:ut ;
+    bpm:latitude 40.3850336 ;
+    bpm:longitude -3.7187679 ;
+    bpm:startDate "2010-01-18"^^xsd:date ;
+    bpm:stationCode "28079056"^^xsd:string .
+
+station:28079057 a bpm:MonitoringStation ;
+    rdfs:label "Sanchinarro"@es ;
+    bpm:address "C/ Princesa de Éboli esq. C/ María Tudor"^^xsd:string ;
+    bpm:altitude 700 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.4942012 ;
+    bpm:longitude -3.6605173 ;
+    bpm:startDate "2009-11-23"^^xsd:date ;
+    bpm:stationCode "28079057"^^xsd:string .
+
+station:28079058 a bpm:MonitoringStation ;
+    rdfs:label "El Pardo"@es ;
+    bpm:address "Avda. La Guardia"^^xsd:string ;
+    bpm:altitude 611 ;
+    bpm:hasStationType sttype:s ;
+    bpm:latitude 40.5180701 ;
+    bpm:longitude -3.7746101 ;
+    bpm:startDate "2009-12-01"^^xsd:date ;
+    bpm:stationCode "28079058"^^xsd:string .
+
+station:28079059 a bpm:MonitoringStation ;
+    rdfs:label "Juan Carlos I"@es ;
+    bpm:address "Parque Juan Carlos I (frente oficinas mantenimiento)"^^xsd:string ;
+    bpm:altitude 660 ;
+    bpm:hasStationType sttype:s ;
+    bpm:latitude 40.465144 ;
+    bpm:longitude -3.609031 ;
+    bpm:startDate "2009-12-14"^^xsd:date ;
+    bpm:stationCode "28079059"^^xsd:string .
+
+station:28079060 a bpm:MonitoringStation ;
+    rdfs:label "Tres Olivos"@es ;
+    bpm:address "Plaza Tres Olivos"^^xsd:string ;
+    bpm:altitude 709 ;
+    bpm:hasStationType sttype:uf ;
+    bpm:latitude 40.5005477 ;
+    bpm:longitude -3.6897308 ;
+    bpm:startDate "2010-02-08"^^xsd:date ;
+    bpm:stationCode "28079060"^^xsd:string .
+
+sttype:s a bpm:StationType ;
+    rdfs:label "Suburbana"@es .
+
+sttype:ut a bpm:StationType ;
+    rdfs:label "Urbana tráfico"@es .
+
+sttype:uf a bpm:StationType ;
+    rdfs:label "Urbana fondo"@es .
+

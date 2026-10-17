@@ -1,0 +1,90 @@
+@prefix rr:     <http://www.w3.org/ns/r2rml#> .
+@prefix rml:    <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:     <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix bpm:    <https://w3id.org/breatheplay-madrid/ontology#> .
+@base           <https://w3id.org/breatheplay-madrid/mappings/estaciones-control-aire#> .
+
+# Group04 - Breathe & Play Madrid. Run from the HandsOn/Group04 directory
+# (python mappings/generate_rdf.py), so that the csv/ paths resolve.
+# Dataset: Estaciones de control de la calidad del aire (Ayuntamiento de Madrid, 212629)
+# Source:  csv/212629-0-estaciones-control-aire-csv-updated.csv
+
+# ---------------------------------------------------------------------------
+# Monitoring stations
+# ---------------------------------------------------------------------------
+<#MonitoringStationMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/station/{CODIGO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:MonitoringStation
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:stationCode ;
+        rr:objectMap [ rml:reference "CODIGO" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "ESTACION" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:address ;
+        rr:objectMap [ rml:reference "DIRECCION" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:altitude ;
+        rr:objectMap [ rml:reference "ALTITUD" ; rr:termType rr:Literal ; rr:datatype xsd:integer ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:startDate ;
+        rr:objectMap [ rml:reference "FECHA_ALTA" ; rr:termType rr:Literal ; rr:datatype xsd:date ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:latitude ;
+        rr:objectMap [ rml:reference "LATITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:longitude ;
+        rr:objectMap [ rml:reference "LONGITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:hasStationType ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/station-type/{COD_TIPO}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# Station types (ut Urbana tráfico, uf Urbana fondo, s Suburbana)
+# ---------------------------------------------------------------------------
+<#StationTypeMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/station-type/{COD_TIPO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:StationType
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "NOM_TIPO" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] .

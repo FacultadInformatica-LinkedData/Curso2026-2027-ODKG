@@ -1,0 +1,115 @@
+@prefix rr:     <http://www.w3.org/ns/r2rml#> .
+@prefix rml:    <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:     <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix pe:     <http://smartcity.chicago.es/ontology/ParkExplorer#> .
+@base           <http://smartcity.chicago.es/mappings/facilities#> .
+
+#################################################################
+# Chicago Park District Facilities
+# Source: csv/CPD_Facilities_20261001-updated.csv
+#
+# Individuals (see analysis.html, section 3.2):
+#   Park        http://smartcity.chicago.es/resource/ChicagoPark/{PARK_NO}
+#   Facility    http://smartcity.chicago.es/resource/Facility/{FACILITY_ID}
+#   Coordinates http://smartcity.chicago.es/resource/GeoCoordinates/Facility_{FACILITY_ID}
+#################################################################
+
+<#Park> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/CPD_Facilities_20261001-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "http://smartcity.chicago.es/resource/ChicagoPark/{PARK_NO}" ;
+    rr:class pe:ChicagoPark
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "PARK_NAME" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate pe:parkName ;
+    rr:objectMap [ rml:reference "PARK_NAME" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate pe:parkNumber ;
+    rr:objectMap [ rml:reference "PARK_NO" ; rr:datatype xsd:integer ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate pe:hasFacility ;
+    rr:objectMap [ rr:parentTriplesMap <#Facility> ]
+  ] .
+
+
+<#Facility> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/CPD_Facilities_20261001-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "http://smartcity.chicago.es/resource/Facility/{FACILITY_ID}" ;
+    rr:class pe:Facility
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "FACILITY_NAME" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate pe:facilityName ;
+    rr:objectMap [ rml:reference "FACILITY_NAME" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate pe:facilityType ;
+    rr:objectMap [ rml:reference "FACILITY_TYPE" ]
+  ] ;
+
+  # GIS_OBJECT_ID is empty for 2 facilities (placeholder 0 removed in OpenRefine):
+  # no triple is generated for them.
+  rr:predicateObjectMap [
+    rr:predicate pe:facilityGisObjectId ;
+    rr:objectMap [ rml:reference "GIS_OBJECT_ID" ; rr:datatype xsd:integer ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate schema:geo ;
+    rr:objectMap [ rr:parentTriplesMap <#FacilityGeo> ]
+  ] .
+
+
+<#FacilityGeo> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/CPD_Facilities_20261001-updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "http://smartcity.chicago.es/resource/GeoCoordinates/Facility_{FACILITY_ID}" ;
+    rr:class schema:GeoCoordinates
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:template "Coordinates of {FACILITY_NAME} in {PARK_NAME}" ; rr:termType rr:Literal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate schema:latitude ;
+    rr:objectMap [ rml:reference "LATITUDE" ; rr:datatype xsd:double ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate schema:longitude ;
+    rr:objectMap [ rml:reference "LONGITUDE" ; rr:datatype xsd:double ]
+  ] .

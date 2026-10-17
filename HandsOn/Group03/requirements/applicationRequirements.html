@@ -40,7 +40,7 @@ svg text{font:11px system-ui,sans-serif;fill:#5b6673}
 <main>
 
 <h1>Application requirements</h1>
-<p class="sub">Terraces and night-time noise in Madrid – Hands-on 1 · Group XX</p>
+<p class="sub">Terraces and night-time noise in Madrid – Hands-on 1 · Group 03</p>
 
 <h2>1. Purpose of the application</h2>
 <p>The application lets a user explore the following question:</p>
@@ -51,12 +51,13 @@ svg text{font:11px system-ui,sans-serif;fill:#5b6673}
 <div class="tablewrap">
 <table>
 <tr><th>Dataset</th><th>Role in the application</th><th>Source and license</th></tr>
-<tr><td><strong>Contaminación acústica. Datos diarios</strong> (selected dataset)</td><td>Daily noise levels per station. The night-time indicator L<sub>n</sub> (equivalent sound level, 23:00–07:00, in dB(A)) is the noise value used by the application.</td><td>datos.madrid.es/dataset/215885-0-contaminacion-ruido · CC BY 4.0 · updated daily · 50 measuring stations</td></tr>
-<tr><td>Contaminación acústica. Estaciones de medida</td><td>Identifier, name and coordinates of each station. Needed to place stations on the map and to count terraces around them.</td><td>datos.madrid.es (same portal and publisher, linked from the noise dataset page)</td></tr>
-<tr><td>Registered terraces (hospitality terraces)</td><td>Location of each terrace. Source of the terrace count per station.</td><td>datos.madrid.es (to be confirmed by the group: exact dataset, CSV format and license)</td></tr>
+<tr><td><strong>Contaminación acústica. Datos diarios</strong> (selected dataset)</td><td>Daily noise levels per station. The night-time indicator L<sub>n</sub> (equivalent sound level, 23:00–07:00, in dB(A)) is the noise value used by the application.</td><td><a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido">Dataset 215885</a> · CC BY 4.0 · updated daily. The submitted 2020–2026 extract contains 31 station codes; the portal's 50 devices describe the wider SIVCA system.</td></tr>
+<tr><td>Contaminación acústica. Estaciones de medida</td><td>Identifier, name and coordinates of each station. Needed to place stations on the map and to count terraces around them.</td><td><a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas">Dataset 211346</a> · Ayuntamiento de Madrid · CC BY 4.0 · 31 fixed-network station records.</td></tr>
+<tr><td>Registered terraces (hospitality terraces)</td><td>Approximate premises or grouping entrance location for each terrace with usable coordinates. Source of the terrace count per station.</td><td><a href="https://datos.madrid.es/dataset/200085-0-censo-locales">Dataset 200085</a>, terraces CSV only · Ayuntamiento de Madrid · CC BY 4.0 · 6,594 terraces in the 4 October 2026 snapshot.</td></tr>
 </table>
 </div>
 <p>The idea requires combining the noise data with a second source (terraces), so the application also covers optional requirement R6 (multiple data sources). Stations and terraces are linked through their geographic location.</p>
+<p>The terrace counts describe the selected 2026 snapshot and cannot establish which terraces existed during earlier noise dates. Distance calculations use compatible ETRS89 / UTM 30N coordinates and the access-type location rules documented in <a href="../analysis.html">the data analysis</a>; unavailable or invalid locations are excluded and reported. Locations approximate premises or grouping entrances rather than the surveyed terrace footprint.</p>
 
 <h2>3. Users</h2>
 <ul>
@@ -129,10 +130,10 @@ The application shows an association, not a cause. A result such as “more terr
 <g fill="#1f5f8b"><circle cx="55" cy="130" r="4"/><circle cx="80" cy="115" r="4"/><circle cx="100" cy="120" r="4"/><circle cx="130" cy="90" r="4"/><circle cx="150" cy="100" r="4"/><circle cx="175" cy="70" r="4"/><circle cx="200" cy="60" r="4"/><circle cx="225" cy="45" r="4"/></g>
 <line x1="45" y1="135" x2="235" y2="45" stroke="#c2410c" stroke-dasharray="4 3"/>
 </svg>
-<div class="legend">Correlation coefficient: <strong>r = 0.00</strong> (placeholder) · 48 stations used · 2 left out (no data)</div>
+<div class="legend">Correlation coefficient: <strong>computed from data</strong> · Stations used and excluded: computed from coverage in the selected date range</div>
 </div>
 </div>
-<p class="legend">Data: Ayuntamiento de Madrid, CC BY 4.0. An association does not imply causation.</p>
+<p class="legend">Terrace snapshot: 04/10/2026 · Noise dates: selected range. Data: Ayuntamiento de Madrid, CC BY 4.0. An association does not imply causation.</p>
 </div>
 <p class="cap">Covers FR1–FR6, FR8 and NFR1. The values shown are only illustrative.</p>
 
@@ -142,8 +143,8 @@ The application shows an association, not a cause. A result such as “more terr
 <h4>Station name (selected)</h4>
 <table>
 <tr><th>Terraces within 250 m</th><td>12</td></tr>
-<tr><th>Average night noise (01/01/2025 – 30/06/2025)</th><td>00.0 dB</td></tr>
-<tr><th>Days with data</th><td>000</td></tr>
+<tr><th>Average night noise (01/01/2025 – 30/06/2025)</th><td>Computed from data, dB(A)</td></tr>
+<tr><th>Days with data</th><td>Computed from coverage</td></tr>
 </table>
 <span class="ctl">Close ✕</span>
 </div>

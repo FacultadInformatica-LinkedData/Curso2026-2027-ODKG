@@ -1,0 +1,288 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "fecha",
+    "expression": "grel:if(isBlank(value), value, value.split('/').get(2) + '-' + value.split('/').get(1) + '-' + value.split('/').get(0))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna fecha usando la expresión grel:if(isBlank(value), value, value.split('/').get(2) + '-' + value.split('/').get(1) + '-' + value.split('/').get(0))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "hora",
+    "expression": "grel:if(isBlank(value), value, if(value.length() == 7, '0' + value, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna hora usando la expresión grel:if(isBlank(value), value, if(value.length() == 7, '0' + value, value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna distrito usando la expresión grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipo_accidente",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna tipo_accidente usando la expresión grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "estado_meteorológico",
+    "expression": "grel:if(isBlank(value), \"se desconoce\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna estado_meteorológico usando la expresión grel:if(isBlank(value), \"se desconoce\", value)"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "estado_meteorológico",
+    "expression": "grel:value",
+    "edits": [
+      {
+        "from": [
+          "se desconoce"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Se desconoce"
+      }
+    ],
+    "description": "Editar celdas en masa en columna estado_meteorológico"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "coordenada_x_utm",
+    "expression": "grel:if(isBlank(value), null, toNumber(replace(value.toString(), \",\", \".\")))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna coordenada_x_utm usando la expresión grel:if(isBlank(value), null, toNumber(replace(value.toString(), \",\", \".\")))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "coordenada_y_utm",
+    "expression": "grel:if(isBlank(value), null, toNumber(replace(value.toString(), \",\", \".\")))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna coordenada_y_utm usando la expresión grel:if(isBlank(value), null, toNumber(replace(value.toString(), \",\", \".\")))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "coordenada_x_utm",
+    "expression": "grel:if(isBlank(value), null, if(value == 0, null, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna coordenada_x_utm usando la expresión grel:if(isBlank(value), null, if(value == 0, null, value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "coordenada_y_utm",
+    "expression": "grel:if(isBlank(value), null, if(value == 0, null, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna coordenada_y_utm usando la expresión grel:if(isBlank(value), null, if(value == 0, null, value))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "num_expediente",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "accidente_grupo",
+    "columnInsertIndex": 1,
+    "description": "Crear la columna accidente_grupo en el índice 1 basada en la columna num_expediente usando la expresión grel:value"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accidente_grupo",
+    "description": "Vaciar las celdas en la columna accidente_grupo"
+  },
+  {
+    "op": "core/column-move-first",
+    "columnName": "accidente_grupo",
+    "description": "Move column accidente_grupo to the beginning"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "num_expediente",
+    "expression": "grel:value + \"-P\" + (row.index - row.record.fromRowIndex + 1).toString()",
+    "onError": "set-to-blank",
+    "newColumnName": "ID_persona",
+    "columnInsertIndex": 2,
+    "description": "Crear la columna ID_persona en el índice 2 basada en la columna num_expediente usando la expresión grel:value + \"-P\" + (row.index - row.record.fromRowIndex + 1).toString()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "tipo_persona",
+    "expression": "grel:with(\n  filter(\n    slice(row.record.cells[\"tipo_persona\"].value, 0, row.index - row.record.fromRowIndex + 1),\n    v, v == \"Conductor\"\n  ).length(),\n  n,\n  if(n == 0, \"\", cells[\"num_expediente\"].value + \"-V\" + n.toString())\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "ID_vehiculo",
+    "columnInsertIndex": 13,
+    "description": "Crear la columna ID_vehiculo en el índice 13 basada en la columna tipo_persona usando la expresión grel:with(\n  filter(\n    slice(row.record.cells[\"tipo_persona\"].value, 0, row.index - row.record.fromRowIndex + 1),\n    v, v == \"Conductor\"\n  ).length(),\n  n,\n  if(n == 0, \"\", cells[\"num_expediente\"].value + \"-V\" + n.toString())\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "positiva_alcohol",
+    "expression": "grel:if(isBlank(value), \"Desconocido\", if(value.toString().trim().toUppercase() == \"S\", true, if(value.toString().trim().toUppercase() == \"N\", false, value)))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna positiva_alcohol usando la expresión grel:if(isBlank(value), \"Desconocido\", if(value.toString().trim().toUppercase() == \"S\", true, if(value.toString().trim().toUppercase() == \"N\", false, value)))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "positiva_droga",
+    "expression": "grel:if(isBlank(value), \"Desconocido\", if(value.toString().trim() == \"1\", true, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna positiva_droga usando la expresión grel:if(isBlank(value), \"Desconocido\", if(value.toString().trim() == \"1\", true, value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "cod_lesividad",
+    "expression": "grel:if(isBlank(value), \"Desconocido\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna cod_lesividad usando la expresión grel:if(isBlank(value), \"Desconocido\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "lesividad",
+    "expression": "grel:if(isBlank(value), \"Desconocido\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna lesividad usando la expresión grel:if(isBlank(value), \"Desconocido\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipo_vehiculo",
+    "expression": "grel:if(isBlank(value), \"Desconocido\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna tipo_vehiculo usando la expresión grel:if(isBlank(value), \"Desconocido\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "estado_meteorológico",
+    "expression": "grel:if(value.toString().trim() == \"Se desconoce\", \"Desconocido\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna estado_meteorológico usando la expresión grel:if(value.toString().trim() == \"Se desconoce\", \"Desconocido\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipo_accidente",
+    "expression": "grel:if(isBlank(value), \"Desconocido\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna tipo_accidente usando la expresión grel:if(isBlank(value), \"Desconocido\", value)"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "accidente_grupo",
+    "description": "Eliminar columna accidente_grupo"
+  }
+]
