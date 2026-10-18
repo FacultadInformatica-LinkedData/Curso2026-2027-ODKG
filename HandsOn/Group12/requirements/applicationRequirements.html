@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Requirements, Active Madrid</title>
+<style>
+  :root { --txt:#1f2328; --muted:#57606a; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa; --acc:#003366; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--txt); background:var(--bg); max-width:1000px; margin:0 auto; padding:32px 16px 64px; line-height:1.55; }
+  h1 { font-size:1.8rem; margin-bottom:.2rem; color: var(--acc); }
+  h2 { margin-top:2.5rem; border-bottom:1px solid var(--line); padding-bottom:.3rem; color: var(--acc); }
+  .sub { color:var(--muted); margin-top:0; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); color: var(--acc); }
+  code { background:var(--soft); padding:2px 6px; border-radius:4px; font-size:.9em; }
+  figure { margin:2rem 0; border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--soft); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  figcaption { color:var(--muted); font-size:.9rem; margin-top:12px; text-align: center; }
+  svg { width:100%; height:auto; display:block; background:#fff; border-radius:4px; border: 1px solid var(--line); }
+  a { color:#0969da; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>Application Requirements, Active Madrid</h1>
+<p class="sub">Hands-on 1, Open Data and Knowledge Graphs, An application built on a knowledge graph of sports facilities and classes in Madrid</p>
+
+<h2>1. Application overview</h2>
+<p><strong>Active Madrid</strong> is a web application that helps people find available spots for sports activities in Madrid. It is built on a knowledge graph that links:</p>
+<ul>
+  <li>the basic municipal sports facilities (D1);</li>
+  <li>the open classes with available spots (D2);</li>
+  <li>the closed classes or full activities (D3);</li>
+  <li>external entities from Wikidata: districts, sports, and metro stations.</li>
+</ul>
+<p>Each class is linked to a facility, so the app can show exactly where activities take place. Users can search for a class by sport or district, see how many spots are available, and compare districts by sports supply.</p>
+
+<h2>2. Target users</h2>
+<table>
+  <tr><th>User</th><th>Need</th></tr>
+  <tr><td>Amateur athlete</td><td>Find a nearby facility with an open class for their favorite sport.</td></tr>
+  <tr><td>Parent</td><td>Find available spots in swimming or martial arts classes for their children.</td></tr>
+  <tr><td>City planner</td><td>Compare districts by number of sports facilities and availability of classes.</td></tr>
+</table>
+
+<h2>3. Functional requirements</h2>
+<table>
+  <tr><th>ID</th><th>Requirement</th><th>Dataset used</th></tr>
+  <tr><td>FR1</td><td>Display the sports facilities on a map.</td><td>D1</td></tr>
+  <tr><td>FR2</td><td>Filter facilities by sport, district, and availability of spots using a top search bar.</td><td>D1, D2, D3</td></tr>
+  <tr><td>FR3</td><td>Show a split view with a result list on one side and a dynamic map on the other.</td><td>D1, D2</td></tr>
+  <tr><td>FR4</td><td>Show a facility detail page: address, district, equipment, and public transport.</td><td>D1</td></tr>
+  <tr><td>FR5</td><td>On the facility page, list all open classes and closed classes with their schedules and number of available spots.</td><td>D1, D2, D3</td></tr>
+  <tr><td>FR6</td><td>Recommend the facilities with the highest number of available spots for a given sport in a district.</td><td>D1, D2</td></tr>
+  <tr><td>FR7</td><td>Rank districts by number of sports facilities and total available spots.</td><td>D1, D2</td></tr>
+  <tr><td>FR8</td><td>Show linked information from Wikidata for districts, sports, and metro stations.</td><td>Wikidata</td></tr>
+  <tr><td>FR9</td><td>Show the source and license of the data (CC BY 4.0, Madrid City Council).</td><td>Metadata</td></tr>
+</table>
+
+<h2>4. Non-functional requirements</h2>
+<table>
+  <tr><th>ID</th><th>Requirement</th></tr>
+  <tr><td>NFR1</td><td>All data is queried through SPARQL over the knowledge graph generated from the CSV files.</td></tr>
+  <tr><td>NFR2</td><td>The application runs in a web browser and is responsive on mobile devices.</td></tr>
+  <tr><td>NFR3</td><td>Each query issued by the interface returns in under 3 seconds.</td></tr>
+  <tr><td>NFR4</td><td>Standard vocabularies are reused where possible: GeoSPARQL/WGS84 for locations, and schema.org for a facility and a class.</td></tr>
+  <tr><td>NFR5</td><td>The attribution required by the CC BY 4.0 license is displayed.</td></tr>
+  <tr><td>NFR6</td><td>The interface is available in English and Spanish and uses accessible colors.</td></tr>
+</table>
+
+<h2>5. Competency questions</h2>
+<ol>
+  <li>Which facilities in the district of Retiro have open classes for tennis?</li>
+  <li>How many available spots are there for swimming classes at a given facility?</li>
+  <li>Which district has the most sports facilities?</li>
+  <li>Which facilities are near a given metro station?</li>
+  <li>What is the Wikidata entity for the sport of judo?</li>
+</ol>
+
+<h2>6. User interface mock-ups</h2>
+<p>All figures shown in the mock-ups are placeholder values.</p>
+
+<figure>
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="14">
+  <!-- Header -->
+  <rect x="0" y="0" width="900" height="60" fill="#003366"/>
+  <text x="20" y="36" fill="#fff" font-size="22" font-weight="700">Active Madrid</text>
+  <text x="700" y="36" fill="#e0e0e0">Map | List | Profile | EN</text>
+
+  <!-- Filter Bar -->
+  <rect x="0" y="60" width="900" height="60" fill="#f0f4f8" stroke="#d0d7de"/>
+  <text x="20" y="96" font-weight="600" fill="#1f2328">Search class:</text>
+  
+  <rect x="130" y="75" width="160" height="30" rx="4" fill="#fff" stroke="#d0d7de"/>
+  <text x="140" y="95" fill="#57606a">Sport: Swimming ▾</text>
+
+  <rect x="310" y="75" width="160" height="30" rx="4" fill="#fff" stroke="#d0d7de"/>
+  <text x="320" y="95" fill="#57606a">District: Vallecas ▾</text>
+
+  <rect x="490" y="75" width="160" height="30" rx="4" fill="#fff" stroke="#d0d7de"/>
+  <text x="500" y="95" fill="#57606a">Status: Open ▾</text>
+
+  <rect x="670" y="75" width="100" height="30" rx="4" fill="#0969da"/>
+  <text x="700" y="95" fill="#fff" font-weight="600">Search</text>
+
+  <!-- Main Content Area, Left List -->
+  <rect x="0" y="120" width="350" height="480" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="20" y="150" font-weight="700" font-size="16">Results (3 facilities)</text>
+  
+  <!-- List Item 1 -->
+  <rect x="20" y="170" width="310" height="80" rx="6" fill="#f6f8fa" stroke="#0969da" stroke-width="2"/>
+  <text x="35" y="195" font-weight="700">Centro Deportivo Vallecas</text>
+  <text x="35" y="215" fill="#57606a">Swimming, Water Polo</text>
+  <rect x="35" y="225" width="14" height="14" rx="7" fill="#1a7f37"/>
+  <text x="55" y="237" fill="#1a7f37" font-weight="600" font-size="12">15 spots available</text>
+
+  <!-- List Item 2 -->
+  <rect x="20" y="260" width="310" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="35" y="285" font-weight="700">Polideportivo Palomeras</text>
+  <text x="35" y="305" fill="#57606a">Swimming</text>
+  <rect x="35" y="315" width="14" height="14" rx="7" fill="#1a7f37"/>
+  <text x="55" y="327" fill="#1a7f37" font-weight="600" font-size="12">2 spots available</text>
+
+  <!-- List Item 3 -->
+  <rect x="20" y="350" width="310" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="35" y="375" font-weight="700">Centro Deportivo Entrevías</text>
+  <text x="35" y="395" fill="#57606a">Swimming</text>
+  <rect x="35" y="405" width="14" height="14" rx="7" fill="#cf222e"/>
+  <text x="55" y="417" fill="#cf222e" font-weight="600" font-size="12">Class full (Closed)</text>
+
+  <!-- Main Content Area, Right Map -->
+  <rect x="350" y="120" width="550" height="480" fill="#e8eaed"/>
+  <path d="M400 200 Q500 150 600 180 T850 160 Q880 300 800 450 Q650 550 500 500 Q400 450 380 300 Z" fill="#ffffff" stroke="#a0aab2" stroke-dasharray="8 4" stroke-width="2"/>
+  <text x="650" y="580" fill="#57606a">Map of Madrid (OpenStreetMap)</text>
+
+  <!-- Map Pins -->
+  <path d="M550 300 C 550 300, 535 270, 535 250 A 15 15 0 1 1 565 250 C 565 270, 550 300, 550 300 Z" fill="#0969da"/>
+  <circle cx="550" cy="250" r="5" fill="#ffffff"/>
+  <rect x="520" y="210" width="70" height="22" rx="4" fill="#000" opacity="0.7"/>
+  <text x="525" y="225" fill="#fff" font-size="11">Vallecas (15)</text>
+
+  <circle cx="650" cy="380" r="8" fill="#1a7f37" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="480" cy="420" r="8" fill="#cf222e" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Generic map elements -->
+  <line x1="380" y1="200" x2="800" y2="400" stroke="#c0c8d0" stroke-width="3"/>
+  <line x1="500" y1="500" x2="600" y2="180" stroke="#c0c8d0" stroke-width="3"/>
+</svg>
+<figcaption>Mock-up 1, Main view: split screen with a class filter bar, a result list on the left, and a map showing the facility locations and availability status on the right (FR1, FR2, FR3).</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="14">
+  <!-- Header -->
+  <rect x="0" y="0" width="900" height="60" fill="#003366"/>
+  <text x="20" y="36" fill="#fff" font-size="22" font-weight="700">Active Madrid</text>
+  <text x="20" y="90" fill="#0969da">← Back to search results</text>
+  
+  <!-- Facility Header -->
+  <text x="20" y="130" font-size="24" font-weight="700">Centro Deportivo Vallecas</text>
+  <text x="20" y="155" fill="#57606a">Calle del Arroyo del Olivar 51, Puente de Vallecas</text>
+  
+  <!-- Content Grid -->
+  <!-- Left Info Box -->
+  <rect x="20" y="180" width="300" height="280" rx="8" fill="#f8f9fa" stroke="#d0d7de"/>
+  <text x="40" y="215" font-weight="700" font-size="16">Facility Info</text>
+  <text x="40" y="245">District: Puente de Vallecas</text>
+  <text x="40" y="275">Metro: Portazgo (Line 1) ↗</text>
+  <text x="40" y="305">Accessibility: Yes</text>
+  <text x="40" y="340" fill="#0969da">View in Wikidata ↗</text>
+  
+  <!-- Right Classes Box -->
+  <rect x="340" y="180" width="540" height="280" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="360" y="215" font-weight="700" font-size="16">Available Classes</text>
+  
+  <!-- Table Header -->
+  <rect x="360" y="230" width="500" height="30" fill="#f0f4f8"/>
+  <text x="370" y="250" font-weight="600">Sport</text>
+  <text x="500" y="250" font-weight="600">Schedule</text>
+  <text x="680" y="250" font-weight="600">Status</text>
+  
+  <!-- Row 1 -->
+  <line x1="360" y1="260" x2="860" y2="260" stroke="#d0d7de"/>
+  <text x="370" y="285">Swimming</text>
+  <text x="500" y="285">Mon-Wed, 18:00</text>
+  <rect x="680" y="272" width="80" height="20" rx="10" fill="#dafbe1"/>
+  <text x="695" y="286" fill="#1a7f37" font-size="12" font-weight="600">15 spots</text>
+  
+  <!-- Row 2 -->
+  <line x1="360" y1="300" x2="860" y2="300" stroke="#d0d7de"/>
+  <text x="370" y="325">Water Polo</text>
+  <text x="500" y="325">Tue-Thu, 19:30</text>
+  <rect x="680" y="312" width="80" height="20" rx="10" fill="#dafbe1"/>
+  <text x="695" y="326" fill="#1a7f37" font-size="12" font-weight="600">3 spots</text>
+
+  <!-- Row 3 -->
+  <line x1="360" y1="340" x2="860" y2="340" stroke="#d0d7de"/>
+  <text x="370" y="365">Tennis</text>
+  <text x="500" y="365">Saturday, 10:00</text>
+  <rect x="680" y="352" width="80" height="20" rx="10" fill="#ffebe9"/>
+  <text x="698" y="366" fill="#cf222e" font-size="12" font-weight="600">Closed</text>
+  
+  <line x1="360" y1="380" x2="860" y2="380" stroke="#d0d7de"/>
+</svg>
+<figcaption>Mock-up 2, Facility profile: showing details, linked data, and a list of classes with their availability (FR4, FR5, FR8).</figcaption>
+</figure>
+
+<h2>7. Out of scope</h2>
+<ul>
+  <li>Booking a class directly through the application.</li>
+  <li>Real-time tracking of facility occupancy.</li>
+  <li>User accounts and personalised notifications.</li>
+</ul>
+
+</body>
+</html>

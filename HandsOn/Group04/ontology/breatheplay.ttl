@@ -1,0 +1,215 @@
+@prefix bpm: <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/breatheplay-madrid/ontology> a owl:Ontology ;
+    dcterms:creator "Group04" ;
+    dcterms:description "Lightweight ontology for the daily air quality observations of the Madrid City Council monitoring network, the monitoring stations and the basic municipal sports facilities of Madrid."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:title "Breathe and Play Madrid ontology"@en ;
+    vann:preferredNamespacePrefix "bpm" ;
+    vann:preferredNamespaceUri "https://w3id.org/breatheplay-madrid/ontology#" ;
+    owl:versionIRI <https://w3id.org/breatheplay-madrid/ontology/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+
+bpm:address a owl:DatatypeProperty ;
+    rdfs:label "address"@en ;
+    rdfs:domain bpm:Place ;
+    rdfs:range xsd:string .
+
+bpm:altitude a owl:DatatypeProperty ;
+    rdfs:label "altitude"@en ;
+    rdfs:domain bpm:MonitoringStation ;
+    rdfs:range xsd:integer .
+
+bpm:contentURL a owl:DatatypeProperty ;
+    rdfs:label "content URL"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range xsd:anyURI .
+
+bpm:date a owl:DatatypeProperty ;
+    rdfs:label "date"@en ;
+    rdfs:domain bpm:DailyObservation ;
+    rdfs:range xsd:date .
+
+bpm:distanceToNearestStation a owl:DatatypeProperty ;
+    rdfs:label "distance to nearest station"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range xsd:decimal .
+
+bpm:districtCode a owl:DatatypeProperty ;
+    rdfs:label "district code"@en ;
+    rdfs:domain bpm:District ;
+    rdfs:range xsd:string .
+
+bpm:equipment a owl:DatatypeProperty ;
+    rdfs:label "equipment"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range xsd:string .
+
+bpm:facilityId a owl:DatatypeProperty ;
+    rdfs:label "facility id"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range xsd:string .
+
+bpm:hasAccessibilityLevel a owl:ObjectProperty ;
+    rdfs:label "has accessibility level"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range bpm:AccessibilityLevel .
+
+bpm:hasFacilityType a owl:ObjectProperty ;
+    rdfs:label "has facility type"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range bpm:FacilityType .
+
+bpm:hasNearestStation a owl:ObjectProperty ;
+    rdfs:label "has nearest station"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range bpm:MonitoringStation .
+
+bpm:hasSamplingPoint a owl:ObjectProperty ;
+    rdfs:label "has sampling point"@en ;
+    rdfs:domain bpm:DailyObservation ;
+    rdfs:range bpm:SamplingPoint .
+
+bpm:hasStation a owl:ObjectProperty ;
+    rdfs:label "has station"@en ;
+    rdfs:domain bpm:SamplingPoint ;
+    rdfs:range bpm:MonitoringStation .
+
+bpm:hasStationType a owl:ObjectProperty ;
+    rdfs:label "has station type"@en ;
+    rdfs:domain bpm:MonitoringStation ;
+    rdfs:range bpm:StationType .
+
+bpm:isPartOfDistrict a owl:ObjectProperty ;
+    rdfs:label "is part of district"@en ;
+    rdfs:domain bpm:Neighbourhood ;
+    rdfs:range bpm:District .
+
+bpm:isValid a owl:DatatypeProperty ;
+    rdfs:label "is valid"@en ;
+    rdfs:domain bpm:DailyObservation ;
+    rdfs:range xsd:boolean .
+
+bpm:latitude a owl:DatatypeProperty ;
+    rdfs:label "latitude"@en ;
+    rdfs:domain bpm:Place ;
+    rdfs:range xsd:decimal .
+
+bpm:locatedInDistrict a owl:ObjectProperty ;
+    rdfs:label "located in district"@en ;
+    rdfs:domain bpm:Place ;
+    rdfs:range bpm:District .
+
+bpm:locatedInNeighbourhood a owl:ObjectProperty ;
+    rdfs:label "located in neighbourhood"@en ;
+    rdfs:domain bpm:Place ;
+    rdfs:range bpm:Neighbourhood .
+
+bpm:longitude a owl:DatatypeProperty ;
+    rdfs:label "longitude"@en ;
+    rdfs:domain bpm:Place ;
+    rdfs:range xsd:decimal .
+
+bpm:measuresPollutant a owl:ObjectProperty ;
+    rdfs:label "measures pollutant"@en ;
+    rdfs:domain bpm:SamplingPoint ;
+    rdfs:range bpm:Pollutant .
+
+bpm:neighbourhoodCode a owl:DatatypeProperty ;
+    rdfs:label "neighbourhood code"@en ;
+    rdfs:domain bpm:Neighbourhood ;
+    rdfs:range xsd:string .
+
+bpm:pollutantCode a owl:DatatypeProperty ;
+    rdfs:label "pollutant code"@en ;
+    rdfs:domain bpm:Pollutant ;
+    rdfs:range xsd:string .
+
+bpm:postalCode a owl:DatatypeProperty ;
+    rdfs:label "postal code"@en ;
+    rdfs:domain bpm:Place ;
+    rdfs:range xsd:string .
+
+bpm:samplingPointCode a owl:DatatypeProperty ;
+    rdfs:label "sampling point code"@en ;
+    rdfs:domain bpm:SamplingPoint ;
+    rdfs:range xsd:string .
+
+bpm:startDate a owl:DatatypeProperty ;
+    rdfs:label "start date"@en ;
+    rdfs:domain bpm:MonitoringStation ;
+    rdfs:range xsd:date .
+
+bpm:stationCode a owl:DatatypeProperty ;
+    rdfs:label "station code"@en ;
+    rdfs:domain bpm:MonitoringStation ;
+    rdfs:range xsd:string .
+
+bpm:techniqueCode a owl:DatatypeProperty ;
+    rdfs:label "technique code"@en ;
+    rdfs:domain bpm:MeasurementTechnique ;
+    rdfs:range xsd:string .
+
+bpm:transportInfo a owl:DatatypeProperty ;
+    rdfs:label "transport info"@en ;
+    rdfs:domain bpm:SportsFacility ;
+    rdfs:range xsd:string .
+
+bpm:unit a owl:DatatypeProperty ;
+    rdfs:label "unit"@en ;
+    rdfs:domain bpm:Pollutant ;
+    rdfs:range xsd:string .
+
+bpm:usesTechnique a owl:ObjectProperty ;
+    rdfs:label "uses technique"@en ;
+    rdfs:domain bpm:SamplingPoint ;
+    rdfs:range bpm:MeasurementTechnique .
+
+bpm:value a owl:DatatypeProperty ;
+    rdfs:label "value"@en ;
+    rdfs:domain bpm:DailyObservation ;
+    rdfs:range xsd:decimal .
+
+bpm:AccessibilityLevel a owl:Class ;
+    rdfs:label "Accessibility Level"@en .
+
+bpm:FacilityType a owl:Class ;
+    rdfs:label "Facility Type"@en .
+
+bpm:StationType a owl:Class ;
+    rdfs:label "Station Type"@en .
+
+bpm:MeasurementTechnique a owl:Class ;
+    rdfs:label "Measurement Technique"@en .
+
+bpm:District a owl:Class ;
+    rdfs:label "District"@en .
+
+bpm:Neighbourhood a owl:Class ;
+    rdfs:label "Neighbourhood"@en .
+
+bpm:Pollutant a owl:Class ;
+    rdfs:label "Pollutant"@en .
+
+bpm:DailyObservation a owl:Class ;
+    rdfs:label "Daily Observation"@en .
+
+bpm:SamplingPoint a owl:Class ;
+    rdfs:label "Sampling Point"@en .
+
+bpm:MonitoringStation a owl:Class ;
+    rdfs:label "Monitoring Station"@en ;
+    rdfs:subClassOf bpm:Place .
+
+bpm:Place a owl:Class ;
+    rdfs:label "Place"@en .
+
+bpm:SportsFacility a owl:Class ;
+    rdfs:label "Sports Facility"@en ;
+    rdfs:subClassOf bpm:Place .
+

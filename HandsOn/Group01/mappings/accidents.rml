@@ -1,0 +1,106 @@
+
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ao: <http://group01.opendata.upm.es/ontology/accidents#> .
+@prefix map: <http://group01.opendata.upm.es/mappings/> .
+
+# Mapping for traffic accidents
+map:AccidentMap a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/US_Accidents_New_York-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "http://group01.opendata.upm.es/resource/accidents/{ID}" ;
+        rr:class ao:TrafficAccident
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:severity ;
+        rr:objectMap [
+            rml:reference "Severity" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:startTime ;
+        rr:objectMap [
+            rml:reference "Start_Time" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:endTime ;
+        rr:objectMap [
+            rml:reference "End_Time" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:latitude ;
+        rr:objectMap [
+            rml:reference "Start_Lat" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:longitude ;
+        rr:objectMap [
+            rml:reference "Start_Lng" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:description ;
+        rr:objectMap [
+            rml:reference "Description" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:hasTrafficSignal ;
+        rr:objectMap [
+            rml:reference "Traffic_Signal" ;
+            rr:datatype xsd:boolean
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:locatedOn ;
+        rr:objectMap [
+            rr:parentTriplesMap map:StreetMap ;
+            rr:joinCondition [
+                rr:child "Street_Slug" ;
+                rr:parent "Street_Slug"
+            ]
+        ]
+    ] .
+
+# Mapping for streets
+map:StreetMap a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/US_Accidents_New_York-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "http://group01.opendata.upm.es/resource/streets/{Street_Slug}" ;
+        rr:class ao:Street
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ao:streetName ;
+        rr:objectMap [
+            rml:reference "Street" ;
+            rr:datatype xsd:string
+        ]
+    ] .

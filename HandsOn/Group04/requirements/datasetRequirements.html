@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dataset Requirements – Madrid Air Quality and Sports Facilities</title>
+<style>
+  :root { --txt:#1f2328; --muted:#57606a; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa; --ok:#1a7f37; --part:#9a6700; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--txt); background:var(--bg); max-width:980px; margin:0 auto; padding:32px 16px 64px; line-height:1.55; }
+  h1 { font-size:1.8rem; margin-bottom:.2rem; }
+  h2 { margin-top:2.5rem; border-bottom:1px solid var(--line); padding-bottom:.3rem; }
+  h3 { margin-top:1.6rem; }
+  .sub { color:var(--muted); margin-top:0; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); }
+  code { background:var(--soft); padding:1px 5px; border-radius:4px; font-size:.9em; }
+  .ok { color:var(--ok); font-weight:600; }
+  .part { color:var(--part); font-weight:600; }
+  .box { background:var(--soft); border-left:4px solid var(--line); padding:10px 14px; margin:1rem 0; }
+  a { color:#0969da; }
+</style>
+</head>
+<body>
+
+<h1>Dataset Requirements</h1>
+<p class="sub">Hands-on 1 · Open Data and Knowledge Graphs · Domain: urban environment and public facilities in the city of Madrid</p>
+
+<h2>1. Selected datasets</h2>
+<table>
+  <tr><th>#</th><th>Dataset</th><th>File (<code>csv/</code> directory)</th><th>Publisher</th><th>Source</th></tr>
+  <tr>
+    <td>D1</td>
+    <td>Air quality. Daily data (year 2024)</td>
+    <td><code>calidad-aire-diario-2024.csv</code></td>
+    <td>Madrid City Council – Directorate-General for Sustainability and Environmental Control</td>
+    <td><a href="https://datos.madrid.es/dataset/201410-0-calidad-aire-diario">datos.madrid.es</a></td>
+  </tr>
+  <tr>
+    <td>D2</td>
+    <td>Air quality. Monitoring stations</td>
+    <td><code>212629-0-estaciones-control-aire-csv.csv</code></td>
+    <td>Madrid City Council – Directorate-General for Sustainability and Environmental Control</td>
+    <td><a href="https://datos.madrid.es/dataset/212629-0-estaciones-control-aire">datos.madrid.es</a></td>
+  </tr>
+  <tr>
+    <td>D3</td>
+    <td>Sports. Basic municipal sports facilities</td>
+    <td><code>200215-0-instalaciones-deportivas-csv.csv</code></td>
+    <td>Madrid City Council – Sports area</td>
+    <td><a href="https://datos.madrid.es/dataset/200215-0-instalaciones-deportivas">datos.madrid.es</a></td>
+  </tr>
+</table>
+
+<h2>2. Compliance summary</h2>
+<table>
+  <tr><th>Requirement</th><th>D1 – Daily data</th><th>D2 – Stations</th><th>D3 – Sports facilities</th></tr>
+  <tr><td>R1. Smart city domain</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R2. Available as CSV</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R3. Open license</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R4. Linkable to real-world entities</td><td class="ok">✔ Satisfied (via D2)</td><td class="ok">✔ Satisfied</td><td class="ok">✔ Satisfied</td></tr>
+  <tr><td>R5. Documentation (optional)</td><td class="ok">✔ High</td><td class="ok">✔ High</td><td class="ok">✔ High</td></tr>
+  <tr><td>R6. Multiple data sources (optional)</td><td colspan="3" class="part">◐ Medium–high (see section 7)</td></tr>
+</table>
+
+<h2>3. D1 – Air quality. Daily data 2024</h2>
+
+<h3>R1. Smart city domain <span class="ok">✔</span></h3>
+<p>The dataset belongs to the <strong>urban environment</strong> domain. It contains the daily measurements of air pollutants recorded by the automatic air quality monitoring network of Madrid City Council, a network of urban sensors typical of a smart city. Each daily value is the arithmetic mean of the 24 hourly values of that day.</p>
+
+<h3>R2. Available as CSV <span class="ok">✔</span></h3>
+<p>The portal publishes the dataset in CSV, TXT and XML, with one file per year since 2001. We selected 2024, which has 1,410 rows.</p>
+<ul>
+  <li>Field separator <code>;</code> and decimal separator <code>.</code>.</li>
+  <li><strong>Wide</strong> format: each row corresponds to one station × pollutant × month. Columns <code>D01…D31</code> hold the daily values and <code>V01…V31</code> their validity flags (<code>V</code> = valid, <code>N</code> = not valid).</li>
+  <li>Before the RDF transformation, the file will need to be reshaped into a long format, with one observation per station, pollutant and day.</li>
+</ul>
+
+<h3>R3. Open license <span class="ok">✔</span></h3>
+<p><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>, as stated in the dataset page and in the portal's <a href="https://datos.madrid.es/pages/condiciones-de-uso">terms of use</a>. The license allows the data to be copied, transformed and redistributed, including for commercial purposes. The only condition is to credit the source (Madrid City Council).</p>
+
+<h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+<table>
+  <tr><th>Column</th><th>Example</th><th>Linkable entity</th></tr>
+  <tr><td><code>PROVINCIA</code>, <code>MUNICIPIO</code></td><td><code>28</code>, <code>079</code></td><td>INE codes → Madrid in Wikidata (<a href="https://www.wikidata.org/wiki/Q2807">Q2807</a>) / INE</td></tr>
+  <tr><td><code>ESTACION</code>, <code>PUNTO_MUESTREO</code></td><td><code>4</code>, <code>28079004_6_48</code></td><td>Monitoring station in D2, which provides coordinates and address</td></tr>
+  <tr><td><code>MAGNITUD</code></td><td><code>8</code></td><td>Pollutant in Wikidata (8 = NO₂, 10 = PM10, 14 = O₃…)</td></tr>
+  <tr><td><code>ANO</code>, <code>MES</code>, day</td><td><code>2024</code>, <code>01</code>, <code>D01</code></td><td><code>xsd:date</code></td></tr>
+</table>
+<p>Pollutant codes present in the file: 1 = SO₂, 6 = CO, 7 = NO, 8 = NO₂, 9 = PM2.5, 10 = PM10, 12 = NOx, 14 = O₃, 20 = toluene, 30 = benzene, 35 = ethylbenzene.</p>
+<p>D1 alone does not contain the geographic location of the measurements. The location is obtained by linking to D2 (see section 6).</p>
+
+<h3>R5. Documentation <span class="ok">✔ High degree</span></h3>
+<p>The dataset page provides a PDF on how to interpret the data. It describes the file structure, the station, pollutant and sampling technique codes, the validity flags and the units (µg/m³, except CO in mg/m³). This is enough to interpret every column unambiguously. The only missing piece is a machine-readable data dictionary.</p>
+
+<h3>R6. Multiple data sources <span class="part">◐</span></h3>
+<p>D1 is a single source on its own. It becomes part of a multi-source knowledge graph once linked to D2, D3 and Wikidata. See section 7 for the discussion.</p>
+
+<h2>4. D2 – Air quality. Monitoring stations</h2>
+
+<h3>R1. Smart city domain <span class="ok">✔</span></h3>
+<p>The dataset describes the city's <strong>environmental sensing infrastructure</strong>: the 24 stations of Madrid's air quality monitoring network, with their location, type and the pollutants each one measures.</p>
+
+<h3>R2. Available as CSV <span class="ok">✔</span></h3>
+<p>Available as CSV (24 rows, 25 columns) and in other geographic formats.</p>
+<ul>
+  <li>Separator <code>;</code>, UTF-8 encoding with BOM.</li>
+  <li>Coordinates are given in three formats: degrees-minutes-seconds (<code>LONGITUD_ETRS89</code>, <code>LATITUD_ETRS89</code>), UTM ETRS89 with a decimal comma (<code>COORDENADA_X/Y_ETRS89</code>) and decimal degrees (<code>LONGITUD</code>, <code>LATITUD</code>).</li>
+  <li>Stations 49 and 59 use a different degrees-minutes-seconds notation from the rest, so we will use the decimal-degree columns.</li>
+</ul>
+
+<h3>R3. Open license <span class="ok">✔</span></h3>
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with the same conditions as D1.</p>
+
+<h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+<table>
+  <tr><th>Column</th><th>Example</th><th>Linkable entity</th></tr>
+  <tr><td><code>LATITUD</code>, <code>LONGITUD</code></td><td><code>40.4238823</code>, <code>-3.7122567</code></td><td>Geographic point (<code>geo:wktLiteral</code> / WGS84) → the district and neighbourhood containing it, GeoNames, nearby D3 facilities</td></tr>
+  <tr><td><code>DIRECCION</code>, <code>VIA_CLASE</code>, <code>VIA_PAR</code>, <code>VIA_NOMBRE</code>, <code>COD_VIA</code></td><td>PLAZA DE ESPAÑA, <code>273600</code></td><td>Street in the municipal street directory</td></tr>
+  <tr><td><code>ESTACION</code></td><td>Plaza de España, Casa de Campo, Parque del Retiro</td><td>Places with their own Wikidata entities</td></tr>
+  <tr><td><code>COD_TIPO</code>, <code>NOM_TIPO</code></td><td><code>UT</code> – Urban traffic</td><td>Station type (urban traffic, urban background, suburban)</td></tr>
+  <tr><td><code>NO2</code>, <code>SO2</code>, <code>CO</code>, <code>PM10</code>, <code>PM2_5</code>, <code>O3</code>, <code>BTX</code></td><td><code>X</code></td><td>Pollutants measured by each station → Wikidata</td></tr>
+  <tr><td><code>CODIGO</code>, <code>CODIGO_CORTO</code></td><td><code>28079004</code>, <code>4</code></td><td>Identifiers that link to D1</td></tr>
+</table>
+
+<h3>R5. Documentation <span class="ok">✔ High degree</span></h3>
+<p>The dataset page includes the PDF “Calidad del aire. Estaciones de control. Contenido y estructura del fichero”, which describes every field.</p>
+
+<h3>R6. Multiple data sources <span class="part">◐</span></h3>
+<p>D2 is the <strong>bridge</strong> between the measurements (D1) and the rest of the graph. Its coordinates allow it to be linked to the sports facilities (D3), the districts and GeoNames, and its place names to Wikidata.</p>
+
+<h2>5. D3 – Sports. Basic municipal sports facilities</h2>
+
+<h3>R1. Smart city domain <span class="ok">✔</span></h3>
+<p>The dataset belongs to the <strong>urban public services and facilities</strong> domain. It is the city's inventory of basic municipal sports facilities, mostly open-air: football pitches, futsal courts, skating rinks, calisthenics parks, fitness trails, pétanque courts, BMX tracks and so on. For each facility it gives the location, public transport, equipment and accessibility.</p>
+
+<h3>R2. Available as CSV <span class="ok">✔</span></h3>
+<p>Available as CSV (607 facilities, 32 columns).</p>
+<ul>
+  <li>Separator <code>;</code>, all fields enclosed in double quotes.</li>
+  <li><strong>ISO-8859-1 (Latin-1)</strong> encoding, unlike D1 and D2, so it must be converted to UTF-8 before the RDF transformation.</li>
+  <li>The facility type is encoded as a path in <code>TIPO</code> (e.g. <code>/contenido/entidadesYorganismos/CentrosEspaciosDeporte/PistaFutbolSala</code>). Its last segment gives the category.</li>
+  <li>Several columns are almost always empty: <code>HORARIO</code> has 9 values, <code>TELEFONO</code> 14, and <code>FAX</code> and <code>EMAIL</code> none.</li>
+</ul>
+
+<h3>R3. Open license <span class="ok">✔</span></h3>
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, as stated in the dataset page. Same conditions as D1 and D2.</p>
+
+<h3>R4. Linkable to real-world entities <span class="ok">✔ (strongest dataset for R4)</span></h3>
+<table>
+  <tr><th>Column</th><th>Example</th><th>Linkable entity</th></tr>
+  <tr><td><code>LATITUD</code>, <code>LONGITUD</code></td><td><code>40.4740</code>, <code>-3.5801</code></td><td>Geographic point → nearest D2 station, GeoNames. All 607 rows have coordinates.</td></tr>
+  <tr><td><code>COD-DISTRITO</code>, <code>DISTRITO</code></td><td><code>21</code>, BARAJAS</td><td>Madrid district → Wikidata (the 21 districts have their own entities)</td></tr>
+  <tr><td><code>COD-BARRIO</code>, <code>BARRIO</code></td><td><code>3</code>, CASCO H.BARAJAS</td><td>Madrid neighbourhood (120 distinct neighbourhoods)</td></tr>
+  <tr><td><code>CODIGO-POSTAL</code>, <code>LOCALIDAD</code>, <code>PROVINCIA</code></td><td><code>28042</code>, MADRID</td><td>Postal code area, municipality and province → Wikidata</td></tr>
+  <tr><td><code>CLASE-VIAL</code>, <code>NOMBRE-VIA</code>, <code>NUM</code></td><td>CALLE TROPICO 10</td><td>Street and address in the municipal street directory</td></tr>
+  <tr><td><code>TRANSPORTE</code></td><td>Metro: El Capricho (line 5)</td><td>Metro stations and lines → Wikidata</td></tr>
+  <tr><td><code>TIPO</code>, <code>EQUIPAMIENTO</code></td><td>PistaFutbolSala</td><td>Sport / facility type → Wikidata (futsal, pétanque, BMX…)</td></tr>
+  <tr><td><code>CONTENT-URL</code>, <code>PK</code></td><td>www.madrid.es/…</td><td>Official web page and identifier of the facility</td></tr>
+</table>
+<p>Caveat: 32 facilities (5%) have no district or neighbourhood. Most are in large parks such as Madrid Río, Casa de Campo, Juan Carlos I or Enrique Tierno Galván. Since they all have coordinates, their district can be derived spatially.</p>
+
+<h3>R5. Documentation <span class="ok">✔ High degree</span></h3>
+<p>The dataset page includes the PDF “Equipamientos. Contenido y estructura del fichero”, which describes the fields shared by all of the council's facility datasets. The coding of the <code>ACCESIBILIDAD</code> field (values 0–3) should be checked against it.</p>
+
+<h3>R6. Multiple data sources <span class="part">◐</span></h3>
+<p>D3 comes from a different area of the council (Sports) than D1 and D2 (Environment). It provides the administrative geography (districts, neighbourhoods, postal codes) that the air quality datasets lack. See section 7.</p>
+
+<h2>6. How the datasets are linked</h2>
+<div class="box">
+  <p><strong>D1 ↔ D2 (key join):</strong> <code>D1.ESTACION = D2.CODIGO_CORTO</code>, or equivalently the prefix of <code>D1.PUNTO_MUESTREO</code> (<code>28079004</code>_6_48) <code>= D2.CODIGO</code>. All 24 stations present in D1 also appear in D2.</p>
+  <p><strong>D2 ↔ D3 (spatial join):</strong> the two datasets share no key, but both have WGS84 coordinates. Each sports facility is assigned its nearest monitoring station by distance, which lets the air quality measurements be attached to the facility.</p>
+  <p><strong>D3 → districts → D2:</strong> the district and neighbourhood codes in D3 act as the administrative reference to which the stations can also be assigned.</p>
+  <p><strong>All → Wikidata:</strong> municipality, districts, pollutants, sports and landmark places.</p>
+</div>
+
+<h2>7. Discussion of the optional requirements</h2>
+<p><strong>R5 – High.</strong> All three datasets have official PDF documentation describing their structure and codes. What is missing is machine-readable metadata (e.g. CSVW), and a few codes (<code>ACCESIBILIDAD</code>) need to be checked against the PDFs.</p>
+<p><strong>R6 – Medium–high.</strong> The graph combines three datasets from two different areas of the council (Environment and Sports) with an external linked data source (Wikidata). It is not higher because all three CSV files share the same publisher (Madrid City Council) and portal. To raise it further we could add:</p>
+<ul>
+  <li>the stations of the <a href="https://datos.comunidad.madrid/dataset/calidad_aire_estaciones">Air Quality Network of the Community of Madrid</a> (CSV, different publisher);</li>
+  <li>the council's daily weather data (available since 2019), to relate outdoor activity conditions to wind and rain.</li>
+</ul>
+
+<h2>8. Conclusion</h2>
+<p>All three datasets satisfy the mandatory requirements R1–R4. D1 satisfies R4 through its link to D2. D3 is the strongest dataset for R4 thanks to its districts, neighbourhoods, postal codes, addresses and metro stations. Of the optional requirements, R5 is satisfied to a high degree and R6 to a medium–high degree.</p>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+[
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Owner",
+          "expression": "grel:value",
+          "columnName": "Owner",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Rimuovi le righe"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Anonymous",
+    "description": "Rimuovi la colonna Anonymous"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "AddressVerified",
+          "expression": "grel:value",
+          "columnName": "AddressVerified",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "M",
+                "l": "M"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Rimuovi le righe"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "AddressVerified",
+          "expression": "grel:value",
+          "columnName": "AddressVerified",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "N",
+                "l": "N"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Rimuovi le righe"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "AddressVerified",
+    "description": "Rimuovi la colonna AddressVerified"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "RequestSource",
+    "expression": "grel:if(cells.get(\"MobileOS\").value != null, cells.get(\"MobileOS\").value, value)",
+    "onError": "set-to-blank",
+    "newColumnName": "Source",
+    "columnInsertIndex": 8,
+    "description": "Crea la colonna Source allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(cells.get(\"MobileOS\").value != null, cells.get(\"MobileOS\").value, value)"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "MobileOS",
+    "description": "Rimuovi la colonna MobileOS"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "RequestSource",
+    "description": "Rimuovi la colonna RequestSource"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Source",
+    "expression": "grel:value.replace(\"iOS\", \"Mobile App (iOS)\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna Source utilizzando l'espressione grel:value.replace(\"iOS\", \"Mobile App (iOS)\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Source",
+    "expression": "grel:value.replace(\"Android\", \"Mobile App (Android)\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna Source utilizzando l'espressione grel:value.replace(\"Android\", \"Mobile App (Android)\")"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "TBMPage",
+    "description": "Rimuovi la colonna TBMPage"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "TBMColumn",
+    "description": "Rimuovi la colonna TBMColumn"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "TBMRow",
+    "description": "Rimuovi la colonna TBMRow"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CDMember",
+          "expression": "grel:value",
+          "columnName": "CDMember",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Kevin de Le贸n",
+                "l": "Kevin de Le贸n"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CDMember",
+    "expression": "grel:value.replace(\"贸\", \"o\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CDMember utilizzando l'espressione grel:value.replace(\"贸\", \"o\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CreatedDate",
+    "expression": "grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CreatedDate utilizzando l'espressione grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "UpdatedDate",
+    "expression": "grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna UpdatedDate utilizzando l'espressione grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ServiceDate",
+    "expression": "grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna ServiceDate utilizzando l'espressione grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ClosedDate",
+    "expression": "grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna ClosedDate utilizzando l'espressione grel:value.toDate(\"MM/dd/yyyy hh:mm:ss a\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ApproximateAddress",
+    "expression": "grel:if(isBlank(value), \"N\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna ApproximateAddress utilizzando l'espressione grel:if(isBlank(value), \"N\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "ZipCode",
+          "expression": "grel:isBlank(value)",
+          "columnName": "ZipCode",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "ZipCode",
+    "expression": "grel:cells.get(\"Address\").value.split(\",\").get(1).trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna ZipCode utilizzando l'espressione grel:cells.get(\"Address\").value.split(\",\").get(1).trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Address",
+          "expression": "grel:isBlank(value)",
+          "columnName": "Address",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "HouseNumber",
+    "expression": "grel:value.replace(\".\", \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna HouseNumber utilizzando l'espressione grel:value.replace(\".\", \"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Address",
+          "expression": "grel:isBlank(value)",
+          "columnName": "Address",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "StreetName",
+          "expression": "grel:isBlank(value)",
+          "columnName": "StreetName",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "StreetName",
+    "expression": "grel:cells.get(\"Address\").value.replace(/(^\\d+\\s+)/, \"\").replace(/(,.*$)/, \"\").replace(/(^[NSWE]{1,2}\\b\\s+)/, \"\").replace(/(\\s+[a-zA-Z]+$)/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna StreetName utilizzando l'espressione grel:cells.get(\"Address\").value.replace(/(^\\d+\\s+)/, \"\").replace(/(,.*$)/, \"\").replace(/(^[NSWE]{1,2}\\b\\s+)/, \"\").replace(/(\\s+[a-zA-Z]+$)/, \"\")"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Source",
+    "newColumnName": "RequestSource",
+    "description": "Rinomina la colonna Source a RequestSource"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Latitude",
+    "expression": "value.replace(\",\",\".\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna Latitude utilizzando l'espressione value.replace(\",\",\".\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Longitude",
+    "expression": "value.replace(\",\",\".\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna Longitude utilizzando l'espressione value.replace(\",\",\".\")"
+  }
+]

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute Madrid - Data Analysis</title>
+</head>
+
+<body>
+
+    <h1>SafeRoute Madrid - Data Analysis</h1>
+
+    <h2>1. Data Source Analysis</h2>
+
+    <h3>1.1 Dataset Description</h3>
+    <p>
+        The selected datasets contain detailed information about traffic
+        accidents registered in the city of Madrid during 2025 and 2026.
+        The datasets are published through the Madrid City Council Open
+        Data Portal and belong to the transportation domain.
+    </p>
+    <p>
+        The 2025 dataset contains 51,067 records covering the period from
+        1 January 2025 to 31 December 2025. The 2026 dataset currently
+        contains 30,457 records covering the period from 1 January 2026
+        to 31 July 2026.
+    </p>
+    <p>
+        Both datasets follow the same schema and contain 19 attributes.
+        This makes it possible to process information from both years
+        using the same data model.
+    </p>
+    <p>
+        These datasets will be used for the SafeRoute Madrid application.
+        The objective of the application is to use historical accident
+        information to identify accident-prone locations and warn users
+        when a calculated route passes through areas with a higher
+        accident risk.
+    </p>
+
+    <h3>1.2 Data Format</h3>
+    <p>
+        The selected datasets are provided in CSV format. The use of a
+        structured tabular format makes it possible to identify the schema,
+        analyse the values of individual attributes and transform the data
+        into RDF in later stages of the Linked Data generation process.
+    </p>
+
+    <h3>1.3 Dataset Schema</h3>
+    <p>Both datasets contain the following 19 attributes:</p>
+    <ul>
+        <li><strong>num_expediente:</strong> identifier of the accident record.</li>
+        <li><strong>fecha:</strong> date of the accident.</li>
+        <li><strong>hora:</strong> time of the accident.</li>
+        <li><strong>localizacion:</strong> location or street where the accident occurred.</li>
+        <li><strong>numero:</strong> street number associated with the location.</li>
+        <li><strong>cod_distrito:</strong> numerical code identifying the Madrid district.</li>
+        <li><strong>distrito:</strong> name of the Madrid district.</li>
+        <li><strong>tipo_accidente:</strong> type of traffic accident.</li>
+        <li><strong>estado_meteorológico:</strong> weather conditions at the time of the accident.</li>
+        <li><strong>tipo_vehiculo:</strong> type of vehicle involved.</li>
+        <li><strong>tipo_persona:</strong> role of the person involved in the accident.</li>
+        <li><strong>rango_edad:</strong> age range of the person involved.</li>
+        <li><strong>sexo:</strong> sex of the person involved.</li>
+        <li><strong>cod_lesividad:</strong> code representing injury severity.</li>
+        <li><strong>lesividad:</strong> description of injury severity.</li>
+        <li><strong>coordenada_x_utm:</strong> X coordinate of the accident location in UTM coordinates.</li>
+        <li><strong>coordenada_y_utm:</strong> Y coordinate of the accident location in UTM coordinates.</li>
+        <li><strong>positiva_alcohol:</strong> indicates whether alcohol involvement was detected.</li>
+        <li><strong>positiva_droga:</strong> indicates whether drug involvement was detected.</li>
+    </ul>
+
+    <h3>1.4 Analysis of Values and Ranges</h3>
+    <p>
+        The values contained in the datasets were analysed in order to
+        understand their ranges and the main categories that will need
+        to be represented during the generation of Linked Data.
+    </p>
+
+    <h4>Accident Types</h4>
+    <p>
+        Both datasets contain 13 different accident categories. Examples
+        include front-lateral collision, rear-end collision, lateral
+        collision, collision with a fixed obstacle, pedestrian collision,
+        multiple collision, fall, frontal collision, vehicle leaving the
+        road, rollover and collision with an animal.
+    </p>
+    <p>
+        The most frequent accident type in both datasets is
+        "Colisión fronto-lateral". Other particularly frequent categories
+        include "Alcance" and "Colisión lateral".
+    </p>
+
+    <h4>Weather Conditions</h4>
+    <p>
+        Seven non-null weather categories appear in the datasets. These
+        include clear weather, cloudy weather, light rain, heavy rain,
+        snow and hail, as well as cases where the weather is unknown.
+    </p>
+    <p>
+        "Despejado" is the most frequent recorded weather condition in
+        both datasets. Some records do not contain a weather value, which
+        must be considered when transforming the source data.
+    </p>
+
+    <h4>Vehicle Types</h4>
+    <p>
+        The datasets contain a large variety of vehicle categories.
+        The 2025 dataset contains 32 different non-null vehicle types,
+        while the 2026 dataset contains 30.
+    </p>
+    <p>
+        These include passenger cars, vans, motorcycles, buses, rigid
+        trucks, bicycles, all-terrain vehicles, electric personal
+        mobility vehicles, mopeds and other specialised vehicle types.
+        "Turismo" is the most frequently represented vehicle category
+        in both datasets.
+    </p>
+
+    <h4>Person Types</h4>
+    <p>
+        The principal person categories are drivers, passengers and
+        pedestrians. Drivers represent the largest category in both
+        datasets.
+    </p>
+
+    <h4>Age Ranges</h4>
+    <p>
+        The datasets contain 18 age-range categories. They cover children,
+        teenagers and adults through to people over 74 years old. An
+        additional "Desconocido" category is used where the age range is
+        unknown.
+    </p>
+
+    <h4>Sex</h4>
+    <p>
+        Three values are used for the sex attribute: Hombre, Mujer and
+        Desconocido.
+    </p>
+
+    <h4>Districts</h4>
+    <p>
+        The cod_distrito attribute contains 21 distinct district codes,
+        corresponding to the 21 districts of Madrid. The district
+        information is particularly useful for linking the accident
+        dataset with external geographical data.
+    </p>
+
+    <h4>Alcohol and Drug Indicators</h4>
+    <p>
+        The positiva_alcohol field uses "S" and "N" values to indicate
+        positive and negative alcohol results, although some records have
+        no value.
+    </p>
+    <p>
+        The positiva_droga field is much more sparsely populated. Positive
+        cases are represented with the value 1, while most records have
+        no value in this field.
+    </p>
+
+    <h3>1.5 Relevant Entities and Relationships</h3>
+    <p>
+        From the analysis of the datasets, several relevant entities can
+        be identified for the SafeRoute Madrid ontology. These include
+        TrafficAccident, District, Location, Vehicle and Person.
+    </p>
+    <p>
+        A TrafficAccident occurs at a Location and within a District.
+        An accident can involve one or more Vehicles and Persons.
+        Characteristics such as accident type, weather conditions, date
+        and time describe the accident, while attributes such as age
+        range, sex and injury severity describe people involved in it.
+    </p>
+    <p>
+        These entities and relationships will form the basis of the
+        lightweight ontology developed for the project.
+    </p>
+
+    <h3>1.6 Linking Possibilities</h3>
+    <p>
+        The datasets contain several attributes that make the generated
+        resources suitable for linking with external real-world entities.
+    </p>
+    <p>
+        In particular, cod_distrito and distrito can be used to identify
+        Madrid districts. The localizacion attribute and UTM coordinates
+        can be used to identify geographical locations associated with
+        accidents.
+    </p>
+    <p>
+        These resources could therefore be linked with other datasets
+        describing Madrid districts, streets and geographical entities.
+        This is especially relevant for SafeRoute Madrid because geographic
+        information is required to identify accident-prone locations and
+        analyse accident risk along a calculated route.
+    </p>
+
+    <h2>2. Licensing Analysis</h2>
+
+    <h3>2.1 Publisher and Responsible Organisation</h3>
+    <p>
+        The traffic accident datasets are published through the Madrid
+        City Council Open Data Portal. The dataset metadata identifies
+        the General Directorate of the Municipal Police as responsible
+        for the dataset.
+    </p>
+
+    <h3>2.2 License of the Source Data</h3>
+    <p>
+        The Madrid City Council Open Data Portal identifies the license
+        of the selected traffic accident dataset as Creative Commons
+        Attribution 4.0 International (CC BY 4.0).
+    </p>
+    <p>
+        This license permits the material to be shared and adapted,
+        provided that appropriate attribution is given to the original
+        source. Therefore, the data can be reused for the SafeRoute Madrid
+        Linked Data project while respecting the attribution requirement.
+    </p>
+
+    <h3>2.3 Potential License of the Generated Dataset</h3>
+    <p>
+        The proposed license for the Linked Data generated by the
+        SafeRoute Madrid project is Creative Commons Attribution 4.0
+        International (CC BY 4.0).
+    </p>
+    <p>
+        This maintains the attribution requirement associated with the
+        original Madrid City Council dataset and allows the generated
+        dataset to be openly reused.
+    </p>
+
+<h2>3. Resource Naming Strategy</h2>
+
+<p> A resource naming strategy is defined to provide consistent, persistent and meaningful URIs for both the ontology terms and the individual resources generated from the datasets. </p>
+
+<h3>3.1 URI Form</h3> <p> Hash URIs will be used for ontology classes and properties, while slash URIs will be used for individual resources. This provides a clear separation between the ontology model and the instances generated from the datasets. </p>
+
+<h3>3.2 Domain</h3> <p> The following domain will be used as the base for the resource naming strategy: </p> <p><code>https://w3id.org/saferoutemadrid/</code></p>
+
+<h3>3.3 Ontology Path and Pattern</h3> <p> The classes and properties defined in the SafeRoute Madrid ontology will use the following namespace: </p> <p><code>https://w3id.org/saferoutemadrid/ontology#</code></p>
+
+<p> The ontology includes the main classes <code>TrafficAccident</code>, <code>Person</code>, <code>Vehicle</code>, <code>Location</code> and <code>District</code>. It also includes controlled-vocabulary classes, such as <code>AccidentType</code>, <code>WeatherCondition</code>, <code>VehicleType</code>, <code>PersonType</code>, <code>AgeRange</code>, <code>Sex</code> and <code>InjurySeverity</code>. </p>
+
+<p>Examples of ontology terms are:</p> <ul> <li><code>https://w3id.org/saferoutemadrid/ontology#TrafficAccident</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#District</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#Location</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#Vehicle</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#Person</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#occursAt</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#locatedIn</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#involvesPerson</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#involvesVehicle</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#hasAccidentType</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#hasWeatherCondition</code></li> </ul>
+
+<h3>3.4 Individual Resource Path and Pattern</h3> <p> Individual resources generated from the datasets will use slash URIs under the <code>resource</code> path. Whenever possible, identifiers from the original source datasets will be used to construct the individual resource URIs. For example the identifier for a traffic accident could be the num_expediente column from the dataset. This makes the generated Linked Data easier to relate to the original data. Examples of these URIs are: </p>
+
+<ul> <li>Traffic Accident: <code>https://w3id.org/saferoutemadrid/resource/TrafficAccident/{num_expediente}</code></li> <li>District: <code>https://w3id.org/saferoutemadrid/resource/District/{cod_distrito}</code></li> <li>Location: <code>https://w3id.org/saferoutemadrid/resource/Location/{identifier}</code></li> <li>Vehicle: <code>https://w3id.org/saferoutemadrid/resource/Vehicle/{identifier}</code></li> <li>Person: <code>https://w3id.org/saferoutemadrid/resource/Person/{identifier}</code></li> </ul>
+
+<p> The controlled-vocabulary classes are represented as SKOS concepts because they contain predefined categories used to describe the resources in the dataset. </p>
+
+<p> For example, <code>VehicleType</code> has concepts such as <code>Car</code> or <code>Motorcycle</code> and they can be identified using URIs such as: </p>
+
+<p> <code>https://w3id.org/saferoutemadrid/resource/VehicleType/Car</code> </p>
+
+<p> In this way, an actual vehicle resource can be linked to a predefined category. For example, <code>Vehicle/123</code> can have the property <code>hasVehicleType</code> pointing to <code>VehicleType/Car</code>.</p>
+
+<h3>3.5 Naming Conventions</h3> <p> Classes use capitalized names written in CamelCase, such as <code>TrafficAccident</code>, <code>Location</code>, <code>VehicleType</code> and <code>InjurySeverity</code>. </p>
+
+<p> Properties start with a lowercase letter and use meaningful names, such as <code>occursAt</code>, <code>locatedIn</code>, <code>involvesPerson</code>, <code>involvesVehicle</code>, <code>hasAccidentType</code> and <code>accidentDate</code>. </p>
+
+<p> Datatype properties follow the same naming convention. Examples include <code>accidentDate</code>, <code>accidentTime</code>, <code>streetName</code>, <code>streetNumber</code>, <code>districtCode</code>, <code>positiveAlcohol</code>, <code>positiveDrug</code> and <code>accidentID</code>. </p>
+
+<h3>3.6 Content Negotiation</h3> <p> The URI strategy makes it possible to access the published resources directly through their URIs. Content negotiation can be used so that clients requesting RDF receive an RDF representation, while web browsers can receive an HTML representation of the resource. </p>
+
+</p>
+
+</body>
+</html>

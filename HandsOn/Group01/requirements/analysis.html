@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Analysis, Licensing and Resource Naming Strategy</title>
+</head>
+<body>
+
+<h1>Dataset Analysis, Licensing and Resource Naming Strategy</h1>
+
+<h2>1. Dataset Analysis</h2>
+
+<h3>1.1 Overview</h3>
+
+<p>
+The selected dataset is <code>US_Accidents_New_York.csv</code>, a subset of the
+"US Accidents (2016&ndash;2023)" dataset by Sobhan Moosavi, filtered to traffic
+accidents in New York City. The analysis below was performed over the complete
+CSV file using OpenRefine (text facets, numeric facets, facet by blank and
+timeline facet).
+</p>
+
+<ul>
+    <li><strong>Rows:</strong> 21,699</li>
+    <li><strong>Columns:</strong> 46</li>
+    <li><strong>Time range (Start_Time):</strong> 2016-03-24 to 2023-03-31</li>
+</ul>
+
+<h3>1.2 Schema Analysis</h3>
+
+<p>The 46 columns can be grouped into the following categories:</p>
+
+<table>
+    <tr>
+        <th>Group</th>
+        <th>Columns</th>
+        <th>Type</th>
+        <th>Notes</th>
+    </tr>
+    <tr>
+        <td>Identification</td>
+        <td>ID, Source</td>
+        <td>String / categorical</td>
+        <td>ID is a unique identifier per accident. Source has 3 distinct values (Source1, Source2, Source3).</td>
+    </tr>
+    <tr>
+        <td>Severity</td>
+        <td>Severity</td>
+        <td>Integer (ordinal, closed scale)</td>
+        <td>Values 1&ndash;4.</td>
+    </tr>
+    <tr>
+        <td>Temporal</td>
+        <td>Start_Time, End_Time, Weather_Timestamp</td>
+        <td>Datetime</td>
+        <td>Mandatory except Weather_Timestamp (0.6% blank).</td>
+    </tr>
+    <tr>
+        <td>Geographic</td>
+        <td>Start_Lat, Start_Lng, End_Lat, End_Lng, Distance(mi), Street, City, County, State, Zipcode, Country, Timezone, Airport_Code</td>
+        <td>Float / string</td>
+        <td>Start_Lat/Start_Lng are mandatory. End_Lat/End_Lng are optional (35.3% blank). City, County, State, Country and Timezone are constant across the dataset.</td>
+    </tr>
+    <tr>
+        <td>Weather</td>
+        <td>Temperature(F), Wind_Chill(F), Humidity(%), Pressure(in), Visibility(mi), Wind_Direction, Wind_Speed(mph), Precipitation(in), Weather_Condition</td>
+        <td>Float / categorical</td>
+        <td>All optional, with different levels of missing data (see 1.3).</td>
+    </tr>
+    <tr>
+        <td>Road infrastructure</td>
+        <td>Amenity, Bump, Crossing, Give_Way, Junction, No_Exit, Railway, Roundabout, Station, Stop, Traffic_Calming, Traffic_Signal, Turning_Loop</td>
+        <td>Boolean</td>
+        <td>True/False flags describing the point of the accident. Roundabout and Turning_Loop are always False in this subset.</td>
+    </tr>
+    <tr>
+        <td>Light conditions</td>
+        <td>Sunrise_Sunset, Civil_Twilight, Nautical_Twilight, Astronomical_Twilight</td>
+        <td>Categorical (Day/Night)</td>
+        <td>Four different astronomical criteria for day/night.</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>Description</td>
+        <td>Free text</td>
+        <td>Human-readable description of the accident.</td>
+    </tr>
+</table>
+
+<h3>1.3 Data Analysis</h3>
+
+<h4>Severity distribution</h4>
+
+<table>
+    <tr><th>Severity</th><th>Count</th><th>%</th></tr>
+    <tr><td>1</td><td>9</td><td>0.0%</td></tr>
+    <tr><td>2</td><td>17,900</td><td>82.5%</td></tr>
+    <tr><td>3</td><td>3,309</td><td>15.2%</td></tr>
+    <tr><td>4</td><td>481</td><td>2.2%</td></tr>
+</table>
+
+<h4>Geographic range</h4>
+
+<ul>
+    <li>Start_Lat: 40.6921 &ndash; 40.8777</li>
+    <li>Start_Lng: -74.0213 &ndash; -73.9105</li>
+    <li>Distance(mi): 0 &ndash; 8.50 (average 0.56)</li>
+</ul>
+
+<p>
+The coordinates confirm that all the records fall within the New York City
+area, consistent with the dataset selection.
+</p>
+
+<h4>Constant columns</h4>
+
+<p>
+The following columns have a single distinct value across the whole dataset
+and therefore do not provide discriminating information for this subset:
+<code>City</code> ("New York"), <code>County</code> ("New York"),
+<code>State</code> ("NY"), <code>Country</code> ("US"),
+<code>Timezone</code> ("US/Eastern"), <code>Roundabout</code> (False) and
+<code>Turning_Loop</code> (False). These columns will not be modelled as
+variable properties in the ontology.
+</p>
+
+<h4>Categorical cardinality</h4>
+
+<table>
+    <tr><th>Column</th><th>Distinct values</th><th>Most frequent</th></tr>
+    <tr><td>Zipcode</td><td>1,404</td><td>10033 (3,516)</td></tr>
+    <tr><td>Street</td><td>538</td><td>FDR Dr S (3,151)</td></tr>
+    <tr><td>Weather_Condition</td><td>27</td><td>Fair (9,061)</td></tr>
+    <tr><td>Wind_Direction</td><td>24</td><td>VAR (5,490)</td></tr>
+    <tr><td>Source</td><td>3</td><td>Source1 (14,030)</td></tr>
+    <tr><td>Airport_Code</td><td>3</td><td>KNYC (18,143)</td></tr>
+</table>
+
+<h4>Data quality: missing values</h4>
+
+<table>
+    <tr><th>Column</th><th>Blank count</th><th>% blank</th></tr>
+    <tr><td>End_Lat / End_Lng</td><td>7,669</td><td>35.3%</td></tr>
+    <tr><td>Wind_Chill(F)</td><td>5,581</td><td>25.7%</td></tr>
+    <tr><td>Precipitation(in)</td><td>4,870</td><td>22.4%</td></tr>
+    <tr><td>Wind_Speed(mph)</td><td>3,196</td><td>14.7%</td></tr>
+    <tr><td>Wind_Direction</td><td>1,344</td><td>6.2%</td></tr>
+    <tr><td>Pressure(in)</td><td>381</td><td>1.8%</td></tr>
+    <tr><td>Visibility(mi)</td><td>320</td><td>1.5%</td></tr>
+    <tr><td>Weather_Condition</td><td>253</td><td>1.2%</td></tr>
+    <tr><td>Weather_Timestamp</td><td>120</td><td>0.6%</td></tr>
+    <tr><td>Street</td><td>96</td><td>0.4%</td></tr>
+    <tr><td>Temperature(F) / Humidity(%)</td><td>189</td><td>0.9%</td></tr>
+</table>
+
+<p>
+Columns with missing values will be represented only when a value
+is available in the original dataset.
+</p>
+
+<h2>2. Licensing Analysis</h2>
+
+<h3>2.1 Publisher and rightsholder</h3>
+
+<p>
+The original dataset, "US Accidents (2016&ndash;2023)", was created and
+published by <strong>Sobhan Moosavi</strong>, a researcher who completed his
+PhD in Computer Science and Engineering at Ohio State University and
+currently works as a Scientist at Zoox (previously at Lyft). The dataset is
+distributed through the Kaggle platform, which acts only as a hosting
+platform and is not the rightsholder.
+</p>
+
+<p>
+Sobhan Moosavi is therefore considered the <strong>publisher and
+rightsholder</strong> of the original dataset. The dataset is also linked to
+peer-reviewed academic publications co-authored by him, which are referenced
+on the dataset's Kaggle page as the recommended citation.
+</p>
+
+<p>
+Source: <a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents">
+US Accidents (2016&ndash;2023) - Kaggle</a>
+</p>
+
+<h3>2.2 Original license</h3>
+
+<p>
+The original dataset is distributed under the
+<strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International (CC BY-NC-SA 4.0)</strong> license, which implies:
+</p>
+
+<ul>
+    <li><strong>BY (Attribution):</strong> proper credit must be given to Sobhan Moosavi as the original author.</li>
+    <li><strong>NC (NonCommercial):</strong> the dataset and any derivative work can only be used for non-commercial purposes.</li>
+    <li><strong>SA (ShareAlike):</strong> any derivative work must be distributed under the same license as the original.</li>
+</ul>
+
+<h3>2.3 License for the generated dataset</h3>
+
+<p>
+Since the generated RDF dataset is derived from the original CSV,
+it will also be published under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0) license, with appropriate attribution to
+the original dataset.
+</p>
+
+<p>
+<strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International (CC BY-NC-SA 4.0)</strong>,
+with explicit attribution to the original dataset by Sobhan Moosavi.
+</p>
+
+<h2>3. Resource Naming Strategy</h2>
+
+<h3>3.1 Base domain</h3>
+
+<p>
+A custom domain (not the Protégé default) is used as the base namespace for
+this project:
+</p>
+
+<pre>http://group01.opendata.upm.es/</pre>
+
+<h3>3.2 Namespaces</h3>
+
+<p>
+Two separate namespaces are defined under the base domain: one for the
+ontology terms (classes and properties) and one for the data (individuals).
+This separation is intentional, so that ontology resources and individual
+resources never share the same path.
+</p>
+
+<table>
+    <tr><th>Namespace</th><th>URI</th><th>Prefix</th><th>Used for</th></tr>
+    <tr>
+        <td>Ontology</td>
+        <td><code>http://group01.opendata.upm.es/ontology/accidents#</code></td>
+        <td><code>ao:</code></td>
+        <td>Classes and properties (the vocabulary)</td>
+    </tr>
+    <tr>
+        <td>Data</td>
+        <td><code>http://group01.opendata.upm.es/resource/</code></td>
+        <td><code>resource:</code></td>
+        <td>Individuals (instances of the ontology classes)</td>
+    </tr>
+</table>
+
+<p>
+A <code>#</code> (hash) is used for ontology terms and a <code>/</code>
+(slash) is used for data resources, which is a common convention to
+distinguish a vocabulary from the dataset that uses it.
+</p>
+
+<h3>3.3 URI patterns for individuals</h3>
+
+<p>
+Each class of individual is assigned its own path segment under
+<code>/resource/</code>, so that individuals of different classes never
+share the same path, and so that an individual's URI never depends on its
+class URI:
+</p>
+
+<table>
+    <tr><th>Class</th><th>Path pattern</th><th>Example</th></tr>
+    <tr>
+        <td><code>ao:TrafficAccident</code></td>
+        <td><code>/resource/accidents/{ID}</code></td>
+        <td><code>http://group01.opendata.upm.es/resource/accidents/A-194408</code></td>
+    </tr>
+    <tr>
+        <td><code>ao:Street</code></td>
+        <td><code>/resource/streets/{slug}</code></td>
+        <td><code>http://group01.opendata.upm.es/resource/streets/E-74th-St</code></td>
+    </tr>
+</table>
+
+<p>
+The <code>{ID}</code> for accidents reuses the dataset's own unique
+identifier (e.g. <code>A-194408</code>). The <code>{slug}</code> for streets
+is derived from the street name, replacing spaces with hyphens
+(e.g. "E 74th St" &rarr; <code>E-74th-St</code>). The <code>ao:Street</code>
+class is also the class used to link accident data to other entities, since
+street names can be aligned with external geographic datasets
+(e.g. Wikidata, OpenStreetMap).
+</p>
+
+<h3>3.4 Content negotiation</h3>
+
+<p>
+Although no server is actually deployed for this assignment, the naming
+strategy is designed to support content negotiation: a resource URI such as
+<code>http://group01.opendata.upm.es/resource/accidents/A-194408</code>
+would respond with a <code>303 See Other</code> redirect to a
+representation-specific URI depending on the <code>Accept</code> header of
+the request:
+</p>
+
+<ul>
+    <li><code>Accept: text/html</code> &rarr; <code>/resource/accidents/A-194408.html</code> (human-readable page)</li>
+    <li><code>Accept: text/turtle</code> &rarr; <code>/resource/accidents/A-194408.ttl</code> (RDF/Turtle)</li>
+    <li><code>Accept: application/ld+json</code> &rarr; <code>/resource/accidents/A-194408.jsonld</code> (JSON-LD)</li>
+</ul>
+
+</body>
+</html>

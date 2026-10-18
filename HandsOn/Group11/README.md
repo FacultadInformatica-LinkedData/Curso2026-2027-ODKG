@@ -1,0 +1,5 @@
+- Alexia Miriam Muresan Pop @alexiamuresanpop
+- Mario Haag @mariogit67
+- Borja Barahona Gómez @bbarahon
+- Marco Sanchez Nishimura @MSanchezN
+- Alba Guasch Espinosa @albaguasch

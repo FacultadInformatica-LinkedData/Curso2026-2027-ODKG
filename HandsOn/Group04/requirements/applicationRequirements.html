@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Requirements – Breathe &amp; Play Madrid</title>
+<style>
+  :root { --txt:#1f2328; --muted:#57606a; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa; --acc:#0969da; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--txt); background:var(--bg); max-width:980px; margin:0 auto; padding:32px 16px 64px; line-height:1.55; }
+  h1 { font-size:1.8rem; margin-bottom:.2rem; }
+  h2 { margin-top:2.5rem; border-bottom:1px solid var(--line); padding-bottom:.3rem; }
+  .sub { color:var(--muted); margin-top:0; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); }
+  code { background:var(--soft); padding:1px 5px; border-radius:4px; font-size:.9em; }
+  figure { margin:1.5rem 0; border:1px solid var(--line); border-radius:8px; padding:12px; background:var(--soft); }
+  figcaption { color:var(--muted); font-size:.9rem; margin-top:8px; }
+  svg { width:100%; height:auto; display:block; background:#fff; border-radius:4px; }
+  a { color:var(--acc); }
+</style>
+</head>
+<body>
+
+<h1>Application Requirements – Breathe &amp; Play Madrid</h1>
+<p class="sub">Hands-on 1 · Open Data and Knowledge Graphs · An application built on a knowledge graph of air quality and sports facilities in Madrid</p>
+
+<h2>1. Application overview</h2>
+<p><strong>Breathe &amp; Play Madrid</strong> is a web application that helps people choose <em>where</em> and <em>when</em> to do outdoor sport in Madrid, taking air quality into account. It is built on a knowledge graph that links:</p>
+<ul>
+  <li>the 607 basic municipal sports facilities, most of them open-air (D3);</li>
+  <li>the 24 air quality monitoring stations (D2);</li>
+  <li>their daily pollutant measurements for 2024 (D1);</li>
+  <li>external entities from Wikidata: districts, pollutants, sports, metro stations and landmark places.</li>
+</ul>
+<p>Each facility is linked to its nearest monitoring station, so the app can show the air quality around it. Users can search facilities by sport or district, see how often the air near a facility exceeds the limit values, and compare districts by sports supply and air quality.</p>
+
+<h2>2. Target users</h2>
+<table>
+  <tr><th>User</th><th>Need</th></tr>
+  <tr><td>Amateur athlete / runner</td><td>Find a nearby facility for their sport where the air is usually cleanest.</td></tr>
+  <tr><td>Sensitive person (asthma, elderly people, families with children)</td><td>Know how many days the air near a facility exceeds the limit values, to plan outdoor activities.</td></tr>
+  <tr><td>Sports club / school</td><td>Choose facilities for training sessions, taking into account accessibility, public transport and air quality.</td></tr>
+  <tr><td>City planner / journalist</td><td>Compare districts by number of sports facilities and air quality, and identify facilities in the most polluted areas.</td></tr>
+</table>
+
+<h2>3. Functional requirements</h2>
+<table>
+  <tr><th>ID</th><th>Requirement</th><th>Data used</th></tr>
+  <tr><td>FR1</td><td>Display the sports facilities and the air quality monitoring stations on a map.</td><td>D2, D3</td></tr>
+  <tr><td>FR2</td><td>Filter facilities by sport or facility type (football, futsal, calisthenics, skating, pétanque…), district, neighbourhood and accessibility.</td><td>D3</td></tr>
+  <tr><td>FR3</td><td>Color each facility according to the air quality measured at its nearest station for the selected pollutant and date.</td><td>D1, D2, D3</td></tr>
+  <tr><td>FR4</td><td>Show a facility's detail page: address, district, neighbourhood, equipment, accessibility, public transport, link to the official web page and nearest station (with its distance).</td><td>D2, D3</td></tr>
+  <tr><td>FR5</td><td>On the facility page, show the daily evolution of the pollutants measured by the nearest station and the number of days in the year that exceeded the limit value (e.g. daily PM10 mean &gt; 50 µg/m³).</td><td>D1, D2, D3</td></tr>
+  <tr><td>FR6</td><td>Recommend the facilities of a given sport with the best air quality, either in a district or near a point chosen by the user.</td><td>D1, D2, D3</td></tr>
+  <tr><td>FR7</td><td>Rank districts by number of sports facilities and by the average air quality of the stations assigned to them.</td><td>D1, D2, D3</td></tr>
+  <tr><td>FR8</td><td>Show linked information from Wikidata for districts, pollutants, sports and metro stations (description and link).</td><td>Wikidata</td></tr>
+  <tr><td>FR9</td><td>Exclude values flagged as not valid (<code>N</code>) from all calculations and indicate this in the interface.</td><td>D1</td></tr>
+  <tr><td>FR10</td><td>Show the source and license of the data (CC BY 4.0, Madrid City Council).</td><td>Metadata</td></tr>
+</table>
+
+<h2>4. Non-functional requirements</h2>
+<table>
+  <tr><th>ID</th><th>Requirement</th></tr>
+  <tr><td>NFR1</td><td>All data is queried through SPARQL over the knowledge graph generated from the CSV files.</td></tr>
+  <tr><td>NFR2</td><td>The application runs in a web browser and is responsive on mobile devices.</td></tr>
+  <tr><td>NFR3</td><td>Each query issued by the interface returns in under 3 seconds with one year of data.</td></tr>
+  <tr><td>NFR4</td><td>Standard vocabularies are reused where possible: SOSA/SSN for observations, GeoSPARQL/WGS84 for locations, schema.org for sports facilities and <code>xsd:date</code> for dates.</td></tr>
+  <tr><td>NFR5</td><td>The attribution required by the CC BY 4.0 license is displayed.</td></tr>
+  <tr><td>NFR6</td><td>The interface is available in English and Spanish and uses accessible colors: pollution levels are never conveyed by color alone.</td></tr>
+</table>
+
+<h2>5. Competency questions</h2>
+<ol>
+  <li>Which calisthenics facilities are in the district of Retiro, and which monitoring station is closest to each?</li>
+  <li>What was the daily NO₂ value at the station nearest to a given facility on 15/01/2024?</li>
+  <li>On how many days in 2024 did the station nearest to each football pitch exceed a daily PM10 mean of 50 µg/m³?</li>
+  <li>Which district has the most sports facilities, and what is the average NO₂ of its stations?</li>
+  <li>Which accessible facilities are near an “urban background” station rather than an “urban traffic” one?</li>
+  <li>What is the pollutant with code 14, and what is its Wikidata entity?</li>
+</ol>
+
+<h2>6. User interface mock-ups</h2>
+<p>All figures shown in the mock-ups are placeholder values.</p>
+
+<figure>
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="900" height="50" fill="#24292f"/>
+  <text x="20" y="31" fill="#fff" font-size="18" font-weight="700">Breathe &amp; Play Madrid</text>
+  <text x="560" y="31" fill="#d0d7de">Map · Districts · About · EN | ES</text>
+  <rect x="0" y="50" width="250" height="470" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="20" y="82" font-weight="700">Filters</text>
+  <text x="20" y="108" fill="#57606a">Sport</text>
+  <rect x="20" y="115" width="210" height="28" rx="4" fill="#fff" stroke="#d0d7de"/><text x="30" y="134">Calisthenics ▾</text>
+  <text x="20" y="165" fill="#57606a">District</text>
+  <rect x="20" y="172" width="210" height="28" rx="4" fill="#fff" stroke="#d0d7de"/><text x="30" y="191">All ▾</text>
+  <text x="20" y="222" fill="#57606a">Pollutant / date</text>
+  <rect x="20" y="229" width="100" height="28" rx="4" fill="#fff" stroke="#d0d7de"/><text x="30" y="248">NO₂ ▾</text>
+  <rect x="128" y="229" width="102" height="28" rx="4" fill="#fff" stroke="#d0d7de"/><text x="136" y="248">15/01/24</text>
+  <text x="20" y="282">☑ Accessible only</text>
+  <text x="20" y="306">☑ Show air stations</text>
+  <rect x="20" y="322" width="210" height="32" rx="4" fill="#0969da"/><text x="100" y="343" fill="#fff" font-weight="600">Apply</text>
+  <text x="20" y="385" font-weight="700">Legend</text>
+  <circle cx="30" cy="408" r="7" fill="#2da44e"/><text x="45" y="413">Good air</text>
+  <circle cx="30" cy="432" r="7" fill="#d4a72c"/><text x="45" y="437">Moderate</text>
+  <circle cx="30" cy="456" r="7" fill="#cf222e"/><text x="45" y="461">Poor</text>
+  <rect x="23" y="473" width="14" height="14" fill="#fff" stroke="#24292f" stroke-width="2"/><text x="45" y="485">Air station</text>
+  <rect x="250" y="50" width="650" height="470" fill="#eaeef2"/>
+  <path d="M320 140 Q420 90 540 120 T760 150 Q820 260 760 380 Q640 470 480 440 Q340 420 310 300 Z" fill="#fff" stroke="#8c959f" stroke-dasharray="6 4"/>
+  <text x="560" y="495" fill="#57606a">Map of Madrid (OpenStreetMap)</text>
+  <circle cx="400" cy="210" r="7" fill="#2da44e"/><circle cx="460" cy="250" r="7" fill="#cf222e"/><circle cx="500" cy="190" r="7" fill="#d4a72c"/>
+  <circle cx="560" cy="270" r="7" fill="#d4a72c"/><circle cx="620" cy="220" r="7" fill="#2da44e"/><circle cx="430" cy="340" r="7" fill="#cf222e"/>
+  <circle cx="680" cy="320" r="7" fill="#2da44e"/><circle cx="560" cy="380" r="7" fill="#d4a72c"/><circle cx="720" cy="200" r="7" fill="#2da44e"/>
+  <rect x="470" y="228" width="14" height="14" fill="#fff" stroke="#24292f" stroke-width="2"/>
+  <rect x="590" y="190" width="14" height="14" fill="#fff" stroke="#24292f" stroke-width="2"/>
+  <rect x="415" y="355" width="14" height="14" fill="#fff" stroke="#24292f" stroke-width="2"/>
+  <rect x="660" y="340" width="14" height="14" fill="#fff" stroke="#24292f" stroke-width="2"/>
+  <line x1="560" y1="270" x2="597" y2="197" stroke="#57606a" stroke-dasharray="4 3"/>
+  <rect x="575" y="275" width="245" height="100" rx="6" fill="#fff" stroke="#57606a"/>
+  <text x="587" y="298" font-weight="700">Calisthenics Plaza del Ángel Caído</text>
+  <text x="587" y="320">Retiro park · 1.2 km to station</text>
+  <text x="587" y="342">NO₂: 58 µg/m³ (Moderate)</text>
+  <text x="587" y="364" fill="#0969da">View details →</text>
+</svg>
+<figcaption>Mock-up 1 – Main view: map of sports facilities, colored by the air quality at their nearest monitoring station (FR1, FR2, FR3).</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="900" height="50" fill="#24292f"/>
+  <text x="20" y="31" fill="#fff" font-size="18" font-weight="700">Breathe &amp; Play Madrid</text>
+  <text x="20" y="82" fill="#0969da">← Back to map</text>
+  <text x="20" y="115" font-size="21" font-weight="700">Basic Sports Facility Ademo (Arroyo Fontarrón)</text>
+  <text x="20" y="140" fill="#57606a">C/ Arroyo Fontarrón 389 · Pavones · Moratalaz district · 28030</text>
+  <rect x="20" y="160" width="290" height="235" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="35" y="185" font-weight="700">Facility</text>
+  <text x="35" y="210">Equipment: futsal court</text>
+  <text x="35" y="233">Access: free</text>
+  <text x="35" y="256">Metro: Pavones (line 9) ↗</text>
+  <text x="35" y="279" fill="#0969da">Official page ↗</text>
+  <text x="35" y="302" fill="#0969da">Moratalaz in Wikidata ↗</text>
+  <line x1="35" y1="318" x2="295" y2="318" stroke="#d0d7de"/>
+  <text x="35" y="342" font-weight="700">Nearest air station</text>
+  <text x="35" y="365">Moratalaz (36) · Urban traffic</text>
+  <text x="35" y="386">Distance: 1.3 km</text>
+  <rect x="330" y="160" width="550" height="235" rx="6" fill="#fff" stroke="#d0d7de"/>
+  <text x="345" y="185" font-weight="700">Air near this facility – PM10 – 2024</text>
+  <rect x="735" y="170" width="130" height="26" rx="4" fill="#fff" stroke="#d0d7de"/><text x="745" y="188">Pollutant ▾</text>
+  <line x1="365" y1="370" x2="860" y2="370" stroke="#8c959f"/><line x1="365" y1="210" x2="365" y2="370" stroke="#8c959f"/>
+  <line x1="365" y1="270" x2="860" y2="270" stroke="#cf222e" stroke-dasharray="5 4"/>
+  <text x="770" y="264" fill="#cf222e" font-size="12">Limit value</text>
+  <polyline fill="none" stroke="#0969da" stroke-width="2" points="365,320 405,300 445,250 485,330 525,340 565,310 605,290 645,260 685,320 725,335 765,300 805,315 860,305"/>
+  <text x="360" y="388" font-size="12" fill="#57606a">Jan</text><text x="605" y="388" font-size="12" fill="#57606a">Jul</text><text x="835" y="388" font-size="12" fill="#57606a">Dec</text>
+  <rect x="20" y="415" width="280" height="70" rx="6" fill="#fff5f5" stroke="#cf222e"/>
+  <text x="35" y="442" font-weight="700" fill="#cf222e">6 days</text>
+  <text x="35" y="465">above the PM10 daily limit</text>
+  <rect x="320" y="415" width="560" height="70" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="335" y="442">Annual mean: 21 µg/m³ · Max: 64 µg/m³ · Days without valid data: 3</text>
+  <text x="335" y="467" fill="#57606a" font-size="12">Values from the nearest station, not measured at the facility itself.</text>
+  <text x="20" y="530" fill="#57606a" font-size="12">Source: Madrid City Council – CC BY 4.0</text>
+</svg>
+<figcaption>Mock-up 2 – Facility detail page: facility data, linked entities, nearest station and air quality history (FR4, FR5, FR8, FR9, FR10).</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="900" height="50" fill="#24292f"/>
+  <text x="20" y="31" fill="#fff" font-size="18" font-weight="700">Breathe &amp; Play Madrid</text>
+  <text x="20" y="90" font-size="20" font-weight="700">Districts</text>
+  <rect x="20" y="105" width="160" height="30" rx="4" fill="#fff" stroke="#d0d7de"/><text x="30" y="125">NO₂ ▾</text>
+  <rect x="190" y="105" width="160" height="30" rx="4" fill="#fff" stroke="#d0d7de"/><text x="200" y="125">All sports ▾</text>
+  <rect x="20" y="150" width="560" height="330" rx="6" fill="#fff" stroke="#d0d7de"/>
+  <text x="35" y="178" font-weight="700">District</text><text x="210" y="178" font-weight="700">Facilities</text><text x="310" y="178" font-weight="700">Mean NO₂</text><text x="420" y="178" font-weight="700">Days &gt; limit</text>
+  <line x1="20" y1="190" x2="580" y2="190" stroke="#d0d7de"/>
+  <text x="35" y="218">Fuencarral-El Pardo</text><text x="210" y="218">52</text><text x="310" y="218">24</text><text x="420" y="218">0</text>
+  <text x="35" y="253">Moratalaz</text><text x="210" y="253">41</text><text x="310" y="253">31</text><text x="420" y="253">1</text>
+  <text x="35" y="288">Usera</text><text x="210" y="288">28</text><text x="310" y="288">39</text><text x="420" y="288">5</text>
+  <text x="35" y="323">Centro</text><text x="210" y="323">9</text><text x="310" y="323">35</text><text x="420" y="323">3</text>
+  <text x="35" y="358" fill="#57606a">…</text>
+  <text x="35" y="460" fill="#57606a" font-size="12">Sort by: facilities · air quality · days above limit</text>
+  <rect x="600" y="150" width="280" height="330" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="615" y="178" font-weight="700">Best air for calisthenics</text>
+  <text x="615" y="208">1. Parque Juan Carlos I</text>
+  <text x="615" y="233">2. Casa de Campo circuit</text>
+  <text x="615" y="258">3. El Cañaveral II</text>
+  <line x1="615" y1="280" x2="865" y2="280" stroke="#d0d7de"/>
+  <text x="615" y="305" font-weight="700">Facilities vs. mean NO₂</text>
+  <line x1="630" y1="455" x2="860" y2="455" stroke="#8c959f"/><line x1="630" y1="320" x2="630" y2="455" stroke="#8c959f"/>
+  <circle cx="660" cy="360" r="5" fill="#0969da"/><circle cx="700" cy="400" r="5" fill="#0969da"/><circle cx="740" cy="380" r="5" fill="#0969da"/>
+  <circle cx="780" cy="420" r="5" fill="#0969da"/><circle cx="820" cy="430" r="5" fill="#0969da"/><circle cx="690" cy="340" r="5" fill="#0969da"/>
+  <text x="780" y="472" font-size="11" fill="#57606a">facilities →</text>
+</svg>
+<figcaption>Mock-up 3 – District comparison and sport-specific recommendations (FR6, FR7).</figcaption>
+</figure>
+
+<h2>7. Out of scope</h2>
+<ul>
+  <li>Real-time air quality data and forecasts.</li>
+  <li>Booking facilities or checking their opening hours: the dataset barely contains opening hours.</li>
+  <li>Measuring air quality at the facility itself: the app always approximates it using the nearest station.</li>
+  <li>User accounts and personalised notifications.</li>
+</ul>
+
+</body>
+</html>

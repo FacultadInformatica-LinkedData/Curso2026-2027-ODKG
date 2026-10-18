@@ -1,0 +1,324 @@
+[
+  {
+    "op": "core/column-removal",
+    "columnName": "PUERTA",
+    "description": "Eliminar columna PUERTA"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "ESCALERAS",
+    "description": "Eliminar columna ESCALERAS"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LOCALIDAD",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna LOCALIDAD usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PROVINCIA",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna PROVINCIA usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna NOMBRE usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna BARRIO usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna DISTRITO usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna BARRIO usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna DISTRITO usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE-VIA",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna NOMBRE-VIA usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna CLASE-VIAL usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TELEFONO",
+    "expression": "grel:value.replace(' ', '').replace('-', '/').replace('\\r', '').replace('\\n', '/').replace('/', ' / ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna TELEFONO usando la expresión grel:value.replace(' ', '').replace('-', '/').replace('\\r', '').replace('\\n', '/').replace('/', ' / ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EMAIL",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna EMAIL usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TELEFONO",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna TELEFONO usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DESCRIPCION",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna DESCRIPCION usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "HORARIO",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna HORARIO usando la expresión value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EQUIPAMIENTO",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna EQUIPAMIENTO usando la expresión value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna TRANSPORTE usando la expresión value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EQUIPAMIENTO",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna EQUIPAMIENTO usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "EQUIPAMIENTO",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna EQUIPAMIENTO usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "HORARIO",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna HORARIO usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "HORARIO",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna HORARIO usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna TRANSPORTE usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna TRANSPORTE usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DESCRIPCION",
+    "expression": "value.unescape('html')",
+    "onError": "keep-original",
+    "repeat": true,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna DESCRIPCION usando la expresión value.unescape('html')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TRANSPORTE",
+    "expression": "grel:value.replace(' .', '.')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna TRANSPORTE usando la expresión grel:value.replace(' .', '.')"
+  }
+]

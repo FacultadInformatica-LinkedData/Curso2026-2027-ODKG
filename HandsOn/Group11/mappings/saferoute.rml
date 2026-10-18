@@ -1,0 +1,408 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ns: <https://w3id.org/saferoutemadrid/ontology#>.
+@base <https://w3id.org/saferoutemadrid/mapping#>.
+
+# Resource URIs: https://w3id.org/saferoutemadrid/resource/{Class}/{id}
+# Each CSV row is one person involved in an accident.
+#---------------------------------------------------
+# "Desconocido" / "Sin especificar" are NULL values,
+# so no triple is generated for them.
+
+#------------------------------------
+#           Main Entities
+#------------------------------------
+<#TrafficAccident> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/TrafficAccident/{num_expediente}";
+    rr:class ns:TrafficAccident
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Traffic accident {num_expediente}";
+      rr:language "en"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:accidentID;
+    rr:objectMap [
+      rml:reference "num_expediente";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:accidentDate;
+    rr:objectMap [
+      rml:reference "fecha";
+      rr:datatype xsd:date
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:accidentTime;
+    rr:objectMap [
+      rml:reference "hora";
+      rr:datatype xsd:time
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:occursAt;
+    rr:objectMap [
+      rr:parentTriplesMap <#Location>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasAccidentType;
+    rr:objectMap [
+      rr:parentTriplesMap <#AccidentType>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasWeatherCondition;
+    rr:objectMap [
+      rr:parentTriplesMap <#WeatherCondition>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:involvesVehicle;
+    rr:objectMap [
+      rr:parentTriplesMap <#Vehicle>
+    ]
+  ] .
+
+<#Location> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/Location/{num_expediente}";
+    rr:class ns:Location
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Location of traffic accident {num_expediente}";
+      rr:language "en"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:streetName;
+    rr:objectMap [
+      rml:reference "localizacion";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:streetNumber;
+    rr:objectMap [
+      rml:reference "numero";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:xCoordinate;
+    rr:objectMap [
+      rml:reference "coordenada_x_utm";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:yCoordinate;
+    rr:objectMap [
+      rml:reference "coordenada_y_utm";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:locatedIn;
+    rr:objectMap [
+      rr:parentTriplesMap <#District>
+    ]
+  ] .
+
+<#District> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/District/{distrito}";
+    rr:class ns:District
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "distrito";
+      rr:language "es"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:districtCode;
+    rr:objectMap [
+      rml:reference "cod_distrito";
+      rr:datatype xsd:integer
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:districtName;
+    rr:objectMap [
+      rml:reference "distrito";
+      rr:datatype xsd:string
+    ]
+  ] .
+
+<#Vehicle> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/Vehicle/{ID_vehiculo}";
+    rr:class ns:Vehicle
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Vehicle {ID_vehiculo}";
+      rr:language "en"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasVehicleType;
+    rr:objectMap [
+      rr:parentTriplesMap <#VehicleType>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:involvesPerson;
+    rr:objectMap [
+      rr:parentTriplesMap <#Person>
+    ]
+  ] .
+
+<#Person> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/Person/{ID_persona}";
+    rr:class ns:Person
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Person {ID_persona}";
+      rr:language "en"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasPersonType;
+    rr:objectMap [
+      rr:parentTriplesMap <#PersonType>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasAgeRange;
+    rr:objectMap [
+      rr:parentTriplesMap <#AgeRange>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasSex;
+    rr:objectMap [
+      rr:parentTriplesMap <#Sex>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasInjurySeverity;
+    rr:objectMap [
+      rr:parentTriplesMap <#InjurySeverity>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:positiveAlcohol;
+    rr:objectMap [
+      rml:reference "positiva_alcohol";
+      rr:datatype xsd:boolean
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:positiveDrug;
+    rr:objectMap [
+      rml:reference "positiva_droga";
+      rr:datatype xsd:boolean
+    ]
+  ] .
+#---------------------------------------
+#        Controlled vocabularies
+#---------------------------------------
+<#AccidentType> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/AccidentType/{tipo_accidente}";
+    rr:class ns:AccidentType, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "tipo_accidente";
+      rr:language "es"
+    ]
+  ] .
+
+<#WeatherCondition> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/WeatherCondition/{estado_meteorológico}";
+    rr:class ns:WeatherCondition, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "estado_meteorológico";
+      rr:language "es"
+    ]
+  ] .
+
+<#VehicleType> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/VehicleType/{tipo_vehiculo}";
+    rr:class ns:VehicleType, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "tipo_vehiculo";
+      rr:language "es"
+    ]
+  ] .
+
+<#PersonType> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/PersonType/{tipo_persona}";
+    rr:class ns:PersonType, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "tipo_persona";
+      rr:language "es"
+    ]
+  ] .
+
+<#AgeRange> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/AgeRange/{rango_edad}";
+    rr:class ns:AgeRange, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "rango_edad";
+      rr:language "es"
+    ]
+  ] .
+
+<#Sex> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/Sex/{sexo}";
+    rr:class ns:Sex, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "sexo";
+      rr:language "es"
+    ]
+  ] .
+
+<#InjurySeverity> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/InjurySeverity/{lesividad}";
+    rr:class ns:InjurySeverity, skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label, skos:prefLabel;
+    rr:objectMap [
+      rml:reference "lesividad";
+      rr:language "es"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:notation;
+    rr:objectMap [
+      rml:reference "cod_lesividad";
+      rr:datatype xsd:string
+    ]
+  ] .

@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "dbo": "http://dbpedia.org/ontology/",
+        "wd": "http://www.wikidata.org/entity/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "ex": "http://example.org/ontology/",
+        "res": "http://example.org/resource/",
+        "City": "schema:City",
+        "Country": "schema:Country",
+        "CollegeUniversity": "schema:CollegeOrUniversity",
+        "fullName": "schema:name",
+        "acronym": "schema:alternateName",
+        "population": { "@id": "dbo:populationTotal", "@type": "xsd:integer" },
+        "country": { "@id": "dbo:country", "@type": "@id" },
+        "university": { "@id": "ex:hasUniversity", "@type": "@id" },
+        "sameAs": { "@id": "schema:sameAs", "@type": "@id" },
+        "url": { "@id": "schema:url", "@type": "@id" }
+    },
+    "@id": "res:city/Quito",
+    "@type": "City",
+    "fullName": "Quito",
+    "sameAs": "wd:Q2900",
+    "population": 2679722,
+    "country": {
+        "@id": "res:country/Ecuador",
+        "@type": "Country",
+        "fullName": "Ecuador",
+        "sameAs": "wd:Q736"
+    },
+    "university": [
+        {
+            "@id": "res:university/UCE",
+            "@type": "CollegeUniversity",
+            "fullName": "Universidad Central del Ecuador",
+            "acronym": "UCE",
+            "url": "https://www.uce.edu.ec/"
+        },
+        {
+            "@id": "res:university/USFQ",
+            "@type": "CollegeUniversity",
+            "fullName": "Universidad San Francisco de Quito",
+            "acronym": "USFQ",
+            "url": "https://www.usfq.edu.ec/"
+        },
+        {
+            "@id": "res:university/EPN",
+            "@type": "CollegeUniversity",
+            "fullName": "Escuela Politécnica Nacional",
+            "acronym": "EPN",
+            "url": "https://www.epn.edu.ec/"
+        },
+        {
+            "@id": "res:university/UISEK",
+            "@type": "CollegeUniversity",
+            "fullName": "Universidad Internacional SEK",
+            "acronym": "UISEK",
+            "url": "https://www.uisek.edu.ec/"
+        }
+    ]
+}

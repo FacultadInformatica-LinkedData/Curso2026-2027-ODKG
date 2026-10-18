@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dataset Requirements – Madrid Municipal Parking</title>
+<style>
+    :root {
+        --navy: #17324d;
+        --blue: #2878b5;
+        --cyan: #49a6b8;
+        --gold: #d69e2e;
+        --green: #2f855a;
+        --red: #c05640;
+        --ink: #243447;
+        --muted: #66788a;
+        --paper: #f4f7fa;
+        --card: #ffffff;
+        --border: #d8e1e8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Segoe UI", Arial, sans-serif;
+        line-height: 1.65;
+    }
+
+    header {
+        background: linear-gradient(135deg, var(--navy), var(--blue));
+        color: white;
+        padding: 48px max(24px, calc((100% - 1080px) / 2));
+    }
+
+    header h1 {
+        margin: 0 0 8px;
+        font-size: 2.25rem;
+        letter-spacing: -0.02em;
+    }
+
+    header p {
+        margin: 0;
+        opacity: 0.88;
+        max-width: 850px;
+    }
+
+    main {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 34px 24px 70px;
+    }
+
+    section {
+        margin-bottom: 38px;
+    }
+
+    h2 {
+        color: var(--navy);
+        font-size: 1.45rem;
+        margin: 0 0 18px;
+        padding-left: 14px;
+        border-left: 5px solid var(--cyan);
+    }
+
+    h3 {
+        color: var(--blue);
+        margin: 28px 0 8px;
+    }
+
+    .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px 22px;
+        box-shadow: 0 3px 12px rgba(23, 50, 77, 0.05);
+        margin: 16px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: white;
+        margin: 16px 0;
+    }
+
+    th, td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background: #eaf2f8;
+        color: var(--navy);
+        font-weight: 700;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    code {
+        background: #eef3f7;
+        padding: 2px 6px;
+        border-radius: 5px;
+        font-size: 0.9em;
+    }
+
+    .ok {
+        color: var(--green);
+        font-weight: 700;
+    }
+
+    .partial {
+        color: var(--gold);
+        font-weight: 700;
+    }
+
+    .note {
+        border-left: 4px solid var(--gold);
+        background: #fffaf0;
+        padding: 13px 17px;
+        margin: 16px 0;
+        border-radius: 0 7px 7px 0;
+    }
+
+    .dataset-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: var(--blue);
+        color: white;
+        border-radius: 999px;
+        padding: 3px 10px;
+        font-size: 0.78rem;
+        font-weight: 700;
+    }
+
+    a {
+        color: var(--blue);
+    }
+
+    footer {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 24px 40px;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Dataset Requirements</h1>
+    <p>
+        Hands-on 1 · Open Data and Knowledge Graphs · Domain: smart parking
+        and urban mobility in the city of Madrid
+    </p>
+</header>
+
+<main>
+
+<section>
+    <h2>1. Selected datasets</h2>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Dataset</th>
+            <th>File(s) in <code>csv/</code></th>
+            <th>Publisher</th>
+            <th>Role in the application</th>
+            <th>Data source URL</th>
+        </tr>
+        <tr>
+            <td>D1</td>
+            <td>Municipal parking facilities – number of spaces</td>
+            <td><code>inventario_pars_agos_2026.csv</code></td>
+            <td>Madrid City Council</td>
+            <td>Provides the parking-facility inventory and capacity information.</td>
+            <td>https://datos.gob.es/es/catalogo/l01280796-aparcamientos-municipales-numero-de-plazas1</td>
+        </tr>
+        <tr>
+            <td>D2</td>
+            <td>Municipal parking facilities – historical occupancy</td>
+            <td>
+                <code>300346-*.csv</code><br>
+                <code>ocupacionesaparcamientos2.csv</code>
+            </td>
+            <td>Madrid City Council</td>
+            <td>Provides historical occupancy information for municipal parking facilities in 2026.</td>
+            <td>https://datos.gob.es/es/catalogo/l01280796-aparcamientos-publicos-municipales-rotacionales-historico-de-ocupacion</td>
+        </tr>
+    </table>
+
+    <div class="note">
+        The several <code>300346-*.csv</code> files are treated as distributions
+        of the same historical-occupancy dataset rather than as independent datasets.
+        They cover different annual periods.
+    </div>
+</section>
+
+
+<section>
+    <h2>2. Compliance summary</h2>
+
+    <table>
+        <tr>
+            <th>Requirement</th>
+            <th>D1 – Parking inventory</th>
+            <th>D2 – Historical occupancy</th>
+        </tr>
+        <tr>
+            <td>R1. Smart city domain</td>
+            <td class="ok">✔ Satisfied</td>
+            <td class="ok">✔ Satisfied</td>
+        </tr>
+        <tr>
+            <td>R2. Available as CSV</td>
+            <td class="ok">✔ Satisfied</td>
+            <td class="ok">✔ Satisfied</td>
+        </tr>
+        <tr>
+            <td>R3. Open license</td>
+            <td class="ok">✔ Satisfied</td>
+            <td class="ok">✔ Satisfied</td>
+        </tr>
+        <tr>
+            <td>R4. Linkable to real-world entities</td>
+            <td class="ok">✔ Satisfied</td>
+            <td class="ok">✔ Satisfied through the parking facility</td>
+        </tr>
+        <tr>
+            <td>R5. Documentation (optional)</td>
+            <td class="ok">✔ High</td>
+            <td class="ok">✔ High</td>
+        </tr>
+        <tr>
+            <td>R6. Multiple data sources (optional)</td>
+            <td colspan="2" class="partial">◐ Medium – can be strengthened through external geographic Linked Data (e.g. OpenStreetMap)</td>
+        </tr>
+    </table>
+</section>
+
+
+<section>
+    <h2>3. D1 – Municipal parking facilities and number of spaces</h2>
+
+    <div class="card">
+        <h3>R1. Smart city domain <span class="ok">✔</span></h3>
+        <p>
+            The dataset belongs to the <strong>urban mobility and public
+            infrastructure</strong> domain. Municipal parking is part of the
+            city's transport infrastructure and provides information that can
+            be used to understand and explore parking resources within Madrid.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R2. Available as CSV <span class="ok">✔</span></h3>
+        <p>
+            The selected distribution is available as a CSV file:
+            <code>inventario_pars_agos_2026.csv</code>. It can therefore be
+            included directly in the project's <code>csv/</code> directory and
+            processed before its transformation into RDF.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R3. Open license <span class="ok">✔</span></h3>
+        <p>
+            The Madrid open-data portal publishes the municipal parking data
+            under an open-data license that permits reuse subject to the
+            applicable attribution conditions. The source and license
+            information will be preserved when the data are redistributed
+            and transformed into RDF.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+        <p>
+            Parking facilities represent concrete real-world infrastructure.
+            Their identifying and geographic information can be used to
+            connect them with geographic entities such as Madrid districts,
+            streets, locations and external geographic datasets.
+        </p>
+
+        <table>
+            <tr>
+                <th>Information</th>
+                <th>Real-world entity</th>
+                <th>Potential Linked Data connection</th>
+            </tr>
+            <tr>
+                <td>Parking identifier / name</td>
+                <td>Municipal parking facility</td>
+                <td>Stable RDF resource representing the facility</td>
+            </tr>
+            <tr>
+                <td>Location / address</td>
+                <td>Geographic location and street</td>
+                <td>OpenStreetMap, GeoNames or municipal geographic resources</td>
+            </tr>
+            <tr>
+                <td>District</td>
+                <td>Madrid administrative district</td>
+                <td>External administrative/geographic entities</td>
+            </tr>
+            <tr>
+                <td>Number of spaces</td>
+                <td>Parking capacity</td>
+                <td>Property of the corresponding parking facility</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>R5. Documentation <span class="ok">✔ High</span></h3>
+        <p>
+            The dataset is accompanied by information describing the municipal
+            parking data. The documentation can be used to interpret the
+            available fields and understand the meaning of the parking
+            inventory information before the RDF transformation.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R6. Multiple data sources <span class="partial">◐</span></h3>
+        <p>
+            D1 is a Madrid City Council dataset. It becomes part of a
+            multi-source Linked Data application when combined with D2 and
+            external geographic datasets.
+        </p>
+    </div>
+</section>
+
+
+<section>
+    <h2>4. D2 – Municipal parking historical occupancy</h2>
+
+    <div class="card">
+        <h3>R1. Smart city domain <span class="ok">✔</span></h3>
+        <p>
+            The dataset belongs to the <strong>urban mobility</strong> domain.
+            Historical parking occupancy provides information about how
+            municipal parking facilities are utilized over time. Such
+            information can support the exploration of parking demand and
+            urban mobility patterns.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R2. Available as CSV <span class="ok">✔</span></h3>
+        <p>
+            The historical occupancy dataset is distributed as CSV files.
+            The project contains several annual distributions, represented
+            by the <code>300346-*.csv</code> files, together with
+            <code>ocupacionesaparcamientos2.csv</code>.
+        </p>
+        <p>
+            These files are treated as different temporal distributions of
+            the same dataset. Keeping the annual files in the project makes
+            it possible to analyze occupancy over multiple years.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R3. Open license <span class="ok">✔</span></h3>
+        <p>
+            The dataset is published through the Madrid open-data portal
+            under an open-data license that permits reuse subject to the
+            applicable attribution requirements. The source and license
+            information will be retained in the RDF publication.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R4. Linkable to real-world entities <span class="ok">✔</span></h3>
+        <p>
+            Historical occupancy observations can be linked to the concrete
+            parking facilities described in D1. The parking identifier or
+            other facility information provides the basis for connecting
+            an occupancy observation to its corresponding real-world
+            parking facility.
+        </p>
+
+        <table>
+            <tr>
+                <th>Information</th>
+                <th>Linkable entity</th>
+                <th>Use in the application</th>
+            </tr>
+            <tr>
+                <td>Parking identifier / name</td>
+                <td>Municipal parking facility in D1</td>
+                <td>Connect occupancy observations with parking capacity and location.</td>
+            </tr>
+            <tr>
+                <td>Year and month</td>
+                <td>Temporal entity</td>
+                <td>Display historical occupancy trends.</td>
+            </tr>
+            <tr>
+                <td>Occupancy value</td>
+                <td>Parking utilization observation</td>
+                <td>Generate charts and compare facilities.</td>
+            </tr>
+            <tr>
+                <td>Parking capacity from D1</td>
+                <td>Parking facility capacity</td>
+                <td>Compare occupancy with the number of available spaces.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>R5. Documentation <span class="ok">✔ High</span></h3>
+        <p>
+            The project includes documentation concerning the municipal
+            parking data structure. This documentation can be used together
+            with the CSV distributions to interpret the occupancy information
+            and construct the RDF representation.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R6. Multiple data sources <span class="partial">◐</span></h3>
+        <p>
+            D2 comes from the same Madrid open-data ecosystem as D1, but the
+            two datasets provide complementary information: D1 describes
+            parking facilities and capacity, while D2 describes their
+            historical utilization. Additional external geographic data
+            can be used to increase the number of independent sources.
+        </p>
+    </div>
+</section>
+
+
+<section>
+    <h2>5. How the datasets are linked</h2>
+
+    <div class="card">
+        <p>
+            <strong>D1 ↔ D2:</strong>
+            The parking inventory and historical occupancy datasets are
+            linked through the identifier and/or identifying information
+            corresponding to the same municipal parking facility.
+        </p>
+
+        <p>
+            <strong>D1 → Geographic entities:</strong>
+            The location and address information of parking facilities can
+            be used to connect them with geographic resources such as
+            streets, districts and external geographic datasets.
+        </p>
+
+        <p>
+            <strong>D2 → D1:</strong>
+            Each historical occupancy observation can be represented as an
+            observation associated with a parking facility in D1. This allows
+            occupancy history to be combined with the facility's location
+            and capacity.
+        </p>
+
+        <p>
+            <strong>Parking facilities → External Linked Data:</strong>
+            Geographic and administrative information can be used to connect
+            the parking resources to external Linked Data sources such as
+            OpenStreetMap, GeoNames or Wikidata, where suitable matching
+            entities are available.
+        </p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Source</th>
+            <th>Relationship</th>
+            <th>Target</th>
+        </tr>
+        <tr>
+            <td>D2 – Occupancy observation</td>
+            <td>observedAt / refersTo</td>
+            <td>D1 – Parking facility</td>
+        </tr>
+        <tr>
+            <td>D1 – Parking facility</td>
+            <td>locatedIn</td>
+            <td>Madrid district / geographic entity</td>
+        </tr>
+        <tr>
+            <td>D1 – Parking facility</td>
+            <td>hasLocation</td>
+            <td>Geographic location</td>
+        </tr>
+        <tr>
+            <td>D1 – Parking facility</td>
+            <td>sameAs / relatedTo</td>
+            <td>External Linked Data entity, when an appropriate match exists</td>
+        </tr>
+    </table>
+</section>
+
+
+<section>
+    <h2>6. Discussion of the optional requirements</h2>
+
+    <div class="card">
+        <h3>R5 – Documentation</h3>
+        <p>
+            <strong class="ok">High degree.</strong>
+            The selected Madrid municipal parking datasets are accompanied
+            by official dataset information and documentation. This provides
+            a basis for understanding the data and transforming the CSV
+            distributions into RDF.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>R6 – Multiple data sources</h3>
+        <p>
+            <strong class="partial">Medium degree.</strong>
+            The application combines two complementary datasets: a parking
+            inventory and historical occupancy data. Both originate from the
+            Madrid City Council open-data ecosystem, so they do not constitute
+            completely independent publishers.
+        </p>
+        <p>
+            The Linked Data graph can nevertheless be extended with an
+            external geographic source, such as OpenStreetMap, GeoNames or
+            Wikidata. Such a source would provide additional information about
+            the real-world geographic entities associated with the parking
+            facilities.
+        </p>
+    </div>
+</section>
+
+
+<section>
+    <h2>7. Conclusion</h2>
+
+    <div class="card">
+        <p>
+            Both selected datasets satisfy the mandatory requirements
+            <strong>R1–R4</strong>. They belong to the smart-city and urban
+            mobility domain, are available as CSV, are published as open
+            data, and contain information that can be connected to real-world
+            parking and geographic entities.
+        </p>
+
+        <p>
+            D1 provides the description and capacity of municipal parking
+            facilities, while D2 provides their historical occupancy.
+            Combining them creates a coherent data model for the proposed
+            Madrid Smart Parking Explorer and provides a clear basis for
+            subsequent RDF transformation and Linked Data publication.
+        </p>
+
+        <p>
+            R5 is satisfied to a high degree because official documentation
+            is available. R6 is satisfied to a medium degree because the
+            selected datasets are complementary but originate from the same
+            municipal open-data ecosystem. Linking the parking facilities
+            with an external geographic dataset would strengthen the
+            multi-source aspect of the resulting knowledge graph.
+        </p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    Hands-on 1 · Open Data and Knowledge Graphs · Madrid Smart Parking Explorer
+</footer>
+
+</body>
+</html>

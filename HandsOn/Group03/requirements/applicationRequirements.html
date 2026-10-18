@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application requirements – Terraces and night noise in Madrid</title>
+<style>
+:root{--ink:#1d2733;--muted:#5b6673;--line:#d5dbe2;--bg:#fff;--soft:#f3f6f9;--accent:#1f5f8b;--hot:#c2410c}
+*{box-sizing:border-box}
+body{font:16px/1.6 Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);margin:0}
+main{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.9rem;line-height:1.25;margin:.2rem 0 .4rem}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;padding-bottom:.25rem;border-bottom:1px solid var(--line)}
+h3{font-size:1.05rem;margin:1.4rem 0 .4rem}
+p,li{max-width:72ch}
+.sub{color:var(--muted);margin:0}
+table{border-collapse:collapse;width:100%;font:.92rem/1.45 system-ui,sans-serif;margin:.6rem 0}
+th,td{border:1px solid var(--line);padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--soft)}
+.tablewrap{overflow-x:auto}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.88em;background:var(--soft);padding:.05em .3em;border-radius:3px}
+.mock{border:1px solid var(--line);border-radius:6px;background:var(--soft);padding:1rem;margin:.8rem 0;font-family:system-ui,sans-serif;font-size:.88rem}
+.mock .bar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;background:#fff;border:1px solid var(--line);border-radius:4px;padding:.5rem .7rem;margin-bottom:.7rem}
+.mock .bar label{color:var(--muted)}
+.mock .ctl{border:1px solid var(--line);border-radius:3px;padding:.15rem .5rem;background:var(--soft)}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:.7rem}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.map{position:relative;height:250px;background:#e4ebf0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.map .st{position:absolute;border-radius:50%;background:var(--accent);opacity:.85;transform:translate(-50%,-50%);display:grid;place-items:center;color:#fff;font-size:.7rem}
+.map .lbl{position:absolute;left:8px;bottom:6px;color:var(--muted);font-size:.75rem}
+.panel{background:#fff;border:1px solid var(--line);border-radius:4px;padding:.6rem .7rem}
+.panel h4{margin:0 0 .4rem;font-size:.95rem}
+.legend{font-size:.78rem;color:var(--muted);margin-top:.4rem}
+.cap{font:.85rem system-ui,sans-serif;color:var(--muted);margin:.2rem 0 1rem}
+.note{border-left:3px solid var(--hot);padding:.2rem .8rem;background:#fff7f1;font:.92rem/1.5 system-ui,sans-serif}
+svg text{font:11px system-ui,sans-serif;fill:#5b6673}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Application requirements</h1>
+<p class="sub">Terraces and night-time noise in Madrid – Hands-on 1 · Group 03</p>
+
+<h2>1. Purpose of the application</h2>
+<p>The application lets a user explore the following question:</p>
+<p><em>Is there an association between the number of registered terraces near a noise monitoring station and the night-time noise levels measured by that station?</em></p>
+<p>It combines the noise measurements of the Madrid noise monitoring network with the location of registered terraces, and shows both on a map and in a chart so that the user can check whether stations surrounded by more terraces tend to record higher night-time noise.</p>
+
+<h2>2. Datasets the application is built on</h2>
+<div class="tablewrap">
+<table>
+<tr><th>Dataset</th><th>Role in the application</th><th>Source and license</th></tr>
+<tr><td><strong>Contaminación acústica. Datos diarios</strong> (selected dataset)</td><td>Daily noise levels per station. The night-time indicator L<sub>n</sub> (equivalent sound level, 23:00–07:00, in dB(A)) is the noise value used by the application.</td><td><a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido">Dataset 215885</a> · CC BY 4.0 · updated daily. The submitted 2020–2026 extract contains 31 station codes; the portal's 50 devices describe the wider SIVCA system.</td></tr>
+<tr><td>Contaminación acústica. Estaciones de medida</td><td>Identifier, name and coordinates of each station. Needed to place stations on the map and to count terraces around them.</td><td><a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas">Dataset 211346</a> · Ayuntamiento de Madrid · CC BY 4.0 · 31 fixed-network station records.</td></tr>
+<tr><td>Registered terraces (hospitality terraces)</td><td>Approximate premises or grouping entrance location for each terrace with usable coordinates. Source of the terrace count per station.</td><td><a href="https://datos.madrid.es/dataset/200085-0-censo-locales">Dataset 200085</a>, terraces CSV only · Ayuntamiento de Madrid · CC BY 4.0 · 6,594 terraces in the 4 October 2026 snapshot.</td></tr>
+</table>
+</div>
+<p>The idea requires combining the noise data with a second source (terraces), so the application also covers optional requirement R6 (multiple data sources). Stations and terraces are linked through their geographic location.</p>
+<p>The terrace counts describe the selected 2026 snapshot and cannot establish which terraces existed during earlier noise dates. Distance calculations use compatible ETRS89 / UTM 30N coordinates and the access-type location rules documented in <a href="../analysis.html">the data analysis</a>; unavailable or invalid locations are excluded and reported. Locations approximate premises or grouping entrances rather than the surveyed terrace footprint.</p>
+
+<h2>3. Users</h2>
+<ul>
+<li><strong>Citizen</strong>: wants to know whether living near an area with many terraces is related to higher night-time noise.</li>
+<li><strong>Analyst at the city council or a researcher</strong>: wants to check the relationship with different distances and dates.</li>
+</ul>
+
+<h2>4. Functional requirements</h2>
+<div class="tablewrap">
+<table>
+<tr><th>ID</th><th>Requirement</th></tr>
+<tr><td>FR1</td><td>The application shall show a map with all noise monitoring stations.</td></tr>
+<tr><td>FR2</td><td>The user shall be able to choose a radius (for example 100, 250 or 500 m) around the stations.</td></tr>
+<tr><td>FR3</td><td>For each station, the application shall compute and show the number of terraces within the chosen radius.</td></tr>
+<tr><td>FR4</td><td>The user shall be able to choose a date range. For each station, the application shall compute and show the average night-time noise level (L<sub>n</sub>) in that range.</td></tr>
+<tr><td>FR5</td><td>The application shall show a scatter plot with one point per station: terraces within the radius (x axis) against average night-time noise (y axis).</td></tr>
+<tr><td>FR6</td><td>The application shall show the correlation coefficient of the scatter plot, together with the number of stations used.</td></tr>
+<tr><td>FR7</td><td>When the user selects a station (on the map or in the chart), the application shall show its name, its terrace count and its average night-time noise level.</td></tr>
+<tr><td>FR8</td><td>Stations without noise data in the selected date range shall be left out of the chart and the coefficient, and the application shall tell the user how many were left out.</td></tr>
+</table>
+</div>
+
+<h2>5. Questions the data must answer</h2>
+<ol>
+<li>How many terraces are within <em>R</em> metres of each station?</li>
+<li>What is the average night-time noise level (L<sub>n</sub>) of each station between dates <em>D1</em> and <em>D2</em>?</li>
+<li>Which stations have the highest number of terraces and what are their night-time levels?</li>
+<li>What is the correlation between questions 1 and 2 over all stations?</li>
+</ol>
+
+<h2>6. Non-functional requirements</h2>
+<div class="tablewrap">
+<table>
+<tr><th>ID</th><th>Requirement</th></tr>
+<tr><td>NFR1</td><td>The application shall use only open data published under an open license, and shall show the attribution required by CC BY 4.0.</td></tr>
+<tr><td>NFR2</td><td>The application shall obtain its data from the RDF data published by the group (linked to the generic entities used for locations), not from the original CSV files.</td></tr>
+<tr><td>NFR3</td><td>The application shall update the map and the chart in less than 3 seconds after the user changes the radius or the date range.</td></tr>
+<tr><td>NFR4</td><td>The application shall run in a standard web browser, on desktop screens and on mobile screens.</td></tr>
+</table>
+</div>
+
+<div class="note" style="margin-top:1rem">
+The application shows an association, not a cause. A result such as “more terraces, higher night noise” does not prove that terraces cause the noise (traffic, nightlife areas or other sources can influence both). The interface will state this next to the coefficient.
+</div>
+
+<h2>7. Mock-ups</h2>
+
+<h3>Mock-up 1 – Main screen: map, filters and chart</h3>
+<div class="mock">
+<div class="bar">
+<label>Radius</label><span class="ctl">250 m ▾</span>
+<label>From</label><span class="ctl">01/01/2025</span>
+<label>To</label><span class="ctl">30/06/2025</span>
+</div>
+<div class="grid">
+<div class="map" aria-label="Map of stations">
+<span class="st" style="left:22%;top:30%;width:30px;height:30px">4</span>
+<span class="st" style="left:45%;top:55%;width:56px;height:56px">19</span>
+<span class="st" style="left:60%;top:25%;width:36px;height:36px">7</span>
+<span class="st" style="left:78%;top:62%;width:24px;height:24px">2</span>
+<span class="st" style="left:32%;top:78%;width:44px;height:44px">12</span>
+<span class="lbl">Circle = station · number and size = terraces within the radius</span>
+</div>
+<div class="panel">
+<h4>Terraces vs night noise</h4>
+<svg viewBox="0 0 260 190" width="100%" role="img" aria-label="Scatter plot">
+<line x1="30" y1="160" x2="250" y2="160" stroke="#9aa5b1"/><line x1="30" y1="10" x2="30" y2="160" stroke="#9aa5b1"/>
+<text x="110" y="182">Terraces within radius</text>
+<text x="2" y="90" transform="rotate(-90 8 90)">Night noise (dB)</text>
+<g fill="#1f5f8b"><circle cx="55" cy="130" r="4"/><circle cx="80" cy="115" r="4"/><circle cx="100" cy="120" r="4"/><circle cx="130" cy="90" r="4"/><circle cx="150" cy="100" r="4"/><circle cx="175" cy="70" r="4"/><circle cx="200" cy="60" r="4"/><circle cx="225" cy="45" r="4"/></g>
+<line x1="45" y1="135" x2="235" y2="45" stroke="#c2410c" stroke-dasharray="4 3"/>
+</svg>
+<div class="legend">Correlation coefficient: <strong>computed from data</strong> · Stations used and excluded: computed from coverage in the selected date range</div>
+</div>
+</div>
+<p class="legend">Terrace snapshot: 04/10/2026 · Noise dates: selected range. Data: Ayuntamiento de Madrid, CC BY 4.0. An association does not imply causation.</p>
+</div>
+<p class="cap">Covers FR1–FR6, FR8 and NFR1. The values shown are only illustrative.</p>
+
+<h3>Mock-up 2 – Station detail</h3>
+<div class="mock">
+<div class="panel" style="max-width:420px">
+<h4>Station name (selected)</h4>
+<table>
+<tr><th>Terraces within 250 m</th><td>12</td></tr>
+<tr><th>Average night noise (01/01/2025 – 30/06/2025)</th><td>Computed from data, dB(A)</td></tr>
+<tr><th>Days with data</th><td>Computed from coverage</td></tr>
+</table>
+<span class="ctl">Close ✕</span>
+</div>
+</div>
+<p class="cap">Covers FR7. Opens when the user clicks a station on the map or a point in the chart.</p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,274 @@
+# Group04 - Breathe & Play Madrid - Hands-on 4
+# SPARQL queries to verify the RDF generated from the three datasets.
+# Load the three files in rdf/ (calidad-aire-diario-2024.ttl,
+# estaciones-control-aire.ttl, instalaciones-deportivas.ttl) into the same
+# graph and run each query separately.
+
+PREFIX bpm:  <https://w3id.org/breatheplay-madrid/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX pol:  <https://w3id.org/breatheplay-madrid/resource/pollutant/>
+
+# -----------------------------------------------------------------------------
+# Control queries
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Q1. Number of individuals of each class of the ontology.
+#     Expected: 42973 DailyObservation, 131 SamplingPoint, 11 Pollutant,
+#     6 MeasurementTechnique, 24 MonitoringStation, 3 StationType,
+#     607 SportsFacility, 24 FacilityType, 4 AccessibilityLevel,
+#     21 District, 111 Neighbourhood.
+# -----------------------------------------------------------------------------
+SELECT ?class (COUNT(?s) AS ?individuals)
+WHERE { ?s a ?class . }
+GROUP BY ?class
+ORDER BY DESC(?individuals)
+
+# -----------------------------------------------------------------------------
+# Q2. Individuals without an rdfs:label (expected: no results).
+# -----------------------------------------------------------------------------
+SELECT ?s ?class
+WHERE {
+  ?s a ?class .
+  FILTER NOT EXISTS { ?s rdfs:label ?label }
+}
+
+# -----------------------------------------------------------------------------
+# Q3. Object references that do not point to a typed individual
+#     (broken links between datasets; expected: no results).
+# -----------------------------------------------------------------------------
+SELECT ?s ?p ?o
+WHERE {
+  VALUES ?p { bpm:hasSamplingPoint bpm:hasStation bpm:measuresPollutant
+              bpm:usesTechnique bpm:hasStationType bpm:hasNearestStation
+              bpm:hasFacilityType bpm:hasAccessibilityLevel
+              bpm:locatedInDistrict bpm:locatedInNeighbourhood
+              bpm:isPartOfDistrict }
+  ?s ?p ?o .
+  FILTER NOT EXISTS { ?o a ?class }
+}
+
+# -----------------------------------------------------------------------------
+# Q4. Literals with a datatype different from the one in the ontology
+#     (expected: no results).
+# -----------------------------------------------------------------------------
+SELECT ?s ?p ?value ?expected
+WHERE {
+  VALUES (?p ?expected) {
+    (bpm:date xsd:date) (bpm:startDate xsd:date) (bpm:value xsd:decimal)
+    (bpm:isValid xsd:boolean) (bpm:altitude xsd:integer)
+    (bpm:latitude xsd:decimal) (bpm:longitude xsd:decimal)
+    (bpm:distanceToNearestStation xsd:decimal) (bpm:contentURL xsd:anyURI)
+  }
+  ?s ?p ?value .
+  FILTER (DATATYPE(?value) != ?expected)
+}
+
+# -----------------------------------------------------------------------------
+# Queries for verification of the data
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Q5. Observations per pollutant: total, not valid, and average of the valid
+#     daily values in 2024.
+# -----------------------------------------------------------------------------
+SELECT ?pollutant ?unit (COUNT(?obs) AS ?observations)
+       (SUM(IF(?valid, 0, 1)) AS ?notValid)
+       (ROUND(SUM(IF(?valid, ?value, 0)) / SUM(IF(?valid, 1, 0)) * 100) / 100
+        AS ?avgValid)
+WHERE {
+  ?obs a bpm:DailyObservation ;
+       bpm:value ?value ;
+       bpm:isValid ?valid ;
+       bpm:hasSamplingPoint/bpm:measuresPollutant ?p .
+  ?p rdfs:label ?pollutant ;
+     bpm:unit ?unit .
+}
+GROUP BY ?pollutant ?unit
+ORDER BY ?pollutant
+
+# -----------------------------------------------------------------------------
+# Q6. Stations ranked by average valid NO2 daily value in 2024.
+# -----------------------------------------------------------------------------
+SELECT ?station ?name (ROUND(AVG(?value) * 10) / 10 AS ?avgNO2)
+WHERE {
+  ?obs bpm:hasSamplingPoint ?sp ;
+       bpm:isValid true ;
+       bpm:value ?value .
+  ?sp bpm:measuresPollutant pol:8 ;
+      bpm:hasStation ?station .
+  ?station rdfs:label ?name .
+}
+GROUP BY ?station ?name
+ORDER BY DESC(?avgNO2)
+
+# -----------------------------------------------------------------------------
+# Q7. Sports facilities per district (facilities without district are
+#     counted under "no district").
+# -----------------------------------------------------------------------------
+SELECT (COALESCE(?districtName, "no district") AS ?district)
+       (COUNT(?f) AS ?facilities)
+WHERE {
+  ?f a bpm:SportsFacility .
+  OPTIONAL { ?f bpm:locatedInDistrict/rdfs:label ?districtName }
+}
+GROUP BY ?districtName
+ORDER BY DESC(?facilities)
+
+# -----------------------------------------------------------------------------
+# Q8. Cross-dataset query (D3 -> D2 -> D1): accessible sports facilities, their
+#     nearest monitoring station and the average NO2 measured there in 2024.
+#     The average per station is computed first in a subquery and then joined
+#     with the facilities.
+# -----------------------------------------------------------------------------
+SELECT ?facility ?station ?distanceKm ?avgNO2
+WHERE {
+  {
+    SELECT ?st (ROUND(AVG(?value) * 10) / 10 AS ?avgNO2)
+    WHERE {
+      ?obs bpm:hasSamplingPoint ?sp ;
+           bpm:isValid true ;
+           bpm:value ?value .
+      ?sp bpm:measuresPollutant pol:8 ;
+          bpm:hasStation ?st .
+    }
+    GROUP BY ?st
+  }
+  ?f a bpm:SportsFacility ;
+     rdfs:label ?facility ;
+     bpm:hasAccessibilityLevel/rdfs:label "Accesible"@es ;
+     bpm:hasNearestStation ?st ;
+     bpm:distanceToNearestStation ?distanceKm .
+  ?st rdfs:label ?station .
+}
+ORDER BY ?avgNO2 ?facility
+
+# -----------------------------------------------------------------------------
+# Competency questions - Hands-on 1
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Q9. CQ01 - Which calisthenics facilities are in the district of Retiro, and 
+#     which monitoring station is closest to each?
+# -----------------------------------------------------------------------------
+SELECT ?facility ?station ?distanceKm
+WHERE {
+  ?f a bpm:SportsFacility ;
+     rdfs:label ?facility ;
+     bpm:hasFacilityType/rdfs:label "Calistenia"@es ;
+     bpm:locatedInDistrict/rdfs:label "RETIRO"@es ;
+     bpm:hasNearestStation/rdfs:label ?station ;
+     bpm:distanceToNearestStation ?distanceKm .
+}
+ORDER BY ?facility
+
+# -----------------------------------------------------------------------------
+# Q10. CQ02 - What was the daily NO2 value at the station nearest to a given
+#      facility on 15/01/2024? (example: facility 4547664, Ademo)
+# -----------------------------------------------------------------------------
+SELECT ?facility ?station ?date ?value ?unit ?valid
+WHERE {
+  ?f bpm:facilityId "4547664"^^xsd:string ;
+     rdfs:label ?facility ;
+     bpm:hasNearestStation ?st .
+  ?st rdfs:label ?station .
+  ?sp bpm:hasStation ?st ;
+      bpm:measuresPollutant pol:8 .
+  pol:8 bpm:unit ?unit .
+  ?obs bpm:hasSamplingPoint ?sp ;
+       bpm:date ?date ;
+       bpm:value ?value ;
+       bpm:isValid ?valid .
+  FILTER (?date = "2024-01-15"^^xsd:date)
+}
+
+# -----------------------------------------------------------------------------
+# Q11. CQ03 - On how many days in 2024 did the station nearest to each football
+#      pitch exceed a daily PM10 mean of 50 ug/m3? Only valid values are
+#      counted. Pitches whose nearest station does not measure PM10 are not
+#      listed.
+# -----------------------------------------------------------------------------
+SELECT ?facility ?station ?daysAbove50
+WHERE {
+  {
+    SELECT ?st (SUM(IF(?value > 50, 1, 0)) AS ?daysAbove50)
+    WHERE {
+      ?obs bpm:hasSamplingPoint ?sp ;
+           bpm:isValid true ;
+           bpm:value ?value .
+      ?sp bpm:measuresPollutant pol:10 ;
+          bpm:hasStation ?st .
+    }
+    GROUP BY ?st
+  }
+  ?f a bpm:SportsFacility ;
+     rdfs:label ?facility ;
+     bpm:hasFacilityType/rdfs:label "Campos Estadios Futbol"@es ;
+     bpm:hasNearestStation ?st .
+  ?st rdfs:label ?station .
+}
+ORDER BY DESC(?daysAbove50) ?facility
+
+# -----------------------------------------------------------------------------
+# Q12. CQ04 - Which district has the most sports facilities, and what is the
+#      average NO2 of its stations? Stations have no district in the source
+#      data, so the stations of a district are the nearest stations of its
+#      facilities.
+# -----------------------------------------------------------------------------
+SELECT ?district ?facilities (ROUND(AVG(?stationNO2) * 10) / 10 AS ?avgNO2)
+WHERE {
+  {
+    SELECT ?d (COUNT(?f) AS ?facilities)
+    WHERE { ?f a bpm:SportsFacility ; bpm:locatedInDistrict ?d . }
+    GROUP BY ?d
+  }
+  {
+    SELECT DISTINCT ?d ?st
+    WHERE { ?f bpm:locatedInDistrict ?d ; bpm:hasNearestStation ?st . }
+  }
+  {
+    SELECT ?st (AVG(?value) AS ?stationNO2)
+    WHERE {
+      ?obs bpm:hasSamplingPoint ?sp ;
+           bpm:isValid true ;
+           bpm:value ?value .
+      ?sp bpm:measuresPollutant pol:8 ;
+          bpm:hasStation ?st .
+    }
+    GROUP BY ?st
+  }
+  ?d rdfs:label ?district .
+}
+GROUP BY ?district ?facilities
+ORDER BY DESC(?facilities)
+LIMIT 5
+
+# -----------------------------------------------------------------------------
+# Q13. CQ05 - Which accessible facilities are near an "urban background"
+#      station rather than an "urban traffic" one?
+# -----------------------------------------------------------------------------
+SELECT ?facility ?station ?stationType ?distanceKm
+WHERE {
+  ?f a bpm:SportsFacility ;
+     rdfs:label ?facility ;
+     bpm:hasAccessibilityLevel/rdfs:label "Accesible"@es ;
+     bpm:hasNearestStation ?st ;
+     bpm:distanceToNearestStation ?distanceKm .
+  ?st rdfs:label ?station ;
+      bpm:hasStationType/rdfs:label ?stationType .
+  FILTER (?stationType = "Urbana fondo"@es)
+}
+ORDER BY ?station ?facility
+
+# -----------------------------------------------------------------------------
+# Q14. CQ06 - What is the pollutant with code 14? (its Wikidata entity will be
+#      added with the links of Hands-on 5)
+# -----------------------------------------------------------------------------
+SELECT ?pollutant ?name ?unit
+WHERE {
+  ?pollutant a bpm:Pollutant ;
+             bpm:pollutantCode "14"^^xsd:string ;
+             rdfs:label ?name ;
+             bpm:unit ?unit .
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Requirements - Madrid Smart Parking Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            color: #333;
+        }
+
+    h1 {
+        color: #1f4e79;
+        border-bottom: 2px solid #1f4e79;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        color: #2f6690;
+        margin-top: 35px;
+    }
+
+    h3 {
+        color: #444;
+        margin-top: 25px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .requirement {
+        margin-bottom: 18px;
+    }
+
+    .requirement strong {
+        color: #1f4e79;
+    }
+
+    .mockup {
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: monospace;
+        white-space: pre;
+    }
+</style>
+
+</head>
+
+<body>
+
+
+<h1>Application Requirements</h1>
+
+<h2>1. Application Overview</h2>
+
+<p>
+    The proposed application is a <strong>Madrid Smart Parking Explorer</strong>,
+    a web application for exploring municipal parking facilities in Madrid and
+    their historical occupancy information.
+</p>
+
+<p>
+    The application combines the municipal parking inventory dataset with the
+    historical parking occupancy dataset. It provides users with a map-based
+    interface to explore parking facilities, inspect their characteristics,
+    and analyze how their occupancy has changed over time.
+</p>
+
+<p>
+    The application will also demonstrate how the selected datasets can be
+    integrated and published as Linked Data.
+</p>
+
+
+<h2>2. Target Users</h2>
+
+<ul>
+    <li><strong>Drivers</strong>, who want to find and inspect parking facilities in Madrid.</li>
+    <li><strong>Citizens</strong>, who want to explore parking utilization in different areas.</li>
+    <li><strong>Urban mobility analysts</strong>, who want to examine historical parking occupancy.</li>
+    <li><strong>Researchers and developers</strong>, who want to explore relationships between parking facilities and geographic entities.</li>
+</ul>
+
+
+<h2>3. Functional Requirements</h2>
+
+<div class="requirement">
+    <p><strong>FR1 — Display Parking Facilities</strong></p>
+    <p>
+        The application shall display municipal parking facilities on an
+        interactive map. Each parking facility shall be represented as a
+        geographic point when sufficient location information is available.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>FR2 — Search for Parking Facilities</strong></p>
+    <p>
+        Users shall be able to search for a parking facility by its name
+        or other available identifier.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>FR3 — Filter Parking Facilities</strong></p>
+    <p>
+        Users shall be able to filter parking facilities according to
+        available attributes, such as:
+    </p>
+    <ul>
+        <li>Madrid district</li>
+        <li>Parking facility</li>
+        <li>Number of parking spaces</li>
+        <li>Historical occupancy period</li>
+    </ul>
+</div>
+
+<div class="requirement">
+    <p><strong>FR4 — Display Parking Information</strong></p>
+    <p>
+        When a user selects a parking facility, the application shall
+        display the available information about that facility, including:
+    </p>
+    <ul>
+        <li>Name</li>
+        <li>Location</li>
+        <li>District</li>
+        <li>Number of parking spaces</li>
+        <li>Other relevant attributes available in the dataset</li>
+    </ul>
+</div>
+
+<div class="requirement">
+    <p><strong>FR5 — Display Historical Occupancy</strong></p>
+    <p>
+        The application shall display historical occupancy information
+        for a selected parking facility. Users shall be able to select
+        a year or time period and inspect the corresponding occupancy data.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>FR6 — Visualize Occupancy Trends</strong></p>
+    <p>
+        The application shall provide a graphical visualization of
+        historical occupancy. For example, occupancy can be displayed
+        as a line chart showing changes over months or years.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>FR7 — Integrate the Selected Datasets</strong></p>
+    <p>
+        The application shall integrate the municipal parking inventory
+        data with the historical occupancy data. A parking facility
+        represented in the inventory dataset shall be connected to its
+        corresponding historical occupancy observations.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>FR8 — Provide Linked Data</strong></p>
+    <p>
+        The application shall represent relevant entities and relationships
+        as Linked Data. Parking facilities shall be associated with
+        geographic entities where possible, allowing them to be connected
+        with external geographic or open-data resources.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>FR9 — Display External Links</strong></p>
+    <p>
+        When an entity can be linked to an external resource, the application
+        shall provide a link to that resource, such as an OpenStreetMap
+        or other Linked Data resource.
+    </p>
+</div>
+
+
+<h2>4. Non-Functional Requirements</h2>
+
+<div class="requirement">
+    <p><strong>NFR1 — Usability</strong></p>
+    <p>
+        The application shall provide a simple web interface that allows
+        users to explore parking facilities without requiring knowledge
+        of RDF or SPARQL.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>NFR2 — Data Consistency</strong></p>
+    <p>
+        Information displayed by the application shall be derived from
+        the selected datasets and their Linked Data representation.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>NFR3 — Accessibility</strong></p>
+    <p>
+        Important information shall be accessible through textual interface
+        components and shall not depend exclusively on visual map elements.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>NFR4 — Performance</strong></p>
+    <p>
+        The application shall provide reasonable response times when
+        searching, filtering, and displaying parking facilities and
+        historical occupancy information.
+    </p>
+</div>
+
+<div class="requirement">
+    <p><strong>NFR5 — Open Data Compliance</strong></p>
+    <p>
+        The application shall preserve the attribution and licensing
+        requirements of the source datasets when redistributing or
+        displaying their data.
+    </p>
+</div>
+
+
+<h2>5. Main User Scenarios</h2>
+
+<h3>Scenario 1 — Explore Parking Facilities</h3>
+
+<ol>
+    <li>The user opens the application.</li>
+    <li>The map displays municipal parking facilities in Madrid.</li>
+    <li>The user selects a parking facility.</li>
+    <li>The application displays its location, district, capacity, and other available information.</li>
+</ol>
+
+<h3>Scenario 2 — Analyze Historical Occupancy</h3>
+
+<ol>
+    <li>The user selects a parking facility.</li>
+    <li>The user opens its historical occupancy information.</li>
+    <li>The user selects a year or time period.</li>
+    <li>The application displays the corresponding occupancy data as a chart.</li>
+</ol>
+
+<h3>Scenario 3 — Compare Parking Facilities</h3>
+
+<ol>
+    <li>The user selects two or more parking facilities.</li>
+    <li>The application retrieves their historical occupancy information.</li>
+    <li>The application displays their capacity and occupancy trends for comparison.</li>
+</ol>
+
+<h3>Scenario 4 — Explore Linked Geographic Information</h3>
+
+<ol>
+    <li>The user selects a parking facility.</li>
+    <li>The application displays its geographic information.</li>
+    <li>The user follows an external Linked Data link associated with the location or geographic entity.</li>
+    <li>The user can explore additional information about the corresponding geographic entity.</li>
+</ol>
+
+
+<h2>6. UI Mock-up</h2>
+
+<p>
+    The main interface is composed of a search and filtering area,
+    an interactive map, a parking information panel, and a historical
+    occupancy visualization.
+</p>
+
+<figure>
+    <img
+        src="./mock-up.png"
+        alt="Mock-up of the Madrid Smart Parking Explorer application"
+        style="max-width: 100%; height: auto;"
+    >
+    <figcaption>
+        Figure 1. Mock-up of the Madrid Smart Parking Explorer.
+    </figcaption>
+</figure>
+</html>

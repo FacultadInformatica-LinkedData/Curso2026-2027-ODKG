@@ -1,0 +1,168 @@
+# Queries to verify the RDF data of Group 08 (rdf/*.ttl).
+# The file holds 14 independent queries. All of them can be run on the union of the Turtle files with:
+#   python scripts/run_queries.py rdf/queries.sparql "rdf/*.ttl"
+# With another SPARQL tool, load the Turtle files into one graph and run one query at a time.
+# The expected result of each query, computed from the CSV files in csv/, is given in the comments.
+
+# Q1. Number of individuals per class.
+# Expected: ClimateShelter 550, District 10, DrinkingFountain 1760, Neighbourhood 73, ShelterCategory 11, StreetTree 145034, TreeSpecies 288.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+SELECT ?class (COUNT(DISTINCT ?individual) AS ?individuals)
+WHERE { ?individual a ?class }
+GROUP BY ?class
+ORDER BY ?class
+
+# Q2. Individuals without a label.
+# Expected: 0.
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT(DISTINCT ?individual) AS ?withoutLabel)
+WHERE {
+  ?individual a ?class .
+  FILTER NOT EXISTS { ?individual rdfs:label ?label }
+}
+
+# Q3. Subjects without a type.
+# Expected: 0.
+SELECT (COUNT(DISTINCT ?subject) AS ?withoutType)
+WHERE {
+  ?subject ?property ?value .
+  FILTER NOT EXISTS { ?subject a ?class }
+}
+
+# Q4. Labels that are empty or only a placeholder such as "-".
+# Expected: 0.
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT(*) AS ?placeholderLabels)
+WHERE {
+  ?individual rdfs:label ?label .
+  FILTER REGEX(STR(?label), "^[-\\s]*$")
+}
+
+# Q5. Drinking fountains named after their code ("Font <code>"), because the source has no name (empty cell or "-").
+# Expected: 353.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT(?fountain) AS ?namedAfterCode)
+WHERE {
+  ?fountain a hr:DrinkingFountain ;
+            rdfs:label ?label .
+  FILTER (STR(?label) = CONCAT("Font ", STRAFTER(STR(?fountain), "DrinkingFountain/")))
+}
+
+# Q6. Climate shelters, drinking fountains and street trees with no neighbourhood.
+# Expected: 1 row, the street tree 0345745AR (no neighbourhood in the source).
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+SELECT ?class ?element
+WHERE {
+  VALUES ?class { hr:ClimateShelter hr:DrinkingFountain hr:StreetTree }
+  ?element a ?class .
+  FILTER NOT EXISTS { ?element hr:isLocatedInNeighbourhood ?neighbourhood }
+}
+
+# Q7. Links whose target is not described in the data, per property.
+# Expected: dangling = 0 for every property; links: hasShelterCategory 550, hasSpecies 145034, isLocatedInNeighbourhood 147343, isPartOfDistrict 73.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+SELECT ?property (COUNT(*) AS ?links) (SUM(IF(BOUND(?target), 0, 1)) AS ?dangling)
+WHERE {
+  VALUES (?property ?targetClass) {
+    (hr:hasShelterCategory hr:ShelterCategory)
+    (hr:hasSpecies hr:TreeSpecies)
+    (hr:isLocatedInNeighbourhood hr:Neighbourhood)
+    (hr:isPartOfDistrict hr:District)
+  }
+  ?subject ?property ?object .
+  OPTIONAL { ?object a ?targetClass . BIND(?object AS ?target) }
+}
+GROUP BY ?property
+ORDER BY ?property
+
+# Q8. Neighbourhoods and districts with a number of labels different from one.
+# Expected: District 10 areas, 0 with a wrong number of labels; Neighbourhood 73 areas, 0.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?class (COUNT(?area) AS ?areas) (SUM(IF(?labels = 1, 0, 1)) AS ?notExactlyOneLabel)
+WHERE {
+  {
+    SELECT ?class ?area (COUNT(?label) AS ?labels)
+    WHERE {
+      VALUES ?class { hr:Neighbourhood hr:District }
+      ?area a ?class .
+      OPTIONAL { ?area rdfs:label ?label }
+    }
+    GROUP BY ?class ?area
+  }
+}
+GROUP BY ?class
+ORDER BY ?class
+
+# Q9. Neighbourhoods with a number of districts different from one.
+# Expected: 73 neighbourhoods, 0 with a wrong number of districts.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+SELECT (COUNT(?neighbourhood) AS ?neighbourhoods) (SUM(IF(?districts = 1, 0, 1)) AS ?notExactlyOneDistrict)
+WHERE {
+  SELECT ?neighbourhood (COUNT(?district) AS ?districts)
+  WHERE {
+    ?neighbourhood a hr:Neighbourhood .
+    OPTIONAL { ?neighbourhood hr:isPartOfDistrict ?district }
+  }
+  GROUP BY ?neighbourhood
+}
+
+# Q10. Datatype of every literal property.
+# Expected: coordinates xsd:decimal, hr:plantingDate xsd:dateTime, hr:website xsd:anyURI, rdfs:label rdf:langString (shelters, categories, fountains, areas) or xsd:string (trees, species), all the other properties xsd:string.
+SELECT ?property ?datatype (COUNT(*) AS ?values)
+WHERE {
+  ?subject ?property ?value .
+  FILTER isLiteral(?value)
+  BIND(DATATYPE(?value) AS ?datatype)
+}
+GROUP BY ?property ?datatype
+ORDER BY ?property ?datatype
+
+# Q11. Climate shelters per district.
+# Expected: Eixample 84, Sant Andreu 75, Sant Martí 71, Sants-Montjuïc 58, Nou Barris 57, Ciutat Vella 54, Horta-Guinardó 48, Sarrià-Sant Gervasi 39, Gràcia 36, Les Corts 28.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?district (COUNT(DISTINCT ?shelter) AS ?shelters)
+WHERE {
+  ?shelter a hr:ClimateShelter ;
+           hr:isLocatedInNeighbourhood/hr:isPartOfDistrict/rdfs:label ?district .
+}
+GROUP BY ?district
+ORDER BY DESC(?shelters) ?district
+
+# Q12. Climate shelters per category.
+# Expected: Civic centre 139, Market 75, Other 69, Park 58, Swimming pool 54, Library 48, Health centre 28, Sports centre 25, Water play area 19, School 18, Museum 17.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?category (COUNT(?shelter) AS ?shelters)
+WHERE { ?shelter hr:hasShelterCategory/rdfs:label ?category }
+GROUP BY ?category
+ORDER BY DESC(?shelters) ?category
+
+# Q13. The ten most frequent tree species.
+# Expected: Platanus × acerifolia 40067, Celtis australis 19387, Styphnolobium japonicum 8164, Tipuana tipu 6635, Melia azedarach 6258, Brachychiton populneus 5235, Pyrus calleryana 'Chanticleer' 3457, Jacaranda mimosifolia 3236, Ligustrum lucidum 3190, Prunus cerasifera 'Pissardii' 2771.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?species (COUNT(?tree) AS ?trees)
+WHERE { ?tree hr:hasSpecies/rdfs:label ?species }
+GROUP BY ?species
+ORDER BY DESC(?trees) ?species
+LIMIT 10
+
+# Q14. Climate shelters, drinking fountains and street trees of the ten neighbourhoods with most trees.
+# Expected (shelters, fountains, trees): la Dreta de l'Eixample 23, 59, 6087; Sant Andreu 38, 54, 5000; les Corts 14, 37, 4953; el Poble-sec 18, 77, 4734; la Verneda i la Pau 7, 36, 4243; el Besòs i el Maresme 12, 64, 4160; Pedralbes 4, 29, 4157; el Poblenou 11, 46, 3847; Sant Gervasi - Galvany 9, 31, 3689; l'Antiga Esquerra de l'Eixample 7, 30, 3608.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?neighbourhood
+       (SUM(IF(BOUND(?class) && ?class = hr:ClimateShelter, 1, 0)) AS ?shelters)
+       (SUM(IF(BOUND(?class) && ?class = hr:DrinkingFountain, 1, 0)) AS ?fountains)
+       (SUM(IF(BOUND(?class) && ?class = hr:StreetTree, 1, 0)) AS ?trees)
+WHERE {
+  ?area a hr:Neighbourhood ;
+        rdfs:label ?neighbourhood .
+  OPTIONAL { ?element hr:isLocatedInNeighbourhood ?area ; a ?class }
+}
+GROUP BY ?area ?neighbourhood
+ORDER BY DESC(?trees) ?neighbourhood
+LIMIT 10

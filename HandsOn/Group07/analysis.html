@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsche Bahn delays — Dataset analysis</title>
+<style>
+:root{color-scheme:light;--ink:#172c3e;--muted:#526575;--accent:#126c73;--line:#dbe5ea}
+*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1180px;margin:auto;background:white;padding:48px 46px 60px}header{border-bottom:3px solid var(--accent);padding-bottom:24px}h1{font-size:32px;line-height:1.2;margin:10px 0 16px}h2{font-size:25px;margin-top:44px}h3{font-size:19px;margin-top:28px}p{margin:12px 0}.eyebrow{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}.meta{color:var(--muted)}a{color:#09666e}nav{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.5;margin:16px 0}th,td{text-align:left;padding:12px;border:1px solid var(--line);vertical-align:top}th{background:#e9f2f3}tbody tr:nth-child(even){background:#f8fafb}.scroll{overflow-x:auto}.schema{min-width:640px}.schema th:nth-child(1){width:22%}code{font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:#f0f5f7;border-left:3px solid var(--accent);padding:18px;overflow-wrap:anywhere}.note{background:#eef6f6;border-left:4px solid var(--accent);padding:14px 18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}.stat{border:1px solid var(--line);padding:14px}.stat strong{display:block;font-size:25px;color:var(--accent)}.stat span{font-size:14px;color:var(--muted)}li{margin:7px 0}footer{border-top:1px solid var(--line);margin-top:36px;padding-top:16px;font-size:13px;color:var(--muted)}
+@media(max-width:700px){main{padding:26px 18px}h1{font-size:26px}.stats{grid-template-columns:repeat(2,1fr)}}@media print{body{background:white}main{max-width:none;padding:0;font-size:11px}h2{page-break-after:avoid}tr{break-inside:avoid}.scroll{overflow:visible}.schema{min-width:0;font-size:9px}th,td{padding:5px}nav{display:none}a{color:inherit}}
+.compact td,.compact th{padding:9px 12px}
+</style>
+</head>
+<body><main>
+<header>
+<div class="eyebrow">Open Data &amp; Knowledge Graphs · Hands-on 2</div>
+<h1>Deutsche Bahn delays<br>Dataset analysis</h1>
+<p class="meta">File: <code>DBtrainrides.csv</code> · Full-dataset analysis · 5 October 2026</p>
+<nav aria-label="Contents"><a href="#data">1. Data</a><a href="#licensing">2. Licensing</a><a href="#naming">3. Resource naming</a></nav>
+</header>
+
+<section id="data">
+<h2>1. Data analysis</h2>
+<h3>What does the file contain?</h3>
+<p>The <a href="https://www.kaggle.com/datasets/nokkyu/deutsche-bahn-db-delays/data">Deutsche Bahn (DB) delays</a> dataset, published by Nokkyu on Kaggle, describes train schedules and delays at German stations. According to the publisher, the data comes from Deutsche Bahn’s Timetables and StaDa APIs, queried every hour from 8 to 14 July 2024.</p>
+<p><strong>Each row represents a train stop at a station, as recorded during collection.</strong> The same stop may appear several times, so the number of rows is not the number of trains.</p>
+<div class="stats">
+<div class="stat"><strong>2,061,357</strong><span>rows analysed</span></div>
+<div class="stat"><strong>20</strong><span>columns</span></div>
+<div class="stat"><strong>1,996</strong><span>stations (EVA identifiers)</span></div>
+<div class="stat"><strong>16</strong><span>federal states</span></div>
+</div>
+<p>The full file also contains 296 line labels and 1,292 city/locality labels, or 1,283 after trimming surrounding spaces. The CSV uses UTF-8, a comma separator and a header row.</p>
+
+<h3>What do the columns mean?</h3>
+<p>Distinct counts exclude empty cells. Identifiers and postal codes remain text.</p>
+<div class="scroll"><table class="schema"><thead><tr><th>Column</th><th>Meaning</th><th>Type</th><th>Missing values</th><th>Distinct values</th></tr></thead><tbody>
+<tr><td><code>ID</code></td><td>Source stop identifier; may repeat.</td><td>Text</td><td>0</td><td>2,029,894</td></tr>
+<tr><td><code>line</code></td><td>Line name or number; not a unique journey identifier.</td><td>Text</td><td>0</td><td>296</td></tr>
+<tr><td><code>path</code></td><td>Previous stations, in order, separated by |.</td><td>Text</td><td>211,355</td><td>22,153</td></tr>
+<tr><td><code>eva_nr</code></td><td>EVA station identifier.</td><td>Text</td><td>0</td><td>1,996</td></tr>
+<tr><td><code>category</code></td><td>Station category, from 1 to 5.</td><td>Integer</td><td>0</td><td>5</td></tr>
+<tr><td><code>station</code></td><td>Station name.</td><td>Text</td><td>0</td><td>1,996</td></tr>
+<tr><td><code>state</code></td><td>Land (German federal state).</td><td>Text</td><td>0</td><td>16</td></tr>
+<tr><td><code>city</code></td><td>City or locality.</td><td>Text</td><td>0</td><td>1,292</td></tr>
+<tr><td><code>zip</code></td><td>Postal code; keep as text.</td><td>Text</td><td>0</td><td>1,651</td></tr>
+<tr><td><code>long</code></td><td>Longitude, in degrees.</td><td>Decimal</td><td>0</td><td>1,995</td></tr>
+<tr><td><code>lat</code></td><td>Latitude, in degrees.</td><td>Decimal</td><td>0</td><td>1,996</td></tr>
+<tr><td><code>arrival_plan</code></td><td>Scheduled arrival time.</td><td>Date and time</td><td>211,355</td><td>10,084</td></tr>
+<tr><td><code>departure_plan</code></td><td>Scheduled departure time.</td><td>Date and time</td><td>0</td><td>10,089</td></tr>
+<tr><td><code>arrival_change</code></td><td>Updated arrival time known at collection.</td><td>Date and time</td><td>475,630</td><td>10,122</td></tr>
+<tr><td><code>departure_change</code></td><td>Updated departure time known at collection.</td><td>Date and time</td><td>339,926</td><td>10,118</td></tr>
+<tr><td><code>arrival_delay_m</code></td><td>Arrival delay, in minutes.</td><td>Integer</td><td>0</td><td>116</td></tr>
+<tr><td><code>departure_delay_m</code></td><td>Departure delay, in minutes.</td><td>Integer</td><td>0</td><td>121</td></tr>
+<tr><td><code>info</code></td><td>Information or disruption message.</td><td>Text</td><td>1,416,016</td><td>7</td></tr>
+<tr><td><code>arrival_delay_check</code></td><td>Arrival status: on_time or delay.</td><td>Text</td><td>0</td><td>2</td></tr>
+<tr><td><code>departure_delay_check</code></td><td>Departure status: on_time or delay.</td><td>Text</td><td>0</td><td>2</td></tr>
+</tbody></table></div>
+<p class="note"><strong>Example:</strong> a scheduled arrival at 00:00 and departure at 00:01 describe a one-minute stop. If the updated times are 00:03 and 00:04, the delay is three minutes. The <code>change</code> columns contain updated times, not delay durations or necessarily verified actual times.</p>
+
+<h3>What ranges are observed?</h3>
+<table class="compact"><thead><tr><th>Measure</th><th>Minimum</th><th>Maximum</th></tr></thead><tbody>
+<tr><td>Scheduled arrival</td><td>07/07/2024 23:37</td><td>14/07/2024 23:59</td></tr>
+<tr><td>Scheduled departure</td><td>08/07/2024 00:00</td><td>15/07/2024 00:10</td></tr>
+<tr><td>Updated arrival</td><td>07/07/2024 23:39</td><td>15/07/2024 01:03</td></tr>
+<tr><td>Updated departure</td><td>08/07/2024 00:00</td><td>15/07/2024 01:04</td></tr>
+<tr><td>Arrival / departure delay</td><td>0 minutes</td><td>159 minutes</td></tr>
+<tr><td>Longitude</td><td>6.070715</td><td>14.97908</td></tr>
+<tr><td>Latitude</td><td>47.411032</td><td>54.906839</td></tr>
+</tbody></table>
+<p>Times may fall outside the collection dates, especially around midnight. The <code>delay</code> label means a delay of more than 5 minutes: 110,953 arrival records and 111,348 departure records. The remaining records are labelled <code>on_time</code>.</p>
+
+<h3>What needs cleaning or careful interpretation?</h3>
+<ul>
+<li><strong>Missing data:</strong> keep the columns and rows. In RDF, omit the property for an empty cell. A missing scheduled arrival may indicate a starting station or unavailable information; the file cannot establish the cause.</li>
+<li><strong>Zero delays:</strong> all missing updated times have a reported delay of 0. This zero does not prove that the train was observed on time. Missing information does not establish a cancellation either.</li>
+<li><strong>Consistency:</strong> the delay equals updated time minus scheduled time for all 1,585,720 comparable arrivals and 1,721,431 departures. Seven updated arrivals have no scheduled arrival. Arrival–departure ordering has not been checked across the full file.</li>
+<li><strong>Duplicates:</strong> 6,725 rows are identical copies. There are 2,029,894 distinct IDs and 31,463 repeated occurrences; 24,738 of these differ from the first record with the same ID. The ID alone cannot identify every observation.</li>
+<li><strong>Text:</strong> trim city labels in 58,092 rows. Check the 115,126 four-digit postal codes before adding a leading zero. Preserve station order in <code>path</code>.</li>
+<li><strong>Dates:</strong> use ISO 8601 for RDF, for example <code>2024-07-08T00:00:00</code>. No time zone is given, so do not add an arbitrary offset.</li>
+</ul>
+</section>
+
+<section id="licensing">
+<h2>2. Licensing</h2>
+<table class="compact"><thead><tr><th>Item</th><th>Choice / source</th></tr></thead><tbody>
+<tr><td>Publisher / distributor of the selected dataset</td><td>Nokkyu compiled and publishes the dataset through Kaggle; Kaggle is the hosting and distribution platform. [1, 2]</td></tr>
+<tr><td>Original data provider</td><td>Deutsche Bahn, through the official Timetables and StaDa APIs. [3]</td></tr>
+<tr><td>Rightsholder / licensing authority</td><td>The selected dataset is compiled and published by Nokkyu, while the underlying data originates from Deutsche Bahn's Timetables and StaDa APIs. The official DB API Marketplace licenses both datasets under CC BY 4.0.</td></tr>
+<tr><td>Kaggle-declared licence</td><td><strong>MIT</strong> — declared in the Kaggle metadata for this dataset, version 3, checked 5 October 2026. This is distinct from the licence governing the underlying DB data. [2]</td></tr>
+<tr><td>Upstream data licence</td><td><strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> for both Timetables and StaDa, as stated by the official DB API Marketplace. [3]</td></tr>
+<tr><td>Licence for the generated RDF dataset</td><td><strong>CC BY 4.0</strong>, because the RDF derives from and republishes data originating from the CC BY 4.0 DB sources.</td></tr>
+</tbody></table>
+<p>The RDF publication will retain appropriate attribution to Deutsche Bahn and will also credit Nokkyu and Kaggle as the immediate dataset source, with links to the dataset and the official DB API pages.</p>
+</section>
+
+<section id="naming">
+<h2>3. Resource naming</h2>
+<h3>Principle</h3>
+<p>A <strong>URI</strong> is an identifier in the form of a web address. We separate ontology terms (such as the <code>Station</code> class) from individual resources (such as Aachen Hbf station).</p>
+<p>The proposed base is <code>https://example.org/db-delays/</code>. This example domain differs from Protégé’s default domain.</p>
+
+<h3>Ontology classes and properties</h3>
+<p>Terms use the path <code>ontology/#</code>: the fragment after <code>#</code> identifies a class or property. Class names start with a capital letter; property names start with a lowercase letter.</p>
+<table class="compact"><thead><tr><th>Term</th><th>Example URI</th></tr></thead><tbody>
+<tr><td>Class: station</td><td><code>https://example.org/db-delays/ontology/#Station</code></td></tr>
+<tr><td>Class: recorded stop</td><td><code>https://example.org/db-delays/ontology/#TrainStop</code></td></tr>
+<tr><td>Property: stop at a station</td><td><code>https://example.org/db-delays/ontology/#atStation</code></td></tr>
+<tr><td>Property: arrival delay</td><td><code>https://example.org/db-delays/ontology/#arrivalDelayMinutes</code></td></tr>
+</tbody></table>
+<p>The ontology document URI is <code>https://example.org/db-delays/ontology/</code>. Properties are defined directly in the ontology namespace, rather than under a class URI.</p>
+
+<h3>Stations, stops, cities and states</h3>
+<p>Individuals use the path <code>resource/</code>, followed by their class. Add the paths below to the base <code>https://example.org/db-delays/</code>.</p>
+<table class="compact"><thead><tr><th>Resource</th><th>Rule</th><th>Example path</th></tr></thead><tbody>
+<tr><td>Station (<code>Station</code>)</td><td>Use the EVA identifier.</td><td><code>resource/Station/8000001</code><br>Aachen Hbf</td></tr>
+<tr><td>Stop (<code>TrainStop</code>)</td><td>Use the source ID and an observation number.</td><td><code>resource/TrainStop/1573967790757085557-2407072312-14/observation/1</code></td></tr>
+<tr><td>City (<code>City</code>)</td><td>Use the state and cleaned locality name.</td><td><code>resource/City/Nordrhein-Westfalen/Aachen</code></td></tr>
+<tr><td>State (<code>State</code>)</td><td>Use its name.</td><td><code>resource/State/Nordrhein-Westfalen</code></td></tr>
+</tbody></table>
+<p><strong>For repeated IDs:</strong> assign observation number 1 to the first record. A different row with the same ID receives number 2, then 3, and so on. An identical copy reuses the same number. Save this mapping with the original values and source version so later conversions reuse the same URIs.</p>
+<p>Reuse the same station URI for the same EVA identifier. Clean names before creating URIs and encode special characters, for example <code>Bad Homburg → Bad%20Homburg</code>. A name correction must preserve the assigned URI.</p>
+<p>The model links a stop to a station (<code>atStation</code>), a station to a city (<code>inCity</code>), and a city to a state (<code>inState</code>). Stations and cities can later be linked to Wikidata or DBpedia after verifying their identities.</p>
+
+<h3>What will a URI return?</h3>
+<p>When published, a request can ask for an HTML page for reading or Turtle for RDF data: this is <strong>content negotiation</strong>. For a station or stop, an HTTP <code>303</code> redirect will lead to its description. This is a proposed publication design; no service is deployed.</p>
+</section>
+
+<section id="references">
+<h2>Sources</h2>
+<ul>
+<li><a href="ODKG%2008.MGLD%20-%20Ontology%20assignment2.pdf">ODKG 08.MGLD — Ontology assignment2</a>, pages 48–50: document requirements.</li>
+<li><a href="DBtrainrides.csv">DBtrainrides.csv</a>: statistics calculated on all rows, excluding the header; empty cells counted as missing.</li>
+<li><a href="https://www.kaggle.com/datasets/nokkyu/deutsche-bahn-db-delays/data">Kaggle dataset</a> and <a href="https://www.kaggle.com/api/v1/datasets/view/nokkyu/deutsche-bahn-db-delays">metadata</a>; <a href="https://github.com/Nokkyuu/Fantastic_trains_and_when_to_find_them">collection repository</a>.</li>
+<li><a href="https://opensource.org/license/mit">MIT License</a>. External references retained from the previous analysis.</li>
+</ul>
+</section>
+<footer>Hands-on 2 · Data analysis, licensing and resource naming</footer>
+</main></body></html>

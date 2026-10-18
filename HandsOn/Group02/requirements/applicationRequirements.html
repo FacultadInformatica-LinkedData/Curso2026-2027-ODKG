@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Requirements - Personalized Chicago Park & Art Explorer</title>
+    <style>
+        :root {
+            --primary: #1b4332;
+            --primary-light: #2d6a4f;
+            --accent: #d8f3dc;
+            --highlight: #e76f51;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #212529;
+            --border: #dee2e6;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: var(--primary-light);
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        .badge-core { background: #d1e7dd; color: #0f5132; }
+        .badge-extra { background: #fff3cd; color: #664d03; }
+
+        /* Mockup Wireframe Styling */
+        .mockup-wrapper {
+            background: #f1f3f5;
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .mockup-header {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mockup-frame {
+            background: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .mockup-nav {
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mockup-body {
+            padding: 20px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background: var(--primary-light);
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .pill-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            background: #e9ecef;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .pill.active {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .map-placeholder {
+            background: #e9ecef;
+            border: 1px solid #dee2e6;
+            height: 280px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .route-path {
+            position: absolute;
+            border: 2px dashed var(--highlight);
+            width: 70%;
+            height: 50%;
+            border-radius: 50%;
+        }
+
+        .pin {
+            position: absolute;
+            background: var(--highlight);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .card {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Application Requirements Specification</h1>
+        <p><strong>Project Name:</strong> Personalized Chicago Park &amp; Art Explorer</p>
+    </header>
+
+    <section>
+        <h2>1. Application Overview &amp; Objectives</h2>
+        <p>
+            The <strong>Personalized Chicago Park &amp; Art Explorer</strong> is a smart city web application designed to help Chicago residents and tourists discover public parks, outdoor facilities, and public artworks tailored to their geographic location, available time, and individual interests (e.g., sports, culture, family activities, sculpture walks).
+        </p>
+        <p>
+            By integrating open datasets from the Chicago Park District (Facilities and Artworks) with user-generated reviews, ratings, tags, and optional visitor photos, the system generates customized spatial recommendations and time-restricted art walking itineraries. 
+        </p>
+    </section>
+
+    <section>
+        <h2>2. Functional Requirements (FR)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Requirement Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>FR-01</strong></td>
+                    <td>Location &amp; Preference Selection</td>
+                    <td>The system shall allow users to input their current location (GPS or manual park/neighborhood selection), available time budget (e.g., 30 to 180 minutes), and interest categories (Sculpture, Sports, Family, Walking, Culture).</td>
+                    <td><span class="badge badge-core">Core</span></td>
+                </tr>
+                <tr>
+                    <td><strong>FR-02</strong></td>
+                    <td>Park &amp; Facility Recommendation</td>
+                    <td>The system shall recommend suitable Chicago Park District facilities based on proximity, user interests, and facility attributes.</td>
+                    <td><span class="badge badge-core">Core</span></td>
+                </tr>
+                <tr>
+                    <td><strong>FR-03</strong></td>
+                    <td>Personalized Art Itinerary Generator</td>
+                    <td>The application shall construct a time-bound walking route connecting relevant public artworks based on starting location and time budget (e.g., a 90-minute sculpture walking tour near Lincoln Park).</td>
+                    <td><span class="badge badge-core">Core</span></td>
+                </tr>
+                <tr>
+                    <td><strong>FR-04</strong></td>
+                    <td>Interactive Map Visualization</td>
+                    <td>The system shall display park facilities, artworks, and generated routes on an interactive map with turn-by-turn itinerary waypoints.</td>
+                    <td><span class="badge badge-core">Core</span></td>
+                </tr>
+                <tr>
+                    <td><strong>FR-05</strong></td>
+                    <td>Facility &amp; Artwork Feedback (Reviews, Ratings &amp; Photos)</td>
+                    <td>Users shall be able to submit star ratings (1–5), write text comments, assign qualitative tags (e.g., <i>family-friendly</i>, <i>well-maintained</i>, <i>crowded</i>), and optionally upload a photo with their review for a specific facility or artwork.</td>
+                    <td><span class="badge badge-extra">App-Generated</span></td>
+                </tr>
+                <tr>
+                    <td><strong>FR-06</strong></td>
+                    <td>Aggregated Review Filtering</td>
+                    <td>The recommendation algorithm shall utilize aggregated user ratings and tags as supplementary ranking criteria for personalized recommendations.</td>
+                    <td><span class="badge badge-extra">App-Generated</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    
+
+    <section>
+        <h2>3. User Interface Mockups &amp; Descriptions</h2>
+
+        <!-- Mockup 1 -->
+        <div class="mockup-wrapper">
+            <div class="mockup-header">
+                <span>Mockup 1: Personalization &amp; Search Input Interface</span>
+                <span class="badge badge-core">Core Feature</span>
+            </div>
+            <div class="mockup-frame">
+                <div class="mockup-nav">
+                    <strong>Chicago Park &amp; Art Explorer</strong>
+                    <span>[ Menu ]</span>
+                </div>
+                <div class="mockup-body">
+                    <div class="grid-2col">
+                        <div>
+                            <div class="form-group">
+                                <label>Your Current Location / Neighborhood</label>
+                                <input type="text" class="form-control" value="Near Lincoln Park, Chicago, IL" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Available Time Budget: <strong>90 Minutes</strong></label>
+                                <input type="range" min="30" max="180" value="90" style="width:100%;">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>Select Your Interests</label>
+                                <div class="pill-group">
+                                    <span class="pill active">Sculpture ✓</span>
+                                    <span class="pill active">Walking ✓</span>
+                                    <span class="pill">Sports</span>
+                                    <span class="pill">Culture</span>
+                                    <span class="pill">Family-Friendly</span>
+                                </div>
+                            </div>
+                            <button class="btn" style="width:100%; margin-top:10px;">🔍 Generate Explorer Itinerary</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Allows users to specify their location, available duration, and activity preferences. Directly supports the main scenario ("90 minutes, sculpture and walking near Lincoln Park").</p>
+        </div>
+
+        <!-- Mockup 2 -->
+        <div class="mockup-wrapper">
+            <div class="mockup-header">
+                <span>Mockup 2: Generated Itinerary &amp; Map View</span>
+                <span class="badge badge-core">Core Feature</span>
+            </div>
+            <div class="mockup-frame">
+                <div class="mockup-nav">
+                    <strong>Lincoln Park Art &amp; Walking Route (~85 mins)</strong>
+                    <span>[ Save Route ]</span>
+                </div>
+                <div class="mockup-body grid-2col">
+                    <div>
+                        <div class="map-placeholder">
+                            <div class="route-path"></div>
+                            <div class="pin" style="top:30%; left:25%;">1</div>
+                            <div class="pin" style="top:50%; left:60%;">2</div>
+                            <div class="pin" style="top:70%; left:45%;">3</div>
+                            <span>[ Interactive Map Canvas ]</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <strong>Stop 1: Schiller Monument</strong>
+                            <p style="font-size:0.85rem; margin:4px 0;">Lincoln Park • Bronze Sculpture • ~20 mins walk/view</p>
+                            <span class="badge badge-extra">★ 4.7 (12 reviews)</span>
+                        </div>
+                        <div class="card">
+                            <strong>Stop 2: Standing Lincoln Statue</strong>
+                            <p style="font-size:0.85rem; margin:4px 0;">Lincoln Park Plaza • Historic Artwork • ~30 mins</p>
+                            <span class="badge badge-extra">★ 4.9 (28 reviews)</span>
+                        </div>
+                        <div class="card">
+                            <strong>Stop 3: South Pond Conservatory Garden</strong>
+                            <p style="font-size:0.85rem; margin:4px 0;">Nature &amp; Public Art • ~35 mins walking</p>
+                            <span class="badge badge-extra">★ 4.8 (19 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Displays the calculated route on an interactive map alongside a step-by-step breakdown showing artworks, facilities, expected walking/viewing durations, and community ratings.</p>
+        </div>
+
+        <!-- Mockup 3 -->
+        <div class="mockup-wrapper">
+            <div class="mockup-header">
+                <span>Mockup 3: Facility / Artwork Detail &amp; User Review Interface</span>
+                <span class="badge badge-extra">App-Generated Data Feature</span>
+            </div>
+            <div class="mockup-frame">
+                <div class="mockup-nav">
+                    <strong>Artwork Detail: Schiller Monument</strong>
+                    <span>[ Back ]</span>
+                </div>
+                <div class="mockup-body grid-2col">
+                    <div>
+                        <div style="background:#e9ecef; height:180px; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#6c757d; text-align:center; padding:0 15px;">
+                            [ No official image available ]<br>
+                            <span style="font-size:0.8rem;">Photos are contributed by visitors through reviews.</span>
+                        </div>
+                        <h3>Schiller Monument</h3>
+                        <p><strong>Park:</strong> Lincoln Park | <strong>Artist:</strong> Ernst Rau</p>
+                        <p><strong>Tags:</strong> <span class="pill">Historic</span> <span class="pill">Well-Maintained</span> <span class="pill">Quiet</span></p>
+                    </div>
+                    <div>
+                        <div class="card" style="background:#f8f9fa;">
+                            <strong>User Rating &amp; Review Form</strong>
+                            <div class="form-group" style="margin-top:8px;">
+                                <label>Your Rating:</label>
+                                <span style="color:#f39c12; font-size:1.2rem;">★ ★ ★ ★ ★</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Add Tags:</label>
+                                <input type="text" class="form-control" placeholder="e.g. family-friendly, accessible">
+                            </div>
+                            <div class="form-group">
+                                <label>Your Review:</label>
+                                <textarea class="form-control" rows="2" placeholder="Write your comments..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Add a Photo <span style="font-weight:normal; color:#6c757d;">(optional)</span>:</label>
+                                <input type="file" class="form-control" accept="image/*">
+                                <small style="color:#6c757d;">Share a photo of this park or artwork to help other visitors.</small>
+                            </div>
+                            <button class="btn" style="padding:6px 12px; font-size:0.85rem;">Submit Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Enables visitors to inspect artwork and facility details, view aggregated metadata, submit star ratings, post comments, apply qualitative tags used by the recommendation engine, and optionally contribute a photo with their review. Since the source datasets do not provide park or artwork images, displayed photos are user-generated rather than dataset-provided.</p>
+        </div>
+    </section>
+
+    <h2>Compliance & Licensing</h2>
+    <p>To comply with the Chicago Open Data Portal Terms of Use, the final application and data repository will feature the following mandatory disclaimer prominently in the footer:</p>
+    <blockquote style="background: #f1f1f1; padding: 15px; font-size: 14px; font-style: italic;">
+        “This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago. The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site. The data provided at this site is subject to change at any time. It is understood that the data provided at this site is being used at one’s own risk.”
+    </blockquote>
+</div>
+
+</body>
+</html>

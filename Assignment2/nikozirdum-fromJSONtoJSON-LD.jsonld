@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "city": "http://randomlink.com/",
+    "name": "city:name",
+    "population": "city:population",
+    "country": "city:country",
+    "universities": "city:universities",
+    "fullName": "city:fullName",
+    "acronym": "city:acronym"
+  },
+  "@id": "city:Zagreb",
+  "@type": "city:City",
+  "name": "Zagreb",
+  "population": 767131,
+  "country": "Croatia",
+  "universities": [
+    {
+      "@id": "city:UniversityOfZagreb",
+      "@type": "city:University",
+      "fullName": "University of Zagreb",
+      "acronym": "UNIZG"
+    },
+    {
+      "@id": "city:ZagrebUniversityOfAppliedSciences",
+      "@type": "city:University",
+      "fullName": "Zagreb University of Applied Sciences",
+      "acronym": "TVZ"
+    }
+  ]
+}

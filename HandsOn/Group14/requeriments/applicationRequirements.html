@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Requirements</title>
+</head>
+<body>
+    <h1>Application Requirements - Madrid Hydration Map</h1>
+
+    <h2>1. Application Description</h2>
+    <p>The application will be a lightweight, interactive map tailored for pedestrians, runners, and tourists in Madrid. Its primary objective is to display the exact locations of the nearest public drinking water fountains and verify their operational status in real-time (e.g., currently in service or out of order).</p>
+
+    <h2>2. Target Users</h2>
+    <ul>
+        <li><strong>Runners and Athletes:</strong> People doing outdoor workouts who need quick and reliable access to hydration points.</li>
+        <li><strong>Tourists and Visitors:</strong> People exploring the city on foot who are looking for free, safe drinking water during their sightseeing tours.</li>
+        <li><strong>Pedestrians and Pet Owners:</strong> Everyday citizens walking through the city streets or parks who need water for themselves or their pets.</li>
+    </ul>
+
+    <h2>3. Use Cases</h2>
+    <ul>
+        <li>As a pedestrian or athlete, I want to open the web application and immediately see the drinking water fountains around my current location so I can hydrate.</li>
+        <li>As a user, I want to clearly see if a fountain is marked as "long-term out of service" to avoid walking to a dry fountain in vain.</li>
+        <li>As a user, I want to filter the map to show only fountains located within parks and green zones, so I can find water away from road traffic.</li>
+    </ul>
+
+    <h2>4. System Requirements</h2>
+    <ul>
+        <li><strong>R1. Geolocation:</strong> The system must request and process the user's current GPS location to center the map and find nearby fountains.</li>
+        <li><strong>R2. Status Filtering:</strong> The system must provide filtering capabilities to show only fountains that are currently "in service" and hide broken ones.</li>
+        <li><strong>R3. Location Filtering:</strong> The system must allow users to filter fountains by their environment (e.g., parks and green zones vs. public streets).</li>
+        <li><strong>R4. Distance Calculation:</strong> The system must calculate and display the exact distance (in meters) between the user's location and the closest hydration points.</li>
+        <li><strong>R5. Mobile-First Design:</strong> The application must have a responsive design optimized specifically for mobile devices and small screens used outdoors.</li>
+        <li><strong>R6. Performance and Usability:</strong> The user interface must be intuitive, require minimal clicks to find water, and ensure fast loading times over mobile data networks.</li>
+    </ul>
+
+    <h2>5. User Interface Description (Mock-up)</h2>
+    <p>The interface will be designed to be fast and easily accessible from mobile devices. It will consist of the following main sections:</p>
+    <ul>
+        <li><strong>Top Header:</strong> Will display the title "Madrid Fountains" and a quick-action button labeled "Find nearest" that triggers the user's device geolocation.</li>
+        <li><strong>Control Panel (Left sidebar):</strong>
+            <ul>
+                <li>A status filter toggle: "Only in service".</li>
+                <li>A location filter dropdown: "All", "Only in parks/green zones", "Only on public streets".</li>
+                <li>A dynamic text-based list where you can select the localization of th fountain you want to see.</li>
+            </ul>
+        </li>
+        <li><strong>Map Area (Center):</strong> 
+            <ul>
+                <li>Will occupy the vast majority of the screen space.</li>
+                <li><strong>Blue dots:</strong> Will visually represent fountains that are "in service".</li>
+                <li><strong>Grey dots:</strong> Will visually represent fountains that are "temporarily closed".</li>
+                <li><strong>Red dots:</strong> Will visually represent fountains that are "out of service".</li>
+                </ul>
+        </li>
+    </ul>
+    <p>Below is a visual representation / sketch of the user interface layout:</p>
+    <div>
+        <img src="MockUp.png" alt="Application User Interface Mockup" width="600">
+    </div>
+</body>
+</html>

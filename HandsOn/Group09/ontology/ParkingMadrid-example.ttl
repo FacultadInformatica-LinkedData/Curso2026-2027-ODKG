@@ -1,0 +1,106 @@
+@prefix dis: <https://parking-madrid.example.org/resource/district/> .
+@prefix occ: <https://parking-madrid.example.org/resource/occupancy/> .
+@prefix par: <https://parking-madrid.example.org/resource/parking/> .
+@prefix pm: <https://parking-madrid.example.org/ontology#> .
+
+# -------------------------------------------------------- Districts
+
+dis:7 a pm:District ;
+    pm:hasDistrictCode 7 ;
+    pm:hasDistrictName "CHAMBERI" .
+
+dis:1 a pm:District ;
+    pm:hasDistrictCode 1 ;
+    pm:hasDistrictName "CENTRO" .
+
+dis:14 a pm:District ;
+    pm:hasDistrictCode 14 ;
+    pm:hasDistrictName "MORATALAZ" .
+
+# -------------------------------------------------------- Car parks
+
+par:5000 a pm:RotationalParkingFacility ;
+    pm:hasParCode 5000 ;
+    pm:hasParkingName "ALMAGRO" ;
+    pm:hasTotalSpaces 453 ;
+    pm:locatedInDistrict dis:7 .
+
+par:5012 a pm:RotationalParkingFacility ;
+    pm:hasParCode 5012 ;
+    pm:hasParkingName "OLAVIDE" ;
+    pm:hasTotalSpaces 383 ;
+    pm:locatedInDistrict dis:7 .
+
+par:114 a pm:RotationalParkingFacility ;
+    pm:hasParCode 114 ;
+    pm:hasParkingName "SEVILLA" ;
+    pm:hasTotalSpaces 393 ;
+    pm:locatedInDistrict dis:1 .
+
+par:5010 a pm:RotationalParkingFacility ;
+    pm:hasParCode 5010 ;
+    pm:hasParkingName "MOSTENSES" ;
+    pm:hasTotalSpaces 362 ;
+    pm:locatedInDistrict dis:1 .
+
+par:1419 a pm:RotationalParkingFacility ;
+    pm:hasParCode 1419 ;
+    pm:hasParkingName "ENCUENTRO" ;
+    pm:hasTotalSpaces 90 ;
+    pm:locatedInDistrict dis:14 .
+
+# -------------------------------------------------------- Monthly occupancies
+
+occ:5000-2025-01 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:5000 ;
+    pm:hasReferencePeriod "2025-01" ;
+    pm:hasNumberOfSpaces 453 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles 173 ;
+    pm:hasOccupancyRate 38.3 ;
+    pm:hasDaytimeOccupancyRate 51.5 .
+
+occ:5000-2025-08 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:5000 ;
+    pm:hasReferencePeriod "2025-08" ;
+    pm:hasNumberOfSpaces 453 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles 572 ;
+    pm:hasOccupancyRate 126.2 ;
+    pm:hasDaytimeOccupancyRate 142.6 .
+
+occ:5012-2025-01 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:5012 ;
+    pm:hasReferencePeriod "2025-01" ;
+    pm:hasNumberOfSpaces 383 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles 234 ;
+    pm:hasOccupancyRate 61.0 ;
+    pm:hasDaytimeOccupancyRate 70.4 .
+
+occ:114-2025-01 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:114 ;
+    pm:hasReferencePeriod "2025-01" ;
+    pm:hasNumberOfSpaces 393 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles 40 ;
+    pm:hasOccupancyRate 10.2 ;
+    pm:hasDaytimeOccupancyRate 18.3 .
+
+occ:5010-2025-01 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:5010 ;
+    pm:hasReferencePeriod "2025-01" ;
+    pm:hasNumberOfSpaces 362 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles 205 ;
+    pm:hasOccupancyRate 56.5 ;
+    pm:hasDaytimeOccupancyRate 68.3 .
+
+occ:1419-2025-03 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:1419 ;
+    pm:hasReferencePeriod "2025-03" ;
+    pm:hasNumberOfSpaces 90 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles 0 ;
+    pm:hasOccupancyRate 0.5 ;
+    pm:hasDaytimeOccupancyRate 0.8 .

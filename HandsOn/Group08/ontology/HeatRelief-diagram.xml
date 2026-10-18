@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Pagina-1" id="cFGGhMjwWcGqUZ2XAe0m">
+    <mxGraphModel dx="5007" dy="2341" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:DrinkingFountain&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="-440" y="-370" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:ShelterCategory&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="-654.5" y="-180" as="geometry" />
+        </mxCell>
+        <mxCell id="7" edge="1" parent="1" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" value="" source="25" target="6">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-594.98" y="-282.5" as="sourcePoint" />
+            <mxPoint x="-594.98" y="-182.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" connectable="0" parent="7" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#ffffff;" value="&lt;div&gt;hr:hasShelterCategory&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1269" as="geometry">
+            <mxPoint x="4.17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" edge="1" parent="1" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" value="" source="19" target="22">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-120.21000000000004" y="-257.5" as="sourcePoint" />
+            <mxPoint x="-120.21000000000004" y="-127.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" connectable="0" parent="9" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#ffffff;" value="&lt;div&gt;hr:hasSpecies&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1269" as="geometry">
+            <mxPoint x="4.17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:District&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="-835" y="-410" as="geometry" />
+        </mxCell>
+        <mxCell id="12" edge="1" parent="1" source="14" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;arcSize=0;rounded=0;" target="11" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-600" y="-431.67" as="sourcePoint" />
+            <mxPoint x="-387.9999999999998" y="-431.67" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" connectable="0" parent="12" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#ffffff;" value="&lt;div&gt;hr:isPartOfDistrict&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1269" as="geometry">
+            <mxPoint x="4.17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:Neighbourhood&lt;/b&gt;" vertex="1">
+          <mxGeometry height="32.5" width="130" x="-850" y="-572.5" as="geometry" />
+        </mxCell>
+        <mxCell id="15" edge="1" parent="1" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="14" value="" source="24">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-460" y="-555" as="sourcePoint" />
+            <mxPoint x="-527.9999999999998" y="-261.67" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" connectable="0" parent="15" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#ffffff;" value="&lt;div&gt;hr:isLocatedInNeighbourhood&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1269" as="geometry">
+            <mxPoint x="4.17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;geo:SpatialThing&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="-440" y="-709.9999999999998" as="geometry" />
+        </mxCell>
+        <mxCell id="18" edge="1" parent="1" source="24" style="endArrow=block;html=1;fontColor=#000099;endFill=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endSize=8;arcSize=0;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="hr-geo-attrs" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="-360" y="-550" as="sourcePoint" />
+            <mxPoint x="-170" y="-440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;div&gt;hr:treeCategory: xsd:string&lt;/div&gt;&lt;div&gt;hr:plantingDate: xsd:dateTime&lt;/div&gt;&lt;div&gt;hr:irrigationType: xsd:string&lt;/div&gt;&lt;div&gt;hr:irrigationWaterType: xsd:string&lt;/div&gt;&lt;div&gt;hr:greenSpace: xsd:string&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82.5" width="201" x="-220" y="-340" as="geometry" />
+        </mxCell>
+        <mxCell id="20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:StreetTree&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="201" x="-220" y="-370" as="geometry" />
+        </mxCell>
+        <mxCell id="21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];dashed=0;" value="&lt;div&gt;hr:scientificName: xsd:string&lt;/div&gt;&lt;div&gt;hr:spanishName: xsd:string&lt;/div&gt;&lt;div&gt;hr:catalanName: xsd:string&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="-209.5" y="-90" as="geometry" />
+        </mxCell>
+        <mxCell id="22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;hr:TreeSpecies&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="-209.5" y="-120" as="geometry" />
+        </mxCell>
+        <mxCell id="23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;div&gt;hr:streetAddress: xsd:string&lt;/div&gt;&lt;div&gt;hr:etrs89X: xsd:decimal&lt;/div&gt;&lt;div&gt;hr:etrs89Y: xsd:decimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="197" x="-458.5" y="-540" as="geometry" />
+        </mxCell>
+        <mxCell id="24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:UrbanElement&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="197" x="-458.5" y="-570" as="geometry" />
+        </mxCell>
+        <mxCell id="25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;div&gt;hr:openingHours: xsd:string&lt;/div&gt;&lt;div&gt;hr:email: xsd:string&lt;/div&gt;&lt;div&gt;hr:website: xsd:anyURI&lt;/div&gt;&lt;div&gt;hr:telephone: xsd:string&lt;/div&gt;" vertex="1">
+          <mxGeometry height="75" width="171" x="-680" y="-340" as="geometry" />
+        </mxCell>
+        <mxCell id="26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" value="&lt;b&gt;hr:ClimateShelter&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="171" x="-680" y="-370" as="geometry" />
+        </mxCell>
+        <mxCell id="27" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;" value="&lt;div&gt;@base: https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#&lt;/div&gt;&lt;div&gt;hr: https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#&lt;/div&gt;&lt;div&gt;geo: http://www.w3.org/2003/01/geo/wgs84_pos#&lt;/div&gt;&lt;div&gt;owl: http://www.w3.org/2002/07/owl#&lt;/div&gt;&lt;div&gt;rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#&lt;/div&gt;&lt;div&gt;rdfs: http://www.w3.org/2000/01/rdf-schema#&lt;/div&gt;&lt;div&gt;xsd: http://www.w3.org/2001/XMLSchema#&lt;/div&gt;&lt;div&gt;dcterms: http://purl.org/dc/terms/&lt;/div&gt;&lt;div&gt;vann: http://purl.org/vocab/vann/&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="460" x="-1360" y="-770" as="geometry" />
+        </mxCell>
+        <mxCell id="28" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="&lt;div&gt;owl:Ontology: https://w3id.org/barcelona-heat-relief/ontology/HeatRelief&lt;/div&gt;&lt;div&gt;dcterms:title: &quot;Barcelona Heat Relief Ontology&quot;@en&lt;/div&gt;&lt;div&gt;dcterms:description: &quot;Lightweight ontology describing climate shelters, drinking fountains and street trees of Barcelona, and the neighbourhoods and districts where they are.&quot;@en&lt;/div&gt;&lt;div&gt;dcterms:created: &quot;2026-10-05T00:00:00&quot;^^xsd:dateTime&lt;/div&gt;&lt;div&gt;dcterms:creator: &quot;Group 08&quot;&lt;/div&gt;&lt;div&gt;dcterms:license: &amp;lt;https://creativecommons.org/licenses/by/4.0/&amp;gt;&lt;/div&gt;&lt;div&gt;vann:preferredNamespacePrefix: &quot;hr&quot;&lt;/div&gt;&lt;div&gt;vann:preferredNamespaceUri: &quot;https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#&quot;&lt;/div&gt;&lt;div&gt;owl:versionInfo: &quot;1.0&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="275" width="460" x="-1360" y="-600" as="geometry" />
+        </mxCell>
+      <mxCell id="hr-geo-attrs" value="&lt;div&gt;geo:lat: xsd:decimal&lt;/div&gt;&lt;div&gt;geo:long: xsd:decimal&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" vertex="1" parent="1"><mxGeometry x="-440" y="-680" width="160" height="40" as="geometry" /></mxCell><mxCell id="hr-sub-cs" value="" style="endArrow=block;endFill=0;endSize=8;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="26" target="23"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="-594.5" y="-400" /><mxPoint x="-360" y="-400" /></Array></mxGeometry></mxCell><mxCell id="hr-sub-df" value="" style="endArrow=block;endFill=0;endSize=8;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="23"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="hr-sub-st" value="" style="endArrow=block;endFill=0;endSize=8;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="23"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="-119.5" y="-400" /><mxPoint x="-360" y="-400" /></Array></mxGeometry></mxCell><mxCell id="hr-facility" value="&lt;b&gt;hr:Facility&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];" vertex="1" parent="1"><mxGeometry x="-960" y="-317.5" width="120" height="30" as="geometry" /></mxCell><mxCell id="hr-isHostedBy" value="hr:isHostedBy" style="endArrow=classic;html=1;endSize=8;rounded=0;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="hr-facility"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="hr-disjoint" value="⊥" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=17;" vertex="1" parent="1"><mxGeometry x="-380" y="-300" width="40" height="40" as="geometry" /></mxCell><mxCell id="hr-disjoint-df" value="" style="startArrow=diamondThin;startFill=0;startSize=12;endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="hr-disjoint" target="3"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="hr-disjoint-cs" value="" style="startArrow=diamondThin;startFill=0;startSize=12;endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="hr-disjoint" target="26"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="hr-disjoint-st" value="" style="startArrow=diamondThin;startFill=0;startSize=12;endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="hr-disjoint" target="20"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="hr-names-note" value="&lt;div&gt;Names of shelters, fountains, neighbourhoods and districts:&lt;/div&gt;&lt;div&gt;rdfs:label with a language tag (for example @ca)&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="-1360" y="-305" width="380" height="50" as="geometry" /></mxCell></root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

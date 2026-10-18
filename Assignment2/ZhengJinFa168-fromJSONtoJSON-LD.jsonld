@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "dbo": "http://dbpedia.org/ontology/",
+    "dbr": "http://dbpedia.org/resource/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "City": "schema:City",
+    "Country": "schema:Country",
+    "CollegeOrUniversity": "schema:CollegeOrUniversity",
+    "city": "schema:name",
+    "name": "schema:name",
+    "population": { "@id": "dbo:populationTotal", "@type": "xsd:integer" },
+    "country": { "@id": "schema:containedInPlace", "@type": "@id" },
+    "universities": { "@id": "dbo:university", "@container": "@set" },
+    "fullName": "schema:name",
+    "acronym": "schema:alternateName"
+  },
+  "@id": "dbr:Madrid",
+  "@type": "City",
+  "city": "Madrid",
+  "population": 3477497,
+  "country": {
+    "@id": "dbr:Spain",
+    "@type": "Country",
+    "name": "Spain"
+  },
+  "universities": [
+    {
+      "@type": "CollegeOrUniversity",
+      "fullName": "Universidad Politécnica de Madrid",
+      "acronym": "UPM"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "fullName": "Universidad Complutense de Madrid",
+      "acronym": "UCM"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "fullName": "Universidad Autónoma de Madrid",
+      "acronym": "UAM"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "fullName": "Universidad Nacional de Educación a Distancia",
+      "acronym": "UNED"
+    }
+  ]
+}

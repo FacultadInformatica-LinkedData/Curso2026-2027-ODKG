@@ -1,0 +1,769 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "register_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna register_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "institution_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna institution_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "institution_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna institution_name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "created",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna created utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "modified",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna modified utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_roadtype_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_roadtype_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_roadtype_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_roadtype_name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_road_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_road_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_road_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_road_name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_start_street_number",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_start_street_number utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_end_street_number",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_end_street_number utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_neighborhood_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_neighborhood_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_neighborhood_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_neighborhood_name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_district_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_district_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_district_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_district_name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_zip_code",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_zip_code utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_town",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_town utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_main_address",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_main_address utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_type",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna addresses_type utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_attribute_id",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_attribute_id utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_category",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_category utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_attribute_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_attribute_name utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_value",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_value utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_outstanding",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_outstanding utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_description",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna values_description utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_25831_x",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_25831_x utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_25831_y",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_25831_y utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_4326_lat",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_4326_lat utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_4326_lon",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_4326_lon utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "timetable",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna timetable utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_25831_x",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_25831_x utilizzando l'espressione value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_25831_y",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_25831_y utilizzando l'espressione value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_4326_lat",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_4326_lat utilizzando l'espressione value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "geo_epgs_4326_lon",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna geo_epgs_4326_lon utilizzando l'espressione value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "created",
+    "expression": "grel:value.substring(0,19)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Keep local date-time of created without UTC conversion (drop microseconds and offset): value.substring(0,19)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "modified",
+    "expression": "grel:value.substring(0,19)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Keep local date-time of modified without UTC conversion (drop microseconds and offset): value.substring(0,19)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name",
+    "expression": "grel:value.replace(\"Cilmàtic\", \"Climàtic\").replace(\"Bibiblioteca\", \"Biblioteca\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna name utilizzando l'espressione grel:value.replace(\"Cilmàtic\", \"Climàtic\").replace(\"Bibiblioteca\", \"Biblioteca\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Refugi climàtic",
+          "Refugi Climàtic"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Refugi climàtic"
+      },
+      {
+        "from": [
+          "Espai amb Jocs d'Aigua",
+          "Espai  amb Jocs d'Aigua"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Espai amb Jocs d'Aigua"
+      }
+    ],
+    "description": "Modifica in massa celle nella colonna name"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "name",
+    "expression": "grel:with(value.toLowercase(), v,\n  if(v.contains(\"biblioteca\"), \"Biblioteca\",\n  if(v.contains(\"piscina\"), \"Piscina\",\n  if(or(v.contains(\"parc\"), v.contains(\"jardí\"), v.contains(\"jardins\")), \"Parc\",\n  if(or(v.contains(\"escola\"), v.contains(\"institut\")), \"Escola\",\n  if(v.contains(\"museu\"), \"Museu\",\n  if(or(v.contains(\"casal\"), v.contains(\"centre cívic\")), \"Equipament\",\n  if(v.contains(\"aigua\"), \"Espai d'aigua\",\n  \"Altre\"))))))))",
+    "onError": "set-to-blank",
+    "newColumnName": "category",
+    "columnInsertIndex": 2,
+    "description": "Crea la colonna category allindice {1} basato sulla colonna {2} utilizzando lespressione grel:with(value.toLowercase(), v,\n  if(v.contains(\"biblioteca\"), \"Biblioteca\",\n  if(v.contains(\"piscina\"), \"Piscina\",\n  if(or(v.contains(\"parc\"), v.contains(\"jardí\"), v.contains(\"jardins\")), \"Parc\",\n  if(or(v.contains(\"escola\"), v.contains(\"institut\")), \"Escola\",\n  if(v.contains(\"museu\"), \"Museu\",\n  if(or(v.contains(\"casal\"), v.contains(\"centre cívic\")), \"Equipament\",\n  if(v.contains(\"aigua\"), \"Espai d'aigua\",\n  \"Altre\"))))))))"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "register_id",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Riordina le righe"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "register_id",
+    "expression": "grel:value.replace(/[^0-9]/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna register_id utilizzando l'espressione grel:value.replace(/[^0-9]/, \"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "timetable",
+    "expression": "grel:forEach(slice(value.parseHtml().select(\"tr\"), 1), r, r.htmlText().replace(/\\s+/, \" \").trim()).join(\" | \")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna timetable utilizzando l'espressione grel:forEach(slice(value.parseHtml().select(\"tr\"), 1), r, r.htmlText().replace(/\\s+/, \" \").trim()).join(\" | \")"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "category",
+    "description": "Rimuovi la colonna category"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "name",
+    "expression": "grel:with(value.toLowercase(), v,\n  if(v.contains(\"bibliotec\"), \"Biblioteca\",\n  if(v.contains(\"piscin\"), \"Piscina\",\n  if(or(v.contains(\"esportiu\"), v.contains(\"poliesportiu\"), v.contains(\"pavelló\")), \"Esport\",\n  if(or(v.contains(\"parc\"), v.contains(\"jardí\"), v.contains(\"jardins\")), \"Parc\",\n  if(or(v.contains(\"escola\"), v.contains(\"institut\"), v.contains(\"col·legi\")), \"Escola\",\n  if(or(v.contains(\"museu\"), v.contains(\"fundació\"), v.contains(\"caixaforum\"), v.contains(\"cosmocaixa\"), v.contains(\"filmoteca\")), \"Cultura\",\n  if(or(v.contains(\"farmàcia\"), v.contains(\"atenció primària\"), v.contains(\"clínica\"), v.contains(\"hospital\"), v.contains(\"salut\"), v.startsWith(\"cap\")), \"Salut\",\n  if(or(v.contains(\"mercat\"), v.contains(\"llibreria\"), v.contains(\"comerç\"), v.contains(\"comercial\"), v.contains(\"botiga\"), v.contains(\"consum\")), \"Comerç\",\n  if(or(v.contains(\"casal\"), v.contains(\"centre cívic\"), v.contains(\"ateneu\"), v.contains(\"associació\"), v.contains(\"gent gran\"), v.contains(\"jove\")), \"Equipament\",\n  if(or(v.contains(\"aigua\"), v.contains(\"llac\")), \"Espai d'aigua\",\n  if(or(v.startsWith(\"centre\"), v.startsWith(\"espai\"), v.startsWith(\"oficina\")), \"Equipament\",\n  \"Altre\"))))))))))))",
+    "onError": "set-to-blank",
+    "newColumnName": "category",
+    "columnInsertIndex": 2,
+    "description": "Crea la colonna category allindice {1} basato sulla colonna {2} utilizzando lespressione grel:with(value.toLowercase(), v,\n  if(v.contains(\"bibliotec\"), \"Biblioteca\",\n  if(v.contains(\"piscin\"), \"Piscina\",\n  if(or(v.contains(\"esportiu\"), v.contains(\"poliesportiu\"), v.contains(\"pavelló\")), \"Esport\",\n  if(or(v.contains(\"parc\"), v.contains(\"jardí\"), v.contains(\"jardins\")), \"Parc\",\n  if(or(v.contains(\"escola\"), v.contains(\"institut\"), v.contains(\"col·legi\")), \"Escola\",\n  if(or(v.contains(\"museu\"), v.contains(\"fundació\"), v.contains(\"caixaforum\"), v.contains(\"cosmocaixa\"), v.contains(\"filmoteca\")), \"Cultura\",\n  if(or(v.contains(\"farmàcia\"), v.contains(\"atenció primària\"), v.contains(\"clínica\"), v.contains(\"hospital\"), v.contains(\"salut\"), v.startsWith(\"cap\")), \"Salut\",\n  if(or(v.contains(\"mercat\"), v.contains(\"llibreria\"), v.contains(\"comerç\"), v.contains(\"comercial\"), v.contains(\"botiga\"), v.contains(\"consum\")), \"Comerç\",\n  if(or(v.contains(\"casal\"), v.contains(\"centre cívic\"), v.contains(\"ateneu\"), v.contains(\"associació\"), v.contains(\"gent gran\"), v.contains(\"jove\")), \"Equipament\",\n  if(or(v.contains(\"aigua\"), v.contains(\"llac\")), \"Espai d'aigua\",\n  if(or(v.startsWith(\"centre\"), v.startsWith(\"espai\"), v.startsWith(\"oficina\")), \"Equipament\",\n  \"Altre\"))))))))))))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "category",
+    "expression": "grel:with(value, c,\n  if(c==\"Biblioteca\",\"Library\", if(c==\"Piscina\",\"SwimmingPool\",\n  if(c==\"Esport\",\"SportsCentre\", if(c==\"Parc\",\"Park\",\n  if(c==\"Escola\",\"School\", if(c==\"Cultura\",\"Museum\",\n  if(c==\"Salut\",\"HealthCentre\", if(c==\"Comerç\",\"Market\",\n  if(c==\"Equipament\",\"CivicCentre\", if(c==\"Espai d'aigua\",\"WaterPlayArea\",\n  \"Other\")))))))))))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna category utilizzando l'espressione grel:with(value, c,\n  if(c==\"Biblioteca\",\"Library\", if(c==\"Piscina\",\"SwimmingPool\",\n  if(c==\"Esport\",\"SportsCentre\", if(c==\"Parc\",\"Park\",\n  if(c==\"Escola\",\"School\", if(c==\"Cultura\",\"Museum\",\n  if(c==\"Salut\",\"HealthCentre\", if(c==\"Comerç\",\"Market\",\n  if(c==\"Equipament\",\"CivicCentre\", if(c==\"Espai d'aigua\",\"WaterPlayArea\",\n  \"Other\")))))))))))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "values_value",
+    "expression": "grel:if(cells[\"values_attribute_name\"].value.toLowercase().contains(\"mail\"), value, null)",
+    "onError": "set-to-blank",
+    "newColumnName": "email",
+    "columnInsertIndex": 26,
+    "description": "Crea la colonna email allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(cells[\"values_attribute_name\"].value.toLowercase().contains(\"mail\"), value, null)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "values_value",
+    "expression": "grel:if(cells[\"values_attribute_name\"].value.toLowercase().contains(\"web\"), value, null)",
+    "onError": "set-to-blank",
+    "newColumnName": "website",
+    "columnInsertIndex": 26,
+    "description": "Crea la colonna website allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(cells[\"values_attribute_name\"].value.toLowercase().contains(\"web\"), value, null)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "values_value",
+    "expression": "grel:if(cells[\"values_attribute_name\"].value.toLowercase().contains(\"tel\"), value, null)",
+    "onError": "set-to-blank",
+    "newColumnName": "telephone",
+    "columnInsertIndex": 26,
+    "description": "Crea la colonna telephone allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(cells[\"values_attribute_name\"].value.toLowercase().contains(\"tel\"), value, null)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "website",
+    "expression": "grel:if(or(value.startsWith(\"http\"), value.startsWith(\"www\")), value, null)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column website using expression grel:if(or(value.startsWith(\"http\"), value.startsWith(\"www\")), value, null)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_town",
+    "expression": "grel:if(value==\"BARCELONA\",\"Barcelona\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column addresses_town using expression grel:if(value==\"BARCELONA\",\"Barcelona\",value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_road_name",
+    "expression": "grel:with('{\"003406\":\"Carrer de l\\'Agricultura\",\"025500\":\"Carrer de l\\'Arquitectura\",\"026605\":\"Carrer de l\\'Artesania\",\"034308\":\"la Rambla\",\"050803\":\"Carrer de Buenaventura Muñoz\",\"076807\":\"Carrer de Sardenya\",\"086200\":\"Carrer del Concili de Trento\",\"087009\":\"Carrer del Comte Borrell\",\"116402\":\"Avinguda de l\\'Estadi\",\"119003\":\"Passeig de Fabra i Puig\",\"144601\":\"Avinguda Diagonal\",\"169409\":\"Gran Via de les Corts Catalanes\",\"185700\":\"Carrer del Llobregós\",\"197302\":\"Carrer de la Marina\",\"223504\":\"Carrer de Muntadas\",\"230000\":\"Passeig de la Mare de Déu del Coll\",\"251102\":\"Carrer del Perill\",\"286504\":\"Carrer de Roger de Flor\",\"289852\":\"Carrer de Rosselló i Porcel\",\"295709\":\"Carrer de Sant Adrià\",\"296202\":\"Carrer Gran de Sant Andreu\",\"305100\":\"Passeig de Sant Joan\",\"316809\":\"Passeig de Santa Madrona\",\"343903\":\"Travessera de les Corts\",\"352507\":\"Passeig de la Vall d\\'Hebron\",\"700802\":\"Plaça de Josep Maria Huertas Claveria\",\"700815\":\"Carrer de Miguel Hernández\",\"700827\":\"Avinguda del Cardenal Vidal i Barraquer\",\"701420\":\"Plaça de Fort Pienc\",\"701685\":\"Carrer d\\'Olympe de Gouges\"}'.parseJson(), m, if(isNonBlank(m[cells[\"addresses_road_id\"].value]), m[cells[\"addresses_road_id\"].value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column addresses_road_name using expression grel:with('{\"003406\":\"Carrer de l\\'Agricultura\",\"025500\":\"Carrer de l\\'Arquitectura\",\"026605\":\"Carrer de l\\'Artesania\",\"034308\":\"la Rambla\",\"050803\":\"Carrer de Buenaventura Muñoz\",\"076807\":\"Carrer de Sardenya\",\"086200\":\"Carrer del Concili de Trento\",\"087009\":\"Carrer del Comte Borrell\",\"116402\":\"Avinguda de l\\'Estadi\",\"119003\":\"Passeig de Fabra i Puig\",\"144601\":\"Avinguda Diagonal\",\"169409\":\"Gran Via de les Corts Catalanes\",\"185700\":\"Carrer del Llobregós\",\"197302\":\"Carrer de la Marina\",\"223504\":\"Carrer de Muntadas\",\"230000\":\"Passeig de la Mare de Déu del Coll\",\"251102\":\"Carrer del Perill\",\"286504\":\"Carrer de Roger de Flor\",\"289852\":\"Carrer de Rosselló i Porcel\",\"295709\":\"Carrer de Sant Adrià\",\"296202\":\"Carrer Gran de Sant Andreu\",\"305100\":\"Passeig de Sant Joan\",\"316809\":\"Passeig de Santa Madrona\",\"343903\":\"Travessera de les Corts\",\"352507\":\"Passeig de la Vall d\\'Hebron\",\"700802\":\"Plaça de Josep Maria Huertas Claveria\",\"700815\":\"Carrer de Miguel Hernández\",\"700827\":\"Avinguda del Cardenal Vidal i Barraquer\",\"701420\":\"Plaça de Fort Pienc\",\"701685\":\"Carrer d\\'Olympe de Gouges\"}'.parseJson(), m, if(isNonBlank(m[cells[\"addresses_road_id\"].value]), m[cells[\"addresses_road_id\"].value], value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_zip_code",
+    "expression": "grel:if(and(value==\"080\", cells[\"addresses_road_name\"].value==\"Plaça Major de Nou Barris\"), \"08042\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column addresses_zip_code using expression grel:if(and(value==\"080\", cells[\"addresses_road_name\"].value==\"Plaça Major de Nou Barris\"), \"08042\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "addresses_road_name",
+    "expression": "grel:with('{\"C Bronze\":\"Carrer del Bronze\",\"C Sant Quintí\":\"Carrer de Sant Quintí\",\"Av Francesc Cambó\":\"Avinguda de Francesc Cambó\",\"C Jaume Huguet\":\"Carrer de Jaume Huguet\",\"Pl Unió\":\"Plaça de la Unió\",\"C Sibelius\":\"Carrer de Sibelius\",\"C Violant Hongria Rna Aragó\":\"Carrer de Violant d\\'Hongria Reina d\\'Aragó\",\"C Bac de Roda\":\"Carrer de Bac de Roda\",\"C Manacor\":\"Carrer de Manacor\",\"Pl Alfons el Savi\":\"Plaça d\\'Alfons el Savi\",\"C Sagrera\":\"Carrer de la Sagrera\",\"Av Eduard Maristany\":\"Avinguda d\\'Eduard Maristany\",\"Pl Àngel Pestaña\":\"Plaça d\\'Àngel Pestaña\",\"C Mineria\":\"Carrer de la Mineria\",\"C Menorca\":\"Carrer de Menorca\",\"C Llacuna\":\"Carrer de la Llacuna\",\"C Montmany\":\"Carrer de Montmany\",\"C Manigua\":\"Carrer de la Manigua\",\"Pg Santa Coloma\":\"Passeig de Santa Coloma\",\"C Can Caralleu\":\"Carrer de Can Caralleu\",\"Av Litoral\":\"Avinguda del Litoral\",\"C Romaní\":\"Carrer del Romaní\",\"C Biure\":\"Carrer de Biure\",\"C Virgili\":\"Carrer de Virgili\",\"C Brusi\":\"Carrer de Brusi\",\"C Arquitecte Moragas\":\"Carrer de l\\'Arquitecte Moragas\",\"C Sant Eloi\":\"Carrer de Sant Eloi\",\"Pl Joan Casanelles\":\"Plaça de Joan Casanelles\",\"C Ignasi Iglésias\":\"Carrer d\\'Ignasi Iglésias\",\"C Garbí\":\"Carrer del Garbí\",\"C Ajuntament\":\"Carrer de l\\'Ajuntament\",\"Av Mare de Déu de Montserrat\":\"Avinguda de la Mare de Déu de Montserrat\",\"C Mossèn Josep Bundó\":\"Carrer de Mossèn Josep Bundó\",\"C Andrea Dòria\":\"Carrer d\\'Andrea Dòria\",\"C Sots-tinent Navarro\":\"Carrer del Sots-tinent Navarro\",\"C Maignon\":\"Carrer de Maignon\"}'.parseJson(), m, if(isNonBlank(m[value]), m[value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Expand abbreviated street prefixes (C/Av/Pl/Pg) to full official names"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "values_value",
+    "expression": "grel:if(value.contains(\"<\"), value.parseHtml().htmlText().replace(/\\uFEFF/, \"\").replace(/\\s+/, \" \").trim(), value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Strip HTML tags from values_value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name",
+    "expression": "grel:value.replace(/\\s+/, \" \").trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Collapse multiple spaces in name"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "institution_name",
+    "expression": "grel:value.replace(/\\s+/, \" \").trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Collapse multiple spaces in institution_name"
+  }
+]

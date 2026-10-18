@@ -1,0 +1,316 @@
+name: Check Homework Report
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [master]
+    paths:
+      - 'Assignment4/**/task06.py'
+      - 'Assignment4/**/task06_mandatory.py'
+      - 'Assignment4/**/task07.py'
+      - 'Assignment4/**/task07_mandatory.py'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v4
+        with:
+          path: submission
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout trusted files from the base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check submitted filenames
+        id: scripts
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          import subprocess
+
+          changed = subprocess.check_output(
+              [
+                  'git',
+                  '-C',
+                  'submission',
+                  'diff',
+                  '--name-only',
+                  os.environ['BASE_SHA'],
+                  'HEAD',
+              ],
+              text=True
+          ).splitlines()
+
+          folders = set()
+          submitted_tasks = set()
+          task_files = {}
+
+          for filename in changed:
+              match = re.fullmatch(
+                  r'Assignment4/([^/\r\n]+)/(task06(?:_mandatory)?|task07(?:_mandatory)?)\.py',
+                  filename
+              )
+
+              if match is None:
+                  continue
+
+              folder = match.group(1)
+              filename_task = match.group(2)
+
+              if filename_task.startswith('task06'):
+                  task = 'task06'
+              else:
+                  task = 'task07'
+
+              folders.add(folder)
+              submitted_tasks.add((folder, task))
+
+              if task in task_files:
+                  raise SystemExit(
+                      f'Multiple files submitted for {task}: '
+                      f'{task_files[task]} and {filename_task}.py'
+                  )
+
+              task_files[task] = filename_task + '.py'
+
+          if not submitted_tasks:
+              raise SystemExit(
+                  'No Task 06 or Task 07 files were found in the pull request'
+              )
+
+          if len(folders) != 1:
+              raise SystemExit(
+                  'Task 06 and Task 07 must be in the same student folder'
+              )
+
+          folder = folders.pop()
+
+          expected = {
+              (folder, 'task06'),
+              (folder, 'task07'),
+          }
+
+          if submitted_tasks != expected:
+              raise SystemExit(
+                  'Submit one Task 06 file and one Task 07 file '
+                  'in the same student folder'
+              )
+
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
+              out.write(f'folder={folder}\n')
+              out.write(f'task06_file={task_files["task06"]}\n')
+              out.write(f'task07_file={task_files["task07"]}\n')
+          PY
+
+      - name: Install validator
+        run: |
+          python -m pip install 'oeg-sw-class==0.1.0' 'rdflib==7.6.0'
+
+      - name: Run scripts and check complete reports
+        env:
+          STUDENT_FOLDER: ${{ steps.scripts.outputs.folder }}
+          TASK06_FILE: ${{ steps.scripts.outputs.task06_file }}
+          TASK07_FILE: ${{ steps.scripts.outputs.task07_file }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          import subprocess
+          import sys
+          import tempfile
+          from pathlib import Path
+
+          root = Path.cwd()
+
+          folder = (
+              root
+              / 'submission'
+              / 'Assignment4'
+              / os.environ['STUDENT_FOLDER']
+          )
+
+          fixture = (
+              root
+              / 'trusted'
+              / 'Assignment4'
+              / 'course_materials'
+              / 'rdf'
+              / 'data07.ttl'
+          )
+
+          if not fixture.is_file():
+              raise SystemExit(f'Missing trusted fixture: {fixture}')
+
+          expected = {
+              '06': [
+                  f'TASK 6.{n} OK'
+                  for n in range(1, 8)
+              ],
+              '07': [
+                  'TASK 7.1a OK',
+                  'TASK 7.1b OK',
+                  'TASK 7.2a OK',
+                  'TASK 7.2b OK',
+                  'TASK 7.3 OK',
+                  'TASK 7.4 OK',
+              ],
+          }
+
+          script_files = {
+              '06': os.environ['TASK06_FILE'],
+              '07': os.environ['TASK07_FILE'],
+          }
+
+          errors = []
+
+          for number, lines in expected.items():
+              script_name = script_files[number]
+              script = folder / script_name
+
+              if not script.is_file() or script.is_symlink():
+                  errors.append(
+                      f'Missing or invalid script: {script}'
+                  )
+                  continue
+
+              with tempfile.TemporaryDirectory(
+                  prefix=f'task{number}-'
+              ) as temp:
+                  work = Path(temp)
+
+                  (work / 'data').mkdir()
+
+                  shutil.copy2(
+                      fixture,
+                      work / 'data' / 'data07.ttl'
+                  )
+
+                  shutil.copy2(
+                      fixture,
+                      work / 'data07.ttl'
+                  )
+
+                  local_rdf = (
+                      work
+                      / 'Assignment4'
+                      / 'course_materials'
+                      / 'rdf'
+                  )
+
+                  local_rdf.mkdir(parents=True)
+
+                  shutil.copy2(
+                      fixture,
+                      local_rdf / 'data07.ttl'
+                  )
+
+                  env = {
+                      k: v
+                      for k, v in os.environ.items()
+                      if not k.startswith(
+                          ('GITHUB_', 'ACTIONS_', 'RUNNER_')
+                      )
+                      and k not in (
+                          'GH_TOKEN',
+                          'GITHUB_TOKEN',
+                      )
+                  }
+
+                  env['HOME'] = str(work)
+
+                  try:
+                      result = subprocess.run(
+                          [
+                              sys.executable,
+                              '-I',
+                              str(script.resolve()),
+                          ],
+                          cwd=work,
+                          env=env,
+                          text=True,
+                          capture_output=True,
+                          timeout=120,
+                          check=False,
+                      )
+
+                  except subprocess.TimeoutExpired:
+                      errors.append(
+                          f'{script_name} timed out'
+                      )
+                      continue
+
+                  print(f'--- {script_name} ---')
+                  print(result.stdout[-4000:])
+                  print(
+                      result.stderr[-4000:],
+                      file=sys.stderr
+                  )
+
+                  if result.returncode:
+                      errors.append(
+                          f'{script_name} exited with '
+                          f'{result.returncode}'
+                      )
+                      continue
+
+                  report = (
+                      work
+                      / f'report_result_Task_{number}.txt'
+                  )
+
+                  if not report.is_file():
+                      errors.append(
+                          f'Missing report: {report.name}'
+                      )
+                      continue
+
+                  shutil.copy2(
+                      report,
+                      root / report.name
+                  )
+
+                  actual = report.read_text(
+                      encoding='utf-8'
+                  ).splitlines()
+
+                  if actual != lines:
+                      errors.append(
+                          f'{report.name}: expected all '
+                          f'task OK lines; got {actual!r}'
+                      )
+
+          if errors:
+              raise SystemExit('\n'.join(errors))
+
+          print(
+              'Tasks 06 and 07 passed all validations'
+          )
+          PY
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-reports
+          path: report_result_Task_*.txt
+          if-no-files-found: ignore

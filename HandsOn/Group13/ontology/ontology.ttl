@@ -1,0 +1,91 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mod: <https://w3id.org/mod#> .
+
+@prefix mp: <http://parking.linkeddata.upm.es/ontology/> .
+@prefix prop: <http://parking.linkeddata.upm.es/property/> .
+@prefix res: <http://parking.linkeddata.upm.es/resource/> .
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mp: a owl:Ontology ;
+    dc:title "Madrid Parking Ontology" ;
+    owl:versionInfo "1.0" ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+mp:ParkingFacility a owl:Class ;
+    rdfs:label "Parking Facility" .
+
+mp:ParkingType a owl:Class ;
+    rdfs:label "Parking Type" .
+
+mp:District a owl:Class ;
+    rdfs:label "District" .
+
+mp:OccupancyObservation a owl:Class ;
+    rdfs:label "Occupancy Observation" .
+
+prop:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in" ;
+    rdfs:domain mp:ParkingFacility ;
+    rdfs:range mp:District .
+
+prop:hasParkingType a owl:ObjectProperty ;
+    rdfs:label "has parking type" ;
+    rdfs:domain mp:ParkingFacility ;
+    rdfs:range mp:ParkingType .
+
+prop:hasObservation a owl:ObjectProperty ;
+    rdfs:label "has observation" ;
+    rdfs:domain mp:ParkingFacility ;
+    rdfs:range mp:OccupancyObservation .
+
+prop:observationOf a owl:ObjectProperty ;
+    rdfs:label "observation of" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range mp:ParkingFacility .
+prop:parkingName a owl:DatatypeProperty ;
+    rdfs:label "parking name" ;
+    rdfs:domain mp:ParkingFacility ;
+    rdfs:range xsd:string .
+
+prop:numberOfSpaces a owl:DatatypeProperty ;
+    rdfs:label "number of spaces" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:integer .
+
+prop:districtName a owl:DatatypeProperty ;
+    rdfs:label "district name" ;
+    rdfs:domain mp:District ;
+    rdfs:range xsd:string .
+
+prop:year a owl:DatatypeProperty ;
+    rdfs:label "year" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:gYear .
+
+prop:month a owl:DatatypeProperty ;
+    rdfs:label "month" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:integer .
+
+prop:calculationDays a owl:DatatypeProperty ;
+    rdfs:label "calculation days" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:integer .
+
+prop:averageVehiclesPerDay a owl:DatatypeProperty ;
+    rdfs:label "average vehicles per day" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:decimal .
+
+prop:occupancyPercentage a owl:DatatypeProperty ;
+    rdfs:label "occupancy percentage" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:decimal .
+
+prop:daytimeOccupancyPercentage a owl:DatatypeProperty ;
+    rdfs:label "daytime occupancy percentage" ;
+    rdfs:domain mp:OccupancyObservation ;
+    rdfs:range xsd:decimal .

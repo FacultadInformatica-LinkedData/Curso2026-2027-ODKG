@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dataset Requirements - Barcelona Heat Relief</title>
+<style>
+  :root { --fg:#1f2933; --muted:#5f6c7b; --line:#d5dbe3; --soft:#f4f7f9; --accent:#0b6e4f; --warn:#fff3cd; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--fg); max-width: 980px; margin: 2rem auto; padding: 0 1rem; line-height: 1.55; }
+  h1 { font-size: 1.7rem; margin-bottom: .2rem; }
+  h2 { font-size: 1.3rem; margin-top: 2.2rem; border-bottom: 2px solid var(--accent); padding-bottom: .2rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.6rem; }
+  .sub { color: var(--muted); margin-top: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid var(--line); padding: .45rem .6rem; text-align: left; vertical-align: top; font-size: .92rem; }
+  th { background: var(--soft); }
+  code { background: var(--soft); padding: 0 .25rem; border-radius: 3px; font-size: .9em; }
+  .todo { background: var(--warn); padding: 0 .25rem; border-radius: 3px; }
+  .ok { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>Dataset Requirements</h1>
+<p class="sub">Hands-on 1 &middot; Open Data and Knowledge Graphs &middot; Group 08 &middot; Domain: urban environment and climate adaptation in the city of Barcelona</p>
+
+<p>The project builds a knowledge graph of the public resources that Barcelona offers to cope with heat: climate shelters, public drinking fountains and street trees. This document analyses whether the selected datasets satisfy the hands-on requirements (R1-R4 mandatory, R5-R6 optional). The datasets were checked on 1 October 2026.</p>
+
+<h2>1. Selected datasets</h2>
+<table>
+  <tr><th>ID</th><th>Dataset</th><th>File in <code>csv/</code></th><th>Publisher</th><th>Source</th><th>Format</th><th>Licence</th></tr>
+  <tr>
+    <td>D1</td>
+    <td>Climate shelters network of the city of Barcelona</td>
+    <td><code>xarxa-refugis-climatics.csv</code></td>
+    <td>Ajuntament de Barcelona (Open Data BCN)</td>
+    <td><a href="https://opendata-ajuntament.barcelona.cat/data/ca/dataset/xarxa-refugis-climatics">Open Data BCN</a></td>
+    <td>CSV</td>
+    <td>CC BY 4.0</td>
+  </tr>
+  <tr>
+    <td>D2</td>
+    <td>Drinking fountains of the city of Barcelona (2026)</td>
+    <td><code>fonts-beure-2026.csv</code></td>
+    <td>Ajuntament de Barcelona (Open Data BCN)</td>
+    <td><a href="https://opendata-ajuntament.barcelona.cat/data/en/dataset/fonts">Open Data BCN</a></td>
+    <td>CSV</td>
+    <td>CC BY 4.0</td>
+  </tr>
+  <tr>
+    <td>D3</td>
+    <td>Street trees of the city of Barcelona</td>
+    <td><code>arbrat-viari.csv</code></td>
+    <td>Ajuntament de Barcelona (Open Data BCN)</td>
+    <td><a href="https://opendata-ajuntament.barcelona.cat/data/en/dataset/arbrat-viari">Open Data BCN</a></td>
+    <td>CSV</td>
+    <td>CC BY 4.0</td>
+  </tr>
+</table>
+
+<h2>2. Compliance summary</h2>
+<table>
+  <tr><th>Requirement</th><th>D1 - Climate shelters</th><th>D2 - Drinking fountains</th><th>D3 - Street trees</th></tr>
+  <tr><td>R1. Smart city domain</td><td class="ok">Satisfied</td><td class="ok">Satisfied</td><td class="ok">Satisfied</td></tr>
+  <tr><td>R2. Available as CSV</td><td class="ok">Satisfied</td><td class="ok">Satisfied</td><td class="ok">Satisfied</td></tr>
+  <tr><td>R3. Open licence</td><td class="ok">Satisfied (CC BY 4.0)</td><td class="ok">Satisfied (CC BY 4.0)</td><td class="ok">Satisfied (CC BY 4.0)</td></tr>
+  <tr><td>R4. Linkable to real-world entities</td><td class="ok">Satisfied</td><td class="ok">Satisfied</td><td class="ok">Satisfied</td></tr>
+  <tr><td>R5. Documentation (optional)</td><td>Medium</td><td>Medium</td><td>High, with minor discrepancies</td></tr>
+  <tr><td>R6. Multiple sources (optional)</td><td colspan="3">Medium: three datasets from one publisher, plus Wikidata (see section 6)</td></tr>
+</table>
+
+<h2>3. Analysis of each dataset</h2>
+
+<h3>D1 - Climate shelters network</h3>
+<ul>
+  <li><strong>R1.</strong> Urban environment and climate adaptation: public spaces and facilities where citizens can protect themselves from heat.</li>
+  <li><strong>R2.</strong> CSV file with 550 records and 32 columns, comma separated and encoded in UTF-16 (converted to UTF-8 in <code>csv/</code>). Main columns: <code>register_id</code> (unique identifier), <code>name</code>, <code>institution_id</code> and <code>institution_name</code> (host institution, present in 110 records), <code>created</code>, <code>modified</code>, address columns (<code>addresses_road_id</code>, <code>addresses_road_name</code>, street numbers, <code>addresses_neighborhood_id</code> and <code>_name</code>, <code>addresses_district_id</code> and <code>_name</code>, zip code, town), contact attributes (<code>values_*</code>), coordinates (<code>geo_epgs_25831_x/y</code> in ETRS89 and <code>geo_epgs_4326_lat/lon</code> in WGS84) and <code>timetable</code> (opening hours as an HTML table).</li>
+  <li><strong>R3.</strong> CC BY 4.0, shown on the dataset page.</li>
+  <li><strong>R4.</strong> All 550 records have neighbourhood (73 different), district (10 different), street and coordinates, so they can be linked to administrative areas. Some records are well-known public facilities (libraries, municipal markets, parks, museums, swimming pools) that can have Wikidata items.</li>
+  <li><strong>R5.</strong> Description in the portal metadata; no field-level documentation was found.</li>
+  <li><strong>Content.</strong> The dataset mixes several kinds of places and has no column with the type of place. Judging by the names, it includes parks and gardens, swimming pools, libraries, senior citizens' centres, civic centres, sports centres, markets, supermarkets, pharmacies, museums, shops, hospitals and clinics, schools and associations. The category will be derived from the name in the data preparation. About 35 records are named "Refugi climatic" and belong to a host institution, and about 94 records share street and number with another record, so a facility can appear in more than one record.</li>
+</ul>
+
+<h3>D2 - Drinking fountains</h3>
+<ul>
+  <li><strong>R1.</strong> Urban environment and public infrastructure: water points available in streets and parks.</li>
+  <li><strong>R2.</strong> CSV file with 1,760 records and 12 columns, UTF-8: <code>CODI</code> (unique identifier), <code>NOM</code>, <code>CARRER</code>, <code>NUMERO_CARRER</code>, <code>CODI_BARRI</code>, <code>NOM_BARRI</code>, <code>CODI_DISTRICTE</code>, <code>NOM_DISTRICTE</code>, <code>X_ETRS89</code>, <code>Y_ETRS89</code>, <code>LATITUD</code> and <code>LONGITUD</code>. The portal publishes one version per year, released each March.</li>
+  <li><strong>R3.</strong> CC BY 4.0, shown on the dataset page.</li>
+  <li><strong>R4.</strong> All records have coordinates and district; 1,757 have a street and 1,750 have a neighbourhood (73 neighbourhoods, 10 districts).</li>
+  <li><strong>R5.</strong> The catalogue lists the fields of the file; no further documentation was found.</li>
+  <li><strong>Content.</strong> 349 records have no name, 41 have no street number and 3 have no street.</li>
+</ul>
+
+<h3>D3 - Street trees</h3>
+<ul>
+  <li><strong>R1.</strong> Urban environment: street trees provide shade and reduce temperature, noise and CO2.</li>
+  <li><strong>R2.</strong> CSV file of about 42 MB with 22 columns, included in full in <code>csv/</code>. The portal warns that it is large and that some browsers fail to download it. Historical files with the data of the last week of each quarter are also published.</li>
+  <li><strong>R3.</strong> CC BY 4.0, shown on the dataset page.</li>
+  <li><strong>R4.</strong> Columns: <code>codi</code> (unique identifier), <code>x_etrs89</code>, <code>y_etrs89</code>, <code>latitud</code>, <code>longitud</code>, <code>tipus_element</code> (street tree or street palm), <code>espai_verd</code>, <code>adreca</code>, <code>cat_especie_id</code>, <code>cat_nom_cientific</code>, <code>cat_nom_castella</code>, <code>cat_nom_catala</code>, <code>categoria_arbrat</code>, <code>data_plantacio</code>, <code>tipus_aigua</code>, <code>tipus_reg</code>, <code>geom</code>, <code>catalogacio</code>, <code>codi_barri</code>, <code>nom_barri</code>, <code>codi_districte</code> and <code>nom_districte</code>. Neighbourhood and district allow linking to administrative areas; the scientific name allows linking to taxa.</li>
+  <li><strong>R5.</strong> The portal gives a field-by-field description of the current and the previous structure of the file and explains the 2021 changes. The species columns have the prefix <code>cat_</code> in the file, which the description does not show.</li>
+</ul>
+
+<h2>4. Linking with other datasets</h2>
+
+<h3>4.1 Entities in the selected datasets that can be linked with entities in other datasets</h3>
+<table>
+  <tr><th>Entity</th><th>Where it appears</th><th>Candidate target</th></tr>
+  <tr><td>Neighbourhoods (barris)</td><td>D1 (<code>addresses_neighborhood_id</code>, <code>_name</code>), D2 (<code>CODI_BARRI</code>, <code>NOM_BARRI</code>), D3 (<code>codi_barri</code>, <code>nom_barri</code>)</td><td>Wikidata, DBpedia / esDBpedia</td></tr>
+  <tr><td>Districts (districtes)</td><td>D1 (<code>addresses_district_id</code>, <code>_name</code>), D2 (<code>CODI_DISTRICTE</code>, <code>NOM_DISTRICTE</code>), D3 (<code>codi_districte</code>, <code>nom_districte</code>)</td><td>Wikidata, DBpedia / esDBpedia</td></tr>
+  <tr><td>Tree species</td><td>D3 (<code>cat_especie_id</code>, <code>cat_nom_cientific</code>, <code>cat_nom_castella</code>, <code>cat_nom_catala</code>)</td><td>Wikidata taxa (taxon name), DBpedia</td></tr>
+  <tr><td>Libraries, municipal markets, parks, museums and swimming pools used as shelters</td><td>D1 (<code>name</code>, address, coordinates)</td><td>Wikidata (partial coverage), DBpedia</td></tr>
+  <tr><td>City of Barcelona</td><td>D1, D2, D3</td><td>Wikidata, DBpedia, GeoNames</td></tr>
+  <tr><td>Streets</td><td>D1 (<code>addresses_road_id</code>, <code>addresses_road_name</code>), D2 (<code>CARRER</code>), D3 (<code>adreca</code>)</td><td>Barcelona street register in Open Data BCN</td></tr>
+</table>
+
+<h3>4.2 Entities in other datasets that can be linked with entities in the selected datasets</h3>
+<table>
+  <tr><th>Other dataset</th><th>Entities</th><th>Link with</th></tr>
+  <tr><td>Wikidata</td><td>Items for the neighbourhoods (class "barri administratiu de Barcelona") and the districts (class "districte de Barcelona"), with coordinates, part-of relations and images. A SPARQL query on 1 October 2026 found items for all the 7 names tested: 4 neighbourhoods (el Raval Q1758503, la Barceloneta Q377070, el Clot Q2979686, la Guineueta Q2736697) and 3 districts (Gràcia Q852697, Sants-Montjuïc Q753075, Sant Martí Q250935). Metro and railway stations share some of these names, so the link must filter by class.</td><td>Neighbourhoods and districts in D1, D2 and D3</td></tr>
+  <tr><td>Wikidata</td><td>Taxon items with scientific name, common names, images and conservation status. A SPARQL query on 1 October 2026 found items for the 4 species tested: Acer pseudoplatanus (Q156944), Platanus × hispanica (Q161374), Celtis australis (Q255375) and Tipuana tipu (Q2716902).</td><td>Tree species in D3</td></tr>
+  <tr><td>Wikidata, DBpedia</td><td>Items for libraries (several hundred), theatres, hotels, churches and schools located in Barcelona. Wikidata has about 68 items of class fountain, so only notable fountains can be linked.</td><td>Shelters of those kinds in D1</td></tr>
+  <tr><td>Open Data BCN statistical datasets by neighbourhood (population)</td><td>Neighbourhood codes with inhabitants</td><td>Neighbourhoods in D1, D2 and D3 (possible extension: resources per inhabitant)</td></tr>
+</table>
+
+<h2>5. Licence analysis</h2>
+<ul>
+  <li><strong>Rightsholder and publisher.</strong> Ajuntament de Barcelona, through Open Data BCN. The datasets are also listed in the Spanish national catalogue datos.gob.es, which acts only as a distributor.</li>
+  <li><strong>Licence.</strong> The three dataset pages declare Creative Commons Attribution 4.0 International (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>): sharing and adapting for any purpose, even commercially, are allowed.</li>
+  <li><strong>Obligations.</strong> Give appropriate credit, provide a link to the licence and indicate if changes were made. The project credits Ajuntament de Barcelona and states that the data were converted and transformed to RDF.</li>
+  <li><strong>Compatibility.</strong> The three datasets share the same licence, so the integrated dataset can be published under CC BY 4.0. Wikidata content is released under CC0 and does not restrict reuse.</li>
+</ul>
+
+<h2>6. Optional requirements</h2>
+<ul>
+  <li><strong>R5 - Documentation.</strong> D3 has high documentation (field-by-field description and change log), with the discrepancy in the species column names. D1 and D2 have medium documentation: metadata in the portal and a list of fields.</li>
+  <li><strong>R6 - Multiple data sources.</strong> Medium. The application combines three datasets of the same publisher (shelters, fountains, trees), joined through neighbourhood and district codes, and enriches them with Wikidata. A possible extension is the population by neighbourhood from Open Data BCN.</li>
+</ul>
+
+<h2>7. Observations for the data preparation</h2>
+<ul>
+  <li><strong>Join key.</strong> The three datasets use the same two-digit codes for neighbourhoods and districts (for example <code>03</code>). The names differ: D3 uses upper case without apostrophes (for example "LA NOVA ESQUERRA DE LEIXAMPLE"), so the join will use the codes.</li>
+  <li><strong>Missing values.</strong> 10 fountains have no neighbourhood; in the first records of the tree file, <code>tipus_aigua</code> and <code>catalogacio</code> are empty and <code>data_plantacio</code> is empty in 75% of the records.</li>
+  <li><strong>Species names.</strong> D3 includes varieties and cultivars (for example "Washingtonia filifera var. robusta" and "Fraxinus angustifolia 'Raywood'"), which must be normalised to species before linking to taxa. D3 writes "Platanus × acerifolia", while the Wikidata item found is named "Platanus × hispanica", so synonyms have to be mapped.</li>
+  <li><strong>Town name.</strong> D1 writes the town as "Barcelona" and "BARCELONA".</li>
+  <li><strong>Shelter category.</strong> It has to be derived from the name of the place, and the duplicated records of the same facility have to be handled when counting.</li>
+</ul>
+
+</body>
+</html>

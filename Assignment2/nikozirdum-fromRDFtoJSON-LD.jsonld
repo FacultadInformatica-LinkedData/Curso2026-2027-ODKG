@@ -1,0 +1,29 @@
+{
+  "@context": {
+    "sensor": "http://randomlink.com/",
+    "includes": "sensor:includes",
+    "hasMeasurement": "sensor:hasMeasurement",
+    "hasTemperature": "sensor:hasTemperature",
+    "atTime": "sensor:atTime",
+    "hasOwner": "sensor:hasOwner",
+    "hasName": "sensor:hasName"
+  },
+  "@id": "sensor:Class01",
+  "includes": [
+    {
+      "@id": "sensor:Sensor029",
+      "hasMeasurement": {
+        "@id": "sensor:Measurement8401",
+        "hasTemperature": 29,
+        "atTime": "2010-06-12T12:00:12"
+      }
+    },
+    {
+      "@id": "sensor:Computer101",
+      "hasOwner": {
+        "@id": "sensor:User10A",
+        "hasName": "Pedro"
+      }
+    }
+  ]
+}

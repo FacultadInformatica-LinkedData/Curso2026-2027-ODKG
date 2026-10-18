@@ -1,0 +1,175 @@
+[
+  [
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "value.replace(\"%\",\"\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression value.replace(\"%\",\"\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "value.replace(\"#\",\"\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression value.replace(\"#\",\"\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "value.replace(\"%\",\"\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression value.replace(\"%\",\"\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "value.toNumber()",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression value.toNumber()"
+    }
+  ],
+  [
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "value.replace(\",\",\".\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression value.replace(\",\",\".\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "grel:value.toNumber() / 100",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación (%) using expression grel:value.toNumber() / 100"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "value.replace(\",\",\".\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression value.replace(\",\",\".\")"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "grel:value.toNumber() / 100",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Ocupación\n9h-21h (%) using expression grel:value.toNumber() / 100"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación (%)",
+      "expression": "grel:round(value.toNumber() * 1000) / 10",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Restore overall occupancy to percentage units and round to one decimal"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Ocupación\n9h-21h (%)",
+      "expression": "grel:round(value.toNumber() * 1000) / 10",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Restore daytime occupancy to percentage units and round to one decimal"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "MES",
+      "expression": "grel:if(value.toNumber() < 10, \"0\" + value.toString(), value.toString())",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Zero-pad month values for observation URIs"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "TIPO",
+      "expression": "grel:if(or(value == \"ROT\", value == \"ROTACIONAL\"), \"rotational\", if(or(value == \"MIX\", value == \"MIXTO\"), \"mixed\", value))",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Normalize parking type values to URI-safe English slugs"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "DISTRITO",
+      "expression": "grel:value.trim().replace(\"CHAMBERI\", \"CHAMBERÍ\").replace(\"CHAMARTIN\", \"CHAMARTÍN\").replace(\"TETUAN\", \"TETUÁN\").replace(\"VICALVARO\", \"VICÁLVARO\")",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Trim and normalize district names"
+    }
+  ]
+]

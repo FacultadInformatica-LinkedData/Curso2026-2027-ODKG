@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Requirements</title>
+</head>
+<body>
+
+<h1>Selected dataset</h1>
+
+<p>
+	For this hands-on, we have selected the dataset <strong>Hourly air quality data since
+	2016</strong>, published by the Ajuntament de València through its VLCi open data
+	platform:
+	<a href="https://opendata.vlci.valencia.es/dataset/hourly-air-quality-data-since-2016">
+	https://opendata.vlci.valencia.es/dataset/hourly-air-quality-data-since-2016</a>
+</p>
+
+<p>
+	The resource used is <code>rvvcca.-datos-horarios-valencia-2016-2021-curt-cas.csv</code>.
+	It contains hourly measurements recorded by the monitoring stations of the Red Valenciana
+	de Vigilancia y Control de la Contaminación Atmosférica (RVVCCA) in the city of València
+	between 2016 and 2021. The stations included are Av. França, Bulevard Sud, Molí del Sol,
+	Pista Silla and Universitat Politècnica, and the measured parameters are SO2, CO, NO,
+	NO2, NOx, O3, PM10 and PM2.5, together with wind speed, wind direction and maximum wind
+	speed.
+</p>
+	
+<h1>R1. Data are in the smart cities domain.</h1>
+
+<p>
+	It belongs to the smart cities domain since it is oriented to urban air-quality monitoring.
+</p>
+
+<h1>R2. Data are available as a CSV file.</h1>
+
+<p>
+	The dataset is published in CSV format, with separate resources for Spanish, Valencian
+	, and English column labels. The resource used in this hands-on is
+	<code>rvvcca.-datos-horarios-valencia-2016-2021-curt-cas.csv</code>, with mimetype
+	<code>text/csv</code>, available from the dataset page linked above. The portal
+	classifies the dataset as "3 estrellas" on the five-star open data scale, which
+	corresponds to structured data published in an open format.
+</p>
+
+<h1>R3. Data have an open license so they can be published.</h1>
+
+<p>
+	The dataset is published under the Creative Commons Attribution 4.0 International
+	licence (CC BY 4.0),
+	<a href="http://creativecommons.org/licenses/by/4.0/deed.es">
+	http://creativecommons.org/licenses/by/4.0/deed.es</a>.
+</p>
+
+<h1>R4. Data can be easily linked with generic real-world entities (e.g., locations).</h1>
+
+<p>
+	The dataset contains several attributes that act as linking points to generic
+	real-world entities. The table below identifies, for each attribute, the external entity
+	it can be linked to and the target dataset or vocabulary.
+</p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+	<tr>
+		<th>Attribute in the selected dataset</th>
+		<th>External entity</th>
+		<th>Target dataset / vocabulary</th>
+	</tr>
+	<tr>
+		<td>Station name (Av. França, Bulevard Sud, Molí del Sol, Pista Silla, Universitat Politècnica)</td>
+		<td>Named place or institution in the city of València</td>
+		<td>Wikidata, esDBpedia</td>
+	</tr>
+	<tr>
+		<td>Station name, taken as a sensing platform</td>
+		<td>Monitoring station / sensor</td>
+		<td>SOSA/SSN (<code>sosa:Platform</code>, <code>sosa:Sensor</code>)</td>
+	</tr>
+	<tr>
+		<td>City of València (implicit in the whole dataset)</td>
+		<td>Municipality</td>
+		<td>Wikidata (Q8818), esDBpedia, <code>esadm:Municipio</code></td>
+	</tr>
+	<tr>
+		<td>Pollutant codes (SO2, CO, NO, NO2, NOx, O3, PM10, PM2.5)</td>
+		<td>Chemical substance / observable property</td>
+		<td>SOSA/SSN (<code>sosa:ObservableProperty</code>), EEA air quality vocabularies</td>
+	</tr>
+	<tr>
+		<td>Date and hour of each reading</td>
+		<td>Instant or interval in time</td>
+		<td>OWL-Time (<code>time:Instant</code>, <code>time:Interval</code>)</td>
+	</tr>
+	<tr>
+		<td>Measurement units</td>
+		<td>Unit of measure</td>
+		<td><code>om:Unit_of_measure</code></td>
+	</tr>
+	<tr>
+		<td>Meteorological columns (wind speed, wind direction, maximum wind speed)</td>
+		<td>Weather observation</td>
+		<td>SOSA/SSN, AEMET open data</td>
+	</tr>
+</table>
+
+<p>
+	The station name is the main linking attribute, since the dataset identifies each
+	monitoring station by name and those stations correspond to real places in the city.
+	Note that the CSV does not include the geographic coordinates of the stations, so the
+	link to a geographic point has to be established through the station name rather than
+	directly from a coordinate pair.
+</p>
+
+<h2>Entities in other datasets that can be linked with the selected dataset</h2>
+
+<p>
+	Linking also works in the opposite direction. The following entities, which exist in
+	other datasets, can be linked back to resources in our dataset and enrich them with
+	information that the original CSV does not contain:
+</p>
+
+<ul>
+	<li>
+		<strong>The city of València</strong> in Wikidata (Q8818) and in esDBpedia provides
+		population figures, surface area, geographic boundaries, and climate information
+		which allow the measurements to be interpreted in context.
+	</li>
+	<li>
+		<strong>Districts and neighbourhoods of València</strong> published in Wikidata and
+		esDBpedia carry population and area data, making it possible to relate pollutant
+		concentrations to population density in the area surrounding each station.
+	</li>
+	<li>
+		<strong>Universitat Politècnica de València</strong> is a real-world institution
+		present in Wikidata and DBpedia, and one of the monitoring stations is located on
+		its campus, so the station can be linked to the institution.
+	</li>
+	<li>
+		<strong>Air quality limit values</strong> defined by EU Directive 2008/50/EC and the
+		recommended thresholds published by the World Health Organization can be linked to
+		the pollutant properties, enabling the application to flag readings that exceed them.
+	</li>
+	<li>
+		<strong>Meteorological observations</strong> published by AEMET for the same period
+		and geographic area can be linked through time and location, allowing analysis of
+		the relationship between weather conditions and pollutant concentrations.
+	</li>
+	<li>
+		<strong>Station location data</strong> published in the per-station datasets of the
+		same portal can be linked through the station name, supplying the coordinates that
+		the hourly dataset does not provide.
+	</li>
+</ul>
+
+<h1>R5. Documentation exists for the data (optional).</h1>
+
+<p>
+	The Valencia hourly air quality dataset has supporting documentation available through the official València Open Data portal. The documentation provides a general description of the dataset, information about the monitored stations and measured parameters, metadata such as the CSV format and CC BY 4.0 licence, and a data dictionary explaining the available columns. However, the documentation is relatively limited, as it does not provide detailed information about measurement units, missing values, quality-control procedures, or the precise geographic coordinates of the monitoring stations.
+</p>
+
+<h1>R6. Data can come from multiple data sources (optional).</h1>
+
+<p>
+	The Valencia dataset is published by the Ajuntament de València, and the portal identifies its source as the Red Valenciana de Vigilancia y Control de la Contaminación Atmosférica. The CSV combines observations from multiple monitoring stations, but these are stations within the same monitoring network/city rather than genuinely separate data sources.
+</p>
+
+</body>
+</html>

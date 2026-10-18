@@ -1,0 +1,88 @@
+@prefix dataset: <https://madridnoise.linkeddata.es/dataset/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix district: <https://madridnoise.linkeddata.es/resource/district/> .
+@prefix mn: <https://madridnoise.linkeddata.es/ontology#> .
+@prefix neighbourhood: <https://madridnoise.linkeddata.es/resource/neighbourhood/> .
+@prefix observation: <https://madridnoise.linkeddata.es/resource/observation/> .
+@prefix period: <https://madridnoise.linkeddata.es/resource/period/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix station: <https://madridnoise.linkeddata.es/resource/station/> .
+@prefix terrace: <https://madridnoise.linkeddata.es/resource/terrace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dataset:daily-noise a dcat:Dataset;
+  rdfs:label "Madrid daily noise measurements (Linked Data)"@en .
+
+dataset:stations a dcat:Dataset;
+  rdfs:label "Madrid acoustic station catalog (Linked Data)"@en .
+
+dataset:terraces a dcat:Dataset;
+  rdfs:label "Madrid hospitality terraces (Linked Data)"@en .
+
+station:RF-02 a mn:NoiseMonitoringStation;
+  dcterms:isPartOf dataset:stations;
+  rdfs:label "Carlos V"@es;
+  mn:latitude 40.409121;
+  mn:longitude -3.691509;
+  mn:stationCode "RF-02";
+  mn:stationName "Carlos V" .
+
+period:D a mn:DayPeriod;
+  rdfs:label "Day (07:00-19:00)"@en;
+  mn:periodCode "D" .
+
+period:E a mn:DayPeriod;
+  rdfs:label "Evening (19:00-23:00)"@en;
+  mn:periodCode "E" .
+
+period:N a mn:DayPeriod;
+  rdfs:label "Night (23:00-07:00)"@en;
+  mn:periodCode "N" .
+
+period:T a mn:DayPeriod;
+  rdfs:label "Total (24h)"@en;
+  mn:periodCode "T" .
+
+observation:RF-02-2025-01-01-D a mn:DailyNoiseObservation;
+  dcterms:isPartOf dataset:daily-noise;
+  rdfs:label "Noise observation RF-02 2025-01-01 D"@en;
+  mn:forPeriod period:D;
+  mn:laeq 65.2;
+  mn:las01 71.7;
+  mn:las10 67.1;
+  mn:las50 63.0;
+  mn:las90 58.5;
+  mn:las99 55.5;
+  mn:observationDate "2025-01-01"^^xsd:date;
+  mn:percentileOrderViolation false;
+  mn:recordedAt station:RF-02 .
+
+observation:RF-02-2025-01-01-N a mn:DailyNoiseObservation;
+  dcterms:isPartOf dataset:daily-noise;
+  rdfs:label "Noise observation RF-02 2025-01-01 N"@en;
+  mn:forPeriod period:N;
+  mn:laeq 68.1;
+  mn:las01 78.7;
+  mn:las10 68.4;
+  mn:las50 64.2;
+  mn:las90 58.9;
+  mn:las99 55.8;
+  mn:observationDate "2025-01-01"^^xsd:date;
+  mn:percentileOrderViolation false;
+  mn:recordedAt station:RF-02 .
+
+terrace:37 a mn:Terrace;
+  dcterms:isPartOf dataset:terraces;
+  rdfs:label "Terrace 37"@en;
+  mn:hasDistrict district:18;
+  mn:hasNeighbourhood neighbourhood:1801;
+  mn:latitude 40.380089408;
+  mn:longitude -3.621907141;
+  mn:terraceId 37 .
+
+district:18 a mn:District;
+  rdfs:label "VILLA DE VALLECAS"@es .
+
+neighbourhood:1801 a mn:Neighbourhood;
+  rdfs:label "CASCO H.VALLECAS"@es .

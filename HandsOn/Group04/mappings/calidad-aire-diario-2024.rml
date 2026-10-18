@@ -1,0 +1,192 @@
+@prefix rr:     <http://www.w3.org/ns/r2rml#> .
+@prefix rml:    <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:     <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix bpm:    <https://w3id.org/breatheplay-madrid/ontology#> .
+@base           <https://w3id.org/breatheplay-madrid/mappings/calidad-aire-diario-2024#> .
+
+# Group04 - Breathe & Play Madrid. Run from the HandsOn/Group04 directory
+# (python mappings/generate_rdf.py), so that the csv/ paths resolve.
+# Dataset: Calidad del aire. Datos diarios 2024 (Ayuntamiento de Madrid)
+# Source:  csv/calidad-aire-diario-2024-csv-updated.csv
+
+# ---------------------------------------------------------------------------
+# Daily observations
+# ---------------------------------------------------------------------------
+<#DailyObservationMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/calidad-aire-diario-2024-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/observation/{PUNTO_MUESTREO}/{FECHA}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:DailyObservation
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rr:template "Observación diaria de {CONTAMINANTE} en el punto de muestreo {PUNTO_MUESTREO} el {FECHA}" ;
+            rr:termType rr:Literal ;
+            rr:language "es"
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:date ;
+        rr:objectMap [ rml:reference "FECHA" ; rr:termType rr:Literal ; rr:datatype xsd:date ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:value ;
+        rr:objectMap [ rml:reference "VALOR" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:isValid ;
+        rr:objectMap [ rml:reference "VALIDO" ; rr:termType rr:Literal ; rr:datatype xsd:boolean ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:hasSamplingPoint ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/sampling-point/{PUNTO_MUESTREO}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# Sampling points (station + pollutant + technique)
+# ---------------------------------------------------------------------------
+<#SamplingPointMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/calidad-aire-diario-2024-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/sampling-point/{PUNTO_MUESTREO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:SamplingPoint
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rr:template "Punto de muestreo {PUNTO_MUESTREO} ({CONTAMINANTE})" ;
+            rr:termType rr:Literal ;
+            rr:language "es"
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:samplingPointCode ;
+        rr:objectMap [ rml:reference "PUNTO_MUESTREO" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    # Link to the air quality stations dataset:
+    # join ESTACION_CODIGO (this CSV) = CODIGO (stations CSV)
+    rr:predicateObjectMap [
+        rr:predicate bpm:hasStation ;
+        rr:objectMap [
+            rr:parentTriplesMap <#MonitoringStationMap> ;
+            rr:joinCondition [
+                rr:child "ESTACION_CODIGO" ;
+                rr:parent "CODIGO"
+            ]
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:measuresPollutant ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/pollutant/{MAGNITUD}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:usesTechnique ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/technique/{TECNICA}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# Monitoring stations (parent of the join above). 
+# ---------------------------------------------------------------------------
+<#MonitoringStationMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/station/{CODIGO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:MonitoringStation
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "ESTACION" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# Pollutants
+# ---------------------------------------------------------------------------
+<#PollutantMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/calidad-aire-diario-2024-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/pollutant/{MAGNITUD}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:Pollutant
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:pollutantCode ;
+        rr:objectMap [ rml:reference "MAGNITUD" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "CONTAMINANTE" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:unit ;
+        rr:objectMap [ rml:reference "UNIDAD" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# Measurement techniques
+# ---------------------------------------------------------------------------
+<#MeasurementTechniqueMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/calidad-aire-diario-2024-csv-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/technique/{TECNICA}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:MeasurementTechnique
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:techniqueCode ;
+        rr:objectMap [ rml:reference "TECNICA" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "TECNICA_NOMBRE" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] .

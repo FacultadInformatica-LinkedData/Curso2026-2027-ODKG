@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #172536; }
+    .title { font-size: 28px; font-weight: 700; fill: #ffffff; }
+    .subtitle { font-size: 14px; fill: #d9e6f0; }
+    .section { font-size: 18px; font-weight: 700; }
+    .small { font-size: 13px; fill: #5a6d7c; }
+    .label { font-size: 14px; font-weight: 600; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="760" fill="#f4f7fa"/>
+
+  <!-- Header -->
+  <rect x="30" y="30" width="1140" height="90" rx="16" fill="#16324f"/>
+  <text x="60" y="70" class="title">Madrid Night Noise and Terraces Explorer</text>
+  <text x="60" y="98" class="subtitle">Explore monitoring stations, nearby terraces and nighttime acoustic measurements</text>
+
+  <!-- Controls -->
+  <rect x="30" y="145" width="1140" height="75" rx="12" fill="#ffffff" stroke="#d9e1e9"/>
+
+  <rect x="55" y="164" width="220" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
+  <text x="72" y="188" class="label">Noise: 1 Jan–30 Jun 2025 ▾</text>
+
+  <rect x="295" y="164" width="200" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
+  <text x="312" y="188" class="label">Night period: N</text>
+
+  <rect x="515" y="164" width="150" height="38" rx="8" fill="#ffffff" stroke="#aabac8"/>
+  <text x="532" y="188" class="label">Radius: 250 m</text>
+
+  <text x="880" y="188" class="small">Sources &amp; method</text>
+
+  <!-- Left panel -->
+  <rect x="30" y="245" width="320" height="455" rx="12" fill="#ffffff" stroke="#cfdae3"/>
+  <text x="55" y="280" class="section">Monitoring stations</text>
+  <text x="55" y="308" class="small">Select a station to inspect its nighttime readings</text>
+  <text x="55" y="326" class="small">and nearby registered terraces.</text>
+
+  <!-- Station 1 selected -->
+  <rect x="50" y="355" width="280" height="70" rx="8" fill="#e8f1f8" stroke="#125b91"/>
+  <text x="68" y="382" class="label">RF-XX · Station name</text>
+  <text x="68" y="405" class="small">Registered within 250 m: from data</text>
+
+  <!-- Station 2 -->
+  <rect x="50" y="440" width="280" height="70" rx="8" fill="#ffffff" stroke="#cfdae3"/>
+  <text x="68" y="467" class="label">RF-XX · Station name</text>
+  <text x="68" y="490" class="small">Registered within 250 m: from data</text>
+
+  <!-- Station 3 -->
+  <rect x="50" y="525" width="280" height="70" rx="8" fill="#ffffff" stroke="#cfdae3"/>
+  <text x="68" y="552" class="label">RF-XX · Station name</text>
+  <text x="68" y="575" class="small">Registered within 250 m: from data</text>
+
+  <text x="55" y="640" class="small">Terrace snapshot: 4 Oct 2026</text>
+  <text x="55" y="658" class="small">Noise: selected date range</text>
+
+  <!-- Map panel -->
+  <rect x="375" y="245" width="795" height="455" rx="12" fill="#ffffff" stroke="#cfdae3"/>
+  <text x="400" y="280" class="section">Madrid monitoring map</text>
+
+  <!-- Map area -->
+  <rect x="400" y="305" width="745" height="330" rx="8" fill="#edf3f3"/>
+
+  <!-- Streets -->
+  <line x1="400" y1="365" x2="1145" y2="365" stroke="#cbd9db" stroke-width="14"/>
+  <line x1="400" y1="445" x2="1145" y2="445" stroke="#cbd9db" stroke-width="14"/>
+  <line x1="400" y1="535" x2="1145" y2="535" stroke="#cbd9db" stroke-width="14"/>
+  <line x1="510" y1="305" x2="510" y2="635" stroke="#cbd9db" stroke-width="14"/>
+  <line x1="700" y1="305" x2="700" y2="635" stroke="#cbd9db" stroke-width="14"/>
+  <line x1="900" y1="305" x2="900" y2="635" stroke="#cbd9db" stroke-width="14"/>
+  <line x1="1040" y1="305" x2="1040" y2="635" stroke="#cbd9db" stroke-width="14"/>
+
+  <!-- 250 m radius -->
+  <circle cx="700" cy="445" r="88" fill="#135d9125" stroke="#135d91" stroke-width="2" stroke-dasharray="7 6"/>
+
+  <!-- Terraces -->
+  <g fill="#dd7a2a">
+    <circle cx="650" cy="408" r="6"/>
+    <circle cx="744" cy="414" r="6"/>
+    <circle cx="735" cy="478" r="6"/>
+    <circle cx="660" cy="495" r="6"/>
+    <circle cx="822" cy="392" r="6"/>
+    <circle cx="925" cy="510" r="6"/>
+    <circle cx="1000" cy="430" r="6"/>
+  </g>
+
+  <!-- Stations -->
+  <g fill="#125b91" stroke="#ffffff" stroke-width="3">
+    <circle cx="700" cy="445" r="12"/>
+    <circle cx="905" cy="390" r="11"/>
+    <circle cx="535" cy="560" r="11"/>
+  </g>
+
+  <!-- Selected station label -->
+  <line x1="720" y1="465" x2="775" y2="500" stroke="#183e5d" stroke-width="1.5"/>
+  <rect x="775" y="485" width="170" height="45" rx="7" fill="#ffffff" stroke="#9aafbf"/>
+  <text x="792" y="512" class="label">Selected station</text>
+
+  <!-- Legend -->
+  <circle cx="420" cy="665" r="6" fill="#125b91"/>
+  <text x="435" y="670" class="small">Monitoring station</text>
+
+  <circle cx="580" cy="665" r="6" fill="#dd7a2a"/>
+  <text x="595" y="670" class="small">Registered terrace</text>
+
+  <line x1="760" y1="665" x2="800" y2="665" stroke="#135d91" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="810" y="670" class="small">250 m radius</text>
+
+  <!-- Footer -->
+  <text x="30" y="730" class="small">Illustrative wireframe. Markers and counts do not represent actual observations.</text>
+</svg>

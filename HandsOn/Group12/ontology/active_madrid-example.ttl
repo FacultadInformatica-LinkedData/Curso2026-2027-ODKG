@@ -1,0 +1,94 @@
+@prefix am: <https://w3id.org/active-madrid/ontology#> .
+@prefix res: <https://w3id.org/active-madrid/resource/> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =================================================================
+# Districts
+# =================================================================
+
+res:District/latina a am:District ;
+    schema:name "Latina" .
+
+res:District/barajas a am:District ;
+    schema:name "Barajas" .
+
+# =================================================================
+# Sport Activities
+# =================================================================
+
+res:SportActivity/acondicionamiento-cardiovascular a am:SportActivity ;
+    schema:name "Acondicionamiento Cardiovascular" .
+
+res:SportActivity/acondicionamiento-fisico a am:SportActivity ;
+    schema:name "Acondicionamiento Físico" .
+
+# =================================================================
+# Postal Addresses
+# =================================================================
+
+res:PostalAddress/4696 a schema:PostalAddress ;
+    schema:streetAddress "Avenida de las Aguilas, 14" ;
+    schema:postalCode "28044" .
+
+res:PostalAddress/99578 a schema:PostalAddress ;
+    schema:streetAddress "Avenida Logroño, 70" ;
+    schema:postalCode "28042" .
+
+# =================================================================
+# Sports Facilities
+# =================================================================
+
+res:SportsFacility/4696 a am:SportsFacility ;
+    schema:name "Centro Deportivo Municipal Aluche" ;
+    schema:address res:PostalAddress/4696 ;
+    am:locatedInDistrict res:District/latina ;
+    geo:lat "40.382721"^^xsd:decimal ;
+    geo:long "-3.773654"^^xsd:decimal ;
+    schema:telephone "917 062 868" ;
+    schema:email "idmaluche@madrid.es" .
+
+res:SportsFacility/99578 a am:SportsFacility ;
+    schema:name "Centro Deportivo Municipal Barajas" ;
+    schema:address res:PostalAddress/99578 ;
+    am:locatedInDistrict res:District/barajas ;
+    geo:lat "40.463014"^^xsd:decimal ;
+    geo:long "-3.587693"^^xsd:decimal ;
+    schema:telephone "913 290 602" ;
+    schema:email "idmbarajas@madrid.es" .
+
+# =================================================================
+# Time Intervals (Schedules)
+# =================================================================
+
+res:TimeInterval/1600-1700 a time:Interval ;
+    time:hasBeginning "16:00:00"^^xsd:time ;
+    time:hasEnd "17:00:00"^^xsd:time .
+
+res:TimeInterval/1100-1200 a time:Interval ;
+    time:hasBeginning "11:00:00"^^xsd:time ;
+    time:hasEnd "12:00:00"^^xsd:time .
+
+# =================================================================
+# Sports Classes
+# =================================================================
+
+res:SportsClass/3267 a am:SportsClass ;
+    schema:name "ACONDICIONAMIENTO CARDIOVASCULAR N2 MJ 16:00-17:00" ;
+    am:takesPlaceAt res:SportsFacility/4696 ;
+    am:hasActivity res:SportActivity/acondicionamiento-cardiovascular ;
+    time:hasTime res:TimeInterval/1600-1700 ;
+    am:offeredPlaces "5"^^xsd:nonNegativeInteger ;
+    am:occupiedPlaces "4"^^xsd:nonNegativeInteger ;
+    am:availablePlaces "1"^^xsd:nonNegativeInteger .
+
+res:SportsClass/646 a am:SportsClass ;
+    schema:name "ACONDICIONAMIENTO FÍSICO MAYORES N1 LX 11:00-12:00" ;
+    am:takesPlaceAt res:SportsFacility/99578 ;
+    am:hasActivity res:SportActivity/acondicionamiento-fisico ;
+    time:hasTime res:TimeInterval/1100-1200 ;
+    am:offeredPlaces "32"^^xsd:nonNegativeInteger ;
+    am:occupiedPlaces "32"^^xsd:nonNegativeInteger ;
+    am:availablePlaces "0"^^xsd:nonNegativeInteger .
