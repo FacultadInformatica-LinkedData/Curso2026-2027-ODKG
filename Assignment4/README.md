@@ -7,6 +7,6 @@ Please follow the instructions below to successfully validate your assignments a
 4. Once you complete your assignment, you need to export a python script from your notebook. Do so by clicking on `File->Download->Download .py`.
 5. **IMPORTANT** Comment the line `!pip install rdflib` in your python script (or any additional line with python magic).
 6. Create a NEW folder in `Assignment4`. It should look like `Assignment4/YOURFOLDERNAME`, where `YOURFOLDERNAME` should be your name, last name and id. For example: `Assignment4/Juan_Cano_1234`
-7. Place your python scrpts only in that folder. Your scripts **must** be named `task0{NUMBER}.py`. For example, `task06.py`. If you don't follow this convention, your PR will fail. 
+7. Place your python scripts only in that folder. Your scripts **must** be named `task0{NUMBER}.py`. For example, `task06.py`. If you don't follow this convention, your PR will fail. 
 8. If you submit the mandatory assignment, your PR should ONLY contain two files: `task06.py` and `task07.py`.
 9. Create a pull request to the main branch. A professor will activate an automated workflow on your scripts. If the workflow fails, your PR will be closed and you will need to review it, fix it and reopen it.
