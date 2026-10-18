@@ -63,7 +63,6 @@ g.bind("ontology", ontology)
 Spanish: Reproduce la taxonomía de clases que aparece en el diagrama (`Assignment4/course_materials/diagram/diagram.jpg`). Añade etiquetas para cada una de ellas tal y como aparecen en el diagrama (exactamente), sin etiquetas de idioma. Recuerda añadir el tipo de datos correcto (xsd:String) cuando sea necesario.
 
 English: Reproduce the taxonomy of classes shown in the diagram (`Assignment4/course_materials/diagram/diagram.jpg`). Add labels for each of them as they are in the diagram (exactly) with no language tags. Remember adding the correct datatype (xsd:String) when appropriate.
-
 """
 
 g.add((ontology.Person, RDF.type, RDFS.Class))
@@ -126,7 +125,6 @@ r.validate_task_06_02(g)
 Spanish: Añade las propiedades que aparecen en el diagrama. Añade etiquetas para cada una de ellas (exactamente como aparecen en la diapositiva, sin etiquetas de idioma), así como sus dominios y rangos correspondientes utilizando RDFS. Recuerda añadir el tipo de datos correcto (xsd:String) cuando sea necesario. Si una propiedad no tiene rango, conviértela en un literal (cadena de caracteres). Por otra parte, ontology:affiliatedWith tendrá como dominio ontology:Person y rango ontology:University.
 
 English: Add the properties shown in the previous diagram. Add labels for each of them (exactly as they are in the slide, with no language tags), and their corresponding domains and ranges using RDFS. Remember adding the correct datatype (xsd:String) when appropriate. If a property has no range, make it a literal (string). Furthermore, the ontology:affiliatedWith property will have ontology:Person as its domain and ontology:University as its range.
-
 """
 
 g.add((ontology.hasName, RDFS.domain,ontology.Person))
@@ -147,6 +145,7 @@ g.add((ontology.hasHomePage,RDF.type,RDF.Property))
 g.add((ontology.affiliatedWith, RDFS.label, Literal("affiliatedWith", datatype=XSD.string)))
 g.add((ontology.affiliatedWith, RDFS.domain, ontology.Person))
 g.add((ontology.affiliatedWith, RDFS.range, ontology.University))
+g.add((ontology.affiliatedWith, RDF.type, RDF.Property))
 
 
 
@@ -197,28 +196,14 @@ r.validate_task_06_04(g)
 Spanish: Añadir a person:Juan la dirección email (juan.cano@upm.es), el nombre (given) y los apellidos (family). Utiliza las propiedades que ya se incluyen en el ejemplo 4 para describir a Jane y John (https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/master/Assignment4/course_materials/rdf/example4.rdf). No importes los espacios de nombres; añádelos manualmente.
 
 English: Add to the individual person:Juan the email address (juan.cano@upm.es), given and family names. Use the properties already included in example 4 to describe Jane and John (https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/master/Assignment4/course_materials/rdf/example4.rdf). Do not import the namespaces, add them manually.
-
 """
 
 foaf = Namespace("http://xmlns.com/foaf/0.1/")
 g.bind("foaf", foaf)
 
-
-vcard = Namespace("http://www.w3.org/2001/vcard-rdf/3.0/")
-ontology = Namespace("http://somewhere#")
-
-g.add((person.Juan,
-       foaf.email,
-       Literal("juan.cano@upm.es", datatype=XSD.string)))
-
-g.add((person.Juan,
-       vcard.Given,
-       Literal("Juan", datatype=XSD.string)))
-
-g.add((person.Juan,
-       vcard.Family,
-       Literal("Cano de Benito", datatype=XSD.string)))
-
+g.add((person.Juan, foaf.givenName,  Literal("Juan", datatype=XSD.string)))
+g.add((person.Juan, foaf.familyName, Literal("Cano de Benito", datatype=XSD.string)))
+g.add((person.Juan, foaf.mbox,       Literal("juan.cano@upm.es", datatype=XSD.string)))
 
 # Visualize the results
 for s, p, o in g:

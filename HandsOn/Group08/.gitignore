@@ -1,0 +1,3 @@
+rdf/*.nt
+__pycache__/
+.venv/

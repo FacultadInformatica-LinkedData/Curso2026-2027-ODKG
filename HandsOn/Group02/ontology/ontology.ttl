@@ -12,13 +12,17 @@
 ### Reused External Terms ###
 
 schema:Park a owl:Class ;
-    rdfs:label "Park" .
+    rdfs:label "Park" ;
+    rdfs:subClassOf schema:Place .
 
 schema:Place a owl:Class ;
     rdfs:label "Place" .
 
 schema:Person a owl:Class ;
     rdfs:label "Person" .
+
+schema:Organization a owl:Class ;
+    rdfs:label "Organization" .
 
 schema:GeoCoordinates a owl:Class ;
     rdfs:label "Geo Coordinates" .
@@ -31,12 +35,22 @@ schema:geo a owl:ObjectProperty ;
 schema:latitude a owl:DatatypeProperty ;
     rdfs:label "latitude" ;
     rdfs:domain schema:GeoCoordinates ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 schema:longitude a owl:DatatypeProperty ;
     rdfs:label "longitude" ;
     rdfs:domain schema:GeoCoordinates ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
+
+# The following schema.org properties are reused as parents of the object
+# properties defined below (rdfs:subPropertyOf). They are used as defined by
+# schema.org, so no domain or range is restated for them here.
+
+schema:containsPlace a owl:ObjectProperty ;
+    rdfs:label "contains place" .
+
+schema:creator a owl:ObjectProperty ;
+    rdfs:label "creator" .
 
 ### Ontology Classes ###
 
@@ -54,24 +68,41 @@ schema:longitude a owl:DatatypeProperty ;
 
 :Artist a owl:Class ;
     rdfs:label "Artist" ;
-    rdfs:subClassOf schema:Person .
+    rdfs:comment "A creator credited for an artwork: a person (e.g. Phil Schuster) or an organisation such as an architecture firm, a collective or an agency (e.g. Adler & Sullivan, Chicago Mosaic School, US Army Corps of Engineers)." ;
+    rdfs:subClassOf [ a owl:Class ;
+        owl:unionOf ( schema:Person schema:Organization ) ] .
+
+:Owner a owl:Class ;
+    rdfs:label "Owner" ;
+    rdfs:comment "An entity that owns an artwork: usually an organisation (e.g. Chicago Park District, City of Chicago, Lincoln Park Zoo, a museum) and occasionally a person (an artist who owns their own work)." ;
+    rdfs:subClassOf [ a owl:Class ;
+        owl:unionOf ( schema:Person schema:Organization ) ] .
 
 ### Object Properties ###
 
 :hasArtwork a owl:ObjectProperty ;
     rdfs:label "has artwork" ;
+    rdfs:subPropertyOf schema:containsPlace ;
     rdfs:domain :ChicagoPark ;
     rdfs:range :Artwork .
 
 :hasFacility a owl:ObjectProperty ;
     rdfs:label "has facility" ;
+    rdfs:subPropertyOf schema:containsPlace ;
     rdfs:domain :ChicagoPark ;
     rdfs:range :Facility .
 
 :madeBy a owl:ObjectProperty ;
     rdfs:label "made by" ;
+    rdfs:subPropertyOf schema:creator ;
     rdfs:domain :Artwork ;
     rdfs:range :Artist .
+
+:owner a owl:ObjectProperty ;
+    rdfs:label "owner" ;
+    rdfs:comment "Owner of the artwork; an artwork can have several owners (one :owner triple each)." ;
+    rdfs:domain :Artwork ;
+    rdfs:range :Owner .
 
 ### Datatype Properties ###
 
@@ -98,7 +129,7 @@ schema:longitude a owl:DatatypeProperty ;
 :facilityGisObjectId a owl:DatatypeProperty ;
     rdfs:label "facility gis object id" ;
     rdfs:domain :Facility ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:integer .
 
 :artworkName a owl:DatatypeProperty ;
     rdfs:label "artwork name" ;
@@ -110,22 +141,17 @@ schema:longitude a owl:DatatypeProperty ;
     rdfs:domain :Artwork ;
     rdfs:range xsd:string .
 
-:objectId a owl:DatatypeProperty ;
-    rdfs:label "object id" ;
-    rdfs:domain :Artwork ;
-    rdfs:range xsd:integer .
-
 :artworkGisObjectId a owl:DatatypeProperty ;
     rdfs:label "artwork gis object id" ;
     rdfs:domain :Artwork ;
-    rdfs:range xsd:string .
-
-:owner a owl:DatatypeProperty ;
-    rdfs:label "owner" ;
-    rdfs:domain :Artwork ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:integer .
 
 :artistName a owl:DatatypeProperty ;
     rdfs:label "artist name" ;
     rdfs:domain :Artist ;
+    rdfs:range xsd:string .
+
+:ownerName a owl:DatatypeProperty ;
+    rdfs:label "owner name" ;
+    rdfs:domain :Owner ;
     rdfs:range xsd:string .

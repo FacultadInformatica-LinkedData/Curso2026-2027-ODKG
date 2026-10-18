@@ -1,4 +1,7 @@
 @prefix bpm:      <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix sosa:     <http://www.w3.org/ns/sosa/> .
+@prefix geo:      <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix schema:   <http://schema.org/> .
 @prefix station:  <https://w3id.org/breatheplay-madrid/resource/station/> .
 @prefix sttype:   <https://w3id.org/breatheplay-madrid/resource/station-type/> .
 @prefix sp:       <https://w3id.org/breatheplay-madrid/resource/sampling-point/> .
@@ -27,26 +30,32 @@
 
 # 1st row of D1, day 01: CO at Plaza de España on 2024-01-01 (0.5, flag V)
 <https://w3id.org/breatheplay-madrid/resource/observation/28079004_6_48/2024-01-01>
-    a bpm:DailyObservation ;
-    bpm:hasSamplingPoint sp:28079004_6_48 ;
+    a bpm:DailyObservation, sosa:Observation ;
+    rdfs:label "Observación diaria de Monóxido de carbono en el punto de muestreo 28079004_6_48 el 2024-01-01"@es ;
+    sosa:madeBySensor sp:28079004_6_48 ;
+    sosa:observedProperty pol:6 ;
     bpm:date "2024-01-01"^^xsd:date ;
-    bpm:value 0.5 ;
+    sosa:hasSimpleResult 0.5 ;
     bpm:isValid true .
 
 # NO2 at Plaza de España on 2024-01-15 (22, flag V)
 <https://w3id.org/breatheplay-madrid/resource/observation/28079004_8_8/2024-01-15>
-    a bpm:DailyObservation ;
-    bpm:hasSamplingPoint sp:28079004_8_8 ;
+    a bpm:DailyObservation, sosa:Observation ;
+    rdfs:label "Observación diaria de Dióxido de nitrógeno en el punto de muestreo 28079004_8_8 el 2024-01-15"@es ;
+    sosa:madeBySensor sp:28079004_8_8 ;
+    sosa:observedProperty pol:8 ;
     bpm:date "2024-01-15"^^xsd:date ;
-    bpm:value 22.0 ;
+    sosa:hasSimpleResult 22.0 ;
     bpm:isValid true .
 
 # Value flagged as not valid in the source: CO on 2024-03-21 (0.4, flag N)
 <https://w3id.org/breatheplay-madrid/resource/observation/28079004_6_48/2024-03-21>
-    a bpm:DailyObservation ;
-    bpm:hasSamplingPoint sp:28079004_6_48 ;
+    a bpm:DailyObservation, sosa:Observation ;
+    rdfs:label "Observación diaria de Monóxido de carbono en el punto de muestreo 28079004_6_48 el 2024-03-21"@es ;
+    sosa:madeBySensor sp:28079004_6_48 ;
+    sosa:observedProperty pol:6 ;
     bpm:date "2024-03-21"^^xsd:date ;
-    bpm:value 0.4 ;
+    sosa:hasSimpleResult 0.4 ;
     bpm:isValid false .
 
 #################################################################
@@ -54,38 +63,40 @@
 #################################################################
 
 sp:28079004_6_48
-    a bpm:SamplingPoint ;
+    a bpm:SamplingPoint, sosa:Sensor ;
+    rdfs:label "Punto de muestreo 28079004_6_48 (Monóxido de carbono)"@es ;
     bpm:samplingPointCode "28079004_6_48" ;
-    bpm:hasStation station:28079004 ;
-    bpm:measuresPollutant pol:6 ;
+    sosa:isHostedBy station:28079004 ;
+    sosa:observes pol:6 ;
     bpm:usesTechnique tech:48 .
 
 sp:28079004_8_8
-    a bpm:SamplingPoint ;
+    a bpm:SamplingPoint, sosa:Sensor ;
+    rdfs:label "Punto de muestreo 28079004_8_8 (Dióxido de nitrógeno)"@es ;
     bpm:samplingPointCode "28079004_8_8" ;
-    bpm:hasStation station:28079004 ;
-    bpm:measuresPollutant pol:8 ;
+    sosa:isHostedBy station:28079004 ;
+    sosa:observes pol:8 ;
     bpm:usesTechnique tech:08 .
 
 tech:48
-    a bpm:MeasurementTechnique ;
+    a bpm:MeasurementTechnique, sosa:Procedure ;
     rdfs:label "infrared absorption"@en ;
     bpm:techniqueCode "48" .
 
 tech:08
-    a bpm:MeasurementTechnique ;
+    a bpm:MeasurementTechnique, sosa:Procedure ;
     rdfs:label "chemiluminescence"@en ;
     bpm:techniqueCode "08" .
 
 pol:6
-    a bpm:Pollutant ;
+    a bpm:Pollutant, sosa:ObservableProperty ;
     rdfs:label "carbon monoxide"@en ;
     bpm:pollutantCode "6" ;
     bpm:unit "mg/m3" ;
     owl:sameAs wd:Q2025 .
 
 pol:8
-    a bpm:Pollutant ;
+    a bpm:Pollutant, sosa:ObservableProperty ;
     rdfs:label "nitrogen dioxide"@en ;
     bpm:pollutantCode "8" ;
     bpm:unit "µg/m3" ;
@@ -97,28 +108,27 @@ pol:8
 
 # 1st row of D2
 station:28079004
-    a bpm:MonitoringStation ;
+    a bpm:MonitoringStation, sosa:Platform ;
     rdfs:label "Plaza de España"@es ;
     bpm:stationCode "28079004" ;
     bpm:hasStationType sttype:ut ;
-    bpm:altitude 637 ;
     bpm:startDate "1998-12-01"^^xsd:date ;
     bpm:address "Plaza de España" ;
-    bpm:latitude 40.4238823 ;
-    bpm:longitude -3.7122567 .
+    geo:lat 40.4238823 ;
+    geo:long -3.7122567 ;
+    geo:alt 637.0 .
 
 # Nearest station to the first sports facility of D3
 station:28079027
-    a bpm:MonitoringStation ;
+    a bpm:MonitoringStation, sosa:Platform ;
     rdfs:label "Barajas Pueblo"@es ;
     bpm:stationCode "28079027" ;
     bpm:hasStationType sttype:uf ;
-    bpm:altitude 619 ;
     bpm:startDate "2002-12-31"^^xsd:date ;
     bpm:address "C/ Júpiter, 21" ;
-    bpm:latitude 40.4769179 ;
-    bpm:longitude -3.5800258 ;
-    bpm:locatedInDistrict district:21 .
+    geo:lat 40.4769179 ;
+    geo:long -3.5800258 ;
+    geo:alt 619.0 .
 
 sttype:ut
     a bpm:StationType ;
@@ -133,7 +143,7 @@ sttype:uf
 #################################################################
 
 fac:12009978
-    a bpm:SportsFacility ;
+    a bpm:SportsFacility, schema:SportsActivityLocation ;
     rdfs:label "Instalación Deportiva Municipal Básica Acuario"@es ;
     bpm:facilityId "12009978" ;
     bpm:hasFacilityType factype:circuito-vida ;
@@ -143,8 +153,8 @@ fac:12009978
     bpm:contentURL "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e30c5d9606508810VgnVCM1000001d4a900aRCRD"^^xsd:anyURI ;
     bpm:address "CALLE TROPICO 10" ;
     bpm:postalCode "28042" ;
-    bpm:latitude 40.47402643691105 ;
-    bpm:longitude -3.5801328372492223 ;
+    geo:lat 40.47402643691105 ;
+    geo:long -3.5801328372492223 ;
     bpm:locatedInDistrict district:21 ;
     bpm:locatedInNeighbourhood nbh:213 ;
     bpm:hasNearestStation station:28079027 ;

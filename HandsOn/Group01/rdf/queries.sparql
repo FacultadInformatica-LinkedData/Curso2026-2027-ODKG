@@ -1,0 +1,42 @@
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ao: <http://group01.opendata.upm.es/ontology/accidents#>
+
+# Query 1: Count the total number of traffic accidents
+SELECT (COUNT(DISTINCT ?accident) AS ?totalAccidents)
+WHERE {
+    ?accident rdf:type ao:TrafficAccident .
+}
+
+# Query 2: Count the total number of streets
+SELECT (COUNT(DISTINCT ?street) AS ?totalStreets)
+WHERE {
+    ?street rdf:type ao:Street .
+}
+
+# Query 3: Count traffic accidents by severity
+SELECT ?severity (COUNT(DISTINCT ?accident) AS ?total)
+WHERE {
+    ?accident rdf:type ao:TrafficAccident ;
+              ao:severity ?severity .
+}
+GROUP BY ?severity
+ORDER BY ?severity
+
+# Query 4: Retrieve traffic accidents and their associated streets
+SELECT ?accident ?street ?streetName
+WHERE {
+    ?accident rdf:type ao:TrafficAccident ;
+              ao:locatedOn ?street .
+    ?street ao:streetName ?streetName .
+}
+LIMIT 20
+
+# Query 5: Count traffic accidents without an associated street
+SELECT (COUNT(DISTINCT ?accident) AS ?withoutStreet)
+WHERE {
+    ?accident rdf:type ao:TrafficAccident .
+    FILTER NOT EXISTS {
+        ?accident ao:locatedOn ?street .
+    }
+}

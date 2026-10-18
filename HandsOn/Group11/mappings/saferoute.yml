@@ -1,0 +1,137 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  ns: https://w3id.org/saferoutemadrid/ontology#
+
+base: https://w3id.org/saferoutemadrid/mapping#
+
+sources:
+  accidents:
+    access: ./data/traffic_accidents_updated.csv
+    referenceFormulation: csv
+
+mappings:
+  TrafficAccident:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/TrafficAccident/$(num_expediente)
+    po:
+      - [a, ns:TrafficAccident]
+      - [rdfs:label, "Traffic accident $(num_expediente)", en~lang]
+      - [ns:accidentID, $(num_expediente), xsd:string]
+      - [ns:accidentDate, $(fecha), xsd:date]
+      - [ns:accidentTime, $(hora), xsd:time]
+      - [ns:occursAt, https://w3id.org/saferoutemadrid/resource/Location/$(num_expediente)]
+      - [ns:hasAccidentType, https://w3id.org/saferoutemadrid/resource/AccidentType/$(tipo_accidente)]
+      - [ns:hasWeatherCondition, https://w3id.org/saferoutemadrid/resource/WeatherCondition/$(estado_meteorológico)]
+      - [ns:involvesVehicle, https://w3id.org/saferoutemadrid/resource/Vehicle/$(ID_vehiculo)]
+
+  Location:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/Location/$(num_expediente)
+    po:
+      - [a, ns:Location]
+      - [rdfs:label, "Location of traffic accident $(num_expediente)", en~lang]
+      - [ns:streetName, $(localizacion), xsd:string]
+      - [ns:streetNumber, $(numero), xsd:string]
+      - [ns:xCoordinate, $(coordenada_x_utm), xsd:double]
+      - [ns:yCoordinate, $(coordenada_y_utm), xsd:double]
+      - [ns:locatedIn, https://w3id.org/saferoutemadrid/resource/District/$(distrito)]
+
+  District:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/District/$(distrito)
+    po:
+      - [a, ns:District]
+      - [rdfs:label, $(distrito), es~lang]
+      - [ns:districtCode, $(cod_distrito), xsd:integer]
+      - [ns:districtName, $(distrito), xsd:string]
+
+  Vehicle:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/Vehicle/$(ID_vehiculo)
+    po:
+      - [a, ns:Vehicle]
+      - [rdfs:label, "Vehicle $(ID_vehiculo)", en~lang]
+      - [ns:hasVehicleType, https://w3id.org/saferoutemadrid/resource/VehicleType/$(tipo_vehiculo)]
+      - [ns:involvesPerson, https://w3id.org/saferoutemadrid/resource/Person/$(ID_persona)]
+
+  Person:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/Person/$(ID_persona)
+    po:
+      - [a, ns:Person]
+      - [rdfs:label, "Person $(ID_persona)", en~lang]
+      - [ns:hasPersonType, https://w3id.org/saferoutemadrid/resource/PersonType/$(tipo_persona)]
+      - [ns:hasAgeRange, https://w3id.org/saferoutemadrid/resource/AgeRange/$(rango_edad)]
+      - [ns:hasSex, https://w3id.org/saferoutemadrid/resource/Sex/$(sexo)]
+      - [ns:hasInjurySeverity, https://w3id.org/saferoutemadrid/resource/InjurySeverity/$(lesividad)]
+      - [ns:positiveAlcohol, $(positiva_alcohol), xsd:boolean]
+      - [ns:positiveDrug, $(positiva_droga), xsd:boolean]
+
+  AccidentType:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/AccidentType/$(tipo_accidente)
+    po:
+      - [a, ns:AccidentType]
+      - [a, skos:Concept]
+      - [rdfs:label, $(tipo_accidente), es~lang]
+      - [skos:prefLabel, $(tipo_accidente), es~lang]
+
+  WeatherCondition:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/WeatherCondition/$(estado_meteorológico)
+    po:
+      - [a, ns:WeatherCondition]
+      - [a, skos:Concept]
+      - [rdfs:label, $(estado_meteorológico), es~lang]
+      - [skos:prefLabel, $(estado_meteorológico), es~lang]
+
+  VehicleType:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/VehicleType/$(tipo_vehiculo)
+    po:
+      - [a, ns:VehicleType]
+      - [a, skos:Concept]
+      - [rdfs:label, $(tipo_vehiculo), es~lang]
+      - [skos:prefLabel, $(tipo_vehiculo), es~lang]
+
+  PersonType:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/PersonType/$(tipo_persona)
+    po:
+      - [a, ns:PersonType]
+      - [a, skos:Concept]
+      - [rdfs:label, $(tipo_persona), es~lang]
+      - [skos:prefLabel, $(tipo_persona), es~lang]
+
+  AgeRange:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/AgeRange/$(rango_edad)
+    po:
+      - [a, ns:AgeRange]
+      - [a, skos:Concept]
+      - [rdfs:label, $(rango_edad), es~lang]
+      - [skos:prefLabel, $(rango_edad), es~lang]
+
+  Sex:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/Sex/$(sexo)
+    po:
+      - [a, ns:Sex]
+      - [a, skos:Concept]
+      - [rdfs:label, $(sexo), es~lang]
+      - [skos:prefLabel, $(sexo), es~lang]
+
+  InjurySeverity:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/InjurySeverity/$(lesividad)
+    po:
+      - [a, ns:InjurySeverity]
+      - [a, skos:Concept]
+      - [rdfs:label, $(lesividad), es~lang]
+      - [skos:prefLabel, $(lesividad), es~lang]
+      - [skos:notation, $(cod_lesividad), xsd:string]

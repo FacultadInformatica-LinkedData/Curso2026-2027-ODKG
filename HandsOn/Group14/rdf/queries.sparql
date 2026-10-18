@@ -1,0 +1,76 @@
+PREFIX vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#>
+PREFIX fountain: <http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/>
+PREFIX district: <http://smartcity.linkeddata.es/madrid/fountains/resource/District/>
+PREFIX neighbourhood: <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+
+# QUERY 1: Validación general de estructura
+# Obtiene 10 fuentes con todas sus propiedades.
+
+SELECT ?fountain ?status ?lat ?lon ?street ?district ?neighbourhood
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasStatus ?status ;
+            vocab:hasLatitude ?lat ;
+            vocab:hasLongitude ?lon ;
+            vocab:hasStreetName ?street ;
+            vocab:hasDistrict ?district ;
+            vocab:hasNeighbourhood ?neighbourhood .
+}
+LIMIT 10
+
+
+
+# QUERY 2: Validación de Instanciación de Clases
+# Cuenta cuántas instancias se han creado para cada clase.
+
+SELECT ?class (COUNT(?instance) AS ?count)
+WHERE {
+  ?instance a ?class .
+  FILTER (?class IN (vocab:Fountain, vocab:District, vocab:Neighbourhood))
+}
+GROUP BY ?class
+
+
+
+# QUERY 3: Validación de Datatype Properties y Filtros
+# Busca las fuentes que están operativas basándose en el xsd:string.
+
+SELECT ?fountain ?street ?status
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasStatus ?status ;
+            vocab:hasStreetName ?street .
+          
+  FILTER(CONTAINS(STR(?status), "OPERATIVO"))
+}
+LIMIT 10
+
+
+
+# QUERY 4: Validación de Object Properties (Relaciones)
+# Cuenta cuántas fuentes hay por cada distrito.
+
+SELECT ?district (COUNT(?fountain) AS ?numFountains)
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasDistrict ?district .
+}
+GROUP BY ?district
+ORDER BY DESC(?numFountains)
+
+
+
+# QUERY 5: Búsqueda geoespacial simple (Latitud/Longitud)
+# Extrae fuentes con latitud mayor a 40.40.
+
+SELECT ?fountain ?lat ?lon
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasLatitude ?lat ;
+            vocab:hasLongitude ?lon .
+  FILTER (?lat > "40.40"^^xsd:float)
+}
+LIMIT 10

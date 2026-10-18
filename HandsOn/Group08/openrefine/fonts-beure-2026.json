@@ -1,0 +1,305 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODI",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna CODI utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna NOM utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CARRER",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna CARRER utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NUMERO_CARRER",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna NUMERO_CARRER utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODI_BARRI",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna CODI_BARRI utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_BARRI",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna NOM_BARRI utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODI_DISTRICTE",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna CODI_DISTRICTE utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_DISTRICTE",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna NOM_DISTRICTE utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "X_ETRS89",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna X_ETRS89 utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Y_ETRS89",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna Y_ETRS89 utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LATITUD",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna LATITUD utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LONGITUD",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna LONGITUD utilizzando l'espressione value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LATITUD",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna LATITUD utilizzando l'espressione value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LONGITUD",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Trasforma il testo delle celle nella colonna LONGITUD utilizzando l'espressione value.toNumber()"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "CODI",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Riordina le righe"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODI_BARRI",
+    "expression": "grel:with(cells[\"CODI\"].value, c,\n  if(isBlank(value),\n    if(c.startsWith(\"10-\"), \"70\",\n    if(c==\"04-090\", \"21\",\n    if(c==\"05-171\", \"22\",\n    if(c.startsWith(\"07-\"), \"45\", value)))),\n  value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CODI_BARRI utilizzando l'espressione grel:with(cells[\"CODI\"].value, c,\n  if(isBlank(value),\n    if(c.startsWith(\"10-\"), \"70\",\n    if(c==\"04-090\", \"21\",\n    if(c==\"05-171\", \"22\",\n    if(c.startsWith(\"07-\"), \"45\", value)))),\n  value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_BARRI",
+    "expression": "grel:with(cells[\"CODI_BARRI\"].value, b,\n  if(isBlank(value),\n    if(b==\"70\",\"el Besòs i el Maresme\", if(b==\"21\",\"Pedralbes\",\n    if(b==\"22\",\"Vallvidrera, el Tibidabo i les Planes\",\n    if(b==\"45\",\"Sant Genís dels Agudells\", value)))), value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna NOM_BARRI utilizzando l'espressione grel:with(cells[\"CODI_BARRI\"].value, b,\n  if(isBlank(value),\n    if(b==\"70\",\"el Besòs i el Maresme\", if(b==\"21\",\"Pedralbes\",\n    if(b==\"22\",\"Vallvidrera, el Tibidabo i les Planes\",\n    if(b==\"45\",\"Sant Genís dels Agudells\", value)))), value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODI_DISTRICTE",
+    "expression": "grel:with(cells[\"CODI_BARRI\"].value, b,\n  if(b == \"18\", \"03\",\n  if(b == \"19\", \"04\",\n  if(b == \"29\", \"06\",\n  if(b == \"37\", \"07\", value)))))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CODI_DISTRICTE utilizzando l'espressione grel:with(cells[\"CODI_BARRI\"].value, b,\n  if(b == \"18\", \"03\",\n  if(b == \"19\", \"04\",\n  if(b == \"29\", \"06\",\n  if(b == \"37\", \"07\", value)))))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_DISTRICTE",
+    "expression": "grel:with(cells[\"CODI_DISTRICTE\"].value, c,\n  if(c==\"01\",\"Ciutat Vella\", if(c==\"02\",\"Eixample\", if(c==\"03\",\"Sants-Montjuïc\",\n  if(c==\"04\",\"Les Corts\", if(c==\"05\",\"Sarrià-Sant Gervasi\", if(c==\"06\",\"Gràcia\",\n  if(c==\"07\",\"Horta-Guinardó\", if(c==\"08\",\"Nou Barris\", if(c==\"09\",\"Sant Andreu\",\n  if(c==\"10\",\"Sant Martí\", value)))))))))))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna NOM_DISTRICTE utilizzando l'espressione grel:with(cells[\"CODI_DISTRICTE\"].value, c,\n  if(c==\"01\",\"Ciutat Vella\", if(c==\"02\",\"Eixample\", if(c==\"03\",\"Sants-Montjuïc\",\n  if(c==\"04\",\"Les Corts\", if(c==\"05\",\"Sarrià-Sant Gervasi\", if(c==\"06\",\"Gràcia\",\n  if(c==\"07\",\"Horta-Guinardó\", if(c==\"08\",\"Nou Barris\", if(c==\"09\",\"Sant Andreu\",\n  if(c==\"10\",\"Sant Martí\", value)))))))))))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODI_BARRI",
+    "expression": "grel:if(and(value==\"45\", cells[\"CODI_DISTRICTE\"].value==\"07\"), \"39\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CODI_BARRI utilizzando l'espressione grel:if(and(value==\"45\", cells[\"CODI_DISTRICTE\"].value==\"07\"), \"39\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CARRER",
+    "expression": "grel:with('{\"Pl. de la Mercè\":\"PL MERCÈ\",\"Pg. Circumval·lació\":\"PG CIRCUMVAL·LACIÓ\",\"Plaça George Orwell\":\"PL GEORGE ORWELL\",\"Jonqueres\":\"C JONQUERES\",\"Allada Vermell\":\"C ALLADA VERMELL\",\"Jardins de Reina Victòria\":\"JARD REINA VICTÒRIA\",\"Ribes\":\"C RIBES\",\"Girona\":\"C GIRONA\",\"Consell de Cent\":\"C CONSELL DE CENT\",\"Rocafort\":\"C ROCAFORT\",\"Pl. Falset\":\"PL FALSET\",\"Acer\":\"C ACER\",\"Rambla Badal\":\"RBLA BADAL\",\"Arnes\":\"C ARNES\",\"Ferro\":\"C FERRO\",\"Av. Miramar\":\"AV MIRAMAR\",\"Ferrocarrils Catalans\":\"C FERROCARRILS CATALANS\",\"Parcerisa\":\"C PARCERISA\",\"Jardins de les Tres Xemeneies\":\"JARD TRES XEMENEIES\",\"Av. Alfons XIII\":\"AV ALFONS XIII\",\"Pl. del Coll de Finestrelles\":\"PL COLL DE FINESTRELLES\",\"Av. Diagonal\":\"AV DIAGONAL\",\"Equador\":\"C EQUADOR\",\"Constança\":\"C CONSTANÇA\",\"Pau Romeva\":\"C PAU ROMEVA\",\"Europa\":\"C EUROPA\",\"Jordi Girona\":\"C JORDI GIRONA\",\"Plaça de Mossen Miquel Vall i Mundó\":\"PL MOSSEN MIQUEL VALL I MUNDÓ\",\"Pl. Emili Mira\":\"PL EMILI MIRA\",\"Pl. del Carril\":\"PL CARRIL\",\"c/ Gràcia\":\"C GRÀCIA\",\"Abdó Terradas\":\"C ABDÓ TERRADAS\",\"Farigola\":\"C FARIGOLA\",\"Plaça del Poble Romaní\":\"PL POBLE ROMANÍ\",\"Anna Piferrer\":\"C ANNA PIFERRER\",\"Llobregós\":\"C LLOBREGÓS\",\"Pedrell\":\"C PEDRELL\",\"Portlligat\":\"C PORTLLIGAT\",\"Av. Rasos de Peguera\":\"AV RASOS DE PEGUERA\",\"Rassos de Peguera\":\"RASOS DE PEGUERA\",\"Pl. de les Basses de la Peira\":\"PL BASSES DE LA PEIRA\",\"Aiguablava\":\"C AIGUABLAVA\",\"Beret\":\"C BERET\",\"Cornudella\":\"C CORNUDELLA\",\"Garccilaso\":\"C GARCILASO\",\"Rambla Sant Andreu\":\"RBLA SANT ANDREU\",\"Novell\":\"C NOVELL\",\"Alexandre Galí\":\"C ALEXANDRE GALÍ\",\"Valentí Iglesias\":\"C VALENTÍ IGLESIAS\",\"Palomar\":\"C PALOMAR\",\"Selva de Mar\":\"C SELVA DE MAR\",\"Provençals\":\"C PROVENÇALS\",\"Alfons el Magnànim\":\"C ALFONS EL MAGNÀNIM\",\"Guatemala\":\"C GUATEMALA\",\"Alaba\":\"C ALABA\",\"Pl. Glòries - Àgora\":\"PL GLÒRIES - ÀGORA\",\"Pl. Sant Josep de Calassanç\":\"PL SANT JOSEP DE CALASSANÇ\"}'.parseJson(), m, if(isNonBlank(m[value]), m[value], value.toUppercase()))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Normalise CARRER to ALL CAPS with undotted abbreviated prefixes; fix typos"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM",
+    "expression": "grel:with('{\"central\":\"Central\",\"Pg Sant joan\":\"Pg Sant Joan\",\"parc\":\"Parc\",\"camp de futbol\":\"Camp de futbol\",\"jardins de la Mediterrània\":\"Jardins de la Mediterrània\",\"placeta\":\"Placeta\",\"ESPAIS DE CESSIÓ SECTOR 3, MARINA ZONA FRANCA\":\"Espais de Cessió Sector 3, Marina Zona Franca\",\"PL. GAL.LA PLACIDIA\":\"Pl. Gal.la Placidia\",\"C. ESCORIAL\":\"C. Escorial\",\"SANLLEHY,PL.\":\"Sanllehy,Pl.\",\"C. BAC DE RODA\":\"C. Bac de Roda\"}'.parseJson(), m, if(isNonBlank(m[value]), m[value], value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Unify NOM case variants and proper-case ALL-CAPS values"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NUMERO_CARRER",
+    "expression": "grel:if(value==\"SN\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Blank SN placeholder in NUMERO_CARRER"
+  }
+]

@@ -1,0 +1,427 @@
+[
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "AÑO",
+          "expression": "isBlank(value)",
+          "columnName": "AÑO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "AÑO",
+    "newColumnName": "anio",
+    "description": "Renombra la columna AÑO a anio"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "MES",
+    "newColumnName": "mes",
+    "description": "Renombra la columna MES a mes"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "NOMBRE DEL\nAPARCAMIENTO",
+    "newColumnName": "nombre_del_aparcamiento",
+    "description": "Renombra la columna NOMBRE DEL\nAPARCAMIENTO a nombre_del_aparcamiento"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "CÓDIDO\nPAR",
+    "newColumnName": "codigo_par",
+    "description": "Renombra la columna CÓDIDO\nPAR a codigo_par"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "TIPO",
+    "newColumnName": "tipo",
+    "description": "Renombra la columna TIPO a tipo"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "NUM\nPLAZAS",
+    "newColumnName": "num_plazas",
+    "description": "Renombra la columna NUM\nPLAZAS a num_plazas"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "CÓDIGO\nDISTRITO",
+    "newColumnName": "codigo_distrito",
+    "description": "Renombra la columna CÓDIGO\nDISTRITO a codigo_distrito"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DISTRITO",
+    "newColumnName": "distrito",
+    "description": "Renombra la columna DISTRITO a distrito"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Días\nCálculo",
+    "newColumnName": "dias_calculo",
+    "description": "Renombra la columna Días\nCálculo a dias_calculo"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Vehículos\ndía (media)",
+    "newColumnName": "vehículos_dia_media",
+    "description": "Renombra la columna Vehículos\ndía (media) a vehículos_dia_media"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Ocupación (%)",
+    "newColumnName": "ocupacion_pct",
+    "description": "Renombra la columna Ocupación (%) a ocupacion_pct"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Ocupación\n9h-21h (%)",
+    "newColumnName": "ocupacion_9h_21h_pct",
+    "description": "Renombra la columna Ocupación\n9h-21h (%) a ocupacion_9h_21h_pct"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2022",
+    "description": "Eliminar columna DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2022"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2023",
+    "description": "Eliminar columna DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2023"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2021",
+    "description": "Eliminar columna DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2021"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2020",
+    "description": "Eliminar columna DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2020"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2019",
+    "description": "Eliminar columna DATOS DE OCUPACIÓN EN APARCAMIENTOS DE ROTACIÓN AÑO 2019"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna distrito usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "nombre_del_aparcamiento",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna nombre_del_aparcamiento usando la expresión value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipo",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna tipo usando la expresión value.trim()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipo",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "ROTACIONAL"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ROT"
+      }
+    ],
+    "description": "Editar celdas en masa en columna tipo"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tipo",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "MIXTO"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "MIX"
+      }
+    ],
+    "description": "Editar celdas en masa en columna tipo"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ocupacion_pct",
+    "expression": "grel:if(isBlank(value), null, value.toString().replace(\"%\", \"\").replace(\",\", \".\").toNumber())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna ocupacion_pct usando la expresión grel:if(isBlank(value), null, value.toString().replace(\"%\", \"\").replace(\",\", \".\").toNumber())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ocupacion_9h_21h_pct",
+    "expression": "grel:if(isBlank(value), null, value.toString().replace(\"%\", \"\").replace(\",\", \".\").toNumber())",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna ocupacion_9h_21h_pct usando la expresión grel:if(isBlank(value), null, value.toString().replace(\"%\", \"\").replace(\",\", \".\").toNumber())"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ocupacion_pct",
+    "expression": "grel:if(isBlank(value), null, if(value < 0, null, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna ocupacion_pct usando la expresión grel:if(isBlank(value), null, if(value < 0, null, value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ocupacion_9h_21h_pct",
+    "expression": "grel:if(isBlank(value), null, if(value < 0, null, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna ocupacion_9h_21h_pct usando la expresión grel:if(isBlank(value), null, if(value < 0, null, value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "ocupacion_pct",
+          "expression": "value",
+          "columnName": "ocupacion_pct",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "vehículos_dia_media",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna vehículos_dia_media usando la expresión value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "vehículos_dia_media",
+    "expression": "grel:if(isBlank(value), null, if(value < 0, null, value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna vehículos_dia_media usando la expresión grel:if(isBlank(value), null, if(value < 0, null, value))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "anio",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna anio usando la expresión value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "mes",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna mes usando la expresión value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "num_plazas",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna num_plazas usando la expresión value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "dias_calculo",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna dias_calculo usando la expresión value.toNumber()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "CHAMARTIN"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "CHAMARTÍN"
+      }
+    ],
+    "description": "Editar celdas en masa en columna distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "CHAMBERI"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "CHAMBERÍ"
+      }
+    ],
+    "description": "Editar celdas en masa en columna distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "TETUAN"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "TETUÁN"
+      }
+    ],
+    "description": "Editar celdas en masa en columna distrito"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "codigo_par",
+    "expression": "grel:cells[\"codigo_par\"].value.toString() + \"|\" + cells[\"anio\"].value.toString() + \"|\" + cells[\"mes\"].value.toString()",
+    "onError": "set-to-blank",
+    "newColumnName": "clave_registro_temp",
+    "columnInsertIndex": 5,
+    "description": "Crear la columna clave_registro_temp en el índice 5 basada en la columna codigo_par usando la expresión grel:cells[\"codigo_par\"].value.toString() + \"|\" + cells[\"anio\"].value.toString() + \"|\" + cells[\"mes\"].value.toString()"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "clave_registro_temp",
+    "description": "Eliminar columna clave_registro_temp"
+  }
+]

@@ -1,0 +1,104 @@
+prefixes:
+  am: https://w3id.org/active-madrid/ontology#
+  res: https://w3id.org/active-madrid/resource/
+  dc: http://purl.org/dc/elements/1.1/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  mod: https://w3id.org/mod#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  time: http://www.w3.org/2006/time#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  
+mappings:
+  triplesmapSportsFacility:
+    sources:
+      - [sports_centers_info_updated.csv~csv]
+    s: res:SportsFacility/$(PK)
+    po:
+      - [a, am:SportsFacility]
+      - [schema:name, $(NOMBRE), xsd:string]
+      - [schema:address, res:PostalAddress/$(PK)~iri]
+      - [am:locatedInDistrict, res:District/$(DISTRITO)~iri]
+      - [geo:lat, $(LATITUD), xsd:decimal]
+      - [geo:long, $(LONGITUD), xsd:decimal]
+      - [schema:telephone, $(TELEFONO), xsd:string]
+      - [schema:email, $(EMAIL), xsd:string]
+
+  triplesmapPostalAddress:
+    sources:
+      - [sports_centers_info_updated.csv~csv]
+    s: res:PostalAddress/$(PK)
+    po:
+      - [a, schema:PostalAddress]
+      - [schema:streetAddress, "$(CLASE-VIAL) $(NOMBRE-VIA), $(NUM)", xsd:string]
+      - [schema:postalCode, $(CODIGO-POSTAL), xsd:string]
+  
+  triplesmapDistrict:
+    sources:
+      - [sports_centers_info_updated.csv~csv]
+    s: res:District/$(DISTRITO)
+    po:
+      - [a, am:District]
+      - [schema:name, $(DISTRITO), xsd:string]
+
+  triplesmapSportActivity:
+    sources:
+      - [open_classes_updated.csv~csv]
+      - [closed_classes_updated.csv~csv]
+    s: res:SportActivity/$(Actividad)
+    po:
+      - [a, am:SportActivity]
+      - [schema:name, $(Actividad), xsd:string]
+      
+  triplesmapTimeIntervals:
+    sources:
+      - [open_classes_updated.csv~csv]
+    s: res:TimeInterval/$(Hora inicial)-$(Hora final)
+    po:
+      - [a, time:Interval]
+      - [time:hasBeginning, $(Hora inicial), xsd:time]
+      - [time:hasEnd, $(Hora final), xsd:time]
+      
+  triplesmapOpenClasses:
+    sources:
+      - [open_classes_updated.csv~csv]
+    s: res:SportsClass/OPEN_$(Centro deportivo)_$(Fecha)_$(Hora inicial)_$(Actividad)
+    po:
+      - [a, am:SportsClass]
+      - [schema:name, "$(Actividad) - $(Día de la semana) de $(Hora inicial) a $(Hora final)", xsd:string]
+      - [am:offeredPlaces, $(Plazas), xsd:nonNegativeInteger]
+      - [am:occupiedPlaces, $(Ocupadas), xsd:nonNegativeInteger]
+      - [am:availablePlaces, $(Libres), xsd:nonNegativeInteger]
+      - [am:hasActivity, res:SportActivity/$(Actividad)~iri]
+      - [time:hasTime, res:TimeInterval/$(Hora inicial)-$(Hora final)~iri]
+      - p: am:takesPlaceAt
+        o:
+          mapping: triplesmapSportsFacility
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Centro deportivo)]
+              - [str2, $(NOMBRE)]
+        
+
+  triplesmapClosedClasses:
+    sources:
+      - [closed_classes_updated.csv~csv]
+    s: res:SportsClass/CLOSED_$(Centro deportivo)_$(Clase)_$(Año)_$(Mes)
+    po:
+      - [a, am:SportsClass]
+      - [schema:name, $(Clase), xsd:string]
+      - [am:offeredPlaces, $(Nº Plazas Ofertadas), xsd:nonNegativeInteger]
+      - [am:occupiedPlaces, $(Nº Plazas Ocupadas), xsd:nonNegativeInteger]
+      - [am:availablePlaces, $(Nº Plazas Libres), xsd:nonNegativeInteger]
+      - [am:hasActivity, res:SportActivity/$(Actividad)~iri]
+      - p: am:takesPlaceAt
+        o:
+          mapping: triplesmapSportsFacility
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Centro deportivo)]
+              - [str2, $(NOMBRE)]
+    

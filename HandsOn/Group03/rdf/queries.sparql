@@ -1,0 +1,261 @@
+# Run each query separately against rdf/madridnoise.ttl.
+
+# Q1. Individuals per class.
+
+SELECT ?class (COUNT(DISTINCT ?s) AS ?individuals)
+WHERE { ?s a ?class }
+GROUP BY ?class
+ORDER BY DESC(?individuals)
+
+# Q2. Local individuals without a label. Expected: 0.
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (COUNT(?s) AS ?withoutLabel)
+WHERE {
+  {
+    SELECT DISTINCT ?s WHERE {
+      {
+        SELECT DISTINCT ?s WHERE {
+          { ?s ?p ?o } UNION { ?other ?p ?s }
+        }
+      }
+      FILTER (isIRI(?s))
+      FILTER (STRSTARTS(STR(?s), "https://madridnoise.linkeddata.es/resource/") ||
+              STRSTARTS(STR(?s), "https://madridnoise.linkeddata.es/dataset/"))
+    }
+  }
+  FILTER NOT EXISTS {
+    ?s rdfs:label ?label .
+    FILTER (isLiteral(?label) && STRLEN(REPLACE(STR(?label), "\\s", "")) > 0)
+  }
+}
+
+# Q3. Local individuals without a type. Expected: 0.
+
+SELECT (COUNT(?s) AS ?withoutType)
+WHERE {
+  {
+    SELECT DISTINCT ?s WHERE {
+      {
+        SELECT DISTINCT ?s WHERE {
+          { ?s ?p ?o } UNION { ?other ?p ?s }
+        }
+      }
+      FILTER (isIRI(?s))
+      FILTER (STRSTARTS(STR(?s), "https://madridnoise.linkeddata.es/resource/") ||
+              STRSTARTS(STR(?s), "https://madridnoise.linkeddata.es/dataset/"))
+    }
+  }
+  FILTER NOT EXISTS { ?s a ?class . FILTER (isIRI(?class)) }
+}
+
+# Q4. Dangling resource links. Expected: 0.
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT (COUNT(*) AS ?danglingLinks)
+WHERE {
+  {
+    ?obs mn:recordedAt ?target .
+    FILTER NOT EXISTS { ?target a mn:NoiseMonitoringStation }
+  } UNION {
+    ?obs mn:forPeriod ?target .
+    FILTER NOT EXISTS { ?target a mn:DayPeriod }
+  } UNION {
+    ?t mn:hasDistrict ?target .
+    FILTER NOT EXISTS { ?target a mn:District }
+  } UNION {
+    ?t mn:hasNeighbourhood ?target .
+    FILTER NOT EXISTS { ?target a mn:Neighbourhood }
+  }
+}
+
+# Q5. Invalid datatypes or lexical forms. Expected: 0.
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT (COUNT(*) AS ?wronglyTyped)
+WHERE {
+  {
+    VALUES (?property ?expectedDatatype) {
+      (mn:laeq xsd:decimal) (mn:las01 xsd:decimal) (mn:las10 xsd:decimal)
+      (mn:las50 xsd:decimal) (mn:las90 xsd:decimal) (mn:las99 xsd:decimal)
+      (mn:latitude xsd:decimal) (mn:longitude xsd:decimal)
+      (mn:observationDate xsd:date) (mn:terraceId xsd:integer)
+      (mn:percentileOrderViolation xsd:boolean)
+    }
+    ?s ?property ?v .
+    FILTER (!isLiteral(?v))
+  } UNION {
+    VALUES (?property ?expectedDatatype) {
+      (mn:laeq xsd:decimal) (mn:las01 xsd:decimal) (mn:las10 xsd:decimal)
+      (mn:las50 xsd:decimal) (mn:las90 xsd:decimal) (mn:las99 xsd:decimal)
+      (mn:latitude xsd:decimal) (mn:longitude xsd:decimal)
+      (mn:observationDate xsd:date) (mn:terraceId xsd:integer)
+      (mn:percentileOrderViolation xsd:boolean)
+    }
+    ?s ?property ?v .
+    FILTER (isLiteral(?v))
+    BIND (IF(?expectedDatatype = xsd:decimal, xsd:decimal(?v),
+          IF(?expectedDatatype = xsd:integer, xsd:integer(?v),
+          IF(?expectedDatatype = xsd:date,
+             IF(REGEX(STR(?v), "^(-?[0-9]{4,}-[0-9]{2}-[0-9]{2})(Z|[+-](0[0-9]|1[0-3]):[0-5][0-9]|[+-]14:00)?$"),
+                xsd:dateTime(REPLACE(STR(?v),
+                  "^(-?[0-9]{4,}-[0-9]{2}-[0-9]{2})(Z|[+-](0[0-9]|1[0-3]):[0-5][0-9]|[+-]14:00)?$",
+                  "$1T00:00:00$2")), xsd:dateTime("")),
+             xsd:boolean(?v)))) AS ?validatedValue)
+    FILTER (datatype(?v) != ?expectedDatatype || !BOUND(?validatedValue) ||
+            (?expectedDatatype = xsd:decimal &&
+             !REGEX(STR(?v), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")) ||
+            (?expectedDatatype = xsd:integer && !REGEX(STR(?v), "^[+-]?[0-9]+$")) ||
+            (?expectedDatatype = xsd:boolean && !REGEX(STR(?v), "^(true|false|1|0)$")))
+  }
+}
+
+# Q6. Missing or multiple required observation values. Expected: no rows.
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?obs (COUNT(DISTINCT ?type) AS ?types)
+       (COUNT(DISTINCT ?station) AS ?stations)
+       (COUNT(DISTINCT ?date) AS ?dates)
+       (COUNT(DISTINCT ?period) AS ?periods)
+       (COUNT(DISTINCT ?laeq) AS ?laeqValues)
+WHERE {
+  {
+    SELECT DISTINCT ?obs WHERE {
+      { ?obs a mn:DailyNoiseObservation }
+      UNION {
+        ?obs ?p ?o .
+        FILTER (isIRI(?obs) && STRSTARTS(STR(?obs),
+                "https://madridnoise.linkeddata.es/resource/observation/"))
+      }
+    }
+  }
+  OPTIONAL { ?obs a ?type }
+  OPTIONAL { ?obs mn:recordedAt ?station }
+  OPTIONAL { ?obs mn:observationDate ?date }
+  OPTIONAL { ?obs mn:forPeriod ?period }
+  OPTIONAL { ?obs mn:laeq ?laeq }
+}
+GROUP BY ?obs
+HAVING (SUM(IF(COALESCE(?type = mn:DailyNoiseObservation, false), 1, 0)) = 0 ||
+        COUNT(DISTINCT ?station) != 1 || COUNT(DISTINCT ?date) != 1 ||
+        COUNT(DISTINCT ?period) != 1 || COUNT(DISTINCT ?laeq) != 1)
+
+# Q7. Observations without percentiles. Expected: 17.
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT (COUNT(?obs) AS ?withoutPercentiles)
+WHERE {
+  ?obs a mn:DailyNoiseObservation ; mn:laeq ?laeq .
+  FILTER NOT EXISTS { ?obs mn:las01 ?l1 }
+}
+
+# Q8. Source check: RF-02, 2025-01-01, night.
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+PREFIX station: <https://madridnoise.linkeddata.es/resource/station/>
+PREFIX period:  <https://madridnoise.linkeddata.es/resource/period/>
+
+SELECT ?name ?laeq ?l1 ?l10 ?l50 ?l90 ?l99
+WHERE {
+  ?obs mn:recordedAt station:RF-02 ;
+       mn:forPeriod period:N ;
+       mn:observationDate "2025-01-01"^^xsd:date ;
+       mn:laeq ?laeq ; mn:las01 ?l1 ; mn:las10 ?l10 ;
+       mn:las50 ?l50 ; mn:las90 ?l90 ; mn:las99 ?l99 .
+  station:RF-02 mn:stationName ?name .
+}
+
+# Q9. Average night LAeq by station in 2025.
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+PREFIX period:  <https://madridnoise.linkeddata.es/resource/period/>
+
+SELECT ?code ?name
+       (ROUND(AVG(?laeq) * 10) / 10 AS ?avgNightLAeq)
+       (COUNT(?obs) AS ?nights)
+       (ROUND(100 * SUM(IF(?laeq > 55, 1, 0)) / COUNT(?obs)) AS ?pctAbove55)
+WHERE {
+  ?obs mn:recordedAt ?st ;
+       mn:forPeriod period:N ;
+       mn:observationDate ?date ;
+       mn:laeq ?laeq .
+  ?st mn:stationCode ?code ; mn:stationName ?name .
+  FILTER (?date >= "2025-01-01"^^xsd:date && ?date < "2026-01-01"^^xsd:date)
+}
+GROUP BY ?code ?name
+ORDER BY DESC(?avgNightLAeq)
+
+# Q10. Terraces and coordinate coverage by district.
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?district (COUNT(?t) AS ?terraces) (COUNT(?lat) AS ?withCoordinates)
+WHERE {
+  ?t a mn:Terrace ; mn:hasDistrict ?d .
+  ?d rdfs:label ?district .
+  OPTIONAL { ?t mn:latitude ?lat }
+}
+GROUP BY ?district
+ORDER BY DESC(?terraces)
+
+# Q11. Coordinates outside Madrid. Expected: 0.
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT (COUNT(?s) AS ?outOfMadrid)
+WHERE {
+  ?s mn:latitude ?lat ; mn:longitude ?lon .
+  FILTER (?lat < 40.30 || ?lat > 40.65 || ?lon < -3.90 || ?lon > -3.50)
+}
+
+# Q12. Terraces within approximately 300 m, including stations with zero.
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?code (COUNT(DISTINCT ?t) AS ?terracesWithin300m)
+WHERE {
+  ?st a mn:NoiseMonitoringStation ; mn:stationCode ?code .
+  OPTIONAL {
+    ?st mn:latitude ?slat ; mn:longitude ?slon .
+    ?t a mn:Terrace ; mn:latitude ?tlat ; mn:longitude ?tlon .
+    BIND ((?tlat - ?slat) * 111320 AS ?dy)
+    BIND ((?tlon - ?slon) * 111320 * 0.7627 AS ?dx)
+    FILTER (?dx * ?dx + ?dy * ?dy < 90000)
+  }
+}
+GROUP BY ?code
+ORDER BY DESC(?terracesWithin300m) ?code
+
+# Q13. Duplicate station/date/period keys. Expected: no rows.
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?station ?date ?period (COUNT(DISTINCT ?obs) AS ?observations)
+WHERE {
+  ?obs a mn:DailyNoiseObservation ;
+       mn:recordedAt ?station ; mn:observationDate ?date ; mn:forPeriod ?period .
+}
+GROUP BY ?station ?date ?period
+HAVING (COUNT(DISTINCT ?obs) > 1)
+
+# Q14. Inconsistent percentile-order flags. Expected: no rows.
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?obs
+WHERE {
+  ?obs a mn:DailyNoiseObservation .
+  OPTIONAL { ?obs mn:las01 ?l1 }
+  OPTIONAL { ?obs mn:las10 ?l10 }
+  OPTIONAL { ?obs mn:las50 ?l50 }
+  OPTIONAL { ?obs mn:las90 ?l90 }
+  OPTIONAL { ?obs mn:las99 ?l99 }
+  OPTIONAL { ?obs mn:percentileOrderViolation ?flag }
+  BIND (BOUND(?l1) && BOUND(?l10) && BOUND(?l50) &&
+        BOUND(?l90) && BOUND(?l99) AS ?complete)
+  BIND (?l1 < ?l10 || ?l10 < ?l50 || ?l50 < ?l90 || ?l90 < ?l99 AS ?violation)
+  FILTER ((?complete && (!BOUND(?flag) || !isLiteral(?flag) ||
+                         datatype(?flag) != xsd:boolean || ?flag != ?violation)) ||
+          (!?complete && BOUND(?flag)) ||
+          EXISTS { ?obs mn:percentileOrderViolation ?otherFlag .
+                   FILTER (?otherFlag != ?flag) })
+}
+ORDER BY ?obs

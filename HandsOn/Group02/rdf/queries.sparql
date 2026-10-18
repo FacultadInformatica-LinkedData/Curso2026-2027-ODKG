@@ -1,0 +1,279 @@
+PREFIX pe:     <http://smartcity.chicago.es/ontology/ParkExplorer#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+# ---------------------------------------------------------------
+# Q1. Number of individuals per class
+# Expected: GeoCoordinates 4812, Facility 4466, ChicagoPark 555,
+#           Artwork 346, Artist 264, Owner 20
+# ---------------------------------------------------------------
+SELECT ?class (COUNT(DISTINCT ?s) AS ?individuals)
+WHERE { ?s rdf:type ?class . }
+GROUP BY ?class
+ORDER BY DESC(?individuals)
+
+# ---------------------------------------------------------------
+# Q2. Individuals without a label (checklist: every individual has a label)
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(DISTINCT ?s) AS ?withoutLabel)
+WHERE {
+  ?s rdf:type ?class .
+  FILTER NOT EXISTS { ?s rdfs:label ?label }
+}
+
+# ---------------------------------------------------------------
+# Q3. Datatype used by each datatype property (checklist: every value has
+#     its datatype, and the correct one, as in the ontology ranges)
+# Expected: parkNumber, facilityGisObjectId, artworkGisObjectId -> xsd:integer;
+#           latitude, longitude -> xsd:double; every other property -> xsd:string
+# ---------------------------------------------------------------
+SELECT ?property ?datatype (COUNT(*) AS ?values)
+WHERE {
+  ?s ?property ?o .
+  FILTER isLiteral(?o)
+  BIND (datatype(?o) AS ?datatype)
+}
+GROUP BY ?property ?datatype
+ORDER BY ?property
+
+# ---------------------------------------------------------------
+# Q4. URIs written as strings (checklist: no URI is encoded as a string)
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(*) AS ?urisAsStrings)
+WHERE {
+  ?s ?p ?o .
+  FILTER (isLiteral(?o) && STRSTARTS(STR(?o), "http"))
+}
+
+# ---------------------------------------------------------------
+# Q5. URIs containing a double slash after the scheme
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(DISTINCT ?s) AS ?doubleSlash)
+WHERE {
+  ?s ?p ?o .
+  FILTER (CONTAINS(SUBSTR(STR(?s), 9), "//"))
+}
+
+# ---------------------------------------------------------------
+# Q6. Links pointing to resources that do not exist in the graph
+#     (hasFacility, hasArtwork, madeBy, owner, schema:geo)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?p (COUNT(*) AS ?danglingLinks)
+WHERE {
+  VALUES ?p { pe:hasFacility pe:hasArtwork pe:madeBy pe:owner schema:geo }
+  ?s ?p ?o .
+  FILTER NOT EXISTS { ?o rdf:type ?anyClass }
+}
+GROUP BY ?p
+
+# ---------------------------------------------------------------
+# Q7. Parks with more than one name (both CSVs feed the same park URI)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?park (COUNT(DISTINCT ?name) AS ?names)
+WHERE { ?park a pe:ChicagoPark ; pe:parkName ?name . }
+GROUP BY ?park
+HAVING (COUNT(DISTINCT ?name) > 1)
+
+# ---------------------------------------------------------------
+# Q8. Facilities or artworks without coordinates
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(?x) AS ?withoutCoordinates)
+WHERE {
+  { ?x a pe:Facility } UNION { ?x a pe:Artwork }
+  FILTER NOT EXISTS { ?x schema:geo/schema:latitude ?lat }
+}
+
+# ---------------------------------------------------------------
+# Q9. Coordinates outside the Chicago area (sanity check on the values)
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(?g) AS ?outOfRange)
+WHERE {
+  ?g schema:latitude ?lat ; schema:longitude ?long .
+  FILTER (?lat < 41.6 || ?lat > 42.1 || ?long < -87.95 || ?long > -87.5)
+}
+
+# ---------------------------------------------------------------
+# Q10. Facilities per type
+# Expected: OUTDOOR 4016, INDOOR 297, SPECIAL 153
+# ---------------------------------------------------------------
+SELECT ?type (COUNT(?f) AS ?facilities)
+WHERE { ?f a pe:Facility ; pe:facilityType ?type . }
+GROUP BY ?type
+ORDER BY DESC(?facilities)
+
+# ---------------------------------------------------------------
+# Q11. Artworks without a known artist / owner (left out on purpose)
+# Expected: 31 without artist, 54 without owner
+# ---------------------------------------------------------------
+SELECT
+  (SUM(IF(?hasArtist, 0, 1)) AS ?withoutArtist)
+  (SUM(IF(?hasOwner, 0, 1)) AS ?withoutOwner)
+WHERE {
+  ?a a pe:Artwork .
+  BIND (EXISTS { ?a pe:madeBy ?x } AS ?hasArtist)
+  BIND (EXISTS { ?a pe:owner ?y } AS ?hasOwner)
+}
+
+# ---------------------------------------------------------------
+# Q12. Both datasets linked through the park: parks that have
+#      a playground and public art, with the artwork and its artist
+# Expected: 334 rows (first: ANDERSON (LOUIS) | Mosaic | Jewell Pates)
+# ---------------------------------------------------------------
+SELECT DISTINCT ?parkName ?artworkName ?artistName
+WHERE {
+  ?park pe:parkName ?parkName ;
+        pe:hasFacility ?f ;
+        pe:hasArtwork ?a .
+  ?f pe:facilityName ?facilityName .
+  FILTER (STR(?facilityName) = "PLAYGROUND")
+  ?a pe:artworkName ?artworkName ;
+     pe:madeBy ?artist .
+  ?artist pe:artistName ?artistName .
+}
+ORDER BY ?parkName ?artworkName
+
+# ---------------------------------------------------------------
+# Q13. Artworks with more than one owner
+# Expected: 2 rows (Jane Addams Mosaic; Artists and Automobiles)
+# ---------------------------------------------------------------
+SELECT ?artworkName (GROUP_CONCAT(?ownerName; SEPARATOR=", ") AS ?owners)
+WHERE {
+  ?a pe:artworkName ?artworkName ; pe:owner ?o .
+  ?o pe:ownerName ?ownerName .
+}
+GROUP BY ?a ?artworkName
+HAVING (COUNT(?o) > 1)
+
+# ===============================================================
+# Additional checks (Q14-Q20) covering the remaining checklist items
+# ===============================================================
+
+# ---------------------------------------------------------------
+# Q14. Subjects without rdf:type (checklist: every individual has a type;
+#      Q2 only looks at subjects that already have one)
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(DISTINCT ?s) AS ?withoutType)
+WHERE {
+  ?s ?p ?o .
+  FILTER NOT EXISTS { ?s rdf:type ?class }
+}
+
+# ---------------------------------------------------------------
+# Q15. Empty or untrimmed literal values (checklist: every value is trimmed)
+# Expected: 0
+# ---------------------------------------------------------------
+SELECT (COUNT(*) AS ?emptyOrUntrimmed)
+WHERE {
+  ?s ?p ?o .
+  FILTER (isLiteral(?o) && (STR(?o) = "" || REGEX(STR(?o), "^\\s|\\s$")))
+}
+
+# ---------------------------------------------------------------
+# Q16. URIs that do not follow the resource naming strategy (analysis.html 3.2)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?class (COUNT(?s) AS ?nonConforming)
+WHERE {
+  VALUES (?class ?pattern) {
+    (pe:ChicagoPark        "^http://smartcity\\.chicago\\.es/resource/ChicagoPark/[0-9]+$")
+    (pe:Facility           "^http://smartcity\\.chicago\\.es/resource/Facility/[0-9]+$")
+    (pe:Artwork            "^http://smartcity\\.chicago\\.es/resource/Artwork/[0-9]+$")
+    (pe:Artist             "^http://smartcity\\.chicago\\.es/resource/Artist/[A-Za-z0-9_]+$")
+    (pe:Owner              "^http://smartcity\\.chicago\\.es/resource/Owner/[A-Za-z0-9_]+$")
+    (schema:GeoCoordinates "^http://smartcity\\.chicago\\.es/resource/GeoCoordinates/(Artwork|Facility)_[0-9]+$")
+  }
+  ?s rdf:type ?class .
+  FILTER (!REGEX(STR(?s), ?pattern))
+}
+GROUP BY ?class
+
+# ---------------------------------------------------------------
+# Q17. Every class and property used in the data (checklist: same URIs as
+#      the ontology). Compare with ontology.ttl, or let run_queries.py do it
+#      with --ontology ontology/ontology.ttl
+# Expected: 25 rows: 6 classes and 17 ontology properties, plus rdf:type
+#           and rdfs:label; nothing outside pe:, schema:, rdf:type, rdfs:label
+# ---------------------------------------------------------------
+SELECT ?usedAs ?term (COUNT(*) AS ?uses)
+WHERE {
+  { ?s rdf:type ?term . BIND ("class" AS ?usedAs) }
+  UNION
+  { ?s ?term ?o . BIND ("property" AS ?usedAs) }
+}
+GROUP BY ?usedAs ?term
+ORDER BY ?usedAs ?term
+
+# ---------------------------------------------------------------
+# Q18. Single-valued properties that have several values for one subject
+#      (generalises Q7 to every literal property and to schema:geo)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?property (COUNT(*) AS ?subjectsWithSeveralValues)
+WHERE {
+  SELECT ?s ?property (COUNT(?o) AS ?n)
+  WHERE {
+    ?s ?property ?o .
+    FILTER (isLiteral(?o) || ?property = schema:geo)
+  }
+  GROUP BY ?s ?property
+  HAVING (COUNT(?o) > 1)
+}
+GROUP BY ?property
+
+# ---------------------------------------------------------------
+# Q19. Orphan resources: parks linked to nothing, artists/owners/coordinates
+#      not linked from anything (the reverse of Q6 and Q8)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?kind (COUNT(DISTINCT ?x) AS ?orphans)
+WHERE {
+  { ?x a pe:ChicagoPark . BIND ("park without facility or artwork" AS ?kind)
+    FILTER NOT EXISTS { ?x pe:hasFacility|pe:hasArtwork ?y } }
+  UNION
+  { ?x a pe:Artist . BIND ("artist not linked from any artwork" AS ?kind)
+    FILTER NOT EXISTS { ?a pe:madeBy ?x } }
+  UNION
+  { ?x a pe:Owner . BIND ("owner not linked from any artwork" AS ?kind)
+    FILTER NOT EXISTS { ?a pe:owner ?x } }
+  UNION
+  { ?x a schema:GeoCoordinates . BIND ("coordinates not linked from any place" AS ?kind)
+    FILTER NOT EXISTS { ?place schema:geo ?x } }
+}
+GROUP BY ?kind
+
+# ---------------------------------------------------------------
+# Q20. Spot check against ontology/ontology-example.ttl (examples 1 and 4):
+#      the generated graph must contain the hand-written example triples
+# Expected: true
+# ---------------------------------------------------------------
+ASK {
+  <http://smartcity.chicago.es/resource/ChicagoPark/165> a pe:ChicagoPark ;
+      pe:parkName "INDIAN BOUNDARY" ; pe:parkNumber 165 ;
+      pe:hasArtwork <http://smartcity.chicago.es/resource/Artwork/1> .
+  <http://smartcity.chicago.es/resource/Artwork/1> a pe:Artwork ;
+      pe:artworkName "River Suite" ; pe:artworkGisObjectId 5856 ;
+      pe:owner <http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> ;
+      pe:madeBy <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> ;
+      schema:geo ?g1 .
+  ?g1 a schema:GeoCoordinates ; schema:latitude ?lat1 ; schema:longitude ?lon1 .
+  FILTER (?lat1 = "42.0101658765"^^xsd:double && ?lon1 = "-87.6938203714"^^xsd:double)
+  <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> a pe:Artist ; pe:artistName "Phil Schuster" .
+  <http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> a pe:Owner ; pe:ownerName "Chicago Park District" .
+  <http://smartcity.chicago.es/resource/ChicagoPark/9> a pe:ChicagoPark ; pe:parkName "HAMILTON (ALEXANDER)" ;
+      pe:hasFacility <http://smartcity.chicago.es/resource/Facility/1> .
+  <http://smartcity.chicago.es/resource/Facility/1> a pe:Facility ;
+      pe:facilityName "CULTURAL CENTER" ; pe:facilityType "SPECIAL" ; pe:facilityGisObjectId 2494 ;
+      schema:geo ?g2 .
+  ?g2 a schema:GeoCoordinates ; schema:latitude ?lat2 ; schema:longitude ?lon2 .
+  FILTER (?lat2 = "41.76299921"^^xsd:double && ?lon2 = "-87.63769763"^^xsd:double)
+}

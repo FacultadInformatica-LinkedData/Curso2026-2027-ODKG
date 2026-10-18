@@ -1,0 +1,147 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mp: <http://parking.linkeddata.upm.es/ontology/> .
+@prefix prop: <http://parking.linkeddata.upm.es/property/> .
+
+@base <http://parking.linkeddata.upm.es/mapping/> .
+
+<#ParkingFacilityMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "CSV/csv2-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://parking.linkeddata.upm.es/resource/parking/{CODIGO_PAR}" ;
+        rr:class mp:ParkingFacility
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:parkingName ;
+        rr:objectMap [
+            rml:reference "NOMBRE_APARCAMIENTO" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:locatedIn ;
+        rr:objectMap [
+            rr:template "http://parking.linkeddata.upm.es/resource/district/{CODIGO_DISTRITO}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:hasParkingType ;
+        rr:objectMap [
+            rr:template "http://parking.linkeddata.upm.es/resource/parking-type/{TIPO}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:hasObservation ;
+        rr:objectMap [
+            rr:template "http://parking.linkeddata.upm.es/resource/observation/{CODIGO_PAR}/{ANIO}/{MES}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#DistrictMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "CSV/csv2-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://parking.linkeddata.upm.es/resource/district/{CODIGO_DISTRITO}" ;
+        rr:class mp:District
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:districtName ;
+        rr:objectMap [
+            rml:reference "DISTRITO" ;
+            rr:datatype xsd:string
+        ]
+    ] .
+
+<#ParkingTypeMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "CSV/csv2-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://parking.linkeddata.upm.es/resource/parking-type/{TIPO}" ;
+        rr:class mp:ParkingType
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rml:reference "TIPO" ;
+            rr:datatype xsd:string
+        ]
+    ] .
+
+<#OccupancyObservationMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "CSV/csv2-updated.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://parking.linkeddata.upm.es/resource/observation/{CODIGO_PAR}/{ANIO}/{MES}" ;
+        rr:class mp:OccupancyObservation
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:observationOf ;
+        rr:objectMap [
+            rr:template "http://parking.linkeddata.upm.es/resource/parking/{CODIGO_PAR}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:year ;
+        rr:objectMap [
+            rml:reference "ANIO" ;
+            rr:datatype xsd:gYear
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:month ;
+        rr:objectMap [
+            rml:reference "MES" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:numberOfSpaces ;
+        rr:objectMap [
+            rml:reference "NUM_PLAZAS" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:calculationDays ;
+        rr:objectMap [
+            rml:reference "DIAS_CALCULO" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:averageVehiclesPerDay ;
+        rr:objectMap [
+            rml:reference "VEHICULOS_DIA_MEDIA" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:occupancyPercentage ;
+        rr:objectMap [
+            rml:reference "OCUPACION" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prop:daytimeOccupancyPercentage ;
+        rr:objectMap [
+            rml:reference "OCUPACION_9_21" ;
+            rr:datatype xsd:decimal
+        ]
+    ] .
