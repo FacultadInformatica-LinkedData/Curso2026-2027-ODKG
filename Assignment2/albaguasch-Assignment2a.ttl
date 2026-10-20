@@ -1,0 +1,25 @@
+@prefix ontology: <http://example.org/ontology/> . 
+@prefix resource: <http://example.org/resource/> . 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+resource:Class01 
+  a ontology:Class ; 
+  ontology:includes resource:Sensor029, 
+                    resource:Computer101 . 
+
+resource:Computer101 
+  a ontology:Computer ; 
+  ontology:hasOwner resource:User10A . 
+
+resource:User10A 
+  a ontology:User ; 
+  ontology:hasName "Pedro"@es . 
+
+resource:Sensor029 
+  a ontology:Sensor ; 
+  ontology:hasMeasurement resource:Measurement8401 . 
+
+resource:Measurement8401 
+  a ontology:Measurement ; 
+  ontology:hasTemperature 29 ; 
+  ontology:atTime "2010-06-12T12:00:12"^^xsd:date .
