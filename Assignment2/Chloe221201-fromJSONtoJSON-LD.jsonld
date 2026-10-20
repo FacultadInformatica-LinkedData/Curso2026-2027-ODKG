@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "ex": "https://example.org/",
+    "name": "schema:name",
+    "population": "schema:populationSize",
+    "country": "schema:containedInPlace",
+    "universities": "ex:hasUniversity",
+    "fullName": "schema:name",
+    "acronym": "schema:alternateName"
+  },
+  "@id": "ex:Madrid",
+  "@type": "schema:City",
+  "name": "Madrid",
+  "population": 3416771,
+  "country": {
+    "@id": "ex:Spain",
+    "@type": "schema:Country",
+    "name": "Spain"
+  },
+  "universities": [
+    {
+      "@id": "ex:UPM",
+      "@type": "schema:CollegeOrUniversity",
+      "fullName": "Universidad Politécnica de Madrid",
+      "acronym": "UPM"
+    },
+    {
+      "@id": "ex:UCM",
+      "@type": "schema:CollegeOrUniversity",
+      "fullName": "Universidad Complutense de Madrid",
+      "acronym": "UCM"
+    },
+    {
+      "@id": "ex:UAM",
+      "@type": "schema:CollegeOrUniversity",
+      "fullName": "Universidad Autónoma de Madrid",
+      "acronym": "UAM"
+    },
+    {
+      "@id": "ex:URJC",
+      "@type": "schema:CollegeOrUniversity",
+      "fullName": "Universidad Rey Juan Carlos",
+      "acronym": "URJC"
+    }
+  ]
+}
