@@ -1,0 +1,65 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "dbo": "http://dbpedia.org/ontology/",
+    "wd": "http://www.wikidata.org/entity/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ex": "http://example.org/ontology/",
+    "res": "http://example.org/resource/",
+    "City": "schema:City",
+    "Country": "schema:Country",
+    "CollegeUniversity": "schema:CollegeOrUniversity",
+    "fullName": "schema:name",
+    "acronym": "schema:alternateName",
+    "population": { "@id": "dbo:populationTotal", "@type": "xsd:integer" },
+    "country": { "@id": "dbo:country", "@type": "@id" },
+    "university": { "@id": "ex:hasUniversity", "@type": "@id" },
+    "sameAs": { "@id": "schema:sameAs", "@type": "@id" },
+    "url": { "@id": "schema:url", "@type": "@id" }
+  },
+  "@id": "res:city/Madrid",
+  "@type": "City",
+  "fullName": "Madrid",
+  "sameAs": "wd:Q2807",
+  "population": 3519334,
+  "country": {
+    "@id": "res:country/Spain",
+    "@type": "Country",
+    "fullName": "Spain",
+    "sameAs": "wd:Q29"
+  },
+  "university": [
+    {
+      "@id": "res:university/UPM",
+      "@type": "CollegeUniversity",
+      "fullName": "Universidad Politécnica de Madrid",
+      "acronym": "UPM",
+      "sameAs": "wd:Q25864",
+      "url": "https://www.upm.es/"
+    },
+    {
+      "@id": "res:university/UCM",
+      "@type": "CollegeUniversity",
+      "fullName": "Universidad Complutense de Madrid",
+      "acronym": "UCM",
+      "sameAs": "wd:Q219694",
+      "url": "https://www.ucm.es/"
+    },
+    {
+      "@id": "res:university/UAM",
+      "@type": "CollegeUniversity",
+      "fullName": "Universidad Autónoma de Madrid",
+      "acronym": "UAM",
+      "sameAs": "wd:Q788091",
+      "url": "https://www.uam.es/"
+    },
+    {
+      "@id": "res:university/UC3M",
+      "@type": "CollegeUniversity",
+      "fullName": "Universidad Carlos III de Madrid",
+      "acronym": "UC3M",
+      "sameAs": "wd:Q1247135",
+      "url": "https://www.uc3m.es/"
+    }
+  ]
+}
