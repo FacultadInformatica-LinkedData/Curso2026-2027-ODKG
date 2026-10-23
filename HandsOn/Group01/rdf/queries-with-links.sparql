@@ -1,0 +1,54 @@
+
+PREFIX ao: <http://group01.opendata.upm.es/ontology/accidents#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX schema: <https://schema.org/>
+
+# Query 1: Count streets linked to Wikidata
+SELECT (COUNT(DISTINCT ?street) AS ?linkedStreets)
+WHERE {
+    ?street a ao:Street ;
+            owl:sameAs ?wikidata .
+}
+
+# Query 2: Show linked streets and their Wikidata URIs
+SELECT DISTINCT ?streetName ?wikidata
+WHERE {
+    ?street a ao:Street ;
+            ao:streetName ?streetName ;
+            owl:sameAs ?wikidata .
+}
+ORDER BY ?streetName
+LIMIT 20
+
+# Query 3: Verify the New York City link
+SELECT ?city ?wikidata
+WHERE {
+    ?city a schema:City ;
+          owl:sameAs ?wikidata .
+}
+
+# Query 4: Verify state and country links
+SELECT ?place ?type ?wikidata
+WHERE {
+    ?place a ?type ;
+           owl:sameAs ?wikidata .
+    VALUES ?type {
+        schema:AdministrativeArea
+        schema:Country
+    }
+}
+
+# Query 5: Find accidents linked to Wikidata streets
+SELECT ?accident ?street ?wikidata
+WHERE {
+    ?accident a ao:TrafficAccident ;
+              ao:locatedOn ?street .
+    ?street owl:sameAs ?wikidata .
+}
+LIMIT 20
+
+# Query 6: Count all traffic accidents
+SELECT (COUNT(DISTINCT ?accident) AS ?totalAccidents)
+WHERE {
+    ?accident a ao:TrafficAccident .
+}

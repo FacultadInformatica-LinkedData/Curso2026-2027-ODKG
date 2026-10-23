@@ -1,0 +1,115 @@
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ao: <http://group01.opendata.upm.es/ontology/accidents#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix schema: <https://schema.org/> .
+@prefix ex: <http://group01.opendata.upm.es/shapes/> .
+
+# ----------------------------------------
+# Traffic accident validation
+# ----------------------------------------
+
+ex:TrafficAccidentShape
+    a sh:NodeShape ;
+    sh:targetClass ao:TrafficAccident ;
+
+    sh:property [
+        sh:path ao:severity ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 4
+    ] ;
+
+    sh:property [
+        sh:path ao:startTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1
+    ] ;
+
+    sh:property [
+        sh:path ao:endTime ;
+        sh:datatype xsd:dateTime
+    ] ;
+
+    sh:property [
+        sh:path ao:latitude ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:minInclusive -90 ;
+        sh:maxInclusive 90
+    ] ;
+
+    sh:property [
+        sh:path ao:longitude ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:minInclusive -180 ;
+        sh:maxInclusive 180
+    ] ;
+
+    sh:property [
+        sh:path ao:description ;
+        sh:datatype xsd:string
+    ] ;
+
+    sh:property [
+        sh:path ao:hasTrafficSignal ;
+        sh:datatype xsd:boolean
+    ] ;
+
+    sh:property [
+        sh:path ao:locatedOn ;
+        sh:class ao:Street ;
+        sh:nodeKind sh:IRI
+    ] ;
+
+    sh:property [
+        sh:path schema:location ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:class schema:City
+    ] .
+
+# ----------------------------------------
+# Street validation
+# ----------------------------------------
+
+ex:StreetShape
+    a sh:NodeShape ;
+    sh:targetClass ao:Street ;
+
+    sh:property [
+        sh:path ao:streetName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+
+    sh:property [
+        sh:path owl:sameAs ;
+        sh:nodeKind sh:IRI
+    ] .
+
+# ----------------------------------------
+# City, state and country validation
+# ----------------------------------------
+
+ex:GeographicalShape
+    a sh:NodeShape ;
+
+    sh:targetClass schema:City ;
+    sh:targetClass schema:AdministrativeArea ;
+    sh:targetClass schema:Country ;
+
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+
+    sh:property [
+        sh:path owl:sameAs ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] .
