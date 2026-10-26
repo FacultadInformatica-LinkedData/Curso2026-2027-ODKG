@@ -1,0 +1,112 @@
+
+prefixes:
+  pm: "https://parking-madrid.example.org/ontology#"
+  geo: "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+sources:
+  inventario:
+    access: ../csv/inventario-updated.csv
+    referenceFormulation: csv
+
+  ocupacion:
+    access: ../csv/ocupacion-updated.csv
+    referenceFormulation: csv
+
+mappings:
+
+  # Districts from the inventory
+  district:
+    sources:
+      - inventario
+    s: "https://parking-madrid.example.org/resource/District/$(cod_distrito)"
+    po:
+      - [a, pm:District]
+      - ["pm:hasDistrictCode", "$(cod_distrito)", xsd:integer]
+      - ["pm:hasDistrictName", "$(distrito)", xsd:string]
+
+  # Neighbourhoods
+  neighbourhood:
+    sources:
+      - inventario
+    s: "https://parking-madrid.example.org/resource/Neighbourhood/$(cod_distrito)/$(cod_barrio)"
+    po:
+      - [a, pm:Neighbourhood]
+      - ["pm:hasNeighbourhoodCode", "$(cod_barrio)", xsd:integer]
+      - ["pm:hasNeighbourhoodName", "$(barrio)", xsd:string]
+
+      # IRI relationship to district
+      - p: pm:belongsToDistrict
+        o:
+          value: "https://parking-madrid.example.org/resource/District/$(cod_distrito)"
+          type: iri
+
+  # Parking facilities
+  parking_facility:
+    sources:
+      - inventario
+    s: "https://parking-madrid.example.org/resource/Parking/$(codigo_par)"
+    po:
+      - [a, pm:ParkingFacility]
+
+      # Administrative relationships: objects must be IRIs
+      - p: pm:locatedInDistrict
+        o:
+          value: "https://parking-madrid.example.org/resource/District/$(cod_distrito)"
+          type: iri
+
+      - p: pm:locatedInNeighbourhood
+        o:
+          value: "https://parking-madrid.example.org/resource/Neighbourhood/$(cod_distrito)/$(cod_barrio)"
+          type: iri
+
+      # Inventory attributes
+      - ["pm:hasParCode", "$(codigo_par)", xsd:integer]
+      - ["pm:hasParkingName", "$(nombre_par)", xsd:string]
+      - ["pm:hasParkingType", "$(tipo)", xsd:string]
+      - ["pm:hasStreetAddress", "$(direccion)", xsd:string]
+      - ["pm:hasRotationSpaces", "$(pzs_rotacion)", xsd:integer]
+      - ["pm:hasResidentSpaces", "$(pzs_residentes)", xsd:integer]
+      - ["pm:hasDisuasorySpaces", "$(pzs_disuasorias)", xsd:integer]
+      - ["pm:hasTotalSpaces", "$(pzs_totales)", xsd:integer]
+      - ["pm:hasNumberOfFloors", "$(num_plantas)", xsd:integer]
+      - ["pm:hasCadastralReference", "$(cod_catastro)", xsd:string]
+      - ["pm:hasServiceCode", "$(cod_ser)", xsd:string]
+      - ["pm:hasOfficialURL", "$(url)", xsd:anyURI]
+      - ["pm:hasPKCode", "$(cod_PK)", xsd:string]
+      - ["pm:hasOperationalStatus", "$(estado)", xsd:string]
+      - ["geo:lat", "$(latitud)", xsd:decimal]
+      - ["geo:long", "$(longitud)", xsd:decimal]
+
+  # Districts from the occupancy source
+  district_from_occupancy:
+    sources:
+      - ocupacion
+    s: "https://parking-madrid.example.org/resource/District/$(codigo_distrito)"
+    po:
+      - [a, pm:District]
+      - ["pm:hasDistrictCode", "$(codigo_distrito)", xsd:integer]
+      - ["pm:hasDistrictName", "$(distrito)", xsd:string]
+
+  # Monthly occupancy observations
+  monthly_occupancy:
+    sources:
+      - ocupacion
+    s: "https://parking-madrid.example.org/resource/MonthlyOccupancy/$(codigo_par)/$(anio)-$(mes)"
+    po:
+      - [a, pm:MonthlyOccupancy]
+
+      # IRI relationship to parking facility
+      - p: pm:isOccupancyOf
+        o:
+          value: "https://parking-madrid.example.org/resource/Parking/$(codigo_par)"
+          type: iri
+
+      # Observation attributes
+      - ["pm:hasReferencePeriod", "$(anio)-$(mes)", xsd:string]
+      - ["pm:hasNumberOfSpaces", "$(num_plazas)", xsd:integer]
+      - ["pm:hasCalculationDays", "$(dias_calculo)", xsd:integer]
+      - ["pm:hasAverageDailyVehicles", "$(vehículos_dia_media)", xsd:decimal]
+      - ["pm:hasOccupancyRate", "$(ocupacion_pct)", xsd:decimal]
+      - ["pm:hasDaytimeOccupancyRate", "$(ocupacion_9h_21h_pct)", xsd:decimal]

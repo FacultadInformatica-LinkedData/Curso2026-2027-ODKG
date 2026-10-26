@@ -1,0 +1,76 @@
+RDF file: /home/breezonto/workspace/Curso2026-2027-ODKG/HandsOn/Group09/rdf/aparcamientos.ttl
+Triples: 43,604
+
+Resource counts:
+  District: 21
+  Neighbourhood: 93
+  ParkingFacility: 301
+  MonthlyOccupancy: 4,754
+
+=================================================================
+DISTRICT DIAGNOSTICS
+=================================================================
+
+1. Exact district type triple:
+True
+
+2. Types of District/10:
+rdflib.term.URIRef('https://parking-madrid.example.org/ontology#District')
+
+3. District references from parking facilities:
+Parking: rdflib.term.URIRef('https://parking-madrid.example.org/resource/Parking/1001')
+Referenced district: rdflib.term.URIRef('https://parking-madrid.example.org/resource/District/10')
+Type triple exists: True
+
+4. District resources with code 10:
+Resource: rdflib.term.URIRef('https://parking-madrid.example.org/resource/District/10')
+Types: [rdflib.term.URIRef('https://parking-madrid.example.org/ontology#District')]
+=================================================================
+
+SPARQL validation results:
+PASS: parking_without_district
+PASS: parking_without_neighbourhood
+PASS: parking_with_unknown_district
+PASS: parking_with_unknown_neighbourhood
+PASS: neighbourhood_with_unknown_district
+PASS: occupancy_without_parking
+PASS: occupancy_without_parking_relation
+FAIL: missing_required_inventory_properties (1 result(s))
+    parking=https://parking-madrid.example.org/resource/Parking/526, property=https://parking-madrid.example.org/ontology#hasStreetAddress
+FAIL: missing_required_occupancy_properties (16 result(s))
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/420/2021-10, property=https://parking-madrid.example.org/ontology#hasAverageDailyVehicles
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/420/2021-10, property=https://parking-madrid.example.org/ontology#hasOccupancyRate
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/420/2021-10, property=https://parking-madrid.example.org/ontology#hasDaytimeOccupancyRate
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/420/2021-11, property=https://parking-madrid.example.org/ontology#hasAverageDailyVehicles
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/420/2021-11, property=https://parking-madrid.example.org/ontology#hasOccupancyRate
+    ... and 11 more
+FAIL: invalid_occupancy_rate (3 result(s))
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/5000/2025-8, rate=126.2
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/604/2022-3, rate=121.7
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/617/2024-11, rate=194.2
+FAIL: invalid_daytime_occupancy_rate (15 result(s))
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/110/2022-10, rate=110.2
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/110/2022-11, rate=108.6
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/110/2022-12, rate=115.7
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/110/2022-4, rate=103.1
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/5000/2025-8, rate=142.6
+    ... and 10 more
+PASS: negative_inventory_spaces
+PASS: negative_occupancy_counts
+PASS: duplicate_parking_codes
+PASS: duplicate_district_codes
+PASS: duplicate_neighbourhood_codes
+PASS: occupancy_period_duplicates
+WARNING: occupancy_space_mismatch (4354 result(s))
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/101/2019-1, parking=https://parking-madrid.example.org/resource/Parking/101, observedSpaces=113, inventorySpaces=371
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/101/2019-2, parking=https://parking-madrid.example.org/resource/Parking/101, observedSpaces=113, inventorySpaces=371
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/101/2019-3, parking=https://parking-madrid.example.org/resource/Parking/101, observedSpaces=113, inventorySpaces=371
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/101/2019-4, parking=https://parking-madrid.example.org/resource/Parking/101, observedSpaces=113, inventorySpaces=371
+    observation=https://parking-madrid.example.org/resource/MonthlyOccupancy/101/2019-5, parking=https://parking-madrid.example.org/resource/Parking/101, observedSpaces=113, inventorySpaces=371
+    ... and 4349 more
+
+Summary:
+  Queries executed: 18
+  Errors: 35
+  Warnings: 4354
+RESULT: FAILED

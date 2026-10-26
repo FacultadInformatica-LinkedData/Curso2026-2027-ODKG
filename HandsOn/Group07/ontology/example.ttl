@@ -9,8 +9,9 @@
 # A source zero delay without an updated time is not proof of observed punctuality.
 
 # Source data row 1 (header excluded).
-<TrainStop/1573967790757085557-2407072312-14/observation/1>
+<TrainStop/1573967790757085557-2407072312-14>
     a dbd:TrainStop ;
+    rdfs:label "Train stop 1573967790757085557-2407072312-14"^^xsd:string ;
     dbd:atStation <Station/8000001> ;
     dbd:stopId "1573967790757085557-2407072312-14"^^xsd:string ;
     dbd:lineLabel "20"^^xsd:string ;
@@ -25,8 +26,9 @@
     dbd:departureStatus "on_time"^^xsd:string .
 
 # Source data row 2 (header excluded).
-<TrainStop/349781417030375472-2407080017-1/observation/1>
+<TrainStop/349781417030375472-2407080017-1>
     a dbd:TrainStop ;
+    rdfs:label "Train stop 349781417030375472-2407080017-1"^^xsd:string ;
     dbd:atStation <Station/8000001> ;
     dbd:stopId "349781417030375472-2407080017-1"^^xsd:string ;
     dbd:lineLabel "18"^^xsd:string ;
@@ -37,8 +39,9 @@
     dbd:departureStatus "on_time"^^xsd:string .
 
 # Source data row 3 (header excluded).
-<TrainStop/7157250219775883918-2407072120-25/observation/1>
+<TrainStop/7157250219775883918-2407072120-25>
     a dbd:TrainStop ;
+    rdfs:label "Train stop 7157250219775883918-2407072120-25"^^xsd:string ;
     dbd:atStation <Station/8000406> ;
     dbd:stopId "7157250219775883918-2407072120-25"^^xsd:string ;
     dbd:lineLabel "1"^^xsd:string ;
@@ -53,8 +56,9 @@
     dbd:departureStatus "on_time"^^xsd:string .
 
 # Source data row 13 (header excluded).
-<TrainStop/1640260421649276864-2407080004-5/observation/1>
+<TrainStop/1640260421649276864-2407080004-5>
     a dbd:TrainStop ;
+    rdfs:label "Train stop 1640260421649276864-2407080004-5"^^xsd:string ;
     dbd:atStation <Station/8000443> ;
     dbd:stopId "1640260421649276864-2407080004-5"^^xsd:string ;
     dbd:lineLabel "7"^^xsd:string ;
@@ -73,9 +77,9 @@
 
 <Station/8000001>
     a dbd:Station ;
+    rdfs:label "Aachen Hbf"^^xsd:string ;
     dbd:inCity <City/Nordrhein-Westfalen/Aachen> ;
     dbd:evaNumber "8000001"^^xsd:string ;
-    dbd:stationName "Aachen Hbf"^^xsd:string ;
     dbd:stationCategory "2"^^xsd:integer ;
     dbd:postalCode "52064"^^xsd:string ;
     dbd:longitude "6.091499"^^xsd:decimal ;
@@ -83,9 +87,9 @@
 
 <Station/8000406>
     a dbd:Station ;
+    rdfs:label "Aachen-Rothe Erde"^^xsd:string ;
     dbd:inCity <City/Nordrhein-Westfalen/Aachen> ;
     dbd:evaNumber "8000406"^^xsd:string ;
-    dbd:stationName "Aachen-Rothe Erde"^^xsd:string ;
     dbd:stationCategory "4"^^xsd:integer ;
     dbd:postalCode "52066"^^xsd:string ;
     dbd:longitude "6.116475"^^xsd:decimal ;
@@ -93,9 +97,9 @@
 
 <Station/8000443>
     a dbd:Station ;
+    rdfs:label "Ahlten (Han)"^^xsd:string ;
     dbd:inCity <City/Niedersachsen/Lehrte> ;
     dbd:evaNumber "8000443"^^xsd:string ;
-    dbd:stationName "Ahlten (Han)"^^xsd:string ;
     dbd:stationCategory "5"^^xsd:integer ;
     dbd:postalCode "31275"^^xsd:string ;
     dbd:longitude "9.904613"^^xsd:decimal ;

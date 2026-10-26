@@ -29,6 +29,15 @@ mappings:
       - [ns:hasWeatherCondition, https://w3id.org/saferoutemadrid/resource/WeatherCondition/$(estado_meteorológico)]
       - [ns:involvesVehicle, https://w3id.org/saferoutemadrid/resource/Vehicle/$(ID_vehiculo)]
 
+  Point:
+    sources: accidents
+    s: https://w3id.org/saferoutemadrid/resource/Point/$(num_expediente)
+    po:
+      - [a, ns:Point]
+      - [rdfs:label, "Point of traffic accident $(num_expediente)", en~lang]
+      - [ns:latitude, $(latitud), xsd:double]
+      - [ns:longitude, $(longitud), xsd:double]
+
   Location:
     sources: accidents
     s: https://w3id.org/saferoutemadrid/resource/Location/$(num_expediente)
@@ -39,11 +48,13 @@ mappings:
       - [ns:streetNumber, $(numero), xsd:string]
       - [ns:xCoordinate, $(coordenada_x_utm), xsd:double]
       - [ns:yCoordinate, $(coordenada_y_utm), xsd:double]
+      - [ns:hasGeometry, https://w3id.org/saferoutemadrid/resource/Point/$(num_expediente)]
+      - [ns:hasMapLink, "https://www.google.com/maps?q=$(latitud),$(longitud)", iri]
       - [ns:locatedIn, https://w3id.org/saferoutemadrid/resource/District/$(distrito)]
 
   District:
     sources: accidents
-    s: https://w3id.org/saferoutemadrid/resource/District/$(distrito)
+    s: https://w3id.org/saferoutemadrid/resource/District/$(cod_distrito)
     po:
       - [a, ns:District]
       - [rdfs:label, $(distrito), es~lang]

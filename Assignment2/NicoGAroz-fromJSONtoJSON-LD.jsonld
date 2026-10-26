@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "ex": "http://www.example.nicoaroz.com/ontology/",
+    "res": "http://www.example.nicoaroz.com/resource/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "name": "rdfs:label"
+  },
+  "@id": "res:city/1101",
+  "@type": "ex:City",
+  "name": "Madrid",
+  "ex:hasPopulation": {
+    "ex:value": 3500000,
+    "ex:atTime": {
+      "@value": "2010-06-12T12:00:12",
+      "@type": "xsd:dateTime"
+    }
+  },
+  "ex:hasUniversities": [
+    {
+      "@id": "res:university/0101",
+      "@type": "ex:University",
+      "name": "Universidad Politécnica de Madrid",
+      "ex:acronym": "UPM"
+    },
+    {
+      "@id": "res:university/0102",
+      "@type": "ex:University",
+      "name": "Universidad Complutense de Madrid",
+      "ex:acronym": "UCM"
+    },
+    {
+      "@id": "res:university/0103",
+      "@type": "ex:University",
+      "name": "Universidad Autónoma de Madrid",
+      "ex:acronym": "UAM"
+    },
+    {
+      "@id": "res:university/0104",
+      "@type": "ex:University",
+      "name": "Universidad Carlos III de Madrid",
+      "ex:acronym": "UC3M"
+    }
+  ]
+}

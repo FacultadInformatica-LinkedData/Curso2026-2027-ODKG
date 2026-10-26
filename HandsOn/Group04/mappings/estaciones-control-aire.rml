@@ -4,6 +4,8 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix bpm:    <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix sosa:   <http://www.w3.org/ns/sosa/> .
+@prefix geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @base           <https://w3id.org/breatheplay-madrid/mappings/estaciones-control-aire#> .
 
 # Group04 - Breathe & Play Madrid. Run from the HandsOn/Group04 directory
@@ -23,7 +25,7 @@
     rr:subjectMap [
         rr:template "https://w3id.org/breatheplay-madrid/resource/station/{CODIGO}" ;
         rr:termType rr:IRI ;
-        rr:class bpm:MonitoringStation
+        rr:class bpm:MonitoringStation, sosa:Platform
     ] ;
 
     rr:predicateObjectMap [
@@ -42,8 +44,8 @@
     ] ;
 
     rr:predicateObjectMap [
-        rr:predicate bpm:altitude ;
-        rr:objectMap [ rml:reference "ALTITUD" ; rr:termType rr:Literal ; rr:datatype xsd:integer ]
+        rr:predicate geo:alt ;
+        rr:objectMap [ rml:reference "ALTITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
     ] ;
 
     rr:predicateObjectMap [
@@ -52,12 +54,12 @@
     ] ;
 
     rr:predicateObjectMap [
-        rr:predicate bpm:latitude ;
+        rr:predicate geo:lat ;
         rr:objectMap [ rml:reference "LATITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
     ] ;
 
     rr:predicateObjectMap [
-        rr:predicate bpm:longitude ;
+        rr:predicate geo:long ;
         rr:objectMap [ rml:reference "LONGITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
     ] ;
 

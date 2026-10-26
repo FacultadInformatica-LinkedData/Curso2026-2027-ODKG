@@ -2,23 +2,29 @@
 
 ## Checklist
 
-**Data import:**
+**Every resource described in the CSV file:**
 
-- [X] The selected dataset(s) has been imported into OpenRefine
+- [X] Has a unique identifier in a column (not an auto-increased integer)
+- [X] Is related to a class in the ontology
 
-**Data analysis and cleaning:**
+**Every class in the ontology:**
 
-- [X] The analysis from the previous assignment has been reviewed and updated with new findings, if any
-- [X] Errors in the data have been fixed
-- [X] The data has been transformed to facilitate the generation of RDF
+- [X] Is related to a resource described in the CSV file
 
-**The "openrefine" directory:**
+**Every column in the CSV file:**
 
-- [X] Contains a JSON file(s) with the operations performed over the data
+- [X] Is trimmed
+- [X] Is properly encoded (e.g., dates, booleans)
+- [X] Is related to a property in the ontology
 
-**The "csv" directory:**
+**Every property in the ontology:**
 
-- [X] Contains a CSV file(s) with the updated version of the dataset ("\*-updated.csv")
+- [X] Is related to a column in the CSV file
 
 ## Comments on the self-assessment
-_(If required)_
+**Resources**
+- Parks are identified by `PARK_NO`, the official Chicago Park District park number shared by both datasets. Artists and owners have slugs derived from their names (`ARTIST_ID`, `OWNER_ID`).
+- Facilities and artworks use `FACILITY_ID` / `ARTWORK_ID`, the publisher's own record identifiers (`OBJECTID` in the source), not numbers we generated.
+
+**Classes**
+- Our five classes and `schema:GeoCoordinates` have direct instances. `schema:Place`, `schema:Park`, `schema:Person` and `schema:Organization` are included for alignment with schema.org: the first two are superclasses of our classes, and the last two define artists and owners as persons or organizations.

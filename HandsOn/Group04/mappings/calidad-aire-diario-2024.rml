@@ -4,6 +4,7 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix bpm:    <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix sosa:   <http://www.w3.org/ns/sosa/> .
 @base           <https://w3id.org/breatheplay-madrid/mappings/calidad-aire-diario-2024#> .
 
 # Group04 - Breathe & Play Madrid. Run from the HandsOn/Group04 directory
@@ -23,7 +24,7 @@
     rr:subjectMap [
         rr:template "https://w3id.org/breatheplay-madrid/resource/observation/{PUNTO_MUESTREO}/{FECHA}" ;
         rr:termType rr:IRI ;
-        rr:class bpm:DailyObservation
+        rr:class bpm:DailyObservation, sosa:Observation
     ] ;
 
     rr:predicateObjectMap [
@@ -41,7 +42,7 @@
     ] ;
 
     rr:predicateObjectMap [
-        rr:predicate bpm:value ;
+        rr:predicate sosa:hasSimpleResult ;
         rr:objectMap [ rml:reference "VALOR" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
     ] ;
 
@@ -50,8 +51,17 @@
         rr:objectMap [ rml:reference "VALIDO" ; rr:termType rr:Literal ; rr:datatype xsd:boolean ]
     ] ;
 
+    # SOSA pattern: the observed property of each observation is its pollutant
     rr:predicateObjectMap [
-        rr:predicate bpm:hasSamplingPoint ;
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/pollutant/{MAGNITUD}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:madeBySensor ;
         rr:objectMap [
             rr:template "https://w3id.org/breatheplay-madrid/resource/sampling-point/{PUNTO_MUESTREO}" ;
             rr:termType rr:IRI
@@ -70,7 +80,7 @@
     rr:subjectMap [
         rr:template "https://w3id.org/breatheplay-madrid/resource/sampling-point/{PUNTO_MUESTREO}" ;
         rr:termType rr:IRI ;
-        rr:class bpm:SamplingPoint
+        rr:class bpm:SamplingPoint, sosa:Sensor
     ] ;
 
     rr:predicateObjectMap [
@@ -90,7 +100,7 @@
     # Link to the air quality stations dataset:
     # join ESTACION_CODIGO (this CSV) = CODIGO (stations CSV)
     rr:predicateObjectMap [
-        rr:predicate bpm:hasStation ;
+        rr:predicate sosa:isHostedBy ;
         rr:objectMap [
             rr:parentTriplesMap <#MonitoringStationMap> ;
             rr:joinCondition [
@@ -101,7 +111,7 @@
     ] ;
 
     rr:predicateObjectMap [
-        rr:predicate bpm:measuresPollutant ;
+        rr:predicate sosa:observes ;
         rr:objectMap [
             rr:template "https://w3id.org/breatheplay-madrid/resource/pollutant/{MAGNITUD}" ;
             rr:termType rr:IRI
@@ -128,7 +138,7 @@
     rr:subjectMap [
         rr:template "https://w3id.org/breatheplay-madrid/resource/station/{CODIGO}" ;
         rr:termType rr:IRI ;
-        rr:class bpm:MonitoringStation
+        rr:class bpm:MonitoringStation, sosa:Platform
     ] ;
 
     rr:predicateObjectMap [
@@ -148,7 +158,7 @@
     rr:subjectMap [
         rr:template "https://w3id.org/breatheplay-madrid/resource/pollutant/{MAGNITUD}" ;
         rr:termType rr:IRI ;
-        rr:class bpm:Pollutant
+        rr:class bpm:Pollutant, sosa:ObservableProperty
     ] ;
 
     rr:predicateObjectMap [
@@ -178,7 +188,7 @@
     rr:subjectMap [
         rr:template "https://w3id.org/breatheplay-madrid/resource/technique/{TECNICA}" ;
         rr:termType rr:IRI ;
-        rr:class bpm:MeasurementTechnique
+        rr:class bpm:MeasurementTechnique, sosa:Procedure
     ] ;
 
     rr:predicateObjectMap [

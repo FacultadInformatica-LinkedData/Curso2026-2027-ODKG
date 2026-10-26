@@ -2,6 +2,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix geo:  <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 #################################################################
 # EXAMPLE 1: Accident involving 3 people and 3 vehicles (Lateral collision)
@@ -10,42 +11,55 @@
 
 ns:TrafficAccident/2026S000001
     a ns:TrafficAccident ;
+    rdfs:label "Traffic accident 2026S000001"@en ;
     ns:accidentID "2026S000001"^^xsd:string ;
     ns:accidentDate "2026-01-01"^^xsd:date ;
     ns:accidentTime "03:00:00"^^xsd:time ;
     ns:occursAt ns:Location/2026S000001 ;
-    ns:locatedIn ns:District/4 ;
     ns:hasAccidentType ns:AccidentType/ColisionLateral ;
     ns:hasWeatherCondition ns:WeatherCondition/Despejado ;
-    ns:involvesVehicle ns:Vehicle/2026S000001-1 ;
-    ns:involvesVehicle ns:Vehicle/2026S000001-2 .
+    ns:involvesVehicle ns:Vehicle/2026S000001-V1 ;
+    ns:involvesVehicle ns:Vehicle/2026S000001-V2 .
 
 ns:Location/2026S000001
     a ns:Location ;
+    rdfs:label "Location of traffic accident 2026S000001"@en ;
     ns:streetName "CALL. GOYA"^^xsd:string ;
     ns:streetNumber "46"^^xsd:string ;
-    ns:xCoordinate "442386.41"^^xsd:double ; 
-    ns:yCoordinate "4475140.23"^^xsd:double .
+    ns:xCoordinate "442386.41"^^xsd:double ;
+    ns:yCoordinate "4475140.23"^^xsd:double ;
+    ns:locatedIn ns:District/4 ;
+    ns:hasGeometry ns:Point/2026S000001 ;
+    ns:hasMapLink <https://www.google.com/maps?q=40.424901,-3.679177> .
 
+ns:Point/2026S000001
+    a ns:Point ;
+    rdfs:label "Point of traffic accident 2026S000001"@en ;
+    ns:latitude "40.424901"^^xsd:double ;
+    ns:longitude "-3.679177"^^xsd:double .
 
 ns:District/4
     a ns:District ;
+    rdfs:label "SALAMANCA"@es ;
     ns:districtCode 4 ;
-    ns:districtName "Salamanca"^^xsd:string .
+    ns:districtName "SALAMANCA"^^xsd:string .
 
-ns:Vehicle/2026S000001-1
+ns:Vehicle/2026S000001-V1
     a ns:Vehicle ;
+    rdfs:label "Vehicle 2026S000001-V1"@en ;
     ns:hasVehicleType ns:VehicleType/Turismo ;
-    ns:involvesPerson ns:Person/2026S000001-1 .
+    ns:involvesPerson ns:Person/2026S000001-P1 .
 
-ns:Vehicle/2026S000001-2
+ns:Vehicle/2026S000001-V2
     a ns:Vehicle ;
+    rdfs:label "Vehicle 2026S000001-V2"@en ;
     ns:hasVehicleType ns:VehicleType/Turismo ;
-    ns:involvesPerson ns:Person/2026S000001-2 ;
-    ns:involvesPerson ns:Person/2026S000001-3 .
+    ns:involvesPerson ns:Person/2026S000001-P2 ;
+    ns:involvesPerson ns:Person/2026S000001-P3 .
 
-ns:Person/2026S000001-1
+ns:Person/2026S000001-P1
     a ns:Person ;
+    rdfs:label "Person 2026S000001-P1"@en ;
     ns:hasPersonType ns:PersonType/Conductor ;
     ns:hasAgeRange ns:AgeRange/21-24 ;
     ns:hasSex ns:Sex/Mujer ;
@@ -53,8 +67,9 @@ ns:Person/2026S000001-1
     ns:positiveAlcohol false ;
     ns:positiveDrug false .
 
-ns:Person/2026S000001-2
+ns:Person/2026S000001-P2
     a ns:Person ;
+    rdfs:label "Person 2026S000001-P2"@en ;
     ns:hasPersonType ns:PersonType/Conductor ;
     ns:hasAgeRange ns:AgeRange/30-34 ;
     ns:hasSex ns:Sex/Hombre ;
@@ -62,8 +77,9 @@ ns:Person/2026S000001-2
     ns:positiveAlcohol false ;
     ns:positiveDrug false .
 
-ns:Person/2026S000001-3
+ns:Person/2026S000001-P3
     a ns:Person ;
+    rdfs:label "Person 2026S000001-P3"@en ;
     ns:hasPersonType ns:PersonType/Pasajero ;
     ns:hasAgeRange ns:AgeRange/21-24 ;
     ns:hasSex ns:Sex/Mujer ;
@@ -79,51 +95,62 @@ ns:Person/2026S000001-3
 
 ns:TrafficAccident/2026S000002
     a ns:TrafficAccident ;
+    rdfs:label "Traffic accident 2026S000002"@en ;
     ns:accidentID "2026S000002"^^xsd:string ;
     ns:accidentDate "2026-01-01"^^xsd:date ;
     ns:accidentTime "03:00:00"^^xsd:time ;
     ns:occursAt ns:Location/2026S000002 ;
-    ns:locatedIn ns:District/21 ;
     ns:hasAccidentType ns:AccidentType/ColisionFrontoLateral ;
     ns:hasWeatherCondition ns:WeatherCondition/Despejado ;
-    ns:involvesVehicle ns:Vehicle/2026S000002-1 ;
-    ns:involvesVehicle ns:Vehicle/2026S000002-2 .
+    ns:involvesVehicle ns:Vehicle/2026S000002-V1 ;
+    ns:involvesVehicle ns:Vehicle/2026S000002-V2 .
 
 ns:Location/2026S000002
     a ns:Location ;
+    rdfs:label "Location of traffic accident 2026S000002"@en ;
     ns:streetName "CALL. ALAR DEL REY / PASEO. ZURRON"^^xsd:string ;
     ns:streetNumber "5"^^xsd:string ;
     ns:xCoordinate "450564.66"^^xsd:double ; 
-    ns:yCoordinate "4480043.99"^^xsd:double .
+    ns:yCoordinate "4480043.99"^^xsd:double ;
+    ns:locatedIn ns:District/21 ;
+    ns:hasGeometry ns:Point/2026S000002 ;
+    ns:hasMapLink <https://www.google.com/maps?q=40.469603,-3.583154> .
 
+ns:Point/2026S000002
+    a ns:Point ;
+    rdfs:label "Point of traffic accident 2026S000002"@en ;
+    ns:latitude "40.469603"^^xsd:double ;
+    ns:longitude "-3.583154"^^xsd:double .
 
 ns:District/21
     a ns:District ;
+    rdfs:label "BARAJAS"@es ;
     ns:districtCode 21 ;
-    ns:districtName "Barajas"^^xsd:string .
+    ns:districtName "BARAJAS"^^xsd:string .
 
-ns:Vehicle/2026S000002-1
+ns:Vehicle/2026S000002-V1
     a ns:Vehicle ;
-    ns:involvesPerson ns:Person/2026S000002-1 .
+    rdfs:label "Vehicle 2026S000002-V1"@en ;
+    ns:involvesPerson ns:Person/2026S000002-P1 .
 
-ns:Vehicle/2026S000002-2
+ns:Vehicle/2026S000002-V2
     a ns:Vehicle ;
+    rdfs:label "Vehicle 2026S000002-V2"@en ;
     ns:hasVehicleType ns:VehicleType/Turismo ;
-    ns:involvesPerson ns:Person/2026S000002-2 .
+    ns:involvesPerson ns:Person/2026S000002-P2 .
 
-ns:Person/2026S000002-1
+# Gender and age are unknown so these properties are omitted in our implementation
+ns:Person/2026S000002-P1
     a ns:Person ;
+    rdfs:label "Person 2026S000002-P1"@en ;
     ns:hasPersonType ns:PersonType/Conductor ;
-    ns:hasAgeRange ns:AgeRange/Desconocido ;
-    ns:hasSex ns:Sex/Desconocido ;
     ns:positiveAlcohol false ;
     ns:positiveDrug false .
 
-ns:Person/2026S000002-2
+ns:Person/2026S000002-P2
     a ns:Person ;
+    rdfs:label "Person 2026S000002-P2"@en ;
     ns:hasPersonType ns:PersonType/Conductor ;
-    ns:hasAgeRange ns:AgeRange/Desconocido ;
-    ns:hasSex ns:Sex/Desconocido ;
     ns:positiveAlcohol false ;
     ns:positiveDrug false .
 
@@ -137,31 +164,48 @@ ns:Person/2026S000002-2
 
 ns:TrafficAccident/2026S000353
     a ns:TrafficAccident ;
+    rdfs:label "Traffic accident 2026S000353"@en ;
     ns:accidentID "2026S000353"^^xsd:string ;
     ns:accidentDate "2026-01-02"^^xsd:date ;
     ns:accidentTime "13:20:00"^^xsd:time ;
     ns:occursAt ns:Location/2026S000353 ;
-    ns:locatedIn ns:District/15 ;
     ns:hasAccidentType ns:AccidentType/AtropelloAPersona ;
     ns:hasWeatherCondition ns:WeatherCondition/Despejado ;
-    ns:involvesVehicle ns:Vehicle/2026S000353-1 .
+    ns:involvesVehicle ns:Vehicle/2026S000353-V1 .
 
 ns:Location/2026S000353
     a ns:Location ;
+    rdfs:label "Location of traffic accident 2026S000353"@en ;
     ns:streetName "CALL. ASCAO / CALL. GUTIERRE DE CETINA"^^xsd:string ;
     ns:streetNumber "30"^^xsd:string ;
     ns:xCoordinate "445622.60"^^xsd:double ; 
-    ns:yCoordinate "4475676.36"^^xsd:double . 
+    ns:yCoordinate "4475676.36"^^xsd:double ;
+    ns:locatedIn ns:District/15 ;
+    ns:hasGeometry ns:Point/2026S000353 ;
+    ns:hasMapLink <https://www.google.com/maps?q=40.429948,-3.641075> .
 
-
+ns:Point/2026S000353
+    a ns:Point ;
+    rdfs:label "Point of traffic accident 2026S000353"@en ;
+    ns:latitude "40.429948"^^xsd:double ;
+    ns:longitude "-3.641075"^^xsd:double .
 
 ns:District/15
     a ns:District ;
+    rdfs:label "Ciudad Lineal"@es ;
     ns:districtCode 15 ;
     ns:districtName "Ciudad Lineal"^^xsd:string .
 
-ns:Person/2026S000353-1
+ns:Vehicle/2026S000353-V1
+    a ns:Vehicle ;
+    rdfs:label "Vehicle 2026S000353-V1"@en ;
+    ns:hasVehicleType ns:VehicleType/MotocicletaMayor125cc ;
+    ns:involvesPerson ns:Person/2026S000353-P1 ;
+    ns:involvesPerson ns:Person/2026S000353-P2 .
+
+ns:Person/2026S000353-P1
     a ns:Person ;
+    rdfs:label "Person 2026S000353-P1"@en ;
     ns:hasPersonType ns:PersonType/Conductor ;
     ns:hasAgeRange ns:AgeRange/21-24 ;
     ns:hasSex ns:Sex/Hombre ;
@@ -169,21 +213,15 @@ ns:Person/2026S000353-1
     ns:positiveAlcohol true ;
     ns:positiveDrug false .
 
-ns:Person/2026S000353-2
+ns:Person/2026S000353-P2
     a ns:Person ;
+    rdfs:label "Person 2026S000353-P2"@en ;
     ns:hasPersonType ns:PersonType/Peaton ;
     ns:hasAgeRange ns:AgeRange/MasDe74 ;
     ns:hasSex ns:Sex/Mujer ;
     ns:hasInjurySeverity ns:InjurySeverity/3 ;
     ns:positiveAlcohol false ;
     ns:positiveDrug false .
-
-ns:Vehicle/2026S000353-1
-    a ns:Vehicle ;
-    ns:hasVehicleType ns:VehicleType/MotocicletaMayor125cc ;
-    ns:involvesPerson ns:Person/2026S000353-1 ;
-    ns:involvesPerson ns:Person/2026S000353-2 .
-
 
 
 
@@ -223,10 +261,6 @@ ns:AgeRange/30-34
     a ns:AgeRange ;
     skos:prefLabel "De 30 a 34 años"@es .
 
-ns:AgeRange/Desconocido
-    a ns:AgeRange ;
-    skos:prefLabel "Desconocido"@es .
-
 ns:Sex/Mujer
     a ns:Sex ;
     skos:prefLabel "Mujer"@es .
@@ -234,10 +268,6 @@ ns:Sex/Mujer
 ns:Sex/Hombre
     a ns:Sex ;
     skos:prefLabel "Hombre"@es .
-
-ns:Sex/Desconocido
-    a ns:Sex ;
-    skos:prefLabel "Desconocido"@es .
 
 ns:InjurySeverity/14
     a ns:InjurySeverity ;

@@ -397,5 +397,18 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Trasforma il testo delle celle nella colonna Longitude utilizzando l'espressione value.replace(\",\",\".\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Address",
+    "expression": "grel:value.replace(/\\s{2,}/, \" \").replace(\" ,\", \",\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna Address utilizzando l'espressione grel:value.replace(/\\s{2,}/, \" \").replace(\" ,\", \",\")"
   }
 ]

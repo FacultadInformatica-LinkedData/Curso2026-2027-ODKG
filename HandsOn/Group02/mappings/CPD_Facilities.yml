@@ -17,7 +17,7 @@ mappings:
     s: http://smartcity.chicago.es/resource/Facility/$(FACILITY_ID)
     po:
       - [a, pe:Facility]
-      - [rdfs:label, $(FACILITY_NAME), xsd:string]
+      - [rdfs:label, $(FACILITY_NAME), en~lang]
       - [pe:facilityName, $(FACILITY_NAME), xsd:string]
       - [pe:facilityType, $(FACILITY_TYPE), xsd:string]
       - [pe:facilityGisObjectId, $(GIS_OBJECT_ID), xsd:integer]
@@ -30,7 +30,7 @@ mappings:
     s: http://smartcity.chicago.es/resource/GeoCoordinates/Facility_$(FACILITY_ID)
     po:
       - [a, schema:GeoCoordinates]
-      - [rdfs:label, Coordinates of $(FACILITY_NAME) in $(PARK_NAME), xsd:string]
+      - [rdfs:label, Coordinates of $(FACILITY_NAME) in $(PARK_NAME), en~lang]
       - [schema:latitude, $(LATITUDE), xsd:decimal]
       - [schema:longitude, $(LONGITUDE), xsd:decimal]
 
@@ -41,7 +41,7 @@ mappings:
     s: http://smartcity.chicago.es/resource/ChicagoPark/$(PARK_NO)
     po:
       - [a, pe:ChicagoPark]
-      - [rdfs:label, $(PARK_NAME), xsd:string]
+      - [rdfs:label, $(PARK_NAME), en~lang]
       - [pe:parkName, $(PARK_NAME), xsd:string]
       - [pe:parkNumber, $(PARK_NO), xsd:integer]
       - [pe:hasFacility, http://smartcity.chicago.es/resource/Facility/$(FACILITY_ID)~iri]

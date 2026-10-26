@@ -134,12 +134,6 @@ dbd:evaNumber a owl:DatatypeProperty ;
     rdfs:label "EVA number"@en ;
     rdfs:comment "The station identifier from eva_nr, preserved as text rather than a numerical quantity."@en .
 
-dbd:stationName a owl:DatatypeProperty ;
-    rdfs:domain dbd:Station ;
-    rdfs:range xsd:string ;
-    rdfs:label "station name"@en ;
-    rdfs:comment "The original station name from station, retaining German characters."@en .
-
 dbd:stationCategory a owl:DatatypeProperty ;
     rdfs:domain dbd:Station ;
     rdfs:range xsd:integer ;

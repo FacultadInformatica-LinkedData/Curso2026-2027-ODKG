@@ -136,10 +136,59 @@
     ]
   ];
 
+rr:predicateObjectMap [
+    rr:predicate ns:hasGeometry;
+    rr:objectMap [
+      rr:parentTriplesMap <#Point>
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasMapLink ;
+    rr:objectMap [
+        rr:template "https://www.google.com/maps?q={latitud},{longitud}" ;
+        rr:termType rr:IRI
+    ]
+  ];
+
   rr:predicateObjectMap [
     rr:predicate ns:locatedIn;
     rr:objectMap [
       rr:parentTriplesMap <#District>
+    ]
+  ] .
+
+<#Point> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/traffic_accidents_updated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "https://w3id.org/saferoutemadrid/resource/Point/{num_expediente}";
+    rr:class ns:Point
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Point of traffic accident {num_expediente}";
+      rr:language "en"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:latitude;
+    rr:objectMap [
+      rml:reference "latitud";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:longitude;
+    rr:objectMap [
+      rml:reference "longitud";
+      rr:datatype xsd:double
     ]
   ] .
 
@@ -149,7 +198,7 @@
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
-    rr:template "https://w3id.org/saferoutemadrid/resource/District/{distrito}";
+    rr:template "https://w3id.org/saferoutemadrid/resource/District/{cod_distrito}";
     rr:class ns:District
   ];
 

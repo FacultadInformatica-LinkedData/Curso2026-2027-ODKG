@@ -28,7 +28,7 @@ WHERE {
 # Q3. Datatype used by each datatype property (checklist: every value has
 #     its datatype, and the correct one, as in the ontology ranges)
 # Expected: parkNumber, facilityGisObjectId, artworkGisObjectId -> xsd:integer;
-#           latitude, longitude -> xsd:double; every other property -> xsd:string
+#           latitude, longitude -> xsd:decimal; rdfs:label -> rdf:langString; every other property -> xsd:string
 # ---------------------------------------------------------------
 SELECT ?property ?datatype (COUNT(*) AS ?values)
 WHERE {
@@ -266,7 +266,7 @@ ASK {
       pe:madeBy <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> ;
       schema:geo ?g1 .
   ?g1 a schema:GeoCoordinates ; schema:latitude ?lat1 ; schema:longitude ?lon1 .
-  FILTER (?lat1 = "42.0101658765"^^xsd:double && ?lon1 = "-87.6938203714"^^xsd:double)
+  FILTER (?lat1 = "42.0101658765"^^xsd:decimal && ?lon1 = "-87.6938203714"^^xsd:decimal)
   <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> a pe:Artist ; pe:artistName "Phil Schuster" .
   <http://smartcity.chicago.es/resource/Owner/Chicago_Park_District> a pe:Owner ; pe:ownerName "Chicago Park District" .
   <http://smartcity.chicago.es/resource/ChicagoPark/9> a pe:ChicagoPark ; pe:parkName "HAMILTON (ALEXANDER)" ;
@@ -275,5 +275,5 @@ ASK {
       pe:facilityName "CULTURAL CENTER" ; pe:facilityType "SPECIAL" ; pe:facilityGisObjectId 2494 ;
       schema:geo ?g2 .
   ?g2 a schema:GeoCoordinates ; schema:latitude ?lat2 ; schema:longitude ?lon2 .
-  FILTER (?lat2 = "41.76299921"^^xsd:double && ?lon2 = "-87.63769763"^^xsd:double)
+  FILTER (?lat2 = "41.76299921"^^xsd:decimal && ?lon2 = "-87.63769763"^^xsd:decimal)
 }

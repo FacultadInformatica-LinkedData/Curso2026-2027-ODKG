@@ -1,7 +1,18 @@
 @prefix dis: <https://parking-madrid.example.org/resource/district/> .
 @prefix occ: <https://parking-madrid.example.org/resource/occupancy/> .
 @prefix par: <https://parking-madrid.example.org/resource/parking/> .
-@prefix pm: <https://parking-madrid.example.org/ontology#> .
+@prefix bar: <https://parking-madrid.example.org/resource/neighbourhood/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pm:  <https://parking-madrid.example.org/ontology#> .
+
+# Example RDF data illustrating the Parking Madrid ontology.
+# The January 2019 occupancy record: 
+#   - Almagro, OLAVIDE, SEVILLA, MOSTENSES, ENCUENTRO
+# and the three inventory records: 
+#   - Aguilar de Campoo, Aguilón, and Agustín Lara
+# Other records are illustrative examples and should not be
+# interpreted as verified records from the source datasets.
 
 # -------------------------------------------------------- Districts
 
@@ -17,46 +28,154 @@ dis:14 a pm:District ;
     pm:hasDistrictCode 14 ;
     pm:hasDistrictName "MORATALAZ" .
 
+dis:9 a pm:District ;
+    pm:hasDistrictCode 9 ;
+    pm:hasDistrictName "MONCLOA-ARAVACA" .
+
+dis:2 a pm:District ;
+    pm:hasDistrictCode 2 ;
+    pm:hasDistrictName "ARGANZUELA" .
+
+# -------------------------------------------------------- Neighbourhoods
+
+bar:9-4 a pm:Neighbourhood ;
+    pm:hasNeighbourhoodCode 4 ;
+    pm:hasNeighbourhoodName "VALDEZARZA" ;
+    pm:belongsToDistrict dis:9 .
+
+bar:2-3 a pm:Neighbourhood ;
+    pm:hasNeighbourhoodCode 3 ;
+    pm:hasNeighbourhoodName "CHOPERA" ;
+    pm:belongsToDistrict dis:2 .
+
+bar:1-2 a pm:Neighbourhood ;
+    pm:hasNeighbourhoodCode 2 ;
+    pm:hasNeighbourhoodName "EMBAJADORES" ;
+    pm:belongsToDistrict dis:1 .
+
 # -------------------------------------------------------- Car parks
+
+# Examples from the historical (occupa) data.
 
 par:5000 a pm:RotationalParkingFacility ;
     pm:hasParCode 5000 ;
     pm:hasParkingName "ALMAGRO" ;
+    pm:hasParkingType "ROT" ;
     pm:hasTotalSpaces 453 ;
     pm:locatedInDistrict dis:7 .
 
 par:5012 a pm:RotationalParkingFacility ;
     pm:hasParCode 5012 ;
     pm:hasParkingName "OLAVIDE" ;
+    pm:hasParkingType "ROT" ;
     pm:hasTotalSpaces 383 ;
     pm:locatedInDistrict dis:7 .
 
 par:114 a pm:RotationalParkingFacility ;
     pm:hasParCode 114 ;
     pm:hasParkingName "SEVILLA" ;
+    pm:hasParkingType "ROT" ;
     pm:hasTotalSpaces 393 ;
     pm:locatedInDistrict dis:1 .
 
 par:5010 a pm:RotationalParkingFacility ;
     pm:hasParCode 5010 ;
     pm:hasParkingName "MOSTENSES" ;
+    pm:hasParkingType "ROT" ;
     pm:hasTotalSpaces 362 ;
     pm:locatedInDistrict dis:1 .
 
 par:1419 a pm:RotationalParkingFacility ;
     pm:hasParCode 1419 ;
     pm:hasParkingName "ENCUENTRO" ;
+    pm:hasParkingType "ROT" ;
     pm:hasTotalSpaces 90 ;
     pm:locatedInDistrict dis:14 .
 
-# -------------------------------------------------------- Monthly occupancies
+# Examples from the supplied inventory data. 
+# Empty source cells are omitted rather than converted to zero.
+# Note that there are some mismatch in the entities of Parking Lot,
+# so the distinguishing is just for comparison and demostration. 
+# It doesn't necessarily means the final resolution.
+
+par:912 a pm:ResidentParkingFacility ;
+    pm:hasParCode 912 ;
+    pm:hasParkingName "AGUILAR DE CAMPOO" ;
+    pm:hasParkingType "RESIDENCIAL" ;
+    pm:hasResidentSpaces 304 ;
+    pm:hasTotalSpaces 304 ;
+    pm:hasNumberOfFloors 3 ;
+    pm:hasOperationalStatus "ABIERTO" ;
+    pm:isPrivate false ;
+    pm:isDisuasory false ;
+    pm:hasServiceCode "0" ;
+    geo:lat "40.4647124801429"^^xsd:decimal ;
+    geo:long "-3.71937440247255"^^xsd:decimal ;
+    pm:hasCadastralReference "9198744VK3799G0001XY" ;
+    pm:hasOfficialURL <http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=d60868540e41c010VgnVCM2000000c205a0aRCRD> ;
+    pm:hasPKCode "67711" ;
+    pm:hasStreetAddress "CALLE DE ANTONIO MACHADO NUM 10, 28035 MADRID" ;
+    pm:locatedInDistrict dis:9 ;
+    pm:locatedInNeighbourhood bar:9-4 .
+
+par:204 a pm:ResidentParkingFacility ;
+    pm:hasParCode 204 ;
+    pm:hasParkingName "AGUILÓN" ;
+    pm:hasParkingType "RESIDENCIAL" ;
+    pm:hasResidentSpaces 271 ;
+    pm:hasTotalSpaces 271 ;
+    pm:hasNumberOfFloors 2 ;
+    pm:hasOperationalStatus "ABIERTO" ;
+    pm:isPrivate false ;
+    pm:isDisuasory false ;
+    pm:hasServiceCode "23" ;
+    geo:lat "40.3953242147226"^^xsd:decimal ;
+    geo:long "-3.70066269999703"^^xsd:decimal ;
+    pm:hasCadastralReference "0622704VK4702B0001TW" ;
+    pm:hasOfficialURL <http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=bc5215cbed51c010VgnVCM2000000c205a0aRCRD> ;
+    pm:hasPKCode "13560" ;
+    pm:hasStreetAddress "PASEO DE LA CHOPERA NUM 27(P), 28045 MADRID" ;
+    pm:locatedInDistrict dis:2 ;
+    pm:locatedInNeighbourhood bar:2-3 .
+
+par:115 a pm:ResidentParkingFacility ;
+    pm:hasParCode 115 ;
+    pm:hasParkingName "AGUSTÍN LARA" ;
+    pm:hasParkingType "RESIDENCIAL" ;
+    pm:hasResidentSpaces 291 ;
+    pm:hasTotalSpaces 333 ;
+    pm:hasNumberOfFloors 1 ;
+    pm:hasOperationalStatus "ABIERTO" ;
+    pm:isPrivate false ;
+    pm:isDisuasory false ;
+    pm:hasServiceCode "12" ;
+    geo:lat "40.4077362146594"^^xsd:decimal ;
+    geo:long "-3.70421674570288"^^xsd:decimal ;
+    pm:hasCadastralReference "0335701VK4703E0002UQ" ;
+    pm:hasOfficialURL <http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=856bc2c6e051c010VgnVCM2000000c205a0aRCRD> ;
+    pm:hasPKCode "81690" ;
+    pm:hasStreetAddress "CALLE DEL MESÓN DE PAREDES NUM 66 PLTA -2, 28012 MADRID" ;
+    pm:locatedInDistrict dis:1 ;
+    pm:locatedInNeighbourhood bar:1-2 .
+
+
+# Directly grounded in the supplied historical CSV row for Almagro, January 2019 (Monthly occupancies).
+
+occ:5000-2019-01 a pm:MonthlyOccupancy ;
+    pm:isOccupancyOf par:5000 ;
+    pm:hasReferencePeriod "2019-01" ;
+    pm:hasNumberOfSpaces 437 ;
+    pm:hasCalculationDays 31 ;
+    pm:hasAverageDailyVehicles "73"^^xsd:decimal ;
+    pm:hasOccupancyRate "16.70"^^xsd:decimal ;
+    pm:hasDaytimeOccupancyRate "26.30"^^xsd:decimal .
 
 occ:5000-2025-01 a pm:MonthlyOccupancy ;
     pm:isOccupancyOf par:5000 ;
     pm:hasReferencePeriod "2025-01" ;
     pm:hasNumberOfSpaces 453 ;
     pm:hasCalculationDays 31 ;
-    pm:hasAverageDailyVehicles 173 ;
+    pm:hasAverageDailyVehicles "173"^^xsd:decimal ;
     pm:hasOccupancyRate 38.3 ;
     pm:hasDaytimeOccupancyRate 51.5 .
 
@@ -65,7 +184,7 @@ occ:5000-2025-08 a pm:MonthlyOccupancy ;
     pm:hasReferencePeriod "2025-08" ;
     pm:hasNumberOfSpaces 453 ;
     pm:hasCalculationDays 31 ;
-    pm:hasAverageDailyVehicles 572 ;
+    pm:hasAverageDailyVehicles "572"^^xsd:decimal ;
     pm:hasOccupancyRate 126.2 ;
     pm:hasDaytimeOccupancyRate 142.6 .
 
@@ -74,7 +193,7 @@ occ:5012-2025-01 a pm:MonthlyOccupancy ;
     pm:hasReferencePeriod "2025-01" ;
     pm:hasNumberOfSpaces 383 ;
     pm:hasCalculationDays 31 ;
-    pm:hasAverageDailyVehicles 234 ;
+    pm:hasAverageDailyVehicles "234"^^xsd:decimal ;
     pm:hasOccupancyRate 61.0 ;
     pm:hasDaytimeOccupancyRate 70.4 .
 
@@ -83,7 +202,7 @@ occ:114-2025-01 a pm:MonthlyOccupancy ;
     pm:hasReferencePeriod "2025-01" ;
     pm:hasNumberOfSpaces 393 ;
     pm:hasCalculationDays 31 ;
-    pm:hasAverageDailyVehicles 40 ;
+    pm:hasAverageDailyVehicles "40"^^xsd:decimal ;
     pm:hasOccupancyRate 10.2 ;
     pm:hasDaytimeOccupancyRate 18.3 .
 
@@ -92,7 +211,7 @@ occ:5010-2025-01 a pm:MonthlyOccupancy ;
     pm:hasReferencePeriod "2025-01" ;
     pm:hasNumberOfSpaces 362 ;
     pm:hasCalculationDays 31 ;
-    pm:hasAverageDailyVehicles 205 ;
+    pm:hasAverageDailyVehicles "205"^^xsd:decimal ;
     pm:hasOccupancyRate 56.5 ;
     pm:hasDaytimeOccupancyRate 68.3 .
 
@@ -101,6 +220,6 @@ occ:1419-2025-03 a pm:MonthlyOccupancy ;
     pm:hasReferencePeriod "2025-03" ;
     pm:hasNumberOfSpaces 90 ;
     pm:hasCalculationDays 31 ;
-    pm:hasAverageDailyVehicles 0 ;
+    pm:hasAverageDailyVehicles "0"^^xsd:decimal ;
     pm:hasOccupancyRate 0.5 ;
     pm:hasDaytimeOccupancyRate 0.8 .

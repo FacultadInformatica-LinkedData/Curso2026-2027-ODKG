@@ -1,0 +1,42 @@
+# Group04 - Breathe & Play Madrid
+# YARRRML version of estaciones-control-aire.rml (same rules, same RDF).
+# Dataset: Estaciones de control de la calidad del aire (Ayuntamiento de Madrid, 212629)
+# Source:  csv/212629-0-estaciones-control-aire-csv-updated.csv
+# Run from the HandsOn/Group04 directory (python mappings/generate_rdf.py yml),
+# so that the csv/ paths resolve.
+
+prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  bpm: https://w3id.org/breatheplay-madrid/ontology#
+  sosa: http://www.w3.org/ns/sosa/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  res: https://w3id.org/breatheplay-madrid/resource/
+
+mappings:
+
+  # Monitoring stations
+  MonitoringStation:
+    sources:
+      - [csv/212629-0-estaciones-control-aire-csv-updated.csv~csv]
+    s: res:station/$(CODIGO)
+    po:
+      - [a, bpm:MonitoringStation]
+      - [a, sosa:Platform]
+      - [bpm:stationCode, $(CODIGO), xsd:string]
+      - [rdfs:label, $(ESTACION), es~lang]
+      - [bpm:address, $(DIRECCION), xsd:string]
+      - [geo:alt, $(ALTITUD), xsd:decimal]
+      - [bpm:startDate, $(FECHA_ALTA), xsd:date]
+      - [geo:lat, $(LATITUD), xsd:decimal]
+      - [geo:long, $(LONGITUD), xsd:decimal]
+      - [bpm:hasStationType, res:station-type/$(COD_TIPO)~iri]
+
+  # Station types (ut Urbana tráfico, uf Urbana fondo, s Suburbana)
+  StationType:
+    sources:
+      - [csv/212629-0-estaciones-control-aire-csv-updated.csv~csv]
+    s: res:station-type/$(COD_TIPO)
+    po:
+      - [a, bpm:StationType]
+      - [rdfs:label, $(NOM_TIPO), es~lang]

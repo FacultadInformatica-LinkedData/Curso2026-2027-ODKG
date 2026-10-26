@@ -1,0 +1,110 @@
+PREFIX db: <https://example.org/db-delays/ontology/#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q1 - Count linked resources and Wikidata entities per class.
+SELECT ?class (COUNT(DISTINCT ?resource) AS ?linkedResources)
+       (COUNT(DISTINCT ?wikidata) AS ?wikidataEntities)
+WHERE {
+  VALUES ?class { db:Station db:City db:State }
+  ?resource a ?class ; owl:sameAs ?wikidata .
+}
+GROUP BY ?class
+ORDER BY ?class
+
+# Q2 - List stations, cities and states with their Wikidata links.
+SELECT DISTINCT ?station ?stationName ?stationWikidata
+                ?cityName ?cityWikidata ?stateName ?stateWikidata
+WHERE {
+  ?station a db:Station ;
+           rdfs:label ?stationName ;
+           db:inCity ?city ;
+           owl:sameAs ?stationWikidata .
+  ?city a db:City ; rdfs:label ?cityName ;
+        db:inState ?state ; owl:sameAs ?cityWikidata .
+  ?state a db:State ; rdfs:label ?stateName ; owl:sameAs ?stateWikidata .
+}
+ORDER BY ?stateName ?cityName ?stationName
+
+# Q3 - Search for stations whose name contains Berlin.
+SELECT DISTINCT ?station ?stationName ?eva ?wikidata
+WHERE {
+  ?station a db:Station ; rdfs:label ?stationName ;
+           db:evaNumber ?eva ; owl:sameAs ?wikidata .
+  FILTER (CONTAINS(LCASE(STR(?stationName)), "berlin"))
+}
+ORDER BY ?stationName
+
+# Q4 - Find stations in Berlin served by line 3.
+SELECT DISTINCT ?station ?stationName ?stateName ?line ?wikidata
+WHERE {
+  VALUES ?state { <https://example.org/db-delays/resource/State/Berlin> }
+  VALUES ?line { "3" }
+
+  ?station a db:Station ;
+           rdfs:label ?stationName ;
+           db:inCity ?city ;
+           owl:sameAs ?wikidata .
+
+  ?city a db:City ;
+        db:inState ?state .
+
+  ?state a db:State ;
+         rdfs:label ?stateName .
+
+  ?stop a db:TrainStop ;
+        db:atStation ?station ;
+        db:lineLabel ?line .
+}
+ORDER BY ?stationName
+
+# Q5 - Get station coordinates and average arrival delays for the map.
+SELECT ?station ?stationName ?latitude ?longitude ?wikidata
+       (AVG(?delay) AS ?averageArrivalDelayMinutes)
+       (COUNT(DISTINCT ?stop) AS ?measuredStops)
+WHERE {
+  ?station a db:Station ; rdfs:label ?stationName ;
+           db:latitude ?latitude ; db:longitude ?longitude ;
+           owl:sameAs ?wikidata .
+  ?stop a db:TrainStop ; db:atStation ?station ; db:arrivalDelayMinutes ?delay .
+}
+GROUP BY ?station ?stationName ?latitude ?longitude ?wikidata
+ORDER BY ?stationName
+
+# Q6 - Get daily stop counts, lines and punctuality for station 8089005.
+SELECT ?station ?stationName ?wikidata ?day
+       (COUNT(DISTINCT ?stop) AS ?recordedStops)
+       (GROUP_CONCAT(DISTINCT ?line; SEPARATOR=", ") AS ?lines)
+       (COUNT(?delay) AS ?measuredArrivals)
+       (AVG(?delay) AS ?averageArrivalDelayMinutes)
+       (100.0 * AVG(?onTime) AS ?onTimePercent)
+       (100.0 * AVG(?delayed) AS ?delayedPercent)
+WHERE {
+  ?station a db:Station ; rdfs:label ?stationName ;
+           db:evaNumber "8089005" ; owl:sameAs ?wikidata .
+  ?stop a db:TrainStop ; db:atStation ?station ; db:plannedArrival ?arrival .
+  BIND (SUBSTR(STR(?arrival), 1, 10) AS ?day)
+  OPTIONAL { ?stop db:lineLabel ?line }
+  OPTIONAL {
+    ?stop db:arrivalDelayMinutes ?delay .
+    BIND (IF(?delay <= 0, 1, 0) AS ?onTime)
+    BIND (IF(?delay > 0, 1, 0) AS ?delayed)
+  }
+}
+GROUP BY ?station ?stationName ?wikidata ?day
+ORDER BY ?day
+
+# Q7 - Rank stations in Berlin by average delay, highest first.
+SELECT ?station ?stationName ?stateName ?wikidata
+       (AVG(?delay) AS ?averageArrivalDelayMinutes)
+       (COUNT(DISTINCT ?stop) AS ?measuredStops)
+WHERE {
+  VALUES ?state { <https://example.org/db-delays/resource/State/Berlin> }
+  ?station a db:Station ; rdfs:label ?stationName ;
+           db:inCity ?city ; owl:sameAs ?wikidata .
+  ?city a db:City ; db:inState <https://example.org/db-delays/resource/State/Berlin> .
+  ?state a db:State ; rdfs:label ?stateName .
+  ?stop a db:TrainStop ; db:atStation ?station ; db:arrivalDelayMinutes ?delay .
+}
+GROUP BY ?station ?stationName ?stateName ?wikidata
+ORDER BY DESC(?averageArrivalDelayMinutes) ?stationName

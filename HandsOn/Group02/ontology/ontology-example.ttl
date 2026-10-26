@@ -21,8 +21,8 @@
     schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_1> .
 
 <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_1> a schema:GeoCoordinates ;
-    schema:latitude "42.0101658765"^^xsd:double ;
-    schema:longitude "-87.6938203714"^^xsd:double .
+    schema:latitude "42.0101658765"^^xsd:decimal ;
+    schema:longitude "-87.6938203714"^^xsd:decimal .
 
 ### Artist: Phil Schuster (ARTIST_ID = slug of ARTIST_NAME) ###
 <http://smartcity.chicago.es/resource/Artist/Phil_Schuster> a :Artist ;
@@ -53,8 +53,8 @@
     schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_85> .
 
 <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_85> a schema:GeoCoordinates ;
-    schema:latitude "41.9188563043"^^xsd:double ;
-    schema:longitude "-87.6361069978"^^xsd:double .
+    schema:latitude "41.9188563043"^^xsd:decimal ;
+    schema:longitude "-87.6361069978"^^xsd:decimal .
 
 ### Artist: the architecture firm Jenney & Loring (kept as one creator) ###
 <http://smartcity.chicago.es/resource/Artist/Jenney_Loring> a :Artist ;
@@ -81,8 +81,8 @@
     schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_248> .
 
 <http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_248> a schema:GeoCoordinates ;
-    schema:latitude "41.8927674856"^^xsd:double ;
-    schema:longitude "-87.6137508666"^^xsd:double .
+    schema:latitude "41.8927674856"^^xsd:decimal ;
+    schema:longitude "-87.6137508666"^^xsd:decimal .
 
 <http://smartcity.chicago.es/resource/Artist/Mirtes_Zwierzynski> a :Artist ;
     :artistName "Mirtes Zwierzynski" .
@@ -109,5 +109,5 @@
     schema:geo <http://smartcity.chicago.es/resource/GeoCoordinates/Facility_1> .
 
 <http://smartcity.chicago.es/resource/GeoCoordinates/Facility_1> a schema:GeoCoordinates ;
-    schema:latitude "41.76299921"^^xsd:double ;
-    schema:longitude "-87.63769763"^^xsd:double .
+    schema:latitude "41.76299921"^^xsd:decimal ;
+    schema:longitude "-87.63769763"^^xsd:decimal .

@@ -10,7 +10,7 @@
 
 <#ParkingFacilityMap> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "CSV/csv-mod.csv" ;
+        rml:source "CSV/csv2-updated.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
@@ -48,7 +48,7 @@
 
 <#DistrictMap> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "CSV/csv-mod.csv" ;
+        rml:source "CSV/csv2-updated.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
@@ -65,7 +65,7 @@
 
 <#ParkingTypeMap> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "CSV/csv-mod.csv" ;
+        rml:source "CSV/csv2-updated.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
@@ -82,7 +82,7 @@
 
 <#OccupancyObservationMap> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "CSV/csv-mod.csv" ;
+        rml:source "CSV/csv2-updated.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [

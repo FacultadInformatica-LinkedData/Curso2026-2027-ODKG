@@ -291,15 +291,25 @@
 </ul>
 
 <h3>4.2 Ontology URIs: hash</h3>
-<p>The ontology is small (around 10 classes and 30 properties), so it is served as a single document and its terms use <strong>hash URIs</strong>. One request returns the whole vocabulary.</p>
+<p>The ontology is small (around 12 classes and 25 properties), so it is served as a single document and its terms use <strong>hash URIs</strong>. One request returns the whole vocabulary.</p>
 <table>
   <tr><th>Element</th><th>Pattern</th><th>Example</th></tr>
   <tr><td>Ontology</td><td><code>https://w3id.org/breatheplay-madrid/ontology</code></td><td>prefix <code>bpm:</code> → <code>https://w3id.org/breatheplay-madrid/ontology#</code></td></tr>
-  <tr><td>Version</td><td><code>…/ontology/{major.minor.patch}</code> (<code>owl:versionIRI</code>)</td><td><code>…/ontology/1.0.0</code></td></tr>
+  <tr><td>Version</td><td><code>…/ontology/{major.minor.patch}</code> (<code>owl:versionIRI</code>)</td><td><code>…/ontology/1.1.0</code></td></tr>
   <tr><td>Class</td><td><code>…/ontology#{UpperCamelCase}</code></td><td><code>bpm:MonitoringStation</code>, <code>bpm:SportsFacility</code>, <code>bpm:DailyObservation</code></td></tr>
-  <tr><td>Object property</td><td><code>…/ontology#{lowerCamelCase verb}</code></td><td><code>bpm:hasStation</code>, <code>bpm:measuresPollutant</code>, <code>bpm:hasNearestStation</code></td></tr>
-  <tr><td>Datatype property</td><td><code>…/ontology#{lowerCamelCase}</code></td><td><code>bpm:value</code>, <code>bpm:isValid</code>, <code>bpm:altitude</code></td></tr>
+  <tr><td>Object property</td><td><code>…/ontology#{lowerCamelCase verb}</code></td><td><code>bpm:hasNearestStation</code>, <code>bpm:hasStationType</code>, <code>bpm:locatedInDistrict</code></td></tr>
+  <tr><td>Datatype property</td><td><code>…/ontology#{lowerCamelCase}</code></td><td><code>bpm:date</code>, <code>bpm:isValid</code>, <code>bpm:startDate</code></td></tr>
 </table>
+
+<h4 id="reuse">Reused vocabularies</h4>
+<p>Terms from standard vocabularies are used directly in the data where they cover our model, keeping their own URIs; our classes are declared as subclasses of the standard ones, and <code>bpm:</code> terms are kept only where there is no clear equivalent (validity flag, daily date, nearest station, distances, code lists, districts and neighbourhoods). Only the terms used are declared in the ontology (no <code>owl:imports</code>).</p>
+<table>
+  <tr><th>Vocabulary</th><th>Namespace</th><th>Terms used</th><th>Relation with <code>bpm:</code></th></tr>
+  <tr><td><a href="https://www.w3.org/TR/vocab-ssn/">SOSA</a> (W3C)</td><td><code>sosa:</code> → <code>http://www.w3.org/ns/sosa/</code></td><td><code>sosa:Observation</code>, <code>sosa:Sensor</code>, <code>sosa:Platform</code>, <code>sosa:ObservableProperty</code>, <code>sosa:Procedure</code>; <code>sosa:madeBySensor</code>, <code>sosa:observedProperty</code>, <code>sosa:hasSimpleResult</code>, <code>sosa:isHostedBy</code>, <code>sosa:observes</code></td><td><code>bpm:DailyObservation</code>, <code>bpm:SamplingPoint</code>, <code>bpm:MonitoringStation</code>, <code>bpm:Pollutant</code> and <code>bpm:MeasurementTechnique</code> are subclasses of the SOSA classes. The SOSA properties replace <code>bpm:hasSamplingPoint</code>, <code>bpm:value</code>, <code>bpm:hasStation</code> and <code>bpm:measuresPollutant</code>.</td></tr>
+  <tr><td><a href="https://www.w3.org/2003/01/geo/">WGS84 Geo Positioning</a> (W3C)</td><td><code>geo:</code> → <code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></td><td><code>geo:SpatialThing</code>, <code>geo:lat</code>, <code>geo:long</code>, <code>geo:alt</code></td><td><code>bpm:Place</code> is a subclass of <code>geo:SpatialThing</code>; <code>geo:lat</code>, <code>geo:long</code> and <code>geo:alt</code> replace <code>bpm:latitude</code>, <code>bpm:longitude</code> and <code>bpm:altitude</code>.</td></tr>
+  <tr><td><a href="https://schema.org/SportsActivityLocation">schema.org</a></td><td><code>schema:</code> → <code>http://schema.org/</code></td><td><code>schema:SportsActivityLocation</code></td><td><code>bpm:SportsFacility</code> is a subclass of it.</td></tr>
+</table>
+<p>Each individual is also typed explicitly with the standard superclass, e.g. <code>a bpm:DailyObservation, sosa:Observation</code>, so that it can be found with SOSA or schema.org terms without a reasoner.</p>
 
 <h3>4.3 Data URIs: slash</h3>
 <p>Instances use <strong>slash URIs</strong> under <code>/resource/</code>, because there are tens of thousands of them and each one must be retrievable on its own. Patterns follow <code>/resource/{type}/{id}</code>, where <code>{id}</code> reuses the identifier from the source whenever one exists, so the URIs are stable and can be regenerated from the CSV.</p>
@@ -327,7 +337,7 @@
   <li><strong>Ontology terms:</strong> classes in <code>UpperCamelCase</code> and singular; properties in <code>lowerCamelCase</code>, starting with a verb (<code>has…</code>, <code>is…</code>, <code>measures…</code>).</li>
   <li><strong>Instance paths:</strong> type segments in lowercase <code>kebab-case</code> and singular; identifiers only with characters <code>[a-z0-9_-]</code>, no accents or spaces.</li>
   <li><strong>Opaque, stable identifiers:</strong> source codes are used instead of names (station names or facility names can change; codes do not), so URIs never have to be renamed. For stations we use the current 8-digit national code; the codes that changed in 2010 can be kept as an extra literal property if older years are added. For facilities, <code>PK</code> is the only identifier available (see the note in 2.3).</li>
-  <li><strong>Reuse of external URIs:</strong> pollutants and districts are linked to existing Wikidata entities with <code>owl:sameAs</code>, and standard vocabularies (e.g. SOSA/SSN, GeoSPARQL, <code>dcterms</code>) are reused where they fit, instead of redefining their terms.</li>
+  <li><strong>Reuse of external URIs:</strong> pollutants and districts are linked to existing Wikidata entities with <code>owl:sameAs</code>, and standard vocabularies (SOSA, WGS84 Geo Positioning, schema.org and <code>dcterms</code>) are reused where they fit, instead of redefining their terms (see <a href="#reuse">Reused vocabularies</a>).</li>
 </ul>
 
 <h3>4.5 Content negotiation</h3>
@@ -355,21 +365,24 @@ RewriteRule ^resource/(.+)$ https://&lt;group-pages&gt;/page/$1 [R=303,L]</pre>
 <h3>4.6 Example</h3>
 <pre>@prefix bpm: &lt;https://w3id.org/breatheplay-madrid/ontology#&gt; .
 @prefix res: &lt;https://w3id.org/breatheplay-madrid/resource/&gt; .
+@prefix sosa: &lt;http://www.w3.org/ns/sosa/&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
 
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-res:station/28079004 a bpm:MonitoringStation ;
+res:station/28079004 a bpm:MonitoringStation, sosa:Platform ;
     rdfs:label "Plaza de España"@es ;
     bpm:hasStationType res:station-type/ut .
 
-res:observation/28079004_8_8/2024-01-15 a bpm:DailyObservation ;
-    bpm:hasSamplingPoint res:sampling-point/28079004_8_8 ;
+res:observation/28079004_8_8/2024-01-15 a bpm:DailyObservation, sosa:Observation ;
+    sosa:madeBySensor res:sampling-point/28079004_8_8 ;
+    sosa:observedProperty res:pollutant/8 ;
     bpm:date "2024-01-15"^^xsd:date ;
-    bpm:value 22.0 ;
+    sosa:hasSimpleResult 22.0 ;
     bpm:isValid true .
 
-res:sports-facility/12009978 a bpm:SportsFacility ;
+res:sports-facility/12009978 a bpm:SportsFacility, schema:SportsActivityLocation ;
     bpm:hasNearestStation res:station/28079027 ;   # Barajas Pueblo
     bpm:locatedInDistrict res:district/21 .</pre>
 

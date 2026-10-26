@@ -1,0 +1,230 @@
+
+# QUERY: parking_without_district
+# Every parking facility should reference a district.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking
+WHERE {
+    ?parking a pm:ParkingFacility .
+    FILTER NOT EXISTS { ?parking pm:locatedInDistrict ?district }
+}
+
+# QUERY: parking_without_neighbourhood
+# Every parking facility should reference a neighbourhood.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking
+WHERE {
+    ?parking a pm:ParkingFacility .
+    FILTER NOT EXISTS { ?parking pm:locatedInNeighbourhood ?neighbourhood }
+}
+
+# QUERY: parking_with_unknown_district
+# The district referenced by a parking facility must exist as a District.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking ?district
+WHERE {
+    ?parking a pm:ParkingFacility ;
+             pm:locatedInDistrict ?district .
+    FILTER NOT EXISTS { ?district a pm:District }
+}
+
+# QUERY: parking_with_unknown_neighbourhood
+# The neighbourhood referenced by a parking facility must exist.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking ?neighbourhood
+WHERE {
+    ?parking a pm:ParkingFacility ;
+             pm:locatedInNeighbourhood ?neighbourhood .
+    FILTER NOT EXISTS { ?neighbourhood a pm:Neighbourhood }
+}
+
+# QUERY: neighbourhood_with_unknown_district
+# Every neighbourhood must reference an existing district.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?neighbourhood ?district
+WHERE {
+    ?neighbourhood a pm:Neighbourhood ;
+                   pm:belongsToDistrict ?district .
+    FILTER NOT EXISTS { ?district a pm:District }
+}
+
+# QUERY: occupancy_without_parking
+# Every monthly occupancy observation must reference an existing parking facility.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?parking
+WHERE {
+    ?observation a pm:MonthlyOccupancy ;
+                 pm:isOccupancyOf ?parking .
+    FILTER NOT EXISTS { ?parking a pm:ParkingFacility }
+}
+
+# QUERY: occupancy_without_parking_relation
+# Every monthly occupancy observation must identify its parking facility.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation
+WHERE {
+    ?observation a pm:MonthlyOccupancy .
+    FILTER NOT EXISTS { ?observation pm:isOccupancyOf ?parking }
+}
+
+# QUERY: missing_required_inventory_properties
+# Check required properties of each parking facility.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking ?property
+WHERE {
+    ?parking a pm:ParkingFacility .
+    VALUES ?property {
+        pm:hasParCode
+        pm:hasParkingName
+        pm:hasParkingType
+        pm:hasStreetAddress
+        pm:hasTotalSpaces
+    }
+    FILTER NOT EXISTS { ?parking ?property ?value }
+}
+
+# QUERY: missing_required_occupancy_properties
+# Check required properties of each monthly observation.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?property
+WHERE {
+    ?observation a pm:MonthlyOccupancy .
+    VALUES ?property {
+        pm:hasReferencePeriod
+        pm:hasNumberOfSpaces
+        pm:hasCalculationDays
+        pm:hasAverageDailyVehicles
+        pm:hasOccupancyRate
+        pm:hasDaytimeOccupancyRate
+    }
+    FILTER NOT EXISTS { ?observation ?property ?value }
+}
+
+# QUERY: invalid_occupancy_rate
+# Occupancy rates expressed as percentages should be between 0 and 100.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?rate
+WHERE {
+    ?observation a pm:MonthlyOccupancy ;
+                 pm:hasOccupancyRate ?rate .
+    FILTER (?rate < 0 || ?rate > 100)
+}
+
+# QUERY: invalid_daytime_occupancy_rate
+# Daytime occupancy rates expressed as percentages should be between 0 and 100.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?rate
+WHERE {
+    ?observation a pm:MonthlyOccupancy ;
+                 pm:hasDaytimeOccupancyRate ?rate .
+    FILTER (?rate < 0 || ?rate > 100)
+}
+
+# QUERY: negative_inventory_spaces
+# Space counts must not be negative.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking ?property ?value
+WHERE {
+    VALUES ?property {
+        pm:hasRotationSpaces
+        pm:hasResidentSpaces
+        pm:hasDisuasorySpaces
+        pm:hasTotalSpaces
+    }
+    ?parking a pm:ParkingFacility ;
+             ?property ?value .
+    FILTER (?value < 0)
+}
+
+# QUERY: negative_occupancy_counts
+# Occupancy counts and calculation days must not be negative.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?property ?value
+WHERE {
+    VALUES ?property {
+        pm:hasNumberOfSpaces
+        pm:hasCalculationDays
+        pm:hasAverageDailyVehicles
+    }
+    ?observation a pm:MonthlyOccupancy ;
+                 ?property ?value .
+    FILTER (?value < 0)
+}
+
+# QUERY: duplicate_parking_codes
+# A parking code should identify at most one parking resource.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?code (COUNT(DISTINCT ?parking) AS ?count)
+WHERE {
+    ?parking a pm:ParkingFacility ;
+             pm:hasParCode ?code .
+}
+GROUP BY ?code
+HAVING (COUNT(DISTINCT ?parking) > 1)
+
+# QUERY: duplicate_district_codes
+# A district code should identify at most one district resource.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?code (COUNT(DISTINCT ?district) AS ?count)
+WHERE {
+    ?district a pm:District ;
+              pm:hasDistrictCode ?code .
+}
+GROUP BY ?code
+HAVING (COUNT(DISTINCT ?district) > 1)
+
+# QUERY: duplicate_neighbourhood_codes
+# A neighbourhood code is scoped to its district.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?districtCode ?neighbourhoodCode
+       (COUNT(DISTINCT ?neighbourhood) AS ?count)
+WHERE {
+    ?neighbourhood a pm:Neighbourhood ;
+                   pm:hasNeighbourhoodCode ?neighbourhoodCode ;
+                   pm:belongsToDistrict ?district .
+    ?district pm:hasDistrictCode ?districtCode .
+}
+GROUP BY ?districtCode ?neighbourhoodCode
+HAVING (COUNT(DISTINCT ?neighbourhood) > 1)
+
+# QUERY: occupancy_period_duplicates
+# Each parking facility should have at most one observation per month.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?parking ?period (COUNT(DISTINCT ?observation) AS ?count)
+WHERE {
+    ?observation a pm:MonthlyOccupancy ;
+                 pm:isOccupancyOf ?parking ;
+                 pm:hasReferencePeriod ?period .
+}
+GROUP BY ?parking ?period
+HAVING (COUNT(DISTINCT ?observation) > 1)
+
+# QUERY: occupancy_space_mismatch
+# Compare observed spaces against the facility's inventory total.
+# This is a warning-level check: the two source datasets may use different definitions.
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?parking ?observedSpaces ?inventorySpaces
+WHERE {
+    ?observation a pm:MonthlyOccupancy ;
+                 pm:isOccupancyOf ?parking ;
+                 pm:hasNumberOfSpaces ?observedSpaces .
+    ?parking pm:hasTotalSpaces ?inventorySpaces .
+    FILTER (?observedSpaces != ?inventorySpaces)
+}
