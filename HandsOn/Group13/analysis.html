@@ -153,17 +153,23 @@ paths also identify the class of resource, preventing identifier collisions.
     <tbody>
         <tr><td>Ontology</td><td><code>http://parking.linkeddata.upm.es/ontology/</code></td><td><code>http://parking.linkeddata.upm.es/ontology/ParkingFacility</code></td></tr>
         <tr><td>Property</td><td><code>http://parking.linkeddata.upm.es/property/{propertyName}</code></td><td><code>http://parking.linkeddata.upm.es/property/locatedIn</code></td></tr>
-        <tr><td>Parking facility</td><td><code>http://parking.linkeddata.upm.es/resource/parking/{parkingId}</code></td><td><code>http://parking.linkeddata.upm.es/resource/parking/5000</code></td></tr>
+        <tr><td>Parking facility</td><td><code>http://parking.linkeddata.upm.es/resource/parking/{parkingName}</code></td><td><code>http://parking.linkeddata.upm.es/resource/parking/ALMAGRO</code></td></tr>
         <tr><td>Parking type</td><td><code>http://parking.linkeddata.upm.es/resource/parking-type/{normalizedType}</code></td><td><code>http://parking.linkeddata.upm.es/resource/parking-type/rotational</code></td></tr>
-        <tr><td>District</td><td><code>http://parking.linkeddata.upm.es/resource/district/{districtCode}</code></td><td><code>http://parking.linkeddata.upm.es/resource/district/7</code></td></tr>
-        <tr><td>Observation</td><td><code>http://parking.linkeddata.upm.es/resource/observation/{parkingId}/{year}/{month}</code></td><td><code>http://parking.linkeddata.upm.es/resource/observation/5000/2026/01</code></td></tr>
+        <tr><td>District</td><td><code>http://parking.linkeddata.upm.es/resource/district/{districtName}</code></td><td><code>http://parking.linkeddata.upm.es/resource/district/CHAMBER%C3%8D</code></td></tr>
+        <tr><td>Observation</td><td><code>http://parking.linkeddata.upm.es/resource/observation/{parkingName}/{year}/{month}</code></td><td><code>http://parking.linkeddata.upm.es/resource/observation/ALMAGRO/2026/01</code></td></tr>
     </tbody>
 </table>
 
 <p>Class and property local names follow lower camel case: class names start
 with a capital letter and property names start with a lowercase letter.
-Identifiers are taken from stable source codes where available. The month in
-an observation URI is zero-padded to two digits.</p>
+The current mappings use parking and district names from the input CSV in
+individual URIs, with percent-encoding where required. The month in an
+observation URI is zero-padded to two digits. Individual URIs use slash paths,
+not slash-containing fragments after a <code>#</code>. In Turtle, these URIs
+are written in angle brackets rather than as prefixed names containing
+unescaped slashes. The example instantiation matches the original unlinked
+RDF; the linked CSV uses title-case district names, which changes those
+name-based district URIs.</p>
 
 <h2>4. Lightweight Ontology</h2>
 
