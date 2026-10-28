@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "dbr": "http://dbpedia.org/resource/",
+    "dbo": "http://dbpedia.org/ontology/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "res": "http://example.org/101PHOENIX/resource/",
+    "ont": "http://example.org/101PHOENIX/ontology#",
+    "City": "schema:City",
+    "Country": "schema:Country",
+    "University": "schema:CollegeOrUniversity",
+    "name": "schema:name",
+    "population": { "@id": "dbo:populationTotal", "@type": "xsd:integer" },
+    "populationDate": { "@id": "schema:observationDate", "@type": "xsd:date" },
+    "country": { "@id": "schema:containedInPlace", "@type": "@id" },
+    "universities": { "@id": "ont:hasUniversity", "@type": "@id", "@container": "@set" },
+    "fullName": "schema:name",
+    "acronym": "schema:alternateName"
+  },
+  "@id": "dbr:Istanbul",
+  "@type": "City",
+  "name": "Istanbul",
+  "population": "15754053",
+  "populationDate": "2025-12-31",
+  "country": {
+    "@id": "dbr:Turkey",
+    "@type": "Country",
+    "name": "Türkiye"
+  },
+  "universities": [
+    {
+      "@id": "res:IstanbulTechnicalUniversity",
+      "@type": "University",
+      "fullName": "Istanbul Technical University",
+      "acronym": "ITU"
+    },
+    {
+      "@id": "res:BogaziciUniversity",
+      "@type": "University",
+      "fullName": "Boğaziçi University",
+      "acronym": "BOUN"
+    },
+    {
+      "@id": "res:FatihSultanMehmetVakifUniversity",
+      "@type": "University",
+      "fullName": "Fatih Sultan Mehmet Vakıf University",
+      "acronym": "FSMVU"
+    }
+  ]
+}
