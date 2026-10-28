@@ -2,8 +2,6 @@
 
 ## Deliverables
 
-**For each dataset:**
-
 - [X] A JSON file containing the operations performed for data linking (`lodrefine/*-with-links.json`)
 - [X] An updated CSV file (`csv/*-with-links.csv`)
 - [X] An updated RML mapping file (`mappings/*-with-links.rml`)

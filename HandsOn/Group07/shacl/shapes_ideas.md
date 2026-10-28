@@ -1,0 +1,9 @@
+| Shape idea | Proposed constraint | Possible implementation | Recommendation |
+|---|---|---|---|
+| **Datatypes** | Dates must be `xsd:dateTime`; delays and categories must be integers; coordinates must be decimals; identifiers and postal codes must remain strings. | SHACL Core: `sh:datatype`. | **Keep.** Apply the datatype check whenever the property exists. |
+| **Planned arrival before departure** | `plannedArrival ≤ plannedDeparture`, when both values exist. | SHACL Core: `sh:lessThanOrEquals`. | **Keep with ≤.** Strict `<` would reject 420 valid-looking records in the sample because timestamps have minute precision. |
+| **Updated arrival before departure** *(addition)* | `updatedArrival ≤ updatedDeparture`, when both values exist. | SHACL Core: `sh:lessThanOrEquals`. | **Keep.** Compare updated timestamps with each other, separately from planned timestamps. |
+| **One label per resource** | Each resource must have exactly one non-blank label. | SHACL Core: `sh:minCount 1`, `sh:maxCount 1`, and a non-whitespace pattern. | **Keep.** This controls the number of labels on each resource. |
+| **Longitude and latitude** | Longitude must be between −180 and 180; latitude between −90 and 90. | SHACL Core: inclusive numerical bounds. | **Keep.** These checks detect impossible coordinates, but cannot establish whether a station’s location is correct. |
+| **Five-digit postal codes** | Each postal code must be a string containing exactly five digits. | SHACL Core: `sh:datatype xsd:string` and `sh:pattern "^[0-9]{5}$"`. | **Keep.** This detects the 12 existing four-digit station postal codes and preserves leading zeros. |
+| **Missing arrival implies missing path** | If `plannedArrival` is absent, `previousStations` must also be absent. | SHACL Core: `sh:or` combining presence/absence constraints. | **Possible; initially use a warning.** It holds in the

@@ -1,0 +1,82 @@
+# Load all three RDF exports together; run each SELECT separately.
+
+# L1. Stations and linked districts.
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?station ?code ?name ?latitude ?longitude ?district ?districtWikidata
+WHERE {
+  ?station a mn:NoiseMonitoringStation ;
+           mn:stationCode ?code ; mn:stationName ?name ;
+           mn:latitude ?latitude ; mn:longitude ?longitude ;
+           dcterms:spatial ?district .
+  ?district a mn:District ; owl:sameAs ?districtWikidata .
+}
+ORDER BY ?code
+
+# L2. Arithmetic mean of reported night LAeq (dB(A)).
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mn:      <https://madridnoise.linkeddata.es/ontology#>
+PREFIX period:  <https://madridnoise.linkeddata.es/resource/period/>
+
+SELECT ?station ?code ?name ?districtWikidata
+       (COUNT(?observation) AS ?nightsWithData)
+       (ROUND(AVG(?laeq) * 10) / 10 AS ?meanReportedNightLAeq)
+WHERE {
+  ?observation a mn:DailyNoiseObservation ;
+               mn:recordedAt ?station ; mn:forPeriod period:N ;
+               mn:observationDate ?date ; mn:laeq ?laeq .
+  ?station a mn:NoiseMonitoringStation ;
+           mn:stationCode ?code ; mn:stationName ?name ;
+           dcterms:spatial ?district .
+  ?district a mn:District ; owl:sameAs ?districtWikidata .
+  FILTER (?date >= "2025-01-01"^^xsd:date && ?date <= "2026-10-04"^^xsd:date)
+}
+GROUP BY ?station ?code ?name ?districtWikidata
+ORDER BY DESC(?meanReportedNightLAeq) ?code
+
+# L3. Terrace coordinates and linked geographic areas.
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX mn:  <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?terrace ?terraceId ?latitude ?longitude
+       ?districtWikidata ?neighbourhoodWikidata
+WHERE {
+  ?terrace a mn:Terrace ; mn:terraceId ?terraceId ;
+           mn:latitude ?latitude ; mn:longitude ?longitude ;
+           mn:hasDistrict ?district ; mn:hasNeighbourhood ?neighbourhood .
+  ?district a mn:District ; owl:sameAs ?districtWikidata .
+  ?neighbourhood a mn:Neighbourhood ; owl:sameAs ?neighbourhoodWikidata .
+}
+ORDER BY ?terraceId
+
+# L4. Terrace totals and coordinate coverage by district.
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX mn:  <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?district ?districtWikidata
+       (COUNT(?terrace) AS ?registeredTerraces)
+       (SUM(IF(BOUND(?latitude), 1, 0)) AS ?locatedTerraces)
+WHERE {
+  ?terrace a mn:Terrace ; mn:hasDistrict ?district .
+  ?district a mn:District ; owl:sameAs ?districtWikidata .
+  OPTIONAL { ?terrace mn:latitude ?latitude ; mn:longitude ?longitude }
+}
+GROUP BY ?district ?districtWikidata
+ORDER BY DESC(?registeredTerraces) ?district
+
+# L5. Linked district and neighbourhood identities.
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX mn:  <https://madridnoise.linkeddata.es/ontology#>
+
+SELECT ?class (COUNT(DISTINCT ?resource) AS ?linkedResources)
+       (COUNT(DISTINCT ?wikidata) AS ?wikidataIdentities)
+WHERE {
+  VALUES ?class { mn:District mn:Neighbourhood }
+  ?resource a ?class ; owl:sameAs ?wikidata .
+}
+GROUP BY ?class
+ORDER BY ?class

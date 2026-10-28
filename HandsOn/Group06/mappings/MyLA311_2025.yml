@@ -6,16 +6,17 @@ prefixes:
   ql: http://semweb.mmlab.be/ns/ql#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   geo: http://www.opengis.net/ont/geosparql#
-  la311: http://www.owl-ontologies.com/la311#
+  la311: http://linkeddata.la311.com/ontology#
   res: http://linkeddata.la311.com/resource/
 
 mappings:
   ServiceRequest:
     sources:
-      - [csv/MyLA311_2025.csv~csv]
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
     s: res:ServiceRequest/$(SRNumber)
     po:
       - [a, la311:ServiceRequest]
+      - [rdfs:label, "Service request $(SRNumber)", xsd:string]
       - [la311:srNumber, $(SRNumber), xsd:string]
       - [la311:createdDate, $(CreatedDate), xsd:dateTime]
       - [la311:updatedDate, $(UpdatedDate), xsd:dateTime]
@@ -23,49 +24,78 @@ mappings:
       - [la311:closedDate, $(ClosedDate), xsd:dateTime]
       - [la311:actionTaken, $(ActionTaken), xsd:string]
       - [la311:requestType, $(RequestType), xsd:string]
+      - [la311:requestSource, $(RequestSource), xsd:string]
       - [la311:status, $(Status), xsd:string]
-      - p: la311:responsible
-        o:
-          mapping: Organization
-      - p: la311:assignedTo
-        o:
-          mapping: Service
-      - p: la311:reportedBy
-        o:
-          mapping: Agent
-      - p: la311:hasLocation
-        o:
-          mapping: Location
+      - [la311:responsible, res:Organization/$(Owner)~iri]
+      - [la311:assignedTo, res:Service/$(AssignTo)~iri]
+      - [la311:reportedBy, res:AnonymousPerson/$(AnonymousReporter)~iri]
+      - [la311:reportedBy, res:Organization/$(OrganizationReporter)~iri]
+      - [la311:hasLocation, "res:Location/$(Latitude),$(Longitude)~iri"]
 
-  Organization:
+  AnonymousPerson:
     sources:
-      - [csv/MyLA311_2025.csv~csv]
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
+    s: res:AnonymousPerson/$(AnonymousReporter)
+    po:
+      - [a, la311:AnonymousPerson]
+      - [rdfs:label, "Anonymous Reporter ($(AnonymousReporter))", xsd:string]
+
+  OrganizationOwner:
+    sources:
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
     s: res:Organization/$(Owner)
     po:
       - [a, la311:Organization]
+      - [rdfs:label, $(Owner), xsd:string]
       - [la311:name, $(Owner), xsd:string]
+
+  OrganizationReporter:
+    sources:
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
+    s: res:Organization/$(OrganizationReporter)
+    po:
+      - [a, la311:Organization]
+      - [rdfs:label, $(OrganizationReporter), xsd:string]
+      - [la311:name, $(OrganizationReporter), xsd:string]
 
   Service:
     sources:
-      - [csv/MyLA311_2025.csv~csv]
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
     s: res:Service/$(AssignTo)
     po:
       - [a, la311:Service]
+      - [rdfs:label, $(AssignTo), xsd:string]
       - [la311:name, $(AssignTo), xsd:string]
-
-  Agent:
-    sources:
-      - [csv/MyLA311_2025.csv~csv]
-    s: res:Agent/Reporter_$(SRNumber)
-    po:
-      - [a, la311:Agent]
-      - [rdfs:label, $(CreatedByUserOrganization), xsd:string]
 
   Location:
     sources:
-      - [csv/MyLA311_2025.csv~csv]
-    s: res:Location/$(HouseNumber)_$(Direction)_$(StreetName)_$(Suffix)_$(ZipCode)
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
+    s: "res:Location/$(Latitude),$(Longitude)"
     po:
       - [a, la311:Location]
-      - [la311:address, "$(HouseNumber) $(Direction) $(StreetName) $(Suffix), $(ZipCode)", xsd:string]
+      - [rdfs:label, $(Address), xsd:string]
+      - [la311:address, $(Address), xsd:string]
+      - [la311:approximateAddress, $(ApproximateAddress), xsd:string]
+      - [la311:houseNumber, $(HouseNumber), xsd:string]
+      - [la311:streetDirection, $(Direction), xsd:string]
+      - [la311:streetName, $(StreetName), xsd:string]
+      - [la311:streetSuffix, $(Suffix), xsd:string]
+      - [la311:zipCode, $(ZipCode), xsd:string]
+      - [la311:latitude, $(Latitude), xsd:decimal]
+      - [la311:longitude, $(Longitude), xsd:decimal]
       - [geo:asWKT, $(Location), geo:wktLiteral]
+      - [la311:isWithin, res:AdministrativeRegion/$(NC)_$(CD)~iri]
+
+  AdministrativeRegion:
+    sources:
+      - [csv/MyLA311_2025-updated-truncated.csv~csv]
+    s: res:AdministrativeRegion/$(NC)_$(CD)
+    po:
+      - [a, la311:AdministrativeRegion]
+      - [rdfs:label, "$(NCName) (CD $(CD))", xsd:string]
+      - [la311:nc, $(NC), xsd:integer]
+      - [la311:ncName, $(NCName), xsd:string]
+      - [la311:cd, $(CD), xsd:integer]
+      - [la311:cdMember, $(CDMember), xsd:string]
+      - [la311:apc, $(APC), xsd:string]
+      - [la311:policePrecinct, $(PolicePrecinct), xsd:string]

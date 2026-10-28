@@ -15905,7 +15905,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Thuringia/Altenburg> ;
     ns1:latitude 50.996648 ;
     ns1:longitude 12.444019 ;
-    ns1:postalCode "4600" ;
+    ns1:postalCode "04600" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8010009> a ns1:Station ;
@@ -15915,7 +15915,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony-Anhalt/Aschersleben> ;
     ns1:latitude 51.757122 ;
     ns1:longitude 11.465689 ;
-    ns1:postalCode "6449" ;
+    ns1:postalCode "06449" ;
     ns1:stationCategory 4 .
 
 <https://example.org/db-delays/resource/Station/8010022> a ns1:Station ;
@@ -15925,7 +15925,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Bad%20Schandau> ;
     ns1:latitude 50.9192886 ;
     ns1:longitude 14.1375375 ;
-    ns1:postalCode "1814" ;
+    ns1:postalCode "01814" ;
     ns1:stationCategory 3 .
 
 <https://example.org/db-delays/resource/Station/8010026> a ns1:Station ;
@@ -15935,7 +15935,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Bautzen> ;
     ns1:latitude 51.173097 ;
     ns1:longitude 14.428735 ;
-    ns1:postalCode "2625" ;
+    ns1:postalCode "02625" ;
     ns1:stationCategory 4 .
 
 <https://example.org/db-delays/resource/Station/8010031> a ns1:Station ;
@@ -15965,7 +15965,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony-Anhalt/Bernburg> ;
     ns1:latitude 51.79612 ;
     ns1:longitude 11.751455 ;
-    ns1:postalCode "6404" ;
+    ns1:postalCode "06404" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8010053> a ns1:Station ;
@@ -16025,7 +16025,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Borna> ;
     ns1:latitude 51.117926 ;
     ns1:longitude 12.486291 ;
-    ns1:postalCode "4552" ;
+    ns1:postalCode "04552" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8011294> a ns1:Station ;
@@ -16447,8 +16447,8 @@
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8000963> a ns1:Station ;
-    rdfs:label "Bietigheim-Bissingen station" ;
-    owl:sameAs <https://wikidata.org/entity/Q440067> ;
+    rdfs:label "Bietigheim (Baden)" ;
+    owl:sameAs <https://wikidata.org/entity/Q116155655> ;
     ns1:evaNumber "8000963" ;
     ns1:inCity <https://example.org/db-delays/resource/City/Baden-W%C3%BCrttemberg/Bietigheim> ;
     ns1:latitude 48.910587 ;
@@ -16673,7 +16673,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Borsdorf> ;
     ns1:latitude 51.345705 ;
     ns1:longitude 12.541165 ;
-    ns1:postalCode "4451" ;
+    ns1:postalCode "04451" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8011077> a ns1:Station ;
@@ -16683,7 +16683,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Bad%20Lausick> ;
     ns1:latitude 51.143803 ;
     ns1:longitude 12.648695 ;
-    ns1:postalCode "4651" ;
+    ns1:postalCode "04651" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8011222> a ns1:Station ;
@@ -16693,7 +16693,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/B%C3%B6hlen> ;
     ns1:latitude 51.184702 ;
     ns1:longitude 12.384024 ;
-    ns1:postalCode "4564" ;
+    ns1:postalCode "04564" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8013470> a ns1:Station ;
@@ -17041,7 +17041,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony-Anhalt/Bad%20K%C3%B6sen> ;
     ns1:latitude 51.130742 ;
     ns1:longitude 11.718274 ;
-    ns1:postalCode "6628" ;
+    ns1:postalCode "06628" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8010035> a ns1:Station ;
@@ -17220,7 +17220,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Arnsdorf> ;
     ns1:latitude 51.092807 ;
     ns1:longitude 13.982212 ;
-    ns1:postalCode "1477" ;
+    ns1:postalCode "01477" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8010049> a ns1:Station ;
@@ -17230,7 +17230,7 @@
     ns1:inCity <https://example.org/db-delays/resource/City/Saxony/Bischofswerda> ;
     ns1:latitude 51.125585 ;
     ns1:longitude 14.186144 ;
-    ns1:postalCode "1877" ;
+    ns1:postalCode "01877" ;
     ns1:stationCategory 5 .
 
 <https://example.org/db-delays/resource/Station/8010405> a ns1:Station ;

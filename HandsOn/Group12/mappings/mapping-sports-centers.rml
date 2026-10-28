@@ -1,0 +1,273 @@
+@prefix am: <https://w3id.org/active-madrid/ontology#> .
+@prefix geo1: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix map: <http://mapping.example.com/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+map:map_triplesmapDistrict_000 a rr:TriplesMap ;
+    rdfs:label "triplesmapDistrict" ;
+    rml:logicalSource map:source_003 ;
+    rr:predicateObjectMap map:pom_015,
+        map:pom_016 ;
+    rr:subjectMap map:s_003 .
+
+map:map_triplesmapNeighborhood_000 a rr:TriplesMap ;
+    rdfs:label "triplesmapNeighborhood" ;
+    rml:logicalSource map:source_002 ;
+    rr:predicateObjectMap map:pom_012,
+        map:pom_013,
+        map:pom_014 ;
+    rr:subjectMap map:s_002 .
+
+map:map_triplesmapPostalAddress_000 a rr:TriplesMap ;
+    rdfs:label "triplesmapPostalAddress" ;
+    rml:logicalSource map:source_001 ;
+    rr:predicateObjectMap map:pom_008,
+        map:pom_009,
+        map:pom_010,
+        map:pom_011 ;
+    rr:subjectMap map:s_001 .
+
+map:map_triplesmapSportsFacility_000 a rr:TriplesMap ;
+    rdfs:label "triplesmapSportsFacility" ;
+    rml:logicalSource map:source_000 ;
+    rr:predicateObjectMap map:pom_000,
+        map:pom_001,
+        map:pom_002,
+        map:pom_003,
+        map:pom_004,
+        map:pom_005,
+        map:pom_006,
+        map:pom_007 ;
+    rr:subjectMap map:s_000 .
+
+map:om_000 a rr:ObjectMap ;
+    rr:constant am:SportsFacility ;
+    rr:termType rr:IRI .
+
+map:om_001 a rr:ObjectMap ;
+    rml:reference "NOMBRE" ;
+    rr:datatype xsd:string ;
+    rr:termType rr:Literal .
+
+map:om_002 a rr:ObjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/PostalAddress/{PK}" ;
+    rr:termType rr:IRI .
+
+map:om_003 a rr:ObjectMap ;
+    rml:reference "LATITUD" ;
+    rr:datatype xsd:decimal ;
+    rr:termType rr:Literal .
+
+map:om_004 a rr:ObjectMap ;
+    rml:reference "LONGITUD" ;
+    rr:datatype xsd:decimal ;
+    rr:termType rr:Literal .
+
+map:om_005 a rr:ObjectMap ;
+    rml:reference "TELEFONO" ;
+    rr:datatype xsd:string ;
+    rr:termType rr:Literal .
+
+map:om_006 a rr:ObjectMap ;
+    rml:reference "EMAIL" ;
+    rr:datatype xsd:string ;
+    rr:termType rr:Literal .
+
+map:om_007 a rr:ObjectMap ;
+    rml:reference "CONTENT-URL" ;
+    rr:datatype xsd:anyURI ;
+    rr:termType rr:Literal .
+
+map:om_008 a rr:ObjectMap ;
+    rr:constant schema1:PostalAddress ;
+    rr:termType rr:IRI .
+
+map:om_009 a rr:ObjectMap ;
+    rr:datatype xsd:string ;
+    rr:template "{CLASE-VIAL} {NOMBRE-VIA}, {NUM}" ;
+    rr:termType rr:Literal .
+
+map:om_010 a rr:ObjectMap ;
+    rml:reference "CODIGO-POSTAL" ;
+    rr:datatype xsd:string ;
+    rr:termType rr:Literal .
+
+map:om_011 a rr:ObjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/Neighborhood/{BARRIO}" ;
+    rr:termType rr:IRI .
+
+map:om_012 a rr:ObjectMap ;
+    rr:constant am:Neighborhood ;
+    rr:termType rr:IRI .
+
+map:om_013 a rr:ObjectMap ;
+    rml:reference "BARRIO" ;
+    rr:datatype xsd:string ;
+    rr:termType rr:Literal .
+
+map:om_014 a rr:ObjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/District/{DISTRITO}" ;
+    rr:termType rr:IRI .
+
+map:om_015 a rr:ObjectMap ;
+    rr:constant am:District ;
+    rr:termType rr:IRI .
+
+map:om_016 a rr:ObjectMap ;
+    rml:reference "DISTRITO" ;
+    rr:datatype xsd:string ;
+    rr:termType rr:Literal .
+
+map:pm_000 a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+map:pm_001 a rr:PredicateMap ;
+    rr:constant schema1:name .
+
+map:pm_002 a rr:PredicateMap ;
+    rr:constant schema1:address .
+
+map:pm_003 a rr:PredicateMap ;
+    rr:constant geo1:lat .
+
+map:pm_004 a rr:PredicateMap ;
+    rr:constant geo1:long .
+
+map:pm_005 a rr:PredicateMap ;
+    rr:constant schema1:telephone .
+
+map:pm_006 a rr:PredicateMap ;
+    rr:constant schema1:email .
+
+map:pm_007 a rr:PredicateMap ;
+    rr:constant schema1:url .
+
+map:pm_008 a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+map:pm_009 a rr:PredicateMap ;
+    rr:constant schema1:streetAddress .
+
+map:pm_010 a rr:PredicateMap ;
+    rr:constant schema1:postalCode .
+
+map:pm_011 a rr:PredicateMap ;
+    rr:constant am:locatedInNeighborhood .
+
+map:pm_012 a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+map:pm_013 a rr:PredicateMap ;
+    rr:constant schema1:name .
+
+map:pm_014 a rr:PredicateMap ;
+    rr:constant am:locatedInDistrict .
+
+map:pm_015 a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+map:pm_016 a rr:PredicateMap ;
+    rr:constant schema1:name .
+
+map:pom_000 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_000 ;
+    rr:predicateMap map:pm_000 .
+
+map:pom_001 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_001 ;
+    rr:predicateMap map:pm_001 .
+
+map:pom_002 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_002 ;
+    rr:predicateMap map:pm_002 .
+
+map:pom_003 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_003 ;
+    rr:predicateMap map:pm_003 .
+
+map:pom_004 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_004 ;
+    rr:predicateMap map:pm_004 .
+
+map:pom_005 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_005 ;
+    rr:predicateMap map:pm_005 .
+
+map:pom_006 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_006 ;
+    rr:predicateMap map:pm_006 .
+
+map:pom_007 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_007 ;
+    rr:predicateMap map:pm_007 .
+
+map:pom_008 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_008 ;
+    rr:predicateMap map:pm_008 .
+
+map:pom_009 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_009 ;
+    rr:predicateMap map:pm_009 .
+
+map:pom_010 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_010 ;
+    rr:predicateMap map:pm_010 .
+
+map:pom_011 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_011 ;
+    rr:predicateMap map:pm_011 .
+
+map:pom_012 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_012 ;
+    rr:predicateMap map:pm_012 .
+
+map:pom_013 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_013 ;
+    rr:predicateMap map:pm_013 .
+
+map:pom_014 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_014 ;
+    rr:predicateMap map:pm_014 .
+
+map:pom_015 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_015 ;
+    rr:predicateMap map:pm_015 .
+
+map:pom_016 a rr:PredicateObjectMap ;
+    rr:objectMap map:om_016 ;
+    rr:predicateMap map:pm_016 .
+
+map:s_000 a rr:SubjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/SportsFacility/{PK}" .
+
+map:s_001 a rr:SubjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/PostalAddress/{PK}" .
+
+map:s_002 a rr:SubjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/Neighborhood/{BARRIO}" .
+
+map:s_003 a rr:SubjectMap ;
+    rr:template "https://w3id.org/active-madrid/resource/District/{DISTRITO}" .
+
+map:source_000 a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "sports_centers_info-updated.csv" .
+
+map:source_001 a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "sports_centers_info-updated.csv" .
+
+map:source_002 a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "sports_centers_info-updated.csv" .
+
+map:source_003 a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "sports_centers_info-updated.csv" .
+

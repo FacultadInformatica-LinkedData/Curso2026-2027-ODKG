@@ -1,0 +1,213 @@
+# Queries to verify the links to Wikidata in the RDF data of Group 08 (rdf/*-with-links.ttl).
+# The file holds 16 independent queries. All of them can be run on the union of the Turtle files with:
+#   python scripts/run_queries.py rdf/queries-with-links.sparql "rdf/*-with-links.ttl"
+# With another SPARQL tool, load the Turtle files into one graph and run one query at a time.
+# The queries use only the local data. The expected result of each query is computed from the CSV files in csv/.
+# Links: owl:sameAs from neighbourhoods, districts, tree species and facilities; skos:broadMatch from cultivars and genus-only names; hr:isHostedBy from shelters to facilities.
+
+# Q1. Neighbourhoods and districts linked to a Wikidata item with owl:sameAs.
+# Expected: District 10, Neighbourhood 73.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?class (COUNT(DISTINCT ?area) AS ?linked)
+WHERE {
+  VALUES ?class { hr:Neighbourhood hr:District }
+  ?area a ?class ;
+        owl:sameAs ?item .
+  FILTER STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q")
+}
+GROUP BY ?class
+ORDER BY ?class
+
+# Q2. Neighbourhoods and districts without a link to Wikidata.
+# Expected: 0.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT (COUNT(DISTINCT ?area) AS ?withoutLink)
+WHERE {
+  VALUES ?class { hr:Neighbourhood hr:District }
+  ?area a ?class .
+  FILTER NOT EXISTS { ?area owl:sameAs ?item }
+}
+
+# Q3. Neighbourhoods and districts with more than one owl:sameAs link.
+# Expected: no rows.
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?area (COUNT(DISTINCT ?item) AS ?links)
+WHERE { ?area owl:sameAs ?item }
+GROUP BY ?area
+HAVING (COUNT(DISTINCT ?item) > 1)
+
+# Q4. Wikidata items linked from more than one neighbourhood or district.
+# Expected: no rows.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?item (COUNT(DISTINCT ?area) AS ?areas)
+WHERE {
+  VALUES ?class { hr:Neighbourhood hr:District }
+  ?area a ?class ;
+        owl:sameAs ?item .
+}
+GROUP BY ?item
+HAVING (COUNT(DISTINCT ?area) > 1)
+
+# Q5. Districts with their Wikidata item and the number of their neighbourhoods.
+# Expected, by district code: 01 4, 02 6, 03 8, 04 3, 05 6, 06 5, 07 11, 08 13, 09 7, 10 10 (73 in total).
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?district ?item (COUNT(DISTINCT ?neighbourhood) AS ?neighbourhoods)
+WHERE {
+  ?district a hr:District ;
+            owl:sameAs ?item .
+  ?neighbourhood hr:isPartOfDistrict ?district .
+}
+GROUP BY ?district ?item
+ORDER BY ?district
+
+# Q6. Drinking fountains per district, reached through their neighbourhood, with the Wikidata item of the district.
+# Expected, by district code: 01 116, 02 206, 03 214, 04 87, 05 145, 06 110, 07 195, 08 211, 09 149, 10 327 (1760 in total).
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?district ?item (COUNT(DISTINCT ?fountain) AS ?fountains)
+WHERE {
+  ?fountain a hr:DrinkingFountain ;
+            hr:isLocatedInNeighbourhood ?neighbourhood .
+  ?neighbourhood hr:isPartOfDistrict ?district .
+  ?district owl:sameAs ?item .
+}
+GROUP BY ?district ?item
+ORDER BY ?district
+
+# Q7. Tree species linked to a Wikidata item, by type of link.
+# Expected: owl:sameAs 203, skos:broadMatch 85.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?link (COUNT(DISTINCT ?species) AS ?linkedSpecies)
+WHERE {
+  VALUES ?link { owl:sameAs skos:broadMatch }
+  ?species a hr:TreeSpecies ;
+           ?link ?item .
+  FILTER STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q")
+}
+GROUP BY ?link
+ORDER BY ?link
+
+# Q8. Tree species without any link, or with both types of link.
+# Expected: 0.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT (COUNT(DISTINCT ?species) AS ?withoutOrBoth)
+WHERE {
+  ?species a hr:TreeSpecies .
+  OPTIONAL { ?species owl:sameAs ?same }
+  OPTIONAL { ?species skos:broadMatch ?broad }
+  FILTER ((!BOUND(?same) && !BOUND(?broad)) || (BOUND(?same) && BOUND(?broad)))
+}
+
+# Q9. Wikidata items linked with owl:sameAs from more than one tree species.
+# Expected: no rows.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?item (COUNT(DISTINCT ?species) AS ?speciesCount)
+WHERE {
+  ?species a hr:TreeSpecies ;
+           owl:sameAs ?item .
+}
+GROUP BY ?item
+HAVING (COUNT(DISTINCT ?species) > 1)
+
+# Q10. Street trees by type of link of their species.
+# Expected: owl:sameAs 129335, skos:broadMatch 15699 (145034 in total).
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?link (COUNT(DISTINCT ?tree) AS ?trees)
+WHERE {
+  VALUES ?link { owl:sameAs skos:broadMatch }
+  ?tree a hr:StreetTree ;
+        hr:hasSpecies ?species .
+  ?species ?link ?item .
+}
+GROUP BY ?link
+ORDER BY ?link
+
+# Q11. The five tree species with most trees, with their Wikidata item.
+# Expected: Platanus x acerifolia 40067, Celtis australis 19387, Styphnolobium japonicum 8164, Tipuana tipu 6635, Melia azedarach 6258.
+# The name of the first species has the hybrid sign in the data.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?name ?item (COUNT(DISTINCT ?tree) AS ?trees)
+WHERE {
+  ?tree a hr:StreetTree ;
+        hr:hasSpecies ?species .
+  ?species rdfs:label ?name ;
+           owl:sameAs ?item .
+}
+GROUP BY ?name ?item
+ORDER BY DESC(?trees)
+LIMIT 5
+
+# Q12. Climate shelters hosted by a facility linked to Wikidata, and the distinct facilities and Wikidata items involved.
+# Expected: 235 shelters, 213 facilities, 213 Wikidata items.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT (COUNT(DISTINCT ?shelter) AS ?shelters) (COUNT(DISTINCT ?facility) AS ?facilities) (COUNT(DISTINCT ?item) AS ?items)
+WHERE {
+  ?shelter a hr:ClimateShelter ;
+           hr:isHostedBy ?facility .
+  ?facility owl:sameAs ?item .
+}
+
+# Q13. Facilities that do not have exactly one owl:sameAs link to Wikidata.
+# Expected: no rows.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?facility (COUNT(DISTINCT ?item) AS ?links)
+WHERE {
+  ?facility a hr:Facility .
+  OPTIONAL { ?facility owl:sameAs ?item }
+}
+GROUP BY ?facility
+HAVING (COUNT(DISTINCT ?item) != 1)
+
+# Q14. Climate shelters hosted by more than one Wikidata item.
+# Expected: no rows.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?shelter (COUNT(DISTINCT ?item) AS ?items)
+WHERE {
+  ?shelter hr:isHostedBy ?facility .
+  ?facility owl:sameAs ?item .
+}
+GROUP BY ?shelter
+HAVING (COUNT(DISTINCT ?item) > 1)
+
+# Q15. Climate shelters hosted by a facility linked to Wikidata, by shelter category (ties ordered by category name).
+# Expected: Library 48, CivicCentre 42, Park 40, Market 23, Other 22, SwimmingPool 22, Museum 12, SportsCentre 9, WaterPlayArea 8, HealthCentre 5, School 4 (235 in total).
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?category (COUNT(DISTINCT ?shelter) AS ?shelters)
+WHERE {
+  ?shelter hr:hasShelterCategory ?category ;
+           hr:isHostedBy ?facility .
+  ?facility owl:sameAs ?item .
+}
+GROUP BY ?category
+ORDER BY DESC(?shelters) ?category
+
+# Q16. Facilities that host more than three climate shelters, with their Wikidata item.
+# Expected: one row, the Can Drago municipal sports centre (Q87918023), 4 shelters.
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?name ?item (COUNT(DISTINCT ?shelter) AS ?shelters)
+WHERE {
+  ?shelter hr:isHostedBy ?facility .
+  ?facility rdfs:label ?name ;
+            owl:sameAs ?item .
+}
+GROUP BY ?name ?item
+HAVING (COUNT(DISTINCT ?shelter) > 3)

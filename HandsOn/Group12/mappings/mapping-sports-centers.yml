@@ -1,0 +1,48 @@
+prefixes:
+  am: https://w3id.org/active-madrid/ontology#
+  res: https://w3id.org/active-madrid/resource/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  schema: http://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+mappings:
+  sportsFacility:
+    sources:
+      - ['sports_centers_info-updated.csv~csv']
+    s: res:SportsFacility/$(PK)
+    po:
+      - [a, am:SportsFacility]
+      - [schema:name, $(NOMBRE), xsd:string]
+      - [schema:address, res:PostalAddress/$(PK)~iri]
+      - [geo:lat, $(LATITUD), xsd:decimal]
+      - [geo:long, $(LONGITUD), xsd:decimal]
+      - [schema:telephone, $(TELEFONO), xsd:string]
+      - [schema:email, $(EMAIL), xsd:string]
+      - [schema:url, $(CONTENT-URL), xsd:anyURI]
+
+  postalAddress:
+    sources:
+      - ['sports_centers_info-updated.csv~csv']
+    s: res:PostalAddress/$(PK)
+    po:
+      - [a, schema:PostalAddress]
+      - [schema:streetAddress, "$(CLASE-VIAL) $(NOMBRE-VIA), $(NUM)", xsd:string]
+      - [schema:postalCode, $(CODIGO-POSTAL), xsd:string]
+      - [am:locatedInNeighborhood, res:Neighborhood/$(BARRIO)~iri]
+
+  neighborhood:
+    sources:
+      - ['sports_centers_info-updated.csv~csv']
+    s: res:Neighborhood/$(BARRIO)
+    po:
+      - [a, am:Neighborhood]
+      - [schema:name, $(BARRIO), xsd:string]
+      - [am:locatedInDistrict, res:District/$(DISTRITO)~iri]
+
+  district:
+    sources:
+      - ['sports_centers_info-updated.csv~csv']
+    s: res:District/$(DISTRITO)
+    po:
+      - [a, am:District]
+      - [schema:name, $(DISTRITO), xsd:string]

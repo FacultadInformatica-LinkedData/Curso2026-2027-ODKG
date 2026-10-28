@@ -1,245 +1,181 @@
-@prefix : <http://linkeddata.la311.com/ontology#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix la311: <http://linkeddata.la311.com/ontology#> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix la311: <http://www.owl-ontologies.com/la311#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@base <http://linkeddata.la311.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+
+la311: a owl:Ontology ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+la311:AnonymousPerson a owl:Class ;
+    rdfs:label "Anonymous Person" ;
+    rdfs:subClassOf la311:Agent .
+
+la311:actionTaken a owl:DatatypeProperty ;
+    rdfs:label "action taken" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:string .
+
+la311:address a owl:DatatypeProperty ;
+    rdfs:label "address" ;
+    rdfs:domain la311:Location ;
+    rdfs:range xsd:string .
+
+la311:apc a owl:DatatypeProperty ;
+    rdfs:label "apc" ;
+    rdfs:domain la311:AdministrativeRegion ;
+    rdfs:range xsd:string .
+
+la311:approximateAddress a owl:DatatypeProperty ;
+    rdfs:label "approximate address" ;
+    rdfs:domain la311:Location ;
+    rdfs:range xsd:string .
+
+la311:assignedTo a owl:ObjectProperty ;
+    rdfs:label "assigned to" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range la311:Service .
+
+la311:cd a owl:DatatypeProperty ;
+    rdfs:label "cd" ;
+    rdfs:domain la311:AdministrativeRegion ;
+    rdfs:range xsd:integer .
+
+la311:cdMember a owl:ObjectProperty ;
+    rdfs:label "cd member" ;
+    rdfs:domain la311:AdministrativeRegion .
+
+la311:closedDate a owl:DatatypeProperty ;
+    rdfs:label "closed date" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:dateTime .
+
+la311:createdDate a owl:DatatypeProperty ;
+    rdfs:label "created date" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:dateTime .
+
+la311:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has location" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range la311:Location .
+
+la311:houseNumber a owl:DatatypeProperty ;
+    rdfs:label "house number" ;
+    rdfs:domain la311:Location .
+
+la311:isWithin a owl:ObjectProperty ;
+    rdfs:label "is within" ;
+    rdfs:domain la311:Location ;
+    rdfs:range la311:AdministrativeRegion .
+
+la311:latitude a owl:DatatypeProperty ;
+    rdfs:label "latitude" ;
+    rdfs:domain la311:Location ;
+    rdfs:range xsd:decimal .
+
+la311:longitude a owl:DatatypeProperty ;
+    rdfs:label "longitude" ;
+    rdfs:domain la311:Location ;
+    rdfs:range xsd:decimal .
+
+la311:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:range xsd:string .
+
+la311:nc a owl:DatatypeProperty ;
+    rdfs:label "nc" ;
+    rdfs:domain la311:AdministrativeRegion ;
+    rdfs:range xsd:integer .
+
+la311:ncName a owl:ObjectProperty ;
+    rdfs:label "nc name" ;
+    rdfs:domain la311:AdministrativeRegion .
+
+la311:policePrecinct a owl:DatatypeProperty ;
+    rdfs:label "police precinct" ;
+    rdfs:domain la311:AdministrativeRegion ;
+    rdfs:range xsd:string .
+
+la311:reportedBy a owl:ObjectProperty ;
+    rdfs:label "reported by" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range la311:Agent .
+
+la311:requestSource a owl:DatatypeProperty ;
+    rdfs:label "request source" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:string .
 
-<http://linkeddata.la311.com/ontology#> rdf:type owl:Ontology ;
-                                         mod:createdWith <https://chowlk.linkeddata.es/> .
+la311:requestType a owl:DatatypeProperty ;
+    rdfs:label "request type" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:string .
 
-#################################################################
-#    Annotation properties
-#################################################################
+la311:responsible a owl:ObjectProperty ;
+    rdfs:label "responsible" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range la311:Organization .
 
-###  https://w3id.org/mod#createdWith
-mod:createdWith rdf:type owl:AnnotationProperty .
+la311:serviceDate a owl:DatatypeProperty ;
+    rdfs:label "service date" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:dateTime .
 
+la311:srNumber a owl:DatatypeProperty ;
+    rdfs:label "sr number" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:string .
 
-#################################################################
-#    Object Properties
-#################################################################
+la311:status a owl:DatatypeProperty ;
+    rdfs:label "status" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:string .
 
-###  http://www.owl-ontologies.com/la311#assignedTo
-la311:assignedTo rdf:type owl:ObjectProperty ;
-                 rdfs:domain la311:ServiceRequest ;
-                 rdfs:range la311:Service ;
-                 rdfs:label "assigned to" .
+la311:streetDirection a owl:DatatypeProperty ;
+    rdfs:label "street direction" ;
+    rdfs:domain la311:Location .
 
+la311:streetName a owl:DatatypeProperty ;
+    rdfs:label "street name" ;
+    rdfs:domain la311:Location .
 
-###  http://www.owl-ontologies.com/la311#hasLocation
-la311:hasLocation rdf:type owl:ObjectProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range la311:Location ;
-                  rdfs:label "has location" .
+la311:streetSuffix a owl:DatatypeProperty ;
+    rdfs:label "street suffix" ;
+    rdfs:domain la311:Location .
 
+la311:updatedDate a owl:DatatypeProperty ;
+    rdfs:label "updated date" ;
+    rdfs:domain la311:ServiceRequest ;
+    rdfs:range xsd:dateTime .
 
-###  http://www.owl-ontologies.com/la311#isWithin
-la311:isWithin rdf:type owl:ObjectProperty ;
-               rdfs:domain la311:Location ;
-               rdfs:range la311:AdministrativeRegion ;
-               rdfs:label "is within" .
+la311:zipCode a owl:DatatypeProperty ;
+    rdfs:label "zip code" ;
+    rdfs:domain la311:Location .
 
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:label "as w k t" ;
+    rdfs:domain la311:Location .
 
-###  http://www.owl-ontologies.com/la311#reportedBy
-la311:reportedBy rdf:type owl:ObjectProperty ;
-                 rdfs:domain la311:ServiceRequest ;
-                 rdfs:range la311:Agent ;
-                 rdfs:label "reported by" .
+la311:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:subClassOf la311:Agent .
 
+la311:Service a owl:Class ;
+    rdfs:label "Service" .
 
-###  http://www.owl-ontologies.com/la311#responsible
-la311:responsible rdf:type owl:ObjectProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range la311:Organization ;
-                  rdfs:label "responsible" .
+la311:Agent a owl:Class ;
+    rdfs:label "Agent" .
 
+la311:AdministrativeRegion a owl:Class ;
+    rdfs:label "Administrative Region" ;
+    rdfs:subClassOf schema:AdministrativeArea .
 
-#################################################################
-#    Data properties
-#################################################################
+la311:Location a owl:Class ;
+    rdfs:label "Location" .
 
-###  http://www.owl-ontologies.com/la311#actionTaken
-la311:actionTaken rdf:type owl:DatatypeProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range xsd:string ;
-                  rdfs:label "action taken" .
+la311:ServiceRequest a owl:Class ;
+    rdfs:label "Service Request" .
 
-
-###  http://www.owl-ontologies.com/la311#address
-la311:address rdf:type owl:DatatypeProperty ;
-              rdfs:domain la311:Location ;
-              rdfs:range xsd:string ;
-              rdfs:label "address" .
-
-
-###  http://www.owl-ontologies.com/la311#apc
-la311:apc rdf:type owl:DatatypeProperty ;
-          rdfs:domain la311:AdministrativeRegion ;
-          rdfs:range xsd:string ;
-          rdfs:label "apc" .
-
-
-###  http://www.owl-ontologies.com/la311#cd
-la311:cd rdf:type owl:DatatypeProperty ;
-         rdfs:domain la311:AdministrativeRegion ;
-         rdfs:range xsd:integer ;
-         rdfs:label "cd" .
-
-
-###  http://www.owl-ontologies.com/la311#cdMember
-la311:cdMember rdf:type owl:DatatypeProperty ;
-               rdfs:domain la311:AdministrativeRegion ;
-               rdfs:range xsd:string ;
-               rdfs:label "cd member" .
-
-
-###  http://www.owl-ontologies.com/la311#closedDate
-la311:closedDate rdf:type owl:DatatypeProperty ;
-                 rdfs:domain la311:ServiceRequest ;
-                 rdfs:range xsd:dateTime ;
-                 rdfs:label "closed date" .
-
-
-###  http://www.owl-ontologies.com/la311#createdDate
-la311:createdDate rdf:type owl:DatatypeProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range xsd:dateTime ;
-                  rdfs:label "created date" .
-
-
-###  http://www.owl-ontologies.com/la311#latitude
-la311:latitude rdf:type owl:DatatypeProperty ;
-               rdfs:domain la311:Location ;
-               rdfs:range xsd:decimal ;
-               rdfs:label "latitude" .
-
-
-###  http://www.owl-ontologies.com/la311#longitude
-la311:longitude rdf:type owl:DatatypeProperty ;
-                rdfs:domain la311:Location ;
-                rdfs:range xsd:decimal ;
-                rdfs:label "longitude" .
-
-
-###  http://www.owl-ontologies.com/la311#name
-la311:name rdf:type owl:DatatypeProperty ;
-           rdfs:domain la311:Organization ,
-                       la311:Service ;
-           rdfs:range xsd:string ;
-           rdfs:label "name" .
-
-
-###  http://www.owl-ontologies.com/la311#nc
-la311:nc rdf:type owl:DatatypeProperty ;
-         rdfs:domain la311:AdministrativeRegion ;
-         rdfs:range xsd:integer ;
-         rdfs:label "nc" .
-
-
-###  http://www.owl-ontologies.com/la311#ncName
-la311:ncName rdf:type owl:DatatypeProperty ;
-             rdfs:domain la311:AdministrativeRegion ;
-             rdfs:range xsd:string ;
-             rdfs:label "nc name" .
-
-
-###  http://www.owl-ontologies.com/la311#policePrecinct
-la311:policePrecinct rdf:type owl:DatatypeProperty ;
-                     rdfs:domain la311:AdministrativeRegion ;
-                     rdfs:range xsd:string ;
-                     rdfs:label "police precinct" .
-
-
-###  http://www.owl-ontologies.com/la311#requestType
-la311:requestType rdf:type owl:DatatypeProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range xsd:string ;
-                  rdfs:label "request type" .
-
-
-###  http://www.owl-ontologies.com/la311#serviceDate
-la311:serviceDate rdf:type owl:DatatypeProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range xsd:dateTime ;
-                  rdfs:label "service date" .
-
-
-###  http://www.owl-ontologies.com/la311#srNumber
-la311:srNumber rdf:type owl:DatatypeProperty ;
-               rdfs:domain la311:ServiceRequest ;
-               rdfs:range xsd:string ;
-               rdfs:label "sr number" .
-
-
-###  http://www.owl-ontologies.com/la311#status
-la311:status rdf:type owl:DatatypeProperty ;
-             rdfs:domain la311:ServiceRequest ;
-             rdfs:range xsd:string ;
-             rdfs:label "status" .
-
-
-###  http://www.owl-ontologies.com/la311#updatedDate
-la311:updatedDate rdf:type owl:DatatypeProperty ;
-                  rdfs:domain la311:ServiceRequest ;
-                  rdfs:range xsd:dateTime ;
-                  rdfs:label "updated date" .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://www.owl-ontologies.com/la311#AdministrativeRegion
-la311:AdministrativeRegion rdf:type owl:Class ;
-                           rdfs:label "Administrative Region" .
-
-
-###  http://www.owl-ontologies.com/la311#Agent
-la311:Agent rdf:type owl:Class ;
-            rdfs:label "Agent" .
-
-
-###  http://www.owl-ontologies.com/la311#AnonymousPerson
-la311:AnonymousPerson rdf:type owl:Class ;
-                      rdfs:subClassOf la311:Agent ;
-                      rdfs:label "Anonymous Person" .
-
-
-###  http://www.owl-ontologies.com/la311#Location
-la311:Location rdf:type owl:Class ;
-               rdfs:label "Location" .
-
-
-###  http://www.owl-ontologies.com/la311#Organization
-la311:Organization rdf:type owl:Class ;
-                   rdfs:subClassOf la311:Agent ;
-                   rdfs:label "Organization" .
-
-
-###  http://www.owl-ontologies.com/la311#Service
-la311:Service rdf:type owl:Class ;
-              rdfs:label "Service" .
-
-
-###  http://www.owl-ontologies.com/la311#ServiceRequest
-la311:ServiceRequest rdf:type owl:Class ;
-                     rdfs:label "Service Request" .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://linkeddata.la311.com/ontology#jhhjjnj
-:jhhjjnj rdf:type owl:NamedIndividual ,
-                  la311:AdministrativeRegion .
-
-
-###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

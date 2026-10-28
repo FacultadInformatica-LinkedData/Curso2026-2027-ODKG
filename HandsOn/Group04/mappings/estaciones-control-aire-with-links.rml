@@ -1,0 +1,183 @@
+@prefix rr:     <http://www.w3.org/ns/r2rml#> .
+@prefix rml:    <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:     <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix bpm:    <https://w3id.org/breatheplay-madrid/ontology#> .
+@prefix sosa:   <http://www.w3.org/ns/sosa/> .
+@prefix geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@base           <https://w3id.org/breatheplay-madrid/mappings/estaciones-control-aire#> .
+
+# Group04 - Breathe & Play Madrid. Run from the HandsOn/Group04 directory
+# (python mappings/generate_rdf-with-links.py), so that the csv/ paths resolve.
+# Dataset: Estaciones de control de la calidad del aire (Ayuntamiento de Madrid, 212629)
+# Source:  csv/212629-0-estaciones-control-aire-csv-updated-with-links.csv
+
+# ---------------------------------------------------------------------------
+# Monitoring stations
+# ---------------------------------------------------------------------------
+<#MonitoringStationMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/station/{CODIGO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:MonitoringStation, sosa:Platform
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:stationCode ;
+        rr:objectMap [ rml:reference "CODIGO" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "ESTACION" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:address ;
+        rr:objectMap [ rml:reference "DIRECCION" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:alt ;
+        rr:objectMap [ rml:reference "ALTITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:startDate ;
+        rr:objectMap [ rml:reference "FECHA_ALTA" ; rr:termType rr:Literal ; rr:datatype xsd:date ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:lat ;
+        rr:objectMap [ rml:reference "LATITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:long ;
+        rr:objectMap [ rml:reference "LONGITUD" ; rr:termType rr:Literal ; rr:datatype xsd:decimal ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:hasStationType ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/station-type/{COD_TIPO}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+
+    # HO5: district and neighbourhood of the station (new columns, taken from the
+    # station pages of the Ayuntamiento de Madrid). Same IRIs as in the sports
+    # facilities dataset, so stations and facilities share District/Neighbourhood.
+    rr:predicateObjectMap [
+        rr:predicate bpm:locatedInDistrict ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/district/{COD-DISTRITO}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+
+    # Only 5 stations have a neighbourhood (empty BARRIO_ID -> no triple)
+    rr:predicateObjectMap [
+        rr:predicate bpm:locatedInNeighbourhood ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/neighbourhood/{BARRIO_ID}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# Station types (ut Urbana tráfico, uf Urbana fondo, s Suburbana)
+# ---------------------------------------------------------------------------
+<#StationTypeMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/station-type/{COD_TIPO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:StationType
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "NOM_TIPO" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# HO5 - Districts (linked to Wikidata)
+# ---------------------------------------------------------------------------
+<#DistrictMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/district/{COD-DISTRITO}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:District
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:districtCode ;
+        rr:objectMap [ rml:reference "COD-DISTRITO" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "DISTRITO" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] ;
+    
+    # HO5: link to Wikidata
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs ;
+        rr:objectMap [ rml:reference "DISTRITO_WIKIDATA" ; rr:termType rr:IRI ]
+    ] .
+
+# ---------------------------------------------------------------------------
+# HO5 - Neighbourhoods (linked to Wikidata)
+# ---------------------------------------------------------------------------
+<#NeighbourhoodMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "csv/212629-0-estaciones-control-aire-csv-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+
+    rr:subjectMap [
+        rr:template "https://w3id.org/breatheplay-madrid/resource/neighbourhood/{BARRIO_ID}" ;
+        rr:termType rr:IRI ;
+        rr:class bpm:Neighbourhood
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:neighbourhoodCode ;
+        rr:objectMap [ rml:reference "BARRIO_ID" ; rr:termType rr:Literal ; rr:datatype xsd:string ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "BARRIO" ; rr:termType rr:Literal ; rr:language "es" ]
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate bpm:isPartOfDistrict ;
+        rr:objectMap [
+            rr:template "https://w3id.org/breatheplay-madrid/resource/district/{COD-DISTRITO}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+
+    # HO5: link to Wikidata
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs ;
+        rr:objectMap [ rml:reference "BARRIO_WIKIDATA" ; rr:termType rr:IRI ]
+    ] .

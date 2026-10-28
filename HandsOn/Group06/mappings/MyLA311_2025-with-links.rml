@@ -1,0 +1,508 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix geo: <http://www.opengis.net/ont/geosparql#>.
+@prefix la311: <http://linkeddata.la311.com/ontology#>.
+@prefix schema: <http://schema.org/>.
+@base <http://linkeddata.la311.com/mapping#>.
+
+
+#################################################################
+#    ServiceRequest
+#################################################################
+
+<#ServiceRequestMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/ServiceRequest/{SRNumber}";
+    rr:termType rr:IRI;
+    rr:class la311:ServiceRequest
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Service request {SRNumber}";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:srNumber;
+    rr:objectMap [
+      rml:reference "SRNumber";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:createdDate;
+    rr:objectMap [
+      rml:reference "CreatedDate";
+      rr:termType rr:Literal;
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:updatedDate;
+    rr:objectMap [
+      rml:reference "UpdatedDate";
+      rr:termType rr:Literal;
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:serviceDate;
+    rr:objectMap [
+      rml:reference "ServiceDate";
+      rr:termType rr:Literal;
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:closedDate;
+    rr:objectMap [
+      rml:reference "ClosedDate";
+      rr:termType rr:Literal;
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:actionTaken;
+    rr:objectMap [
+      rml:reference "ActionTaken";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:requestType;
+    rr:objectMap [
+      rml:reference "RequestType";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:requestSource;
+    rr:objectMap [
+      rml:reference "RequestSource";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:status;
+    rr:objectMap [
+      rml:reference "Status";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:responsible;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/Organization/{Owner}";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:assignedTo;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/Service/{AssignTo}";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:reportedBy;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/AnonymousPerson/{AnonymousReporter}";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:reportedBy;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/Organization/{OrganizationReporter}";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:hasLocation;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/Location/{Latitude},{Longitude}";
+      rr:termType rr:IRI
+    ]
+  ].
+
+
+#################################################################
+#    AnonymousPerson
+#################################################################
+
+<#AnonymousPersonMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/AnonymousPerson/{AnonymousReporter}";
+    rr:termType rr:IRI;
+    rr:class la311:AnonymousPerson
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Anonymous Reporter ({AnonymousReporter})";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ].
+
+
+#################################################################
+#    Organization (Owner)
+#################################################################
+
+<#OrganizationOwnerMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/Organization/{Owner}";
+    rr:termType rr:IRI;
+    rr:class la311:Organization
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "Owner";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:name;
+    rr:objectMap [
+      rml:reference "Owner";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ].
+
+
+#################################################################
+#    Organization (Reporter)
+#################################################################
+
+<#OrganizationReporterMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/Organization/{OrganizationReporter}";
+    rr:termType rr:IRI;
+    rr:class la311:Organization
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "OrganizationReporter";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:name;
+    rr:objectMap [
+      rml:reference "OrganizationReporter";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ].
+
+
+#################################################################
+#    Service (AssignTo)
+#################################################################
+
+<#ServiceMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/Service/{AssignTo}";
+    rr:termType rr:IRI;
+    rr:class la311:Service
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "AssignTo";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:name;
+    rr:objectMap [
+      rml:reference "AssignTo";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ].
+
+
+#################################################################
+#    Location
+#################################################################
+
+<#LocationMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/Location/{Latitude},{Longitude}";
+    rr:termType rr:IRI;
+    rr:class la311:Location
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "Address";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:address;
+    rr:objectMap [
+      rml:reference "Address";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:approximateAddress;
+    rr:objectMap [
+      rml:reference "ApproximateAddress";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:houseNumber;
+    rr:objectMap [
+      rml:reference "HouseNumber";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:streetDirection;
+    rr:objectMap [
+      rml:reference "Direction";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:streetName;
+    rr:objectMap [
+      rml:reference "StreetName";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:streetSuffix;
+    rr:objectMap [
+      rml:reference "Suffix";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:zipCode;
+    rr:objectMap [
+      rml:reference "ZipCode";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:latitude;
+    rr:objectMap [
+      rml:reference "Latitude";
+      rr:termType rr:Literal;
+      rr:datatype xsd:decimal
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:longitude;
+    rr:objectMap [
+      rml:reference "Longitude";
+      rr:termType rr:Literal;
+      rr:datatype xsd:decimal
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate geo:asWKT;
+    rr:objectMap [
+      rml:reference "Location";
+      rr:termType rr:Literal;
+      rr:datatype geo:wktLiteral
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:isWithin;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/AdministrativeRegion/{NC}_{CD}";
+      rr:termType rr:IRI
+    ]
+  ].
+
+
+#################################################################
+#    AdministrativeRegion
+#################################################################
+
+<#AdministrativeRegionMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/AdministrativeRegion/{NC}_{CD}";
+    rr:termType rr:IRI;
+    rr:class la311:AdministrativeRegion
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "{NCName} (CD {CD})";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [
+      rr:template "{NCName} (CD {CD})";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:nc;
+    rr:objectMap [
+      rml:reference "NC";
+      rr:termType rr:Literal;
+      rr:datatype xsd:integer
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:ncName;
+    rr:objectMap [
+      rml:reference "NCName_Wikidata";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+      rml:reference "NCName_Wikidata";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:cd;
+    rr:objectMap [
+      rml:reference "CD";
+      rr:termType rr:Literal;
+      rr:datatype xsd:integer
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:cdMember;
+    rr:objectMap [
+      rml:reference "CDMember_Wikidata";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:apc;
+    rr:objectMap [
+      rml:reference "APC";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:policePrecinct;
+    rr:objectMap [
+      rml:reference "PolicePrecinct";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:containedInPlace;
+    rr:objectMap [
+      rr:constant <http://www.wikidata.org/entity/Q65>;
+      rr:termType rr:IRI
+    ]
+  ].

@@ -1,0 +1,116 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#> .
+
+
+# TriplesMap para generar las Fuentes de Agua
+
+<#FountainMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "./csv/300051-26-fuentes-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/{ID}" ;
+        rr:class vocab:Fountain
+    ] ;
+
+    # Propiedades de Dato (Datatype Properties)
+    rr:predicateObjectMap [
+        rr:predicate vocab:hasStatus ;
+        rr:objectMap [
+            rml:reference "ESTADO" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate vocab:hasLatitude ;
+        rr:objectMap [
+            rml:reference "LATITUD" ;
+            rr:datatype xsd:float
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate vocab:hasLongitude ;
+        rr:objectMap [
+            rml:reference "LONGITUD" ;
+            rr:datatype xsd:float
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate vocab:hasStreetName ;
+        rr:objectMap [
+            rml:reference "NOM_VIA" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+
+    # Propiedades de Objeto (Object Properties) - Enlaces a otras clases
+    rr:predicateObjectMap [
+        rr:predicate vocab:hasDistrict ;
+        rr:objectMap [
+            rr:parentTriplesMap <#DistrictMap>
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate vocab:hasNeighbourhood ;
+        rr:objectMap [
+            rr:parentTriplesMap <#NeighbourhoodMap>
+        ]
+    ] .
+
+
+
+# TriplesMap para generar los Distritos
+
+<#DistrictMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "./csv/300051-26-fuentes-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://smartcity.linkeddata.es/madrid/fountains/resource/District/{DISTRITO}" ;
+        rr:class vocab:District
+    ] ;
+
+    # Enlace externo a Wikidata
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs ;
+        rr:objectMap [
+            rml:reference "same_as_wikidata_distrito" ;
+            rr:termType rr:IRI 
+        ]
+    ] .
+
+
+
+# TriplesMap para generar los Barrios
+
+<#NeighbourhoodMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "./csv/300051-26-fuentes-updated-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/{BARRIO}" ;
+        rr:class vocab:Neighbourhood
+    ] ;
+
+    # Enlace externo a Wikidata
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs ;
+        rr:objectMap [
+            rml:reference "same_as_wikidata_barrio" ;
+            rr:termType rr:IRI 
+        ]
+    ] .

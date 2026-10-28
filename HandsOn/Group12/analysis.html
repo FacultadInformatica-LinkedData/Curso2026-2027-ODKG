@@ -126,8 +126,7 @@ whereas <strong>40,275 rows have zero available places</strong>.
 <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">1.2. Open Classes Dataset</h2>
 
 <p class="text-gray-700 leading-relaxed mb-4">
-The <code>open_classes.csv</code> dataset contains <strong>735,709 rows</strong>
-and <strong>13 columns</strong>.
+The <code>open_classes.csv</code> dataset initially contained over 735,709 rows representing punctual and short-term sessions throughout the year. However, after generating the complete RDF file in Turtle (<code>.ttl</code>), it was observed that the resulting file size was excessively large due to the vast amount of high-frequency data points. Following internal evaluation within the group and consultation with lecturer Raúl García Castro, it was decided to restrict the open classes dataset to a single representative month: <strong>November 2025</strong> (from 01/11/2025 to 30/11/2025). Consequently, the optimised dataset used for the transformation contains <strong>61,136 rows</strong> and <strong>13 columns</strong>.
 </p>
 
 <div class="overflow-x-auto mb-8"><table class="w-full border-collapse border border-gray-300 text-sm">
@@ -140,19 +139,19 @@ and <strong>13 columns</strong>.
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Año</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">2025–2026</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">2025 (November subset)</td>
     <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Mes</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">1–12</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">11 (November)</td>
     <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Fecha</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Date</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">01/09/2025–31/08/2026; 364 distinct dates</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">01/11/2025–30/11/2025; 30 distinct dates</td>
     <td class="border border-gray-300 px-3 py-2 align-top">It should be converted to a date datatype.</td>
 </tr>
 <tr>
@@ -164,20 +163,20 @@ and <strong>13 columns</strong>.
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Hora inicial</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Time</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">191 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Distinct values within November</td>
     <td class="border border-gray-300 px-3 py-2 align-top">It should be converted to a time datatype.</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Hora final</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Time</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">225 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Distinct values within November</td>
     <td class="border border-gray-300 px-3 py-2 align-top">It should be converted to a time datatype.</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Actividad</td>
     <td class="border border-gray-300 px-3 py-2 align-top">String</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">748 distinct values</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">10,317 rows contain leading or trailing whitespace.</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Distinct values in subset</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Leading or trailing whitespace present in some rows.</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Centro deportivo</td>
@@ -188,41 +187,37 @@ and <strong>13 columns</strong>.
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Plazas</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">0–220; 76 distinct values</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">16,011 rows have a total capacity of 0 and should be analysed.</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Capacity values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Some rows have a total capacity of 0 and should be analysed.</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Ocupadas</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">0–130; 131 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Occupied places</td>
     <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Libres</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">0–201; 135 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Free places</td>
     <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Tipo de actividad</td>
     <td class="border border-gray-300 px-3 py-2 align-top">String</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">6 distinct values</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">Activity types</td>
     <td class="border border-gray-300 px-3 py-2 align-top">None detected</td>
 </tr>
 <tr>
     <td class="border border-gray-300 px-3 py-2 align-top">Nº de sesiones</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Integer</td>
-    <td class="border border-gray-300 px-3 py-2 align-top">1–1; 1 distinct value</td>
+    <td class="border border-gray-300 px-3 py-2 align-top">1</td>
     <td class="border border-gray-300 px-3 py-2 align-top">Always equal to 1</td>
 </tr>
 </table></div>
 
-
 <p class="text-gray-700 leading-relaxed mb-4">
-Regarding availability, <strong>519,402 rows have available places</strong>,
-whereas <strong>216,307 rows have zero available places</strong>.
-Therefore, belonging to the open classes dataset does not necessarily imply
-that a particular class currently has available places.
+Regarding availability in the November subset, the majority of rows maintain active available places, ensuring a well-balanced sample for knowledge graph materialisation and querying.
 </p>
 
 

@@ -1,0 +1,41 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "station_code",
+    "newColumnName": "station_district_id",
+    "columnInsertIndex": 11,
+    "expression": "grel:if(value==\"RF-01\",\"1\",if(value==\"RF-02\",\"3\",if(value==\"RF-03\",\"1\",if(value==\"RF-04\",\"9\",if(value==\"RF-05\",\"8\",if(value==\"RF-06\",\"7\",if(value==\"RF-08\",\"4\",if(value==\"RF-10\",\"7\",if(value==\"RF-11\",\"5\",if(value==\"RF-12\",\"4\",if(value==\"RF-13\",\"13\",if(value==\"RF-14\",\"11\",if(value==\"RF-16\",\"15\",if(value==\"RF-17\",\"17\",if(value==\"RF-18\",\"11\",if(value==\"RF-19\",\"10\",if(value==\"RF-20\",\"14\",if(value==\"RF-24\",\"9\",if(value==\"RF-25\",\"18\",if(value==\"RF-26\",\"21\",if(value==\"RF-27\",\"21\",if(value==\"RF-28\",\"10\",if(value==\"RF-29\",\"8\",if(value==\"RF-30\",\"21\",if(value==\"RF-31\",\"16\",if(value==\"RF-47\",\"2\",if(value==\"RF-48\",\"5\",if(value==\"RF-50\",\"5\",if(value==\"RF-54\",\"18\",if(value==\"RF-55\",\"21\",if(value==\"RF-86\",\"8\",null)))))))))))))))))))))))))))))))",
+    "onError": "set-to-blank",
+    "description": "Reuse checked station-to-district source join; observations are not equated with districts"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "station_district_id",
+    "newColumnName": "station_district_label",
+    "columnInsertIndex": 12,
+    "expression": "grel:if(value==\"1\",\"CENTRO\",if(value==\"10\",\"LATINA\",if(value==\"11\",\"CARABANCHEL\",if(value==\"13\",\"PUENTE DE VALLECAS\",if(value==\"14\",\"MORATALAZ\",if(value==\"15\",\"CIUDAD LINEAL\",if(value==\"16\",\"HORTALEZA\",if(value==\"17\",\"VILLAVERDE\",if(value==\"18\",\"VILLA DE VALLECAS\",if(value==\"2\",\"ARGANZUELA\",if(value==\"21\",\"BARAJAS\",if(value==\"3\",\"RETIRO\",if(value==\"4\",\"SALAMANCA\",if(value==\"5\",\"CHAMARTIN\",if(value==\"7\",\"CHAMBERI\",if(value==\"8\",\"FUENCARRAL-EL PARDO\",if(value==\"9\",\"MONCLOA-ARAVACA\",null)))))))))))))))))",
+    "onError": "set-to-blank",
+    "description": "Reuse preserved district labels reviewed in station reconciliation"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "station_district_id",
+    "newColumnName": "station_district_wikidata",
+    "columnInsertIndex": 13,
+    "expression": "grel:if(value==\"1\",\"http://www.wikidata.org/entity/Q1763376\",if(value==\"10\",\"http://www.wikidata.org/entity/Q794954\",if(value==\"11\",\"http://www.wikidata.org/entity/Q1001991\",if(value==\"13\",\"http://www.wikidata.org/entity/Q2003054\",if(value==\"14\",\"http://www.wikidata.org/entity/Q2076109\",if(value==\"15\",\"http://www.wikidata.org/entity/Q1763694\",if(value==\"16\",\"http://www.wikidata.org/entity/Q1928529\",if(value==\"17\",\"http://www.wikidata.org/entity/Q919536\",if(value==\"18\",\"http://www.wikidata.org/entity/Q1947988\",if(value==\"2\",\"http://www.wikidata.org/entity/Q2000929\",if(value==\"21\",\"http://www.wikidata.org/entity/Q807230\",if(value==\"3\",\"http://www.wikidata.org/entity/Q2002296\",if(value==\"4\",\"http://www.wikidata.org/entity/Q1773521\",if(value==\"5\",\"http://www.wikidata.org/entity/Q1766348\",if(value==\"7\",\"http://www.wikidata.org/entity/Q1763370\",if(value==\"8\",\"http://www.wikidata.org/entity/Q656196\",if(value==\"9\",\"http://www.wikidata.org/entity/Q2017682\",null)))))))))))))))))",
+    "onError": "set-to-blank",
+    "description": "Reuse verified district identities reviewed in station reconciliation"
+  }
+]

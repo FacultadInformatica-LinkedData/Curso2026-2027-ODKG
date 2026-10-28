@@ -1,0 +1,5943 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "district of Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Distrito to type Q3032114"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Distrito: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Distrito",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Distrito",
+    "similarValue": "Fuencarral-elpardo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q656196",
+      "name": "Fuencarral-El Pardo",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Fuencarral-El Pardo (Q656196) para las celdas que contienen \"Fuencarral-elpardo\" en la columna Distrito"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Distrito",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_distrito",
+    "columnInsertIndex": 6,
+    "description": "Crear la columna same_as_wikidata_distrito en el índice 6 basada en la columna Distrito usando la expresión grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": false,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Actividad to type null"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Acondicionamiento Físico",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18479330",
+      "name": "physical conditioning",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento physical conditioning (Q18479330) para las celdas que contienen \"Acondicionamiento Físico\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Baloncesto",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5372",
+      "name": "basketball",
+      "types": [
+        "Q31629",
+        "Q212434",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento basketball (Q5372) para las celdas que contienen \"Baloncesto\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Gimnasia Rítmica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q61465",
+      "name": "rhythmic gymnastics",
+      "types": [
+        "Q2312410",
+        "Q212434"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento rhythmic gymnastics (Q61465) para las celdas que contienen \"Gimnasia Rítmica\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6388",
+      "name": "swimming",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento swimming (Q6388) para las celdas que contienen \"Natación\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Pádel",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1582389",
+      "name": "padel",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento padel (Q1582389) para las celdas que contienen \"Pádel\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Pilates",
+    "judgment": "matched",
+    "match": {
+      "id": "Q272460",
+      "name": "pilates",
+      "types": [
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento pilates (Q272460) para las celdas que contienen \"Pilates\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Taekwondo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q36389",
+      "name": "taekwondo",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento taekwondo (Q36389) para las celdas que contienen \"Taekwondo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Unihockey",
+    "judgment": "matched",
+    "match": {
+      "id": "Q206763",
+      "name": "floorball",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento floorball (Q206763) para las celdas que contienen \"Unihockey\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Voleibol",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1734",
+      "name": "volleyball",
+      "types": [
+        "Q31629",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento volleyball (Q1734) para las celdas que contienen \"Voleibol\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fútbol Sala",
+    "judgment": "matched",
+    "match": {
+      "id": "Q171401",
+      "name": "futsal",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento futsal (Q171401) para las celdas que contienen \"Fútbol Sala\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Karate Kenpo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q501672",
+      "name": "kenpo",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento kenpo (Q501672) para las celdas que contienen \"Karate Kenpo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Tenis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q847",
+      "name": "tennis",
+      "types": [
+        "Q31629",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento tennis (Q847) para las celdas que contienen \"Tenis\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Tenis Mesa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3930",
+      "name": "table tennis",
+      "types": [
+        "Q31629"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento table tennis (Q3930) para las celdas que contienen \"Tenis Mesa\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Bádminton",
+    "judgment": "matched",
+    "match": {
+      "id": "Q7291",
+      "name": "badminton",
+      "types": [
+        "Q31629",
+        "Q212434",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento badminton (Q7291) para las celdas que contienen \"Bádminton\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fútbol",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2736",
+      "name": "association football",
+      "types": [
+        "Q31629",
+        "Q216048",
+        "Q212434",
+        "Q4356073",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento association football (Q2736) para las celdas que contienen \"Fútbol\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Gimnasia Acuática (acuagym)",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2551030",
+      "name": "water gymnastics",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento water gymnastics (Q2551030) para las celdas que contienen \"Gimnasia Acuática (acuagym)\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Pretenis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q847",
+      "name": "tennis",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento tennis (Q847) para las celdas que contienen \"Pretenis\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación Peques",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31920",
+      "name": "competitive swimming",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento competitive swimming (Q31920) para las celdas que contienen \"Natación Peques\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "matched",
+                "l": "matched"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31920",
+      "name": "competitive swimming",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento competitive swimming (Q31920) para las celdas que contienen \"Natación\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fitness Acuático",
+    "judgment": "matched",
+    "match": {
+      "id": "Q494406",
+      "name": "water aerobics",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento water aerobics (Q494406) para las celdas que contienen \"Fitness Acuático\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31920",
+      "name": "competitive swimming",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento competitive swimming (Q31920) para las celdas que contienen \"Natación\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fuerza En Sala Multitrabajo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1425378",
+      "name": "weight training",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento weight training (Q1425378) para las celdas que contienen \"Fuerza En Sala Multitrabajo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Esgrima",
+    "judgment": "matched",
+    "match": {
+      "id": "Q12100",
+      "name": "fencing",
+      "types": [
+        "Q31629",
+        "Q212434"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento fencing (Q12100) para las celdas que contienen \"Esgrima\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Golf",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5377",
+      "name": "golf",
+      "types": [
+        "Q31629",
+        "Q13137940",
+        "Q212434",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento golf (Q5377) para las celdas que contienen \"Golf\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Patinaje",
+    "judgment": "matched",
+    "match": {
+      "id": "Q14300548",
+      "name": "skating",
+      "types": [
+        "Q747883"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento skating (Q14300548) para las celdas que contienen \"Patinaje\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Piragüismo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q213934",
+      "name": "canoeing and kayaking",
+      "types": [
+        "Q47728",
+        "Q140639121",
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento canoeing and kayaking (Q213934) para las celdas que contienen \"Piragüismo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Parkour/calistenia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2471790",
+      "name": "calisthenics",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento calisthenics (Q2471790) para las celdas que contienen \"Parkour/calistenia\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Judo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11420",
+      "name": "judo",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento judo (Q11420) para las celdas que contienen \"Judo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Triatlón",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10980",
+      "name": "triathlon",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento triathlon (Q10980) para las celdas que contienen \"Triatlón\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Pickleball",
+    "judgment": "matched",
+    "match": {
+      "id": "Q866224",
+      "name": "pickleball",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento pickleball (Q866224) para las celdas que contienen \"Pickleball\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Squash",
+    "judgment": "matched",
+    "match": {
+      "id": "Q133201",
+      "name": "squash",
+      "types": [
+        "Q31629",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento squash (Q133201) para las celdas que contienen \"Squash\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Hockey Patines",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1748406",
+      "name": "roller hockey quad",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento roller hockey quad (Q1748406) para las celdas que contienen \"Hockey Patines\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación Artística",
+    "judgment": "matched",
+    "match": {
+      "id": "Q180692",
+      "name": "synchronized swimming",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento synchronized swimming (Q180692) para las celdas que contienen \"Natación Artística\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Ajedrez",
+    "judgment": "matched",
+    "match": {
+      "id": "Q718",
+      "name": "chess",
+      "types": [
+        "Q131436",
+        "Q31629",
+        "Q7858742",
+        "Q4438147",
+        "Q47728",
+        "Q573573",
+        "Q20478894"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento chess (Q718) para las celdas que contienen \"Ajedrez\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Atletismo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q542",
+      "name": "athletics",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento athletics (Q542) para las celdas que contienen \"Atletismo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Balonmano",
+    "judgment": "matched",
+    "match": {
+      "id": "Q8418",
+      "name": "handball",
+      "types": [
+        "Q31629",
+        "Q212434",
+        "Q11410",
+        "Q349",
+        "Q877517"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento handball (Q8418) para las celdas que contienen \"Balonmano\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Karate",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11419",
+      "name": "karate",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento karate (Q11419) para las celdas que contienen \"Karate\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación Salud",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31920",
+      "name": "competitive swimming",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento competitive swimming (Q31920) para las celdas que contienen \"Natación Salud\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Natación Embarazadas - Postparto",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31920",
+      "name": "competitive swimming",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento competitive swimming (Q31920) para las celdas que contienen \"Natación Embarazadas - Postparto\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Ejercicio Físico Saludable",
+    "judgment": "matched",
+    "match": {
+      "id": "Q219067",
+      "name": "physical exercise",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento physical exercise (Q219067) para las celdas que contienen \"Ejercicio Físico Saludable\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Estiramientos Relajación",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1183039",
+      "name": "stretching",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento stretching (Q1183039) para las celdas que contienen \"Estiramientos Relajación\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Ejercicio Físico Saludable Caídas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5432181",
+      "name": "fall prevention",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento fall prevention (Q5432181) para las celdas que contienen \"Ejercicio Físico Saludable Caídas\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Carrera Acuática",
+    "judgment": "matched",
+    "match": {
+      "id": "Q110290988",
+      "name": "swimming race",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento swimming race (Q110290988) para las celdas que contienen \"Carrera Acuática\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Salvamento Acuático",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2533407",
+      "name": "life saving as a sport",
+      "types": [
+        "Q31629",
+        "Q349"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento life saving as a sport (Q2533407) para las celdas que contienen \"Salvamento Acuático\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Espeleología",
+    "judgment": "matched",
+    "match": {
+      "id": "Q179132",
+      "name": "speleology",
+      "types": [
+        "Q336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento speleology (Q179132) para las celdas que contienen \"Espeleología\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Gimnasia Artística",
+    "judgment": "matched",
+    "match": {
+      "id": "Q326827",
+      "name": "artistic gymnastics",
+      "types": [
+        "Q2312410"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento artistic gymnastics (Q326827) para las celdas que contienen \"Gimnasia Artística\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Remo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q159354",
+      "name": "rowing",
+      "types": [
+        "Q212434",
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento rowing (Q159354) para las celdas que contienen \"Remo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Beisbol",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5369",
+      "name": "baseball",
+      "types": [
+        "Q349",
+        "Q13137940"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento baseball (Q5369) para las celdas que contienen \"Beisbol\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Escalada",
+    "judgment": "matched",
+    "match": {
+      "id": "Q22857",
+      "name": "climbing",
+      "types": [
+        "Q31629",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento climbing (Q22857) para las celdas que contienen \"Escalada\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Rugby",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5378",
+      "name": "rugby",
+      "types": [
+        "Q216048",
+        "Q877517"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento rugby (Q5378) para las celdas que contienen \"Rugby\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Cricket",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5375",
+      "name": "cricket",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento cricket (Q5375) para las celdas que contienen \"Cricket\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Sóftbol",
+    "judgment": "matched",
+    "match": {
+      "id": "Q171038",
+      "name": "softball",
+      "types": [
+        "Q31629",
+        "Q47728",
+        "Q349",
+        "Q11410"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento softball (Q171038) para las celdas que contienen \"Sóftbol\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Waterpolo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q7707",
+      "name": "water polo",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento water polo (Q7707) para las celdas que contienen \"Waterpolo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Patinaje Freestyle",
+    "judgment": "matched",
+    "match": {
+      "id": "Q13949",
+      "name": "aggressive inline skating",
+      "types": [
+        "Q2312410"
+      ],
+      "score": 69
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento aggressive inline skating (Q13949) para las celdas que contienen \"Patinaje Freestyle\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Tiro Con Arco",
+    "judgment": "matched",
+    "match": {
+      "id": "Q108429",
+      "name": "archery",
+      "types": [
+        "Q31629",
+        "Q2312410"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento archery (Q108429) para las celdas que contienen \"Tiro Con Arco\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Stand Up Paddle",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2035123",
+      "name": "standup paddleboarding",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento standup paddleboarding (Q2035123) para las celdas que contienen \"Stand Up Paddle\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Kayak Polo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q690676",
+      "name": "canoe polo",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento canoe polo (Q690676) para las celdas que contienen \"Kayak Polo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Vóley Playa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4543",
+      "name": "beach volleyball",
+      "types": [
+        "Q31629",
+        "Q2312410"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento beach volleyball (Q4543) para las celdas que contienen \"Vóley Playa\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Boccia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q895060",
+      "name": "bocce",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento bocce (Q895060) para las celdas que contienen \"Boccia\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Gimnasia Salud",
+    "judgment": "matched",
+    "match": {
+      "id": "Q43450",
+      "name": "gymnastics",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento gymnastics (Q43450) para las celdas que contienen \"Gimnasia Salud\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Cuerpo Y Mente",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9350",
+      "name": "yoga",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento yoga (Q9350) para las celdas que contienen \"Cuerpo Y Mente\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Yoga",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9350",
+      "name": "yoga",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento yoga (Q9350) para las celdas que contienen \"Yoga\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Baile",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11639",
+      "name": "dance",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento dance (Q11639) para las celdas que contienen \"Baile\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Entrenamiento Funcional",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1215296",
+      "name": "functional training",
+      "types": [
+        "Q3055155"
+      ],
+      "score": 50
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento functional training (Q1215296) para las celdas que contienen \"Entrenamiento Funcional\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Acondicionamiento Cardiovascular",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1152037",
+      "name": "aerobic exercise",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento aerobic exercise (Q1152037) para las celdas que contienen \"Acondicionamiento Cardiovascular\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Defensa Personal",
+    "judgment": "matched",
+    "match": {
+      "id": "Q40283",
+      "name": "self-defense",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento self-defense (Q40283) para las celdas que contienen \"Defensa Personal\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Lucha",
+    "judgment": "matched",
+    "match": {
+      "id": "Q42486",
+      "name": "wrestling",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento wrestling (Q42486) para las celdas que contienen \"Lucha\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Campamento De Verano",
+    "judgment": "matched",
+    "match": {
+      "id": "Q876852",
+      "name": "summer camp program",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento summer camp program (Q876852) para las celdas que contienen \"Campamento De Verano\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Pelota Mano",
+    "judgment": "matched",
+    "match": {
+      "id": "Q212845",
+      "name": "Basque pelota",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Basque pelota (Q212845) para las celdas que contienen \"Pelota Mano\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Frontenis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q212845",
+      "name": "Basque pelota",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Basque pelota (Q212845) para las celdas que contienen \"Frontenis\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Capoeira",
+    "judgment": "matched",
+    "match": {
+      "id": "Q159452",
+      "name": "capoeira",
+      "types": [
+        "Q66088122",
+        "Q107357104",
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento capoeira (Q159452) para las celdas que contienen \"Capoeira\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Bmx",
+    "judgment": "matched",
+    "match": {
+      "id": "Q215184",
+      "name": "BMX",
+      "types": [
+        "Q2312410"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento BMX (Q215184) para las celdas que contienen \"Bmx\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Halterofilia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q114397581",
+      "name": "weightlifting",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento weightlifting (Q114397581) para las celdas que contienen \"Halterofilia\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fitness",
+    "judgment": "matched",
+    "match": {
+      "id": "Q219067",
+      "name": "physical exercise",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento physical exercise (Q219067) para las celdas que contienen \"Fitness\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Skateboarding",
+    "judgment": "matched",
+    "match": {
+      "id": "Q842284",
+      "name": "skateboarding",
+      "types": [
+        "Q31629",
+        "Q109732621",
+        "Q109733629",
+        "Q268592",
+        "Q47728"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento skateboarding (Q842284) para las celdas que contienen \"Skateboarding\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fuerza General",
+    "judgment": "matched",
+    "match": {
+      "id": "Q12834857",
+      "name": "strength training",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento strength training (Q12834857) para las celdas que contienen \"Fuerza General\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Ciclismo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2215841",
+      "name": "cycle sport",
+      "types": [
+        "Q31629"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento cycle sport (Q2215841) para las celdas que contienen \"Ciclismo\" en la columna Actividad"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Actividad: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Actividad",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Actividad",
+    "similarValue": "Fútbol Americano",
+    "judgment": "matched",
+    "match": {
+      "id": "Q41323",
+      "name": "American football",
+      "types": [
+        "Q216048"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento American football (Q41323) para las celdas que contienen \"Fútbol Americano\" en la columna Actividad"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Actividad",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_Actividad",
+    "columnInsertIndex": 4,
+    "description": "Crear la columna same_as_Actividad en el índice 4 basada en la columna Actividad usando la expresión grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q1076486",
+        "name": "instalación deportiva"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Centro deportivo to type Q1076486"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Aluche",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191263",
+      "name": "Centro Deportivo Municipal Aluche",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Aluche (Q63191263) para las celdas que contienen \"Aluche\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Aluche",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191263",
+      "name": "Centro Deportivo Municipal Aluche",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Aluche (Q63191263) para las celdas que contienen \"Centro Deportivo Municipal Aluche\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Antonio Díaz Miguel",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191265",
+      "name": "Centro Deportivo Municipal Antonio Díaz Miguel",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Antonio Díaz Miguel (Q63191265) para las celdas que contienen \"Antonio Díaz Miguel\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Antonio Díaz Miguel",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191265",
+      "name": "Centro Deportivo Municipal Antonio Díaz Miguel",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Antonio Díaz Miguel (Q63191265) para las celdas que contienen \"Centro Deportivo Municipal Antonio Díaz Miguel\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Cerro Almodóvar",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191254",
+      "name": "Centro Deportivo Municipal Cerro Almodóvar",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Cerro Almodóvar (Q63191254) para las celdas que contienen \"Cerro Almodóvar\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Cerro Almodóvar",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191254",
+      "name": "Centro Deportivo Municipal Cerro Almodóvar",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Cerro Almodóvar (Q63191254) para las celdas que contienen \"Centro Deportivo Municipal Cerro Almodóvar\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Concepción",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191273",
+      "name": "Centro Deportivo Municipal Concepción",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Concepción (Q63191273) para las celdas que contienen \"Concepción\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Concepción",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191273",
+      "name": "Centro Deportivo Municipal Concepción",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Concepción (Q63191273) para las celdas que contienen \"Centro Deportivo Municipal Concepción\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Entrevías",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191249",
+      "name": "Centro Deportivo Municipal Entrevías",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Entrevías (Q63191249) para las celdas que contienen \"Entrevías\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Entrevías",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191249",
+      "name": "Centro Deportivo Municipal Entrevías",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Entrevías (Q63191249) para las celdas que contienen \"Centro Deportivo Municipal Entrevías\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Francisco Fernández Ochoa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191262",
+      "name": "Centro Deportivo Municipal Francisco Fernández Ochoa",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Francisco Fernández Ochoa (Q63191262) para las celdas que contienen \"Francisco Fernández Ochoa\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Francisco Fernández Ochoa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191262",
+      "name": "Centro Deportivo Municipal Francisco Fernández Ochoa",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Francisco Fernández Ochoa (Q63191262) para las celdas que contienen \"Centro Deportivo Municipal Francisco Fernández Ochoa\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Félix Rubio",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191223",
+      "name": "Centro Deportivo Municipal Félix Rubio",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Félix Rubio (Q63191223) para las celdas que contienen \"Félix Rubio\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Félix Rubio",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191223",
+      "name": "Centro Deportivo Municipal Félix Rubio",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Félix Rubio (Q63191223) para las celdas que contienen \"Centro Deportivo Municipal Félix Rubio\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Gallur",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191274",
+      "name": "Centro Deportivo Municipal Gallur",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Gallur (Q63191274) para las celdas que contienen \"Gallur\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Gallur",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191274",
+      "name": "Centro Deportivo Municipal Gallur",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Gallur (Q63191274) para las celdas que contienen \"Centro Deportivo Municipal Gallur\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Hortaleza",
+    "judgment": "matched",
+    "match": {
+      "id": "Q110749268",
+      "name": "Polideportivo de Hortaleza",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Polideportivo de Hortaleza (Q110749268) para las celdas que contienen \"Hortaleza\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Hortaleza",
+    "judgment": "matched",
+    "match": {
+      "id": "Q110749268",
+      "name": "Polideportivo de Hortaleza",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Polideportivo de Hortaleza (Q110749268) para las celdas que contienen \"Centro Deportivo Municipal Hortaleza\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Polideportivo de Hortaleza",
+    "judgment": "matched",
+    "match": {
+      "id": "Q110749268",
+      "name": "Polideportivo de Hortaleza",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Polideportivo de Hortaleza (Q110749268) para las celdas que contienen \"Polideportivo de Hortaleza\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "La Almudena",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191226",
+      "name": "Centro Deportivo Municipal La Almudena",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Almudena (Q63191226) para las celdas que contienen \"La Almudena\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal La Almudena",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191226",
+      "name": "Centro Deportivo Municipal La Almudena",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Almudena (Q63191226) para las celdas que contienen \"Centro Deportivo Municipal La Almudena\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "La Chopera",
+    "judgment": "matched",
+    "match": {
+      "id": "Q135957017",
+      "name": "Centro Deportivo Municipal La Chopera",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Chopera (Q135957017) para las celdas que contienen \"La Chopera\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal La Chopera",
+    "judgment": "matched",
+    "match": {
+      "id": "Q135957017",
+      "name": "Centro Deportivo Municipal La Chopera",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Chopera (Q135957017) para las celdas que contienen \"Centro Deportivo Municipal La Chopera\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "La Elipa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191248",
+      "name": "Centro Deportivo Municipal La Elipa",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Elipa (Q63191248) para las celdas que contienen \"La Elipa\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal La Elipa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191248",
+      "name": "Centro Deportivo Municipal La Elipa",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Elipa (Q63191248) para las celdas que contienen \"Centro Deportivo Municipal La Elipa\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "La Fundi",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191213",
+      "name": "Centro Deportivo Municipal La Fundi",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Fundi (Q63191213) para las celdas que contienen \"La Fundi\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal La Fundi",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191213",
+      "name": "Centro Deportivo Municipal La Fundi",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal La Fundi (Q63191213) para las celdas que contienen \"Centro Deportivo Municipal La Fundi\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Margot Moles",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191268",
+      "name": "Centro Deportivo Municipal Margot Moles",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Margot Moles (Q63191268) para las celdas que contienen \"Margot Moles\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Margot Moles",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191268",
+      "name": "Centro Deportivo Municipal Margot Moles",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Margot Moles (Q63191268) para las celdas que contienen \"Centro Deportivo Municipal Margot Moles\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Marqués de Samaranch",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30540859",
+      "name": "Polideportivo Municipal Marqués de Samaranch",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Polideportivo Municipal Marqués de Samaranch (Q30540859) para las celdas que contienen \"Marqués de Samaranch\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Marqués de Samaranch",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30540859",
+      "name": "Polideportivo Municipal Marqués de Samaranch",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Polideportivo Municipal Marqués de Samaranch (Q30540859) para las celdas que contienen \"Centro Deportivo Municipal Marqués de Samaranch\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Polideportivo Municipal Marqués de Samaranch",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30540859",
+      "name": "Polideportivo Municipal Marqués de Samaranch",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Polideportivo Municipal Marqués de Samaranch (Q30540859) para las celdas que contienen \"Polideportivo Municipal Marqués de Samaranch\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Palomeras",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191260",
+      "name": "Centro Deportivo Municipal Palomeras",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Palomeras (Q63191260) para las celdas que contienen \"Palomeras\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Palomeras",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191260",
+      "name": "Centro Deportivo Municipal Palomeras",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Palomeras (Q63191260) para las celdas que contienen \"Centro Deportivo Municipal Palomeras\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Pradillo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191256",
+      "name": "Centro Deportivo Municipal Pradillo",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Pradillo (Q63191256) para las celdas que contienen \"Pradillo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Pradillo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191256",
+      "name": "Centro Deportivo Municipal Pradillo",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Pradillo (Q63191256) para las celdas que contienen \"Centro Deportivo Municipal Pradillo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Pueblo Nuevo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191253",
+      "name": "Centro Deportivo Municipal Pueblo Nuevo",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Pueblo Nuevo (Q63191253) para las celdas que contienen \"Pueblo Nuevo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Pueblo Nuevo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191253",
+      "name": "Centro Deportivo Municipal Pueblo Nuevo",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Pueblo Nuevo (Q63191253) para las celdas que contienen \"Centro Deportivo Municipal Pueblo Nuevo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "San Blas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191258",
+      "name": "Centro Deportivo Municipal San Blas",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal San Blas (Q63191258) para las celdas que contienen \"San Blas\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal San Blas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191258",
+      "name": "Centro Deportivo Municipal San Blas",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal San Blas (Q63191258) para las celdas que contienen \"Centro Deportivo Municipal San Blas\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Vicente del Bosque",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191252",
+      "name": "Centro Deportivo Municipal Vicente del Bosque",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Vicente del Bosque (Q63191252) para las celdas que contienen \"Vicente del Bosque\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Deportivo Municipal Vicente del Bosque",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191252",
+      "name": "Centro Deportivo Municipal Vicente del Bosque",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Vicente del Bosque (Q63191252) para las celdas que contienen \"Centro Deportivo Municipal Vicente del Bosque\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Centro Integrado Arganzuela",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Centro Integrado Arganzuela\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Barajas",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Barajas\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Antiguo Canódromo",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Antiguo Canódromo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Blanca Fernández Ochoa",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Blanca Fernández Ochoa\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "La Masó - Luis de la Fuente",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"La Masó - Luis de la Fuente\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Luis Aragonés",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Luis Aragonés\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "María Jesús Rosa",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"María Jesús Rosa\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Cubo Gym Chamartín",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Cubo Gym Chamartín\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Las Cruces",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Las Cruces\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Moratalaz",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85751287",
+      "name": "Centro Deportivo Municipal Moratalaz",
+      "types": [
+        ""
+      ],
+      "score": 20
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Moratalaz (Q85751287) para las celdas que contienen \"Moratalaz\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Alfredo Goyeneche",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Alfredo Goyeneche\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Daoíz y Velarde",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6081742",
+      "name": "Centro Deportivo Municipal Daoíz y Velarde, Madrid",
+      "types": [
+        "Q16620760"
+      ],
+      "score": 68
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro Deportivo Municipal Daoíz y Velarde, Madrid (Q6081742) para las celdas que contienen \"Daoíz y Velarde\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "José María Cagigal",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"José María Cagigal\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Orcasitas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63191220",
+      "name": "Instalación Deportiva Municipal Básica Meseta de Orcasitas",
+      "types": [
+        "Q1076486"
+      ],
+      "score": 27
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Instalación Deportiva Municipal Básica Meseta de Orcasitas (Q63191220) para las celdas que contienen \"Orcasitas\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Gimnasio Moscardó",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Gimnasio Moscardó\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Orcasur",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Orcasur\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Faustina Valladolid",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Faustina Valladolid\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Juan de Dios Román",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Juan de Dios Román\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Miguel Guillén Prim",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Miguel Guillén Prim\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Plata y Castañar",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Plata y Castañar\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "San Cristóbal",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"San Cristóbal\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "El Quijote",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"El Quijote\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Fernando Martín",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Fernando Martín\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "El Espinillo",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"El Espinillo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Triángulo de Oro",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Triángulo de Oro\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Playa Victoria",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Playa Victoria\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Casa de Campo",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Casa de Campo\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Piscina Moscardó",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Piscina Moscardó\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "Wilfred Agbonavbare",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"Wilfred Agbonavbare\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Centro deportivo: juicio",
+          "expression": "grel:forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "Centro deportivo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "similarValue": "El Espinillo   -   Félix Rubio",
+    "description": "Borrar los datos de cotejo de las celdas que contienen \"El Espinillo   -   Félix Rubio\" en la columna Centro deportivo"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Centro deportivo",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_Centro_deportivo",
+    "columnInsertIndex": 9,
+    "description": "Crear la columna same_as_Centro_deportivo en el índice 9 basada en la columna Centro deportivo usando la expresión grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Actividad",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Actividad2",
+    "columnInsertIndex": 7,
+    "description": "Crear la columna Actividad2 en el índice 7 basada en la columna Actividad usando la expresión grel:value"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Actividad",
+    "newColumnName": "Actividad_reconcile",
+    "description": "Renombra la columna Actividad a Actividad_reconcile"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Actividad2",
+    "newColumnName": "Actividad",
+    "description": "Renombra la columna Actividad2 a Actividad"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Distrito",
+    "newColumnName": "Distrito_reconcile",
+    "description": "Renombra la columna Distrito a Distrito_reconcile"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Distrito_reconcile",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Distrito",
+    "columnInsertIndex": 12,
+    "description": "Crear la columna Distrito en el índice 12 basada en la columna Distrito_reconcile usando la expresión grel:value"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Centro deportivo",
+    "newColumnName": "Centro deportivo_reconcile",
+    "description": "Renombra la columna Centro deportivo a Centro deportivo_reconcile"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Centro deportivo_reconcile",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Centro deportivo",
+    "columnInsertIndex": 14,
+    "description": "Crear la columna Centro deportivo en el índice 14 basada en la columna Centro deportivo_reconcile usando la expresión grel:value"
+  }
+]

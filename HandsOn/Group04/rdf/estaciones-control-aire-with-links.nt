@@ -1,0 +1,364 @@
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <https://w3id.org/breatheplay-madrid/ontology#address> "Avda. La Gavia / Avda. Las Suertes"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/03> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/district/04> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.3947825"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2010-01-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/district/07> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079047"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.3730118"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <https://w3id.org/breatheplay-madrid/ontology#locatedInNeighbourhood> <https://w3id.org/breatheplay-madrid/resource/neighbourhood/041> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4079517"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "660"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station-type/uf> <http://www.w3.org/2000/01/rdf-schema#label> "Urbana fondo"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/11> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/041> <http://www.w3.org/2000/01/rdf-schema#label> "RECOLETOS"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Juan de Mariana / Plaza Amanecer Méndez Álvaro"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <http://www.w3.org/2000/01/rdf-schema#label> "Barajas Pueblo"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2009-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/11> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079024"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.5800258"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/02> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "02"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/14> <http://www.w3.org/2000/01/rdf-schema#label> "MORATALAZ"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/16> <http://www.w3.org/2000/01/rdf-schema#label> "HORTALEZA"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4769179"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/08> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ José Gutiérrez Abascal"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079018"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2010-02-08"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4238823"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1999-11-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <https://w3id.org/breatheplay-madrid/ontology#address> "Avda. Moratalaz esq. Camino de los Vinateros"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <http://www.w3.org/2000/01/rdf-schema#label> "Plaza Castilla"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/03> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079011"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079038"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/076> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q6122685> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <https://w3id.org/breatheplay-madrid/ontology#address> "Entre C/ Alcalá y C/ O’ Donell"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/153> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q71810> .
+<https://w3id.org/breatheplay-madrid/resource/district/18> <http://www.w3.org/2000/01/rdf-schema#label> "VILLA DE VALLECAS"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/09> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "09"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4215533"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079027"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/153> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#Neighbourhood> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/district/15> <http://www.w3.org/2000/01/rdf-schema#label> "CIUDAD LINEAL"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.609031"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079004"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/04> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "04"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/03> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q2002296> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/17> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <https://w3id.org/breatheplay-madrid/ontology#address> "Avda. La Guardia"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6453104"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "637"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/s> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/153> <https://w3id.org/breatheplay-madrid/ontology#isPartOfDistrict> <https://w3id.org/breatheplay-madrid/resource/district/15> .
+<https://w3id.org/breatheplay-madrid/resource/district/21> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "678"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "614"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <http://www.w3.org/2000/01/rdf-schema#label> "Barrio del Pilar"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <http://www.w3.org/2000/01/rdf-schema#label> "Méndez Álvaro"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/01> <http://www.w3.org/2000/01/rdf-schema#label> "CENTRO"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/14> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4400457"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <http://www.w3.org/2000/01/rdf-schema#label> "Juan Carlos I"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2010-02-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2009-11-23"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6121394"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/08> <http://www.w3.org/2000/01/rdf-schema#label> "FUENCARRAL-EL PARDO"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station-type/ut> <http://www.w3.org/2000/01/rdf-schema#label> "Urbana tráfico"@es .
+<https://w3id.org/breatheplay-madrid/resource/station-type/s> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#StationType> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <http://www.w3.org/2000/01/rdf-schema#label> "Ensanche de Vallecas"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/21> .
+<https://w3id.org/breatheplay-madrid/resource/district/17> <http://www.w3.org/2000/01/rdf-schema#label> "VILLAVERDE"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <http://www.w3.org/2000/01/rdf-schema#label> "Moratalaz"@es .
+<https://w3id.org/breatheplay-madrid/resource/station-type/s> <http://www.w3.org/2000/01/rdf-schema#label> "Suburbana"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <https://w3id.org/breatheplay-madrid/ontology#address> "Avda. Pablo Iglesias esq. C/ Marqués de Lema"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/09> <http://www.w3.org/2000/01/rdf-schema#label> "MONCLOA-ARAVACA"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/17> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "17"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4655841"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <https://w3id.org/breatheplay-madrid/ontology#address> "Avda. Ramón y Cajal esq. C/ Príncipe de Vergara"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/05> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "05"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/14> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q2076109> .
+<https://w3id.org/breatheplay-madrid/resource/district/17> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "675"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079050"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1999-09-30"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079060"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/15> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "645"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <https://w3id.org/breatheplay-madrid/ontology#address> "Plaza Tres Olivos"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-11-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/district/07> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "07"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/08> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/05> <http://www.w3.org/2000/01/rdf-schema#label> "CHAMARTIN"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/08> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/district/16> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <https://w3id.org/breatheplay-madrid/ontology#address> "Casa de Campo (Terminal del Teleférico)"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <http://www.w3.org/2000/01/rdf-schema#label> "Castellana"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/07> <http://www.w3.org/2000/01/rdf-schema#label> "CHAMBERI"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "700"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.5180701"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "625"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2010-01-20"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079058"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/084> <https://w3id.org/breatheplay-madrid/ontology#neighbourhoodCode> "084"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/041> <https://w3id.org/breatheplay-madrid/ontology#isPartOfDistrict> <https://w3id.org/breatheplay-madrid/resource/district/04> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/025> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#Neighbourhood> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/076> <https://w3id.org/breatheplay-madrid/ontology#neighbourhoodCode> "076"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/041> <https://w3id.org/breatheplay-madrid/ontology#neighbourhoodCode> "041"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2010-01-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6824999"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6392422"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <http://www.w3.org/2000/01/rdf-schema#label> "Escuelas Aguirre"@es .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/084> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q3773964> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2009-12-21"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/01> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "01"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Arroyo del Olivar esq. C/ Río Grande."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <http://www.w3.org/2000/01/rdf-schema#label> "Farolillo"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/21> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-05-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.5005477"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/05> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/14> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079040"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/03> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "03"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <https://w3id.org/breatheplay-madrid/ontology#address> "Plaza del Carmen esq. Tres Cruces"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6773491"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/09> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/district/11> <http://www.w3.org/2000/01/rdf-schema#label> "CARABANCHEL"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Arturo Soria esq. C/ Vizconde de los Asilos"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4193577"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079055"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <http://www.w3.org/2000/01/rdf-schema#label> "Casa de Campo"@es .
+<https://w3id.org/breatheplay-madrid/resource/district/04> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1773521> .
+<https://w3id.org/breatheplay-madrid/resource/district/02> <http://www.w3.org/2000/01/rdf-schema#label> "ARGANZUELA"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <http://www.w3.org/2000/01/rdf-schema#label> "Arturo Soria"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <http://www.w3.org/2000/01/rdf-schema#label> "Villaverde"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Juan Peñalver"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/16> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "16"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7071303"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/041> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#Neighbourhood> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "672"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station-type/uf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#StationType> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/18> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/07> .
+<https://w3id.org/breatheplay-madrid/resource/district/18> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <https://w3id.org/breatheplay-madrid/ontology#locatedInNeighbourhood> <https://w3id.org/breatheplay-madrid/resource/neighbourhood/153> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079008"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/11> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "11"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4623628"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/084> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#Neighbourhood> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "601"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.465144"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6515286"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7115364"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "611"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/05> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1766348> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <http://www.w3.org/2000/01/rdf-schema#label> "Ramón y Cajal"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <https://w3id.org/breatheplay-madrid/ontology#address> "Plaza Elíptica - Avda. Oporto"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <https://w3id.org/breatheplay-madrid/ontology#address> "Paseo Venezuela- Palacio de Velázquez"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079017"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079049"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <http://www.w3.org/2000/01/rdf-schema#label> "Cuatro Caminos"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/district/15> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "15"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "658"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/153> <https://w3id.org/breatheplay-madrid/ontology#neighbourhoodCode> "153"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <http://www.w3.org/2000/01/rdf-schema#label> "El Pardo"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/01> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/025> <http://www.w3.org/2000/01/rdf-schema#label> "DELICIAS"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/15> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "628"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/02> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "600"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4514734"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/025> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q3773736> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "709"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/05> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4942012"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/01> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1763376> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4782322"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079035"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079016"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7318356"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/09> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079048"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/153> <http://www.w3.org/2000/01/rdf-schema#label> "QUINTANA"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <http://www.w3.org/2000/01/rdf-schema#label> "Tres Olivos"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <http://www.w3.org/2000/01/rdf-schema#label> "Urb. Embajada"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <https://w3id.org/breatheplay-madrid/ontology#locatedInNeighbourhood> <https://w3id.org/breatheplay-madrid/resource/neighbourhood/084> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/03> <http://www.w3.org/2000/01/rdf-schema#label> "RETIRO"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <https://w3id.org/breatheplay-madrid/ontology#address> "Plaza Castilla (Canal)"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/district/18> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "18"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6903729"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/21> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/076> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#Neighbourhood> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <http://www.w3.org/2000/01/rdf-schema#label> "Plaza del Carmen"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079056"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7187679"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/084> <http://www.w3.org/2000/01/rdf-schema#label> "EL PILAR"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/district/04> <http://www.w3.org/2000/01/rdf-schema#label> "SALAMANCA"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Riaño (Barajas)"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/18> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1947988> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.3881478"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <http://www.w3.org/2000/01/rdf-schema#label> "Vallecas"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Princesa de Éboli esq. C/ María Tudor"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7133167"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/16> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/district/11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6605173"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/16> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1928529> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/076> <https://w3id.org/breatheplay-madrid/ontology#isPartOfDistrict> <https://w3id.org/breatheplay-madrid/resource/district/07> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079017> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.347147"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6897308"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "660"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <https://w3id.org/breatheplay-madrid/ontology#locatedInNeighbourhood> <https://w3id.org/breatheplay-madrid/resource/neighbourhood/076> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.3980991"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079036"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4455439"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/04> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <http://www.w3.org/2000/01/rdf-schema#label> "Plaza de España"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "605"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.5805649"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/09> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "671"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/17> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q919536> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079048> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4398904"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <https://w3id.org/breatheplay-madrid/ontology#address> "Avda. Betanzos esq. C/ Monforte de Lemos"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/041> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q3814551> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/district/21> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q807230> .
+<https://w3id.org/breatheplay-madrid/resource/district/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/district/09> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q2017682> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/13> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4192091"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station-type/ut> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#StationType> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.4144444"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/21> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "21"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/district/11> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1001991> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2001-03-31"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <https://w3id.org/breatheplay-madrid/ontology#locatedInNeighbourhood> <https://w3id.org/breatheplay-madrid/resource/neighbourhood/025> .
+<https://w3id.org/breatheplay-madrid/resource/district/21> <http://www.w3.org/2000/01/rdf-schema#label> "BARAJAS"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Farolillo - C/ Ervigio"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/025> <https://w3id.org/breatheplay-madrid/ontology#isPartOfDistrict> <https://w3id.org/breatheplay-madrid/resource/district/02> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <https://w3id.org/breatheplay-madrid/ontology#locatedInDistrict> <https://w3id.org/breatheplay-madrid/resource/district/05> .
+<https://w3id.org/breatheplay-madrid/resource/district/13> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q2003054> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079018> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2002-12-31"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/s> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079047> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6868138"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/08> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "08"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2010-02-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/s> .
+<https://w3id.org/breatheplay-madrid/resource/district/08> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q656196> .
+<https://w3id.org/breatheplay-madrid/resource/district/14> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "14"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079038> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "699"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/02> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q2000929> .
+<https://w3id.org/breatheplay-madrid/resource/district/13> <https://w3id.org/breatheplay-madrid/ontology#districtCode> "13"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "730"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/08> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#District> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <https://w3id.org/breatheplay-madrid/ontology#address> "Plaza de España"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6887449"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.3850336"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079039> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079039"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079060> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "709"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079049> <http://www.w3.org/2000/01/rdf-schema#label> "Parque del Retiro"@es .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/025> <https://w3id.org/breatheplay-madrid/ontology#neighbourhoodCode> "025"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <https://w3id.org/breatheplay-madrid/ontology#address> "C/ Júpiter, 21"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079040> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "678"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079016> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "695"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2009-12-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/uf> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079058> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7746101"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/breatheplay-madrid/ontology#MonitoringStation> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <https://w3id.org/breatheplay-madrid/ontology#startDate> "2009-12-11"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/076> <http://www.w3.org/2000/01/rdf-schema#label> "VALLEHERMOSO"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079057"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079050> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/sosa/Platform> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079035> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7031662"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/15> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1763694> .
+<https://w3id.org/breatheplay-madrid/resource/district/07> <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q1763370> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079057> <http://www.w3.org/2000/01/rdf-schema#label> "Sanchinarro"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <https://w3id.org/breatheplay-madrid/ontology#address> "Parque Juan Carlos I (frente oficinas mantenimiento)"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079011> <https://w3id.org/breatheplay-madrid/ontology#startDate> "1998-12-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/breatheplay-madrid/resource/neighbourhood/084> <https://w3id.org/breatheplay-madrid/ontology#isPartOfDistrict> <https://w3id.org/breatheplay-madrid/resource/district/08> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079027> <http://www.w3.org/2003/01/geo/wgs84_pos#alt> "619"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079059> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079059"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079004> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7122567"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079024> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.7473445"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079054> <https://w3id.org/breatheplay-madrid/ontology#stationCode> "28079054"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079008> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6823158"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/breatheplay-madrid/resource/district/13> <http://www.w3.org/2000/01/rdf-schema#label> "PUENTE DE VALLECAS"@es .
+<https://w3id.org/breatheplay-madrid/resource/station/28079036> <https://w3id.org/breatheplay-madrid/ontology#hasStationType> <https://w3id.org/breatheplay-madrid/resource/station-type/ut> .
+<https://w3id.org/breatheplay-madrid/resource/station/28079056> <http://www.w3.org/2000/01/rdf-schema#label> "Plaza Elíptica"@es .

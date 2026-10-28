@@ -1,0 +1,23 @@
+property_id,csv_column,name_en,wikidata
+PM1,PM1,PM1,
+PM2_5,PM2.5,PM 2.5,http://www.wikidata.org/entity/Q48035814
+PM10,PM10,PM10 (including PM 2.5),http://www.wikidata.org/entity/Q48035511
+NO,NO,nitric oxide,http://www.wikidata.org/entity/Q207843
+NO2,NO2,nitrogen dioxide,http://www.wikidata.org/entity/Q207895
+NOx,NOx,nitrogen oxides,
+O3,O3,ozone,http://www.wikidata.org/entity/Q36933
+SO2,SO2,sulfur dioxide,http://www.wikidata.org/entity/Q5282
+CO,CO,carbon monoxide,http://www.wikidata.org/entity/Q2025
+NH3,NH3,ammonia,http://www.wikidata.org/entity/Q4087
+C7H8,C7H8,toluene,http://www.wikidata.org/entity/Q15779
+C6H6,C6H6,benzene,http://www.wikidata.org/entity/Q2270
+C8H10,C8H10,xylene,http://www.wikidata.org/entity/Q208366
+Noise,Ruido,noise,
+WindSpeed,Velocidad del viento,wind speed,http://www.wikidata.org/entity/Q1464943
+WindDirection,Dirección del viento,wind direction,http://www.wikidata.org/entity/Q1057900
+MaxWindSpeed,Velocidad máxima del viento,maximum wind speed,
+Temperature,Temperatura,temperature,http://www.wikidata.org/entity/Q11466
+RelativeHumidity,Humedad relativa,relative humidity,http://www.wikidata.org/entity/Q2499617
+Pressure,Presión,atmospheric pressure,http://www.wikidata.org/entity/Q81809
+SolarRadiation,Radiación,solar radiation,http://www.wikidata.org/entity/Q17996169
+Precipitation,Precipitación,precipitation,http://www.wikidata.org/entity/Q25257

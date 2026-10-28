@@ -28,7 +28,7 @@ WHERE {
 # Q3. Datatype used by each datatype property (checklist: every value has
 #     its datatype, and the correct one, as in the ontology ranges)
 # Expected: parkNumber, facilityGisObjectId, artworkGisObjectId -> xsd:integer;
-#           latitude, longitude -> xsd:decimal; rdfs:label -> rdf:langString; every other property -> xsd:string
+#           latitude, longitude -> xsd:decimal; every other property -> xsd:string
 # ---------------------------------------------------------------
 SELECT ?property ?datatype (COUNT(*) AS ?values)
 WHERE {

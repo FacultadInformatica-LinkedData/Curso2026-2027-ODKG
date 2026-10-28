@@ -1,0 +1,152 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CODIGO",
+    "expression": "jython:d = {\"28079004\": \"MONCLOA-ARAVACA\", \"28079008\": \"SALAMANCA\", \"28079011\": \"CHAMARTIN\", \"28079016\": \"CIUDAD LINEAL\", \"28079017\": \"VILLAVERDE\", \"28079018\": \"CARABANCHEL\", \"28079024\": \"MONCLOA-ARAVACA\", \"28079027\": \"BARAJAS\", \"28079035\": \"CENTRO\", \"28079036\": \"MORATALAZ\", \"28079038\": \"CHAMBERI\", \"28079039\": \"FUENCARRAL-EL PARDO\", \"28079040\": \"PUENTE DE VALLECAS\", \"28079047\": \"ARGANZUELA\", \"28079048\": \"CHAMARTIN\", \"28079049\": \"RETIRO\", \"28079050\": \"CHAMARTIN\", \"28079054\": \"VILLA DE VALLECAS\", \"28079055\": \"BARAJAS\", \"28079056\": \"CARABANCHEL\", \"28079057\": \"HORTALEZA\", \"28079058\": \"FUENCARRAL-EL PARDO\", \"28079059\": \"BARAJAS\", \"28079060\": \"FUENCARRAL-EL PARDO\"}\nreturn d.get(str(value).split(\".\")[0])",
+    "onError": "set-to-blank",
+    "newColumnName": "DISTRITO",
+    "columnInsertIndex": 1,
+    "description": "Create column DISTRITO at index 1 based on column CODIGO using expression jython:d = {\"28079004\": \"MONCLOA-ARAVACA\", \"28079008\": \"SALAMANCA\", \"28079011\": \"CHAMARTIN\", \"28079016\": \"CIUDAD LINEAL\", \"28079017\": \"VILLAVERDE\", \"28079018\": \"CARABANCHEL\", \"28079024\": \"MONCLOA-ARAVACA\", \"28079027\": \"BARAJAS\", \"28079035\": \"CENTRO\", \"28079036\": \"MORATALAZ\", \"28079038\": \"CHAMBERI\", \"28079039\": \"FUENCARRAL-EL PARDO\", \"28079040\": \"PUENTE DE VALLECAS\", \"28079047\": \"ARGANZUELA\", \"28079048\": \"CHAMARTIN\", \"28079049\": \"RETIRO\", \"28079050\": \"CHAMARTIN\", \"28079054\": \"VILLA DE VALLECAS\", \"28079055\": \"BARAJAS\", \"28079056\": \"CARABANCHEL\", \"28079057\": \"HORTALEZA\", \"28079058\": \"FUENCARRAL-EL PARDO\", \"28079059\": \"BARAJAS\", \"28079060\": \"FUENCARRAL-EL PARDO\"}\nreturn d.get(str(value).split(\".\")[0])"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DISTRITO",
+    "expression": "jython:c = {\"CENTRO\": \"01\", \"ARGANZUELA\": \"02\", \"RETIRO\": \"03\", \"SALAMANCA\": \"04\", \"CHAMARTIN\": \"05\", \"TETUAN\": \"06\", \"CHAMBERI\": \"07\", \"FUENCARRAL-EL PARDO\": \"08\", \"MONCLOA-ARAVACA\": \"09\", \"LATINA\": \"10\", \"CARABANCHEL\": \"11\", \"USERA\": \"12\", \"PUENTE DE VALLECAS\": \"13\", \"MORATALAZ\": \"14\", \"CIUDAD LINEAL\": \"15\", \"HORTALEZA\": \"16\", \"VILLAVERDE\": \"17\", \"VILLA DE VALLECAS\": \"18\", \"VICALVARO\": \"19\", \"SAN BLAS-CANILLEJAS\": \"20\", \"BARAJAS\": \"21\"}\nreturn c.get(value)",
+    "onError": "set-to-blank",
+    "newColumnName": "COD_DISTRITO",
+    "columnInsertIndex": 2,
+    "description": "Create column COD_DISTRITO at index 2 based on column DISTRITO using expression jython:c = {\"CENTRO\": \"01\", \"ARGANZUELA\": \"02\", \"RETIRO\": \"03\", \"SALAMANCA\": \"04\", \"CHAMARTIN\": \"05\", \"TETUAN\": \"06\", \"CHAMBERI\": \"07\", \"FUENCARRAL-EL PARDO\": \"08\", \"MONCLOA-ARAVACA\": \"09\", \"LATINA\": \"10\", \"CARABANCHEL\": \"11\", \"USERA\": \"12\", \"PUENTE DE VALLECAS\": \"13\", \"MORATALAZ\": \"14\", \"CIUDAD LINEAL\": \"15\", \"HORTALEZA\": \"16\", \"VILLAVERDE\": \"17\", \"VILLA DE VALLECAS\": \"18\", \"VICALVARO\": \"19\", \"SAN BLAS-CANILLEJAS\": \"20\", \"BARAJAS\": \"21\"}\nreturn c.get(value)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CODIGO",
+    "expression": "jython:b = {\"28079008\": \"RECOLETOS\", \"28079016\": \"QUINTANA\", \"28079038\": \"VALLEHERMOSO\", \"28079039\": \"EL PILAR\", \"28079047\": \"DELICIAS\"}\nreturn b.get(str(value).split(\".\")[0])",
+    "onError": "set-to-blank",
+    "newColumnName": "BARRIO",
+    "columnInsertIndex": 1,
+    "description": "Create column BARRIO at index 1 based on column CODIGO using expression jython:b = {\"28079008\": \"RECOLETOS\", \"28079016\": \"QUINTANA\", \"28079038\": \"VALLEHERMOSO\", \"28079039\": \"EL PILAR\", \"28079047\": \"DELICIAS\"}\nreturn b.get(str(value).split(\".\")[0])"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BARRIO",
+    "expression": "jython:i = {\"RECOLETOS\": \"041\", \"QUINTANA\": \"153\", \"VALLEHERMOSO\": \"076\", \"EL PILAR\": \"084\", \"DELICIAS\": \"025\"}\nreturn i.get(value)",
+    "onError": "set-to-blank",
+    "newColumnName": "BARRIO_ID",
+    "columnInsertIndex": 2,
+    "description": "Create column BARRIO_ID at index 2 based on column BARRIO using expression jython:i = {\"RECOLETOS\": \"041\", \"QUINTANA\": \"153\", \"VALLEHERMOSO\": \"076\", \"EL PILAR\": \"084\", \"DELICIAS\": \"025\"}\nreturn i.get(value)"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "distrito de Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column DISTRITO to type Q3032114"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DISTRITO",
+    "expression": "grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "DISTRITO_WIKIDATA",
+    "columnInsertIndex": 4,
+    "description": "Create column DISTRITO_WIKIDATA at index 4 based on column DISTRITO using expression grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "clearData": true,
+    "description": "Discard recon judgments and clear recon data for cells in column DISTRITO"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "barrio administrativo de Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column BARRIO to type Q10267336"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BARRIO",
+    "expression": "grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "BARRIO_WIKIDATA",
+    "columnInsertIndex": 2,
+    "description": "Create column BARRIO_WIKIDATA at index 2 based on column BARRIO using expression grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "clearData": true,
+    "description": "Discard recon judgments and clear recon data for cells in column BARRIO"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "COD_DISTRITO",
+    "newColumnName": "COD-DISTRITO",
+    "description": "Rename column COD_DISTRITO to COD-DISTRITO"
+  }
+]

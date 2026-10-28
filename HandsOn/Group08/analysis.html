@@ -435,13 +435,13 @@
   <tr><td>Tree species</td><td><code>.../resource/TreeSpecies/{cat_especie_id}</code></td><td><code>.../resource/TreeSpecies/108</code></td></tr>
   <tr><td>Neighbourhood</td><td><code>.../resource/Neighbourhood/{neighbourhood_code}</code></td><td><code>.../resource/Neighbourhood/65</code></td></tr>
   <tr><td>District</td><td><code>.../resource/District/{district_code}</code></td><td><code>.../resource/District/10</code></td></tr>
-  <tr><td>Facility</td><td>No pattern: the URI of its Wikidata item</td><td><code>http://www.wikidata.org/entity/Q85692758</code></td></tr>
+  <tr><td>Facility</td><td><code>.../resource/Facility/{wikidata_id}</code></td><td><code>.../resource/Facility/Q85692758</code></td></tr>
 </table>
 
 <h3>3.3 Rules for the identifiers</h3>
 <ul>
   <li><strong>Source keys.</strong> Identifiers come from the stable, unique keys of the sources, never from names, addresses or districts, which change and contain accents and spaces. Only letters, digits and hyphens are used.</li>
-  <li><strong>Class in the path.</strong> An individual is named after its most specific class (for example <code>ClimateShelter</code>, never <code>UrbanElement</code>), so each individual has exactly one URI. <code>hr:UrbanElement</code> has no pattern because it has no direct individuals, and <code>hr:Facility</code> has none because its instances are Wikidata items.</li>
+  <li><strong>Class in the path.</strong> An individual is named after its most specific class (for example <code>ClimateShelter</code>, never <code>UrbanElement</code>), so each individual has exactly one URI. <code>hr:UrbanElement</code> has no pattern because it has no direct individuals. The identifier of a <code>hr:Facility</code> is the code of the Wikidata item of the place it represents (for example <code>Q85692758</code>).</li>
   <li><strong>Shelters: one URI per record.</strong> The identifier is <code>register_id</code>, without the hidden character U+FEFF that precedes it in the file (see 1.4). Records are not merged into facilities, because 94 records share street and number with another record (see 1.4) and sharing an address does not prove that they are the same place. Duplicates are handled when counting, not in the URI.</li>
   <li><strong>Fountains.</strong> The identifier is <code>CODI</code> (for example <code>01-004</code>). The hyphen is valid in a URI.</li>
   <li><strong>Street trees.</strong> The identifier is <code>codi</code>, which is unique in the 145,034 records. It is kept as text because it has leading zeros and letters (<code>0000423AR</code>). The class covers both the 140,271 trees and the 4,763 palms of the file.</li>
@@ -458,7 +458,7 @@
   <li><strong>Persistence.</strong> The URIs contain no server name, no file extension, no query and no version number, so they do not have to change if the hosting changes.</li>
   <li><strong>Other datasets.</strong> The project never mints URIs inside the Wikidata namespace. Neighbourhoods and districts are linked to their Wikidata items with <code>owl:sameAs</code>, because both URIs identify the same place.</li>
   <li><strong>Tree species and Wikidata.</strong> <code>owl:sameAs</code> is used only when the entry of the city is the same taxon as the Wikidata item, for example <em>Pinus pinea</em> (id 108); a synonym such as <em>Platanus &times; acerifolia</em> for <em>Platanus &times; hispanica</em> is the same taxon. Cultivars, varieties and forms are linked to the item of their species with <code>skos:broadMatch</code>. The reason is that <code>owl:sameAs</code> is symmetric and transitive: if <em>Platanus &times; acerifolia</em> (id 126) and its cultivar 'Alphen's Globe' (id 5286580) were both declared <code>owl:sameAs</code> the same item, the two entries would become the same resource.</li>
-  <li><strong>Shelters and Wikidata.</strong> Shelters are not linked with <code>owl:sameAs</code> either. A shelter is often only a part of the place that hosts it (for example the water-play area of a park), so the link to the Wikidata item of that place (a library, a market, a park) uses the object property <code>hr:isHostedBy</code>, whose range is <code>hr:Facility</code>.</li>
+  <li><strong>Shelters and Wikidata.</strong> Shelters are not linked with <code>owl:sameAs</code> either. A shelter is often only a part of the place that hosts it (for example the water-play area of a park), so the shelter points to that place with the object property <code>hr:isHostedBy</code>, whose range is <code>hr:Facility</code>. Each place is a resource of the project (<code>.../resource/Facility/{wikidata_id}</code>) that is linked with <code>owl:sameAs</code> to the Wikidata item of the library, market or park, as in the course slides.</li>
 </ul>
 
 <h3>3.5 Requirements of the strategy</h3>

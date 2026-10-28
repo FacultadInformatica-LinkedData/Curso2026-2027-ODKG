@@ -38,23 +38,21 @@ ORDER BY ?stationName
 # Q4 - Find stations in Berlin served by line 3.
 SELECT DISTINCT ?station ?stationName ?stateName ?line ?wikidata
 WHERE {
-  VALUES ?state { <https://example.org/db-delays/resource/State/Berlin> }
-  VALUES ?line { "3" }
-
   ?station a db:Station ;
            rdfs:label ?stationName ;
            db:inCity ?city ;
            owl:sameAs ?wikidata .
 
   ?city a db:City ;
-        db:inState ?state .
+        db:inState <https://example.org/db-delays/resource/State/Berlin> .
 
-  ?state a db:State ;
+  <https://example.org/db-delays/resource/State/Berlin> a db:State ;
          rdfs:label ?stateName .
 
   ?stop a db:TrainStop ;
         db:atStation ?station ;
-        db:lineLabel ?line .
+        db:lineLabel "3" .
+  BIND("3" AS ?line)
 }
 ORDER BY ?stationName
 

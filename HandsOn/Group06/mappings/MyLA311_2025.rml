@@ -3,7 +3,8 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix la311: <http://www.owl-ontologies.com/la311#>.
+@prefix geo: <http://www.opengis.net/ont/geosparql#>.
+@prefix la311: <http://linkeddata.la311.com/ontology#>.
 @base <http://linkeddata.la311.com/mapping#>.
 
 
@@ -13,7 +14,7 @@
 
 <#ServiceRequestMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "csv/MyLA311_2025-updated.csv" ;
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -95,6 +96,15 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate la311:requestSource;
+    rr:objectMap [
+      rml:reference "RequestSource";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate la311:status;
     rr:objectMap [
       rml:reference "Status";
@@ -106,54 +116,76 @@
   rr:predicateObjectMap [
     rr:predicate la311:responsible;
     rr:objectMap [
-      rr:parentTriplesMap <#OrganizationMap>;
-      rr:joinCondition [
-        rr:child "SRNumber";
-        rr:parent "SRNumber"
-      ]
+      rr:template "http://linkeddata.la311.com/resource/Organization/{Owner}";
+      rr:termType rr:IRI
     ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate la311:assignedTo;
     rr:objectMap [
-      rr:parentTriplesMap <#ServiceMap>;
-      rr:joinCondition [
-        rr:child "SRNumber";
-        rr:parent "SRNumber"
-      ]
+      rr:template "http://linkeddata.la311.com/resource/Service/{AssignTo}";
+      rr:termType rr:IRI
     ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate la311:reportedBy;
     rr:objectMap [
-      rr:parentTriplesMap <#AgentMap>;
-      rr:joinCondition [
-        rr:child "SRNumber";
-        rr:parent "SRNumber"
-      ]
+      rr:template "http://linkeddata.la311.com/resource/AnonymousPerson/{AnonymousReporter}";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:reportedBy;
+    rr:objectMap [
+      rr:template "http://linkeddata.la311.com/resource/Organization/{OrganizationReporter}";
+      rr:termType rr:IRI
     ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate la311:hasLocation;
     rr:objectMap [
-      rr:parentTriplesMap <#LocationMap>;
-      rr:joinCondition [
-        rr:child "SRNumber";
-        rr:parent "SRNumber"
-      ]
+      rr:template "http://linkeddata.la311.com/resource/Location/{Latitude},{Longitude}";
+      rr:termType rr:IRI
     ]
   ].
+
+
+#################################################################
+#    AnonymousPerson
+#################################################################
+
+<#AnonymousPersonMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/AnonymousPerson/{AnonymousReporter}";
+    rr:termType rr:IRI;
+    rr:class la311:AnonymousPerson
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rr:template "Anonymous Reporter ({AnonymousReporter})";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ].
+
 
 #################################################################
 #    Organization (Owner)
 #################################################################
 
-<#OrganizationMap> a rr:TriplesMap;
+<#OrganizationOwnerMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "csv/MyLA311_2025-updated.csv" ;
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -180,13 +212,48 @@
     ]
   ].
 
+
+#################################################################
+#    Organization (Reporter)
+#################################################################
+
+<#OrganizationReporterMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://linkeddata.la311.com/resource/Organization/{OrganizationReporter}";
+    rr:termType rr:IRI;
+    rr:class la311:Organization
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "OrganizationReporter";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:name;
+    rr:objectMap [
+      rml:reference "OrganizationReporter";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ].
+
+
 #################################################################
 #    Service (AssignTo)
 #################################################################
 
 <#ServiceMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "csv/MyLA311_2025-updated.csv" ;
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -213,29 +280,6 @@
     ]
   ].
 
-#################################################################
-#    Agent (CreatedByUserOrganization)
-#################################################################
-
-<#AgentMap> a rr:TriplesMap;
-  rml:logicalSource [
-    rml:source "csv/MyLA311_2025-updated.csv" ;
-    rml:referenceFormulation ql:CSV
-  ];
-  rr:subjectMap [
-    rr:template "http://linkeddata.la311.com/resource/Agent/{CreatedByUserOrganization}";
-    rr:termType rr:IRI;
-    rr:class la311:Agent
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate rdfs:label;
-    rr:objectMap [
-      rml:reference "CreatedByUserOrganization";
-      rr:termType rr:Literal;
-      rr:datatype xsd:string
-    ]
-  ].
 
 #################################################################
 #    Location
@@ -243,7 +287,7 @@
 
 <#LocationMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "csv/MyLA311_2025-updated.csv" ;
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -271,6 +315,60 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate la311:approximateAddress;
+    rr:objectMap [
+      rml:reference "ApproximateAddress";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:houseNumber;
+    rr:objectMap [
+      rml:reference "HouseNumber";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:streetDirection;
+    rr:objectMap [
+      rml:reference "Direction";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:streetName;
+    rr:objectMap [
+      rml:reference "StreetName";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:streetSuffix;
+    rr:objectMap [
+      rml:reference "Suffix";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate la311:zipCode;
+    rr:objectMap [
+      rml:reference "ZipCode";
+      rr:termType rr:Literal;
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate la311:latitude;
     rr:objectMap [
       rml:reference "Latitude";
@@ -289,15 +387,22 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate geo:asWKT;
+    rr:objectMap [
+      rml:reference "Location";
+      rr:termType rr:Literal;
+      rr:datatype geo:wktLiteral
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate la311:isWithin;
     rr:objectMap [
-      rr:parentTriplesMap <#AdministrativeRegionMap>;
-      rr:joinCondition [
-        rr:child "SRNumber";
-        rr:parent "SRNumber"
-      ]
+      rr:template "http://linkeddata.la311.com/resource/AdministrativeRegion/{NC}_{CD}";
+      rr:termType rr:IRI
     ]
   ].
+
 
 #################################################################
 #    AdministrativeRegion
@@ -305,7 +410,7 @@
 
 <#AdministrativeRegionMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "csv/MyLA311_2025-updated.csv" ;
+    rml:source "csv/MyLA311_2025-updated-truncated.csv" ;
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [

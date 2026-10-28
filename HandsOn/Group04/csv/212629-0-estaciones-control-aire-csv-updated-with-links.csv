@@ -1,0 +1,25 @@
+CODIGO,BARRIO,BARRIO_WIKIDATA,BARRIO_ID,DISTRITO,DISTRITO_WIKIDATA,COD-DISTRITO,ESTACION,DIRECCION,ALTITUD,COD_TIPO,NOM_TIPO,FECHA_ALTA,LATITUD,LONGITUD
+28079004,,,,MONCLOA-ARAVACA,http://www.wikidata.org/entity/Q2017682,09,Plaza de España,Plaza de España,637,ut,Urbana tráfico,1998-12-01,40.4238823,-3.7122567
+28079008,RECOLETOS,http://www.wikidata.org/entity/Q3814551,041,SALAMANCA,http://www.wikidata.org/entity/Q1773521,04,Escuelas Aguirre,Entre C/ Alcalá y C/ O’ Donell,672,ut,Urbana tráfico,1998-12-01,40.4215533,-3.6823158
+28079011,,,,CHAMARTIN,http://www.wikidata.org/entity/Q1766348,05,Ramón y Cajal,Avda. Ramón y Cajal esq. C/ Príncipe de Vergara,709,ut,Urbana tráfico,1998-12-01,40.4514734,-3.6773491
+28079016,QUINTANA,http://www.wikidata.org/entity/Q71810,153,CIUDAD LINEAL,http://www.wikidata.org/entity/Q1763694,15,Arturo Soria,C/ Arturo Soria esq. C/ Vizconde de los Asilos,695,uf,Urbana fondo,1998-12-01,40.4400457,-3.6392422
+28079017,,,,VILLAVERDE,http://www.wikidata.org/entity/Q919536,17,Villaverde,C/ Juan Peñalver,601,uf,Urbana fondo,1998-12-01,40.347147,-3.7133167
+28079018,,,,CARABANCHEL,http://www.wikidata.org/entity/Q1001991,11,Farolillo,C/ Farolillo - C/ Ervigio,625,uf,Urbana fondo,2001-03-31,40.3947825,-3.7318356
+28079024,,,,MONCLOA-ARAVACA,http://www.wikidata.org/entity/Q2017682,09,Casa de Campo,Casa de Campo (Terminal del Teleférico),645,s,Suburbana,1998-12-01,40.4193577,-3.7473445
+28079027,,,,BARAJAS,http://www.wikidata.org/entity/Q807230,21,Barajas Pueblo,"C/ Júpiter, 21",619,uf,Urbana fondo,2002-12-31,40.4769179,-3.5800258
+28079035,,,,CENTRO,http://www.wikidata.org/entity/Q1763376,01,Plaza del Carmen,Plaza del Carmen esq. Tres Cruces,660,uf,Urbana fondo,1999-11-01,40.4192091,-3.7031662
+28079036,,,,MORATALAZ,http://www.wikidata.org/entity/Q2076109,14,Moratalaz,Avda. Moratalaz esq. Camino de los Vinateros,671,ut,Urbana tráfico,1998-12-01,40.4079517,-3.6453104
+28079038,VALLEHERMOSO,http://www.wikidata.org/entity/Q6122685,076,CHAMBERI,http://www.wikidata.org/entity/Q1763370,07,Cuatro Caminos,Avda. Pablo Iglesias esq. C/ Marqués de Lema,699,ut,Urbana tráfico,1998-11-01,40.4455439,-3.7071303
+28079039,EL PILAR,http://www.wikidata.org/entity/Q3773964,084,FUENCARRAL-EL PARDO,http://www.wikidata.org/entity/Q656196,08,Barrio del Pilar,Avda. Betanzos esq. C/ Monforte de Lemos,675,ut,Urbana tráfico,1998-05-01,40.4782322,-3.7115364
+28079040,,,,PUENTE DE VALLECAS,http://www.wikidata.org/entity/Q2003054,13,Vallecas,C/ Arroyo del Olivar esq. C/ Río Grande.,678,uf,Urbana fondo,1999-09-30,40.3881478,-3.6515286
+28079047,DELICIAS,http://www.wikidata.org/entity/Q3773736,025,ARGANZUELA,http://www.wikidata.org/entity/Q2000929,02,Méndez Álvaro,C/ Juan de Mariana / Plaza Amanecer Méndez Álvaro,600,uf,Urbana fondo,2009-12-21,40.3980991,-3.6868138
+28079048,,,,CHAMARTIN,http://www.wikidata.org/entity/Q1766348,05,Castellana,C/ José Gutiérrez Abascal,678,ut,Urbana tráfico,2010-02-01,40.4398904,-3.6903729
+28079049,,,,RETIRO,http://www.wikidata.org/entity/Q2002296,03,Parque del Retiro,Paseo Venezuela- Palacio de Velázquez,658,uf,Urbana fondo,2010-01-01,40.4144444,-3.6824999
+28079050,,,,CHAMARTIN,http://www.wikidata.org/entity/Q1766348,05,Plaza Castilla,Plaza Castilla (Canal),730,ut,Urbana tráfico,2010-02-01,40.4655841,-3.6887449
+28079054,,,,VILLA DE VALLECAS,http://www.wikidata.org/entity/Q1947988,18,Ensanche de Vallecas,Avda. La Gavia / Avda. Las Suertes,628,uf,Urbana fondo,2009-12-11,40.3730118,-3.6121394
+28079055,,,,BARAJAS,http://www.wikidata.org/entity/Q807230,21,Urb. Embajada,C/ Riaño (Barajas),614,uf,Urbana fondo,2010-01-20,40.4623628,-3.5805649
+28079056,,,,CARABANCHEL,http://www.wikidata.org/entity/Q1001991,11,Plaza Elíptica,Plaza Elíptica - Avda. Oporto,605,ut,Urbana tráfico,2010-01-18,40.3850336,-3.7187679
+28079057,,,,HORTALEZA,http://www.wikidata.org/entity/Q1928529,16,Sanchinarro,C/ Princesa de Éboli esq. C/ María Tudor,700,uf,Urbana fondo,2009-11-23,40.4942012,-3.6605173
+28079058,,,,FUENCARRAL-EL PARDO,http://www.wikidata.org/entity/Q656196,08,El Pardo,Avda. La Guardia,611,s,Suburbana,2009-12-01,40.5180701,-3.7746101
+28079059,,,,BARAJAS,http://www.wikidata.org/entity/Q807230,21,Juan Carlos I,Parque Juan Carlos I (frente oficinas mantenimiento),660,s,Suburbana,2009-12-14,40.465144,-3.609031
+28079060,,,,FUENCARRAL-EL PARDO,http://www.wikidata.org/entity/Q656196,08,Tres Olivos,Plaza Tres Olivos,709,uf,Urbana fondo,2010-02-08,40.5005477,-3.6897308

@@ -1,0 +1,209 @@
+@prefix rr:      <http://www.w3.org/ns/r2rml#> .
+@prefix rml:     <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:      <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix mn:      <https://madridnoise.linkeddata.es/ontology#> .
+@base <https://madridnoise.linkeddata.es/mapping/contaminacion_acustica-with-links#> .
+
+<#ObservationMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/contaminacion_acustica-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/observation/{observation_id}" ; rr:class mn:DailyNoiseObservation ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:template "Noise observation {station_code} {date} {period}" ; rr:termType rr:Literal ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:recordedAt ;
+    rr:objectMap [ rr:template "https://madridnoise.linkeddata.es/resource/station/{station_code}" ; rr:termType rr:IRI ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:forPeriod ;
+    rr:objectMap [ rr:template "https://madridnoise.linkeddata.es/resource/period/{period}" ; rr:termType rr:IRI ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:observationDate ;
+    rr:objectMap [ rml:reference "date" ; rr:datatype xsd:date ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:laeq ;
+    rr:objectMap [ rml:reference "laeq" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las01 ;
+    rr:objectMap [ rml:reference "l1" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las10 ;
+    rr:objectMap [ rml:reference "l10" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las50 ;
+    rr:objectMap [ rml:reference "l50" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las90 ;
+    rr:objectMap [ rml:reference "l90" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:las99 ;
+    rr:objectMap [ rml:reference "l99" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:percentileOrderViolation ;
+    rr:objectMap [ rml:reference "percentile_order_violation" ; rr:datatype xsd:boolean ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:objectMap [ rr:constant <https://madridnoise.linkeddata.es/dataset/daily-noise> ]
+  ] .
+
+<#PeriodMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/periods.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/period/{period}" ; rr:class mn:DayPeriod ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "label" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:periodCode ;
+    rr:objectMap [ rml:reference "period" ; rr:datatype xsd:string ]
+  ] .
+
+<#StationMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/estaciones_acusticas-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/station/{station_code}" ; rr:class mn:NoiseMonitoringStation ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "station_name" ; rr:language "es" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:stationCode ;
+    rr:objectMap [ rml:reference "station_code" ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:stationName ;
+    rr:objectMap [ rml:reference "station_name" ; rr:datatype xsd:string ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:latitude ;
+    rr:objectMap [ rml:reference "latitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:longitude ;
+    rr:objectMap [ rml:reference "longitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:spatial ;
+    rr:objectMap [ rr:template "https://madridnoise.linkeddata.es/resource/district/{district_id}" ; rr:termType rr:IRI ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:objectMap [ rr:constant <https://madridnoise.linkeddata.es/dataset/stations> ]
+  ] .
+
+<#StationDistrictMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/contaminacion_acustica-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/district/{station_district_id}" ; rr:class mn:District ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "station_district_label" ; rr:language "es" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs ;
+    rr:objectMap [ rml:reference "station_district_wikidata" ; rr:termType rr:IRI ]
+  ] .
+
+<#NoiseDatasetMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/contaminacion_acustica-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:constant <https://madridnoise.linkeddata.es/dataset/daily-noise> ; rr:class dcat:Dataset ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Madrid daily noise measurements (Linked Data)" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:title ;
+    rr:objectMap [ rr:constant "Madrid daily noise measurements (Linked Data)" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:description ;
+    rr:objectMap [ rr:constant "All 78,230 cleaned station/date/period observations from 2025-01-01 to 2026-10-04. Published acoustic measurements are preserved, including flagged percentile sequences; unavailable values are omitted. Station and district descriptions use the current catalogue and do not establish historical locations or district classifications." ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:source ;
+    rr:objectMap [ rr:constant <https://datos.madrid.es/dataset/215885-0-contaminacion-ruido> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate prov:wasDerivedFrom ;
+    rr:objectMap [ rr:constant <https://datos.madrid.es/dataset/215885-0-contaminacion-ruido> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:license ;
+    rr:objectMap [ rr:constant <https://creativecommons.org/licenses/by/4.0/> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:rightsHolder ;
+    rr:objectMap [ rr:constant <http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:created ;
+    rr:objectMap [ rr:constant "2026-10-25" ; rr:datatype xsd:date ]
+  ] .
+
+<#StationsDatasetMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/estaciones_acusticas-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:constant <https://madridnoise.linkeddata.es/dataset/stations> ; rr:class dcat:Dataset ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Madrid acoustic station catalog (Linked Data)" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:title ;
+    rr:objectMap [ rr:constant "Madrid acoustic station catalog (Linked Data)" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:description ;
+    rr:objectMap [ rr:constant "Complete current catalogue of 31 Madrid noise-monitoring stations, with source-normalized WGS84 coordinates. Verified district membership comes from the source station catalogue and does not establish historical locations or district classifications." ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:source ;
+    rr:objectMap [ rr:constant <https://datos.madrid.es/dataset/211346-0-estaciones-acusticas> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate prov:wasDerivedFrom ;
+    rr:objectMap [ rr:constant <https://datos.madrid.es/dataset/211346-0-estaciones-acusticas> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:license ;
+    rr:objectMap [ rr:constant <https://creativecommons.org/licenses/by/4.0/> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:rightsHolder ;
+    rr:objectMap [ rr:constant <http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:created ;
+    rr:objectMap [ rr:constant "2026-10-25" ; rr:datatype xsd:date ]
+  ] .

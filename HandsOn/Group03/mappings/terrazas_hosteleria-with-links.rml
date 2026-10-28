@@ -1,0 +1,119 @@
+@prefix rr:      <http://www.w3.org/ns/r2rml#> .
+@prefix rml:     <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:      <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix mn:      <https://madridnoise.linkeddata.es/ontology#> .
+@base <https://madridnoise.linkeddata.es/mapping/terrazas_hosteleria-with-links#> .
+
+<#TerraceMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/terrace/{terrace_id}" ; rr:class mn:Terrace ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "terrace_label" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:terraceId ;
+    rr:objectMap [ rml:reference "terrace_id" ; rr:datatype xsd:integer ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:hasDistrict ;
+    rr:objectMap [ rr:template "https://madridnoise.linkeddata.es/resource/district/{district_id}" ; rr:termType rr:IRI ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:hasNeighbourhood ;
+    rr:objectMap [ rr:template "https://madridnoise.linkeddata.es/resource/neighbourhood/{neighbourhood_id}" ; rr:termType rr:IRI ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:latitude ;
+    rr:objectMap [ rml:reference "latitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mn:longitude ;
+    rr:objectMap [ rml:reference "longitude" ; rr:datatype xsd:decimal ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:objectMap [ rr:constant <https://madridnoise.linkeddata.es/dataset/terraces> ]
+  ] .
+
+<#TerraceDistrictMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/district/{district_id}" ; rr:class mn:District ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "district_label" ; rr:language "es" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs ;
+    rr:objectMap [ rml:reference "district_wikidata" ; rr:termType rr:IRI ]
+  ] .
+
+<#NeighbourhoodMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:template "https://madridnoise.linkeddata.es/resource/neighbourhood/{neighbourhood_id}" ; rr:class mn:Neighbourhood ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "neighbourhood_label" ; rr:language "es" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs ;
+    rr:objectMap [ rml:reference "neighbourhood_wikidata" ; rr:termType rr:IRI ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isPartOf ;
+    rr:objectMap [ rr:template "https://madridnoise.linkeddata.es/resource/district/{district_id}" ; rr:termType rr:IRI ]
+  ] .
+
+<#TerracesDatasetMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "csv/terrazas_hosteleria-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [ rr:constant <https://madridnoise.linkeddata.es/dataset/terraces> ; rr:class dcat:Dataset ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rr:constant "Madrid hospitality terraces (Linked Data)" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:title ;
+    rr:objectMap [ rr:constant "Madrid hospitality terraces (Linked Data)" ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:description ;
+    rr:objectMap [ rr:constant "All 6,594 registered terraces in the 2026-10-04 census snapshot; 6,534 have usable approximate entrance coordinates and 60 are unlocated. District and neighbourhood identities are linked to Wikidata. The snapshot cannot establish which terraces operated on each historical noise date." ; rr:language "en" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:source ;
+    rr:objectMap [ rr:constant <https://datos.madrid.es/dataset/200085-0-censo-locales> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate prov:wasDerivedFrom ;
+    rr:objectMap [ rr:constant <https://datos.madrid.es/dataset/200085-0-censo-locales> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:license ;
+    rr:objectMap [ rr:constant <https://creativecommons.org/licenses/by/4.0/> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:rightsHolder ;
+    rr:objectMap [ rr:constant <http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796> ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dcterms:created ;
+    rr:objectMap [ rr:constant "2026-10-25" ; rr:datatype xsd:date ]
+  ] .
