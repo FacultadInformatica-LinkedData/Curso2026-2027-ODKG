@@ -1,0 +1,28 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "PARK_NAME",
+    "expression": "grel:value.replace('É', 'E').replace(\"'\", '').replace(/[^A-Za-z0-9]+/, ' ').trim().toTitlecase().replace(' ', '_')",
+    "onError": "set-to-blank",
+    "newColumnName": "PARK_ID",
+    "columnInsertIndex": 2,
+    "description": "Create column PARK_ID at index 2 based on column PARK_NAME using expression grel:value.replace('É', 'E').replace(\"'\", '').replace(/[^A-Za-z0-9]+/, ' ').trim().toTitlecase().replace(' ', '_')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ARTWORK_ID",
+    "expression": "grel:with(forEach(filter(cross(cells.PARK_ID.value, '', 'PARK_ID'), r, r.cells.ARTWORK_NAME.value == cells.ARTWORK_NAME.value), r, r.cells.ARTWORK_ID.value.toNumber()).uniques(), ids, cells.PARK_ID.value + '_' + cells.ARTWORK_NAME.value.replace('é', 'e').replace(\"'\", '').replace(/[^A-Za-z0-9]+/, ' ').trim().replace(' ', '_') + if(ids.length() > 1, '_' + (filter(ids, x, x < value.toNumber()).length() + 1), ''))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ARTWORK_ID using expression grel:with(forEach(filter(cross(cells.PARK_ID.value, '', 'PARK_ID'), r, r.cells.ARTWORK_NAME.value == cells.ARTWORK_NAME.value), r, r.cells.ARTWORK_ID.value.toNumber()).uniques(), ids, cells.PARK_ID.value + '_' + cells.ARTWORK_NAME.value.replace('é', 'e').replace(\"'\", '').replace(/[^A-Za-z0-9]+/, ' ').trim().replace(' ', '_') + if(ids.length() > 1, '_' + (filter(ids, x, x < value.toNumber()).length() + 1), ''))"
+  }
+]

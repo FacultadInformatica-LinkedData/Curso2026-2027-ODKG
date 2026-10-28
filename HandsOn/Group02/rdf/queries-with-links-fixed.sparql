@@ -1,0 +1,147 @@
+PREFIX pe:     <http://smartcity.chicago.es/ontology/ParkExplorer#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl:    <http://www.w3.org/2002/07/owl#>
+
+# ===============================================================
+# Hands-on Assignment 5: Linking Data SPARQL Verification Queries
+# Group 02 - Chicago Park & Art Explorer
+#
+# Q1-Q6 verify the external links (owl:sameAs) established
+# to Wikidata for ChicagoPark and Artist entities, checking checklist
+# requirements, schema compliance, link consistency, and cross-dataset
+# traversals. Q7, added in this fixed version, checks that every individual
+# URI is human-readable (hands-on evaluation).
+#
+# Graph: rdf/facilities-with-links-fixed.nt + rdf/park-art-with-links-fixed.nt
+# ===============================================================
+
+# ---------------------------------------------------------------
+# Q1. Number of individuals with owl:sameAs per class (Checklist verification)
+#     Verifies that the datasets contain external links and confirms
+#     the coverage of linking across ontology classes.
+# Expected:
+#   - pe:ChicagoPark: 322 linked individuals (out of 555 total parks, 58.0% linked)
+#   - pe:Artist:       97 linked individuals (out of 264 total artists, 36.7% linked)
+#   - Facility, Artwork, Owner, GeoCoordinates: 0 (no external links)
+# ---------------------------------------------------------------
+SELECT ?class (COUNT(DISTINCT ?s) AS ?linkedIndividuals) (COUNT(?sameAs) AS ?totalLinks)
+WHERE {
+  ?s rdf:type ?class ;
+     owl:sameAs ?sameAs .
+}
+GROUP BY ?class
+ORDER BY DESC(?linkedIndividuals)
+
+# ---------------------------------------------------------------
+# Q2. Target URI validation and external namespace compliance
+#     Verifies that every owl:sameAs target is an IRI (not a literal string)
+#     and points to the valid Wikidata entity namespace (http://www.wikidata.org/entity/Q...).
+# Expected: 0 invalid links
+# ---------------------------------------------------------------
+SELECT (COUNT(?s) AS ?invalidLinks)
+WHERE {
+  ?s owl:sameAs ?target .
+  FILTER (!isIRI(?target) || !REGEX(STR(?target), "^https?://www\\.wikidata\\.org/entity/Q[0-9]+$"))
+}
+
+# ---------------------------------------------------------------
+# Q3. Cardinality check: individuals with multiple distinct external links
+#     Verifies that no single individual is mapped to more than one distinct
+#     Wikidata entity (1-to-N reconciliation conflict check).
+# Expected: no rows (0 individuals with multiple links)
+# ---------------------------------------------------------------
+SELECT ?s ?class (COUNT(DISTINCT ?target) AS ?linkCount)
+WHERE {
+  ?s rdf:type ?class ;
+     owl:sameAs ?target .
+}
+GROUP BY ?s ?class
+HAVING (COUNT(DISTINCT ?target) > 1)
+
+# ---------------------------------------------------------------
+# Q4. Shared target URIs: external entities mapped to multiple local resources
+#     Identifies cases where several local entities share the same Wikidata
+#     URI (many-to-one ambiguity detection).
+# Expected: 1 row
+#   - pe:ChicagoPark / http://www.wikidata.org/entity/Q34838188 / 2 entities:
+#     "BROOKS (OSCAR)" and "BROOKS (GWENDOLYN)"
+#   - 0 rows for Artist
+# ---------------------------------------------------------------
+SELECT ?class ?target (COUNT(DISTINCT ?s) AS ?entitiesCount) (GROUP_CONCAT(DISTINCT ?name; SEPARATOR=" | ") AS ?entityNames)
+WHERE {
+  ?s rdf:type ?class ;
+     owl:sameAs ?target .
+  OPTIONAL { ?s rdfs:label ?name . }
+}
+GROUP BY ?class ?target
+HAVING (COUNT(DISTINCT ?s) > 1)
+ORDER BY DESC(?entitiesCount)
+
+# ---------------------------------------------------------------
+# Q5. Linked parks with local graph connectivity
+#     Retrieves linked parks alongside their local metadata and connections,
+#     verifying the aggregation of facilities and artworks for each linked park.
+# Expected: 322 rows (ordered by park number;
+#           first rows: Park 2 MCGUANE (JOHN) [28 facilities, 0 artworks],
+#                       Park 3 ARMOUR (PHILIP) SQUARE [15 facilities, 0 artworks],
+#                       Park 4 FULLER (MELVILLE) [21 facilities, 5 artworks])
+# ---------------------------------------------------------------
+SELECT ?parkNumber ?parkName ?wikidataPark (COUNT(DISTINCT ?facility) AS ?facilities) (COUNT(DISTINCT ?artwork) AS ?artworks)
+WHERE {
+  ?park rdf:type pe:ChicagoPark ;
+        pe:parkNumber ?parkNumber ;
+        pe:parkName ?parkName ;
+        owl:sameAs ?wikidataPark .
+  OPTIONAL { ?park pe:hasFacility ?facility . }
+  OPTIONAL { ?park pe:hasArtwork ?artwork . }
+}
+GROUP BY ?park ?parkNumber ?parkName ?wikidataPark
+ORDER BY ?parkNumber
+
+# ---------------------------------------------------------------
+# Q6. End-to-end traversal across cross-linked entities
+#     Traverses from artworks to their hosting parks (linked to Wikidata)
+#     and their creators (also linked to Wikidata), demonstrating combined
+#     external LOD navigation across both cultural and spatial domains.
+# Expected: 143 rows (ordered by parkName and artworkName;
+#           first row: ARRIGO (VICTOR) / Christopher Columbus and Fountain / Moses Ezekiel)
+# ---------------------------------------------------------------
+SELECT DISTINCT ?parkName ?wikidataPark ?artworkName ?artistName ?wikidataArtist
+WHERE {
+  ?park rdf:type pe:ChicagoPark ;
+        pe:parkName ?parkName ;
+        pe:hasArtwork ?artwork ;
+        owl:sameAs ?wikidataPark .
+  ?artwork rdf:type pe:Artwork ;
+           pe:artworkName ?artworkName ;
+           pe:madeBy ?artist .
+  ?artist rdf:type pe:Artist ;
+          pe:artistName ?artistName ;
+          owl:sameAs ?wikidataArtist .
+}
+ORDER BY ?parkName ?artworkName
+
+# ---------------------------------------------------------------
+# Q7. Individual URIs that do not follow the resource naming strategy
+#     (analysis.html 3.2): every identifier is built from names, so it
+#     starts with a letter and is never a bare number
+#     (e.g. ChicagoPark/Indian_Boundary, Facility/Hamilton_Alexander_Cultural_Center)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?class (COUNT(?s) AS ?nonConforming)
+WHERE {
+  VALUES (?class ?pattern) {
+    (pe:ChicagoPark        "^http://smartcity\\.chicago\\.es/resource/ChicagoPark/[A-Z][A-Za-z0-9_]*$")
+    (pe:Facility           "^http://smartcity\\.chicago\\.es/resource/Facility/[A-Z][A-Za-z0-9_]*$")
+    (pe:Artwork            "^http://smartcity\\.chicago\\.es/resource/Artwork/[A-Z][A-Za-z0-9_]*$")
+    (pe:Artist             "^http://smartcity\\.chicago\\.es/resource/Artist/[A-Za-z][A-Za-z0-9_]*$")
+    (pe:Owner              "^http://smartcity\\.chicago\\.es/resource/Owner/[A-Za-z][A-Za-z0-9_]*$")
+    (schema:GeoCoordinates "^http://smartcity\\.chicago\\.es/resource/GeoCoordinates/(Artwork|Facility)_[A-Z][A-Za-z0-9_]*$")
+  }
+  ?s rdf:type ?class .
+  FILTER (!REGEX(STR(?s), ?pattern))
+}
+GROUP BY ?class
