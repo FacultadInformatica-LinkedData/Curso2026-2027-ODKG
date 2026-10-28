@@ -1,0 +1,111 @@
+# VoID / DCAT description of the Valencia air quality knowledge graph (Group 05)
+# Follows "Describing datasets with metadata" (ODKG 12, Publishing): general, structural,
+# access and linkset metadata. Statistics computed with SPARQL on
+# rdf/rvvcca-datos-horarios-valencia-2016-2021-curt-cas-with-links.ttl
+
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix aq:      <https://w3id.org/valencia-airquality/ontology/airquality#> .
+@prefix ds:      <https://w3id.org/valencia-airquality/dataset/> .
+
+#################################################################
+#    General metadata
+#################################################################
+
+ds:valencia-airquality a void:Dataset , dcat:Dataset ;
+    dcterms:title "Valencia hourly air quality knowledge graph"@en ;
+    dcterms:description "RDF version of the hourly air quality and meteorological observations recorded by the monitoring stations of the RVVCCA network in the city of Valencia (1-15 January 2020), linked to Wikidata and to the station pages of the Generalitat Valenciana."@en ;
+    dcterms:creator "Group 05, Open Data and Knowledge Graphs 2026-2027, Universidad Politécnica de Madrid"@en ;
+    dcterms:publisher "Group 05, Open Data and Knowledge Graphs 2026-2027, Universidad Politécnica de Madrid"@en ;
+    dcterms:source <https://opendata.vlci.valencia.es/dataset/hourly-air-quality-data-since-2016> ;
+    dcterms:created "2026-10-14"^^xsd:date ;
+    dcterms:issued "2026-10-28"^^xsd:date ;
+    dcterms:modified "2026-10-28"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:subject <http://dbpedia.org/resource/Air_pollution> ,
+                    <http://www.wikidata.org/entity/Q8818> ;     # Valencia
+    dcterms:temporal [ a dcterms:PeriodOfTime ;
+        dcat:startDate "2020-01-01T00:00:00"^^xsd:dateTime ;
+        dcat:endDate   "2020-01-15T23:00:00"^^xsd:dateTime ] ;
+    dcat:keyword "air quality"@en , "smart city"@en , "Valencia"@en , "linked data"@en ;
+    foaf:homepage <https://github.com/a-sheg/Curso2026-2027-ODKG/tree/main/HandsOn/Group05> ;
+    void:feature <http://www.w3.org/ns/formats/Turtle> ;
+
+#################################################################
+#    Structural metadata
+#################################################################
+
+    void:vocabulary <https://w3id.org/valencia-airquality/ontology/airquality> ,
+                    <http://www.w3.org/2000/01/rdf-schema#> ,
+                    <http://www.w3.org/2002/07/owl#> ;
+    void:uriSpace "https://w3id.org/valencia-airquality/resource/" ;
+    void:exampleResource <https://w3id.org/valencia-airquality/resource/Observation/AvdaFrancia_20200101T1300_NO2> ,
+                         <https://w3id.org/valencia-airquality/resource/MonitoringStation/AvdaFrancia> ,
+                         <https://w3id.org/valencia-airquality/resource/ObservableProperty/NO2> ,
+                         <https://w3id.org/valencia-airquality/resource/City/Valencia> ;
+    void:triples 275653 ;
+    void:entities 45956 ;
+    void:classes 4 ;
+    void:properties 9 ;
+    void:distinctSubjects 45956 ;
+    void:distinctObjects 47230 ;
+    void:documents 1 ;
+
+    void:classPartition
+        [ void:class aq:Observation ;        void:entities 45923 ] ,
+        [ void:class aq:MonitoringStation ;  void:entities 10 ] ,
+        [ void:class aq:ObservableProperty ; void:entities 22 ] ,
+        [ void:class aq:City ;               void:entities 1 ] ;
+    void:propertyPartition
+        [ void:property aq:hasStation ;       void:triples 45923 ] ,
+        [ void:property aq:observedProperty ; void:triples 45923 ] ,
+        [ void:property aq:resultTime ;       void:triples 45923 ] ,
+        [ void:property aq:resultValue ;      void:triples 45923 ] ,
+        [ void:property aq:stationName ;      void:triples 10 ] ,
+        [ void:property aq:locatedInCity ;    void:triples 10 ] ,
+        [ void:property owl:sameAs ;          void:triples 29 ] ;
+
+#################################################################
+#    Access metadata
+#################################################################
+
+    # Data dump on GitHub (HO6 branch of the course repository)
+    void:dataDump <https://raw.githubusercontent.com/a-sheg/Curso2026-2027-ODKG/HO6/HandsOn/Group05/rdf/rvvcca-datos-horarios-valencia-2016-2021-curt-cas-with-links.ttl> ;
+    # SPARQL endpoint of the GraphDB repository (local GraphDB Desktop installation)
+    void:sparqlEndpoint <http://localhost:7200/repositories/valencia-airquality> ;
+
+#################################################################
+#    Linksets (hands-on 5)
+#################################################################
+
+    void:subset ds:linkset-wikidata , ds:linkset-gva .
+
+ds:wikidata a void:Dataset ;
+    dcterms:title "Wikidata" ;
+    foaf:homepage <https://www.wikidata.org/> ;
+    void:sparqlEndpoint <https://query.wikidata.org/sparql> ;
+    void:uriSpace "http://www.wikidata.org/entity/" .
+
+ds:gva-rvvcca a void:Dataset ;
+    dcterms:title "Red Valenciana de Vigilancia y Control de la Contaminación Atmosférica (station pages)"@es ;
+    foaf:homepage <https://rvvcca.pica.gva.es/> ;
+    void:uriSpace "https://rvvcca.pica.gva.es/index.php/es/estacion/" .
+
+ds:linkset-wikidata a void:Linkset ;
+    rdfs:comment "Links from the city (Q8818) and 18 observable properties to Wikidata entities."@en ;
+    void:linkPredicate owl:sameAs ;
+    void:subjectsTarget ds:valencia-airquality ;
+    void:objectsTarget ds:wikidata ;
+    void:triples 19 .
+
+ds:linkset-gva a void:Linkset ;
+    rdfs:comment "Links from the 10 monitoring stations to their pages in the GVA air quality network."@en ;
+    void:linkPredicate owl:sameAs ;
+    void:subjectsTarget ds:valencia-airquality ;
+    void:objectsTarget ds:gva-rvvcca ;
+    void:triples 10 .
