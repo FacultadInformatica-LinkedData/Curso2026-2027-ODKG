@@ -1,0 +1,19 @@
+label,wikidata,observations,mean
+Ammonia (NH3),http://www.wikidata.org/entity/Q4087,324,5.8
+Atmospheric pressure,http://www.wikidata.org/entity/Q81809,3383,1005.51
+Benzene (C6H6),http://www.wikidata.org/entity/Q2270,335,2.19
+Carbon monoxide (CO),http://www.wikidata.org/entity/Q2025,1100,0.18
+Nitric oxide (NO),http://www.wikidata.org/entity/Q207843,2589,16.48
+Nitrogen dioxide (NO2),http://www.wikidata.org/entity/Q207895,2589,23.91
+Ozone (O3),http://www.wikidata.org/entity/Q36933,2081,42.56
+Particulate matter PM10,http://www.wikidata.org/entity/Q48035511,1853,18.75
+Particulate matter PM2.5,http://www.wikidata.org/entity/Q48035814,1853,13.52
+Precipitation,http://www.wikidata.org/entity/Q25257,3384,0
+Relative humidity,http://www.wikidata.org/entity/Q2499617,3383,66.89
+Solar radiation,http://www.wikidata.org/entity/Q17996169,3354,201.25
+Sulphur dioxide (SO2),http://www.wikidata.org/entity/Q5282,2164,3.9
+Temperature,http://www.wikidata.org/entity/Q11466,3383,17.99
+Toluene (C7H8),http://www.wikidata.org/entity/Q15779,335,8.52
+Wind direction,http://www.wikidata.org/entity/Q1057900,3383,221.69
+Wind speed,http://www.wikidata.org/entity/Q1464943,3381,2.08
+Xylene (C8H10),http://www.wikidata.org/entity/Q208366,335,4.84
