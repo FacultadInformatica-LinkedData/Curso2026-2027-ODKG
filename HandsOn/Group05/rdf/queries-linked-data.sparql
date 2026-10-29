@@ -2,10 +2,7 @@
 
 
 PREFIX void: <http://rdfs.org/ns/void#>
-
 PREFIX dcterms: <http://purl.org/dc/terms/>
-
-
 
 SELECT ?dataset ?title ?description WHERE {
 
@@ -25,8 +22,6 @@ SELECT ?dataset ?title ?description WHERE {
 
 
 PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
-
-
 
 SELECT ?obs ?station ?property ?value ?time WHERE {
 
@@ -49,9 +44,7 @@ LIMIT 15
 #Q3. Calculates average value for PM10 measurements.
 
 PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
-
 PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
-
 
 
 SELECT (AVG(?value) AS ?averageValue) WHERE {
@@ -73,7 +66,6 @@ SELECT (AVG(?value) AS ?averageValue) WHERE {
 
 
 PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
-
 
 SELECT ?property (COUNT(?obs) AS ?totalObservations) WHERE {
 
