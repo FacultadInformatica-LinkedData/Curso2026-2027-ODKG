@@ -1,0 +1,87 @@
+#Q1. Extracts dataset title and description
+
+
+PREFIX void: <http://rdfs.org/ns/void#>
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+
+
+SELECT ?dataset ?title ?description WHERE {
+
+  ?dataset a void:Dataset ;
+
+           dcterms:title ?title ;
+
+           dcterms:description ?description .
+
+}
+
+
+#------------------------------------------------------------------
+
+
+#Q2. Lists the first 15 observations with station, property, value, and timestamp.
+
+
+PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+
+
+SELECT ?obs ?station ?property ?value ?time WHERE {
+
+  ?obs a aq:Observation ;
+
+       aq:hasStation ?station ;
+
+       aq:observedProperty ?property ;
+
+       aq:resultValue ?value ;
+
+       aq:resultTime ?time .
+
+}
+
+LIMIT 15
+
+#------------------------------------------------------------------
+
+#Q3. Calculates average value for PM10 measurements.
+
+PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+
+
+
+SELECT (AVG(?value) AS ?averageValue) WHERE {
+
+  ?obs aq:observedProperty prop:PM10 ;
+
+       aq:resultValue ?value .
+
+}
+
+
+
+#------------------------------------------------------------------
+
+
+
+
+#Q4. Counts total observations per property, ordered highest to lowest.
+
+
+PREFIX aq: <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+
+SELECT ?property (COUNT(?obs) AS ?totalObservations) WHERE {
+
+  ?obs a aq:Observation ;
+
+       aq:observedProperty ?property .
+
+}
+GROUP BY ?property
+
+ORDER BY DESC(?totalObservations)
