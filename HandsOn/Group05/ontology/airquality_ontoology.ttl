@@ -1,0 +1,143 @@
+@prefix : <https://w3id.org/valencia-airquality/ontology/airquality#> .
+@prefix aq: <https://w3id.org/valencia-airquality/ontology/airquality#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@base <https://w3id.org/valencia-airquality/ontology/airquality#> .
+
+<https://w3id.org/valencia-airquality/ontology/airquality> rdf:type owl:Ontology ;
+    owl:versionIRI <https://w3id.org/valencia-airquality/ontology/airquality/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:label "Valencia Air Quality Ontology"@en ;
+    rdfs:comment "Ontology for describing the hourly air quality and meteorological observations made by the monitoring stations of the city of Valencia (Spain)."@en ;
+    dcterms:title "Valencia Air Quality Ontology"@en ;
+    dcterms:description "This ontology describes the hourly measurements of the Red Valenciana de Vigilancia y Control de la Contaminación Atmosférica (RVVCCA) in the city of Valencia between 2016 and 2021. Each measured value is represented as an observation made by a monitoring station, about an observable property (a pollutant such as NO2 or a meteorological variable such as temperature), at a given time. It was developed by Group 05 of the Open Data and Knowledge Graphs course (Universidad Politécnica de Madrid, 2026-2027) to transform the open dataset 'Hourly air quality data since 2016' published by the Ajuntament de València."@en ;
+    dcterms:creator "Alejandro Stoica Heghes" ,
+                    "Shiva Gupta" ,
+                    "Serafettin Doruk Sezer" ,
+                    "Mikkel Alexander Andrango Ushiña" ,
+                    "Juan David Murcia Cardona" ;
+    dcterms:publisher "Group 05, Open Data and Knowledge Graphs, Universidad Politécnica de Madrid" ;
+    dcterms:created "2026-10-04"^^xsd:date ;
+    dcterms:modified "2026-10-30"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:source <https://opendata.vlci.valencia.es/dataset/hourly-air-quality-data-since-2016> ;
+    vann:preferredNamespacePrefix "aq" ;
+    vann:preferredNamespaceUri "https://w3id.org/valencia-airquality/ontology/airquality#" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+dcterms:title rdf:type owl:AnnotationProperty .
+dcterms:description rdf:type owl:AnnotationProperty .
+dcterms:creator rdf:type owl:AnnotationProperty .
+dcterms:publisher rdf:type owl:AnnotationProperty .
+dcterms:created rdf:type owl:AnnotationProperty .
+dcterms:modified rdf:type owl:AnnotationProperty .
+dcterms:license rdf:type owl:AnnotationProperty .
+dcterms:source rdf:type owl:AnnotationProperty .
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#hasStation
+aq:hasStation rdf:type owl:ObjectProperty ;
+              rdfs:domain aq:Observation ;
+              rdfs:range aq:MonitoringStation ;
+              rdfs:label "has station"@en ;
+              rdfs:comment "Relates an observation to the monitoring station that made it."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#locatedInCity
+aq:locatedInCity rdf:type owl:ObjectProperty ;
+                 rdfs:domain aq:MonitoringStation ;
+                 rdfs:range aq:City ;
+                 rdfs:label "located in city"@en ;
+                 rdfs:comment "Relates a monitoring station to the city where it is located."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#observedProperty
+aq:observedProperty rdf:type owl:ObjectProperty ;
+                    rdfs:domain aq:Observation ;
+                    rdfs:range aq:ObservableProperty ;
+                    rdfs:label "observed property"@en ;
+                    rdfs:comment "Relates an observation to the pollutant or meteorological variable that was measured."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#resultTime
+aq:resultTime rdf:type owl:DatatypeProperty ;
+              rdfs:domain aq:Observation ;
+              rdfs:range xsd:dateTime ;
+              rdfs:label "result time"@en ;
+              rdfs:comment "Date and hour of the observation (local time of Valencia), e.g. 2020-01-01T13:00:00."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#resultValue
+aq:resultValue rdf:type owl:DatatypeProperty ;
+               rdfs:domain aq:Observation ;
+               rdfs:range xsd:decimal ;
+               rdfs:label "result value"@en ;
+               rdfs:comment "Numeric value measured in the observation. The unit depends on the observed property: µg/m3 for most pollutants, mg/m3 for CO, m/s for wind speed, degrees for wind direction, dB(A) for noise, ºC for temperature, % for relative humidity, hPa for pressure, W/m2 for solar radiation and mm for precipitation."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#stationName
+aq:stationName rdf:type owl:DatatypeProperty ;
+               rdfs:domain aq:MonitoringStation ;
+               rdfs:range xsd:string ;
+               rdfs:label "station name"@en ;
+               rdfs:comment "Name of the monitoring station as written in the source dataset, e.g. 'Avda. Francia'."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#City
+aq:City rdf:type owl:Class ;
+        rdfs:label "City"@en ;
+        rdfs:comment "A city where monitoring stations are located. In this dataset, the city of Valencia."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#MonitoringStation
+aq:MonitoringStation rdf:type owl:Class ;
+                     rdfs:label "Monitoring station"@en ;
+                     rdfs:comment "A station of the air quality network (RVVCCA) that measures pollutants and/or meteorological variables every hour."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#ObservableProperty
+aq:ObservableProperty rdf:type owl:Class ;
+                      rdfs:label "Observable property"@en ;
+                      rdfs:comment "A quantity that a monitoring station can measure: a pollutant (e.g. NO2, O3, PM10) or a meteorological variable (e.g. temperature, wind speed)."@en .
+
+
+###  https://w3id.org/valencia-airquality/ontology/airquality#Observation
+aq:Observation rdf:type owl:Class ;
+               rdfs:label "Observation"@en ;
+               rdfs:comment "A single value measured by a monitoring station, for one observable property, at one hour."@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( aq:City
+                aq:MonitoringStation
+                aq:ObservableProperty
+                aq:Observation
+              )
+] .
+

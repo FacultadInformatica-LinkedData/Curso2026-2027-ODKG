@@ -1,0 +1,207 @@
+# SPARQL queries executed on the GraphDB repository "valencia-airquality" (Group 05).
+# They answer the competency questions of requirements/applicationRequirements.html with the
+# published knowledge graph (rdf/...-with-links.ttl + ontology/airquality.ttl).
+# The loaded sample covers 1-15 January 2020. Each query is independent; run them one by one.
+
+#------------------------------------------------------------------
+# G1. Overview of the repository: number of instances of each class of the ontology
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+
+SELECT ?class (COUNT(?instance) AS ?instances)
+WHERE {
+  ?class a owl:Class .
+  ?instance a ?class .
+  FILTER (STRSTARTS(STR(?class), STR(aq:)))
+}
+GROUP BY ?class
+ORDER BY DESC(?instances)
+
+#------------------------------------------------------------------
+# G2. (CQ1) Average NO2 concentration per station in January 2020
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?stationName (ROUND(AVG(?value) * 10) / 10 AS ?avgNO2) (COUNT(?value) AS ?hourlyReadings)
+WHERE {
+  ?obs aq:observedProperty prop:NO2 ;
+       aq:hasStation/aq:stationName ?stationName ;
+       aq:resultTime ?time ;
+       aq:resultValue ?value .
+  FILTER (?time >= "2020-01-01T00:00:00"^^xsd:dateTime && ?time < "2020-02-01T00:00:00"^^xsd:dateTime)
+}
+GROUP BY ?stationName
+ORDER BY DESC(?avgNO2)
+
+#------------------------------------------------------------------
+# G3. (CQ2) Station with the highest PM10 level and when it was recorded
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+
+SELECT ?stationName ?time ?value
+WHERE {
+  ?obs aq:observedProperty prop:PM10 ;
+       aq:hasStation/aq:stationName ?stationName ;
+       aq:resultTime ?time ;
+       aq:resultValue ?value .
+}
+ORDER BY DESC(?value)
+LIMIT 5
+
+#------------------------------------------------------------------
+# G4. (CQ3) Daily evolution of O3 (average of all the stations)
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+
+SELECT ?day (ROUND(AVG(?value) * 10) / 10 AS ?avgO3) (MAX(?value) AS ?maxO3)
+WHERE {
+  ?obs aq:observedProperty prop:O3 ;
+       aq:resultTime ?time ;
+       aq:resultValue ?value .
+  BIND (SUBSTR(STR(?time), 1, 10) AS ?day)
+}
+GROUP BY ?day
+ORDER BY ?day
+
+#------------------------------------------------------------------
+# G5. (CQ4) Days in which the daily mean exceeded the WHO 2021 air quality guideline
+#     (24-hour mean: PM2.5 15, PM10 45, NO2 25, SO2 40 µg/m3), per station and pollutant
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+
+SELECT ?stationName ?pollutant (COUNT(?day) AS ?daysAboveGuideline)
+WHERE {
+  {
+    SELECT ?stationName ?pollutant ?day ?limit (AVG(?value) AS ?dailyMean)
+    WHERE {
+      ?obs aq:observedProperty ?property ;
+           aq:hasStation/aq:stationName ?stationName ;
+           aq:resultTime ?time ;
+           aq:resultValue ?value .
+      ?property rdfs:label ?pollutant .
+      BIND (SUBSTR(STR(?time), 1, 10) AS ?day)
+      BIND (IF(?property = prop:PM2_5, 15,
+            IF(?property = prop:PM10, 45,
+            IF(?property = prop:NO2, 25,
+            IF(?property = prop:SO2, 40, -1)))) AS ?limit)
+      FILTER (?limit > 0)
+    }
+    GROUP BY ?stationName ?pollutant ?day ?limit
+  }
+  FILTER (?dailyMean > ?limit)
+}
+GROUP BY ?stationName ?pollutant
+ORDER BY DESC(?daysAboveGuideline)
+
+#------------------------------------------------------------------
+# G6. (CQ5) Correlation (Pearson) between wind speed and NO2 at each station
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX prop: <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?stationName ?pairs ?meanWind ?meanNO2 ?covariance ?varWind ?varNO2
+WHERE {
+  {
+    SELECT ?stationName (COUNT(*) AS ?pairs)
+           (AVG(?w) AS ?meanWind) (AVG(?n) AS ?meanNO2)
+           (AVG(?w * ?n) AS ?meanWN) (AVG(?w * ?w) AS ?meanWW) (AVG(?n * ?n) AS ?meanNN)
+    WHERE {
+      ?ow aq:observedProperty prop:WindSpeed ; aq:hasStation ?station ; aq:resultTime ?t ; aq:resultValue ?wv .
+      ?on aq:observedProperty prop:NO2       ; aq:hasStation ?station ; aq:resultTime ?t ; aq:resultValue ?nv .
+      ?station aq:stationName ?stationName .
+      BIND (xsd:double(?wv) AS ?w)
+      BIND (xsd:double(?nv) AS ?n)
+    }
+    GROUP BY ?stationName
+  }
+  BIND (?meanWN - ?meanWind * ?meanNO2 AS ?covariance)
+  BIND (?meanWW - ?meanWind * ?meanWind AS ?varWind)
+  BIND (?meanNN - ?meanNO2 * ?meanNO2 AS ?varNO2)
+}
+ORDER BY ?covariance
+# Pearson r = covariance / sqrt(varWind * varNO2). SPARQL 1.1 has no square root function, so
+# this last step is done in the application. A negative covariance means that NO2 decreases
+# when the wind speed increases (the wind disperses the pollutants).
+
+#------------------------------------------------------------------
+# G7. Monitoring stations with their city and their external link (hands-on 5)
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+
+SELECT ?stationName ?cityName ?externalLink
+WHERE {
+  ?station a aq:MonitoringStation ;
+           aq:stationName ?stationName ;
+           aq:locatedInCity ?city .
+  ?city rdfs:label ?cityName .
+  OPTIONAL { ?station owl:sameAs ?externalLink }
+}
+ORDER BY ?stationName
+
+#------------------------------------------------------------------
+# G8. Pollutants identified through their Wikidata entity (owl:sameAs links of hands-on 5)
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+
+SELECT ?label ?wikidata (COUNT(?obs) AS ?observations) (ROUND(AVG(?value) * 100) / 100 AS ?mean)
+WHERE {
+  ?property a aq:ObservableProperty ;
+            rdfs:label ?label ;
+            owl:sameAs ?wikidata .
+  ?obs aq:observedProperty ?property ;
+       aq:resultValue ?value .
+}
+GROUP BY ?label ?wikidata
+ORDER BY ?label
+
+#------------------------------------------------------------------
+# G9. Federated query: chemical formula and Spanish name of our pollutants, taken from
+#     Wikidata through the owl:sameAs links. Needs an Internet connection (GraphDB sends the
+#     SERVICE part to the Wikidata endpoint).
+
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX wdt:  <http://www.wikidata.org/prop/direct/>
+
+SELECT ?label ?wikidata ?formula ?nameEs
+WHERE {
+  ?property a aq:ObservableProperty ;
+            rdfs:label ?label ;
+            owl:sameAs ?wikidata .
+  SERVICE <https://query.wikidata.org/sparql> {
+    OPTIONAL { ?wikidata wdt:P274 ?formula }
+    OPTIONAL { ?wikidata rdfs:label ?nameEs . FILTER (LANG(?nameEs) = "es") }
+  }
+}
+ORDER BY ?label
+
+#------------------------------------------------------------------
+# G10. Dataset metadata (rdf/void.ttl): description of the published dataset, and check that
+#      the statistics declared in VoID match the data actually loaded in the repository.
+
+PREFIX void:    <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX aq:      <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?title ?license ?declaredObservations ?loadedObservations ?dataDump
+WHERE {
+  ?dataset a void:Dataset ;
+           dcterms:title ?title ;
+           dcterms:license ?license ;
+           void:dataDump ?dataDump ;
+           void:classPartition [ void:class aq:Observation ; void:entities ?declaredObservations ] .
+  { SELECT (COUNT(?o) AS ?loadedObservations) WHERE { ?o a aq:Observation } }
+}

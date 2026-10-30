@@ -1,0 +1,15 @@
+stationName,pollutant,daysAboveGuideline
+Valencia Centro,Nitrogen dioxide (NO2),10
+Molí del Sol,Particulate matter PM2.5,8
+Politécnico,Particulate matter PM2.5,7
+Viveros,Nitrogen dioxide (NO2),7
+Pista Silla,Nitrogen dioxide (NO2),6
+Avda. Francia,Nitrogen dioxide (NO2),5
+Pista Silla,Particulate matter PM2.5,5
+Bulevard Sud,Nitrogen dioxide (NO2),5
+Molí del Sol,Nitrogen dioxide (NO2),4
+Puerto Valencia,Nitrogen dioxide (NO2),4
+Politécnico,Nitrogen dioxide (NO2),4
+Avda. Francia,Particulate matter PM2.5,4
+Valencia Centro,Particulate matter PM2.5,4
+Valencia Centro,Particulate matter PM10,1
