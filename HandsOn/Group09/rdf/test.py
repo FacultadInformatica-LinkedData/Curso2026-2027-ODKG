@@ -11,13 +11,17 @@ from rdflib.namespace import RDF
 
 
 BASE_DIR = Path(__file__).resolve().parent
-QUERY_FILE = BASE_DIR / "queries.sparql"
 
 PM = Namespace("https://parking-madrid.example.org/ontology#")
 BASE = "https://parking-madrid.example.org/resource/"
 
 WARNING_ONLY = {
     "occupancy_space_mismatch",
+}
+
+INFO_ONLY = {
+    "district_external_links",
+    "neighbourhood_external_links",
 }
 
 
@@ -100,14 +104,30 @@ def diagnose_district(graph: Graph) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Validate the Madrid parking RDF dataset."
+    )
+    parser.add_argument(
+        "--queries",
+        default="queries.sparql",
+        help=(
+            "SPARQL query file to run (default: queries.sparql). "
+            "For example: --queries queries_with_links.sparql"
+        ),
+    )
+    args = parser.parse_args()
+
     rdf_path = BASE_DIR / "aparcamientos.ttl"
+    query_path = Path(args.queries)
+    if not query_path.is_absolute():
+        query_path = BASE_DIR / query_path
 
     if not rdf_path.is_file():
         print(f"ERROR: RDF file not found: {rdf_path}")
         return 2
 
-    if not QUERY_FILE.is_file():
-        print(f"ERROR: SPARQL query file not found: {QUERY_FILE}")
+    if not query_path.is_file():
+        print(f"ERROR: SPARQL query file not found: {query_path}")
         return 2
 
     # 1. Load RDF.
@@ -120,6 +140,7 @@ def main() -> int:
         return 2
 
     print(f"RDF file: {rdf_path}")
+    print(f"SPARQL query file: {query_path}")
     print(f"Triples: {len(graph):,}")
 
     # 2. Count resource types.
@@ -145,7 +166,7 @@ def main() -> int:
 
     # 4. Load named SPARQL queries.
     try:
-        queries = load_queries(QUERY_FILE)
+        queries = load_queries(query_path)
     except Exception as exc:
         print(f"ERROR: Failed to load SPARQL queries: {exc}")
         return 2
@@ -170,12 +191,16 @@ def main() -> int:
             continue
 
         if not results:
-            print(f"PASS: {name}")
+            print(f"PASS: {name} (no results)")
             continue
 
-        severity = (
-            "WARNING" if name in WARNING_ONLY else "FAIL"
-        )
+        if name in INFO_ONLY:
+            severity = "INFO"
+        elif name in WARNING_ONLY:
+            severity = "WARNING"
+        else:
+            severity = "FAIL"
+
         print(f"{severity}: {name} ({len(results)} result(s))")
 
         for result in results[:5]:
@@ -190,7 +215,7 @@ def main() -> int:
 
         if severity == "WARNING":
             warnings += len(results)
-        else:
+        elif severity == "FAIL":
             errors += len(results)
 
     # 6. Summary.
