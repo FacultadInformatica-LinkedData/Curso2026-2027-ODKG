@@ -3,133 +3,133 @@
     "op": "core/column-rename",
     "oldColumnName": "CÓDIGO APARC",
     "newColumnName": "codigo_par",
-    "description": "Renombra la columna CÓDIGO APARC a codigo_par"
+    "description": "Rename column CÓDIGO APARC to codigo_par"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "NOMBRE APARC",
     "newColumnName": "nombre_par",
-    "description": "Renombra la columna NOMBRE APARC a nombre_par"
+    "description": "Rename column NOMBRE APARC to nombre_par"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "TIPO",
     "newColumnName": "tipo",
-    "description": "Renombra la columna TIPO a tipo"
+    "description": "Rename column TIPO to tipo"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "PZS ROTACIÓN",
     "newColumnName": "pzs_rotacion",
-    "description": "Renombra la columna PZS ROTACIÓN a pzs_rotacion"
+    "description": "Rename column PZS ROTACIÓN to pzs_rotacion"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "PZS RESIDENTES",
     "newColumnName": "pzs_residentes",
-    "description": "Renombra la columna PZS RESIDENTES a pzs_residentes"
+    "description": "Rename column PZS RESIDENTES to pzs_residentes"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "PZS DISUASORIAS",
     "newColumnName": "pzs_disuasorias",
-    "description": "Renombra la columna PZS DISUASORIAS a pzs_disuasorias"
+    "description": "Rename column PZS DISUASORIAS to pzs_disuasorias"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "PZS TOTALES",
     "newColumnName": "pzs_totales",
-    "description": "Renombra la columna PZS TOTALES a pzs_totales"
+    "description": "Rename column PZS TOTALES to pzs_totales"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "NUM PLANTAS",
     "newColumnName": "num_plantas",
-    "description": "Renombra la columna NUM PLANTAS a num_plantas"
+    "description": "Rename column NUM PLANTAS to num_plantas"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "ESTADO",
     "newColumnName": "estado",
-    "description": "Renombra la columna ESTADO a estado"
+    "description": "Rename column ESTADO to estado"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "PRIVADO",
     "newColumnName": "privado",
-    "description": "Renombra la columna PRIVADO a privado"
+    "description": "Rename column PRIVADO to privado"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "DISUASORIO",
     "newColumnName": "disuasorio",
-    "description": "Renombra la columna DISUASORIO a disuasorio"
+    "description": "Rename column DISUASORIO to disuasorio"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "COD DISTRITO",
     "newColumnName": "cod_distrito",
-    "description": "Renombra la columna COD DISTRITO a cod_distrito"
+    "description": "Rename column COD DISTRITO to cod_distrito"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "DISTRITO",
     "newColumnName": "distrito",
-    "description": "Renombra la columna DISTRITO a distrito"
+    "description": "Rename column DISTRITO to distrito"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "COD BARRIO",
     "newColumnName": "cod_barrio",
-    "description": "Renombra la columna COD BARRIO a cod_barrio"
+    "description": "Rename column COD BARRIO to cod_barrio"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "BARRIO",
     "newColumnName": "barrio",
-    "description": "Renombra la columna BARRIO a barrio"
+    "description": "Rename column BARRIO to barrio"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "COD SER",
     "newColumnName": "cod_ser",
-    "description": "Renombra la columna COD SER a cod_ser"
+    "description": "Rename column COD SER to cod_ser"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "LATITUD",
     "newColumnName": "latitud",
-    "description": "Renombra la columna LATITUD a latitud"
+    "description": "Rename column LATITUD to latitud"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "LONGITUD",
     "newColumnName": "longitud",
-    "description": "Renombra la columna LONGITUD a longitud"
+    "description": "Rename column LONGITUD to longitud"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "COD CATASTRO",
     "newColumnName": "cod_catastro",
-    "description": "Renombra la columna COD CATASTRO a cod_catastro"
+    "description": "Rename column COD CATASTRO to cod_catastro"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "URL",
     "newColumnName": "url",
-    "description": "Renombra la columna URL a url"
+    "description": "Rename column URL to url"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "COD PK",
     "newColumnName": "cod_PK",
-    "description": "Renombra la columna COD PK a cod_PK"
+    "description": "Rename column COD PK to cod_PK"
   },
   {
     "op": "core/column-rename",
     "oldColumnName": "DIRECCIÓN",
     "newColumnName": "direccion",
-    "description": "Renombra la columna DIRECCIÓN a direccion"
+    "description": "Rename column DIRECCIÓN to direccion"
   },
   {
     "op": "core/text-transform",
@@ -138,11 +138,11 @@
       "mode": "row-based"
     },
     "columnName": "distrito",
-    "expression": "value.trim()",
+    "expression": "grel:value.trim()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna distrito usando la expresión value.trim()"
+    "description": "Text transform on cells in column distrito using expression grel:value.trim()"
   },
   {
     "op": "core/text-transform",
@@ -151,11 +151,11 @@
       "mode": "row-based"
     },
     "columnName": "longitud",
-    "expression": "value.trim()",
+    "expression": "grel:value.trim()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna longitud usando la expresión value.trim()"
+    "description": "Text transform on cells in column longitud using expression grel:value.trim()"
   },
   {
     "op": "core/mass-edit",
@@ -164,7 +164,7 @@
       "mode": "row-based"
     },
     "columnName": "tipo",
-    "expression": "value",
+    "expression": "grel:value",
     "edits": [
       {
         "from": [
@@ -175,7 +175,7 @@
         "to": "MIX"
       }
     ],
-    "description": "Editar celdas en masa en columna tipo"
+    "description": "Mass edit cells in column tipo"
   },
   {
     "op": "core/mass-edit",
@@ -184,7 +184,7 @@
       "mode": "row-based"
     },
     "columnName": "tipo",
-    "expression": "value",
+    "expression": "grel:value",
     "edits": [
       {
         "from": [
@@ -195,7 +195,7 @@
         "to": "ROT"
       }
     ],
-    "description": "Editar celdas en masa en columna tipo"
+    "description": "Mass edit cells in column tipo"
   },
   {
     "op": "core/text-transform",
@@ -204,11 +204,11 @@
       "mode": "row-based"
     },
     "columnName": "latitud",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna latitud usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column latitud using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -217,11 +217,11 @@
       "mode": "row-based"
     },
     "columnName": "longitud",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna longitud usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column longitud using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -230,11 +230,11 @@
       "mode": "row-based"
     },
     "columnName": "pzs_rotacion",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna pzs_rotacion usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column pzs_rotacion using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -243,11 +243,11 @@
       "mode": "row-based"
     },
     "columnName": "pzs_residentes",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna pzs_residentes usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column pzs_residentes using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -256,11 +256,11 @@
       "mode": "row-based"
     },
     "columnName": "pzs_disuasorias",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna pzs_disuasorias usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column pzs_disuasorias using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -269,11 +269,11 @@
       "mode": "row-based"
     },
     "columnName": "pzs_totales",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna pzs_totales usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column pzs_totales using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -282,11 +282,11 @@
       "mode": "row-based"
     },
     "columnName": "num_plantas",
-    "expression": "value.toNumber()",
+    "expression": "grel:value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna num_plantas usando la expresión value.toNumber()"
+    "description": "Text transform on cells in column num_plantas using expression grel:value.toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -295,11 +295,11 @@
       "mode": "row-based"
     },
     "columnName": "cod_catastro",
-    "expression": "value.trim()",
+    "expression": "grel:value.trim()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna cod_catastro usando la expresión value.trim()"
+    "description": "Text transform on cells in column cod_catastro using expression grel:value.trim()"
   },
   {
     "op": "core/text-transform",
@@ -312,7 +312,7 @@
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna cod_PK usando la expresión grel:if(isBlank(value), null, if(value.toString().trim() == \"0\", null, value))"
+    "description": "Text transform on cells in column cod_PK using expression grel:if(isBlank(value), null, if(value.toString().trim() == \"0\", null, value))"
   },
   {
     "op": "core/text-transform",
@@ -321,11 +321,11 @@
       "mode": "row-based"
     },
     "columnName": "direccion",
-    "expression": "value.trim()",
+    "expression": "grel:value.trim()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Transforma el texto de las celdas en la columna direccion usando la expresión value.trim()"
+    "description": "Text transform on cells in column direccion using expression grel:value.trim()"
   },
   {
     "op": "core/mass-edit",
@@ -334,7 +334,7 @@
       "mode": "row-based"
     },
     "columnName": "barrio",
-    "expression": "value",
+    "expression": "grel:value",
     "edits": [
       {
         "from": [
@@ -345,6 +345,45 @@
         "to": "HISPANOAMÉRICA"
       }
     ],
-    "description": "Editar celdas en masa en columna barrio"
+    "description": "Mass edit cells in column barrio"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "nombre_par",
+    "expression": "grel:value\n    .replace(/[ÀÁÂÃÄÅ]/, \"A\")\n    .replace(/[àáâãäå]/, \"a\")\n    .replace(/[ÈÉÊË]/, \"E\")\n    .replace(/[èéêë]/, \"e\")\n    .replace(/[ÌÍÎÏ]/, \"I\")\n    .replace(/[ìíîï]/, \"i\")\n    .replace(/[ÒÓÔÕÖ]/, \"O\")\n    .replace(/[òóôõö]/, \"o\")\n    .replace(/[ÙÚÛÜ]/, \"U\")\n    .replace(/[ùúûü]/, \"u\")\n    .replace(/Ç/, \"C\")\n    .replace(/ç/, \"c\")\n    .replace(/Ñ/, \"N\")\n    .replace(/ñ/, \"n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "parking_lot_name_en",
+    "columnInsertIndex": 2,
+    "description": "Create column parking_lot_name_en at index 2 based on column nombre_par using expression grel:value\n    .replace(/[ÀÁÂÃÄÅ]/, \"A\")\n    .replace(/[àáâãäå]/, \"a\")\n    .replace(/[ÈÉÊË]/, \"E\")\n    .replace(/[èéêë]/, \"e\")\n    .replace(/[ÌÍÎÏ]/, \"I\")\n    .replace(/[ìíîï]/, \"i\")\n    .replace(/[ÒÓÔÕÖ]/, \"O\")\n    .replace(/[òóôõö]/, \"o\")\n    .replace(/[ÙÚÛÜ]/, \"U\")\n    .replace(/[ùúûü]/, \"u\")\n    .replace(/Ç/, \"C\")\n    .replace(/ç/, \"c\")\n    .replace(/Ñ/, \"N\")\n    .replace(/ñ/, \"n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "distrito",
+    "expression": "grel:value\n    .replace(/[ÀÁÂÃÄÅ]/, \"A\")\n    .replace(/[àáâãäå]/, \"a\")\n    .replace(/[ÈÉÊË]/, \"E\")\n    .replace(/[èéêë]/, \"e\")\n    .replace(/[ÌÍÎÏ]/, \"I\")\n    .replace(/[ìíîï]/, \"i\")\n    .replace(/[ÒÓÔÕÖ]/, \"O\")\n    .replace(/[òóôõö]/, \"o\")\n    .replace(/[ÙÚÛÜ]/, \"U\")\n    .replace(/[ùúûü]/, \"u\")\n    .replace(/Ç/, \"C\")\n    .replace(/ç/, \"c\")\n    .replace(/Ñ/, \"N\")\n    .replace(/ñ/, \"n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "district_en",
+    "columnInsertIndex": 14,
+    "description": "Create column district_en at index 14 based on column distrito using expression grel:value\n    .replace(/[ÀÁÂÃÄÅ]/, \"A\")\n    .replace(/[àáâãäå]/, \"a\")\n    .replace(/[ÈÉÊË]/, \"E\")\n    .replace(/[èéêë]/, \"e\")\n    .replace(/[ÌÍÎÏ]/, \"I\")\n    .replace(/[ìíîï]/, \"i\")\n    .replace(/[ÒÓÔÕÖ]/, \"O\")\n    .replace(/[òóôõö]/, \"o\")\n    .replace(/[ÙÚÛÜ]/, \"U\")\n    .replace(/[ùúûü]/, \"u\")\n    .replace(/Ç/, \"C\")\n    .replace(/ç/, \"c\")\n    .replace(/Ñ/, \"N\")\n    .replace(/ñ/, \"n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "barrio",
+    "expression": "grel:value\n    .replace(/[ÀÁÂÃÄÅ]/, \"A\")\n    .replace(/[àáâãäå]/, \"a\")\n    .replace(/[ÈÉÊË]/, \"E\")\n    .replace(/[èéêë]/, \"e\")\n    .replace(/[ÌÍÎÏ]/, \"I\")\n    .replace(/[ìíîï]/, \"i\")\n    .replace(/[ÒÓÔÕÖ]/, \"O\")\n    .replace(/[òóôõö]/, \"o\")\n    .replace(/[ÙÚÛÜ]/, \"U\")\n    .replace(/[ùúûü]/, \"u\")\n    .replace(/Ç/, \"C\")\n    .replace(/ç/, \"c\")\n    .replace(/Ñ/, \"N\")\n    .replace(/ñ/, \"n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "neighbourhood_en",
+    "columnInsertIndex": 17,
+    "description": "Create column neighbourhood_en at index 17 based on column barrio using expression grel:value\n    .replace(/[ÀÁÂÃÄÅ]/, \"A\")\n    .replace(/[àáâãäå]/, \"a\")\n    .replace(/[ÈÉÊË]/, \"E\")\n    .replace(/[èéêë]/, \"e\")\n    .replace(/[ÌÍÎÏ]/, \"I\")\n    .replace(/[ìíîï]/, \"i\")\n    .replace(/[ÒÓÔÕÖ]/, \"O\")\n    .replace(/[òóôõö]/, \"o\")\n    .replace(/[ÙÚÛÜ]/, \"U\")\n    .replace(/[ùúûü]/, \"u\")\n    .replace(/Ç/, \"C\")\n    .replace(/ç/, \"c\")\n    .replace(/Ñ/, \"N\")\n    .replace(/ñ/, \"n\")"
   }
 ]
