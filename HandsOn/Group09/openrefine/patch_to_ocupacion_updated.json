@@ -1,0 +1,34 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "nombre_del_aparcamiento",
+    "expression": "grel:value.replace(\"á\", \"a\")\n     .replace(\"é\", \"e\")\n     .replace(\"í\", \"i\")\n     .replace(\"ó\", \"o\")\n     .replace(\"ú\", \"u\")\n     .replace(\"Á\", \"A\")\n     .replace(\"É\", \"E\")\n     .replace(\"Í\", \"I\")\n     .replace(\"Ó\", \"O\")\n     .replace(\"Ú\", \"U\")\n     .replace(\"ñ\", \"n\")\n     .replace(\"Ñ\", \"N\")\n     .replace(\"ü\", \"u\")\n     .replace(\"Ü\", \"U\")",
+    "onError": "set-to-blank",
+    "newColumnName": "name_en",
+    "columnInsertIndex": 4,
+    "description": "Create column name_en at index 4 based on column nombre_del_aparcamiento using expression grel:value.replace(\"á\", \"a\")\n     .replace(\"é\", \"e\")\n     .replace(\"í\", \"i\")\n     .replace(\"ó\", \"o\")\n     .replace(\"ú\", \"u\")\n     .replace(\"Á\", \"A\")\n     .replace(\"É\", \"E\")\n     .replace(\"Í\", \"I\")\n     .replace(\"Ó\", \"O\")\n     .replace(\"Ú\", \"U\")\n     .replace(\"ñ\", \"n\")\n     .replace(\"Ñ\", \"N\")\n     .replace(\"ü\", \"u\")\n     .replace(\"Ü\", \"U\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "distrito",
+    "expression": "grel:value.replace(\"á\", \"a\")\n     .replace(\"é\", \"e\")\n     .replace(\"í\", \"i\")\n     .replace(\"ó\", \"o\")\n     .replace(\"ú\", \"u\")\n     .replace(\"Á\", \"A\")\n     .replace(\"É\", \"E\")\n     .replace(\"Í\", \"I\")\n     .replace(\"Ó\", \"O\")\n     .replace(\"Ú\", \"U\")\n     .replace(\"ñ\", \"n\")\n     .replace(\"Ñ\", \"N\")\n     .replace(\"ü\", \"u\")\n     .replace(\"Ü\", \"U\")",
+    "onError": "set-to-blank",
+    "newColumnName": "district_name",
+    "columnInsertIndex": 10,
+    "description": "Create column district_name at index 10 based on column distrito using expression grel:value.replace(\"á\", \"a\")\n     .replace(\"é\", \"e\")\n     .replace(\"í\", \"i\")\n     .replace(\"ó\", \"o\")\n     .replace(\"ú\", \"u\")\n     .replace(\"Á\", \"A\")\n     .replace(\"É\", \"E\")\n     .replace(\"Í\", \"I\")\n     .replace(\"Ó\", \"O\")\n     .replace(\"Ú\", \"U\")\n     .replace(\"ñ\", \"n\")\n     .replace(\"Ñ\", \"N\")\n     .replace(\"ü\", \"u\")\n     .replace(\"Ü\", \"U\")"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "district_name",
+    "newColumnName": "district_en",
+    "description": "Rename column district_name to district_en"
+  }
+]
