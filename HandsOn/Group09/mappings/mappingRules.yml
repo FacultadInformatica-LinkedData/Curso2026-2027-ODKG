@@ -1,9 +1,13 @@
-
 prefixes:
-  pm: "https://parking-madrid.example.org/ontology#"
+  pm:  "https://parking-madrid.example.org/ontology#"
   geo: "http://www.w3.org/2003/01/geo/wgs84_pos#"
   xsd: "http://www.w3.org/2001/XMLSchema#"
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+  district:      "https://parking-madrid.example.org/resource/district/"
+  neighbourhood: "https://parking-madrid.example.org/resource/neighbourhood/"
+  parking:       "https://parking-madrid.example.org/resource/parking/"
+  obs:           "https://parking-madrid.example.org/resource/monthly-occupancy/"
 
 sources:
   inventario:
@@ -20,7 +24,7 @@ mappings:
   district:
     sources:
       - inventario
-    s: "https://parking-madrid.example.org/resource/District/$(cod_distrito)"
+    s: "https://parking-madrid.example.org/resource/district/$(district_en)"
     po:
       - [a, pm:District]
       - ["rdfs:label", "$(distrito)", xsd:string]
@@ -31,7 +35,7 @@ mappings:
   neighbourhood:
     sources:
       - inventario
-    s: "https://parking-madrid.example.org/resource/Neighbourhood/$(cod_distrito)/$(cod_barrio)"
+    s: "https://parking-madrid.example.org/resource/neighbourhood/$(neighbourhood_en)"
     po:
       - [a, pm:Neighbourhood]
       - ["rdfs:label", "$(barrio)", xsd:string]
@@ -41,14 +45,14 @@ mappings:
       # IRI relationship to district
       - p: pm:belongsToDistrict
         o:
-          value: "https://parking-madrid.example.org/resource/District/$(cod_distrito)"
+          value: "https://parking-madrid.example.org/resource/district/$(district_en)"
           type: iri
 
   # Parking facilities
   parking_facility:
     sources:
       - inventario
-    s: "https://parking-madrid.example.org/resource/Parking/$(codigo_par)"
+    s: "https://parking-madrid.example.org/resource/parking/$(parking_lot_name_en)"
     po:
       - [a, pm:ParkingFacility]
       - ["rdfs:label", "$(nombre_par)", xsd:string]
@@ -56,12 +60,12 @@ mappings:
       # Administrative relationships: objects must be IRIs
       - p: pm:locatedInDistrict
         o:
-          value: "https://parking-madrid.example.org/resource/District/$(cod_distrito)"
+          value: "https://parking-madrid.example.org/resource/district/$(district_en)"
           type: iri
 
       - p: pm:locatedInNeighbourhood
         o:
-          value: "https://parking-madrid.example.org/resource/Neighbourhood/$(cod_distrito)/$(cod_barrio)"
+          value: "https://parking-madrid.example.org/resource/neighbourhood/$(neighbourhood_en)"
           type: iri
 
       # Inventory attributes
@@ -83,29 +87,29 @@ mappings:
       - ["geo:long", "$(longitud)", xsd:decimal]
 
   # Districts from the occupancy source
-  district_from_occupancy:
-    sources:
-      - ocupacion
-    s: "https://parking-madrid.example.org/resource/District/$(codigo_distrito)"
-    po:
-      - [a, pm:District]
-      - ["rdfs:label", "$(distrito)", xsd:string]
-      - ["pm:hasDistrictCode", "$(codigo_distrito)", xsd:integer]
-      - ["pm:hasDistrictName", "$(distrito)", xsd:string]
+  # district_from_occupancy:
+  #   sources:
+  #     - ocupacion
+  #   s: "https://parking-madrid.example.org/resource/district/$(distrito)"
+  #   po:
+  #     - [a, pm:District]
+  #     - ["rdfs:label", "$(distrito)", xsd:string]
+  #     - ["pm:hasDistrictCode", "$(codigo_distrito)", xsd:integer]
+  #     - ["pm:hasDistrictName", "$(distrito)", xsd:string]
 
   # Monthly occupancy observations
   monthly_occupancy:
     sources:
       - ocupacion
-    s: "https://parking-madrid.example.org/resource/MonthlyOccupancy/$(codigo_par)/$(anio)-$(mes)"
+    s: "https://parking-madrid.example.org/resource/monthly-occupancy/$(name_en)_$(anio)-$(mes)"
     po:
       - [a, pm:MonthlyOccupancy]
-      - ["rdfs:label", "Occupancy of parking $(codigo_par) for $(anio)-$(mes)", xsd:string]
+      - ["rdfs:label", "Occupancy of Parking Lot $(nombre_del_aparcamiento) (code = $(codigo_par)) in $(anio)-$(mes)", xsd:string]
       
       # IRI relationship to parking facility
       - p: pm:isOccupancyOf
         o:
-          value: "https://parking-madrid.example.org/resource/Parking/$(codigo_par)"
+          value: "https://parking-madrid.example.org/resource/parking/$(name_en)"
           type: iri
 
       # Observation attributes
