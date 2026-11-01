@@ -1,0 +1,56 @@
+{
+  "head" : {
+    "vars" : [
+      "class",
+      "instances"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "class" : {
+          "type" : "uri",
+          "value" : "https://w3id.org/valencia-airquality/ontology/airquality#Observation"
+        },
+        "instances" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "45923"
+        }
+      },
+      {
+        "class" : {
+          "type" : "uri",
+          "value" : "https://w3id.org/valencia-airquality/ontology/airquality#ObservableProperty"
+        },
+        "instances" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "22"
+        }
+      },
+      {
+        "class" : {
+          "type" : "uri",
+          "value" : "https://w3id.org/valencia-airquality/ontology/airquality#MonitoringStation"
+        },
+        "instances" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "10"
+        }
+      },
+      {
+        "class" : {
+          "type" : "uri",
+          "value" : "https://w3id.org/valencia-airquality/ontology/airquality#City"
+        },
+        "instances" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
+        }
+      }
+    ]
+  }
+}

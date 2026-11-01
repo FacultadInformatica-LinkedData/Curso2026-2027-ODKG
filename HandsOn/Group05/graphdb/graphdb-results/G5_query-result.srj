@@ -1,0 +1,223 @@
+{
+  "head" : {
+    "vars" : [
+      "stationName",
+      "pollutant",
+      "daysAboveGuideline"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "10"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Molí del Sol"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM2.5"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Politécnico"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM2.5"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "7"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Viveros"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "7"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Pista Silla"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "6"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Avda. Francia"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Bulevard Sud"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Pista Silla"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM2.5"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Avda. Francia"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM2.5"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Molí del Sol"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Politécnico"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Puerto Valencia"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM2.5"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "pollutant" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM10"
+        },
+        "daysAboveGuideline" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
+        }
+      }
+    ]
+  }
+}

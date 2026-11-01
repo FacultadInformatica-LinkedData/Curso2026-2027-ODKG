@@ -1,0 +1,141 @@
+{
+  "head" : {
+    "vars" : [
+      "stationName",
+      "avgNO2",
+      "hourlyReadings"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "29.2"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "349"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Pista Silla"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "27.7"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "357"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Viveros"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "27.4"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "358"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Puerto Valencia"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "26.3"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "117"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Bulevard Sud"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "25.7"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "347"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Avda. Francia"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "22.1"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "360"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Politécnico"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "17.6"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "343"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Molí del Sol"
+        },
+        "avgNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "16.9"
+        },
+        "hourlyReadings" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "358"
+        }
+      }
+    ]
+  }
+}

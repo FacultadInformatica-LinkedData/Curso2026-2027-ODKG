@@ -1,0 +1,305 @@
+{
+  "head" : {
+    "vars" : [
+      "stationName",
+      "pairs",
+      "meanWind",
+      "meanNO2",
+      "covariance",
+      "varWind",
+      "varNO2"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Bulevard Sud"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "333"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.0636636636636703"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "24.91891891891892"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-22.647991234477875"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.373064055046034"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "587.7802126450775"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Viveros"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "334"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.0667664670658747"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "26.434131736526947"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-19.747248915343107"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.395212897558179"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "643.5031464018072"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Pista Silla"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "333"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.03393393393394"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "27.006006006006007"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-18.778882486089856"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.240980620259898"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "557.6696335975615"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Avda. Francia"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "336"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.059821428571435"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "20.898809523809526"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-16.090970450680423"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.377641634778913"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "413.23380810657585"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Politécnico"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "319"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.121003134796245"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "16.9717868338558"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-14.171507748548184"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.482536924755066"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "335.11205668183294"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "332"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.041566265060247"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "27.674698795180724"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-13.092803745101051"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.324597546813759"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "326.6170706924081"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Molí del Sol"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "336"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.059821428571435"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "15.949404761904763"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "-12.145187606292616"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.377641634778913"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "198.44684488378684"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Puerto Valencia"
+        },
+        "pairs" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "96"
+        },
+        "meanWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "1.6104166666666666"
+        },
+        "meanNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "23.166666666666668"
+        },
+        "covariance" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "4.99409722222223"
+        },
+        "varWind" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "2.66072482638889"
+        },
+        "varNO2" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+          "type" : "literal",
+          "value" : "255.53472222222217"
+        }
+      }
+    ]
+  }
+}

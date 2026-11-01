@@ -1,0 +1,374 @@
+{
+  "head" : {
+    "vars" : [
+      "label",
+      "wikidata",
+      "observations",
+      "mean"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Ammonia (NH3)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q4087"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "324"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "5.8"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Atmospheric pressure"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q81809"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3383"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "1005.51"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Benzene (C6H6)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2270"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "335"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "2.19"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Carbon monoxide (CO)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2025"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1100"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "0.18"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Nitric oxide (NO)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q207843"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2589"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "16.48"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Nitrogen dioxide (NO2)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q207895"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2589"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "23.91"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Ozone (O3)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q36933"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2081"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "42.56"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM10"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q48035511"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1853"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "18.75"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Particulate matter PM2.5"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q48035814"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1853"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "13.52"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Precipitation"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q25257"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3384"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "0"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Relative humidity"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2499617"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3383"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "66.89"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Solar radiation"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q17996169"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3354"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "201.25"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Sulphur dioxide (SO2)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q5282"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2164"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "3.9"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Temperature"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11466"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3383"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "17.99"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Toluene (C7H8)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q15779"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "335"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "8.52"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Wind direction"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1057900"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3383"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "221.69"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Wind speed"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1464943"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3381"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "2.08"
+        }
+      },
+      {
+        "label" : {
+          "type" : "literal",
+          "value" : "Xylene (C8H10)"
+        },
+        "wikidata" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q208366"
+        },
+        "observations" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "335"
+        },
+        "mean" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "4.84"
+        }
+      }
+    ]
+  }
+}

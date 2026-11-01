@@ -1,0 +1,153 @@
+{
+  "head" : {
+    "vars" : [
+      "stationName",
+      "cityName",
+      "externalLink"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Avda. Francia"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250004-francia"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Bulevard Sud"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250050-valencia-bulevard-sud"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Consellería Meteo"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250049-valencia-conselleria-meteo"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Molí del Sol"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250048-valencia-moli-del-sol"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Nazaret Meteo"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250900-valencia-nazaret-met-2"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Pista Silla"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250030-valencia-pista-de-silla"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Politécnico"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250046-valencia-politecnic"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Puerto Valencia"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250042-valencia"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250054-valencia-centre"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Viveros"
+        },
+        "cityName" : {
+          "type" : "literal",
+          "value" : "Valencia"
+        },
+        "externalLink" : {
+          "type" : "uri",
+          "value" : "https://rvvcca.pica.gva.es/index.php/es/estacion/46250043-valencia-vivers"
+        }
+      }
+    ]
+  }
+}
