@@ -1,0 +1,86 @@
+PREFIX db: <https://example.org/db-delays/ontology/#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# =================================
+# These queries must return no rows
+# =================================
+
+# TrainStop without a station
+SELECT ?stop WHERE {
+  ?stop a db:TrainStop .
+  FILTER NOT EXISTS { ?stop db:atStation ?s }
+}
+
+# TrainStop with more than one station 
+SELECT ?stop (COUNT(DISTINCT ?s) AS ?n) WHERE {
+  ?stop db:atStation ?s .
+} GROUP BY ?stop HAVING (COUNT(DISTINCT ?s) > 1)
+
+# Station without exactly one EVA number 
+SELECT ?st (COUNT(?eva) AS ?n) WHERE {
+  ?st a db:Station .
+  OPTIONAL { ?st db:evaNumber ?eva }
+} GROUP BY ?st HAVING (COUNT(?eva) != 1)
+
+# Several Station individuals sharing one EVA number 
+SELECT ?eva (COUNT(DISTINCT ?st) AS ?n) WHERE {
+  ?st db:evaNumber ?eva .
+} GROUP BY ?eva HAVING (COUNT(DISTINCT ?st) > 1)
+
+# Broken Station -> City -> State chain 
+SELECT ?st ?city WHERE {
+  ?st a db:Station .
+  OPTIONAL { ?st db:inCity ?city . OPTIONAL { ?city db:inState ?state } }
+  FILTER (!BOUND(?city) || !BOUND(?state))
+}
+
+# City located in more than one State 
+SELECT ?city (COUNT(DISTINCT ?state) AS ?n) WHERE {
+  ?city db:inState ?state .
+} GROUP BY ?city HAVING (COUNT(DISTINCT ?state) > 1)
+
+# Domain/range violations (run WITHOUT a reasoner) 
+SELECT ?s ?o WHERE {
+  { ?s db:atStation ?o . FILTER NOT EXISTS { ?s a db:TrainStop } }
+  UNION { ?s db:atStation ?o . FILTER NOT EXISTS { ?o a db:Station } }
+  UNION { ?s db:inCity   ?o . FILTER NOT EXISTS { ?s a db:Station } }
+  UNION { ?s db:inCity   ?o . FILTER NOT EXISTS { ?o a db:City } }
+  UNION { ?s db:inState  ?o . FILTER NOT EXISTS { ?s a db:City } }
+  UNION { ?s db:inState  ?o . FILTER NOT EXISTS { ?o a db:State } }
+}
+
+# ==========================================
+# These queries should return actual results
+# ==========================================
+
+# Instance counts per class
+SELECT ?class (COUNT(?x) AS ?n) WHERE {
+  VALUES ?class { db:TrainStop db:Station db:City db:State }
+  ?x a ?class .
+} GROUP BY ?class
+
+# Stops at a given station (adjust EVA), with delays
+SELECT ?stop ?line ?plannedArrival ?arrivalDelayMinutes WHERE {
+  ?st db:evaNumber "8089075" .
+  ?stop db:atStation ?st ; db:plannedArrival ?plannedArrival .
+  OPTIONAL { ?stop db:lineLabel ?line }
+  OPTIONAL { ?stop db:arrivalDelayMinutes ?arrivalDelayMinutes }
+} ORDER BY ?plannedArrival
+
+# Stops whose path mentions a given previous station 
+SELECT ?stop ?path WHERE {
+  ?stop db:previousStations ?path .
+  FILTER (CONTAINS(?path, "Köln Hbf"))
+}
+
+# Stations in a bounding box (around Berlin)
+SELECT ?name ?lat ?long WHERE {
+  ?st rdfs:label ?name ; db:latitude ?lat ; db:longitude ?long .
+  FILTER (?lat > 52.3 && ?lat < 52.7 && ?long > 13.0 && ?long < 13.8)
+}
+
+# Average arrival delay per state
+SELECT ?stateName (AVG(?d) AS ?avgDelay) (COUNT(?stop) AS ?stops) WHERE {
+  ?stop db:atStation/db:inCity/db:inState ?state ;
+        db:arrivalDelayMinutes ?d .
+  ?state rdfs:label ?stateName .
+} GROUP BY ?stateName ORDER BY DESC(?avgDelay)

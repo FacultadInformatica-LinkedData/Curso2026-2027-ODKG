@@ -1,0 +1,168 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CONTAMINANTE",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q113145171",
+        "name": "tipo de entidad química"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column CONTAMINANTE to type Q113145171"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CONTAMINANTE: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CONTAMINANTE",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CONTAMINANTE",
+    "similarValue": "Óxidos de nitrógeno",
+    "judgment": "matched",
+    "match": {
+      "id": "Q424418",
+      "name": "óxido de nitrógeno",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item óxido de nitrógeno (Q424418) for cells containing \"Óxidos de nitrógeno\" in column CONTAMINANTE"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CONTAMINANTE: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CONTAMINANTE",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CONTAMINANTE",
+    "similarValue": "Partículas < 2,5 µm",
+    "judgment": "matched",
+    "match": {
+      "id": "Q48035814",
+      "name": "PM2.5",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item PM2.5 (Q48035814) for cells containing \"Partículas < 2,5 µm\" in column CONTAMINANTE"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CONTAMINANTE: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CONTAMINANTE",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CONTAMINANTE",
+    "similarValue": "Partículas < 10 µm",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1056863",
+      "name": "PM10",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item PM10 (Q1056863) for cells containing \"Partículas < 10 µm\" in column CONTAMINANTE"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CONTAMINANTE",
+    "expression": "grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "CONTAMINANTE_WIKIDATA",
+    "columnInsertIndex": 8,
+    "description": "Create column CONTAMINANTE_WIKIDATA at index 8 based on column CONTAMINANTE using expression grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CONTAMINANTE",
+    "clearData": true,
+    "description": "Discard recon judgments and clear recon data for cells in column CONTAMINANTE"
+  }
+]

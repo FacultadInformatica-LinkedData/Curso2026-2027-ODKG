@@ -1,0 +1,343 @@
+# SECTION 1: Unmodified Astrea 1.2.1 generated output.
+# Input: ../ontology/db-delays.ttl. See README.md for provenance.
+
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix dbd:   <https://example.org/db-delays/ontology/#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://astrea.linkeddata.es/shapes#6d6f96b67c2d71fa5957156a60ebf829>
+        a               sh:PropertyShape ;
+        rdfs:label      "EVA number"@en , "The station identifier from eva_nr, preserved as text rather than a numerical quantity."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The station identifier from eva_nr, preserved as text rather than a numerical quantity."@en ;
+        sh:name         "EVA number"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#c0439e4bc62fd27eb618545d777b9af8>
+        a               sh:PropertyShape ;
+        rdfs:label      "latitude"@en , "Latitude in decimal degrees, from lat. The source metadata does not explicitly specify the coordinate reference system."@en ;
+        sh:datatype     xsd:decimal ;
+        sh:description  "Latitude in decimal degrees, from lat. The source metadata does not explicitly specify the coordinate reference system."@en ;
+        sh:name         "latitude"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)" .
+
+<https://astrea.linkeddata.es/shapes#b12116d753ff882a96e1142faafd4b9e>
+        a               sh:NodeShape ;
+        rdfs:label      "State"@en ;
+        sh:description  "A German federal state (Land), suitable for external linking after identity verification. Use rdfs:label for its name."@en ;
+        sh:name         "State"@en ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  dbd:State .
+
+<https://astrea.linkeddata.es/shapes#0d7bfe01005061b2eabadb45f8de3f77>
+        a               sh:PropertyShape ;
+        rdfs:label      "longitude"@en , "Longitude in decimal degrees, from long. The source metadata does not explicitly specify the coordinate reference system."@en ;
+        sh:datatype     xsd:decimal ;
+        sh:description  "Longitude in decimal degrees, from long. The source metadata does not explicitly specify the coordinate reference system."@en ;
+        sh:name         "longitude"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)" .
+
+<https://astrea.linkeddata.es/shapes#3a3205bf2794d0774cbd7cf5a2344d58>
+        a               sh:PropertyShape ;
+        rdfs:label      "departure delay minutes"@en , "Reported departure delay in minutes, from departure_delay_m. A zero without an updated departure time does not prove an observed on-time event."@en ;
+        sh:datatype     xsd:integer ;
+        sh:description  "Reported departure delay in minutes, from departure_delay_m. A zero without an updated departure time does not prove an observed on-time event."@en ;
+        sh:name         "departure delay minutes"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "[\\-+]?[0-9]+" .
+
+<https://astrea.linkeddata.es/shapes#0c70c37f96c828d338fc75d85f9b7246>
+        a               sh:PropertyShape ;
+        rdfs:label      "station category"@en , "The station category from category, with observed values 1 to 5. It is not a train type."@en ;
+        sh:datatype     xsd:integer ;
+        sh:description  "The station category from category, with observed values 1 to 5. It is not a train type."@en ;
+        sh:name         "station category"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "[\\-+]?[0-9]+" .
+
+<https://astrea.linkeddata.es/shapes#483a7cb35a690929bb0b66370cddc14e>
+        a               sh:PropertyShape ;
+        rdfs:label      "updated arrival"@en , "Updated arrival time known at collection, from arrival_change; not necessarily a verified actual arrival."@en ;
+        sh:datatype     xsd:dateTime ;
+        sh:description  "Updated arrival time known at collection, from arrival_change; not necessarily a verified actual arrival."@en ;
+        sh:name         "updated arrival"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#c0c3369054fdb183f7b9a043893bc2f8>
+        a               sh:PropertyShape ;
+        rdfs:label      "arrival status"@en , "The source arrival_delay_check label: on_time for delays of at most 5 minutes, or delay for more than 5 minutes."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The source arrival_delay_check label: on_time for delays of at most 5 minutes, or delay for more than 5 minutes."@en ;
+        sh:name         "arrival status"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#98a7fae452d84217d2b48a4d0e08d849>
+        a               sh:PropertyShape ;
+        rdfs:label      "information"@en , "The operational message from info. An absent message does not establish absence of disruption."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The operational message from info. An absent message does not establish absence of disruption."@en ;
+        sh:name         "information"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#7f712b343b2d1662c569aa2c4ddd1aac>
+        a               sh:PropertyShape ;
+        rdfs:label      "planned departure"@en , "Scheduled departure time from departure_plan. Convert to ISO 8601 without inventing a time-zone offset."@en ;
+        sh:datatype     xsd:dateTime ;
+        sh:description  "Scheduled departure time from departure_plan. Convert to ISO 8601 without inventing a time-zone offset."@en ;
+        sh:name         "planned departure"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#44d38027dfaeef42607d47b05e2a8441>
+        a               sh:NodeShape ;
+        rdfs:label      "Station"@en ;
+        sh:description  "A railway station identified by its EVA number. This class is a candidate for links to external station entities after identity verification."@en ;
+        sh:name         "Station"@en ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  dbd:Station .
+
+<https://astrea.linkeddata.es/shapes#41a9ed178595e86cb88ba67d2e11a875>
+        a               sh:PropertyShape ;
+        rdfs:label      "previous stations"@en , "The source path string of previous stations separated by |, preserving their order."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The source path string of previous stations separated by |, preserving their order."@en ;
+        sh:name         "previous stations"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#d58d60eec5448fd913485583894bfd80>
+        a               sh:PropertyShape ;
+        rdfs:label      "postal code"@en , "The postal code from zip, kept as text to preserve leading zeros. Validate incomplete codes before correction."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The postal code from zip, kept as text to preserve leading zeros. Validate incomplete codes before correction."@en ;
+        sh:name         "postal code"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#15e0cc80aca885e314c418d7213b74fa>
+        a               sh:PropertyShape ;
+        rdfs:label      "in state"@en , "Links a city or locality to its German federal state, using the source state label."@en ;
+        sh:class        dbd:State ;
+        sh:description  "Links a city or locality to its German federal state, using the source state label."@en ;
+        sh:name         "in state"@en ;
+        sh:nodeKind     sh:BlankNodeOrIRI .
+
+<https://astrea.linkeddata.es/shapes#33d4da5aa4393dae4d68f6da32eb6451>
+        a               sh:PropertyShape ;
+        rdfs:label      "updated departure"@en , "Updated departure time known at collection, from departure_change; not necessarily a verified actual departure."@en ;
+        sh:datatype     xsd:dateTime ;
+        sh:description  "Updated departure time known at collection, from departure_change; not necessarily a verified actual departure."@en ;
+        sh:name         "updated departure"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#5bc495e127bbc746683ccc48f3fc4f7d>
+        a               sh:PropertyShape ;
+        rdfs:label      "departure status"@en , "The source departure_delay_check label: on_time for delays of at most 5 minutes, or delay for more than 5 minutes."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The source departure_delay_check label: on_time for delays of at most 5 minutes, or delay for more than 5 minutes."@en ;
+        sh:name         "departure status"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#628ee35fd7dd8648a91e880145f760a9>
+        a               sh:PropertyShape ;
+        rdfs:label      "at station"@en , "Links a recorded stop to its station, using the source eva_nr value."@en ;
+        sh:class        dbd:Station ;
+        sh:description  "Links a recorded stop to its station, using the source eva_nr value."@en ;
+        sh:name         "at station"@en ;
+        sh:nodeKind     sh:BlankNodeOrIRI .
+
+<https://astrea.linkeddata.es/shapes#125f3145808471c46a6b5e7b1aed4f2d>
+        a               sh:NodeShape ;
+        rdfs:label      "City"@en ;
+        sh:description  "A city or locality represented by its cleaned source label and federal state. Its administrative identity must be verified before linking to an external place entity. Use rdfs:label for its name."@en ;
+        sh:name         "City"@en ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  dbd:City .
+
+<https://astrea.linkeddata.es/shapes#27d3f3898f6877ab34daff30908ec2e7>
+        a               sh:NodeShape ;
+        rdfs:label      "Train stop"@en ;
+        sh:description  "A recorded train stop at a station. Source records with different values are separate observations, even when they share the same source ID."@en ;
+        sh:name         "Train stop"@en ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  dbd:TrainStop .
+
+<https://astrea.linkeddata.es/shapes#60b8aab0137255372765cdf49e307b6e>
+        a               sh:PropertyShape ;
+        rdfs:label      "planned arrival"@en , "Scheduled arrival time from arrival_plan. Convert to ISO 8601 without inventing a time-zone offset."@en ;
+        sh:datatype     xsd:dateTime ;
+        sh:description  "Scheduled arrival time from arrival_plan. Convert to ISO 8601 without inventing a time-zone offset."@en ;
+        sh:name         "planned arrival"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#d8784780851f4abb52da1ada2b153fe9>
+        a               sh:PropertyShape ;
+        rdfs:label      "stop ID"@en , "The complete original ID column value. It may repeat across observations and is not declared a unique OWL key."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The complete original ID column value. It may repeat across observations and is not declared a unique OWL key."@en ;
+        sh:name         "stop ID"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#0a18d38062fa63970b57e87b2a06cc7e>
+        a               sh:PropertyShape ;
+        rdfs:label      "line label"@en , "The source line label. It does not uniquely identify a train, journey or route across the network."@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "The source line label. It does not uniquely identify a train, journey or route across the network."@en ;
+        sh:name         "line label"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#60e2a720d5a5a9b21e0da8ab8b5c5916>
+        a               sh:PropertyShape ;
+        rdfs:label      "arrival delay minutes"@en , "Reported arrival delay in minutes, from arrival_delay_m. A zero without an updated arrival time does not prove an observed on-time event."@en ;
+        sh:datatype     xsd:integer ;
+        sh:description  "Reported arrival delay in minutes, from arrival_delay_m. A zero without an updated arrival time does not prove an observed on-time event."@en ;
+        sh:name         "arrival delay minutes"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:pattern      "[\\-+]?[0-9]+" .
+
+<https://astrea.linkeddata.es/shapes#7a7c051cb8f4a290b4f94bbbd71712ca>
+        a               sh:PropertyShape ;
+        rdfs:label      "in city"@en , "Links a station to its city or locality, identified using the source city and state labels."@en ;
+        sh:class        dbd:City ;
+        sh:description  "Links a station to its city or locality, identified using the source city and state labels."@en ;
+        sh:name         "in city"@en ;
+        sh:nodeKind     sh:BlankNodeOrIRI .
+
+# SECTION 2: Explicit repairs to the released generator output.
+
+@prefix dbd: <https://example.org/db-delays/ontology/#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<https://astrea.linkeddata.es/shapes#125f3145808471c46a6b5e7b1aed4f2d> sh:property <https://astrea.linkeddata.es/shapes#15e0cc80aca885e314c418d7213b74fa> .
+
+<https://astrea.linkeddata.es/shapes#27d3f3898f6877ab34daff30908ec2e7> sh:property <https://astrea.linkeddata.es/shapes#0a18d38062fa63970b57e87b2a06cc7e>,
+        <https://astrea.linkeddata.es/shapes#33d4da5aa4393dae4d68f6da32eb6451>,
+        <https://astrea.linkeddata.es/shapes#3a3205bf2794d0774cbd7cf5a2344d58>,
+        <https://astrea.linkeddata.es/shapes#41a9ed178595e86cb88ba67d2e11a875>,
+        <https://astrea.linkeddata.es/shapes#483a7cb35a690929bb0b66370cddc14e>,
+        <https://astrea.linkeddata.es/shapes#5bc495e127bbc746683ccc48f3fc4f7d>,
+        <https://astrea.linkeddata.es/shapes#60b8aab0137255372765cdf49e307b6e>,
+        <https://astrea.linkeddata.es/shapes#60e2a720d5a5a9b21e0da8ab8b5c5916>,
+        <https://astrea.linkeddata.es/shapes#628ee35fd7dd8648a91e880145f760a9>,
+        <https://astrea.linkeddata.es/shapes#7f712b343b2d1662c569aa2c4ddd1aac>,
+        <https://astrea.linkeddata.es/shapes#98a7fae452d84217d2b48a4d0e08d849>,
+        <https://astrea.linkeddata.es/shapes#c0c3369054fdb183f7b9a043893bc2f8>,
+        <https://astrea.linkeddata.es/shapes#d8784780851f4abb52da1ada2b153fe9> .
+
+<https://astrea.linkeddata.es/shapes#44d38027dfaeef42607d47b05e2a8441> sh:property <https://astrea.linkeddata.es/shapes#0c70c37f96c828d338fc75d85f9b7246>,
+        <https://astrea.linkeddata.es/shapes#0d7bfe01005061b2eabadb45f8de3f77>,
+        <https://astrea.linkeddata.es/shapes#6d6f96b67c2d71fa5957156a60ebf829>,
+        <https://astrea.linkeddata.es/shapes#7a7c051cb8f4a290b4f94bbbd71712ca>,
+        <https://astrea.linkeddata.es/shapes#c0439e4bc62fd27eb618545d777b9af8>,
+        <https://astrea.linkeddata.es/shapes#d58d60eec5448fd913485583894bfd80> .
+
+<https://astrea.linkeddata.es/shapes#0a18d38062fa63970b57e87b2a06cc7e> sh:path dbd:lineLabel .
+
+<https://astrea.linkeddata.es/shapes#0c70c37f96c828d338fc75d85f9b7246> sh:path dbd:stationCategory .
+
+<https://astrea.linkeddata.es/shapes#0d7bfe01005061b2eabadb45f8de3f77> sh:path dbd:longitude .
+
+<https://astrea.linkeddata.es/shapes#15e0cc80aca885e314c418d7213b74fa> sh:path dbd:inState .
+
+<https://astrea.linkeddata.es/shapes#33d4da5aa4393dae4d68f6da32eb6451> sh:path dbd:updatedDeparture .
+
+<https://astrea.linkeddata.es/shapes#3a3205bf2794d0774cbd7cf5a2344d58> sh:path dbd:departureDelayMinutes .
+
+<https://astrea.linkeddata.es/shapes#41a9ed178595e86cb88ba67d2e11a875> sh:path dbd:previousStations .
+
+<https://astrea.linkeddata.es/shapes#483a7cb35a690929bb0b66370cddc14e> sh:path dbd:updatedArrival .
+
+<https://astrea.linkeddata.es/shapes#5bc495e127bbc746683ccc48f3fc4f7d> sh:path dbd:departureStatus .
+
+<https://astrea.linkeddata.es/shapes#60b8aab0137255372765cdf49e307b6e> sh:path dbd:plannedArrival .
+
+<https://astrea.linkeddata.es/shapes#60e2a720d5a5a9b21e0da8ab8b5c5916> sh:path dbd:arrivalDelayMinutes .
+
+<https://astrea.linkeddata.es/shapes#628ee35fd7dd8648a91e880145f760a9> sh:path dbd:atStation .
+
+<https://astrea.linkeddata.es/shapes#6d6f96b67c2d71fa5957156a60ebf829> sh:path dbd:evaNumber .
+
+<https://astrea.linkeddata.es/shapes#7a7c051cb8f4a290b4f94bbbd71712ca> sh:path dbd:inCity .
+
+<https://astrea.linkeddata.es/shapes#7f712b343b2d1662c569aa2c4ddd1aac> sh:path dbd:plannedDeparture .
+
+<https://astrea.linkeddata.es/shapes#98a7fae452d84217d2b48a4d0e08d849> sh:path dbd:information .
+
+<https://astrea.linkeddata.es/shapes#c0439e4bc62fd27eb618545d777b9af8> sh:path dbd:latitude .
+
+<https://astrea.linkeddata.es/shapes#c0c3369054fdb183f7b9a043893bc2f8> sh:path dbd:arrivalStatus .
+
+<https://astrea.linkeddata.es/shapes#d58d60eec5448fd913485583894bfd80> sh:path dbd:postalCode .
+
+<https://astrea.linkeddata.es/shapes#d8784780851f4abb52da1ada2b153fe9> sh:path dbd:stopId .
+
+
+# SECTION 3: Manually added dataset-specific constraints.
+
+@prefix dbd: <https://example.org/db-delays/ontology/#> .
+@prefix shape: <https://example.org/db-delays/shapes/#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Selected manual rules from shapes_ideas.md. Optional source fields may be absent.
+# No global uniqueness or delay/status consistency constraint is imposed.
+shape:LabelShape a sh:NodeShape ;
+    sh:targetClass dbd:TrainStop, dbd:Station, dbd:City, dbd:State ;
+    sh:property [
+        sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:datatype xsd:string ; sh:pattern "\\S" ;
+        sh:message "Each resource must have exactly one non-blank string label."@en
+    ] .
+
+shape:TrainStopTimeShape a sh:NodeShape ;
+    sh:targetClass dbd:TrainStop ;
+    sh:property [
+        sh:path dbd:plannedArrival ;
+        sh:lessThanOrEquals dbd:plannedDeparture ;
+        sh:message "Planned arrival must be no later than planned departure when both are present."@en
+    ] ;
+    sh:property [
+        sh:path dbd:updatedArrival ;
+        sh:lessThanOrEquals dbd:updatedDeparture ;
+        sh:message "Updated arrival must be no later than updated departure when both are present."@en
+    ] .
+
+shape:StationValueShape a sh:NodeShape ;
+    sh:targetClass dbd:Station ;
+    sh:property [
+        sh:path dbd:postalCode ; sh:datatype xsd:string ; sh:pattern "^[0-9]{5}$" ;
+        sh:message "A German postal code must be a string of exactly five digits."@en
+    ] ;
+    sh:property [
+        sh:path dbd:longitude ; sh:minInclusive -180 ; sh:maxInclusive 180 ;
+        sh:message "Longitude must be between -180 and 180 degrees."@en
+    ] ;
+    sh:property [
+        sh:path dbd:latitude ; sh:minInclusive -90 ; sh:maxInclusive 90 ;
+        sh:message "Latitude must be between -90 and 90 degrees."@en
+    ] .
+
+# IF plannedArrival is absent THEN previousStations must be absent.
+# This hypothesis is a warning, not proof of a first station or an equivalence.
+shape:MissingArrivalPathShape a sh:NodeShape ;
+    sh:targetClass dbd:TrainStop ; sh:severity sh:Warning ;
+    sh:message "Check this observation: planned arrival is missing but a previous-stations path is present."@en ;
+    sh:or (
+        [ sh:property [ sh:path dbd:plannedArrival ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path dbd:previousStations ; sh:maxCount 0 ] ]
+    ) .

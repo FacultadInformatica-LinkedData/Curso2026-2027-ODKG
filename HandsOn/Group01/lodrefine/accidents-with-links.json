@@ -1,0 +1,264 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Street",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Street_original",
+    "columnInsertIndex": 12,
+    "description": "Crear la columna Street_original en el índice 12 basada en la columna Street usando la expresión grel:value"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "street"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Street to type Q79007"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "similarValue": "7th Ave",
+    "judgment": "matched",
+    "match": {
+      "id": "Q109926",
+      "name": "Seventh Avenue",
+      "types": [
+        "Q79007",
+        "Q134530854"
+      ],
+      "score": 82
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Seventh Avenue (Q109926) para las celdas que contienen \"7th Ave\" en la columna Street"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "similarValue": "Broadway",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11260",
+      "name": "Broadway",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Broadway (Q11260) para las celdas que contienen \"Broadway\" en la columna Street"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "City",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q515",
+        "name": "city"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column City to type Q515"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "State",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q35657",
+        "name": "U.S. state"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column State to type Q35657"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Country",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q6256",
+        "name": "country"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Country to type Q6256"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Country",
+    "similarValue": "US",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30",
+      "name": "United States",
+      "types": [
+        "Q3624078",
+        "Q6256",
+        "Q1489259",
+        "Q99541706",
+        "Q1520223",
+        "Q5035794"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento United States (Q30) para las celdas que contienen \"US\" en la columna Country"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Street",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "Wikidata_URI",
+    "columnInsertIndex": 12,
+    "description": "Crear la columna Wikidata_URI en el índice 12 basada en la columna Street usando la expresión grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "City",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "City_Wikidata_URI",
+    "columnInsertIndex": 16,
+    "description": "Crear la columna City_Wikidata_URI en el índice 16 basada en la columna City usando la expresión grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "State",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "State_Wikidata_URI",
+    "columnInsertIndex": 19,
+    "description": "Crear la columna State_Wikidata_URI en el índice 19 basada en la columna State usando la expresión grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Country",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "Country_Wikidata_URI",
+    "columnInsertIndex": 22,
+    "description": "Crear la columna Country_Wikidata_URI en el índice 22 basada en la columna Country usando la expresión grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "expression": "grel:cells[\"Street_original\"].value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Street usando la expresión grel:cells[\"Street_original\"].value"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street",
+    "similarValue": "7th Ave",
+    "judgment": "matched",
+    "match": {
+      "id": "Q109926",
+      "name": "Seventh Avenue",
+      "types": [
+        "Q79007",
+        "Q134530854"
+      ],
+      "score": 82
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Seventh Avenue (Q109926) para las celdas que contienen \"7th Ave\" en la columna Street"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Street_original",
+    "description": "Eliminar columna Street_original"
+  }
+]

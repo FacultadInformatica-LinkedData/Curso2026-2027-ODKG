@@ -1,0 +1,108 @@
+@prefix dbd: <https://example.org/db-delays/ontology/#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8011077> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "4651" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010022> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "1814" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010006> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "1477" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010019> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "6628" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010059> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "4451" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8011242> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "4552" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010049> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "1877" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010003> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "4600" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010009> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "6449" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010026> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "2625" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8010043> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "6404" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/db-delays/resource/Station/8011222> ;
+            sh:resultMessage "A German postal code must be a string of exactly five digits."@en ;
+            sh:resultPath dbd:postalCode ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape _:n2021bd3d094e478197b132e9c7140874b4 ;
+            sh:value "4564" ] .
+
+_:n2021bd3d094e478197b132e9c7140874b4 sh:datatype xsd:string ;
+    sh:message "A German postal code must be a string of exactly five digits."@en ;
+    sh:path dbd:postalCode ;
+    sh:pattern "^[0-9]{5}$" .
+

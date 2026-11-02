@@ -1,0 +1,2621 @@
+{
+  "verified_on": "2026-10-25",
+  "sources": {
+    "wikidata_entity_data": "https://www.wikidata.org/wiki/Special:EntityData/{QID}.json",
+    "district_codes": "https://datos.madrid.es/dataset/213565-0-cartografia-distritos-1-1000/downloads",
+    "neighbourhood_codes": "https://geoportal.madrid.es/fsdescargas/IDEAM_WBGEOPORTAL/LIMITES_ADMINISTRATIVOS/Barrios/Barrios.csv",
+    "san_andres_rename": "https://sede.madrid.es/portal/site/tramites/menuitem.b4c91589e7f6a5d829da39e5a8a409a0/?vgnextchannel=741d814231ede410VgnVCM1000000b205a0aRCRD&vgnextoid=3ff02f84749bf510VgnVCM2000001f4a900aRCRD"
+  },
+  "districts": {
+    "1": {
+      "label": "Centro",
+      "wikidata": "http://www.wikidata.org/entity/Q1763376",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "2": {
+      "label": "Arganzuela",
+      "wikidata": "http://www.wikidata.org/entity/Q2000929",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "3": {
+      "label": "Retiro",
+      "wikidata": "http://www.wikidata.org/entity/Q2002296",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "4": {
+      "label": "Salamanca",
+      "wikidata": "http://www.wikidata.org/entity/Q1773521",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "5": {
+      "label": "Chamartín",
+      "wikidata": "http://www.wikidata.org/entity/Q1766348",
+      "evidence": {
+        "P31": [
+          "Q3032114",
+          "Q486972"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "6": {
+      "label": "Tetuán",
+      "wikidata": "http://www.wikidata.org/entity/Q1773540",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "7": {
+      "label": "Chamberí",
+      "wikidata": "http://www.wikidata.org/entity/Q1763370",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "8": {
+      "label": "Fuencarral-El Pardo",
+      "wikidata": "http://www.wikidata.org/entity/Q656196",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "9": {
+      "label": "Moncloa-Aravaca",
+      "wikidata": "http://www.wikidata.org/entity/Q2017682",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "10": {
+      "label": "Latina",
+      "wikidata": "http://www.wikidata.org/entity/Q794954",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "11": {
+      "label": "Carabanchel",
+      "wikidata": "http://www.wikidata.org/entity/Q1001991",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "12": {
+      "label": "Usera",
+      "wikidata": "http://www.wikidata.org/entity/Q953368",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "13": {
+      "label": "Puente de Vallecas",
+      "wikidata": "http://www.wikidata.org/entity/Q2003054",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "14": {
+      "label": "Moratalaz",
+      "wikidata": "http://www.wikidata.org/entity/Q2076109",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "15": {
+      "label": "Ciudad Lineal",
+      "wikidata": "http://www.wikidata.org/entity/Q1763694",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "16": {
+      "label": "Hortaleza",
+      "wikidata": "http://www.wikidata.org/entity/Q1928529",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "17": {
+      "label": "Villaverde",
+      "wikidata": "http://www.wikidata.org/entity/Q919536",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "18": {
+      "label": "Villa de Vallecas",
+      "wikidata": "http://www.wikidata.org/entity/Q1947988",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "19": {
+      "label": "Vicálvaro",
+      "wikidata": "http://www.wikidata.org/entity/Q589403",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "20": {
+      "label": "San Blas-Canillejas",
+      "wikidata": "http://www.wikidata.org/entity/Q2001937",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    },
+    "21": {
+      "label": "Barajas",
+      "wikidata": "http://www.wikidata.org/entity/Q807230",
+      "evidence": {
+        "P31": [
+          "Q3032114"
+        ],
+        "P131": [
+          "Q2807"
+        ]
+      }
+    }
+  },
+  "neighbourhoods": {
+    "101": {
+      "uri": "http://www.wikidata.org/entity/Q2136510",
+      "source_label": "PALACIO",
+      "wikidata_label_es": "Palacio",
+      "district_id": "1",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763376"
+      ],
+      "expected_district_qid": "Q1763376",
+      "official_catalog_code": "11",
+      "wikidata_P528": [
+        "11"
+      ]
+    },
+    "102": {
+      "uri": "http://www.wikidata.org/entity/Q2449844",
+      "source_label": "EMBAJADORES",
+      "wikidata_label_es": "Embajadores",
+      "district_id": "1",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763376"
+      ],
+      "expected_district_qid": "Q1763376",
+      "official_catalog_code": "12",
+      "wikidata_P528": [
+        "12"
+      ]
+    },
+    "103": {
+      "uri": "http://www.wikidata.org/entity/Q2535637",
+      "source_label": "CORTES",
+      "wikidata_label_es": "Cortes",
+      "district_id": "1",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763376"
+      ],
+      "expected_district_qid": "Q1763376",
+      "official_catalog_code": "13",
+      "wikidata_P528": [
+        "13"
+      ]
+    },
+    "104": {
+      "uri": "http://www.wikidata.org/entity/Q1992319",
+      "source_label": "JUSTICIA",
+      "wikidata_label_es": "Justicia",
+      "district_id": "1",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763376"
+      ],
+      "expected_district_qid": "Q1763376",
+      "official_catalog_code": "14",
+      "wikidata_P528": [
+        "14"
+      ]
+    },
+    "105": {
+      "uri": "http://www.wikidata.org/entity/Q10387767",
+      "source_label": "UNIVERSIDAD",
+      "wikidata_label_es": "Universidad",
+      "district_id": "1",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763376"
+      ],
+      "expected_district_qid": "Q1763376",
+      "official_catalog_code": "15",
+      "wikidata_P528": [
+        "15"
+      ]
+    },
+    "106": {
+      "uri": "http://www.wikidata.org/entity/Q2465181",
+      "source_label": "SOL",
+      "wikidata_label_es": "Sol",
+      "district_id": "1",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763376"
+      ],
+      "expected_district_qid": "Q1763376",
+      "official_catalog_code": "16",
+      "wikidata_P528": [
+        "16"
+      ]
+    },
+    "201": {
+      "uri": "http://www.wikidata.org/entity/Q3773740",
+      "source_label": "IMPERIAL",
+      "wikidata_label_es": "Imperial",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "21",
+      "wikidata_P528": [
+        "21"
+      ]
+    },
+    "202": {
+      "uri": "http://www.wikidata.org/entity/Q3319190",
+      "source_label": "ACACIAS",
+      "wikidata_label_es": "Acacias",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "22",
+      "wikidata_P528": [
+        "22"
+      ]
+    },
+    "203": {
+      "uri": "http://www.wikidata.org/entity/Q3773750",
+      "source_label": "CHOPERA",
+      "wikidata_label_es": "Chopera",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "23",
+      "wikidata_P528": [
+        "23"
+      ]
+    },
+    "204": {
+      "uri": "http://www.wikidata.org/entity/Q3773990",
+      "source_label": "LEGAZPI",
+      "wikidata_label_es": "Legazpi",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "24",
+      "wikidata_P528": [
+        "24"
+      ]
+    },
+    "205": {
+      "uri": "http://www.wikidata.org/entity/Q3773736",
+      "source_label": "DELICIAS",
+      "wikidata_label_es": "Delicias",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "25",
+      "wikidata_P528": [
+        "25"
+      ]
+    },
+    "206": {
+      "uri": "http://www.wikidata.org/entity/Q521009",
+      "source_label": "PALOS DE LA FRONTERA",
+      "wikidata_label_es": "Palos de la Frontera",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "26",
+      "wikidata_P528": [
+        "26"
+      ]
+    },
+    "207": {
+      "uri": "http://www.wikidata.org/entity/Q3814594",
+      "source_label": "ATOCHA",
+      "wikidata_label_es": "Atocha",
+      "district_id": "2",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2000929"
+      ],
+      "expected_district_qid": "Q2000929",
+      "official_catalog_code": "27",
+      "wikidata_P528": [
+        "27"
+      ]
+    },
+    "301": {
+      "uri": "http://www.wikidata.org/entity/Q3773753",
+      "source_label": "PACIFICO",
+      "wikidata_label_es": "Pacífico",
+      "district_id": "3",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2002296"
+      ],
+      "expected_district_qid": "Q2002296",
+      "official_catalog_code": "31",
+      "wikidata_P528": [
+        "31"
+      ]
+    },
+    "302": {
+      "uri": "http://www.wikidata.org/entity/Q3774001",
+      "source_label": "ADELFAS",
+      "wikidata_label_es": "Adelfas",
+      "district_id": "3",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2002296"
+      ],
+      "expected_district_qid": "Q2002296",
+      "official_catalog_code": "32",
+      "wikidata_P528": [
+        "32"
+      ]
+    },
+    "303": {
+      "uri": "http://www.wikidata.org/entity/Q3773738",
+      "source_label": "ESTRELLA",
+      "wikidata_label_es": "Estrella",
+      "district_id": "3",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2002296"
+      ],
+      "expected_district_qid": "Q2002296",
+      "official_catalog_code": "33",
+      "wikidata_P528": [
+        "33"
+      ]
+    },
+    "304": {
+      "uri": "http://www.wikidata.org/entity/Q15249910",
+      "source_label": "IBIZA",
+      "wikidata_label_es": "Ibiza",
+      "district_id": "3",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2002296"
+      ],
+      "expected_district_qid": "Q2002296",
+      "official_catalog_code": "34",
+      "wikidata_P528": [
+        "34"
+      ]
+    },
+    "305": {
+      "uri": "http://www.wikidata.org/entity/Q10306766",
+      "source_label": "LOS JERONIMOS",
+      "wikidata_label_es": "Jerónimos",
+      "district_id": "3",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2002296"
+      ],
+      "expected_district_qid": "Q2002296",
+      "official_catalog_code": "35",
+      "wikidata_P528": [
+        "35"
+      ]
+    },
+    "306": {
+      "uri": "http://www.wikidata.org/entity/Q3773746",
+      "source_label": "NIÑO JESUS",
+      "wikidata_label_es": "Niño Jesús",
+      "district_id": "3",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2002296"
+      ],
+      "expected_district_qid": "Q2002296",
+      "official_catalog_code": "36",
+      "wikidata_P528": [
+        "36"
+      ]
+    },
+    "401": {
+      "uri": "http://www.wikidata.org/entity/Q3814551",
+      "source_label": "RECOLETOS",
+      "wikidata_label_es": "Recoletos",
+      "district_id": "4",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773521"
+      ],
+      "expected_district_qid": "Q1773521",
+      "official_catalog_code": "41",
+      "wikidata_P528": [
+        "41"
+      ]
+    },
+    "402": {
+      "uri": "http://www.wikidata.org/entity/Q3814578",
+      "source_label": "GOYA",
+      "wikidata_label_es": "Goya",
+      "district_id": "4",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773521"
+      ],
+      "expected_district_qid": "Q1773521",
+      "official_catalog_code": "42",
+      "wikidata_P528": [
+        "42"
+      ]
+    },
+    "403": {
+      "uri": "http://www.wikidata.org/entity/Q3814564",
+      "source_label": "FUENTE DEL BERRO",
+      "wikidata_label_es": "Fuente del Berro",
+      "district_id": "4",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773521"
+      ],
+      "expected_district_qid": "Q1773521",
+      "official_catalog_code": "43",
+      "wikidata_P528": [
+        "43"
+      ]
+    },
+    "404": {
+      "uri": "http://www.wikidata.org/entity/Q3814559",
+      "source_label": "GUINDALERA",
+      "wikidata_label_es": "La Guindalera",
+      "district_id": "4",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773521"
+      ],
+      "expected_district_qid": "Q1773521",
+      "official_catalog_code": "44",
+      "wikidata_P528": [
+        "44"
+      ]
+    },
+    "405": {
+      "uri": "http://www.wikidata.org/entity/Q4779",
+      "source_label": "LISTA",
+      "wikidata_label_es": "Lista",
+      "district_id": "4",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773521"
+      ],
+      "expected_district_qid": "Q1773521",
+      "official_catalog_code": "45",
+      "wikidata_P528": [
+        "45"
+      ]
+    },
+    "406": {
+      "uri": "http://www.wikidata.org/entity/Q4781",
+      "source_label": "CASTELLANA",
+      "wikidata_label_es": "Castellana",
+      "district_id": "4",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773521",
+        "Q2807"
+      ],
+      "expected_district_qid": "Q1773521",
+      "official_catalog_code": "46",
+      "wikidata_P528": [
+        "46"
+      ]
+    },
+    "501": {
+      "uri": "http://www.wikidata.org/entity/Q4778",
+      "source_label": "EL VISO",
+      "wikidata_label_es": "El Viso",
+      "district_id": "5",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1766348"
+      ],
+      "expected_district_qid": "Q1766348",
+      "official_catalog_code": "51",
+      "wikidata_P528": [
+        "51"
+      ]
+    },
+    "502": {
+      "uri": "http://www.wikidata.org/entity/Q4776",
+      "source_label": "PROSPERIDAD",
+      "wikidata_label_es": "Prosperidad",
+      "district_id": "5",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1766348"
+      ],
+      "expected_district_qid": "Q1766348",
+      "official_catalog_code": "52",
+      "wikidata_P528": [
+        "52"
+      ]
+    },
+    "503": {
+      "uri": "http://www.wikidata.org/entity/Q3773744",
+      "source_label": "CIUDAD JARDIN",
+      "wikidata_label_es": "Ciudad Jardín",
+      "district_id": "5",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1766348"
+      ],
+      "expected_district_qid": "Q1766348",
+      "official_catalog_code": "53",
+      "wikidata_P528": [
+        "53"
+      ]
+    },
+    "504": {
+      "uri": "http://www.wikidata.org/entity/Q3814573",
+      "source_label": "HISPANOAMERICA",
+      "wikidata_label_es": "Hispanoamérica",
+      "district_id": "5",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1766348"
+      ],
+      "expected_district_qid": "Q1766348",
+      "official_catalog_code": "54",
+      "wikidata_P528": [
+        "54"
+      ]
+    },
+    "505": {
+      "uri": "http://www.wikidata.org/entity/Q10338128",
+      "source_label": "NUEVA ESPAÑA",
+      "wikidata_label_es": "Nueva España",
+      "district_id": "5",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1766348"
+      ],
+      "expected_district_qid": "Q1766348",
+      "official_catalog_code": "55",
+      "wikidata_P528": [
+        "55"
+      ]
+    },
+    "506": {
+      "uri": "http://www.wikidata.org/entity/Q3813735",
+      "source_label": "CASTILLA",
+      "wikidata_label_es": "Castilla",
+      "district_id": "5",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1766348"
+      ],
+      "expected_district_qid": "Q1766348",
+      "official_catalog_code": "56",
+      "wikidata_P528": [
+        "56"
+      ]
+    },
+    "601": {
+      "uri": "http://www.wikidata.org/entity/Q11908929",
+      "source_label": "BELLAS VISTAS",
+      "wikidata_label_es": "Bellas Vistas",
+      "district_id": "6",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773540"
+      ],
+      "expected_district_qid": "Q1773540",
+      "official_catalog_code": "61",
+      "wikidata_P528": [
+        "61"
+      ]
+    },
+    "602": {
+      "uri": "http://www.wikidata.org/entity/Q5824684",
+      "source_label": "CUATRO CAMINOS",
+      "wikidata_label_es": "Cuatro Caminos",
+      "district_id": "6",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773540"
+      ],
+      "expected_district_qid": "Q1773540",
+      "official_catalog_code": "62",
+      "wikidata_P528": [
+        "62"
+      ]
+    },
+    "603": {
+      "uri": "http://www.wikidata.org/entity/Q11913212",
+      "source_label": "CASTILLEJOS",
+      "wikidata_label_es": "Castillejos",
+      "district_id": "6",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773540"
+      ],
+      "expected_district_qid": "Q1773540",
+      "official_catalog_code": "63",
+      "wikidata_P528": [
+        "63"
+      ]
+    },
+    "604": {
+      "uri": "http://www.wikidata.org/entity/Q2265427",
+      "source_label": "ALMENARA",
+      "wikidata_label_es": "Almenara",
+      "district_id": "6",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773540"
+      ],
+      "expected_district_qid": "Q1773540",
+      "official_catalog_code": "64",
+      "wikidata_P528": [
+        "64"
+      ]
+    },
+    "605": {
+      "uri": "http://www.wikidata.org/entity/Q10388711",
+      "source_label": "VALDEACEDERAS",
+      "wikidata_label_es": "Valdeacederas",
+      "district_id": "6",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773540"
+      ],
+      "expected_district_qid": "Q1773540",
+      "official_catalog_code": "65",
+      "wikidata_P528": [
+        "65"
+      ]
+    },
+    "606": {
+      "uri": "http://www.wikidata.org/entity/Q11909208",
+      "source_label": "BERRUGUETE",
+      "wikidata_label_es": "Berruguete",
+      "district_id": "6",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1773540"
+      ],
+      "expected_district_qid": "Q1773540",
+      "official_catalog_code": "66",
+      "wikidata_P528": [
+        "66"
+      ]
+    },
+    "701": {
+      "uri": "http://www.wikidata.org/entity/Q10288587",
+      "source_label": "GAZTAMBIDE",
+      "wikidata_label_es": "Gaztambide",
+      "district_id": "7",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763370"
+      ],
+      "expected_district_qid": "Q1763370",
+      "official_catalog_code": "71",
+      "wikidata_P528": [
+        "71"
+      ]
+    },
+    "702": {
+      "uri": "http://www.wikidata.org/entity/Q10856744",
+      "source_label": "ARAPILES",
+      "wikidata_label_es": "Arapiles",
+      "district_id": "7",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763370"
+      ],
+      "expected_district_qid": "Q1763370",
+      "official_catalog_code": "72",
+      "wikidata_P528": [
+        "72"
+      ]
+    },
+    "703": {
+      "uri": "http://www.wikidata.org/entity/Q10384027",
+      "source_label": "TRAFALGAR",
+      "wikidata_label_es": "Trafalgar",
+      "district_id": "7",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763370"
+      ],
+      "expected_district_qid": "Q1763370",
+      "official_catalog_code": "73",
+      "wikidata_P528": [
+        "73"
+      ]
+    },
+    "704": {
+      "uri": "http://www.wikidata.org/entity/Q10954432",
+      "source_label": "ALMAGRO",
+      "wikidata_label_es": "Almagro",
+      "district_id": "7",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763370"
+      ],
+      "expected_district_qid": "Q1763370",
+      "official_catalog_code": "74",
+      "wikidata_P528": [
+        "74"
+      ]
+    },
+    "705": {
+      "uri": "http://www.wikidata.org/entity/Q10366270",
+      "source_label": "RIOS ROSAS",
+      "wikidata_label_es": "Ríos Rosas",
+      "district_id": "7",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763370"
+      ],
+      "expected_district_qid": "Q1763370",
+      "official_catalog_code": "75",
+      "wikidata_P528": [
+        "75"
+      ]
+    },
+    "706": {
+      "uri": "http://www.wikidata.org/entity/Q6122685",
+      "source_label": "VALLEHERMOSO",
+      "wikidata_label_es": "Vallehermoso",
+      "district_id": "7",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763370"
+      ],
+      "expected_district_qid": "Q1763370",
+      "official_catalog_code": "76",
+      "wikidata_P528": [
+        "76"
+      ]
+    },
+    "801": {
+      "uri": "http://www.wikidata.org/entity/Q3314337",
+      "source_label": "EL PARDO",
+      "wikidata_label_es": "El Pardo",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "81",
+      "wikidata_P528": [
+        "81"
+      ]
+    },
+    "802": {
+      "uri": "http://www.wikidata.org/entity/Q10286156",
+      "source_label": "FUENTELARREINA",
+      "wikidata_label_es": "Fuentelarreina",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "82",
+      "wikidata_P528": [
+        "82"
+      ]
+    },
+    "803": {
+      "uri": "http://www.wikidata.org/entity/Q3319582",
+      "source_label": "PEÑA GRANDE",
+      "wikidata_label_es": "Peñagrande",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "83",
+      "wikidata_P528": [
+        "83"
+      ]
+    },
+    "804": {
+      "uri": "http://www.wikidata.org/entity/Q3773964",
+      "source_label": "EL PILAR",
+      "wikidata_label_es": "El Pilar",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "84",
+      "wikidata_P528": [
+        "84"
+      ]
+    },
+    "805": {
+      "uri": "http://www.wikidata.org/entity/Q5869740",
+      "source_label": "LA PAZ",
+      "wikidata_label_es": "La Paz",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "85",
+      "wikidata_P528": [
+        "85"
+      ]
+    },
+    "806": {
+      "uri": "http://www.wikidata.org/entity/Q31132",
+      "source_label": "VALVERDE",
+      "wikidata_label_es": "Valverde",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "86",
+      "wikidata_P528": [
+        "86"
+      ]
+    },
+    "807": {
+      "uri": "http://www.wikidata.org/entity/Q31134",
+      "source_label": "MIRASIERRA",
+      "wikidata_label_es": "Mirasierra",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "87",
+      "wikidata_P528": [
+        "87"
+      ]
+    },
+    "808": {
+      "uri": "http://www.wikidata.org/entity/Q10271137",
+      "source_label": "EL GOLOSO",
+      "wikidata_label_es": "El Goloso",
+      "district_id": "8",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q656196"
+      ],
+      "expected_district_qid": "Q656196",
+      "official_catalog_code": "88",
+      "wikidata_P528": [
+        "88"
+      ]
+    },
+    "901": {
+      "uri": "http://www.wikidata.org/entity/Q16302441",
+      "source_label": "CASA DE CAMPO",
+      "wikidata_label_es": "Casa de Campo",
+      "district_id": "9",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2017682"
+      ],
+      "expected_district_qid": "Q2017682",
+      "official_catalog_code": "91",
+      "wikidata_P528": [
+        "91"
+      ]
+    },
+    "902": {
+      "uri": "http://www.wikidata.org/entity/Q64874",
+      "source_label": "ARGUELLES",
+      "wikidata_label_es": "Argüelles",
+      "district_id": "9",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2017682"
+      ],
+      "expected_district_qid": "Q2017682",
+      "official_catalog_code": "92",
+      "wikidata_P528": [
+        "92"
+      ]
+    },
+    "903": {
+      "uri": "http://www.wikidata.org/entity/Q3319235",
+      "source_label": "CIUDAD UNIVERSITARIA",
+      "wikidata_label_es": "Ciudad Universitaria",
+      "district_id": "9",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2017682"
+      ],
+      "expected_district_qid": "Q2017682",
+      "official_catalog_code": "93",
+      "wikidata_P528": [
+        "93"
+      ]
+    },
+    "904": {
+      "uri": "http://www.wikidata.org/entity/Q10388728",
+      "source_label": "VALDEZARZA",
+      "wikidata_label_es": "Valdezarza",
+      "district_id": "9",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2017682"
+      ],
+      "expected_district_qid": "Q2017682",
+      "official_catalog_code": "94",
+      "wikidata_P528": [
+        "94"
+      ]
+    },
+    "905": {
+      "uri": "http://www.wikidata.org/entity/Q10388725",
+      "source_label": "VALDEMARIN",
+      "wikidata_label_es": "Valdemarín",
+      "district_id": "9",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2017682"
+      ],
+      "expected_district_qid": "Q2017682",
+      "official_catalog_code": "95",
+      "wikidata_P528": [
+        "95"
+      ]
+    },
+    "907": {
+      "uri": "http://www.wikidata.org/entity/Q3314682",
+      "source_label": "ARAVACA",
+      "wikidata_label_es": "Aravaca",
+      "district_id": "9",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2017682"
+      ],
+      "expected_district_qid": "Q2017682",
+      "official_catalog_code": "97",
+      "wikidata_P528": [
+        "97"
+      ]
+    },
+    "1001": {
+      "uri": "http://www.wikidata.org/entity/Q10319792",
+      "source_label": "LOS CARMENES",
+      "wikidata_label_es": "Los Cármenes",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "101",
+      "wikidata_P528": [
+        "101"
+      ]
+    },
+    "1002": {
+      "uri": "http://www.wikidata.org/entity/Q31142",
+      "source_label": "PUERTA DEL ANGEL",
+      "wikidata_label_es": "Puerta del Ángel",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "102",
+      "wikidata_P528": [
+        "102"
+      ]
+    },
+    "1003": {
+      "uri": "http://www.wikidata.org/entity/Q31162",
+      "source_label": "LUCERO",
+      "wikidata_label_es": "Lucero",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "103",
+      "wikidata_P528": [
+        "103"
+      ]
+    },
+    "1004": {
+      "uri": "http://www.wikidata.org/entity/Q31140",
+      "source_label": "ALUCHE",
+      "wikidata_label_es": "Aluche",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "104",
+      "wikidata_P528": [
+        "104"
+      ]
+    },
+    "1005": {
+      "uri": "http://www.wikidata.org/entity/Q31169",
+      "source_label": "CAMPAMENTO",
+      "wikidata_label_es": "Campamento",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "105",
+      "wikidata_P528": [
+        "105"
+      ]
+    },
+    "1006": {
+      "uri": "http://www.wikidata.org/entity/Q5191881",
+      "source_label": "CUATRO VIENTOS",
+      "wikidata_label_es": "Cuatro Vientos",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "106",
+      "wikidata_P528": [
+        "106"
+      ]
+    },
+    "1007": {
+      "uri": "http://www.wikidata.org/entity/Q5971372",
+      "source_label": "LAS AGUILAS",
+      "wikidata_label_es": "Las Águilas",
+      "district_id": "10",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q794954"
+      ],
+      "expected_district_qid": "Q794954",
+      "official_catalog_code": "107",
+      "wikidata_P528": [
+        "107"
+      ]
+    },
+    "1101": {
+      "uri": "http://www.wikidata.org/entity/Q955844",
+      "source_label": "COMILLAS",
+      "wikidata_label_es": "Comillas",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "111",
+      "wikidata_P528": [
+        "111"
+      ]
+    },
+    "1102": {
+      "uri": "http://www.wikidata.org/entity/Q3813756",
+      "source_label": "OPAÑEL",
+      "wikidata_label_es": "Opañel",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "112",
+      "wikidata_P528": [
+        "112"
+      ]
+    },
+    "1103": {
+      "uri": "http://www.wikidata.org/entity/Q3813733",
+      "source_label": "SAN ISIDRO",
+      "wikidata_label_es": "San Isidro",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "113",
+      "wikidata_P528": [
+        "113"
+      ]
+    },
+    "1104": {
+      "uri": "http://www.wikidata.org/entity/Q3813741",
+      "source_label": "VISTA ALEGRE",
+      "wikidata_label_es": "Vista Alegre",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "114",
+      "wikidata_P528": [
+        "114"
+      ]
+    },
+    "1105": {
+      "uri": "http://www.wikidata.org/entity/Q3813762",
+      "source_label": "PUERTA BONITA",
+      "wikidata_label_es": "Puerta Bonita",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "115",
+      "wikidata_P528": [
+        "115"
+      ]
+    },
+    "1106": {
+      "uri": "http://www.wikidata.org/entity/Q953929",
+      "source_label": "BUENAVISTA",
+      "wikidata_label_es": "Buenavista",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "116",
+      "wikidata_P528": [
+        "116"
+      ]
+    },
+    "1107": {
+      "uri": "http://www.wikidata.org/entity/Q3773949",
+      "source_label": "ABRANTES",
+      "wikidata_label_es": "Abrantes",
+      "district_id": "11",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1001991"
+      ],
+      "expected_district_qid": "Q1001991",
+      "official_catalog_code": "117",
+      "wikidata_P528": [
+        "117"
+      ]
+    },
+    "1201": {
+      "uri": "http://www.wikidata.org/entity/Q3773941",
+      "source_label": "ORCASITAS",
+      "wikidata_label_es": "Orcasitas",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "121",
+      "wikidata_P528": [
+        "121"
+      ]
+    },
+    "1202": {
+      "uri": "http://www.wikidata.org/entity/Q10341270",
+      "source_label": "ORCASUR",
+      "wikidata_label_es": "Orcasur",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "122",
+      "wikidata_P528": [
+        "122"
+      ]
+    },
+    "1203": {
+      "uri": "http://www.wikidata.org/entity/Q71758",
+      "source_label": "SAN FERMIN",
+      "wikidata_label_es": "San Fermín",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "123",
+      "wikidata_P528": [
+        "123"
+      ]
+    },
+    "1204": {
+      "uri": "http://www.wikidata.org/entity/Q9604761",
+      "source_label": "ALMENDRALES",
+      "wikidata_label_es": "Almendrales",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "124",
+      "wikidata_P528": [
+        "124"
+      ]
+    },
+    "1205": {
+      "uri": "http://www.wikidata.org/entity/Q11937679",
+      "source_label": "MOSCARDO",
+      "wikidata_label_es": "Moscardó",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "125",
+      "wikidata_P528": [
+        "125"
+      ]
+    },
+    "1206": {
+      "uri": "http://www.wikidata.org/entity/Q71751",
+      "source_label": "ZOFIO",
+      "wikidata_label_es": "Zofío",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "126",
+      "wikidata_P528": [
+        "126"
+      ]
+    },
+    "1207": {
+      "uri": "http://www.wikidata.org/entity/Q10352360",
+      "source_label": "PRADOLONGO",
+      "wikidata_label_es": "Pradolongo",
+      "district_id": "12",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q953368"
+      ],
+      "expected_district_qid": "Q953368",
+      "official_catalog_code": "127",
+      "wikidata_P528": [
+        "127"
+      ]
+    },
+    "1301": {
+      "uri": "http://www.wikidata.org/entity/Q71756",
+      "source_label": "ENTREVIAS",
+      "wikidata_label_es": "Entrevías",
+      "district_id": "13",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2003054"
+      ],
+      "expected_district_qid": "Q2003054",
+      "official_catalog_code": "131",
+      "wikidata_P528": [
+        "131"
+      ]
+    },
+    "1302": {
+      "uri": "http://www.wikidata.org/entity/Q11946851",
+      "source_label": "SAN DIEGO",
+      "wikidata_label_es": "San Diego",
+      "district_id": "13",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2003054"
+      ],
+      "expected_district_qid": "Q2003054",
+      "official_catalog_code": "132",
+      "wikidata_P528": [
+        "132"
+      ]
+    },
+    "1303": {
+      "uri": "http://www.wikidata.org/entity/Q10343902",
+      "source_label": "PALOMERAS BAJAS",
+      "wikidata_label_es": "Palomeras Bajas",
+      "district_id": "13",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2003054"
+      ],
+      "expected_district_qid": "Q2003054",
+      "official_catalog_code": "133",
+      "wikidata_P528": [
+        "133"
+      ]
+    },
+    "1304": {
+      "uri": "http://www.wikidata.org/entity/Q10343901",
+      "source_label": "PALOMERAS SURESTE",
+      "wikidata_label_es": "Palomeras Sureste",
+      "district_id": "13",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2003054"
+      ],
+      "expected_district_qid": "Q2003054",
+      "official_catalog_code": "134",
+      "wikidata_P528": [
+        "134"
+      ]
+    },
+    "1305": {
+      "uri": "http://www.wikidata.org/entity/Q18005921",
+      "source_label": "PORTAZGO",
+      "wikidata_label_es": "Portazgo",
+      "district_id": "13",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2003054"
+      ],
+      "expected_district_qid": "Q2003054",
+      "official_catalog_code": "135",
+      "wikidata_P528": [
+        "135"
+      ]
+    },
+    "1306": {
+      "uri": "http://www.wikidata.org/entity/Q10338144",
+      "source_label": "NUMANCIA",
+      "wikidata_label_es": "Numancia",
+      "district_id": "13",
+      "wikidata_P31": [
+        "Q10267336",
+        "Q123705"
+      ],
+      "wikidata_P131": [
+        "Q2003054"
+      ],
+      "expected_district_qid": "Q2003054",
+      "official_catalog_code": "136",
+      "wikidata_P528": [
+        "136"
+      ]
+    },
+    "1401": {
+      "uri": "http://www.wikidata.org/entity/Q71760",
+      "source_label": "PAVONES",
+      "wikidata_label_es": "Pavones",
+      "district_id": "14",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2076109"
+      ],
+      "expected_district_qid": "Q2076109",
+      "official_catalog_code": "141",
+      "wikidata_P528": [
+        "141"
+      ]
+    },
+    "1402": {
+      "uri": "http://www.wikidata.org/entity/Q10293641",
+      "source_label": "HORCAJO",
+      "wikidata_label_es": "Horcajo",
+      "district_id": "14",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2076109"
+      ],
+      "expected_district_qid": "Q2076109",
+      "official_catalog_code": "142",
+      "wikidata_P528": [
+        "142"
+      ]
+    },
+    "1403": {
+      "uri": "http://www.wikidata.org/entity/Q11935636",
+      "source_label": "MARROQUINA",
+      "wikidata_label_es": "Marroquina",
+      "district_id": "14",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2076109"
+      ],
+      "expected_district_qid": "Q2076109",
+      "official_catalog_code": "143",
+      "wikidata_P528": [
+        "143"
+      ]
+    },
+    "1404": {
+      "uri": "http://www.wikidata.org/entity/Q9031035",
+      "source_label": "MEDIA LEGUA",
+      "wikidata_label_es": "Media Legua",
+      "district_id": "14",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2076109"
+      ],
+      "expected_district_qid": "Q2076109",
+      "official_catalog_code": "144",
+      "wikidata_P528": [
+        "144"
+      ]
+    },
+    "1405": {
+      "uri": "http://www.wikidata.org/entity/Q10283284",
+      "source_label": "FONTARRON",
+      "wikidata_label_es": "Fontarrón",
+      "district_id": "14",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2076109"
+      ],
+      "expected_district_qid": "Q2076109",
+      "official_catalog_code": "145",
+      "wikidata_P528": [
+        "145"
+      ]
+    },
+    "1406": {
+      "uri": "http://www.wikidata.org/entity/Q10391533",
+      "source_label": "VINATEROS",
+      "wikidata_label_es": "Vinateros",
+      "district_id": "14",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2076109"
+      ],
+      "expected_district_qid": "Q2076109",
+      "official_catalog_code": "146",
+      "wikidata_P528": [
+        "146"
+      ]
+    },
+    "1501": {
+      "uri": "http://www.wikidata.org/entity/Q71762",
+      "source_label": "VENTAS",
+      "wikidata_label_es": "Ventas",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "151",
+      "wikidata_P528": [
+        "151"
+      ]
+    },
+    "1502": {
+      "uri": "http://www.wikidata.org/entity/Q71753",
+      "source_label": "PUEBLO NUEVO",
+      "wikidata_label_es": "Pueblo Nuevo",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "152",
+      "wikidata_P528": [
+        "152"
+      ]
+    },
+    "1503": {
+      "uri": "http://www.wikidata.org/entity/Q71810",
+      "source_label": "QUINTANA",
+      "wikidata_label_es": "Quintana",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "153",
+      "wikidata_P528": [
+        "153"
+      ]
+    },
+    "1504": {
+      "uri": "http://www.wikidata.org/entity/Q11915156",
+      "source_label": "CONCEPCION",
+      "wikidata_label_es": "Concepción",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "154",
+      "wikidata_P528": [
+        "154"
+      ]
+    },
+    "1505": {
+      "uri": "http://www.wikidata.org/entity/Q165612",
+      "source_label": "SAN PASCUAL",
+      "wikidata_label_es": "San Pascual",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "155",
+      "wikidata_P528": [
+        "155"
+      ]
+    },
+    "1506": {
+      "uri": "http://www.wikidata.org/entity/Q165609",
+      "source_label": "SAN JUAN BAUTISTA",
+      "wikidata_label_es": "San Juan Bautista",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "156",
+      "wikidata_P528": [
+        "156"
+      ]
+    },
+    "1507": {
+      "uri": "http://www.wikidata.org/entity/Q18475981",
+      "source_label": "COLINA",
+      "wikidata_label_es": "Colina",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q123705",
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "157",
+      "wikidata_P528": [
+        "157"
+      ]
+    },
+    "1509": {
+      "uri": "http://www.wikidata.org/entity/Q331385",
+      "source_label": "COSTILLARES",
+      "wikidata_label_es": "Costillares",
+      "district_id": "15",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1763694"
+      ],
+      "expected_district_qid": "Q1763694",
+      "official_catalog_code": "159",
+      "wikidata_P528": [
+        "159"
+      ]
+    },
+    "1601": {
+      "uri": "http://www.wikidata.org/entity/Q390460",
+      "source_label": "PALOMAS",
+      "wikidata_label_es": "Palomas",
+      "district_id": "16",
+      "wikidata_P31": [
+        "Q123705",
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1928529"
+      ],
+      "expected_district_qid": "Q1928529",
+      "official_catalog_code": "161",
+      "wikidata_P528": [
+        "161"
+      ]
+    },
+    "1602": {
+      "uri": "http://www.wikidata.org/entity/Q5964851",
+      "source_label": "PIOVERA",
+      "wikidata_label_es": "Piovera",
+      "district_id": "16",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1928529"
+      ],
+      "expected_district_qid": "Q1928529",
+      "official_catalog_code": "162",
+      "wikidata_P528": [
+        "162"
+      ]
+    },
+    "1603": {
+      "uri": "http://www.wikidata.org/entity/Q9694341",
+      "source_label": "CANILLAS",
+      "wikidata_label_es": "Canillas",
+      "district_id": "16",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1928529"
+      ],
+      "expected_district_qid": "Q1928529",
+      "official_catalog_code": "163",
+      "wikidata_P528": [
+        "163"
+      ]
+    },
+    "1604": {
+      "uri": "http://www.wikidata.org/entity/Q10349788",
+      "source_label": "PINAR DEL REY",
+      "wikidata_label_es": "Pinar del Rey",
+      "district_id": "16",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1928529"
+      ],
+      "expected_district_qid": "Q1928529",
+      "official_catalog_code": "164",
+      "wikidata_P528": [
+        "164"
+      ]
+    },
+    "1605": {
+      "uri": "http://www.wikidata.org/entity/Q11906303",
+      "source_label": "APOSTOL SANTIAGO",
+      "wikidata_label_es": "Apóstol Santiago",
+      "district_id": "16",
+      "wikidata_P31": [
+        "Q123705",
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1928529"
+      ],
+      "expected_district_qid": "Q1928529",
+      "official_catalog_code": "165",
+      "wikidata_P528": [
+        "165"
+      ]
+    },
+    "1606": {
+      "uri": "http://www.wikidata.org/entity/Q10388714",
+      "source_label": "VALDEFUENTES",
+      "wikidata_label_es": "Valdefuentes",
+      "district_id": "16",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1928529"
+      ],
+      "expected_district_qid": "Q1928529",
+      "official_catalog_code": "166",
+      "wikidata_P528": [
+        "166"
+      ]
+    },
+    "1701": {
+      "uri": "http://www.wikidata.org/entity/Q390435",
+      "source_label": "SAN ANDRES",
+      "wikidata_label_es": "Villaverde Alto, Casco Histórico de Villaverde",
+      "district_id": "17",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q919536"
+      ],
+      "expected_district_qid": "Q919536",
+      "official_catalog_code": "171",
+      "wikidata_P528": [
+        "171"
+      ]
+    },
+    "1702": {
+      "uri": "http://www.wikidata.org/entity/Q390457",
+      "source_label": "SAN CRISTOBAL",
+      "wikidata_label_es": "San Cristóbal",
+      "district_id": "17",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q919536"
+      ],
+      "expected_district_qid": "Q919536",
+      "official_catalog_code": "172",
+      "wikidata_P528": [
+        "172"
+      ]
+    },
+    "1703": {
+      "uri": "http://www.wikidata.org/entity/Q390453",
+      "source_label": "BUTARQUE",
+      "wikidata_label_es": "Butarque",
+      "district_id": "17",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q919536"
+      ],
+      "expected_district_qid": "Q919536",
+      "official_catalog_code": "173",
+      "wikidata_P528": [
+        "173"
+      ]
+    },
+    "1704": {
+      "uri": "http://www.wikidata.org/entity/Q10319807",
+      "source_label": "LOS ROSALES",
+      "wikidata_label_es": "Los Rosales",
+      "district_id": "17",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q919536"
+      ],
+      "expected_district_qid": "Q919536",
+      "official_catalog_code": "174",
+      "wikidata_P528": [
+        "174"
+      ]
+    },
+    "1705": {
+      "uri": "http://www.wikidata.org/entity/Q390462",
+      "source_label": "LOS ANGELES",
+      "wikidata_label_es": "Los Ángeles",
+      "district_id": "17",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q919536"
+      ],
+      "expected_district_qid": "Q919536",
+      "official_catalog_code": "175",
+      "wikidata_P528": [
+        "175"
+      ]
+    },
+    "1801": {
+      "uri": "http://www.wikidata.org/entity/Q16544370",
+      "source_label": "CASCO H.VALLECAS",
+      "wikidata_label_es": "Casco Histórico de Vallecas",
+      "district_id": "18",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1947988"
+      ],
+      "expected_district_qid": "Q1947988",
+      "official_catalog_code": "181",
+      "wikidata_P528": [
+        "181"
+      ]
+    },
+    "1802": {
+      "uri": "http://www.wikidata.org/entity/Q390463",
+      "source_label": "SANTA EUGENIA",
+      "wikidata_label_es": "Santa Eugenia",
+      "district_id": "18",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1947988"
+      ],
+      "expected_district_qid": "Q1947988",
+      "official_catalog_code": "182",
+      "wikidata_P528": [
+        "182"
+      ]
+    },
+    "1803": {
+      "uri": "http://www.wikidata.org/entity/Q3847485",
+      "source_label": "ENSANCHE DE VALLECAS",
+      "wikidata_label_es": "Ensanche de Vallecas",
+      "district_id": "18",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q1947988"
+      ],
+      "expected_district_qid": "Q1947988",
+      "official_catalog_code": "183",
+      "wikidata_P528": [
+        "183"
+      ]
+    },
+    "1901": {
+      "uri": "http://www.wikidata.org/entity/Q16544374",
+      "source_label": "CASCO H.VICALVARO",
+      "wikidata_label_es": "Casco Histórico de Vicálvaro",
+      "district_id": "19",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q589403"
+      ],
+      "expected_district_qid": "Q589403",
+      "official_catalog_code": "191",
+      "wikidata_P528": [
+        "191"
+      ]
+    },
+    "1902": {
+      "uri": "http://www.wikidata.org/entity/Q43025212",
+      "source_label": "VALDEBERNARDO",
+      "wikidata_label_es": "Valdebernardo",
+      "district_id": "19",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q589403"
+      ],
+      "expected_district_qid": "Q589403",
+      "official_catalog_code": "192",
+      "wikidata_P528": [
+        "192"
+      ]
+    },
+    "1903": {
+      "uri": "http://www.wikidata.org/entity/Q43025770",
+      "source_label": "VALDERRIVAS",
+      "wikidata_label_es": "Valderrivas",
+      "district_id": "19",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q589403"
+      ],
+      "expected_district_qid": "Q589403",
+      "official_catalog_code": "193",
+      "wikidata_P528": [
+        "193"
+      ]
+    },
+    "1904": {
+      "uri": "http://www.wikidata.org/entity/Q5821309",
+      "source_label": "EL CAÑAVERAL",
+      "wikidata_label_es": "El Cañaveral",
+      "district_id": "19",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q589403"
+      ],
+      "expected_district_qid": "Q589403",
+      "official_catalog_code": "194",
+      "wikidata_P528": [
+        "194"
+      ]
+    },
+    "2001": {
+      "uri": "http://www.wikidata.org/entity/Q10371626",
+      "source_label": "SIMANCAS",
+      "wikidata_label_es": "Simancas",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "201",
+      "wikidata_P528": [
+        "201"
+      ]
+    },
+    "2002": {
+      "uri": "http://www.wikidata.org/entity/Q10294546",
+      "source_label": "HELLIN",
+      "wikidata_label_es": "Hellín",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "202",
+      "wikidata_P528": [
+        "202"
+      ]
+    },
+    "2003": {
+      "uri": "http://www.wikidata.org/entity/Q11905392",
+      "source_label": "AMPOSTA",
+      "wikidata_label_es": "Amposta",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "203",
+      "wikidata_P528": [
+        "203"
+      ]
+    },
+    "2004": {
+      "uri": "http://www.wikidata.org/entity/Q9627876",
+      "source_label": "ARCOS",
+      "wikidata_label_es": "Arcos",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "204",
+      "wikidata_P528": [
+        "204"
+      ]
+    },
+    "2005": {
+      "uri": "http://www.wikidata.org/entity/Q18880469",
+      "source_label": "ROSAS",
+      "wikidata_label_es": "Rosas",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "205",
+      "wikidata_P528": [
+        "205"
+      ]
+    },
+    "2006": {
+      "uri": "http://www.wikidata.org/entity/Q10359029",
+      "source_label": "REJAS",
+      "wikidata_label_es": "Rejas",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "206",
+      "wikidata_P528": [
+        "206"
+      ]
+    },
+    "2007": {
+      "uri": "http://www.wikidata.org/entity/Q663013",
+      "source_label": "CANILLEJAS",
+      "wikidata_label_es": "Canillejas",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "207",
+      "wikidata_P528": [
+        "207"
+      ]
+    },
+    "2008": {
+      "uri": "http://www.wikidata.org/entity/Q10367095",
+      "source_label": "EL SALVADOR",
+      "wikidata_label_es": "Salvador",
+      "district_id": "20",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q2001937"
+      ],
+      "expected_district_qid": "Q2001937",
+      "official_catalog_code": "208",
+      "wikidata_P528": [
+        "208"
+      ]
+    },
+    "2101": {
+      "uri": "http://www.wikidata.org/entity/Q760737",
+      "source_label": "ALAMEDA DE OSUNA",
+      "wikidata_label_es": "Alameda de Osuna",
+      "district_id": "21",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q807230"
+      ],
+      "expected_district_qid": "Q807230",
+      "official_catalog_code": "211",
+      "wikidata_P528": [
+        "211"
+      ]
+    },
+    "2102": {
+      "uri": "http://www.wikidata.org/entity/Q9586697",
+      "source_label": "AEROPUERTO",
+      "wikidata_label_es": "Aeropuerto",
+      "district_id": "21",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q807230"
+      ],
+      "expected_district_qid": "Q807230",
+      "official_catalog_code": "212",
+      "wikidata_P528": [
+        "212"
+      ]
+    },
+    "2103": {
+      "uri": "http://www.wikidata.org/entity/Q9701730",
+      "source_label": "CASCO H.BARAJAS",
+      "wikidata_label_es": "Casco Histórico de Barajas",
+      "district_id": "21",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q807230"
+      ],
+      "expected_district_qid": "Q807230",
+      "official_catalog_code": "213",
+      "wikidata_P528": [
+        "213"
+      ]
+    },
+    "2104": {
+      "uri": "http://www.wikidata.org/entity/Q10382570",
+      "source_label": "TIMON",
+      "wikidata_label_es": "Timón",
+      "district_id": "21",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q807230"
+      ],
+      "expected_district_qid": "Q807230",
+      "official_catalog_code": "214",
+      "wikidata_P528": [
+        "214"
+      ]
+    },
+    "2105": {
+      "uri": "http://www.wikidata.org/entity/Q10260772",
+      "source_label": "CORRALEJOS",
+      "wikidata_label_es": "Corralejos",
+      "district_id": "21",
+      "wikidata_P31": [
+        "Q10267336"
+      ],
+      "wikidata_P131": [
+        "Q807230"
+      ],
+      "expected_district_qid": "Q807230",
+      "official_catalog_code": "215",
+      "wikidata_P528": [
+        "215"
+      ]
+    }
+  },
+  "station_districts": {
+    "RF-01": {
+      "district_id": "1",
+      "source_district_label": "Centro",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1763376"
+    },
+    "RF-02": {
+      "district_id": "3",
+      "source_district_label": "Retiro",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q2002296"
+    },
+    "RF-03": {
+      "district_id": "1",
+      "source_district_label": "Centro",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1763376"
+    },
+    "RF-04": {
+      "district_id": "9",
+      "source_district_label": "Moncloa - Aravaca",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q2017682"
+    },
+    "RF-05": {
+      "district_id": "8",
+      "source_district_label": "Fuencarral - El Pardo",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q656196"
+    },
+    "RF-06": {
+      "district_id": "7",
+      "source_district_label": "Chamberí",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1763370"
+    },
+    "RF-08": {
+      "district_id": "4",
+      "source_district_label": "Salamanca",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1773521"
+    },
+    "RF-10": {
+      "district_id": "7",
+      "source_district_label": "Chamberí",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1763370"
+    },
+    "RF-11": {
+      "district_id": "5",
+      "source_district_label": "Chamartín",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1766348"
+    },
+    "RF-12": {
+      "district_id": "4",
+      "source_district_label": "Salamanca",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1773521"
+    },
+    "RF-13": {
+      "district_id": "13",
+      "source_district_label": "Puente de Vallecas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q2003054"
+    },
+    "RF-14": {
+      "district_id": "11",
+      "source_district_label": "Carabanchel",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1001991"
+    },
+    "RF-16": {
+      "district_id": "15",
+      "source_district_label": "Ciudad Lineal",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1763694"
+    },
+    "RF-17": {
+      "district_id": "17",
+      "source_district_label": "Villaverde",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q919536"
+    },
+    "RF-18": {
+      "district_id": "11",
+      "source_district_label": "Carabanchel ",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1001991"
+    },
+    "RF-19": {
+      "district_id": "10",
+      "source_district_label": "Latina",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q794954"
+    },
+    "RF-20": {
+      "district_id": "14",
+      "source_district_label": "Moratalaz",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q2076109"
+    },
+    "RF-24": {
+      "district_id": "9",
+      "source_district_label": "Moncloa - Aravaca",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q2017682"
+    },
+    "RF-25": {
+      "district_id": "18",
+      "source_district_label": "Villa de Vallecas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1947988"
+    },
+    "RF-26": {
+      "district_id": "21",
+      "source_district_label": "Barajas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q807230"
+    },
+    "RF-27": {
+      "district_id": "21",
+      "source_district_label": "Barajas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q807230"
+    },
+    "RF-28": {
+      "district_id": "10",
+      "source_district_label": "Latina",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q794954"
+    },
+    "RF-29": {
+      "district_id": "8",
+      "source_district_label": "Fuencarral - El Pardo",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q656196"
+    },
+    "RF-30": {
+      "district_id": "21",
+      "source_district_label": "Barajas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q807230"
+    },
+    "RF-31": {
+      "district_id": "16",
+      "source_district_label": "Hortaleza",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1928529"
+    },
+    "RF-47": {
+      "district_id": "2",
+      "source_district_label": "Arganzuela",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q2000929"
+    },
+    "RF-48": {
+      "district_id": "5",
+      "source_district_label": "Chamartín",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1766348"
+    },
+    "RF-50": {
+      "district_id": "5",
+      "source_district_label": "Chamartín",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1766348"
+    },
+    "RF-54": {
+      "district_id": "18",
+      "source_district_label": "Villa de Vallecas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q1947988"
+    },
+    "RF-55": {
+      "district_id": "21",
+      "source_district_label": "Barajas",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q807230"
+    },
+    "RF-86": {
+      "district_id": "8",
+      "source_district_label": "Fuencarral - El Pardo",
+      "wikidata_uri": "http://www.wikidata.org/entity/Q656196"
+    }
+  }
+}

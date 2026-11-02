@@ -1,4 +1,4 @@
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -12,7 +12,7 @@ ORDER BY DESC(?individuals)
 
 
 # Q2. Full view of a service request with its linked entities
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?sr ?requestType ?status ?created ?organization ?service ?agent ?address ?latitude ?longitude ?region
@@ -34,7 +34,7 @@ LIMIT 10
 
 
 # Q3. Number of service requests per request type
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 
 SELECT ?requestType (COUNT(?sr) AS ?requests)
 WHERE {
@@ -46,7 +46,7 @@ ORDER BY DESC(?requests)
 
 
 # Q4. Number of service requests per status
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 
 SELECT ?status (COUNT(?sr) AS ?requests)
 WHERE {
@@ -58,7 +58,7 @@ ORDER BY DESC(?requests)
 
 
 # Q5. Number of service requests per responsible organization
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 
 SELECT ?organization (COUNT(?sr) AS ?requests)
 WHERE {
@@ -71,7 +71,7 @@ ORDER BY DESC(?requests)
 
 
 # Q6. Top 10 neighborhood councils by number of service requests
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 
 SELECT ?ncName ?cd ?cdMember (COUNT(?sr) AS ?requests)
 WHERE {
@@ -86,7 +86,7 @@ LIMIT 10
 
 
 # Q7. Number of service requests created per month
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 
 SELECT ?month (COUNT(?sr) AS ?requests)
 WHERE {
@@ -109,7 +109,7 @@ WHERE {
 
 
 # Q9. Check: literals without the expected datatype (should return no rows)
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?p (COUNT(?o) AS ?wrongDatatype)
@@ -133,7 +133,7 @@ GROUP BY ?p
 
 
 # Q10. Check: requests closed before being created (should return no rows)
-PREFIX la311: <http://www.owl-ontologies.com/la311#>
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
 
 SELECT ?sr ?created ?closed
 WHERE {

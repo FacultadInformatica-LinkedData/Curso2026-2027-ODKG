@@ -14,7 +14,7 @@
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
-        rr:template "http://parking.linkeddata.upm.es/resource/parking/{CODIGO_PAR}" ;
+        rr:template "http://parking.linkeddata.upm.es/resource/parking/{NOMBRE_APARCAMIENTO}" ;
         rr:class mp:ParkingFacility
     ] ;
     rr:predicateObjectMap [
@@ -27,7 +27,7 @@
     rr:predicateObjectMap [
         rr:predicate prop:locatedIn ;
         rr:objectMap [
-            rr:template "http://parking.linkeddata.upm.es/resource/district/{CODIGO_DISTRITO}" ;
+            rr:template "http://parking.linkeddata.upm.es/resource/district/{DISTRITO}" ;
             rr:termType rr:IRI
         ]
     ] ;
@@ -41,7 +41,7 @@
     rr:predicateObjectMap [
         rr:predicate prop:hasObservation ;
         rr:objectMap [
-            rr:template "http://parking.linkeddata.upm.es/resource/observation/{CODIGO_PAR}/{ANIO}/{MES}" ;
+            rr:template "http://parking.linkeddata.upm.es/resource/observation/{NOMBRE_APARCAMIENTO}/{ANIO}/{MES}" ;
             rr:termType rr:IRI
         ]
     ] .
@@ -52,7 +52,7 @@
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
-        rr:template "http://parking.linkeddata.upm.es/resource/district/{CODIGO_DISTRITO}" ;
+        rr:template "http://parking.linkeddata.upm.es/resource/district/{DISTRITO}" ;
         rr:class mp:District
     ] ;
     rr:predicateObjectMap [
@@ -86,13 +86,13 @@
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
-        rr:template "http://parking.linkeddata.upm.es/resource/observation/{CODIGO_PAR}/{ANIO}/{MES}" ;
+        rr:template "http://parking.linkeddata.upm.es/resource/observation/{NOMBRE_APARCAMIENTO}/{ANIO}/{MES}" ;
         rr:class mp:OccupancyObservation
     ] ;
     rr:predicateObjectMap [
         rr:predicate prop:observationOf ;
         rr:objectMap [
-            rr:template "http://parking.linkeddata.upm.es/resource/parking/{CODIGO_PAR}" ;
+            rr:template "http://parking.linkeddata.upm.es/resource/parking/{NOMBRE_APARCAMIENTO}" ;
             rr:termType rr:IRI
         ]
     ] ;

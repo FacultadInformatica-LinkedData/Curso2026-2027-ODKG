@@ -1,0 +1,292 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "NC",
+          "expression": "isBlank(value)",
+          "columnName": "NC",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "NC",
+    "expression": "grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"0\", value), value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna NC utilizzando l'espressione grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"0\", value), value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "NCName",
+          "expression": "isBlank(value)",
+          "columnName": "NCName",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "NCName",
+    "expression": "grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"Uncertified Area\", value), value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna NCName utilizzando l'espressione grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"Uncertified Area\", value), value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CreatedByUserOrganization",
+    "expression": "value.replace(/\\b Franchise\\b/,\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CreatedByUserOrganization utilizzando l'espressione value.replace(/\\b Franchise\\b/,\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CreatedByUserOrganization",
+    "expression": "grel:if(value.startsWith(\"Self Service\"), cells.get(\"SRNumber\").value, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "AnonymousReporter",
+    "columnInsertIndex": 9,
+    "description": "Crea la colonna AnonymousReporter allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(value.startsWith(\"Self Service\"), cells.get(\"SRNumber\").value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CreatedByUserOrganization",
+    "expression": "grel:if(value.startsWith(\"Self Service\"), \"\", if(value == \"Proactive Insert\", cells.get(\"Owner\").value, value))",
+    "onError": "set-to-blank",
+    "newColumnName": "OrganizationReporter",
+    "columnInsertIndex": 9,
+    "description": "Crea la colonna OrganizationReporter allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(value.startsWith(\"Self Service\"), \"\", if(value == \"Proactive Insert\", cells.get(\"Owner\").value, value))"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CDMember",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q5",
+        "name": "human"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column CDMember to type Q5"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "CDMember: punteggio del miglior candidato",
+          "expression": "cell.recon.best.score",
+          "columnName": "CDMember",
+          "from": 98,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CDMember",
+    "similarValue": "Monica Rodriguez",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30122916",
+      "name": "Monica Rodriguez",
+      "types": [
+        "Q5"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Abbina all'elemento Monica Rodriguez (Q30122916) per le celle contenenti \"Monica Rodriguez\" nella colonna CDMember"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CDMember: giudizio",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CDMember",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "CDMember",
+          "expression": "value",
+          "columnName": "CDMember",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Katy Yaroslavsky",
+                "l": "Katy Yaroslavsky"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CDMember",
+    "similarValue": "Katy Yaroslavsky",
+    "judgment": "matched",
+    "match": {
+      "id": "Q117101867",
+      "name": "Katy Young Yaroslavsky",
+      "types": [
+        "Q5"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Abbina all'elemento Katy Young Yaroslavsky (Q117101867) per le celle contenenti \"Katy Yaroslavsky\" nella colonna CDMember"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NCName",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q52154375",
+        "name": "district or neighborhood of Los Angeles"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column NCName to type Q52154375"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NCName",
+    "similarValue": "Woodland Hills-Warner Center",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3566344",
+      "name": "Warner Center",
+      "types": [
+        "Q123705",
+        "Q52154375"
+      ],
+      "score": 63
+    },
+    "shareNewTopics": false,
+    "description": "Abbina all'elemento Warner Center (Q3566344) per le celle contenenti \"Woodland Hills-Warner Center\" nella colonna NCName"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CDMember",
+    "expression": "grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "CDMember_Wikidata",
+    "columnInsertIndex": 27,
+    "description": "Crea la colonna CDMember_Wikidata allindice {1} basato sulla colonna {2} utilizzando lespressione grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "NCName",
+    "expression": "grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "NCName_Wikidata",
+    "columnInsertIndex": 30,
+    "description": "Crea la colonna NCName_Wikidata allindice {1} basato sulla colonna {2} utilizzando lespressione grel:\"http://www.wikidata.org/entity/\" + cell.recon.match.id"
+  }
+]

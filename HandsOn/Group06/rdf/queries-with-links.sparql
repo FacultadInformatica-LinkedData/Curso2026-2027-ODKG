@@ -1,0 +1,176 @@
+#Updates after linking the data: 
+# -Q6 was modified as cd and ncName were reconciled against wikidata concepts (they were previously literals).
+# -Added Q11 to verify the data linking with containedIn property from schema.org vocabulary pointing to the city of Los Angeles from Wikidata.
+# -Added Q12 to verify owl:sameAs external links to Wikidata for Neighborhood Councils.
+
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# Q1. Number of individuals per class
+SELECT ?class (COUNT(?s) AS ?individuals)
+WHERE {
+  ?s a ?class .
+}
+GROUP BY ?class
+ORDER BY DESC(?individuals)
+
+
+# Q2. Full view of a service request with its linked entities
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?sr ?requestType ?status ?created ?organization ?service ?agent ?address ?latitude ?longitude ?region
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:requestType ?requestType ;
+      la311:status ?status ;
+      la311:createdDate ?created ;
+      la311:responsible/la311:name ?organization ;
+      la311:reportedBy/rdfs:label ?agent ;
+      la311:hasLocation ?location .
+  ?location la311:address ?address ;
+            la311:latitude ?latitude ;
+            la311:longitude ?longitude .
+  OPTIONAL { ?sr la311:assignedTo/la311:name ?service }
+  OPTIONAL { ?location la311:isWithin/rdfs:label ?region }
+}
+LIMIT 10
+
+
+# Q3. Number of service requests per request type
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+
+SELECT ?requestType (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:requestType ?requestType .
+}
+GROUP BY ?requestType
+ORDER BY DESC(?requests)
+
+
+# Q4. Number of service requests per status
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+
+SELECT ?status (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:status ?status .
+}
+GROUP BY ?status
+ORDER BY DESC(?requests)
+
+
+# Q5. Number of service requests per responsible organization
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+
+SELECT ?organization (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:responsible ?org .
+  ?org la311:name ?organization .
+}
+GROUP BY ?organization
+ORDER BY DESC(?requests)
+
+
+# Q6. Top 10 neighborhood councils by number of service requests (Updated)
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?regionLabel ?ncWikidataIRI ?cdMemberWikidataIRI (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr la311:hasLocation/la311:isWithin ?region .
+  ?region rdfs:label ?regionLabel ;
+          la311:ncName ?ncWikidataIRI .
+  OPTIONAL { ?region la311:cdMember ?cdMemberWikidataIRI }
+}
+GROUP BY ?regionLabel ?ncWikidataIRI ?cdMemberWikidataIRI
+ORDER BY DESC(?requests)
+LIMIT 10
+
+
+# Q7. Number of service requests created per month
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+
+SELECT ?month (COUNT(?sr) AS ?requests)
+WHERE {
+  ?sr a la311:ServiceRequest ;
+      la311:createdDate ?created .
+  BIND (MONTH(?created) AS ?month)
+}
+GROUP BY ?month
+ORDER BY ?month
+
+
+# Q8. Check: individuals without a type or without a label (should return 0)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (COUNT(DISTINCT ?s) AS ?withoutTypeOrLabel)
+WHERE {
+  ?s ?p ?o .
+  FILTER (NOT EXISTS { ?s a ?class } || NOT EXISTS { ?s rdfs:label ?label })
+}
+
+
+# Q9. Check: literals without the expected datatype (should return no rows)
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?p (COUNT(?o) AS ?wrongDatatype)
+WHERE {
+  VALUES (?p ?expected) {
+    (la311:createdDate xsd:dateTime)
+    (la311:updatedDate xsd:dateTime)
+    (la311:serviceDate xsd:dateTime)
+    (la311:closedDate xsd:dateTime)
+    (la311:latitude xsd:decimal)
+    (la311:longitude xsd:decimal)
+    (la311:cd xsd:integer)
+    (la311:nc xsd:integer)
+    (la311:srNumber xsd:string)
+    (la311:status xsd:string)
+  }
+  ?s ?p ?o .
+  FILTER (DATATYPE(?o) != ?expected)
+}
+GROUP BY ?p
+
+
+# Q10. Check: requests closed before being created (should return no rows)
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+
+SELECT ?sr ?created ?closed
+WHERE {
+  ?sr la311:createdDate ?created ;
+      la311:closedDate ?closed .
+  FILTER (?closed < ?created)
+}
+
+
+# Q11. Verify Schema.org external containment links
+PREFIX la311: <http://linkeddata.la311.com/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?regionLabel ?cityWikidataLink
+WHERE {
+  ?region la311:cd ?cd ; 
+          rdfs:label ?regionLabel ;
+          schema:containedInPlace ?cityWikidataLink .
+}
+LIMIT 10
+
+
+# Q12. Verify owl:sameAs external links to Wikidata
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?region ?regionLabel ?wikidataEntity
+WHERE {
+  ?region a <http://linkeddata.la311.com/ontology#AdministrativeRegion> ;
+          rdfs:label ?regionLabel ;
+          owl:sameAs ?wikidataEntity .
+}
+LIMIT 10

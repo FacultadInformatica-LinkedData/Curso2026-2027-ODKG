@@ -32,8 +32,13 @@ am:hasActivity a owl:ObjectProperty ;
 
 am:locatedInDistrict a owl:ObjectProperty ;
     rdfs:label "located in district" ;
-    rdfs:domain am:SportsFacility ;
+    rdfs:domain am:Neighborhood ;
     rdfs:range am:District .
+
+am:locatedInNeighborhood a owl:ObjectProperty ;
+    rdfs:label "located in neighborhood" ;
+    rdfs:domain schema1:PostalAddress ;
+    rdfs:range am:Neighborhood .
 
 am:takesPlaceAt a owl:ObjectProperty ;
     rdfs:label "takes place at" ;
@@ -53,22 +58,32 @@ schema1:SportsActivityLocation a owl:Class ;
     rdfs:label "Sports Activity Location" .
 
 schema1:email a owl:DatatypeProperty ;
-    rdfs:label "email" .
+    rdfs:label "email" ;
+    rdfs:range xsd:string .
 
 schema1:postalCode a owl:DatatypeProperty ;
-    rdfs:label "postal code" .
+    rdfs:label "postal code" ;
+    rdfs:range xsd:string .
 
 schema1:streetAddress a owl:DatatypeProperty ;
-    rdfs:label "street address" .
+    rdfs:label "street address" ;
+    rdfs:range xsd:string .
 
 schema1:telephone a owl:DatatypeProperty ;
-    rdfs:label "telephone" .
+    rdfs:label "telephone" ;
+    rdfs:range xsd:string .
+
+schema1:url a owl:DatatypeProperty ;
+    rdfs:label "url" ;
+    rdfs:range xsd:anyURI .
 
 geo1:lat a owl:DatatypeProperty ;
-    rdfs:label "lat" .
+    rdfs:label "lat" ;
+    rdfs:range xsd:decimal .
 
 geo1:long a owl:DatatypeProperty ;
-    rdfs:label "long" .
+    rdfs:label "long" ;
+    rdfs:range xsd:decimal .
 
 time:Interval a owl:Class ;
     rdfs:label "Interval" ;
@@ -94,6 +109,12 @@ am:District a owl:Class ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty schema1:name ] .
 
+am:Neighborhood a owl:Class ;
+    rdfs:label "Neighborhood" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty schema1:name ] .
+
 am:SportActivity a owl:Class ;
     rdfs:label "Sport Activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -101,16 +122,23 @@ am:SportActivity a owl:Class ;
             owl:onProperty schema1:name ] .
 
 am:availablePlaces a owl:DatatypeProperty ;
-    rdfs:label "available places" .
+    rdfs:label "available places" ;
+    rdfs:domain am:SportsClass ;
+    rdfs:range xsd:nonNegativeInteger .
 
 am:occupiedPlaces a owl:DatatypeProperty ;
-    rdfs:label "occupied places" .
+    rdfs:label "occupied places" ;
+    rdfs:domain am:SportsClass ;
+    rdfs:range xsd:nonNegativeInteger .
 
 am:offeredPlaces a owl:DatatypeProperty ;
-    rdfs:label "offered places" .
+    rdfs:label "offered places" ;
+    rdfs:domain am:SportsClass ;
+    rdfs:range xsd:nonNegativeInteger .
 
 schema1:name a owl:DatatypeProperty ;
-    rdfs:label "name" .
+    rdfs:label "name" ;
+    rdfs:range xsd:string .
 
 am:SportsClass a owl:Class ;
     rdfs:label "Sports Class" ;
@@ -145,4 +173,3 @@ am:SportsFacility a owl:Class ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty schema1:telephone ],
         schema1:SportsActivityLocation .
-

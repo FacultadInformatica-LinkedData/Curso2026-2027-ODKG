@@ -869,13 +869,20 @@
                 <li><strong>Classes (UpperCamelCase):</strong>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#ServiceRequest</code>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#Organization</code>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#AnonymousPerson</code>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#Service</code>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#Location</code>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#AdministrativeRegion</code>
                 </li>
                 <li><strong>Properties (lowerCamelCase):</strong>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#hasLocation</code> <span style="color: var(--muted);">(object)</span>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#isWithin</code> <span style="color: var(--muted);">(object)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#responsible</code> <span style="color: var(--muted);">(object)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#assignedTo</code> <span style="color: var(--muted);">(object)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#reportedBy</code> <span style="color: var(--muted);">(object)</span>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#srNumber</code> <span style="color: var(--muted);">(datatype)</span>
                     <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#createdDate</code> <span style="color: var(--muted);">(datatype)</span>
+                    <br><code style="font-family: var(--mono); font-size: .85rem;">.../ontology#requestSource</code> <span style="color: var(--muted);">(datatype)</span>
                 </li>
             </ul>
 
@@ -885,12 +892,16 @@
             <ul class="plain-list">
                 <li><strong>Service Requests</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/ServiceRequest/{SRNumber}</code><br>
                     <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/ServiceRequest/1-5167495871</span></li>
-                <li><strong>Organizations</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/Organization/{Nome}</code><br>
+                <li><strong>Anonymous Persons</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/AnonymousPerson/{SRNumber}</code><br>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/AnonymousPerson/1-5167495871</span></li>
+                <li><strong>Organizations</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/Organization/{Owner}</code><br>
                     <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/Organization/LASAN</span></li>
+                <li><strong>Services</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/Service/{AssignTo}</code><br>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/Service/WLA</span></li>
                 <li><strong>Administrative Regions</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/AdministrativeRegion/{NC}_{CD}</code><br>
-                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/AdministrativeRegion/50_14</span></li>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/AdministrativeRegion/79_10</span></li>
                 <li><strong>Locations</strong> → <code style="font-family: var(--mono); font-size: .82rem;">.../resource/Location/{Latitude},{Longitude}</code><br>
-                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/Location/34.0579,-118.2759</span></li>
+                    <span style="color: var(--muted); font-size: .82rem;">e.g. .../resource/Location/34.0134245232,-118.35811811</span></li>
             </ul>
 
             <h3>3 · Content Negotiation</h3>

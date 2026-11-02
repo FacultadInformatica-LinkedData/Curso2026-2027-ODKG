@@ -87,17 +87,17 @@
     "description": "Rimuovi la colonna AddressVerified"
   },
   {
-    "op": "core/column-addition",
+    "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
       "mode": "row-based"
     },
-    "baseColumnName": "RequestSource",
+    "columnName": "RequestSource",
     "expression": "grel:if(cells.get(\"MobileOS\").value != null, cells.get(\"MobileOS\").value, value)",
-    "onError": "set-to-blank",
-    "newColumnName": "Source",
-    "columnInsertIndex": 8,
-    "description": "Crea la colonna Source allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(cells.get(\"MobileOS\").value != null, cells.get(\"MobileOS\").value, value)"
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna RequestSource utilizzando l'espressione grel:if(cells.get(\"MobileOS\").value != null, cells.get(\"MobileOS\").value, value)"
   },
   {
     "op": "core/column-removal",
@@ -105,22 +105,17 @@
     "description": "Rimuovi la colonna MobileOS"
   },
   {
-    "op": "core/column-removal",
-    "columnName": "RequestSource",
-    "description": "Rimuovi la colonna RequestSource"
-  },
-  {
     "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
       "mode": "row-based"
     },
-    "columnName": "Source",
+    "columnName": "RequestSource",
     "expression": "grel:value.replace(\"iOS\", \"Mobile App (iOS)\")",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Trasforma il testo delle celle nella colonna Source utilizzando l'espressione grel:value.replace(\"iOS\", \"Mobile App (iOS)\")"
+    "description": "Trasforma il testo delle celle nella colonna RequestSource utilizzando l'espressione grel:value.replace(\"iOS\", \"Mobile App (iOS)\")"
   },
   {
     "op": "core/text-transform",
@@ -128,12 +123,12 @@
       "facets": [],
       "mode": "row-based"
     },
-    "columnName": "Source",
+    "columnName": "RequestSource",
     "expression": "grel:value.replace(\"Android\", \"Mobile App (Android)\")",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Trasforma il testo delle celle nella colonna Source utilizzando l'espressione grel:value.replace(\"Android\", \"Mobile App (Android)\")"
+    "description": "Trasforma il testo delle celle nella colonna RequestSource utilizzando l'espressione grel:value.replace(\"Android\", \"Mobile App (Android)\")"
   },
   {
     "op": "core/column-removal",
@@ -367,12 +362,6 @@
     "description": "Trasforma il testo delle celle nella colonna StreetName utilizzando l'espressione grel:cells.get(\"Address\").value.replace(/(^\\d+\\s+)/, \"\").replace(/(,.*$)/, \"\").replace(/(^[NSWE]{1,2}\\b\\s+)/, \"\").replace(/(\\s+[a-zA-Z]+$)/, \"\")"
   },
   {
-    "op": "core/column-rename",
-    "oldColumnName": "Source",
-    "newColumnName": "RequestSource",
-    "description": "Rinomina la colonna Source a RequestSource"
-  },
-  {
     "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
@@ -410,5 +399,110 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Trasforma il testo delle celle nella colonna Address utilizzando l'espressione grel:value.replace(/\\s{2,}/, \" \").replace(\" ,\", \",\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "NC",
+          "expression": "isBlank(value)",
+          "columnName": "NC",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "NC",
+    "expression": "grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"0\", value), value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna NC utilizzando l'espressione grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"0\", value), value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "NCName",
+          "expression": "isBlank(value)",
+          "columnName": "NCName",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "NCName",
+    "expression": "grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"Uncertified Area\", value), value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna NCName utilizzando l'espressione grel:if(isBlank(value), if(isNonBlank(cells.get(\"CD\").value), \"Uncertified Area\", value), value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CreatedByUserOrganization",
+    "expression": "value.replace(/\\b Franchise\\b/,\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Trasforma il testo delle celle nella colonna CreatedByUserOrganization utilizzando l'espressione value.replace(/\\b Franchise\\b/,\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CreatedByUserOrganization",
+    "expression": "grel:if(value.startsWith(\"Self Service\"), cells.get(\"SRNumber\").value, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "AnonymousReporter",
+    "columnInsertIndex": 9,
+    "description": "Crea la colonna AnonymousReporter allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(value.startsWith(\"Self Service\"), cells.get(\"SRNumber\").value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CreatedByUserOrganization",
+    "expression": "grel:if(value.startsWith(\"Self Service\"), \"\", if(value == \"Proactive Insert\", cells.get(\"Owner\").value, value))",
+    "onError": "set-to-blank",
+    "newColumnName": "OrganizationReporter",
+    "columnInsertIndex": 9,
+    "description": "Crea la colonna OrganizationReporter allindice {1} basato sulla colonna {2} utilizzando lespressione grel:if(value.startsWith(\"Self Service\"), \"\", if(value == \"Proactive Insert\", cells.get(\"Owner\").value, value))"
   }
 ]

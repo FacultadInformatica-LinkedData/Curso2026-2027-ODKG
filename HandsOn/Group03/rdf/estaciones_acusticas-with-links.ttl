@@ -1,0 +1,368 @@
+@prefix dataset: <https://madridnoise.linkeddata.es/dataset/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix district: <https://madridnoise.linkeddata.es/resource/district/> .
+@prefix mn: <https://madridnoise.linkeddata.es/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix station: <https://madridnoise.linkeddata.es/resource/station/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+station:RF-01 a mn:NoiseMonitoringStation ;
+    rdfs:label "Paseo de Recoletos"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:1 ;
+    mn:latitude 40.422599 ;
+    mn:longitude -3.691877 ;
+    mn:stationCode "RF-01" ;
+    mn:stationName "Paseo de Recoletos" .
+
+station:RF-02 a mn:NoiseMonitoringStation ;
+    rdfs:label "Carlos V"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:3 ;
+    mn:latitude 40.409121 ;
+    mn:longitude -3.691509 ;
+    mn:stationCode "RF-02" ;
+    mn:stationName "Carlos V" .
+
+station:RF-03 a mn:NoiseMonitoringStation ;
+    rdfs:label "Plaza del Carmen"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:1 ;
+    mn:latitude 40.419251 ;
+    mn:longitude -3.703175 ;
+    mn:stationCode "RF-03" ;
+    mn:stationName "Plaza del Carmen" .
+
+station:RF-04 a mn:NoiseMonitoringStation ;
+    rdfs:label "Plaza de España"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:9 ;
+    mn:latitude 40.424005 ;
+    mn:longitude -3.712253 ;
+    mn:stationCode "RF-04" ;
+    mn:stationName "Plaza de España" .
+
+station:RF-05 a mn:NoiseMonitoringStation ;
+    rdfs:label "Barrio del Pilar"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:8 ;
+    mn:latitude 40.478197 ;
+    mn:longitude -3.711543 ;
+    mn:stationCode "RF-05" ;
+    mn:stationName "Barrio del Pilar" .
+
+station:RF-06 a mn:NoiseMonitoringStation ;
+    rdfs:label "Gregorio Marañón"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:7 ;
+    mn:latitude 40.437548 ;
+    mn:longitude -3.690758 ;
+    mn:stationCode "RF-06" ;
+    mn:stationName "Gregorio Marañón" .
+
+station:RF-08 a mn:NoiseMonitoringStation ;
+    rdfs:label "Escuelas Aguirre"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:4 ;
+    mn:latitude 40.421575 ;
+    mn:longitude -3.682377 ;
+    mn:stationCode "RF-08" ;
+    mn:stationName "Escuelas Aguirre" .
+
+station:RF-10 a mn:NoiseMonitoringStation ;
+    rdfs:label "Cuatro Caminos"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:7 ;
+    mn:latitude 40.445581 ;
+    mn:longitude -3.707157 ;
+    mn:stationCode "RF-10" ;
+    mn:stationName "Cuatro Caminos" .
+
+station:RF-11 a mn:NoiseMonitoringStation ;
+    rdfs:label "Ramón y Cajal"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:5 ;
+    mn:latitude 40.451522 ;
+    mn:longitude -3.677359 ;
+    mn:stationCode "RF-11" ;
+    mn:stationName "Ramón y Cajal" .
+
+station:RF-12 a mn:NoiseMonitoringStation ;
+    rdfs:label "Manuel Becerra"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:4 ;
+    mn:latitude 40.428741 ;
+    mn:longitude -3.668584 ;
+    mn:stationCode "RF-12" ;
+    mn:stationName "Manuel Becerra" .
+
+station:RF-13 a mn:NoiseMonitoringStation ;
+    rdfs:label "Vallecas"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:13 ;
+    mn:latitude 40.388116 ;
+    mn:longitude -3.651506 ;
+    mn:stationCode "RF-13" ;
+    mn:stationName "Vallecas" .
+
+station:RF-14 a mn:NoiseMonitoringStation ;
+    rdfs:label "Plaza Elíptica"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:11 ;
+    mn:latitude 40.384978 ;
+    mn:longitude -3.718807 ;
+    mn:stationCode "RF-14" ;
+    mn:stationName "Plaza Elíptica" .
+
+station:RF-16 a mn:NoiseMonitoringStation ;
+    rdfs:label "Arturo Soria"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:15 ;
+    mn:latitude 40.440013 ;
+    mn:longitude -3.639284 ;
+    mn:stationCode "RF-16" ;
+    mn:stationName "Arturo Soria" .
+
+station:RF-17 a mn:NoiseMonitoringStation ;
+    rdfs:label "Villaverde"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:17 ;
+    mn:latitude 40.347100 ;
+    mn:longitude -3.713312 ;
+    mn:stationCode "RF-17" ;
+    mn:stationName "Villaverde" .
+
+station:RF-18 a mn:NoiseMonitoringStation ;
+    rdfs:label "Farolillo"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:11 ;
+    mn:latitude 40.394788 ;
+    mn:longitude -3.731786 ;
+    mn:stationCode "RF-18" ;
+    mn:stationName "Farolillo" .
+
+station:RF-19 a mn:NoiseMonitoringStation ;
+    rdfs:label "Alto Extremadura"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:10 ;
+    mn:latitude 40.407871 ;
+    mn:longitude -3.741950 ;
+    mn:stationCode "RF-19" ;
+    mn:stationName "Alto Extremadura" .
+
+station:RF-20 a mn:NoiseMonitoringStation ;
+    rdfs:label "Avenida de Moratalaz"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:14 ;
+    mn:latitude 40.408028 ;
+    mn:longitude -3.645215 ;
+    mn:stationCode "RF-20" ;
+    mn:stationName "Avenida de Moratalaz" .
+
+station:RF-24 a mn:NoiseMonitoringStation ;
+    rdfs:label "Casa de Campo"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:9 ;
+    mn:latitude 40.419390 ;
+    mn:longitude -3.747319 ;
+    mn:stationCode "RF-24" ;
+    mn:stationName "Casa de Campo" .
+
+station:RF-25 a mn:NoiseMonitoringStation ;
+    rdfs:label "Santa Eugenia"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:18 ;
+    mn:latitude 40.379072 ;
+    mn:longitude -3.602561 ;
+    mn:stationCode "RF-25" ;
+    mn:stationName "Santa Eugenia" .
+
+station:RF-26 a mn:NoiseMonitoringStation ;
+    rdfs:label "Embajada"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:21 ;
+    mn:latitude 40.459331 ;
+    mn:longitude -3.580128 ;
+    mn:stationCode "RF-26" ;
+    mn:stationName "Embajada" .
+
+station:RF-27 a mn:NoiseMonitoringStation ;
+    rdfs:label "Barajas Pueblo"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:21 ;
+    mn:latitude 40.476929 ;
+    mn:longitude -3.580101 ;
+    mn:stationCode "RF-27" ;
+    mn:stationName "Barajas Pueblo" .
+
+station:RF-28 a mn:NoiseMonitoringStation ;
+    rdfs:label "Cuatro Vientos"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:10 ;
+    mn:latitude 40.375250 ;
+    mn:longitude -3.777830 ;
+    mn:stationCode "RF-28" ;
+    mn:stationName "Cuatro Vientos" .
+
+station:RF-29 a mn:NoiseMonitoringStation ;
+    rdfs:label "El Pardo"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:8 ;
+    mn:latitude 40.517989 ;
+    mn:longitude -3.774551 ;
+    mn:stationCode "RF-29" ;
+    mn:stationName "El Pardo" .
+
+station:RF-30 a mn:NoiseMonitoringStation ;
+    rdfs:label "Campo de las Naciones"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:21 ;
+    mn:latitude 40.460761 ;
+    mn:longitude -3.616317 ;
+    mn:stationCode "RF-30" ;
+    mn:stationName "Campo de las Naciones" .
+
+station:RF-31 a mn:NoiseMonitoringStation ;
+    rdfs:label "Sanchinarro"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:16 ;
+    mn:latitude 40.494254 ;
+    mn:longitude -3.660454 ;
+    mn:stationCode "RF-31" ;
+    mn:stationName "Sanchinarro" .
+
+station:RF-47 a mn:NoiseMonitoringStation ;
+    rdfs:label "Mendez Álvaro"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:2 ;
+    mn:latitude 40.398022 ;
+    mn:longitude -3.686808 ;
+    mn:stationCode "RF-47" ;
+    mn:stationName "Mendez Álvaro" .
+
+station:RF-48 a mn:NoiseMonitoringStation ;
+    rdfs:label "Castellana"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:5 ;
+    mn:latitude 40.439854 ;
+    mn:longitude -3.690302 ;
+    mn:stationCode "RF-48" ;
+    mn:stationName "Castellana" .
+
+station:RF-50 a mn:NoiseMonitoringStation ;
+    rdfs:label "Plaza de Castilla"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:5 ;
+    mn:latitude 40.465628 ;
+    mn:longitude -3.688719 ;
+    mn:stationCode "RF-50" ;
+    mn:stationName "Plaza de Castilla" .
+
+station:RF-54 a mn:NoiseMonitoringStation ;
+    rdfs:label "Ensanche de Vallecas"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:18 ;
+    mn:latitude 40.372993 ;
+    mn:longitude -3.612100 ;
+    mn:stationCode "RF-54" ;
+    mn:stationName "Ensanche de Vallecas" .
+
+station:RF-55 a mn:NoiseMonitoringStation ;
+    rdfs:label "Urb Embajada 2"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:21 ;
+    mn:latitude 40.462298 ;
+    mn:longitude -3.580599 ;
+    mn:stationCode "RF-55" ;
+    mn:stationName "Urb Embajada 2" .
+
+station:RF-86 a mn:NoiseMonitoringStation ;
+    rdfs:label "Tres Olivos"@es ;
+    dcterms:isPartOf dataset:stations ;
+    dcterms:spatial district:8 ;
+    mn:latitude 40.500598 ;
+    mn:longitude -3.689643 ;
+    mn:stationCode "RF-86" ;
+    mn:stationName "Tres Olivos" .
+
+district:13 a mn:District ;
+    rdfs:label "PUENTE DE VALLECAS"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q2003054> .
+
+district:14 a mn:District ;
+    rdfs:label "MORATALAZ"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q2076109> .
+
+district:15 a mn:District ;
+    rdfs:label "CIUDAD LINEAL"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1763694> .
+
+district:16 a mn:District ;
+    rdfs:label "HORTALEZA"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1928529> .
+
+district:17 a mn:District ;
+    rdfs:label "VILLAVERDE"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q919536> .
+
+district:2 a mn:District ;
+    rdfs:label "ARGANZUELA"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q2000929> .
+
+district:3 a mn:District ;
+    rdfs:label "RETIRO"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q2002296> .
+
+district:1 a mn:District ;
+    rdfs:label "CENTRO"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1763376> .
+
+district:10 a mn:District ;
+    rdfs:label "LATINA"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q794954> .
+
+district:11 a mn:District ;
+    rdfs:label "CARABANCHEL"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1001991> .
+
+district:18 a mn:District ;
+    rdfs:label "VILLA DE VALLECAS"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1947988> .
+
+district:4 a mn:District ;
+    rdfs:label "SALAMANCA"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1773521> .
+
+district:7 a mn:District ;
+    rdfs:label "CHAMBERI"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1763370> .
+
+district:9 a mn:District ;
+    rdfs:label "MONCLOA-ARAVACA"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q2017682> .
+
+district:5 a mn:District ;
+    rdfs:label "CHAMARTIN"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q1766348> .
+
+district:8 a mn:District ;
+    rdfs:label "FUENCARRAL-EL PARDO"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q656196> .
+
+district:21 a mn:District ;
+    rdfs:label "BARAJAS"@es ;
+    owl:sameAs <http://www.wikidata.org/entity/Q807230> .
+
+dataset:stations a dcat:Dataset ;
+    rdfs:label "Madrid acoustic station catalog (Linked Data)"@en ;
+    dcterms:created "2026-10-25"^^xsd:date ;
+    dcterms:description "Complete current catalogue of 31 Madrid noise-monitoring stations, with source-normalized WGS84 coordinates. Verified district membership comes from the source station catalogue and does not establish historical locations or district classifications."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rightsHolder <http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796> ;
+    dcterms:source <https://datos.madrid.es/dataset/211346-0-estaciones-acusticas> ;
+    dcterms:title "Madrid acoustic station catalog (Linked Data)"@en ;
+    prov:wasDerivedFrom <https://datos.madrid.es/dataset/211346-0-estaciones-acusticas> .
+

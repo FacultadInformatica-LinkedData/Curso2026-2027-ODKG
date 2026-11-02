@@ -1,0 +1,100 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_BARRI",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q75135432",
+        "name": "administrative quarter in Barcelona"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [
+        {
+          "column": "NOM_DISTRICTE",
+          "propertyName": "located in the administrative territorial entity",
+          "propertyID": "P131"
+        }
+      ],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column NOM_BARRI to type Q75135432"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_DISTRICTE",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q790344",
+        "name": "district of Barcelona"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column NOM_DISTRICTE to type Q790344"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "NOM_BARRI",
+    "expression": "grel:cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "WIKIDATA-BARRI",
+    "columnInsertIndex": 6,
+    "description": "Create column WIKIDATA-BARRI at index 6 based on column NOM_BARRI using expression grel:cell.recon.match.id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "NOM_DISTRICTE",
+    "expression": "grel:cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "WIKIDATA-DISTRICTE",
+    "columnInsertIndex": 9,
+    "description": "Create column WIKIDATA-DISTRICTE at index 9 based on column NOM_DISTRICTE using expression grel:cell.recon.match.id"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_BARRI",
+    "clearData": true,
+    "description": "Discard recon judgments and clear recon data for cells in column NOM_BARRI"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOM_DISTRICTE",
+    "clearData": true,
+    "description": "Discard recon judgments and clear recon data for cells in column NOM_DISTRICTE"
+  }
+]

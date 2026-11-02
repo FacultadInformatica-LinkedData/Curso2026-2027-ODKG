@@ -1,0 +1,143 @@
+@prefix pm:  <https://parking-madrid.example.org/ontology#> .
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+# ---------------------------------------------------------------- SHACL validation shapes
+# These shapes validate loaded RDF data. They are deliberately separate from OWL
+# restrictions because OWL uses the open-world assumption.
+
+pm:ParkingFacilityShape a sh:NodeShape;
+    sh:targetClass pm:ParkingFacility;
+
+    sh:property [ sh:path pm:hasParCode;
+        sh:datatype xsd:integer 
+        sh:maxCount 1; 
+        sh:minCount 1; 
+    ];
+    sh:property [ sh:path pm:hasParkingName;
+        sh:datatype xsd:string
+        sh:maxCount 1; 
+        sh:minCount 1;
+    ];
+    sh:property [ sh:path pm:hasParkingType; 
+        sh:datatype xsd:string
+        sh:maxCount 1;
+    ];
+    sh:property [ sh:path pm:hasStreetAddress; 
+        sh:datatype xsd:string
+        sh:maxCount 1;
+    ];
+    sh:property [ sh:path pm:hasRotationSpaces;  
+        sh:datatype xsd:integer;
+        sh:maxCount 1;  
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasResidentSpaces;  
+        sh:datatype xsd:integer;
+        sh:maxCount 1;
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasDisuasorySpaces;
+        sh:datatype xsd:integer; 
+        sh:maxCount 1; 
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasTotalSpaces;
+        sh:datatype xsd:integer;  
+        sh:maxCount 1;
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasNumberOfFloors;  
+        sh:datatype xsd:integer;
+        sh:maxCount 1;
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path geo:lat; 
+        sh:datatype xsd:decimal;
+        sh:maxCount 1;  
+        sh:minInclusive -90; 
+        sh:maxInclusive 90 
+    ];
+    sh:property [ sh:path geo:long; 
+        sh:datatype xsd:decimal;
+        sh:maxCount 1; 
+        sh:minInclusive -180; 
+        sh:maxInclusive 180 
+    ] .
+
+pm:DistrictShape a sh:NodeShape;
+    sh:targetClass pm:District;
+    sh:property [ sh:path pm:hasDistrictCode;
+        sh:datatype xsd:integer;
+        sh:minCount 1; 
+        sh:maxCount 1
+    ];
+    sh:property [ sh:path pm:hasDistrictName; 
+        sh:datatype xsd:string; 
+        sh:minCount 1; 
+        sh:maxCount 1 
+    ] .
+
+pm:NeighbourhoodShape a sh:NodeShape;
+    sh:targetClass pm:Neighbourhood;
+    sh:property [ sh:path pm:hasNeighbourhoodCode;
+        sh:datatype xsd:integer; 
+        sh:minCount 1; 
+        sh:maxCount 1 
+    ];
+    sh:property [ sh:path pm:hasNeighbourhoodName; 
+        sh:datatype xsd:string;
+        sh:minCount 1; 
+        sh:maxCount 1; 
+    ];
+    sh:property [ sh:path pm:belongsToDistrict;
+        sh:class pm:District
+        sh:minCount 1; 
+        sh:maxCount 1; 
+    ] .
+
+pm:MonthlyOccupancyShape a sh:NodeShape;
+    sh:targetClass pm:MonthlyOccupancy;
+    sh:property [ sh:path pm:isOccupancyOf; 
+        sh:class pm:ParkingFacility;
+        sh:minCount 1; 
+        sh:maxCount 1
+    ];
+    sh:property [ sh:path pm:hasReferencePeriod; 
+        sh:datatype xsd:string;
+        sh:minCount 1; 
+        sh:maxCount 1; 
+        sh:pattern "^[0-9]{4}-(0[1-9]|1[0-2])$" 
+    ];
+    sh:property [ sh:path pm:hasNumberOfSpaces; 
+        sh:datatype xsd:integer;
+        sh:minCount 1; 
+        sh:maxCount 1; 
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasCalculationDays; 
+        sh:datatype xsd:integer;
+        sh:minCount 1; 
+        sh:maxCount 1; 
+        sh:minInclusive 1; 
+        sh:maxInclusive 31 
+    ];
+    sh:property [ sh:path pm:hasAverageDailyVehicles; 
+        sh:datatype xsd:decimal;
+        sh:minCount 1; 
+        sh:maxCount 1;
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasOccupancyRate; 
+        sh:datatype xsd:decimal;
+        sh:minCount 1; 
+        sh:maxCount 1; 
+        sh:minInclusive 0 
+    ];
+    sh:property [ sh:path pm:hasDaytimeOccupancyRate; 
+        sh:datatype xsd:decimal;
+        sh:minCount 1; 
+        sh:maxCount 1; 
+        sh:minInclusive 0
+    ] .

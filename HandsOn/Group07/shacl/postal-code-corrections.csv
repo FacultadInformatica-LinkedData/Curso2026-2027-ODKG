@@ -1,0 +1,13 @@
+eva_number,station,old_postal_code,new_postal_code,source_url,verified_on
+8010003,Altenburg,4600,04600,https://www.bahnhof.de/altenburg,2026-10-23
+8010006,Arnsdorf (b Dresden),1477,01477,https://www.bahnhof.de/arnsdorf-b-dresden,2026-10-23
+8010009,Aschersleben,6449,06449,https://www.bahnhof.de/en/aschersleben,2026-10-23
+8010019,Bad Koesen,6628,06628,https://www.bahnhof.de/en/bad-koesen,2026-10-23
+8010022,Bad Schandau,1814,01814,https://www.bahnhof.de/en/bad-schandau,2026-10-23
+8010026,Bautzen,2625,02625,https://www.bahnhof.de/bautzen,2026-10-23
+8010043,Bernburg Hbf,6404,06404,https://www.bahnhof.de/bernburg-hbf,2026-10-23
+8010049,Bischofswerda,1877,01877,https://www.bahnhof.de/en/bischofswerda,2026-10-23
+8010059,Borsdorf (Sachs),4451,04451,https://www.bahnhof.de/en/borsdorf-sachs,2026-10-23
+8011077,Bad Lausick,4651,04651,https://www.bahnhof.de/en/bad-lausick,2026-10-23
+8011222,Boehlen Werke,4564,04564,https://www.bahnhof.de/en/boehlen-werke,2026-10-23
+8011242,Borna (b Leipzig),4552,04552,https://www.bahnhof.de/en/borna-b-leipzig,2026-10-23

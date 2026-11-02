@@ -1,0 +1,68 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix hr:   <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#> .
+@base <https://w3id.org/barcelona-heat-relief/mappings/areas-with-links#> .
+
+# Districts and neighbourhoods, with their Wikidata items (csv/fonts-beure-2026-with-links.csv).
+# Paths are relative to the HandsOn/Group08 directory, where Morph-KGC is run.
+#
+# The logical sources are SQL views over the CSV file (rml:query, executed by Morph-KGC with DuckDB):
+# one row per district (10) and one per neighbourhood (73). The columns WIKIDATA-DISTRICTE and
+# WIKIDATA-BARRI hold the QIDs found by reconciling NOM_DISTRICTE and NOM_BARRI in OpenRefine
+# (lodrefine/fonts-beure-2026-with-links.json); they become owl:sameAs links to Wikidata.
+
+<#District> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT CODI_DISTRICTE, NOM_DISTRICTE, "WIKIDATA-DISTRICTE" AS wikidata
+      FROM read_csv('csv/fonts-beure-2026-with-links.csv', header = true, all_varchar = true)
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{CODI_DISTRICTE}" ;
+    rr:class hr:District
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "NOM_DISTRICTE" ; rr:language "ca" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs ;
+    rr:objectMap [ rr:template "http://www.wikidata.org/entity/{wikidata}" ]
+  ] .
+
+<#Neighbourhood> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT CODI_BARRI, NOM_BARRI, CODI_DISTRICTE, "WIKIDATA-BARRI" AS wikidata
+      FROM read_csv('csv/fonts-beure-2026-with-links.csv', header = true, all_varchar = true)
+    """ ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+
+  rr:subjectMap [
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{CODI_BARRI}" ;
+    rr:class hr:Neighbourhood
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "NOM_BARRI" ; rr:language "ca" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs ;
+    rr:objectMap [ rr:template "http://www.wikidata.org/entity/{wikidata}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate hr:isPartOfDistrict ;
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{CODI_DISTRICTE}" ]
+  ] .
