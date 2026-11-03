@@ -1,0 +1,9 @@
+PREFIX vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?class (COUNT(DISTINCT ?resource) AS ?linkedResources)
+WHERE {
+  ?resource a ?class ; owl:sameAs ?external .
+  FILTER (?class IN (vocab:District, vocab:Neighbourhood))
+}
+GROUP BY ?class
+ORDER BY ?class
