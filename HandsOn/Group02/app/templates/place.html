@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% from "_macros.html" import map_box, rating, wikidata_card, linked_data_panel %}
+{% block title %}{{ name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="crumbs"><a href="{{ detail.park|local }}">← {{ detail.parkName|pretty }}</a></p>
+    <h1><span class="muted">{{ "Artwork" if kind == "Artwork" else "Facility" }}:</span> {{ name }}</h1>
+    <p>{{ rating(aggregate) }}</p>
+    {% if aggregate.tags %}
+      <p class="reasons">{% for tag, n in aggregate.tags.most_common() %}<span class="tag tag-{{ tag }}">{{ tag }} ×{{ n }}</span>{% endfor %}</p>
+    {% endif %}
+  </div>
+</section>
+
+<div class="grid-2">
+  <div>
+    <section class="card gallery">
+      {% if photos %}
+        <div class="photos">
+          {% for photo in photos %}
+            <a href="{{ url_for('main.upload', name=photo) }}"><img src="{{ url_for('main.upload', name=photo) }}" alt="Visitor photo of {{ name }}" loading="lazy"></a>
+          {% endfor %}
+        </div>
+        <p class="hint">Photos contributed by visitors through reviews.</p>
+      {% else %}
+        <div class="placeholder">
+          <p><strong>No official image available</strong></p>
+          <p class="muted">The open datasets have no pictures. Photos are contributed by visitors through reviews.</p>
+        </div>
+      {% endif %}
+    </section>
+
+    <section class="card">
+      <h2>What the knowledge graph says</h2>
+      <dl class="facts">
+        <dt>Park</dt><dd><a href="{{ detail.park|local }}">{{ detail.parkName|pretty }}</a></dd>
+        {% if kind == "Artwork" %}
+          {% if detail.official %}<dt>Official name</dt><dd>{{ detail.official }}</dd>{% endif %}
+          <dt>Artist{{ 's' if artists|length > 1 }}</dt>
+          <dd>{% for a in artists %}<a href="{{ a.artist|local }}">{{ a.artistName }}</a>{% if a.wikidata %} <a class="badge badge-link" href="{{ a.wikidata }}" rel="noopener">Wikidata</a>{% endif %}{{ ", " if not loop.last }}{% else %}<span class="muted">unknown</span>{% endfor %}</dd>
+          <dt>Owner{{ 's' if owners|length > 1 }}</dt>
+          <dd>{% for o in owners %}<a href="{{ o.owner|local }}">{{ o.ownerName }}</a>{{ ", " if not loop.last }}{% else %}<span class="muted">unknown</span>{% endfor %}</dd>
+        {% else %}
+          <dt>Type</dt><dd>{{ detail.type|title }}</dd>
+          {% if siblings %}<dt>Same in this park</dt><dd>{% for f in siblings %}<a href="{{ f.url }}">#{{ loop.index + 1 }}</a> {% endfor %}</dd>{% endif %}
+        {% endif %}
+        {% if detail.gis is not none %}<dt>GIS object id</dt><dd>{{ detail.gis }}</dd>{% endif %}
+        <dt>Coordinates</dt><dd>{{ '%.5f'|format(detail.lat) }}, {{ '%.5f'|format(detail.lon) }}</dd>
+      </dl>
+      {{ map_box("place-map", map_data, "260px") }}
+    </section>
+  </div>
+
+  <div>
+    <section class="card" id="review-form">
+      <h2>Rate and review</h2>
+      <form method="post" action="{{ url_for('main.add_review', kind=kind, slug=uri.rsplit('/', 1)[1]) }}" enctype="multipart/form-data">
+        <fieldset class="star-input">
+          <legend>Your rating</legend>
+          {% for n in range(5, 0, -1) %}
+            <input type="radio" id="star{{ n }}" name="rating" value="{{ n }}" required>
+            <label for="star{{ n }}" title="{{ n }} star{{ 's' if n > 1 }}">★</label>
+          {% endfor %}
+        </fieldset>
+        <fieldset>
+          <legend>Tags</legend>
+          <div class="chips">
+            {% for tag in tags %}
+              <label class="chip"><input type="checkbox" name="tags" value="{{ tag }}"><span>{{ tag }}</span></label>
+            {% endfor %}
+          </div>
+        </fieldset>
+        <label for="comment">Your review</label>
+        <textarea id="comment" name="comment" rows="4" maxlength="{{ max_comment }}" placeholder="What was it like?"></textarea>
+        <label for="photo">Add a photo <span class="muted">(optional, JPEG or PNG, up to 5 MB)</span></label>
+        <input type="file" id="photo" name="photo" accept="image/jpeg,image/png">
+        <p class="hint">Share a photo of this park or artwork to help other visitors.</p>
+        <button class="btn btn-primary" type="submit">Submit feedback</button>
+      </form>
+    </section>
+
+    <section class="card" id="reviews">
+      <h2>Visitor reviews</h2>
+      {% for r in reviews %}
+        <article class="review">
+          <p><span class="stars">{{ r.rating|stars }}</span> <span class="muted">{{ r.created_at }}</span></p>
+          {% if r.comment %}<p>{{ r.comment }}</p>{% endif %}
+          {% if r.tags %}<p class="reasons">{% for t in r.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>{% endif %}
+          {% if r.photo %}<img class="review-photo" src="{{ url_for('main.upload', name=r.photo) }}" alt="Visitor photo" loading="lazy">{% endif %}
+        </article>
+      {% else %}
+        <p class="muted">Be the first to review {{ name }}.</p>
+      {% endfor %}
+    </section>
+  </div>
+</div>
+
+<div class="grid-2">
+  {% for a in artists if a.wd %}
+    {{ wikidata_card(a.wd, "About the artist: " ~ a.artistName) }}
+  {% endfor %}
+  {{ wikidata_card(park_wikidata, "About the park") }}
+</div>
+
+{{ linked_data_panel(linked) }}
+{% endblock %}

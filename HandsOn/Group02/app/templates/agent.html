@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "_macros.html" import map_box, wikidata_card, linked_data_panel %}
+{% block title %}{{ detail.name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1><span class="muted">{{ kind }}:</span> {{ detail.name }}</h1>
+    <p class="muted">{{ works|length }} artwork{{ 's' if works|length != 1 }} in Chicago parks
+      {% if detail.wikidata %} · <a href="{{ detail.wikidata }}" rel="noopener">owl:sameAs Wikidata ↗</a>{% endif %}</p>
+  </div>
+</section>
+
+<div class="grid-map">
+  <div>{{ map_box("agent-map", map_data, "420px") }}</div>
+  <div>
+    {{ wikidata_card(wikidata, "From Wikidata") }}
+    {% if not detail.wikidata %}
+      <p class="card muted">This {{ kind|lower }} is not linked to Wikidata, so we only know what the Chicago Park District data says.</p>
+    {% endif %}
+  </div>
+</div>
+
+<section class="card">
+  <h2>{{ "Works" if kind == "Artist" else "Artworks owned" }}</h2>
+  <table class="table">
+    <thead><tr><th>Artwork</th><th>Park</th></tr></thead>
+    <tbody>
+      {% for w in works %}
+        <tr><td><a href="{{ w.artwork|local }}">{{ w.name }}</a></td><td><a href="{{ w.park|local }}">{{ w.parkName|pretty }}</a></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+{{ linked_data_panel(linked) }}
+{% endblock %}

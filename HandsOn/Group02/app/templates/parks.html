@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Parks{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1>Parks</h1>
+    <p class="muted">{{ parks|length }} of {{ total }} Chicago Park District parks</p>
+  </div>
+  <form class="inline-search" method="get">
+    <input type="search" name="q" value="{{ query }}" placeholder="Search parks" aria-label="Search parks">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+</section>
+<section class="card">
+  <table class="table">
+    <thead><tr><th>Park</th><th>No.</th><th>Facilities</th><th>Artworks</th><th>Linked data</th></tr></thead>
+    <tbody>
+      {% for p in parks %}
+        <tr>
+          <td><a href="{{ p.url }}">{{ p.name }}</a></td>
+          <td>{{ p.number if p.number is not none else "" }}</td>
+          <td>{{ p.facilities|length }}</td>
+          <td>{{ p.artworks|length }}</td>
+          <td>{% if p.wikidata %}<a class="badge badge-link" href="{{ p.wikidata }}" rel="noopener">Wikidata</a>{% endif %}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="5" class="muted">No park matches “{{ query }}”.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
