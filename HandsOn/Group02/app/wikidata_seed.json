@@ -4147,5 +4147,1100 @@
    "article": "https://en.wikipedia.org/wiki/Edward_McCartan",
    "description": "American sculptor (1879–1947)"
   }
+ },
+ "Q5498025": {
+  "fetched": 1793899167.2814279,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Frederick_Hibbard_in_1906.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Frederick_Hibbard_in_1906.jpg",
+    "file": "Frederick Hibbard in 1906.jpg"
+   },
+   "death": "1950-12-12",
+   "birth": "1881-06-15",
+   "article": "https://en.wikipedia.org/wiki/Frederick_Hibbard",
+   "label": "Frederick Hibbard",
+   "description": "American artist"
+  }
+ },
+ "Q5515904": {
+  "fetched": 1793899168.8615098,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "article": "https://en.wikipedia.org/wiki/Gabriel_Villa",
+   "birth": "1965-01-01",
+   "label": "Gabriel Villa",
+   "description": "American artist"
+  }
+ },
+ "Q56388866": {
+  "fetched": 1793899169.74308,
+  "data": {
+   "occupations": [
+    "painter"
+   ],
+   "citizenships": [
+    "Hungary"
+   ],
+   "birth": "1937-09-02",
+   "label": "Miklós Simon",
+   "description": "Hungarian painter (1937–)"
+  }
+ },
+ "Q5662686": {
+  "fetched": 1793899170.732108,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/20061022_Hampton_House_and_South_end_of_Harold_Washington_Park.JPG?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:20061022_Hampton_House_and_South_end_of_Harold_Washington_Park.JPG",
+    "file": "20061022 Hampton House and South end of Harold Washington Park.JPG"
+   },
+   "article": "https://en.wikipedia.org/wiki/Harold_Washington_Park",
+   "description": "park in Chicago, Illinois, US",
+   "label": "Harold Washington Park"
+  }
+ },
+ "Q5723624": {
+  "fetched": 1793899172.234926,
+  "data": {
+   "occupations": [
+    "architect"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1859-08-19",
+   "death": "1931-03-27",
+   "article": "https://en.wikipedia.org/wiki/Henry_Ives_Cobb",
+   "label": "Henry Ives Cobb",
+   "description": "American architect (1859–1931)"
+  }
+ },
+ "Q5911955": {
+  "fetched": 1793899176.74594,
+  "data": {
+   "occupations": [
+    "sculptor",
+    "draftsperson"
+   ],
+   "citizenships": [
+    "Sweden"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Frithiof_Kjellberg.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Frithiof_Kjellberg.jpg",
+    "file": "Frithiof Kjellberg.jpg"
+   },
+   "birth": "1836-02-06",
+   "label": "Frithiof Kjellberg",
+   "death": "1885-12-16",
+   "description": "Swedish sculptor (1836–1885)"
+  }
+ },
+ "Q5940360": {
+  "fetched": 1793899178.653995,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "area": 206.9,
+   "article": "https://en.wikipedia.org/wiki/Humboldt_Park_(Chicago_park)",
+   "label": "Humboldt Park",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Humboldt_Park_Stables_and_Receptory.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Humboldt_Park_Stables_and_Receptory.jpg",
+    "file": "Humboldt Park Stables and Receptory.jpg"
+   },
+   "inception": "1877-01-01",
+   "description": "public park in Chicago, Illinois",
+   "website": "https://www.chicagoparkdistrict.com/parks-facilities/humboldt-alexander-von-park"
+  }
+ },
+ "Q6019933": {
+  "fetched": 1793899180.184834,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Indian_Boundary_Park_Fieldhouse.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Indian_Boundary_Park_Fieldhouse.jpg",
+    "file": "Indian Boundary Park Fieldhouse.jpg"
+   },
+   "area": 13.0,
+   "inception": "1922-01-01",
+   "website": "http://www.chicagoparkdistrict.com/parks/indian-boundary-park",
+   "description": "park in Chicago, Illinois",
+   "label": "Indian Boundary Park",
+   "article": "https://en.wikipedia.org/wiki/Indian_Boundary_Park"
+  }
+ },
+ "Q613380": {
+  "fetched": 1793899181.15242,
+  "data": {
+   "occupations": [
+    "photographer",
+    "painter",
+    "glassblower",
+    "university teacher",
+    "glass artist"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1941-09-20",
+   "article": "https://en.wikipedia.org/wiki/Dale_Chihuly",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Dale_Chihuly_2009.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Dale_Chihuly_2009.jpg",
+    "file": "Dale Chihuly 2009.jpg"
+   },
+   "description": "American glass sculptor (born 1941)",
+   "website": "https://www.chihuly.com"
+  }
+ },
+ "Q6136673": {
+  "fetched": 1793899198.109775,
+  "data": {
+   "occupations": [
+    "architect"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "death": "1914-12-02",
+   "birth": "1839-10-14",
+   "article": "https://en.wikipedia.org/wiki/James_J._Egan",
+   "description": "Irish-American architect (1839–1914)",
+   "label": "James J. Egan"
+  }
+ },
+ "Q6185415": {
+  "fetched": 1793899199.261374,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "Poland"
+   ],
+   "article": "https://en.wikipedia.org/wiki/Jerzy_Kenar",
+   "label": "Jerzy Kenar",
+   "birth": "1948-01-19",
+   "description": "Polish sculptor"
+  }
+ },
+ "Q6219101": {
+  "fetched": 1793899200.157342,
+  "data": {
+   "occupations": [
+    "artist",
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "article": "https://en.wikipedia.org/wiki/John_Angel_(sculptor)",
+   "birth": "1881-11-01",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Angel_at_the_Exeter_War_Memorial.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Angel_at_the_Exeter_War_Memorial.jpg",
+    "file": "Angel at the Exeter War Memorial.jpg"
+   },
+   "death": "1960-10-16",
+   "label": "John Angel",
+   "description": "American artist (1881-1960)"
+  }
+ },
+ "Q6242576": {
+  "fetched": 1793899201.557503,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "article": "https://en.wikipedia.org/wiki/John_Kearney_(artist)",
+   "death": "2014-08-10",
+   "birth": "1924-08-31",
+   "label": "John Kearney",
+   "description": "American artist"
+  }
+ },
+ "Q6308495": {
+  "fetched": 1793899207.429017,
+  "data": {
+   "occupations": [
+    "painter"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1958-07-23",
+   "article": "https://en.wikipedia.org/wiki/Julie_Rotblatt_Amrany",
+   "description": "American artist"
+  }
+ },
+ "Q6386788": {
+  "fetched": 1793899210.0902069,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Kelvynparksouth.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Kelvynparksouth.jpg",
+    "file": "Kelvynparksouth.jpg"
+   },
+   "label": "Kelvyn Park",
+   "website": "https://kelvynpark.org",
+   "area": 4.0,
+   "inception": "1911-01-01",
+   "article": "https://en.wikipedia.org/wiki/Kelvyn_Park",
+   "description": "park in Illinois, United States of America"
+  }
+ },
+ "Q6433027": {
+  "fetched": 1793899211.610378,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/KosciuszkoPark001.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:KosciuszkoPark001.jpg",
+    "file": "KosciuszkoPark001.jpg"
+   },
+   "article": "https://en.wikipedia.org/wiki/Kosciuszko_Park_(Chicago)",
+   "label": "Kosciuszko Park",
+   "inception": "1916-01-01",
+   "description": "park in the Logan Square area of Chicago, Illinois"
+  }
+ },
+ "Q6481675": {
+  "fetched": 1793899215.572238,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "Zimbabwe"
+   ],
+   "birth": "1973-01-01",
+   "article": "https://en.wikipedia.org/wiki/Lameck_Bonjisi",
+   "death": "2004-01-01",
+   "description": "Zimbabwean sculptor",
+   "label": "Lameck Bonjisi"
+  }
+ },
+ "Q6525204": {
+  "fetched": 1793899216.72267,
+  "data": {
+   "occupations": [
+    "designer",
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1872-07-08",
+   "death": "1944-09-10",
+   "article": "https://en.wikipedia.org/wiki/Leonard_Crunelle",
+   "label": "Leonard Crunelle",
+   "description": "American artist (1872–1944)"
+  }
+ },
+ "Q6688039": {
+  "fetched": 1793899218.4889321,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "label": "Louis Rebisso",
+   "death": "1899-05-02",
+   "birth": "1837-04-23",
+   "article": "https://en.wikipedia.org/wiki/Louis_Rebisso",
+   "description": "American sculptor"
+  }
+ },
+ "Q703624": {
+  "fetched": 1793899221.393877,
+  "data": {
+   "occupations": [
+    "photographer",
+    "illustrator",
+    "sculptor",
+    "artist",
+    "graphic artist"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/George_Segal_artist%2C_in_New_Jersey_studio.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:George_Segal_artist%2C_in_New_Jersey_studio.jpg",
+    "file": "George Segal artist, in New Jersey studio.jpg"
+   },
+   "birth": "1924-11-26",
+   "article": "https://en.wikipedia.org/wiki/George_Segal_(artist)",
+   "death": "2000-06-09",
+   "description": "American Pop Art painter and sculptor (1924–2000)"
+  }
+ },
+ "Q7116423": {
+  "fetched": 1793899222.9936142,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Oz_Park.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Oz_Park.jpg",
+    "file": "Oz Park.jpg"
+   },
+   "label": "Oz Park",
+   "description": "park in Illinois, United States of America, United States of America",
+   "article": "https://en.wikipedia.org/wiki/Oz_Park"
+  }
+ },
+ "Q720910": {
+  "fetched": 1793899224.196376,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Daniel_Chester_French_1902.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Daniel_Chester_French_1902.jpg",
+    "file": "Daniel Chester French 1902.jpg"
+   },
+   "death": "1931-10-07",
+   "birth": "1850-04-20",
+   "article": "https://en.wikipedia.org/wiki/Daniel_Chester_French",
+   "description": "American sculptor (1850–1931)",
+   "label": "Daniel Chester French"
+  }
+ },
+ "Q7231429": {
+  "fetched": 1793899225.252498,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Portage_Park_Chicago_Gate.JPG?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Portage_Park_Chicago_Gate.JPG",
+    "file": "Portage Park Chicago Gate.JPG"
+   },
+   "description": "park in Illinois, United States of America",
+   "label": "Portage Park",
+   "article": "https://en.wikipedia.org/wiki/Portage_Park_(Chicago_park)"
+  }
+ },
+ "Q7259213": {
+  "fetched": 1793899235.628024,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Pulaski_Park_Fieldhouse_Chicago_IL.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Pulaski_Park_Fieldhouse_Chicago_IL.jpg",
+    "file": "Pulaski Park Fieldhouse Chicago IL.jpg"
+   },
+   "article": "https://en.wikipedia.org/wiki/Pulaski_Park_(Chicago)",
+   "label": "Pulaski Park",
+   "description": "park in Illinois, United States of America"
+  }
+ },
+ "Q726169": {
+  "fetched": 1793899236.6725252,
+  "data": {
+   "occupations": [
+    "photographer",
+    "writer",
+    "artist",
+    "designer",
+    "painter"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "website": "http://www.davidsmithestate.org/",
+   "birth": "1906-03-09",
+   "death": "1965-05-23",
+   "label": "David Smith",
+   "description": "American visual artist (1906-1965)",
+   "article": "https://en.wikipedia.org/wiki/David_Smith_(sculptor)"
+  }
+ },
+ "Q7324233": {
+  "fetched": 1793899237.876619,
+  "data": {
+   "occupations": [
+    "sculptor",
+    "artist"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "death": "1949-01-01",
+   "article": "https://en.wikipedia.org/wiki/Richard_Bock",
+   "description": "American sculptor; associate of Frank Lloyd Wright (1865–1949)",
+   "birth": "1865-07-16",
+   "label": "Richard Bock"
+  }
+ },
+ "Q7326615": {
+  "fetched": 1793899240.153184,
+  "data": {
+   "occupations": [
+    "sculptor",
+    "lithographer"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard_Hunt_in_Lill_Street_Studio_Chicago_2018.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Richard_Hunt_in_Lill_Street_Studio_Chicago_2018.jpg",
+    "file": "Richard Hunt in Lill Street Studio Chicago 2018.jpg"
+   },
+   "death": "2023-12-16",
+   "website": "https://richardhuntstudio.com",
+   "label": "Richard Hunt",
+   "birth": "1935-09-12",
+   "article": "https://en.wikipedia.org/wiki/Richard_Hunt_(sculptor)",
+   "description": "African American Sculptor (1935–2023)"
+  }
+ },
+ "Q7366233": {
+  "fetched": 1793899244.112619,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Rookwood_Pottery_from_the_monastery_steps.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Rookwood_Pottery_from_the_monastery_steps.jpg",
+    "file": "Rookwood Pottery from the monastery steps.jpg"
+   },
+   "label": "Rookwood Pottery Company",
+   "article": "https://en.wikipedia.org/wiki/Rookwood_Pottery_Company",
+   "website": "https://rookwood.com/",
+   "description": "Cincinnati ceramics firm"
+  }
+ },
+ "Q743154": {
+  "fetched": 1793899258.271015,
+  "data": {
+   "occupations": [
+    "artist",
+    "painter",
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/F._MacMonnies_LCCN2014718936.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:F._MacMonnies_LCCN2014718936.jpg",
+    "file": "F. MacMonnies LCCN2014718936.jpg"
+   },
+   "description": "United States expatriate sculptor (1863-1937)",
+   "birth": "1863-09-28",
+   "death": "1937-03-22",
+   "label": "Frederick William MacMonnies",
+   "article": "https://en.wikipedia.org/wiki/Frederick_William_MacMonnies"
+  }
+ },
+ "Q7513340": {
+  "fetched": 1793899259.0655181,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1867-10-19",
+   "death": "1954-09-08",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Sigvald_Asbj%C3%B8rnsen_%281867%E2%80%931954%29.png?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Sigvald_Asbj%C3%B8rnsen_%281867%E2%80%931954%29.png",
+    "file": "Sigvald Asbjørnsen (1867–1954).png"
+   },
+   "description": "American artist (1867–1954)",
+   "label": "Sigvald Asbjørnsen"
+  }
+ },
+ "Q7520486": {
+  "fetched": 1793899260.166089,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "article": "https://en.wikipedia.org/wiki/Simons_Park",
+   "label": "Simons Park",
+   "inception": "1920-01-01",
+   "description": "park in Illinois, United States of America"
+  }
+ },
+ "Q7614140": {
+  "fetched": 1793899264.1589592,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1957-01-01",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Steve-tobin2014-KenEk_closeup.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Steve-tobin2014-KenEk_closeup.jpg",
+    "file": "Steve-tobin2014-KenEk closeup.jpg"
+   },
+   "label": "Steve Tobin",
+   "article": "https://en.wikipedia.org/wiki/Steve_Tobin",
+   "description": "American sculptor"
+  }
+ },
+ "Q7788145": {
+  "fetched": 1793899270.677459,
+  "data": {
+   "occupations": [
+    "historian",
+    "painter",
+    "graphic artist",
+    "novelist",
+    "journalist"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_Lea_1938_cropped.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Tom_Lea_1938_cropped.jpg",
+    "file": "Tom Lea 1938 cropped.jpg"
+   },
+   "birth": "1907-07-11",
+   "article": "https://en.wikipedia.org/wiki/Thomas_C._Lea_III",
+   "death": "2001-01-29",
+   "description": "American artist, writer and journalist (1907-2001)",
+   "label": "Thomas C. Lea III"
+  }
+ },
+ "Q7885939": {
+  "fetched": 1793899272.503723,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicago_Union_Park.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicago_Union_Park.jpg",
+    "file": "Chicago Union Park.jpg"
+   },
+   "inception": "1853-01-01",
+   "label": "Union Park",
+   "description": "municipal park in Chicago, Illinois, USA",
+   "article": "https://en.wikipedia.org/wiki/Union_Park_(Chicago)"
+  }
+ },
+ "Q7972096": {
+  "fetched": 1793899306.1099288,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Wasparkpond2.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Wasparkpond2.jpg",
+    "file": "Wasparkpond2.jpg"
+   },
+   "article": "https://en.wikipedia.org/wiki/Washington_Park_(Chicago_park)",
+   "label": "Washington Park",
+   "description": "park in Chicago in Cook County, Illinois"
+  }
+ },
+ "Q7998336": {
+  "fetched": 1793899307.046849,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Wicker_Park_-_Chicago_-_Illinois_-_USA.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Wicker_Park_-_Chicago_-_Illinois_-_USA.jpg",
+    "file": "Wicker Park - Chicago - Illinois - USA.jpg"
+   },
+   "description": "park in Chicago, Illinois, United States",
+   "label": "Wicker Park",
+   "article": "https://en.wikipedia.org/wiki/Wicker_Park_(Chicago_park)"
+  }
+ },
+ "Q8008412": {
+  "fetched": 1793899310.255129,
+  "data": {
+   "occupations": [
+    "educator",
+    "painter",
+    "illustrator",
+    "muralist"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Wm._Edouard_Scott.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Wm._Edouard_Scott.jpg",
+    "file": "Wm. Edouard Scott.jpg"
+   },
+   "birth": "1884-03-11",
+   "death": "1964-05-16",
+   "label": "William Edouard Scott",
+   "description": "African American artist (1884-1964)",
+   "article": "https://en.wikipedia.org/wiki/William_Edouard_Scott"
+  }
+ },
+ "Q8010116": {
+  "fetched": 1793899311.4692621,
+  "data": {
+   "occupations": [
+    "sculptor",
+    "painter"
+   ],
+   "citizenships": [],
+   "birth": "1849-01-01",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/William_Wallace_Statue_%2C_Aberdeen2.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:William_Wallace_Statue_%2C_Aberdeen2.jpg",
+    "file": "William Wallace Statue , Aberdeen2.jpg"
+   },
+   "article": "https://en.wikipedia.org/wiki/William_Grant_Stevenson",
+   "label": "William Grant Stevenson",
+   "death": "1919-05-06",
+   "description": "Scottish sculptor and portrait painter (1849-1919)"
+  }
+ },
+ "Q8016365": {
+  "fetched": 1793899313.894565,
+  "data": {
+   "occupations": [
+    "writer",
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Partridge-pic.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Partridge-pic.jpg",
+    "file": "Partridge-pic.jpg"
+   },
+   "death": "1930-05-22",
+   "birth": "1861-04-11",
+   "article": "https://en.wikipedia.org/wiki/William_Ordway_Partridge",
+   "label": "William Ordway Partridge",
+   "description": "American artist (1861–1930)"
+  }
+ },
+ "Q85754114": {
+  "fetched": 1793899314.747327,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Cornell_Square_3.JPG?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Cornell_Square_3.JPG",
+    "file": "Cornell Square 3.JPG"
+   },
+   "label": "Cornell Square",
+   "article": "https://en.wikipedia.org/wiki/Cornell_Square",
+   "area": 2.3,
+   "inception": "1905-01-01",
+   "description": "public park in the New City community area of Chicago, Illinois"
+  }
+ },
+ "Q85755906": {
+  "fetched": 1793899316.924767,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Davis Square",
+   "description": "public park in the New City community area of Chicago, Illinois",
+   "article": "https://en.wikipedia.org/wiki/Davis_Square_(Chicago)",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Davis_Square_1.JPG?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Davis_Square_1.JPG",
+    "file": "Davis Square 1.JPG"
+   },
+   "area": 8.3
+  }
+ },
+ "Q85762271": {
+  "fetched": 1793899319.3549619,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Fuller_Park_3.JPG?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Fuller_Park_3.JPG",
+    "file": "Fuller Park 3.JPG"
+   },
+   "label": "Fuller Park",
+   "description": "park in Chicago, United States of America",
+   "article": "https://en.wikipedia.org/wiki/Fuller_Park_(Chicago_park)"
+  }
+ },
+ "Q9179773": {
+  "fetched": 1793899320.378494,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "Poland"
+   ],
+   "birth": "1917-01-01",
+   "death": "1986-01-01",
+   "label": "Bronisław Koniuszy",
+   "description": "Polish sculptor (1917–1986)"
+  }
+ },
+ "Q94953413": {
+  "fetched": 1793899321.286795,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Garibaldi Park",
+   "description": "park in Chicago, Illinois"
+  }
+ },
+ "Q97309725": {
+  "fetched": 1793899322.171305,
+  "data": {
+   "occupations": [
+    "painter",
+    "sculptor"
+   ],
+   "citizenships": [
+    "Germany"
+   ],
+   "death": "1932-11-29",
+   "birth": "1860-01-01",
+   "label": "Felix Görling",
+   "description": "German sculptor and painter"
+  }
+ },
+ "Q98932545": {
+  "fetched": 1793899323.34781,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "Germany",
+    "United States"
+   ],
+   "description": "German-American sculptor",
+   "birth": "1859-05-01",
+   "death": "1920-01-01"
+  }
+ },
+ "Q10265089": {
+  "fetched": 1793899335.045027,
+  "data": {
+   "occupations": [
+    "sculptor",
+    "artist",
+    "contemporary artist",
+    "visual artist"
+   ],
+   "citizenships": [
+    "Brazil"
+   ],
+   "birth": "1954-07-16",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Denise_Milan_by_Thomas_Susemihl.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Denise_Milan_by_Thomas_Susemihl.jpg",
+    "file": "Denise Milan by Thomas Susemihl.jpg"
+   },
+   "description": "Brazilian sculptor and multidisciplinary contemporary artist",
+   "label": "Denise Milan"
+  }
+ },
+ "Q1049334": {
+  "fetched": 1793899335.890144,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/USACE.gif?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:USACE.gif",
+    "file": "USACE.gif"
+   },
+   "label": "United States Army Corps of Engineers",
+   "inception": "1775-06-16",
+   "website": "https://www.usace.army.mil/",
+   "article": "https://en.wikipedia.org/wiki/United_States_Army_Corps_of_Engineers",
+   "description": "direct reporting unit and U.S. Army's branch for military engineering"
+  }
+ },
+ "Q109538917": {
+  "fetched": 1793899345.773153,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Printers Row Park",
+   "description": "public city park, area of 0.38 acres in the city of Chicago, USA",
+   "article": "https://en.wikipedia.org/wiki/Printers_Row_Park",
+   "inception": "2009-01-01",
+   "area": 0.1
+  }
+ },
+ "Q11709631": {
+  "fetched": 1793899354.30074,
+  "data": {
+   "occupations": [
+    "painter"
+   ],
+   "citizenships": [
+    "Polish–Lithuanian Commonwealth"
+   ],
+   "label": "Herman Hahn",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Herman_Han.png?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Herman_Han.png",
+    "file": "Herman Han.png"
+   },
+   "description": "German artist, approximately 1572-1628",
+   "death": "1627-12-20",
+   "birth": "1580-02-29"
+  }
+ },
+ "Q3028252": {
+  "fetched": 1793899386.018537,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Dinah Washington Park",
+   "description": "Public City Park in the Chicago Park District",
+   "article": "https://en.wikipedia.org/wiki/Dinah_Washington_Park"
+  }
+ },
+ "Q34811662": {
+  "fetched": 1793899408.444337,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Auburn Park",
+   "description": "park in Cook County, Illinois, United States of America"
+  }
+ },
+ "Q34883174": {
+  "fetched": 1793899421.8224661,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Goudy Square Park",
+   "description": "park in Cook County, Illinois, United States of America"
+  }
+ },
+ "Q34911866": {
+  "fetched": 1793899433.156499,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "California Park",
+   "description": "park in the United States of America"
+  }
+ },
+ "Q49509994": {
+  "fetched": 1793899469.258469,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Ken-Well_Park_-_Hermosa_-_Chicago%2C_IL.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Ken-Well_Park_-_Hermosa_-_Chicago%2C_IL.jpg",
+    "file": "Ken-Well Park - Hermosa - Chicago, IL.jpg"
+   },
+   "label": "Ken-Well Park",
+   "description": "park in Cook County, Illinois, United States of America"
+  }
+ },
+ "Q49528295": {
+  "fetched": 1793899490.8737211,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Morgan Field Park",
+   "description": "park in the United States of America"
+  }
+ },
+ "Q49549538": {
+  "fetched": 1793899510.553887,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Revere Park",
+   "description": "park in Cook County, Illinois, United States of America"
+  }
+ },
+ "Q49558989": {
+  "fetched": 1793899518.420972,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "description": "park in the United States of America",
+   "label": "Scottsdale Park"
+  }
+ },
+ "Q49559637": {
+  "fetched": 1793899520.284239,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "description": "park in Cook County, Illinois, United States of America",
+   "label": "Senn Park"
+  }
+ },
+ "Q49566910": {
+  "fetched": 1793899526.924685,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "label": "Strohacker Park",
+   "description": "park in Cook County, Illinois, United States of America"
+  }
+ },
+ "Q49568095": {
+  "fetched": 1793899527.828222,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "description": "park in Cook County, Illinois, United States of America",
+   "label": "Supera Park"
+  }
+ },
+ "Q544899": {
+  "fetched": 1793899552.115768,
+  "data": {
+   "occupations": [
+    "artist",
+    "graphic artist",
+    "sculptor",
+    "painter",
+    "designer"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "death": "2015-12-27",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Ellsworth_Kelly_%28cropped%29.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Ellsworth_Kelly_%28cropped%29.jpg",
+    "file": "Ellsworth Kelly (cropped).jpg"
+   },
+   "birth": "1923-05-31",
+   "website": "https://ellsworthkelly.org/",
+   "label": "Ellsworth Kelly",
+   "description": "American painter, sculptor, and printmaker (1923-2015)",
+   "article": "https://en.wikipedia.org/wiki/Ellsworth_Kelly"
+  }
+ },
+ "Q6793177": {
+  "fetched": 1793899562.682078,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United Kingdom"
+   ],
+   "birth": "1946-01-01",
+   "description": "British artist",
+   "article": "https://en.wikipedia.org/wiki/Maurice_Harron",
+   "label": "Maurice Harron"
+  }
+ },
+ "Q7326405": {
+  "fetched": 1793899567.1677802,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "death": "1902-01-01",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard_H_Park_1902.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Richard_H_Park_1902.jpg",
+    "file": "Richard H Park 1902.jpg"
+   },
+   "birth": "1832-02-17",
+   "article": "https://en.wikipedia.org/wiki/Richard_Henry_Park",
+   "label": "Richard Henry Park",
+   "description": "American sculptor (1832–1902)"
+  }
+ },
+ "Q770625": {
+  "fetched": 1793899571.366563,
+  "data": {
+   "occupations": [
+    "sculptor"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Augustus_Saint-Gaudens.jpg?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Augustus_Saint-Gaudens.jpg",
+    "file": "Augustus Saint-Gaudens.jpg"
+   },
+   "birth": "1848-03-01",
+   "death": "1907-08-03",
+   "label": "Augustus Saint-Gaudens",
+   "article": "https://en.wikipedia.org/wiki/Augustus_Saint-Gaudens",
+   "description": "American artist (1848–1907)"
+  }
+ },
+ "Q78505444": {
+  "fetched": 1793899572.842172,
+  "data": {
+   "occupations": [],
+   "citizenships": [],
+   "description": "urban park in Chicago",
+   "label": "Hamilton Park",
+   "article": "https://en.wikipedia.org/wiki/Hamilton_Park_(Chicago)",
+   "image": {
+    "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Hamilton_Park_Fieldhouse%2C_South_Side_1.JPG?width=640",
+    "page": "https://commons.wikimedia.org/wiki/File:Hamilton_Park_Fieldhouse%2C_South_Side_1.JPG",
+    "file": "Hamilton Park Fieldhouse, South Side 1.JPG"
+   }
+  }
+ },
+ "Q7923103": {
+  "fetched": 1793899574.2609851,
+  "data": {
+   "occupations": [
+    "autobiographer",
+    "painter"
+   ],
+   "citizenships": [
+    "United States"
+   ],
+   "birth": "1947-01-26",
+   "website": "http://www.verylgoodnight.com/",
+   "description": "American artist",
+   "article": "https://en.wikipedia.org/wiki/Veryl_Goodnight"
+  }
  }
 }
