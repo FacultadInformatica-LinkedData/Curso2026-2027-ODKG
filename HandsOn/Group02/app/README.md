@@ -100,10 +100,12 @@ Wikidata is slow. Re-run the script when the RDF links change.
 
 1. Sign up for a free *Beginner* account at <https://www.pythonanywhere.com>. The site will be
    `https://<username>.pythonanywhere.com`.
-2. **Get the code.** Open *Consoles → Bash* and run:
+2. **Get the code.** The full course repository (every group, all history) is larger than the free
+   512 MB disk, so fetch only the latest version of the two folders the app needs. Open
+   *Consoles → Bash* and run:
    ```bash
-   git clone https://github.com/<your-github-user>/Curso2026-2027-ODKG.git
-   cd Curso2026-2027-ODKG && git checkout <branch-with-the-app>
+   git clone --depth 1 --filter=blob:none --sparse -b app https://github.com/ZhengJinFa168/Curso2026-2027-ODKG.git
+   cd Curso2026-2027-ODKG && git sparse-checkout set HandsOn/Group02/app HandsOn/Group02/rdf
    ```
 3. **Create a virtualenv** (pick a Python version that the *Web* tab offers; 3.10 or newer):
    ```bash
