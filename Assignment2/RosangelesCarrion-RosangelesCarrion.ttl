@@ -1,0 +1,13 @@
+@prefix ont: <http://example.org/sensors/ontology#> .
+@prefix res: <http://example.org/sensors/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+res:Class01 ont:includes res:Sensor029 , res:Computer101.
+
+res:Sensor029 ont:hasMeasurement res:Measurement8401.
+
+res:Measurement8401 ont:hasTemperature "29"^^xsd:integer;
+    ont:atTime "2010-06-12T12:00:12"^^xsd:dateTime.
+
+res:Computer101 ont:hasOwner res:User10A.
+res:User10A ont:hasName "Pedro"^^xsd:string.

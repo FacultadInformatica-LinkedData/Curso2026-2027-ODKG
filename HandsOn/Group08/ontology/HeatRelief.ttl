@@ -72,7 +72,7 @@ hr:ShelterCategory rdf:type owl:Class ;
 
 hr:Facility rdf:type owl:Class ;
     rdfs:label "Facility"@en ;
-    rdfs:comment "A place, such as a library, a market or a park, that hosts a climate shelter. Facilities are identified by their Wikidata items."@en .
+    rdfs:comment "A place, such as a library, a market or a park, that hosts a climate shelter. Each facility is linked to its Wikidata item with owl:sameAs."@en .
 
 hr:TreeSpecies rdf:type owl:Class ;
     rdfs:label "Tree species"@en ;

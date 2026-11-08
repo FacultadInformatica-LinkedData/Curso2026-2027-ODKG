@@ -1,0 +1,50 @@
+prefixes:
+  am: https://w3id.org/active-madrid/ontology#
+  res: https://w3id.org/active-madrid/resource/
+  schema: http://schema.org/
+  time: http://www.w3.org/2006/time#
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+mappings:
+  sportsFacility:
+    sources:
+      - ['sports_centers_info-updated.csv~csv']
+    s: res:SportsFacility/$(PK)
+
+  sportActivity:
+    sources:
+      - ['open_classes-updated.csv~csv']
+    s: res:SportActivity/$(Actividad)
+    po:
+      - [a, am:SportActivity]
+      - [schema:name, $(Actividad), xsd:string]
+
+  timeInterval:
+    sources:
+      - ['open_classes-updated.csv~csv']
+    s: res:TimeInterval/$(Hora inicial)-$(Hora final)
+    po:
+      - [a, time:Interval]
+      - [time:hasBeginning, $(Hora inicial), xsd:time]
+      - [time:hasEnd, $(Hora final), xsd:time]
+
+  openClass:
+    sources:
+      - ['open_classes-updated.csv~csv']
+    s: res:SportsClass/OPEN_$(Centro deportivo)_$(Fecha)_$(Hora inicial)_$(Actividad)
+    po:
+      - [a, am:SportsClass]
+      - [schema:name, "$(Actividad) - $(Día de la semana) de $(Hora inicial) a $(Hora final)", xsd:string]
+      - [am:offeredPlaces, $(Plazas), xsd:nonNegativeInteger]
+      - [am:occupiedPlaces, $(Ocupadas), xsd:nonNegativeInteger]
+      - [am:availablePlaces, $(Libres), xsd:nonNegativeInteger]
+      - [am:hasActivity, res:SportActivity/$(Actividad)~iri]
+      - [time:hasTime, res:TimeInterval/$(Hora inicial)-$(Hora final)~iri]
+      - p: am:takesPlaceAt
+        o:
+          mapping: sportsFacility
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Centro deportivo)]
+              - [str2, $(NOMBRE)]

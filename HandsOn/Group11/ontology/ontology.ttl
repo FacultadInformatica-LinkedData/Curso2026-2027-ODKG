@@ -38,6 +38,10 @@ ns:District a rdf:Class ;
     rdfs:subClassOf ns:Location ;
     rdfs:label "District" .
 
+ns:Point a rdf:Class ;
+    rdfs:subClassOf geo:Geometry ;
+    rdfs:label "Point" .
+
 #################################################################
 # Controlled-vocabulary classes
 #################################################################
@@ -174,6 +178,21 @@ ns:yCoordinate a owl:DatatypeProperty ;
     rdfs:label "Y coordinate" ;
     rdfs:domain ns:Location ;
     rdfs:range xsd:double .
+
+ns:latitude a owl:DatatypeProperty ;
+    rdfs:label "latitude" ;
+    rdfs:domain ns:Point ;
+    rdfs:range xsd:double .
+
+ns:longitude a owl:DatatypeProperty ;
+    rdfs:label "longitude" ;
+    rdfs:domain ns:Point ;
+    rdfs:range xsd:double .
+
+ns:hasMapLink a owl:ObjectProperty ;
+    rdfs:label "has map link" ;
+    rdfs:domain ns:Location ;
+    rdfs:range rdfs:Resource .
 
 ns:positiveAlcohol a owl:DatatypeProperty ;
     rdfs:label "positive alcohol" ;

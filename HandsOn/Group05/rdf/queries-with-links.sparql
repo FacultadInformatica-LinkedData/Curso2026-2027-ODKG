@@ -1,0 +1,167 @@
+# SPARQL queries to verify the links in rdf/rvvcca-datos-horarios-valencia-2016-2021-curt-cas-with-links.ttl
+# Each query is independent and has its own PREFIX declarations; run them one by one.
+
+# Q1. Number of owl:sameAs links from resources of the ontology classes
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT (COUNT(*) AS ?totalLinks)
+WHERE {
+  ?s a ?type ;
+     owl:sameAs ?o .
+  FILTER (?type IN (aq:City, aq:MonitoringStation, aq:ObservableProperty))
+}
+
+#------------------------------------------------------------------
+# Q2. Number of links per class and target dataset
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?type ?targetDataset (COUNT(DISTINCT ?s) AS ?linkedResources)
+WHERE {
+  ?s owl:sameAs ?o ;
+     rdf:type ?type .
+  FILTER (?type IN (aq:City, aq:MonitoringStation, aq:ObservableProperty))
+  BIND (IF(STRSTARTS(STR(?o), "http://www.wikidata.org/entity/"), "Wikidata",
+        IF(STRSTARTS(STR(?o), "https://rvvcca.pica.gva.es/"), "RVVCCA (GVA)", "Other")) AS ?targetDataset)
+}
+GROUP BY ?type ?targetDataset
+ORDER BY ?type
+
+#------------------------------------------------------------------
+# Q3. Monitoring stations and their link to the RVVCCA station page
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?station ?stationName ?link
+WHERE {
+  ?station rdf:type aq:MonitoringStation ;
+           aq:stationName ?stationName ;
+           owl:sameAs ?link .
+}
+ORDER BY ?stationName
+
+#------------------------------------------------------------------
+# Q4. Observable properties and their Wikidata entity
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?property ?label ?wikidata
+WHERE {
+  ?property rdf:type aq:ObservableProperty ;
+            rdfs:label ?label ;
+            owl:sameAs ?wikidata .
+  FILTER (STRSTARTS(STR(?wikidata), "http://www.wikidata.org/entity/"))
+}
+ORDER BY ?label
+
+#------------------------------------------------------------------
+# Q5. Observable properties that could not be linked (PM1, NOx, noise and
+#     maximum wind speed had no match in Wikidata)
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?property ?label
+WHERE {
+  ?property rdf:type aq:ObservableProperty ;
+            rdfs:label ?label .
+  FILTER NOT EXISTS { ?property owl:sameAs ?link }
+}
+ORDER BY ?label
+
+#------------------------------------------------------------------
+# Q6. Number of observations per linked pollutant (navigating through the link)
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX aq:   <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?wikidata ?label (COUNT(?observation) AS ?observations)
+WHERE {
+  ?observation aq:observedProperty ?property .
+  ?property rdfs:label ?label ;
+            owl:sameAs ?wikidata .
+}
+GROUP BY ?wikidata ?label
+ORDER BY DESC(?observations)
+
+#------------------------------------------------------------------
+# Q7. Average NO2 per station, identifying the pollutant by its Wikidata entity
+#     (Q207895 = nitrogen dioxide) and the station by its RVVCCA page
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX wd:  <http://www.wikidata.org/entity/>
+
+SELECT ?stationName ?stationLink (AVG(?value) AS ?avgNO2)
+WHERE {
+  ?property owl:sameAs wd:Q207895 .
+  ?observation aq:observedProperty ?property ;
+               aq:hasStation ?station ;
+               aq:resultValue ?value .
+  ?station aq:stationName ?stationName ;
+           owl:sameAs ?stationLink .
+}
+GROUP BY ?stationName ?stationLink
+ORDER BY DESC(?avgNO2)
+
+#------------------------------------------------------------------
+# Quality checks. Instead of counts (which some SPARQL tools show as an empty row when the
+# count is 0), they list every resource with the result of the check, so a correct dataset
+# shows "OK" in all the rows.
+
+# Q8. Every monitoring station and whether it has an owl:sameAs link
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?station ?stationName (IF(BOUND(?link), "OK: linked", "ERROR: no link") AS ?check)
+WHERE {
+  ?station rdf:type aq:MonitoringStation ;
+           aq:stationName ?stationName .
+  OPTIONAL { ?station owl:sameAs ?link }
+}
+ORDER BY ?stationName
+
+#------------------------------------------------------------------
+# Q9. Every owl:sameAs link and whether its object is an IRI
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?type ?s ?o (IF(isIRI(?o), "OK: IRI", "ERROR: not an IRI") AS ?check)
+WHERE {
+  ?s a ?type ;
+     owl:sameAs ?o .
+  FILTER (?type IN (aq:City, aq:MonitoringStation, aq:ObservableProperty))
+}
+ORDER BY ?type ?s
+
+#------------------------------------------------------------------
+# Q10. Every external entity and the number of resources linked to it
+#      (each one should be linked from exactly one resource)
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX aq:  <https://w3id.org/valencia-airquality/ontology/airquality#>
+
+SELECT ?o (COUNT(DISTINCT ?s) AS ?linkedFrom)
+       (IF(COUNT(DISTINCT ?s) = 1, "OK: unique", "ERROR: duplicated") AS ?check)
+WHERE {
+  ?s a ?type ;
+     owl:sameAs ?o .
+  FILTER (?type IN (aq:City, aq:MonitoringStation, aq:ObservableProperty))
+}
+GROUP BY ?o
+ORDER BY DESC(?linkedFrom) ?o

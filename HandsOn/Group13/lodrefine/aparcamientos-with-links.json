@@ -1,0 +1,179 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q56061",
+        "name": "administrative territorial entity"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column DISTRITO to type Q56061"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "CHAMBERÍ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763370",
+      "name": "Chamberí",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Chamberí (Q1763370) para las celdas que contienen \"CHAMBERÍ\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "CENTRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763376",
+      "name": "Centro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Centro (Q1763376) para las celdas que contienen \"CENTRO\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "CHAMARTÍN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1766348",
+      "name": "Chamartín",
+      "types": [
+        "Q3032114",
+        "Q486972"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Chamartín (Q1766348) para las celdas que contienen \"CHAMARTÍN\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "LATINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q794954",
+      "name": "Latina",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Latina (Q794954) para las celdas que contienen \"LATINA\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "TETUÁN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773540",
+      "name": "Tetuán",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Tetuán (Q1773540) para las celdas que contienen \"TETUÁN\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "RETIRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2002296",
+      "name": "Retiro",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Retiro (Q2002296) para las celdas que contienen \"RETIRO\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "SALAMANCA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773521",
+      "name": "Salamanca",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento Salamanca (Q1773521) para las celdas que contienen \"SALAMANCA\" en la columna DISTRITO"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DISTRITO",
+    "expression": "grel:if(cell.recon != null, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, null)",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_distrito",
+    "columnInsertIndex": 8,
+    "description": "Crear la columna same_as_wikidata_distrito en el índice 8 basada en la columna DISTRITO usando la expresión grel:if(cell.recon != null, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, null)"
+  }
+]

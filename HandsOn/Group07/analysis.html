@@ -113,11 +113,11 @@
 <p>Individuals use the path <code>resource/</code>, followed by their class. Add the paths below to the base <code>https://example.org/db-delays/</code>.</p>
 <table class="compact"><thead><tr><th>Resource</th><th>Rule</th><th>Example path</th></tr></thead><tbody>
 <tr><td>Station (<code>Station</code>)</td><td>Use the EVA identifier.</td><td><code>resource/Station/8000001</code><br>Aachen Hbf</td></tr>
-<tr><td>Stop (<code>TrainStop</code>)</td><td>Use the source ID and an observation number.</td><td><code>resource/TrainStop/1573967790757085557-2407072312-14/observation/1</code></td></tr>
+<tr><td>Stop (<code>TrainStop</code>)</td><td>Use the source ID, which is unique in the submitted 1,000-row extract.</td><td><code>resource/TrainStop/1573967790757085557-2407072312-14</code></td></tr>
 <tr><td>City (<code>City</code>)</td><td>Use the state and cleaned locality name.</td><td><code>resource/City/Nordrhein-Westfalen/Aachen</code></td></tr>
 <tr><td>State (<code>State</code>)</td><td>Use its name.</td><td><code>resource/State/Nordrhein-Westfalen</code></td></tr>
 </tbody></table>
-<p><strong>For repeated IDs:</strong> assign observation number 1 to the first record. A different row with the same ID receives number 2, then 3, and so on. An identical copy reuses the same number. Save this mapping with the original values and source version so later conversions reuse the same URIs.</p>
+<p><strong>Scope of the TrainStop identifier:</strong> this rule applies to the submitted extract, in which all 1,000 source IDs are unique and no complete rows are duplicated. The full source dataset contains repeated IDs and must not be transformed with this rule without first defining and documenting a stable disambiguation strategy. Such a future strategy would require a corresponding update to the mapping before new URIs are minted.</p>
 <p>Reuse the same station URI for the same EVA identifier. Clean names before creating URIs and encode special characters, for example <code>Bad Homburg → Bad%20Homburg</code>. A name correction must preserve the assigned URI.</p>
 <p>The model links a stop to a station (<code>atStation</code>), a station to a city (<code>inCity</code>), and a city to a state (<code>inState</code>). Stations and cities can later be linked to Wikidata or DBpedia after verifying their identities.</p>
 

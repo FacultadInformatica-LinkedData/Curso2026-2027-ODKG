@@ -1,0 +1,2814 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "ARGANZUELA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2000929",
+      "name": "Arganzuela",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Arganzuela (Q2000929) for cells containing \"ARGANZUELA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CENTRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q13947",
+      "name": "Centre-Val de Loire",
+      "types": [
+        "Q36784"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre-Val de Loire (Q13947) for cells containing \"CENTRO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "SALAMANCA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15695",
+      "name": "Salamanca",
+      "types": [
+        "Q2074737"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Salamanca (Q15695) for cells containing \"SALAMANCA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CHAMBERÍ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q482378",
+      "name": "Chamberí",
+      "types": [
+        "Q928830",
+        "Q22808403"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Chamberí (Q482378) for cells containing \"CHAMBERÍ\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "VILLA DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q630441",
+      "name": "Villa de Vallecas",
+      "types": [
+        "Q928830",
+        "Q22808403"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Villa de Vallecas (Q630441) for cells containing \"VILLA DE VALLECAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "LATINA",
+    "judgment": "new",
+    "shareNewTopics": true,
+    "description": "Mark to create one single new item for all cells containing \"LATINA\" in column distrito"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type null"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "ARGANZUELA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2000929",
+      "name": "Arganzuela",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Arganzuela (Q2000929) for cells containing \"ARGANZUELA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CENTRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763376",
+      "name": "Centro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centro (Q1763376) for cells containing \"CENTRO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "SALAMANCA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773521",
+      "name": "Salamanca",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Salamanca (Q1773521) for cells containing \"SALAMANCA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "FUENCARRAL-EL PARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q656196",
+      "name": "Fuencarral-El Pardo",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Fuencarral-El Pardo (Q656196) for cells containing \"FUENCARRAL-EL PARDO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CHAMBERÍ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763370",
+      "name": "Chamberí",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Chamberí (Q1763370) for cells containing \"CHAMBERÍ\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "VILLA DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1947988",
+      "name": "Villa de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Villa de Vallecas (Q1947988) for cells containing \"VILLA DE VALLECAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "LATINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q794954",
+      "name": "Latina",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Latina (Q794954) for cells containing \"LATINA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "PUENTE DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2003054",
+      "name": "Puente de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Puente de Vallecas (Q2003054) for cells containing \"PUENTE DE VALLECAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "HORTALEZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1928529",
+      "name": "Hortaleza",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Hortaleza (Q1928529) for cells containing \"HORTALEZA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "TETUÁN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773540",
+      "name": "Tetuán",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Tetuán (Q1773540) for cells containing \"TETUÁN\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CARABANCHEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1001991",
+      "name": "Carabanchel",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Carabanchel (Q1001991) for cells containing \"CARABANCHEL\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CARABANCHEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1001991",
+      "name": "Carabanchel",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Carabanchel (Q1001991) for cells containing \"CARABANCHEL\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "VILLAVERDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q919536",
+      "name": "Villaverde",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Villaverde (Q919536) for cells containing \"VILLAVERDE\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "RETIRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2002296",
+      "name": "Retiro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Retiro (Q2002296) for cells containing \"RETIRO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CIUDAD LINEAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763694",
+      "name": "Ciudad Lineal",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ciudad Lineal (Q1763694) for cells containing \"CIUDAD LINEAL\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CHAMARTÍN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1766348",
+      "name": "Chamartín",
+      "types": [
+        "Q3032114",
+        "Q486972"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Chamartín (Q1766348) for cells containing \"CHAMARTÍN\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "BARAJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q807230",
+      "name": "Barajas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Barajas (Q807230) for cells containing \"BARAJAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "VICÁLVARO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q589403",
+      "name": "Vicálvaro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Vicálvaro (Q589403) for cells containing \"VICÁLVARO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "VICÁLVARO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q589403",
+      "name": "Vicálvaro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Vicálvaro (Q589403) for cells containing \"VICÁLVARO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "SAN BLAS-CANILLEJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2001937",
+      "name": "San Blas-Canillejas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Blas-Canillejas (Q2001937) for cells containing \"SAN BLAS-CANILLEJAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "USERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q643209",
+      "name": "Usera",
+      "types": [
+        "Q928830",
+        "Q22808403"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Usera (Q643209) for cells containing \"USERA\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "USERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q953368",
+      "name": "Usera",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Usera (Q953368) for cells containing \"USERA\" in column distrito"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "distrito",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "district_IRI",
+    "columnInsertIndex": 13,
+    "description": "Create column district_IRI at index 13 based on column distrito using expression grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "district_IRI",
+    "newColumnName": "distrito_IRI",
+    "description": "Rename column district_IRI to distrito_IRI"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column barrio to type null"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ALMAGRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10954432",
+      "name": "Almagro",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Almagro (Q10954432) for cells containing \"ALMAGRO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VALDEZARZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388728",
+      "name": "Valdezarza",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Valdezarza (Q10388728) for cells containing \"VALDEZARZA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "EMBAJADORES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2449844",
+      "name": "Embajadores",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Embajadores (Q2449844) for cells containing \"EMBAJADORES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CORTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q82444",
+      "name": "Cortes",
+      "types": [
+        "Q1752346",
+        "Q2761147"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cortes (Q82444) for cells containing \"CORTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CORTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q219692",
+      "name": "Cortes Generales",
+      "types": [
+        "Q189445"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cortes Generales (Q219692) for cells containing \"CORTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CORTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q219692",
+      "name": "Cortes Generales",
+      "types": [
+        "Q189445"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cortes Generales (Q219692) for cells containing \"CORTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CORTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q219692",
+      "name": "Cortes Generales",
+      "types": [
+        "Q189445"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cortes Generales (Q219692) for cells containing \"CORTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CORTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5789544",
+      "name": "Cortes",
+      "types": [
+        "Q11939023"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cortes (Q5789544) for cells containing \"CORTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "GOYA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814578",
+      "name": "Goya",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Goya (Q3814578) for cells containing \"GOYA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "EL PILAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773964",
+      "name": "El Pilar",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item El Pilar (Q3773964) for cells containing \"EL PILAR\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "EL PILAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773964",
+      "name": "El Pilar",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item El Pilar (Q3773964) for cells containing \"EL PILAR\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "Casco Histórico de Vallecas",
+    "judgment": "new",
+    "shareNewTopics": true,
+    "description": "Mark to create one single new item for all cells containing \"Casco Histórico de Vallecas\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ALUCHE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31140",
+      "name": "Aluĉo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Aluĉo (Q31140) for cells containing \"ALUCHE\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "FUENTE DEL BERRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814564",
+      "name": "Fuente del Berro",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Fuente del Berro (Q3814564) for cells containing \"FUENTE DEL BERRO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ENTREVIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71756",
+      "name": "Entrevías",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Entrevías (Q71756) for cells containing \"ENTREVIAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CANILLAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9694341",
+      "name": "Canillas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Canillas (Q9694341) for cells containing \"CANILLAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CASTILLEJOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11913212",
+      "name": "Castillejos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Castillejos (Q11913212) for cells containing \"CASTILLEJOS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "COMILLAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q847329",
+      "name": "Comillas",
+      "types": [
+        "Q123095923"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Comillas (Q847329) for cells containing \"COMILLAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "COMILLAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q847329",
+      "name": "Comillas",
+      "types": [
+        "Q123095923"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Comillas (Q847329) for cells containing \"COMILLAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "MARROQUINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11935636",
+      "name": "Marroquina",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Marroquina (Q11935636) for cells containing \"MARROQUINA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VENTAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71762",
+      "name": "Ventas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ventas (Q71762) for cells containing \"VENTAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ACACIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319190",
+      "name": "Las Acacias",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Las Acacias (Q3319190) for cells containing \"ACACIAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ACACIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319190",
+      "name": "Las Acacias",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Las Acacias (Q3319190) for cells containing \"ACACIAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "JUSTICIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1992319",
+      "name": "Justicia",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Justicia (Q1992319) for cells containing \"JUSTICIA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "MEDIA LEGUA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9031035",
+      "name": "Media Legua",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Media Legua (Q9031035) for cells containing \"MEDIA LEGUA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "FONTARRON",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10283284",
+      "name": "Fontarrón",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Fontarrón (Q10283284) for cells containing \"FONTARRON\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PROSPERIDAD",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4776",
+      "name": "Prosperidad",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Prosperidad (Q4776) for cells containing \"PROSPERIDAD\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LAS AGUILAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5971372",
+      "name": "Las Águilas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Las Águilas (Q5971372) for cells containing \"LAS AGUILAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PUERTA DEL ANGEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31142",
+      "name": "Puerta del Ángel",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Puerta del Ángel (Q31142) for cells containing \"PUERTA DEL ANGEL\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "GUINDALERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814559",
+      "name": "La Guindalera",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item La Guindalera (Q3814559) for cells containing \"GUINDALERA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PINAR DEL REY",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10349788",
+      "name": "Pinar del Rey",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Pinar del Rey (Q10349788) for cells containing \"PINAR DEL REY\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "APOSTOL SANTIAGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11906303",
+      "name": "Apóstol Santiago",
+      "types": [
+        "Q123705",
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Apóstol Santiago (Q11906303) for cells containing \"APOSTOL SANTIAGO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VINATEROS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10391533",
+      "name": "Vinateros",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Vinateros (Q10391533) for cells containing \"VINATEROS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ABRANTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773949",
+      "name": "Abrantes",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Abrantes (Q3773949) for cells containing \"ABRANTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CUATRO CAMINOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5824684",
+      "name": "Cuatro Caminos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cuatro Caminos (Q5824684) for cells containing \"CUATRO CAMINOS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "GAZTAMBIDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10288587",
+      "name": "Gaztambide",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Gaztambide (Q10288587) for cells containing \"GAZTAMBIDE\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LOS ANGELES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390462",
+      "name": "Los Ángeles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Los Ángeles (Q390462) for cells containing \"LOS ANGELES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LOS ANGELES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390462",
+      "name": "Los Ángeles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Los Ángeles (Q390462) for cells containing \"LOS ANGELES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VALLEHERMOSO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6122685",
+      "name": "Vallehermoso",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Vallehermoso (Q6122685) for cells containing \"VALLEHERMOSO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ARAPILES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10856744",
+      "name": "Arapiles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Arapiles (Q10856744) for cells containing \"ARAPILES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ALAMEDA DE OSUNA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q760737",
+      "name": "Alameda de Osuna",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Alameda de Osuna (Q760737) for cells containing \"ALAMEDA DE OSUNA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "HISPANOAMÉRICA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814573",
+      "name": "Hispanoamérica",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Hispanoamérica (Q3814573) for cells containing \"HISPANOAMÉRICA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CASTELLANA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4781",
+      "name": "Castellana",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Castellana (Q4781) for cells containing \"CASTELLANA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SANTA EUGENIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390463",
+      "name": "Santa Eugenia",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Santa Eugenia (Q390463) for cells containing \"SANTA EUGENIA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SAN JUAN BAUTISTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q165609",
+      "name": "San Juan Bautista",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Juan Bautista (Q165609) for cells containing \"SAN JUAN BAUTISTA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VISTA ALEGRE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813741",
+      "name": "Vista Alegre",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Vista Alegre (Q3813741) for cells containing \"VISTA ALEGRE\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "COSTILLARES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q331385",
+      "name": "Costillares",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Costillares (Q331385) for cells containing \"COSTILLARES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PACIFICO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773753",
+      "name": "Pacífico",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Pacífico (Q3773753) for cells containing \"PACIFICO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ARAVACA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3314682",
+      "name": "Aravaca",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Aravaca (Q3314682) for cells containing \"ARAVACA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SOL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2465181",
+      "name": "Sol",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Sol (Q2465181) for cells containing \"SOL\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LISTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4779",
+      "name": "Lista",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Lista (Q4779) for cells containing \"LISTA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "IBIZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15249910",
+      "name": "Ibiza",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ibiza (Q15249910) for cells containing \"IBIZA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PUEBLO NUEVO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71753",
+      "name": "Pueblo Nuevo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Pueblo Nuevo (Q71753) for cells containing \"PUEBLO NUEVO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "NIÑO JESUS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773746",
+      "name": "Niño Jesús",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Niño Jesús (Q3773746) for cells containing \"NIÑO JESUS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LUCERO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31162",
+      "name": "Lucero",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Lucero (Q31162) for cells containing \"LUCERO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CANILLEJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q663013",
+      "name": "Canillejas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Canillejas (Q663013) for cells containing \"CANILLEJAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ESTRELLA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773738",
+      "name": "Estrella",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Estrella (Q3773738) for cells containing \"ESTRELLA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LOS ROSALES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10319807",
+      "name": "Los Rosales",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Los Rosales (Q10319807) for cells containing \"LOS ROSALES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ROSAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18880469",
+      "name": "Rosas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Rosas (Q18880469) for cells containing \"ROSAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "RECOLETOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814551",
+      "name": "Recoletos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Recoletos (Q3814551) for cells containing \"RECOLETOS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ADELFAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3774001",
+      "name": "Adelfas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Adelfas (Q3774001) for cells containing \"ADELFAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "BELLAS VISTAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11908929",
+      "name": "Bellas Vistas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Bellas Vistas (Q11908929) for cells containing \"BELLAS VISTAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PALOS DE MOGUER",
+    "judgment": "matched",
+    "match": {
+      "id": "Q521009",
+      "name": "Palos de la Frontera",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Palos de la Frontera (Q521009) for cells containing \"PALOS DE MOGUER\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "NUEVA ESPAÑA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10338128",
+      "name": "Nueva España",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Nueva España (Q10338128) for cells containing \"NUEVA ESPAÑA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "QUINTANA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71810",
+      "name": "Quintana",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Quintana (Q71810) for cells containing \"QUINTANA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "BUENAVISTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q953929",
+      "name": "Buenavista",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Buenavista (Q953929) for cells containing \"BUENAVISTA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "OPAÑEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813756",
+      "name": "Opañel",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Opañel (Q3813756) for cells containing \"OPAÑEL\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CASTILLA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813735",
+      "name": "Castilla",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Castilla (Q3813735) for cells containing \"CASTILLA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "UNIVERSIDAD",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10387767",
+      "name": "Universidad",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Universidad (Q10387767) for cells containing \"UNIVERSIDAD\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "MOSCARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11937679",
+      "name": "Moscardó",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Moscardó (Q11937679) for cells containing \"MOSCARDO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VALVERDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31132",
+      "name": "Valverde",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Valverde (Q31132) for cells containing \"VALVERDE\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ARGUELLES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q64874",
+      "name": "Argüelles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Argüelles (Q64874) for cells containing \"ARGUELLES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PALACIO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2136510",
+      "name": "Palacio",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Palacio (Q2136510) for cells containing \"PALACIO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SIMANCAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10371626",
+      "name": "Simancas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Simancas (Q10371626) for cells containing \"SIMANCAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "MIRASIERRA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31134",
+      "name": "Mirasierra",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mirasierra (Q31134) for cells containing \"MIRASIERRA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VALDEACEDERAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388711",
+      "name": "Valdeacederas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Valdeacederas (Q10388711) for cells containing \"VALDEACEDERAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CIUDAD JARDIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773744",
+      "name": "Ciudad Jardín",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ciudad Jardín (Q3773744) for cells containing \"CIUDAD JARDIN\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PRADOLONGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10352360",
+      "name": "Pradolongo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Pradolongo (Q10352360) for cells containing \"PRADOLONGO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SAN PASCUAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q165612",
+      "name": "San Pascual",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Pascual (Q165612) for cells containing \"SAN PASCUAL\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CIUDAD UNIVERSITARIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319235",
+      "name": "Ciudad Universitaria",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ciudad Universitaria (Q3319235) for cells containing \"CIUDAD UNIVERSITARIA\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "RIOS ROSAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10366270",
+      "name": "Ríos Rosas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ríos Rosas (Q10366270) for cells containing \"RIOS ROSAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CASA DE CAMPO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16302441",
+      "name": "Casa de Campo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa de Campo (Q16302441) for cells containing \"CASA DE CAMPO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "EL VISO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4778",
+      "name": "El Viso",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item El Viso (Q4778) for cells containing \"EL VISO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ALMENDRALES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9604761",
+      "name": "Almendrales",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Almendrales (Q9604761) for cells containing \"ALMENDRALES\" in column barrio"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "barrio",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "Barrio_IRI",
+    "columnInsertIndex": 16,
+    "description": "Create column Barrio_IRI at index 16 based on column barrio using expression grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LA PAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1129788",
+      "name": "La Paz Department",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item La Paz Department (Q1129788) for cells containing \"LA PAZ\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "TRAFALGAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10384027",
+      "name": "Trafalgar",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Trafalgar (Q10384027) for cells containing \"TRAFALGAR\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "IMPERIAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773740",
+      "name": "Imperial",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Imperial (Q3773740) for cells containing \"IMPERIAL\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "EL SALVADOR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10367095",
+      "name": "Salvador",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Salvador (Q10367095) for cells containing \"EL SALVADOR\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "DELICIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773736",
+      "name": "Las Delicias",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Las Delicias (Q3773736) for cells containing \"DELICIAS\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SAN ISIDRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813733",
+      "name": "San Isidro",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Isidro (Q3813733) for cells containing \"SAN ISIDRO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CONCEPCION",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1880",
+      "name": "Concepción",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Concepción (Q1880) for cells containing \"CONCEPCION\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CONCEPCION",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11915156",
+      "name": "Concepción",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Concepción (Q11915156) for cells containing \"CONCEPCION\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "CASCO H.VICALVARO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16544374",
+      "name": "Casco Histórico de Vicálvaro",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casco Histórico de Vicálvaro (Q16544374) for cells containing \"CASCO H.VICALVARO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LA PAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1491",
+      "name": "La Paz",
+      "types": [
+        "Q1549591",
+        "Q1901835",
+        "Q200250",
+        "Q56061"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item La Paz (Q1491) for cells containing \"LA PAZ\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "LA PAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5869740",
+      "name": "La Paz",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item La Paz (Q5869740) for cells containing \"LA PAZ\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VALDEFUENTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388714",
+      "name": "Valdefuentes",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Valdefuentes (Q10388714) for cells containing \"VALDEFUENTES\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "PEÑA GRANDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319582",
+      "name": "Peñagrande",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Peñagrande (Q3319582) for cells containing \"PEÑA GRANDE\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "SAN DIEGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11946851",
+      "name": "San Diego",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Diego (Q11946851) for cells containing \"SAN DIEGO\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "VILLAVERDE ALTO C.H.",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390435",
+      "name": "Villaverde Alto, Casco Histórico de Villaverde",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Villaverde Alto, Casco Histórico de Villaverde (Q390435) for cells containing \"VILLAVERDE ALTO C.H.\" in column barrio"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "barrio",
+    "similarValue": "ALMENARA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2265427",
+      "name": "Almenara",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Almenara (Q2265427) for cells containing \"ALMENARA\" in column barrio"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Barrio_IRI",
+    "description": "Remove column Barrio_IRI"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "barrio",
+    "expression": "grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "barrio_IRI",
+    "columnInsertIndex": 16,
+    "description": "Create column barrio_IRI at index 16 based on column barrio using expression grel:if(\n  cell.recon.matched,\n  \"http://www.wikidata.org/entity/\" + cell.recon.match.id,\n  null\n)"
+  }
+]

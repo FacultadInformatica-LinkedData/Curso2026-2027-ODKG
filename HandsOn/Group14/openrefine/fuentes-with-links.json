@@ -1,0 +1,220 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "district of Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column DISTRITO to type Q3032114"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "ANGELES"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "LOS ANGELES"
+      }
+    ],
+    "description": "Editar celdas en masa en columna BARRIO"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "PILAR"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "EL PILAR"
+      }
+    ],
+    "description": "Editar celdas en masa en columna BARRIO"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "EL SALVADOR"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "SALVADOR"
+      }
+    ],
+    "description": "Editar celdas en masa en columna BARRIO"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "LA CONCEPCIÓN"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "CONCEPCIÓN"
+      }
+    ],
+    "description": "Editar celdas en masa en columna BARRIO"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "IMPERIAL"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Q3773740"
+      }
+    ],
+    "description": "Editar celdas en masa en columna BARRIO"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "neighborhood of Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column BARRIO to type Q10267336"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "neighborhood of Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column BARRIO to type Q10267336"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "neighborhood of Madrid"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column BARRIO to type Q10267336"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DISTRITO",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_distrito",
+    "columnInsertIndex": 3,
+    "description": "Crear la columna same_as_wikidata_distrito en el índice 3 basada en la columna DISTRITO usando la expresión grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BARRIO",
+    "expression": "grel:\"https://wikidata.org/entity/\" + cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_barrio",
+    "columnInsertIndex": 2,
+    "description": "Crear la columna same_as_wikidata_barrio en el índice 2 basada en la columna BARRIO usando la expresión grel:\"https://wikidata.org/entity/\" + cell.recon.match.id"
+  }
+]

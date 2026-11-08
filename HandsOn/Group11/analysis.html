@@ -184,9 +184,8 @@
     </p>
     <p>
         In particular, cod_distrito and distrito can be used to identify
-        Madrid districts. The localizacion attribute and UTM coordinates
-        can be used to identify geographical locations associated with
-        accidents.
+        Madrid districts. The UTM coordinates can be used to identify geographical locations associated with
+        accidents by converting into latitude and longitude coordinates.
     </p>
     <p>
         These resources could therefore be linked with other datasets
@@ -233,29 +232,29 @@
 
 <h2>3. Resource Naming Strategy</h2>
 
-<p> A resource naming strategy is defined to provide consistent, persistent and meaningful URIs for both the ontology terms and the individual resources generated from the datasets. </p>
-
 <h3>3.1 URI Form</h3> <p> Hash URIs will be used for ontology classes and properties, while slash URIs will be used for individual resources. This provides a clear separation between the ontology model and the instances generated from the datasets. </p>
 
 <h3>3.2 Domain</h3> <p> The following domain will be used as the base for the resource naming strategy: </p> <p><code>https://w3id.org/saferoutemadrid/</code></p>
 
 <h3>3.3 Ontology Path and Pattern</h3> <p> The classes and properties defined in the SafeRoute Madrid ontology will use the following namespace: </p> <p><code>https://w3id.org/saferoutemadrid/ontology#</code></p>
 
-<p> The ontology includes the main classes <code>TrafficAccident</code>, <code>Person</code>, <code>Vehicle</code>, <code>Location</code> and <code>District</code>. It also includes controlled-vocabulary classes, such as <code>AccidentType</code>, <code>WeatherCondition</code>, <code>VehicleType</code>, <code>PersonType</code>, <code>AgeRange</code>, <code>Sex</code> and <code>InjurySeverity</code>. </p>
+<p> The ontology defines the main entities involved in traffic accidents, their locations and districts, as well as classes for the categories used to describe accidents, vehicles and people. The definitions and relationships of these terms are specified in the ontology.</p>
 
-<p>Examples of ontology terms are:</p> <ul> <li><code>https://w3id.org/saferoutemadrid/ontology#TrafficAccident</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#District</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#Location</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#Vehicle</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#Person</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#occursAt</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#locatedIn</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#involvesPerson</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#involvesVehicle</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#hasAccidentType</code></li> <li><code>https://w3id.org/saferoutemadrid/ontology#hasWeatherCondition</code></li> </ul>
+<h3>3.4 Individual Resource Path and Pattern</h3> <p> Individual resources are generated under the following base path:
 
-<h3>3.4 Individual Resource Path and Pattern</h3> <p> Individual resources generated from the datasets will use slash URIs under the <code>resource</code> path. Whenever possible, identifiers from the original source datasets will be used to construct the individual resource URIs. For example the identifier for a traffic accident could be the num_expediente column from the dataset. This makes the generated Linked Data easier to relate to the original data. Examples of these URIs are: </p>
+</p> <p><code>https://w3id.org/saferoutemadrid/resource/</code></p>
 
-<ul> <li>Traffic Accident: <code>https://w3id.org/saferoutemadrid/resource/TrafficAccident/{num_expediente}</code></li> <li>District: <code>https://w3id.org/saferoutemadrid/resource/District/{cod_distrito}</code></li> <li>Location: <code>https://w3id.org/saferoutemadrid/resource/Location/{identifier}</code></li> <li>Vehicle: <code>https://w3id.org/saferoutemadrid/resource/Vehicle/{identifier}</code></li> <li>Person: <code>https://w3id.org/saferoutemadrid/resource/Person/{identifier}</code></li> </ul>
+URIs follow the pattern Class/{identifier}, using columns from the source dataset as identifiers wherever possible. For example: </p>
 
-<p> The controlled-vocabulary classes are represented as SKOS concepts because they contain predefined categories used to describe the resources in the dataset. </p>
+<ul> <li>Traffic Accident: <code>https://w3id.org/saferoutemadrid/resource/TrafficAccident/{num_expediente}</code></li> <li>District: <code>https://w3id.org/saferoutemadrid/resource/District/{cod_distrito}</code></li> <li>Location: <code>https://w3id.org/saferoutemadrid/resource/Location/{num_expediente}</code></li> <li>Vehicle: <code>https://w3id.org/saferoutemadrid/resource/Vehicle/{ID_vehiculo}</code> where <code>ID_vechiculo</code> is composed as <code>num_expediente-V{n}</code> and n accounts for the vehicle n involved in the accident. This way we can link multiple vehicles to an accident.  </li> <li>Person: <code>https://w3id.org/saferoutemadrid/resource/Person/{ID_persona}</code> where <code>ID_persona</code> is composed as <code>num_expediente-P{n}</code> following the same logic as <code>ID_vechiculo</code> to account for multiple people involved in a traffic accident.</li> </ul>
+
+<p> The same strategy is applied to the controlled-vocabulary resources, such as accident types, weather conditions, vehicle types and injury severity categories. These resources are represented as SKOS concepts, allowing individual entities to link to predefined categories. </p>
 
 <p> For example, <code>VehicleType</code> has concepts such as <code>Car</code> or <code>Motorcycle</code> and they can be identified using URIs such as: </p>
 
 <p> <code>https://w3id.org/saferoutemadrid/resource/VehicleType/Car</code> </p>
 
-<p> In this way, an actual vehicle resource can be linked to a predefined category. For example, <code>Vehicle/123</code> can have the property <code>hasVehicleType</code> pointing to <code>VehicleType/Car</code>.</p>
+<p> In this way, <code>Vehicle/x</code> can have the property <code>hasVehicleType</code> pointing to <code>VehicleType/Car</code>.</p>
 
 <h3>3.5 Naming Conventions</h3> <p> Classes use capitalized names written in CamelCase, such as <code>TrafficAccident</code>, <code>Location</code>, <code>VehicleType</code> and <code>InjurySeverity</code>. </p>
 

@@ -1,0 +1,1955 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "cat_nom_cientific",
+    "expression": "grel:with(value.split(\" \"), t,\n  if(t[0]==\"X\", t[0]+\" \"+t[1]+\" \"+t[2],\n  if(t[1]==\"×\", t[0]+\" × \"+t[2],\n  if(and(t[1].find(/^[a-z-]+$/).length() > 0, t[1] != \"sp\"), t[0]+\" \"+t[1], t[0]))))",
+    "onError": "set-to-blank",
+    "newColumnName": "species_name",
+    "columnInsertIndex": 10,
+    "description": "Créer la colonne species_name à l’index 10 sur la base de la colonne cat_nom_cientific à l’aide de l’expression grel:with(value.split(\" \"), t,\n  if(t[0]==\"X\", t[0]+\" \"+t[1]+\" \"+t[2],\n  if(t[1]==\"×\", t[0]+\" × \"+t[2],\n  if(and(t[1].find(/^[a-z-]+$/).length() > 0, t[1] != \"sp\"), t[0]+\" \"+t[1], t[0]))))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "cat_nom_cientific",
+    "expression": "grel:if(cells[\"species_name\"].value.indexOf(\" \") == -1, \"genus\",\n   if(cells[\"species_name\"].value == value, \"species\", \"below\"))",
+    "onError": "set-to-blank",
+    "newColumnName": "species_rank",
+    "columnInsertIndex": 10,
+    "description": "Créer la colonne species_rank à l’index 10 sur la base de la colonne cat_nom_cientific à l’aide de l’expression grel:if(cells[\"species_name\"].value.indexOf(\" \") == -1, \"genus\",\n   if(cells[\"species_name\"].value == value, \"species\", \"below\"))"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q16521",
+        "name": "taxon"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column species_name to type Q16521"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q16521",
+        "name": "taxon"
+      },
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column species_name to type Q16521"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Fraxinus angustifolia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q518949",
+      "name": "Fraxinus angustifolia",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Platanus × acerifolia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q24853030",
+      "name": "Platanus × acerifolia",
+      "types": [
+        "Q16521",
+        "Q42621"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Olea europaea",
+    "judgment": "matched",
+    "match": {
+      "id": "Q37083",
+      "name": "Olea europaea",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Gleditsia triacanthos",
+    "judgment": "matched",
+    "match": {
+      "id": "Q157650",
+      "name": "Gleditsia triacanthos",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Ulmus pumila",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1079824",
+      "name": "Ulmus pumila",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Callistemon viminalis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2512308",
+      "name": "Callistemon viminalis",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Morus alba",
+    "judgment": "matched",
+    "match": {
+      "id": "Q157307",
+      "name": "Morus alba",
+      "types": [
+        "Q16521",
+        "Q188840"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Populus × canadensis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q149622",
+      "name": "Bastard-Schwarz-Pappel",
+      "types": [
+        "Q136343650"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Robinia pseudoacacia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q157417",
+      "name": "刺槐",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Hibiscus syriacus",
+    "judgment": "matched",
+    "match": {
+      "id": "Q157756",
+      "name": "Hibiscus syriacus",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Ulmus americana",
+    "judgment": "matched",
+    "match": {
+      "id": "Q469382",
+      "name": "Ulmus americana",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Photinia × fraseri",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3901693",
+      "name": "Photinia × fraseri",
+      "types": [
+        "Q136343650"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Quercus suber",
+    "judgment": "matched",
+    "match": {
+      "id": "Q156137",
+      "name": "Quercus suber",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Eucalyptus globulus",
+    "judgment": "matched",
+    "match": {
+      "id": "Q159528",
+      "name": "Eucalyptus globulus",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Pyrus communis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q146281",
+      "name": "Pyrus communis",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Acacia retinodes",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2666767",
+      "name": "Acacia retinodes",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Photinia davidiana",
+    "judgment": "matched",
+    "match": {
+      "id": "Q50847306",
+      "name": "Photinia davidiana",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Robinia × margaretta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q21370551",
+      "name": "Robinia margarettae",
+      "types": [
+        "Q16521"
+      ],
+      "score": 98
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Ulmus",
+    "judgment": "matched",
+    "match": {
+      "id": "Q131113",
+      "name": "Ulmus",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Maclura pomifera",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1066106",
+      "name": "Maclura pomifera",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Prunus amygdalus",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15545507",
+      "name": "Prunus amygdalus",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Tamarix gallica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q164285",
+      "name": "Tamarix gallica",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Nerium oleander",
+    "judgment": "matched",
+    "match": {
+      "id": "Q155833",
+      "name": "Nerium oleander",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Hesperocyparis macrocarpa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q32856056",
+      "name": "Hesperocyparis macrocarpa",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Calocedrus decurrens",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1399164",
+      "name": "Calocedrus decurrens",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Hesperocyparis arizonica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q50843037",
+      "name": "Hesperocyparis arizonica",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "X hesperotropsis leylandii",
+    "judgment": "matched",
+    "match": {
+      "id": "Q42688380",
+      "name": "× Hesperotropsis leylandii",
+      "types": [
+        "Q16521",
+        "Q42621"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Celtica gigantea",
+    "judgment": "matched",
+    "match": {
+      "id": "Q43373675",
+      "name": "Celtica gigantea",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Cupressus pendula",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130245085",
+      "name": "Cupressus pendula",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Picea abies",
+    "judgment": "matched",
+    "match": {
+      "id": "Q145992",
+      "name": "Picea abies",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Malus × moerlandsii",
+    "judgment": "matched",
+    "match": {
+      "id": "Q50843985",
+      "name": "Malus ×moerlandsii",
+      "types": [
+        "Q16521"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Feijoa sellowiana",
+    "judgment": "matched",
+    "match": {
+      "id": "Q59420273",
+      "name": "Feijoa sellowiana",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Myrtus communis",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6122027",
+      "name": "common myrtle",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Prunus",
+    "judgment": "matched",
+    "match": {
+      "id": "Q190545",
+      "name": "Prunus",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Salix babylonica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q156307",
+      "name": "Salix babylonica",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Cormus domestica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18593737",
+      "name": "Cormus domestica",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Cinnamomum camphora",
+    "judgment": "matched",
+    "match": {
+      "id": "Q158722",
+      "name": "Cinnamomum camphora",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Citrus × limon",
+    "judgment": "matched",
+    "match": {
+      "id": "Q500",
+      "name": "Citrus × limon",
+      "types": [
+        "Q16521",
+        "Q42621"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Handroanthus chrysanthus",
+    "judgment": "matched",
+    "match": {
+      "id": "Q279913",
+      "name": "Tabebuia chrysantha",
+      "types": [
+        "Q16521",
+        "Q1040689"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Malus × robusta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19309094",
+      "name": "Malus × robusta",
+      "types": [
+        "Q136343650",
+        "Q15731356"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Erythrina falcata",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5225073",
+      "name": "Erythrina falcata",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Yucca gigantea",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15507520",
+      "name": "Yucca gigantea",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Malus domestica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18674606",
+      "name": "Malus domestica",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Adansonia grandidieri",
+    "judgment": "matched",
+    "match": {
+      "id": "Q311325",
+      "name": "Adansonia grandidieri",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "species_name: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "species_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "similarValue": "Schinus terebinthifolia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q899313",
+      "name": "Schinus terebinthifolia",
+      "types": [
+        "Q16521"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Correspondance entre lélément {0} ({1}) et les cellules contenant \"{2}\" dans la colonne {3}"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "species_name",
+    "expression": "grel:cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "wikidata_id",
+    "columnInsertIndex": 12,
+    "description": "Créer la colonne wikidata_id à l’index 12 sur la base de la colonne species_name à l’aide de l’expression grel:cell.recon.match.id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "species_name",
+    "expression": "grel:if(cells[\"species_rank\"].value==\"species\", value, null)",
+    "onError": "set-to-blank",
+    "newColumnName": "wikidata_sameas",
+    "columnInsertIndex": 12,
+    "description": "Créer la colonne wikidata_sameas à l’index 12 sur la base de la colonne species_name à l’aide de l’expression grel:if(cells[\"species_rank\"].value==\"species\", value, null)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "species_name",
+    "expression": "grel:if(cells[\"species_rank\"].value!=\"species\", value, null)",
+    "onError": "set-to-blank",
+    "newColumnName": "wikidata_broadmatch",
+    "columnInsertIndex": 12,
+    "description": "Créer la colonne wikidata_broadmatch à l’index 12 sur la base de la colonne species_name à l’aide de l’expression grel:if(cells[\"species_rank\"].value!=\"species\", value, null)"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "species_name",
+    "clearData": true,
+    "description": "Rejeter les avis de réconciliation et effacer les données de réconciliation pour les cellules de la colonne species_name"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "wikidata_sameas",
+    "expression": "grel:if(cells[\"species_rank\"].value==\"species\", cells[\"wikidata_id\"].value, null)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne wikidata_sameas à laide de lexpression grel:if(cells[\"species_rank\"].value==\"species\", cells[\"wikidata_id\"].value, null)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "wikidata_broadmatch",
+    "expression": "grel:if(cells[\"species_rank\"].value!=\"species\", cells[\"wikidata_id\"].value, null)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne wikidata_broadmatch à laide de lexpression grel:if(cells[\"species_rank\"].value!=\"species\", cells[\"wikidata_id\"].value, null)"
+  }
+]

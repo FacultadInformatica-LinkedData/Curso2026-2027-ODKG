@@ -1,0 +1,324 @@
+# ==========================================
+# SAFEROUTEMADRID - RDF DATA VALIDATION QUERIES (WITH LINKS)
+# ==========================================
+
+# 1. Conteo por Clases
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?rdfClass (COUNT(?s) AS ?total)
+WHERE {
+  ?s rdf:type ?rdfClass.
+}
+GROUP BY ?rdfClass
+ORDER BY DESC(?total)
+
+# 2. Accidentes sin fecha registrada
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?accident
+WHERE {
+  ?accident a ns:TrafficAccident .
+  FILTER NOT EXISTS { ?accident ns:accidentDate ?date . }
+}
+LIMIT 5
+# 3. Vehículos huérfanos (sin accidente asociado)
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?vehicle
+WHERE {
+  ?vehicle a ns:Vehicle .
+  FILTER NOT EXISTS {
+    ?accident ns:involvesVehicle ?vehicle .
+  }
+}
+LIMIT 10
+# 4. Personas huérfanas (sin vehículo/accidente asociado)
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?person
+WHERE {
+  ?person a ns:Person .
+  FILTER NOT EXISTS {
+    ?vehicle ns:involvesPerson ?person .
+  }
+}
+LIMIT 10
+# 5. Ubicaciones sin accidente asociado
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?location
+WHERE {
+  ?location a ns:Location .
+  FILTER NOT EXISTS {
+    ?accident ns:occursAt ?location .
+  }
+}
+# 6. Ubicaciones con distritos mal enlazados o inexistentes
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?location ?district
+WHERE {
+  ?location a ns:Location ;
+            ns:locatedIn ?district .
+  FILTER NOT EXISTS {
+    ?district a ns:District .
+  }
+}
+
+# 7. Entidades principales sin etiqueta descriptiva (rdfs:label)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?individual ?clase
+WHERE {
+  ?individual rdf:type ?clase .
+  FILTER(?clase IN (ns:TrafficAccident, ns:Vehicle, ns:Person, ns:Location, ns:District))
+  FILTER NOT EXISTS { ?individual rdfs:label ?label . }
+}
+# 8. Comprobación de Datatypes correctos en booleanos (ej. positiveAlcohol)
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?person ?alcoholValue
+WHERE {
+  ?person ns:positiveAlcohol ?alcoholValue .
+  FILTER(datatype(?alcoholValue) != xsd:boolean)
+}
+# 9. Detección de URIs mal formadas con dobles barras ("//")
+SELECT DISTINCT ?s
+WHERE {
+  ?s ?p ?o .
+  FILTER(isURI(?s))
+  FILTER(CONTAINS(SUBSTR(STR(?s), 9), "//"))
+}
+
+# 10. Muestra de relaciones encadenadas (Accidente -> Vehículo -> Persona -> Lesividad)
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?accident ?vehicle ?person ?severity
+WHERE {
+  ?accident ns:involvesVehicle ?vehicle .
+  ?vehicle ns:involvesPerson ?person .
+  ?person ns:hasInjurySeverity ?severity .
+}
+LIMIT 10
+# 11. Muestra de Accidentes, Fechas y Calles
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?accident ?date ?time ?street
+WHERE {
+  ?accident a ns:TrafficAccident ;
+            ns:accidentDate ?date ;
+            ns:accidentTime ?time ;
+            ns:occursAt ?loc .
+  OPTIONAL { ?loc ns:streetName ?street . }
+}
+LIMIT 5
+# 12. Personas con positivo en alcohol o drogas
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+SELECT ?person ?alcohol ?drug
+WHERE {
+  ?person a ns:Person ;
+          ns:positiveAlcohol ?alcohol ;
+          ns:positiveDrug ?drug .
+  FILTER(?alcohol = true || ?drug = true)
+}
+LIMIT 10
+
+
+
+# Enlaces generados por el mapping (saferoute-with-links.rml):
+#   ns:District     (same_as_wikidata_district)
+#   ns:AccidentType (same_as_wikidata_type_accident)
+#   ns:VehicleType  (same_as_wikidata_vehicle)
+#   ns:PersonType   (same_as_wikidata_type_person)
+
+
+# 13.1 Resumen de enlaces por clase
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?class
+       (COUNT(DISTINCT ?s) AS ?recursosEnlazados)
+       (COUNT(DISTINCT ?o) AS ?entidadesWikidataDistintas)
+WHERE {
+  VALUES ?class { ns:District ns:AccidentType ns:VehicleType ns:PersonType }
+  ?s a ?class ;
+     owl:sameAs ?o .
+}
+GROUP BY ?class
+ORDER BY ?class
+
+
+# 13.2 Cobertura: recursos totales vs. enlazados por clase
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?class
+       (COUNT(DISTINCT ?s) AS ?total)
+       (COUNT(DISTINCT ?linked) AS ?enlazados)
+WHERE {
+  VALUES ?class { ns:District ns:AccidentType ns:VehicleType ns:PersonType }
+  ?s a ?class .
+  OPTIONAL { ?s owl:sameAs ?o . BIND(?s AS ?linked) }
+}
+GROUP BY ?class
+ORDER BY ?class
+
+
+# 13.3 Distritos y su enlace a Wikidata 
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?district ?code ?label ?wikidata
+WHERE {
+  ?district a ns:District ;
+            ns:districtCode ?code ;
+            rdfs:label ?label ;
+            owl:sameAs ?wikidata .
+}
+ORDER BY ?code
+
+# 13.4 Tipos de accidente y su enlace a Wikidata 
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?accidentType ?label ?wikidata
+WHERE {
+  ?accidentType a ns:AccidentType ;
+                skos:prefLabel ?label ;
+                owl:sameAs ?wikidata .
+}
+ORDER BY ?label
+
+
+# 13.5 Tipos de vehículo y su enlace a Wikidata
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?vehicleType ?label ?wikidata
+WHERE {
+  ?vehicleType a ns:VehicleType ;
+               skos:prefLabel ?label ;
+               owl:sameAs ?wikidata .
+}
+ORDER BY ?label
+
+
+# 13.6 Tipos de persona y su enlace a Wikidata
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?personType ?label ?wikidata
+WHERE {
+  ?personType a ns:PersonType ;
+              skos:prefLabel ?label ;
+              owl:sameAs ?wikidata .
+}
+ORDER BY ?label
+
+
+# 13.7 Recursos que deberían estar enlazados y no lo están
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?class ?resource ?label
+WHERE {
+  VALUES ?class { ns:District ns:AccidentType ns:VehicleType ns:PersonType }
+  ?resource a ?class ;
+            rdfs:label ?label .
+  FILTER NOT EXISTS { ?resource owl:sameAs ?any }
+}
+ORDER BY ?class ?label
+
+
+# 13.8 Enlaces mal formados: el objeto debe ser un IRI
+# https://www.wikidata.org/entity/Q<dígitos>  
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?s ?o
+WHERE {
+  ?s owl:sameAs ?o .
+  FILTER( !isIRI(?o) ||
+          !REGEX(STR(?o), "^https://www\\.wikidata\\.org/entity/Q[0-9]+$") )
+}
+
+
+# 13.9 Recursos con más de un owl:sameAs 
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?s (COUNT(DISTINCT ?o) AS ?destinos)
+WHERE { ?s owl:sameAs ?o }
+GROUP BY ?s
+HAVING (COUNT(DISTINCT ?o) > 1)
+
+
+# 13.10 Varios recursos locales enlazados a la misma entidad de Wikidata
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?wikidata
+       (COUNT(DISTINCT ?s) AS ?recursosLocales)
+       (GROUP_CONCAT(DISTINCT ?label; separator=" | ") AS ?etiquetas)
+WHERE {
+  ?s owl:sameAs ?wikidata ;
+     rdfs:label ?label .
+}
+GROUP BY ?wikidata
+HAVING (COUNT(DISTINCT ?s) > 1)
+ORDER BY DESC(?recursosLocales)
+
+
+# 13.11 Uso de los enlaces: accidentes por distrito vía Wikidata
+# (Accidente -> Ubicación -> Distrito -> Wikidata).
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?wikidata ?districtName (COUNT(DISTINCT ?accident) AS ?accidentes)
+WHERE {
+  ?accident a ns:TrafficAccident ;
+            ns:occursAt ?location .
+  ?location ns:locatedIn ?district .
+  ?district ns:districtName ?districtName ;
+            owl:sameAs ?wikidata .
+}
+GROUP BY ?wikidata ?districtName
+ORDER BY DESC(?accidentes)
+
+
+# 13.12 Uso de los enlaces: personas por tipo de persona y tipo de vehículo
+# (ambos vía Wikidata)
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?personTypeWd ?vehicleTypeWd (COUNT(DISTINCT ?person) AS ?personas)
+WHERE {
+  ?accident ns:involvesVehicle ?vehicle .
+  ?vehicle  ns:hasVehicleType ?vehicleType ;
+            ns:involvesPerson ?person .
+  ?person   ns:hasPersonType ?personType .
+  ?vehicleType owl:sameAs ?vehicleTypeWd .
+  ?personType  owl:sameAs ?personTypeWd .
+}
+GROUP BY ?personTypeWd ?vehicleTypeWd
+ORDER BY DESC(?personas)
+LIMIT 25
+
+
+# 13.13 Comprobación federada contra Wikidata (requiere internet y SERVICE)
+# Recupera etiqueta en inglés e "instancia de" (P31) de cada destino.
+
+PREFIX ns: <https://w3id.org/saferoutemadrid/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+SELECT ?class ?localLabel ?wikidata ?wdLabel ?instanceOf
+WHERE {
+  VALUES ?class { ns:District ns:AccidentType ns:VehicleType ns:PersonType }
+  ?s a ?class ;
+     rdfs:label ?localLabel ;
+     owl:sameAs ?wikidata .
+  BIND(IRI(REPLACE(STR(?wikidata), "^https://", "http://")) AS ?wdIri)
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?wdIri rdfs:label ?wdLabel .
+    FILTER(LANG(?wdLabel) = "en")
+    OPTIONAL { ?wdIri wdt:P31 ?instanceOf }
+  }
+}
+ORDER BY ?class ?localLabel

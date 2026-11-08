@@ -1,0 +1,3080 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "distrito de Madrid"
+      },
+      "autoMatch": false,
+      "batchSize": 10,
+      "limit": 3,
+      "columnDetails": []
+    },
+    "description": "Request type-constrained Wikidata candidates; reviewed matches are recorded explicitly below"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CENTRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763376",
+      "name": "Centro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CENTRO -> Q1763376; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "ARGANZUELA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2000929",
+      "name": "Arganzuela",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ARGANZUELA -> Q2000929; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "RETIRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2002296",
+      "name": "Retiro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: RETIRO -> Q2002296; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "SALAMANCA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773521",
+      "name": "Salamanca",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SALAMANCA -> Q1773521; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CHAMARTIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1766348",
+      "name": "Chamartín",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CHAMARTIN -> Q1766348; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "TETUAN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773540",
+      "name": "Tetuán",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: TETUAN -> Q1773540; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CHAMBERI",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763370",
+      "name": "Chamberí",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CHAMBERI -> Q1763370; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "FUENCARRAL-EL PARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q656196",
+      "name": "Fuencarral-El Pardo",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: FUENCARRAL-EL PARDO -> Q656196; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "MONCLOA-ARAVACA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2017682",
+      "name": "Moncloa-Aravaca",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MONCLOA-ARAVACA -> Q2017682; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "LATINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q794954",
+      "name": "Latina",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LATINA -> Q794954; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CARABANCHEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1001991",
+      "name": "Carabanchel",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CARABANCHEL -> Q1001991; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "USERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q953368",
+      "name": "Usera",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: USERA -> Q953368; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "PUENTE DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2003054",
+      "name": "Puente de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PUENTE DE VALLECAS -> Q2003054; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "MORATALAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2076109",
+      "name": "Moratalaz",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MORATALAZ -> Q2076109; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CIUDAD LINEAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763694",
+      "name": "Ciudad Lineal",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CIUDAD LINEAL -> Q1763694; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "HORTALEZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1928529",
+      "name": "Hortaleza",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: HORTALEZA -> Q1928529; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "VILLAVERDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q919536",
+      "name": "Villaverde",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VILLAVERDE -> Q919536; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "VILLA DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1947988",
+      "name": "Villa de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VILLA DE VALLECAS -> Q1947988; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "VICALVARO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q589403",
+      "name": "Vicálvaro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VICALVARO -> Q589403; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "SAN BLAS-CANILLEJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2001937",
+      "name": "San Blas-Canillejas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN BLAS-CANILLEJAS -> Q2001937; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "BARAJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q807230",
+      "name": "Barajas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: BARAJAS -> Q807230; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "barrio administrativo de Madrid"
+      },
+      "autoMatch": false,
+      "batchSize": 10,
+      "limit": 3,
+      "columnDetails": [
+        {
+          "column": "district_label",
+          "propertyName": "located in the administrative territorial entity",
+          "propertyID": "P131"
+        }
+      ]
+    },
+    "description": "Request type-constrained Wikidata candidates; reviewed matches are recorded explicitly below"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PALACIO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2136510",
+      "name": "Palacio",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PALACIO -> Q2136510; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EMBAJADORES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2449844",
+      "name": "Embajadores",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EMBAJADORES -> Q2449844; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CORTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2535637",
+      "name": "Cortes",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CORTES -> Q2535637; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "JUSTICIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1992319",
+      "name": "Justicia",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: JUSTICIA -> Q1992319; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "UNIVERSIDAD",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10387767",
+      "name": "Universidad",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: UNIVERSIDAD -> Q10387767; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SOL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2465181",
+      "name": "Sol",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SOL -> Q2465181; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "IMPERIAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773740",
+      "name": "Imperial",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: IMPERIAL -> Q3773740; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ACACIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319190",
+      "name": "Acacias",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ACACIAS -> Q3319190; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CHOPERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773750",
+      "name": "Chopera",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CHOPERA -> Q3773750; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LEGAZPI",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773990",
+      "name": "Legazpi",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LEGAZPI -> Q3773990; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "DELICIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773736",
+      "name": "Delicias",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: DELICIAS -> Q3773736; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PALOS DE LA FRONTERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q521009",
+      "name": "Palos de la Frontera",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PALOS DE LA FRONTERA -> Q521009; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ATOCHA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814594",
+      "name": "Atocha",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ATOCHA -> Q3814594; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PACIFICO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773753",
+      "name": "Pacífico",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PACIFICO -> Q3773753; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ADELFAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3774001",
+      "name": "Adelfas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ADELFAS -> Q3774001; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ESTRELLA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773738",
+      "name": "Estrella",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ESTRELLA -> Q3773738; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "IBIZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15249910",
+      "name": "Ibiza",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: IBIZA -> Q15249910; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LOS JERONIMOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10306766",
+      "name": "Jerónimos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LOS JERONIMOS -> Q10306766; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "NIÑO JESUS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773746",
+      "name": "Niño Jesús",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: NIÑO JESUS -> Q3773746; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "RECOLETOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814551",
+      "name": "Recoletos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: RECOLETOS -> Q3814551; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "GOYA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814578",
+      "name": "Goya",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: GOYA -> Q3814578; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "FUENTE DEL BERRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814564",
+      "name": "Fuente del Berro",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: FUENTE DEL BERRO -> Q3814564; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "GUINDALERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814559",
+      "name": "La Guindalera",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: GUINDALERA -> Q3814559; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LISTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4779",
+      "name": "Lista",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LISTA -> Q4779; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASTELLANA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4781",
+      "name": "Castellana",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASTELLANA -> Q4781; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EL VISO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4778",
+      "name": "El Viso",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EL VISO -> Q4778; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PROSPERIDAD",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4776",
+      "name": "Prosperidad",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PROSPERIDAD -> Q4776; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CIUDAD JARDIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773744",
+      "name": "Ciudad Jardín",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CIUDAD JARDIN -> Q3773744; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "HISPANOAMERICA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3814573",
+      "name": "Hispanoamérica",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: HISPANOAMERICA -> Q3814573; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "NUEVA ESPAÑA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10338128",
+      "name": "Nueva España",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: NUEVA ESPAÑA -> Q10338128; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASTILLA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813735",
+      "name": "Castilla",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASTILLA -> Q3813735; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "BELLAS VISTAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11908929",
+      "name": "Bellas Vistas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: BELLAS VISTAS -> Q11908929; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CUATRO CAMINOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5824684",
+      "name": "Cuatro Caminos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CUATRO CAMINOS -> Q5824684; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASTILLEJOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11913212",
+      "name": "Castillejos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASTILLEJOS -> Q11913212; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ALMENARA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2265427",
+      "name": "Almenara",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ALMENARA -> Q2265427; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALDEACEDERAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388711",
+      "name": "Valdeacederas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALDEACEDERAS -> Q10388711; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "BERRUGUETE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11909208",
+      "name": "Berruguete",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: BERRUGUETE -> Q11909208; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "GAZTAMBIDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10288587",
+      "name": "Gaztambide",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: GAZTAMBIDE -> Q10288587; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ARAPILES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10856744",
+      "name": "Arapiles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ARAPILES -> Q10856744; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "TRAFALGAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10384027",
+      "name": "Trafalgar",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: TRAFALGAR -> Q10384027; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ALMAGRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10954432",
+      "name": "Almagro",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ALMAGRO -> Q10954432; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "RIOS ROSAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10366270",
+      "name": "Ríos Rosas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: RIOS ROSAS -> Q10366270; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALLEHERMOSO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6122685",
+      "name": "Vallehermoso",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALLEHERMOSO -> Q6122685; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EL PARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3314337",
+      "name": "El Pardo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EL PARDO -> Q3314337; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "FUENTELARREINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10286156",
+      "name": "Fuentelarreina",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: FUENTELARREINA -> Q10286156; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PEÑA GRANDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319582",
+      "name": "Peñagrande",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PEÑA GRANDE -> Q3319582; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EL PILAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773964",
+      "name": "El Pilar",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EL PILAR -> Q3773964; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LA PAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5869740",
+      "name": "La Paz",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LA PAZ -> Q5869740; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALVERDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31132",
+      "name": "Valverde",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALVERDE -> Q31132; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "MIRASIERRA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31134",
+      "name": "Mirasierra",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MIRASIERRA -> Q31134; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EL GOLOSO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10271137",
+      "name": "El Goloso",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EL GOLOSO -> Q10271137; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASA DE CAMPO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16302441",
+      "name": "Casa de Campo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASA DE CAMPO -> Q16302441; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ARGUELLES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q64874",
+      "name": "Argüelles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ARGUELLES -> Q64874; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CIUDAD UNIVERSITARIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3319235",
+      "name": "Ciudad Universitaria",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CIUDAD UNIVERSITARIA -> Q3319235; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALDEZARZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388728",
+      "name": "Valdezarza",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALDEZARZA -> Q10388728; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALDEMARIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388725",
+      "name": "Valdemarín",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALDEMARIN -> Q10388725; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ARAVACA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3314682",
+      "name": "Aravaca",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ARAVACA -> Q3314682; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LOS CARMENES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10319792",
+      "name": "Los Cármenes",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LOS CARMENES -> Q10319792; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PUERTA DEL ANGEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31142",
+      "name": "Puerta del Ángel",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PUERTA DEL ANGEL -> Q31142; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LUCERO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31162",
+      "name": "Lucero",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LUCERO -> Q31162; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ALUCHE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31140",
+      "name": "Aluche",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ALUCHE -> Q31140; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CAMPAMENTO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q31169",
+      "name": "Campamento",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CAMPAMENTO -> Q31169; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CUATRO VIENTOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5191881",
+      "name": "Cuatro Vientos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CUATRO VIENTOS -> Q5191881; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LAS AGUILAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5971372",
+      "name": "Las Águilas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LAS AGUILAS -> Q5971372; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "COMILLAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q955844",
+      "name": "Comillas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: COMILLAS -> Q955844; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "OPAÑEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813756",
+      "name": "Opañel",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: OPAÑEL -> Q3813756; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN ISIDRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813733",
+      "name": "San Isidro",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN ISIDRO -> Q3813733; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VISTA ALEGRE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813741",
+      "name": "Vista Alegre",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VISTA ALEGRE -> Q3813741; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PUERTA BONITA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3813762",
+      "name": "Puerta Bonita",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PUERTA BONITA -> Q3813762; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "BUENAVISTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q953929",
+      "name": "Buenavista",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: BUENAVISTA -> Q953929; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ABRANTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773949",
+      "name": "Abrantes",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ABRANTES -> Q3773949; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ORCASITAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3773941",
+      "name": "Orcasitas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ORCASITAS -> Q3773941; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ORCASUR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10341270",
+      "name": "Orcasur",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ORCASUR -> Q10341270; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN FERMIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71758",
+      "name": "San Fermín",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN FERMIN -> Q71758; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ALMENDRALES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9604761",
+      "name": "Almendrales",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ALMENDRALES -> Q9604761; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "MOSCARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11937679",
+      "name": "Moscardó",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MOSCARDO -> Q11937679; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ZOFIO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71751",
+      "name": "Zofío",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ZOFIO -> Q71751; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PRADOLONGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10352360",
+      "name": "Pradolongo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PRADOLONGO -> Q10352360; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ENTREVIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71756",
+      "name": "Entrevías",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ENTREVIAS -> Q71756; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN DIEGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11946851",
+      "name": "San Diego",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN DIEGO -> Q11946851; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PALOMERAS BAJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10343902",
+      "name": "Palomeras Bajas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PALOMERAS BAJAS -> Q10343902; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PALOMERAS SURESTE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10343901",
+      "name": "Palomeras Sureste",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PALOMERAS SURESTE -> Q10343901; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PORTAZGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18005921",
+      "name": "Portazgo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PORTAZGO -> Q18005921; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "NUMANCIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10338144",
+      "name": "Numancia",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: NUMANCIA -> Q10338144; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PAVONES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71760",
+      "name": "Pavones",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PAVONES -> Q71760; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "HORCAJO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10293641",
+      "name": "Horcajo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: HORCAJO -> Q10293641; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "MARROQUINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11935636",
+      "name": "Marroquina",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MARROQUINA -> Q11935636; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "MEDIA LEGUA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9031035",
+      "name": "Media Legua",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MEDIA LEGUA -> Q9031035; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "FONTARRON",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10283284",
+      "name": "Fontarrón",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: FONTARRON -> Q10283284; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VINATEROS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10391533",
+      "name": "Vinateros",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VINATEROS -> Q10391533; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VENTAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71762",
+      "name": "Ventas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VENTAS -> Q71762; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PUEBLO NUEVO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71753",
+      "name": "Pueblo Nuevo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PUEBLO NUEVO -> Q71753; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "QUINTANA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q71810",
+      "name": "Quintana",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: QUINTANA -> Q71810; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CONCEPCION",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11915156",
+      "name": "Concepción",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CONCEPCION -> Q11915156; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN PASCUAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q165612",
+      "name": "San Pascual",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN PASCUAL -> Q165612; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN JUAN BAUTISTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q165609",
+      "name": "San Juan Bautista",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN JUAN BAUTISTA -> Q165609; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "COLINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18475981",
+      "name": "Colina",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: COLINA -> Q18475981; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "COSTILLARES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q331385",
+      "name": "Costillares",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: COSTILLARES -> Q331385; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PALOMAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390460",
+      "name": "Palomas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PALOMAS -> Q390460; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PIOVERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5964851",
+      "name": "Piovera",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PIOVERA -> Q5964851; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CANILLAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9694341",
+      "name": "Canillas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CANILLAS -> Q9694341; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "PINAR DEL REY",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10349788",
+      "name": "Pinar del Rey",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PINAR DEL REY -> Q10349788; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "APOSTOL SANTIAGO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11906303",
+      "name": "Apóstol Santiago",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: APOSTOL SANTIAGO -> Q11906303; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALDEFUENTES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10388714",
+      "name": "Valdefuentes",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALDEFUENTES -> Q10388714; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN ANDRES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390435",
+      "name": "Villaverde Alto, Casco Histórico de Villaverde",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN ANDRES -> Q390435; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SAN CRISTOBAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390457",
+      "name": "San Cristóbal",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SAN CRISTOBAL -> Q390457; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "BUTARQUE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390453",
+      "name": "Butarque",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: BUTARQUE -> Q390453; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LOS ROSALES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10319807",
+      "name": "Los Rosales",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LOS ROSALES -> Q10319807; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "LOS ANGELES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390462",
+      "name": "Los Ángeles",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LOS ANGELES -> Q390462; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASCO H.VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16544370",
+      "name": "Casco Histórico de Vallecas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASCO H.VALLECAS -> Q16544370; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SANTA EUGENIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q390463",
+      "name": "Santa Eugenia",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SANTA EUGENIA -> Q390463; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ENSANCHE DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3847485",
+      "name": "Ensanche de Vallecas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ENSANCHE DE VALLECAS -> Q3847485; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASCO H.VICALVARO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16544374",
+      "name": "Casco Histórico de Vicálvaro",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASCO H.VICALVARO -> Q16544374; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALDEBERNARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q43025212",
+      "name": "Valdebernardo",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALDEBERNARDO -> Q43025212; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "VALDERRIVAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q43025770",
+      "name": "Valderrivas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VALDERRIVAS -> Q43025770; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EL CAÑAVERAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5821309",
+      "name": "El Cañaveral",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EL CAÑAVERAL -> Q5821309; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "SIMANCAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10371626",
+      "name": "Simancas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SIMANCAS -> Q10371626; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "HELLIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10294546",
+      "name": "Hellín",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: HELLIN -> Q10294546; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "AMPOSTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11905392",
+      "name": "Amposta",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: AMPOSTA -> Q11905392; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ARCOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9627876",
+      "name": "Arcos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ARCOS -> Q9627876; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ROSAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18880469",
+      "name": "Rosas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ROSAS -> Q18880469; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "REJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10359029",
+      "name": "Rejas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: REJAS -> Q10359029; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CANILLEJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q663013",
+      "name": "Canillejas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CANILLEJAS -> Q663013; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "EL SALVADOR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10367095",
+      "name": "Salvador",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: EL SALVADOR -> Q10367095; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "ALAMEDA DE OSUNA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q760737",
+      "name": "Alameda de Osuna",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ALAMEDA DE OSUNA -> Q760737; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "AEROPUERTO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9586697",
+      "name": "Aeropuerto",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: AEROPUERTO -> Q9586697; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CASCO H.BARAJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9701730",
+      "name": "Casco Histórico de Barajas",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CASCO H.BARAJAS -> Q9701730; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "TIMON",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10382570",
+      "name": "Timón",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: TIMON -> Q10382570; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "neighbourhood_label",
+    "similarValue": "CORRALEJOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q10260772",
+      "name": "Corralejos",
+      "types": [
+        "Q10267336"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CORRALEJOS -> Q10260772; verified class, district and municipal code"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "district_label",
+    "newColumnName": "district_wikidata",
+    "columnInsertIndex": 8,
+    "expression": "grel:if(cell.recon.matched, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, null)",
+    "onError": "set-to-blank",
+    "description": "Extract reviewed district identity without replacing the source label"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "neighbourhood_label",
+    "newColumnName": "neighbourhood_wikidata",
+    "columnInsertIndex": 9,
+    "expression": "grel:if(cell.recon.matched, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, null)",
+    "onError": "set-to-blank",
+    "description": "Extract reviewed neighbourhood identity without replacing the source label"
+  }
+]

@@ -1,0 +1,74 @@
+PREFIX vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# QUERY 1: Fuentes con sus enlaces externos (Wikidata) de distrito y barrio
+# Valida el modelo (vocab:) y los dos owl:sameAs de cada fuente.
+
+SELECT ?fountain ?street ?district ?districtWikidata ?neighbourhood ?neighbourhoodWikidata
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasStreetName ?street ;
+            vocab:hasDistrict ?district ;
+            vocab:hasNeighbourhood ?neighbourhood .
+  ?district owl:sameAs ?districtWikidata .
+  ?neighbourhood owl:sameAs ?neighbourhoodWikidata .
+}
+LIMIT 10
+
+
+# QUERY 2: Número de fuentes por distrito, identificando cada distrito por su URI de Wikidata
+
+SELECT ?districtWikidata (COUNT(?fountain) AS ?numFountains)
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasDistrict ?district .
+  ?district a vocab:District ;
+            owl:sameAs ?districtWikidata .
+}
+GROUP BY ?districtWikidata
+ORDER BY DESC(?numFountains)
+
+
+# QUERY 3: Fuentes operativas de un distrito concreto, buscado por su entidad de Wikidata
+# (Q1763376 = distrito Centro de Madrid)
+
+SELECT ?fountain ?street ?status ?lat ?lon
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasStatus ?status ;
+            vocab:hasStreetName ?street ;
+            vocab:hasLatitude ?lat ;
+            vocab:hasLongitude ?lon ;
+            vocab:hasDistrict ?district .
+  ?district owl:sameAs <https://wikidata.org/entity/Q1763376> .
+  FILTER (?status = "OPERATIVO")
+}
+LIMIT 20
+
+
+# QUERY 4: Barrios con más fuentes fuera de servicio, con su enlace a Wikidata
+
+SELECT ?neighbourhoodWikidata (COUNT(?fountain) AS ?outOfService)
+WHERE {
+  ?fountain a vocab:Fountain ;
+            vocab:hasStatus ?status ;
+            vocab:hasNeighbourhood ?neighbourhood .
+  ?neighbourhood a vocab:Neighbourhood ;
+                 owl:sameAs ?neighbourhoodWikidata .
+  FILTER (?status = "FUERA_DE_SERVICIO")
+}
+GROUP BY ?neighbourhoodWikidata
+ORDER BY DESC(?outOfService)
+LIMIT 10
+
+
+# QUERY 5: Recursos enlazados por clase (distritos y barrios con owl:sameAs)
+
+SELECT ?class (COUNT(DISTINCT ?resource) AS ?linkedResources)
+WHERE {
+  ?resource a ?class ;
+            owl:sameAs ?external .
+  FILTER (?class IN (vocab:District, vocab:Neighbourhood))
+}
+GROUP BY ?class

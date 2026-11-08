@@ -1,0 +1,154 @@
+PREFIX am: <https://w3id.org/active-madrid/ontology#>
+PREFIX res: <https://w3id.org/active-madrid/resource/>
+PREFIX schema: <http://schema.org/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# Query 1: Verification count of Wikidata-linked resources by ontology class
+
+SELECT ?class (COUNT(DISTINCT ?resource) AS ?linkedResources) (COUNT(DISTINCT ?wikidata) AS ?wikidataEntities)
+WHERE {
+    ?resource a ?class ;
+              owl:sameAs ?wikidata .
+}
+GROUP BY ?class
+ORDER BY DESC(?linkedResources)
+
+
+# Query 2: Sports facilities with geographic coordinates, telephone, and Wikidata link
+
+SELECT DISTINCT ?facility ?name ?wikidata ?lat ?long ?phone
+WHERE {
+    ?facility a am:SportsFacility ;
+              schema:name ?name ;
+              owl:sameAs ?wikidata ;
+              geo:lat ?lat ;
+              geo:long ?long .
+    OPTIONAL { ?facility schema:telephone ?phone }
+}
+ORDER BY ?name
+LIMIT 20
+
+
+# Query 3: Multi-level administrative hierarchy with external Wikidata links
+
+SELECT DISTINCT ?facilityName ?neighborhoodName ?neighborhoodWikidata ?districtName ?districtWikidata
+WHERE {
+    ?facility a am:SportsFacility ;
+              schema:name ?facilityName ;
+              schema:address ?address .
+    ?address am:locatedInNeighborhood ?neighborhood .
+    ?neighborhood a am:Neighborhood ;
+                  schema:name ?neighborhoodName ;
+                  owl:sameAs ?neighborhoodWikidata ;
+                  am:locatedInDistrict ?district .
+    ?district a am:District ;
+              schema:name ?districtName ;
+              owl:sameAs ?districtWikidata .
+}
+ORDER BY ?districtName ?neighborhoodName
+LIMIT 20
+
+
+# Query 4: Sports classes with available spots linking both facility and sport discipline to Wikidata
+
+SELECT ?className ?activityName ?activityWikidata ?facilityName ?facilityWikidata ?availablePlaces
+WHERE {
+    ?facility a am:SportsFacility ;
+              schema:name ?facilityName ;
+              owl:sameAs ?facilityWikidata .
+    ?sportsClass a am:SportsClass ;
+                 schema:name ?className ;
+                 am:takesPlaceAt ?facility ;
+                 am:hasActivity ?activity ;
+                 am:availablePlaces ?availablePlaces .
+    ?activity a am:SportActivity ;
+              schema:name ?activityName ;
+              owl:sameAs ?activityWikidata .
+    FILTER (?availablePlaces > 0)
+}
+LIMIT 20
+
+
+# Query 5: Open class schedules with time intervals and external Wikidata links
+
+SELECT ?className ?activityName ?activityWikidata ?facilityName ?facilityWikidata ?startTime ?endTime
+WHERE {
+    ?facility a am:SportsFacility ;
+              schema:name ?facilityName ;
+              owl:sameAs ?facilityWikidata .
+    ?sportsClass a am:SportsClass ;
+                 schema:name ?className ;
+                 am:takesPlaceAt ?facility ;
+                 am:hasActivity ?activity ;
+                 time:hasTime ?interval .
+    ?activity a am:SportActivity ;
+              schema:name ?activityName ;
+              owl:sameAs ?activityWikidata .
+    ?interval a time:Interval ;
+              time:hasBeginning ?startTime ;
+              time:hasEnd ?endTime .
+}
+LIMIT 20
+
+
+# Query 6: Activities and class offerings at CDM Aluche verified with Wikidata entity wd:Q63191263
+
+SELECT ?activityName ?activityWikidata (COUNT(?sportsClass) AS ?totalClasses)
+WHERE {
+    ?facility a am:SportsFacility ;
+              owl:sameAs wd:Q63191263 .
+    ?sportsClass a am:SportsClass ;
+                 am:takesPlaceAt ?facility ;
+                 am:hasActivity ?activity .
+    ?activity a am:SportActivity ;
+              schema:name ?activityName ;
+              owl:sameAs ?activityWikidata .
+}
+GROUP BY ?activityName ?activityWikidata
+ORDER BY DESC(?totalClasses)
+LIMIT 20
+
+
+# Query 7: Total classes and places for swimming activities linked to Wikidata wd:Q31920
+
+SELECT ?facilityName ?facilityWikidata (COUNT(?sportsClass) AS ?swimmingClasses) (SUM(?available) AS ?totalAvailablePlaces)
+WHERE {
+    ?activity a am:SportActivity ;
+              owl:sameAs wd:Q31920 .
+    ?sportsClass a am:SportsClass ;
+                 am:hasActivity ?activity ;
+                 am:takesPlaceAt ?facility ;
+                 am:availablePlaces ?available .
+    ?facility a am:SportsFacility ;
+              schema:name ?facilityName ;
+              owl:sameAs ?facilityWikidata .
+}
+GROUP BY ?facilityName ?facilityWikidata
+ORDER BY DESC(?swimmingClasses)
+LIMIT 20
+
+
+# Query 8: Fully booked sports classes (100% capacity) for demand monitoring
+
+SELECT ?className ?activityName ?activityWikidata ?facilityName ?facilityWikidata ?offeredPlaces
+WHERE {
+    ?facility a am:SportsFacility ;
+              schema:name ?facilityName ;
+              owl:sameAs ?facilityWikidata .
+    ?sportsClass a am:SportsClass ;
+                 schema:name ?className ;
+                 am:takesPlaceAt ?facility ;
+                 am:hasActivity ?activity ;
+                 am:availablePlaces 0 ;
+                 am:offeredPlaces ?offeredPlaces .
+    ?activity a am:SportActivity ;
+              schema:name ?activityName ;
+              owl:sameAs ?activityWikidata .
+    FILTER (?offeredPlaces > 0)
+}
+LIMIT 20
+

@@ -32,7 +32,7 @@
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
-    rr:objectMap [ rml:reference "PARK_NAME" ]
+    rr:objectMap [ rml:reference "PARK_NAME" ; rr:language "en" ]
   ] ;
 
   rr:predicateObjectMap [
@@ -64,7 +64,7 @@
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
-    rr:objectMap [ rml:reference "ARTWORK_NAME" ]
+    rr:objectMap [ rml:reference "ARTWORK_NAME" ; rr:language "en" ]
   ] ;
 
   rr:predicateObjectMap [
@@ -113,17 +113,17 @@
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
-    rr:objectMap [ rr:template "Coordinates of {ARTWORK_NAME} in {PARK_NAME}" ; rr:termType rr:Literal ]
+    rr:objectMap [ rr:template "Coordinates of {ARTWORK_NAME} in {PARK_NAME}" ; rr:termType rr:Literal ; rr:language "en" ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate schema:latitude ;
-    rr:objectMap [ rml:reference "LATITUDE" ; rr:datatype xsd:double ]
+    rr:objectMap [ rml:reference "LATITUDE" ; rr:datatype xsd:decimal ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate schema:longitude ;
-    rr:objectMap [ rml:reference "LONGITUDE" ; rr:datatype xsd:double ]
+    rr:objectMap [ rml:reference "LONGITUDE" ; rr:datatype xsd:decimal ]
   ] .
 
 
@@ -140,7 +140,7 @@
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
-    rr:objectMap [ rml:reference "ARTIST_NAME" ]
+    rr:objectMap [ rml:reference "ARTIST_NAME" ; rr:language "en" ]
   ] ;
 
   rr:predicateObjectMap [
@@ -162,7 +162,7 @@
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
-    rr:objectMap [ rml:reference "OWNER_NAME" ]
+    rr:objectMap [ rml:reference "OWNER_NAME" ; rr:language "en" ]
   ] ;
 
   rr:predicateObjectMap [

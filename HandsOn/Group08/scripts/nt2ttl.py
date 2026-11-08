@@ -20,6 +20,8 @@ PREFIXES = {
     "species": "https://w3id.org/barcelona-heat-relief/resource/TreeSpecies/",
     "neighbourhood": "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/",
     "district": "https://w3id.org/barcelona-heat-relief/resource/District/",
+    "facility": "https://w3id.org/barcelona-heat-relief/resource/Facility/",
+    "wd": "http://www.wikidata.org/entity/",
     "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "owl": "http://www.w3.org/2002/07/owl#",

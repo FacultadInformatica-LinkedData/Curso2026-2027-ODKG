@@ -1,0 +1,15 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Estación",
+    "expression": "grel:cell.cross(\"reconcile_auxiliar\", \"nombre_original\").cells[\"uri\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "uri",
+    "columnInsertIndex": 6,
+    "description": "Crear la columna uri en el índice 6 basada en la columna Estación usando la expresión grel:cell.cross(\"reconcile_auxiliar\", \"nombre_original\").cells[\"uri\"].value[0]"
+  }
+]

@@ -1,0 +1,404 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "station_code",
+    "newColumnName": "district_id",
+    "columnInsertIndex": 4,
+    "expression": "grel:if(value==\"RF-01\",\"1\",if(value==\"RF-02\",\"3\",if(value==\"RF-03\",\"1\",if(value==\"RF-04\",\"9\",if(value==\"RF-05\",\"8\",if(value==\"RF-06\",\"7\",if(value==\"RF-08\",\"4\",if(value==\"RF-10\",\"7\",if(value==\"RF-11\",\"5\",if(value==\"RF-12\",\"4\",if(value==\"RF-13\",\"13\",if(value==\"RF-14\",\"11\",if(value==\"RF-16\",\"15\",if(value==\"RF-17\",\"17\",if(value==\"RF-18\",\"11\",if(value==\"RF-19\",\"10\",if(value==\"RF-20\",\"14\",if(value==\"RF-24\",\"9\",if(value==\"RF-25\",\"18\",if(value==\"RF-26\",\"21\",if(value==\"RF-27\",\"21\",if(value==\"RF-28\",\"10\",if(value==\"RF-29\",\"8\",if(value==\"RF-30\",\"21\",if(value==\"RF-31\",\"16\",if(value==\"RF-47\",\"2\",if(value==\"RF-48\",\"5\",if(value==\"RF-50\",\"5\",if(value==\"RF-54\",\"18\",if(value==\"RF-55\",\"21\",if(value==\"RF-86\",\"8\",null)))))))))))))))))))))))))))))))",
+    "onError": "set-to-blank",
+    "description": "Join verified original catalogue DISTRITO to census district code by station_code"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "district_id",
+    "newColumnName": "district_label",
+    "columnInsertIndex": 5,
+    "expression": "grel:if(value==\"1\",\"CENTRO\",if(value==\"10\",\"LATINA\",if(value==\"11\",\"CARABANCHEL\",if(value==\"13\",\"PUENTE DE VALLECAS\",if(value==\"14\",\"MORATALAZ\",if(value==\"15\",\"CIUDAD LINEAL\",if(value==\"16\",\"HORTALEZA\",if(value==\"17\",\"VILLAVERDE\",if(value==\"18\",\"VILLA DE VALLECAS\",if(value==\"2\",\"ARGANZUELA\",if(value==\"21\",\"BARAJAS\",if(value==\"3\",\"RETIRO\",if(value==\"4\",\"SALAMANCA\",if(value==\"5\",\"CHAMARTIN\",if(value==\"7\",\"CHAMBERI\",if(value==\"8\",\"FUENCARRAL-EL PARDO\",if(value==\"9\",\"MONCLOA-ARAVACA\",null)))))))))))))))))",
+    "onError": "set-to-blank",
+    "description": "Attach preserved census district label"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "distrito de Madrid"
+      },
+      "autoMatch": false,
+      "batchSize": 10,
+      "limit": 3,
+      "columnDetails": []
+    },
+    "description": "Request type-constrained Wikidata candidates; reviewed matches are recorded explicitly below"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CENTRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763376",
+      "name": "Centro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CENTRO -> Q1763376; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "ARGANZUELA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2000929",
+      "name": "Arganzuela",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: ARGANZUELA -> Q2000929; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "RETIRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2002296",
+      "name": "Retiro",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: RETIRO -> Q2002296; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "SALAMANCA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1773521",
+      "name": "Salamanca",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: SALAMANCA -> Q1773521; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CHAMARTIN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1766348",
+      "name": "Chamartín",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CHAMARTIN -> Q1766348; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CHAMBERI",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763370",
+      "name": "Chamberí",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CHAMBERI -> Q1763370; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "FUENCARRAL-EL PARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q656196",
+      "name": "Fuencarral-El Pardo",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: FUENCARRAL-EL PARDO -> Q656196; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "MONCLOA-ARAVACA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2017682",
+      "name": "Moncloa-Aravaca",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MONCLOA-ARAVACA -> Q2017682; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "LATINA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q794954",
+      "name": "Latina",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: LATINA -> Q794954; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CARABANCHEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1001991",
+      "name": "Carabanchel",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CARABANCHEL -> Q1001991; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "PUENTE DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2003054",
+      "name": "Puente de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: PUENTE DE VALLECAS -> Q2003054; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "MORATALAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2076109",
+      "name": "Moratalaz",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: MORATALAZ -> Q2076109; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "CIUDAD LINEAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763694",
+      "name": "Ciudad Lineal",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: CIUDAD LINEAL -> Q1763694; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "HORTALEZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1928529",
+      "name": "Hortaleza",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: HORTALEZA -> Q1928529; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "VILLAVERDE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q919536",
+      "name": "Villaverde",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VILLAVERDE -> Q919536; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "VILLA DE VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1947988",
+      "name": "Villa de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: VILLA DE VALLECAS -> Q1947988; verified class, district and municipal code"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district_label",
+    "similarValue": "BARAJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q807230",
+      "name": "Barajas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Reviewed identity: BARAJAS -> Q807230; verified class, district and municipal code"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "district_label",
+    "newColumnName": "district_wikidata",
+    "columnInsertIndex": 6,
+    "expression": "grel:if(cell.recon.matched, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, null)",
+    "onError": "set-to-blank",
+    "description": "Extract reviewed district identity"
+  }
+]

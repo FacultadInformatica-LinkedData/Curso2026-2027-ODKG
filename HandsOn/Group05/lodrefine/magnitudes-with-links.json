@@ -1,0 +1,394 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column name_en to type null"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "carbon monoxide",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2025",
+      "name": "carbon monoxide",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento carbon monoxide (Q2025) para las celdas que contienen \"carbon monoxide\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "sulfur dioxide",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5282",
+      "name": "sulfur dioxide",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento sulfur dioxide (Q5282) para las celdas que contienen \"sulfur dioxide\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "nitrogen dioxide",
+    "judgment": "matched",
+    "match": {
+      "id": "Q207895",
+      "name": "nitrogen dioxide",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento nitrogen dioxide (Q207895) para las celdas que contienen \"nitrogen dioxide\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "nitric oxide",
+    "judgment": "matched",
+    "match": {
+      "id": "Q207843",
+      "name": "nitric oxide",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento nitric oxide (Q207843) para las celdas que contienen \"nitric oxide\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "ozone",
+    "judgment": "matched",
+    "match": {
+      "id": "Q36933",
+      "name": "ozone",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento ozone (Q36933) para las celdas que contienen \"ozone\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "PM10",
+    "judgment": "matched",
+    "match": {
+      "id": "Q48035511",
+      "name": "PM10 (including PM 2.5)",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento PM10 (including PM 2.5) (Q48035511) para las celdas que contienen \"PM10\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "PM2.5",
+    "judgment": "matched",
+    "match": {
+      "id": "Q48035814",
+      "name": "PM 2.5",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento PM 2.5 (Q48035814) para las celdas que contienen \"PM2.5\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "ammonia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4087",
+      "name": "ammonia",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento ammonia (Q4087) para las celdas que contienen \"ammonia\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "toluene",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15779",
+      "name": "toluene",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento toluene (Q15779) para las celdas que contienen \"toluene\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "benzene",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2270",
+      "name": "benzene",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento benzene (Q2270) para las celdas que contienen \"benzene\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "xylene",
+    "judgment": "matched",
+    "match": {
+      "id": "Q208366",
+      "name": "xylene",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento xylene (Q208366) para las celdas que contienen \"xylene\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "temperature",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11466",
+      "name": "temperature",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento temperature (Q11466) para las celdas que contienen \"temperature\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "relative humidity",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2499617",
+      "name": "relative humidity",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento relative humidity (Q2499617) para las celdas que contienen \"relative humidity\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "atmospheric pressure",
+    "judgment": "matched",
+    "match": {
+      "id": "Q81809",
+      "name": "atmospheric pressure",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento atmospheric pressure (Q81809) para las celdas que contienen \"atmospheric pressure\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "solar radiation",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17996169",
+      "name": "solar radiation",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento solar radiation (Q17996169) para las celdas que contienen \"solar radiation\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "precipitation",
+    "judgment": "matched",
+    "match": {
+      "id": "Q25257",
+      "name": "precipitation",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento precipitation (Q25257) para las celdas que contienen \"precipitation\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "wind speed",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1464943",
+      "name": "wind speed",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento wind speed (Q1464943) para las celdas que contienen \"wind speed\" en la columna name_en"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "name_en",
+    "similarValue": "wind direction",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1057900",
+      "name": "wind direction",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Emparejar el elemento wind direction (Q1057900) para las celdas que contienen \"wind direction\" en la columna name_en"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "name_en",
+    "expression": "grel:if(cell.recon.matched, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "wikidata",
+    "columnInsertIndex": 3,
+    "description": "Crear la columna wikidata en el índice 3 basada en la columna name_en usando la expresión grel:if(cell.recon.matched, \"http://www.wikidata.org/entity/\" + cell.recon.match.id, \"\")"
+  }
+]

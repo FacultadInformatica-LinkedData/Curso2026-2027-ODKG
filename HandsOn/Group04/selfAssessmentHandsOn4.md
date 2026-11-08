@@ -4,8 +4,8 @@
 
 **Every RDF file:**
 
-- [x] Uses the .ttl extension
-- [x] Is serialized in the Turtle format
+- [x] Uses the .nt extension
+- [x] Is serialized in the NTriples format
 - [x] Follows the resource naming strategy
 - [x] Uses class and property URIs that are the same as those used in the ontology
 
@@ -29,23 +29,24 @@
 
 ## Comments on the self-assessment
 
-**Deliverables (one per dataset):**
+**Deliverables (one per dataset):** the RDF of each dataset is delivered in two serializations with the same triples: N-Triples (`rdf/*.nt`, as required by the self-assessment template) and Turtle (`rdf/*.ttl`, as required by the assignment statement in Moodle). The mappings are also delivered in two equivalent forms: RML (`mappings/*.rml`) and YARRRML (`mappings/*.yml`, optional deliverable), with the same rules. The table lists the RML and Turtle files; the `.yml` and `.nt` files of each dataset have the same name.
 
 | Dataset | Mapping | RDF | Triples |
 |---|---|---|---|
-| D1 `calidad-aire-diario-2024-csv-updated.csv` | `mappings/calidad-aire-diario-2024.rml` | `rdf/calidad-aire-diario-2024.ttl` | 258,734 |
-| D2 `212629-0-estaciones-control-aire-csv-updated.csv` | `mappings/estaciones-control-aire.rml` | `rdf/estaciones-control-aire.ttl` | 222 |
-| D3 `200215-0-instalaciones-deportivas-csv-csv-updated.csv` | `mappings/instalaciones-deportivas.rml` | `rdf/instalaciones-deportivas.ttl` | 10,304 |
+| D1 `calidad-aire-diario-2024-csv-updated.csv` | `mappings/calidad-aire-diario-2024.rml` | `rdf/calidad-aire-diario-2024.ttl` | 344,852 |
+| D2 `212629-0-estaciones-control-aire-csv-updated.csv` | `mappings/estaciones-control-aire.rml` | `rdf/estaciones-control-aire.ttl` | 246 |
+| D3 `200215-0-instalaciones-deportivas-csv-csv-updated.csv` | `mappings/instalaciones-deportivas.rml` | `rdf/instalaciones-deportivas.ttl` | 10,935 |
 
-The RDF was generated with Morph-KGC 2.10 and serialized as Turtle with rdflib (Morph-KGC only writes N-Triples/N-Quads). To regenerate it, run `python mappings/generate_rdf.py` from the `Group04` directory. Verification queries are in `rdf/queries.sparql`: Q1–Q4 check the RDF, Q5–Q8 explore the data across the 3 datasets, and Q9–Q14 answer the competency questions of the application defined in Hands-on 1 (`requirements/applicationRequirements.html`).
+The RDF was generated with Morph-KGC 2.10 and serialized as N-Triples and Turtle with rdflib. To regenerate it, run `python mappings/generate_rdf.py` from the `Group04` directory (RML mappings), or `python mappings/generate_rdf.py yml` (YARRRML mappings); both commands produce exactly the same triples. Verification queries are in `rdf/queries.sparql`: Q1–Q4 check the RDF, Q5–Q8 explore the data across the 3 datasets, and Q9–Q14 answer the competency questions of the application defined in Hands-on 1 (`requirements/applicationRequirements.html`).
 
-**How the checklist was verified** (on the merged graph of the three files, 269,164 triples):
+**How the checklist was verified** (on the merged graph of the three files, 355,889 triples):
 
-- All 12 classes and 32 properties of `ontology/breatheplay.ttl` are used, and no class or property outside the ontology is used (`bpm:Place` is used through its subclasses `bpm:MonitoringStation` and `bpm:SportsFacility`).
+- All the classes and properties of `ontology/breatheplay.ttl` are used (12 `bpm:` classes and 25 `bpm:` properties, plus the reused SOSA, WGS84 and schema.org terms), and no class or property outside the ontology is used (`bpm:Place` and `geo:SpatialThing` are used through their subclasses).
+- Standard vocabularies are used directly in the data: each individual of a class aligned with SOSA or schema.org has both types (e.g., `a bpm:DailyObservation, sosa:Observation`), observations follow the SOSA pattern (`sosa:madeBySensor`, `sosa:observedProperty`, `sosa:hasSimpleResult`), sampling points are hosted by stations (`sosa:isHostedBy`) and observe a pollutant (`sosa:observes`), and coordinates use `geo:lat` / `geo:long` / `geo:alt`.
 - Individuals: 42,973 daily observations, 131 sampling points, 11 pollutants, 6 measurement techniques, 24 monitoring stations, 3 station types, 607 sports facilities, 24 facility types, 4 accessibility levels, 21 districts and 111 neighbourhoods. All of them have `rdf:type` and `rdfs:label` (query Q2 returns no results).
 - URIs follow the naming strategy of `analysis.html` and `ontology/breatheplay-example.ttl` (`https://w3id.org/breatheplay-madrid/resource/{class-path}/{code}`). Observations are named `observation/{samplingPoint}/{date}`, which identifies them uniquely (one value per sampling point and day). No URI contains "//".
 - Links between datasets use `rr:parentTriplesMap` with an `rr:joinCondition`: sampling points (D1, `ESTACION_CODIGO`) and sports facilities (D3, `ESTACION_CERCANA`) are joined with the stations of D2 (`CODIGO`). The stations triples map is repeated in the D1 and D3 mappings with the same URI template and label, so the resources merge with those generated from D2. Within each dataset, links to code lists (pollutants, techniques, station types, facility types, accessibility levels, districts and neighbourhoods) use the same URI template as the subject map of the target class. Query Q3 checks that every object property points to an existing individual (no results).
-- Datatypes follow the ranges of the ontology: `xsd:date` (dates), `xsd:decimal` (values, coordinates, distances), `xsd:integer` (altitude), `xsd:boolean` (validity), `xsd:anyURI` (content URL) and `xsd:string`. Codes made of digits (station, district, neighbourhood, pollutant, technique, postal code, facility id) are kept as `xsd:string`. Query Q4 checks the datatypes (no results).
+- Datatypes follow the ranges of the ontology: `xsd:date` (dates), `xsd:decimal` (values, coordinates, altitude, distances), `xsd:boolean` (validity), `xsd:anyURI` (content URL) and `xsd:string`. Codes made of digits (station, district, neighbourhood, pollutant, technique, postal code, facility id) are kept as `xsd:string`. Query Q4 checks the datatypes (no results).
 - Labels are taken from the data and tagged `@es`; observation and sampling point labels are built with a template (e.g., "Observación diaria de Monóxido de carbono en el punto de muestreo 28079004_6_48 el 2024-01-01"@es).
 
 **Known limitations:**

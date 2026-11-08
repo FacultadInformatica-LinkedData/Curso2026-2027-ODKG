@@ -1,0 +1,3927 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "institution_name",
+    "expression": "grel:if(isNonBlank(value), value, cells[\"name\"].value)",
+    "onError": "set-to-blank",
+    "newColumnName": "facility_name",
+    "columnInsertIndex": 5,
+    "description": "Create column facility_name at index 5 based on column institution_name using expression grel:if(isNonBlank(value), value, cells[\"name\"].value)"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "autoMatch": true,
+      "batchSize": 10,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column facility_name to type null"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre d'Atenció Primària Sardenya",
+    "judgment": "matched",
+    "match": {
+      "id": "Q138946650",
+      "name": "Equip d’Atenció Primària Barcelona Sardenya",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Equip d’Atenció Primària Barcelona Sardenya (Q138946650) for cells containing \"Centre d'Atenció Primària Sardenya\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Mirador del Migdia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15629518",
+      "name": "Parc del Mirador del Migdia",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc del Mirador del Migdia (Q15629518) for cells containing \"Parc del Mirador del Migdia\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Barceloneta - La Fraternitat",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85692758",
+      "name": "Biblioteca La Barceloneta - La Fraternitat",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca La Barceloneta - La Fraternitat (Q85692758) for cells containing \"Biblioteca La Barceloneta - La Fraternitat\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Comercial Diagonal Mar",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4120780",
+      "name": "Centre comercial Diagonal Mar",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre comercial Diagonal Mar (Q4120780) for cells containing \"Centre Comercial Diagonal Mar\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Vapor Vell",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693446",
+      "name": "Biblioteca Vapor Vell",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Vapor Vell (Q85693446) for cells containing \"Biblioteca Vapor Vell\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Maternitat i Sant Ramon – Miquel Llongueras",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693375",
+      "name": "Biblioteca La Maternitat i Sant Ramon - Miquel Llongueras",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca La Maternitat i Sant Ramon - Miquel Llongueras (Q85693375) for cells containing \"Biblioteca La Maternitat i Sant Ramon – Miquel Llongueras\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Llibreria Documenta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19368068",
+      "name": "Llibreria Documenta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Llibreria Documenta (Q19368068) for cells containing \"Llibreria Documenta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Llibreria Claret",
+    "judgment": "matched",
+    "match": {
+      "id": "Q47170725",
+      "name": "Llibreria Claret",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Llibreria Claret (Q47170725) for cells containing \"Llibreria Claret\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Llibreria Alibri",
+    "judgment": "matched",
+    "match": {
+      "id": "Q115268987",
+      "name": "Llibreria Alibri",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Llibreria Alibri (Q115268987) for cells containing \"Llibreria Alibri\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Sant Pau - Santa Creu",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693426",
+      "name": "Biblioteca Sant Pau-Santa Creu",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Sant Pau-Santa Creu (Q85693426) for cells containing \"Biblioteca Sant Pau - Santa Creu\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu Frederic Marès",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1630272",
+      "name": "Museu Frederic Marès",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Museu Frederic Marès (Q1630272) for cells containing \"Museu Frederic Marès\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Col·legi Oficial d'Infermeres i Infermers de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q50036223",
+      "name": "Col·legi Oficial d'Infermeres i Infermers de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Col·legi Oficial d'Infermeres i Infermers de Barcelona (Q50036223) for cells containing \"Col·legi Oficial d'Infermeres i Infermers de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Besòs i el Maresme - Ramon d’Alòs-Moner",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693407",
+      "name": "Biblioteca El Besòs i el Maresme - Ramon d’Alòs-Moner",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca El Besòs i el Maresme - Ramon d’Alòs-Moner (Q85693407) for cells containing \"Biblioteca El Besòs i el Maresme - Ramon d’Alòs-Moner\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Escola Tècnica Superior d'Arquitectura de Barcelona - UPC",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2735032",
+      "name": "Escola Tècnica Superior d'Arquitectura de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Escola Tècnica Superior d'Arquitectura de Barcelona (Q2735032) for cells containing \"Escola Tècnica Superior d'Arquitectura de Barcelona - UPC\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Sofia Barat",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693434",
+      "name": "Biblioteca Sofia Barat",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Sofia Barat (Q85693434) for cells containing \"Biblioteca Sofia Barat\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Baró de Viver",
+    "judgment": "matched",
+    "match": {
+      "id": "Q131443288",
+      "name": "Centre Cívic Baró de Viver",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Cívic Baró de Viver (Q131443288) for cells containing \"Centre Cívic Baró de Viver\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Col·legi Oficial de Metges de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17326547",
+      "name": "Col·legi Oficial de Metges de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Col·legi Oficial de Metges de Barcelona (Q17326547) for cells containing \"Col·legi Oficial de Metges de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Canyelles - M. Àngels Rivas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85692771",
+      "name": "Biblioteca Canyelles - M. Àngels Rivas",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Canyelles - M. Àngels Rivas (Q85692771) for cells containing \"Biblioteca Canyelles - M. Àngels Rivas\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat d'Hostafrancs",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11936523",
+      "name": "Mercat d'Hostafrancs",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat d'Hostafrancs (Q11936523) for cells containing \"Mercat d'Hostafrancs\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat de la Marina",
+    "judgment": "matched",
+    "match": {
+      "id": "Q124329662",
+      "name": "mercat de la Marina",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item mercat de la Marina (Q124329662) for cells containing \"Mercat de la Marina\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Bon Pastor",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130338792",
+      "name": "Mercat del Bon Pastor",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat del Bon Pastor (Q130338792) for cells containing \"Mercat Bon Pastor\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Escola Tècnica Superior d'Enginyeria Industrial de Barcelona - UPC",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2750060",
+      "name": "Escola Tècnica Superior d'Enginyeria Industrial de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Escola Tècnica Superior d'Enginyeria Industrial de Barcelona (Q2750060) for cells containing \"Escola Tècnica Superior d'Enginyeria Industrial de Barcelona - UPC\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Les Roquetes – Rafa Juncadella",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693378",
+      "name": "Biblioteca Les Roquetes - Rafa Juncadella",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Les Roquetes - Rafa Juncadella (Q85693378) for cells containing \"Biblioteca Les Roquetes – Rafa Juncadella\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins del Palau de Pedralbes",
+    "judgment": "matched",
+    "match": {
+      "id": "Q24023052",
+      "name": "Conjunt especial del Palau Reial de Pedralbes",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Conjunt especial del Palau Reial de Pedralbes (Q24023052) for cells containing \"Jardins del Palau de Pedralbes\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Ramon Margalef i López",
+    "judgment": "matched",
+    "match": {
+      "id": "Q14866864",
+      "name": "Jardins de Ramon Margalef López",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Ramon Margalef López (Q14866864) for cells containing \"Jardins de Ramon Margalef i López\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Vil·la Amèlia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15264794",
+      "name": "Jardins de Vil·la Amèlia",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Vil·la Amèlia (Q15264794) for cells containing \"Jardins de Vil·la Amèlia\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins del Turó del Putxet",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5360733",
+      "name": "Jardins del Turó del Putxet",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins del Turó del Putxet (Q5360733) for cells containing \"Jardins del Turó del Putxet\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Monterols",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15130999",
+      "name": "Parc de Monterols",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de Monterols (Q15130999) for cells containing \"Parc de Monterols\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Guinardó",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11069071",
+      "name": "Parc del Guinardó",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc del Guinardó (Q11069071) for cells containing \"Parc del Guinardó\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Guineueta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15094548",
+      "name": "Parc de la Guineueta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de la Guineueta (Q15094548) for cells containing \"Parc de la Guineueta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Turó de la Peira",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11940187",
+      "name": "Parc del Turó de la Peira",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc del Turó de la Peira (Q11940187) for cells containing \"Parc del Turó de la Peira\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Pegaso",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15139118",
+      "name": "Parc de la Pegaso",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de la Pegaso (Q15139118) for cells containing \"Parc de la Pegaso\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Clot",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11940184",
+      "name": "Parc del Clot",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc del Clot (Q11940184) for cells containing \"Parc del Clot\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Creueta del Coll",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1796314",
+      "name": "parc de la Creueta del Coll",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item parc de la Creueta del Coll (Q1796314) for cells containing \"Parc de la Creueta del Coll\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Marina de Port – Francesc Candel",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693331",
+      "name": "Biblioteca La Marina de Port - Francesc Candel",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca La Marina de Port - Francesc Candel (Q85693331) for cells containing \"Biblioteca La Marina de Port – Francesc Candel\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Consorci del Parc Natural de la Serra de Collserola",
+    "judgment": "matched",
+    "match": {
+      "id": "Q23505006",
+      "name": "Consorci del Parc Natural de la Serra de Collserola",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Consorci del Parc Natural de la Serra de Collserola (Q23505006) for cells containing \"Consorci del Parc Natural de la Serra de Collserola\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Can Sabaté",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15630602",
+      "name": "parc de Can Sabaté",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item parc de Can Sabaté (Q15630602) for cells containing \"Parc de Can Sabaté\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Sant Martí",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15293542",
+      "name": "Parc de Sant Martí",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de Sant Martí (Q15293542) for cells containing \"Parc de Sant Martí\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Vila Olímpica - Xavier Benguerel",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693454",
+      "name": "Biblioteca La Vila Olímpica - Xavier Benguerel",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca La Vila Olímpica - Xavier Benguerel (Q85693454) for cells containing \"Biblioteca La Vila Olímpica - Xavier Benguerel\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Associació Catalana de Recursos Assistencials",
+    "judgment": "matched",
+    "match": {
+      "id": "Q49280441",
+      "name": "Associació Catalana de Recursos Assistencials",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Associació Catalana de Recursos Assistencials (Q49280441) for cells containing \"Associació Catalana de Recursos Assistencials\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Joan Miró",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693355",
+      "name": "Biblioteca Joan Miró",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Joan Miró (Q85693355) for cells containing \"Biblioteca Joan Miró\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre d'Arts Santa Mònica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3781326",
+      "name": "Centre d'Arts Santa Mònica",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre d'Arts Santa Mònica (Q3781326) for cells containing \"Centre d'Arts Santa Mònica\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Olímpics Vall Hebron",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3751016",
+      "name": "Pavelló Municipal d'Esports de la Vall d'Hebron",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Pavelló Municipal d'Esports de la Vall d'Hebron (Q3751016) for cells containing \"Centre Esportiu Municipal Olímpics Vall Hebron\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Parc de la Ciutadella",
+    "judgment": "matched",
+    "match": {
+      "id": "Q115571122",
+      "name": "CEM Parc de la Ciutadella",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item CEM Parc de la Ciutadella (Q115571122) for cells containing \"Centre Esportiu Municipal Parc de la Ciutadella\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Trinitat",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15097970",
+      "name": "Parc de la Trinitat",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de la Trinitat (Q15097970) for cells containing \"Parc de la Trinitat\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Comercial L'Illa Diagonal",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5961241",
+      "name": "L'Illa Diagonal centre comercial",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item L'Illa Diagonal centre comercial (Q5961241) for cells containing \"Centre Comercial L'Illa Diagonal\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal l'Espanya Industrial",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4888768",
+      "name": "Centre Esportiu Municipal de l'Espanya Industrial",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Esportiu Municipal de l'Espanya Industrial (Q4888768) for cells containing \"Centre Esportiu Municipal l'Espanya Industrial\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre de Cultura Contemporània de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2945260",
+      "name": "Centre de Cultura Contemporània de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre de Cultura Contemporània de Barcelona (Q2945260) for cells containing \"Centre de Cultura Contemporània de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de la Tamarita",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15080248",
+      "name": "Jardins de la Tamarita",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de la Tamarita (Q15080248) for cells containing \"Jardins de la Tamarita\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Font de la Guatlla",
+    "judgment": "matched",
+    "match": {
+      "id": "Q126888968",
+      "name": "Centre Cívic Font de la Guatlla",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Cívic Font de la Guatlla (Q126888968) for cells containing \"Centre Cívic Font de la Guatlla\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Can Sentmenat",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15290914",
+      "name": "Jardins de Can Sentmenat",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Can Sentmenat (Q15290914) for cells containing \"Jardins de Can Sentmenat\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Mirador del Poble-sec",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15629464",
+      "name": "Parc del Mirador del Poble Sec",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc del Mirador del Poble Sec (Q15629464) for cells containing \"Parc del Mirador del Poble-sec\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Font Florida",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15630649",
+      "name": "Parc de la Font Florida",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de la Font Florida (Q15630649) for cells containing \"Parc de la Font Florida\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Poblenou",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11940186",
+      "name": "Parc del Poblenou",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc del Poblenou (Q11940186) for cells containing \"Parc del Poblenou\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Barceloneta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15463692",
+      "name": "Parc de la Barceloneta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de la Barceloneta (Q15463692) for cells containing \"Parc de la Barceloneta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Universitat Politècnica de Catalunya",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1640731",
+      "name": "Universitat Politècnica de Catalunya",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Universitat Politècnica de Catalunya (Q1640731) for cells containing \"Universitat Politècnica de Catalunya\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "CosmoCaixa Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2625747",
+      "name": "CosmoCaixa Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item CosmoCaixa Barcelona (Q2625747) for cells containing \"CosmoCaixa Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Nou Barris - Aurora Díaz Plaja",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693386",
+      "name": "Biblioteca Nou Barris - Aurora Díaz Plaja",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Nou Barris - Aurora Díaz Plaja (Q85693386) for cells containing \"Biblioteca Nou Barris - Aurora Díaz Plaja\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Josep Maria Serra Martí",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15106918",
+      "name": "Parc de Josep Maria Serra Martí",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de Josep Maria Serra Martí (Q15106918) for cells containing \"Parc de Josep Maria Serra Martí\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Vilapicina i la Torre Llobeta - Carmen Laforet",
+    "judgment": "matched",
+    "match": {
+      "id": "Q86463960",
+      "name": "Biblioteca Vilapicina i la Torre Llobeta - Carmen Laforet",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Vilapicina i la Torre Llobeta - Carmen Laforet (Q86463960) for cells containing \"Biblioteca Vilapicina i la Torre Llobeta - Carmen Laforet\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Diagonal Mar",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6062641",
+      "name": "Parc de Diagonal Mar",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de Diagonal Mar (Q6062641) for cells containing \"Parc de Diagonal Mar\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Massana",
+    "judgment": "matched",
+    "match": {
+      "id": "Q61745636",
+      "name": "Jardins de Massana",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Massana (Q61745636) for cells containing \"Jardins de Massana\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Joan Oliver - Pere Quart",
+    "judgment": "matched",
+    "match": {
+      "id": "Q139603966",
+      "name": "Centre Cívic Joan Oliver \"Pere Quart\"",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Cívic Joan Oliver \"Pere Quart\" (Q139603966) for cells containing \"Centre Cívic Joan Oliver - Pere Quart\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Estació del Nord",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4888673",
+      "name": "Poliesportiu Estació del Nord",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Poliesportiu Estació del Nord (Q4888673) for cells containing \"Centre Esportiu Municipal Estació del Nord\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Clarà",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11938046",
+      "name": "Biblioteca Clarà",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Clarà (Q11938046) for cells containing \"Biblioteca Clarà\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Collserola - Josep Miracle",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85692777",
+      "name": "Biblioteca Collserola-Josep Miracle",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Collserola-Josep Miracle (Q85692777) for cells containing \"Biblioteca Collserola - Josep Miracle\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Joan Brossa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11684451",
+      "name": "Jardins de Joan Brossa",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Joan Brossa (Q11684451) for cells containing \"Jardins de Joan Brossa\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu de Ciències Naturals de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9046889",
+      "name": "Museu de Ciències Naturals de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Museu de Ciències Naturals de Barcelona (Q9046889) for cells containing \"Museu de Ciències Naturals de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Bon Pastor – Josefina Castellví",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85692760",
+      "name": "Biblioteca El Bon Pastor – Josefina Castellví",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca El Bon Pastor – Josefina Castellví (Q85692760) for cells containing \"Biblioteca El Bon Pastor – Josefina Castellví\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Vil·la Urània",
+    "judgment": "matched",
+    "match": {
+      "id": "Q134831468",
+      "name": "Centre Cívic Vil·la Urània",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Cívic Vil·la Urània (Q134831468) for cells containing \"Centre Cívic Vil·la Urània\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Carme Biada",
+    "judgment": "matched",
+    "match": {
+      "id": "Q100805139",
+      "name": "Jardins de Carme Biada",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Carme Biada (Q100805139) for cells containing \"Jardins de Carme Biada\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Horta - Can Mariner",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693342",
+      "name": "Biblioteca Horta - Can Mariner",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Horta - Can Mariner (Q85693342) for cells containing \"Biblioteca Horta - Can Mariner\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Can Castelló",
+    "judgment": "matched",
+    "match": {
+      "id": "Q106307212",
+      "name": "Centre Cívic Can Castelló",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Cívic Can Castelló (Q106307212) for cells containing \"Centre Cívic Can Castelló\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc del Centre del Poblenou",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9055592",
+      "name": "Parc Central del Poblenou",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc Central del Poblenou (Q9055592) for cells containing \"Parc del Centre del Poblenou\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Espai Jove La Fontana",
+    "judgment": "matched",
+    "match": {
+      "id": "Q141503035",
+      "name": "Espai Jove La Fontana",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Espai Jove La Fontana (Q141503035) for cells containing \"Espai Jove La Fontana\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Zona Nord - Mària Sánchez",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693469",
+      "name": "Biblioteca Zona Nord - Mària Sánchez",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Zona Nord - Mària Sánchez (Q85693469) for cells containing \"Biblioteca Zona Nord - Mària Sánchez\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Vallcarca i els Penitents - M. Antonieta Cot",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693441",
+      "name": "Biblioteca Vallcarca i els Penitents - M. Antonieta Cot",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Vallcarca i els Penitents - M. Antonieta Cot (Q85693441) for cells containing \"Biblioteca Vallcarca i els Penitents - M. Antonieta Cot\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Clínica Sant Antoni",
+    "judgment": "matched",
+    "match": {
+      "id": "Q87761620",
+      "name": "Clínica Sant Antoni",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Clínica Sant Antoni (Q87761620) for cells containing \"Clínica Sant Antoni\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Sala Polivalent de Montbau",
+    "judgment": "matched",
+    "match": {
+      "id": "Q113846493",
+      "name": "Sala Polivalent de Montbau",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Sala Polivalent de Montbau (Q113846493) for cells containing \"Sala Polivalent de Montbau\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cultural Albareda",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19367873",
+      "name": "Centre Cultural Albareda",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Cultural Albareda (Q19367873) for cells containing \"Centre Cultural Albareda\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Clot - Josep Benet",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693319",
+      "name": "Biblioteca El Clot-Josep Benet",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca El Clot-Josep Benet (Q85693319) for cells containing \"Biblioteca El Clot - Josep Benet\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de Piscines i Esports",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15247013",
+      "name": "Jardins de Piscines i Esports",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Piscines i Esports (Q15247013) for cells containing \"Jardins de Piscines i Esports\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins del Doctor Pla i Armengol",
+    "judgment": "matched",
+    "match": {
+      "id": "Q96472707",
+      "name": "Jardins del Doctor Pla i Armengol",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins del Doctor Pla i Armengol (Q96472707) for cells containing \"Jardins del Doctor Pla i Armengol\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Gabriel García Márquez",
+    "judgment": "matched",
+    "match": {
+      "id": "Q112194663",
+      "name": "Biblioteca Gabriel García Márquez",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Gabriel García Márquez (Q112194663) for cells containing \"Biblioteca Gabriel García Márquez\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Sarrià – J. V. Foix",
+    "judgment": "matched",
+    "match": {
+      "id": "Q126917166",
+      "name": "Biblioteca Sarrià - J.V. Foix",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Sarrià - J.V. Foix (Q126917166) for cells containing \"Biblioteca Sarrià – J. V. Foix\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de les Rieres d'Horta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15632673",
+      "name": "Parc de les Rieres d'Horta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de les Rieres d'Horta (Q15632673) for cells containing \"Parc de les Rieres d'Horta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Escola Politècnica Superior d'Edificació de Barcelona - UPC",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11919755",
+      "name": "Escola Politècnica Superior d'Edificació de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Escola Politècnica Superior d'Edificació de Barcelona (Q11919755) for cells containing \"Escola Politècnica Superior d'Edificació de Barcelona - UPC\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Sant Josep Oriol - Basílica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5487409",
+      "name": "Basílica de Sant Josep Oriol",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Basílica de Sant Josep Oriol (Q5487409) for cells containing \"Parròquia de Sant Josep Oriol - Basílica\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de la Puríssima Concepció - Basílica",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19256590",
+      "name": "Basílica de la Puríssima Concepció",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Basílica de la Puríssima Concepció (Q19256590) for cells containing \"Parròquia de la Puríssima Concepció - Basílica\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Lluïsos de Gràcia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11933707",
+      "name": "Lluïsos de Gràcia",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Lluïsos de Gràcia (Q11933707) for cells containing \"Lluïsos de Gràcia\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Artesà Tradicionàrius",
+    "judgment": "matched",
+    "match": {
+      "id": "Q20106335",
+      "name": "Centre Artesà Tradicionàrius",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Artesà Tradicionàrius (Q20106335) for cells containing \"Centre Artesà Tradicionàrius\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de les Tretze Roses",
+    "judgment": "matched",
+    "match": {
+      "id": "Q128789310",
+      "name": "Parc de les Tretze Roses",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de les Tretze Roses (Q128789310) for cells containing \"Parc de les Tretze Roses\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Seu del Districte de L'Eixample",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19257570",
+      "name": "Seu del Districte de l'Eixample",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Seu del Districte de l'Eixample (Q19257570) for cells containing \"Seu del Districte de L'Eixample\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Maria Mitjancera de Totes les Gràcies",
+    "judgment": "matched",
+    "match": {
+      "id": "Q98756045",
+      "name": "Santa Maria Mitjancera",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Santa Maria Mitjancera (Q98756045) for cells containing \"Parròquia de Maria Mitjancera de Totes les Gràcies\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de les Glòries",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18338244",
+      "name": "Parc de les Glòries",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de les Glòries (Q18338244) for cells containing \"Parc de les Glòries\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Escola Antoni Brusi",
+    "judgment": "matched",
+    "match": {
+      "id": "Q111338989",
+      "name": "Escola Antoni Brusi",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Escola Antoni Brusi (Q111338989) for cells containing \"Escola Antoni Brusi\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins del Baix Guinardó",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15117183",
+      "name": "jardins del Baix Guinardó",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item jardins del Baix Guinardó (Q15117183) for cells containing \"Jardins del Baix Guinardó\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc Antoni Santiburcio",
+    "judgment": "matched",
+    "match": {
+      "id": "Q61415667",
+      "name": "Parc d'Antoni Santiburcio",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc d'Antoni Santiburcio (Q61415667) for cells containing \"Parc Antoni Santiburcio\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Joan Reventós",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11940170",
+      "name": "parc de Joan Reventós",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item parc de Joan Reventós (Q11940170) for cells containing \"Parc de Joan Reventós\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardi de les Tres Torres",
+    "judgment": "matched",
+    "match": {
+      "id": "Q132012971",
+      "name": "Jardí de les Tres Torres",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardí de les Tres Torres (Q132012971) for cells containing \"Jardi de les Tres Torres\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Poble-sec – Francesc Boix",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693394",
+      "name": "Biblioteca Poble Sec-Francesc Boix‎",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Poble Sec-Francesc Boix‎ (Q85693394) for cells containing \"Biblioteca El Poble-sec – Francesc Boix\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu d'Història de Barcelona. Plaça del Rei",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3571337",
+      "name": "Museu d'Història de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Museu d'Història de Barcelona (Q3571337) for cells containing \"Museu d'Història de Barcelona. Plaça del Rei\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Vila de Gràcia – Rosa M. Arquimbau",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693448",
+      "name": "Biblioteca Vila de Gràcia - Rosa M. Arquimbau",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Vila de Gràcia - Rosa M. Arquimbau (Q85693448) for cells containing \"Biblioteca La Vila de Gràcia – Rosa M. Arquimbau\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Nova Icària",
+    "judgment": "matched",
+    "match": {
+      "id": "Q98804548",
+      "name": "Pavelló municipal de la Nova Icària",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Pavelló municipal de la Nova Icària (Q98804548) for cells containing \"Centre Esportiu Municipal Nova Icària\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de la Ciutadella",
+    "judgment": "matched",
+    "match": {
+      "id": "Q301135",
+      "name": "Parc de la Ciutadella",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de la Ciutadella (Q301135) for cells containing \"Parc de la Ciutadella\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Farmàcia Torres *24 hores",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130341138",
+      "name": "Farmàcia Torres (antiga Farmàcia Torregrosa)",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Farmàcia Torres (antiga Farmàcia Torregrosa) (Q130341138) for cells containing \"Farmàcia Torres *24 hores\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Llibreria Jaimes",
+    "judgment": "matched",
+    "match": {
+      "id": "Q123741300",
+      "name": "Llibreria Jaimes Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Llibreria Jaimes Barcelona (Q123741300) for cells containing \"Llibreria Jaimes\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "El Manantial de la Salut *Xuclà",
+    "judgment": "matched",
+    "match": {
+      "id": "Q47170833",
+      "name": "Herboristeria Manantial de Salud",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Herboristeria Manantial de Salud (Q47170833) for cells containing \"El Manantial de la Salut *Xuclà\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu Etnològic i de Cultures del Món *Parc Montjuïc",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9046827",
+      "name": "Museu Etnològic de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Museu Etnològic de Barcelona (Q9046827) for cells containing \"Museu Etnològic i de Cultures del Món *Parc Montjuïc\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Piscines Municipals Montjuïc",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4888842",
+      "name": "Piscina Municipal de Montjuïc",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Piscina Municipal de Montjuïc (Q4888842) for cells containing \"Piscines Municipals Montjuïc\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Espai Francesca Bonnemaison",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17597310",
+      "name": "Centre de Cultura de Dones Francesca Bonnemaison",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre de Cultura de Dones Francesca Bonnemaison (Q17597310) for cells containing \"Espai Francesca Bonnemaison\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu Picasso",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1050032",
+      "name": "Museu Picasso",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Museu Picasso (Q1050032) for cells containing \"Museu Picasso\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Montserrat Abelló",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85692768",
+      "name": "Biblioteca Montserrat Abelló",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Montserrat Abelló (Q85692768) for cells containing \"Biblioteca Montserrat Abelló\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Gent Gran Cotxeres de Sants",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19367898",
+      "name": "Cotxeres de Sants",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cotxeres de Sants (Q19367898) for cells containing \"Casal de Gent Gran Cotxeres de Sants\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Cotxeres de Sants",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19367898",
+      "name": "Cotxeres de Sants",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Cotxeres de Sants (Q19367898) for cells containing \"Centre Cívic Cotxeres de Sants\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Casinet d'Hostafrancs",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130402605",
+      "name": "Casinet d'Hostafrancs",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casinet d'Hostafrancs (Q130402605) for cells containing \"Centre Cívic Casinet d'Hostafrancs\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Piscina Sant Jordi",
+    "judgment": "matched",
+    "match": {
+      "id": "Q25424860",
+      "name": "Piscina Sant Jordi",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Piscina Sant Jordi (Q25424860) for cells containing \"Centre Esportiu Municipal Piscina Sant Jordi\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Can Toda",
+    "judgment": "matched",
+    "match": {
+      "id": "Q88165317",
+      "name": "Complex Esportiu Municipal Pau Negre-Can Toda",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Complex Esportiu Municipal Pau Negre-Can Toda (Q88165317) for cells containing \"Centre Esportiu Municipal Can Toda\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Hospital de la Santa Creu i Sant Pau",
+    "judgment": "matched",
+    "match": {
+      "id": "Q64443878",
+      "name": "Nou Hospital de Sant Pau",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Nou Hospital de Sant Pau (Q64443878) for cells containing \"Hospital de la Santa Creu i Sant Pau\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari Font d'en Fargues",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11912873",
+      "name": "Casal Font d'en Fargues",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casal Font d'en Fargues (Q11912873) for cells containing \"Casal de Barri Comunitari Font d'en Fargues\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic La Sedeta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q47170957",
+      "name": "La Sedeta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item La Sedeta (Q47170957) for cells containing \"Centre Cívic La Sedeta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Torre Llobeta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18008511",
+      "name": "Torre Llobeta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Torre Llobeta (Q18008511) for cells containing \"Centre Cívic Torre Llobeta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Sant Andreu",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130324358",
+      "name": "Les Cotxeres (Centre Cívic Sant Andreu)",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Les Cotxeres (Centre Cívic Sant Andreu) (Q130324358) for cells containing \"Centre Cívic Sant Andreu\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu Reial Monestir de Santa Maria de Pedralbes",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1321526",
+      "name": "monestir de Santa Maria de Pedralbes",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item monestir de Santa Maria de Pedralbes (Q1321526) for cells containing \"Museu Reial Monestir de Santa Maria de Pedralbes\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cultural La Casa Elizalde",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19256052",
+      "name": "Casa Elizalde",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa Elizalde (Q19256052) for cells containing \"Centre Cultural La Casa Elizalde\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Facultat de Nàutica - UPC",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3661489",
+      "name": "Facultad de Náutica de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Facultad de Náutica de Barcelona (Q3661489) for cells containing \"Facultat de Nàutica - UPC\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Casa Golferichs",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11912729",
+      "name": "Casa Golferichs",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa Golferichs (Q11912729) for cells containing \"Centre Cívic Casa Golferichs\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Institut Català de la Salut",
+    "judgment": "matched",
+    "match": {
+      "id": "Q127510168",
+      "name": "Institut Català de la Salut building",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Institut Català de la Salut building (Q127510168) for cells containing \"Institut Català de la Salut\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Barceloneta",
+    "judgment": "matched",
+    "match": {
+      "id": "Q47170835",
+      "name": "Mercat de la Barceloneta",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat de la Barceloneta (Q47170835) for cells containing \"Mercat Barceloneta\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Santa Caterina",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18007461",
+      "name": "Mercat de Santa Caterina",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat de Santa Caterina (Q18007461) for cells containing \"Mercat Santa Caterina\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Concepció",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19257065",
+      "name": "Mercat de la Concepció",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat de la Concepció (Q19257065) for cells containing \"Mercat Concepció\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Ninot",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16798856",
+      "name": "Mercat del Ninot",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat del Ninot (Q16798856) for cells containing \"Mercat Ninot\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Sant Antoni",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3753734",
+      "name": "Sant Antoni Marketplace",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Sant Antoni Marketplace (Q3753734) for cells containing \"Mercat Sant Antoni\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Sant Gervasi",
+    "judgment": "matched",
+    "match": {
+      "id": "Q116982962",
+      "name": "mercat de Sant Gervasi",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item mercat de Sant Gervasi (Q116982962) for cells containing \"Mercat Sant Gervasi\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Abaceria Central",
+    "judgment": "matched",
+    "match": {
+      "id": "Q113412747",
+      "name": "Mercat de l'Abaceria Central",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat de l'Abaceria Central (Q113412747) for cells containing \"Mercat Abaceria Central\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Vall d'Hebron -Taxonera",
+    "judgment": "matched",
+    "match": {
+      "id": "Q123054782",
+      "name": "Mercat de la Vall d'Hebron",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat de la Vall d'Hebron (Q123054782) for cells containing \"Mercat Vall d'Hebron -Taxonera\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Clot",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11936536",
+      "name": "Mercat del Clot",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat del Clot (Q11936536) for cells containing \"Mercat Clot\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Poblenou - Unió",
+    "judgment": "matched",
+    "match": {
+      "id": "Q126197548",
+      "name": "Mercat del Poblenou",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat del Poblenou (Q126197548) for cells containing \"Mercat Poblenou - Unió\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de Cervantes",
+    "judgment": "matched",
+    "match": {
+      "id": "Q13416036",
+      "name": "Parc de Cervantes",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de Cervantes (Q13416036) for cells containing \"Parc de Cervantes\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Filmoteca de Catalunya",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4894418",
+      "name": "Filmoteca de Catalunya",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Filmoteca de Catalunya (Q4894418) for cells containing \"Filmoteca de Catalunya\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Turó Park - Parc del Poeta Eduard Marquina",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6154044",
+      "name": "Turó Parc",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Turó Parc (Q6154044) for cells containing \"Turó Park - Parc del Poeta Eduard Marquina\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Park Güell",
+    "judgment": "matched",
+    "match": {
+      "id": "Q212867",
+      "name": "Parc Güell",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc Güell (Q212867) for cells containing \"Park Güell\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de les Aigües",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3327967",
+      "name": "Parc de les Aigües",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de les Aigües (Q3327967) for cells containing \"Parc de les Aigües\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Torre Jussana - Centre de Serveis a les Associacions",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15476419",
+      "name": "Torre Jussana",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Torre Jussana (Q15476419) for cells containing \"Torre Jussana - Centre de Serveis a les Associacions\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc de l'Espanya Industrial",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4581526",
+      "name": "Parc de l'Espanya Industrial",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc de l'Espanya Industrial (Q4581526) for cells containing \"Parc de l'Espanya Industrial\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Can Deu",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11911604",
+      "name": "Can Deu",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Can Deu (Q11911604) for cells containing \"Centre Cívic Can Deu\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Escola d'Enginyeria de Barcelona Est - UPC",
+    "judgment": "matched",
+    "match": {
+      "id": "Q56401362",
+      "name": "Barcelona East School of Engineering",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Barcelona East School of Engineering (Q56401362) for cells containing \"Escola d'Enginyeria de Barcelona Est - UPC\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari de Prosperitat",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11912875",
+      "name": "Casal de Barri de Prosperitat",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casal de Barri de Prosperitat (Q11912875) for cells containing \"Casal de Barri Comunitari de Prosperitat\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins de la Torre de Les Aigües",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11952309",
+      "name": "Torre de les Aigües",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Torre de les Aigües (Q11952309) for cells containing \"Jardins de la Torre de Les Aigües\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Can Dragó",
+    "judgment": "matched",
+    "match": {
+      "id": "Q87918023",
+      "name": "Parc Esportiu Municipal Can Dragó",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc Esportiu Municipal Can Dragó (Q87918023) for cells containing \"Centre Esportiu Municipal Can Dragó\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Can Felipa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11911612",
+      "name": "Can Felipa",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Can Felipa (Q11911612) for cells containing \"Centre Cívic Can Felipa\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Piscines Bernat Picornell",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4891648",
+      "name": "Piscines Bernat Picornell",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Piscines Bernat Picornell (Q4891648) for cells containing \"Centre Esportiu Municipal Piscines Bernat Picornell\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Facultat de Matemàtiques i Estadística - UPC",
+    "judgment": "matched",
+    "match": {
+      "id": "Q8960733",
+      "name": "Facultat de Matemàtiques i Estadística de la Universitat Politècnica de Catalunya",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Facultat de Matemàtiques i Estadística de la Universitat Politècnica de Catalunya (Q8960733) for cells containing \"Facultat de Matemàtiques i Estadística - UPC\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Montbau - Albert Pérez Baró",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130569734",
+      "name": "Biblioteca Montbau - Albert Pérez Baró",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Montbau - Albert Pérez Baró (Q130569734) for cells containing \"Biblioteca Montbau - Albert Pérez Baró\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu d'Art Contemporani de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1067140",
+      "name": "MACBA Barcelona Museum of Contemporary Art",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item MACBA Barcelona Museum of Contemporary Art (Q1067140) for cells containing \"Museu d'Art Contemporani de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Can Basté",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17589371",
+      "name": "Can Basté",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Can Basté (Q17589371) for cells containing \"Centre Cívic Can Basté\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Comercial Maremàgnum",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19381034",
+      "name": "Maremagnum",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Maremagnum (Q19381034) for cells containing \"Centre Comercial Maremàgnum\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Convent de Sant Agustí",
+    "judgment": "matched",
+    "match": {
+      "id": "Q8350460",
+      "name": "Convent de Sant Agustí Vell",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Convent de Sant Agustí Vell (Q8350460) for cells containing \"Centre Cívic Convent de Sant Agustí\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parc Esportiu de Can Dragó",
+    "judgment": "matched",
+    "match": {
+      "id": "Q87918023",
+      "name": "Parc Esportiu Municipal Can Dragó",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parc Esportiu Municipal Can Dragó (Q87918023) for cells containing \"Parc Esportiu de Can Dragó\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Mercè Rodoreda",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693340",
+      "name": "Biblioteca Guinardó-Mercè Rodoreda",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Guinardó-Mercè Rodoreda (Q85693340) for cells containing \"Biblioteca Mercè Rodoreda\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins Interior d'Illa de Clotilde Cerdà",
+    "judgment": "matched",
+    "match": {
+      "id": "Q124849184",
+      "name": "jardins de Clotilde Cerdà",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item jardins de Clotilde Cerdà (Q124849184) for cells containing \"Jardins Interior d'Illa de Clotilde Cerdà\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "CaixaForum Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q960115",
+      "name": "CaixaForum Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item CaixaForum Barcelona (Q960115) for cells containing \"CaixaForum Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins Laribal",
+    "judgment": "matched",
+    "match": {
+      "id": "Q14849519",
+      "name": "Jardins de Laribal",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Laribal (Q14849519) for cells containing \"Jardins Laribal\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Ignasi Iglésias - Can Fabra",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28466612",
+      "name": "Biblioteca Ignasi Iglésias-Can Fabra",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Ignasi Iglésias-Can Fabra (Q28466612) for cells containing \"Biblioteca Ignasi Iglésias - Can Fabra\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Fort Pienc – Ana María Moix",
+    "judgment": "matched",
+    "match": {
+      "id": "Q65210824",
+      "name": "Biblioteca Fort Pienc - Ana María Moix",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Fort Pienc - Ana María Moix (Q65210824) for cells containing \"Biblioteca El Fort Pienc – Ana María Moix\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Carmel - Juan Marsé",
+    "judgment": "matched",
+    "match": {
+      "id": "Q129083788",
+      "name": "Biblioteca El Carmel - Juan Marsé",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca El Carmel - Juan Marsé (Q129083788) for cells containing \"Biblioteca El Carmel - Juan Marsé\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Mercat Fort Pienc",
+    "judgment": "matched",
+    "match": {
+      "id": "Q117357005",
+      "name": "Mercat de Fort Pienc",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mercat de Fort Pienc (Q117357005) for cells containing \"Mercat Fort Pienc\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Municipal Tennis Vall Hebron",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4889402",
+      "name": "Centre Municipal de Tennis Vall d'Hebron",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centre Municipal de Tennis Vall d'Hebron (Q4889402) for cells containing \"Centre Municipal Tennis Vall Hebron\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Jaume Fuster",
+    "judgment": "matched",
+    "match": {
+      "id": "Q116689663",
+      "name": "Biblioteca Jaume Fuster",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Jaume Fuster (Q116689663) for cells containing \"Biblioteca Jaume Fuster\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari Can Portabella",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130324349",
+      "name": "Can Portabella",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Can Portabella (Q130324349) for cells containing \"Casal de Barri Comunitari Can Portabella\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casa Padellàs. Museu d'Història de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q14924660",
+      "name": "Casa Padellàs",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa Padellàs (Q14924660) for cells containing \"Casa Padellàs. Museu d'Història de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu Olímpic i de l'Esport Joan Antoni Samaranch de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q3820447",
+      "name": "Joan Antoni Samaranch Olympic and Sport Museum",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Joan Antoni Samaranch Olympic and Sport Museum (Q3820447) for cells containing \"Museu Olímpic i de l'Esport Joan Antoni Samaranch de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Casa Orlandai",
+    "judgment": "matched",
+    "match": {
+      "id": "Q22806731",
+      "name": "Casa Orlandai",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa Orlandai (Q22806731) for cells containing \"Centre Cívic Casa Orlandai\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Sagrada Família – Josep Maria Ainaud de Lasarte",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693414",
+      "name": "Biblioteca Sagrada Família-Josep M. Ainaud de Lasarte",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Sagrada Família-Josep M. Ainaud de Lasarte (Q85693414) for cells containing \"Biblioteca La Sagrada Família – Josep Maria Ainaud de Lasarte\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Sant Antoni - Joan Oliver",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130240952",
+      "name": "Biblioteca Sant Antoni - Joan Oliver",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Sant Antoni - Joan Oliver (Q130240952) for cells containing \"Biblioteca Sant Antoni - Joan Oliver\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Espai Jove Casa Sagnier",
+    "judgment": "matched",
+    "match": {
+      "id": "Q81446216",
+      "name": "Casa Sagnier",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa Sagnier (Q81446216) for cells containing \"Espai Jove Casa Sagnier\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Fabra i Coats - Fàbrica de Creació",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11921473",
+      "name": "Fabra i Coats",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Fabra i Coats (Q11921473) for cells containing \"Fabra i Coats - Fàbrica de Creació\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Disseny Hub Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q46230324",
+      "name": "Disseny Hub Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Disseny Hub Barcelona (Q46230324) for cells containing \"Disseny Hub Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Poblenou - Manuel Arranz",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11911815",
+      "name": "Biblioteca Poblenou-Manuel Arranz",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Poblenou-Manuel Arranz (Q11911815) for cells containing \"Biblioteca El Poblenou - Manuel Arranz\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Jardins Interior d'Illa Càndida Pérez",
+    "judgment": "matched",
+    "match": {
+      "id": "Q100871110",
+      "name": "Jardins de Càndida Pérez",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Jardins de Càndida Pérez (Q100871110) for cells containing \"Jardins Interior d'Illa Càndida Pérez\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca La Sagrera - Marina Clotet",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693367",
+      "name": "Biblioteca La Sagrera - Marina Clotet",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca La Sagrera - Marina Clotet (Q85693367) for cells containing \"Biblioteca La Sagrera - Marina Clotet\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari Can Travi de la Vall d'Hebron",
+    "judgment": "matched",
+    "match": {
+      "id": "Q131395787",
+      "name": "Casal Vall d'hebron i Habitatges Can Travi",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casal Vall d'hebron i Habitatges Can Travi (Q131395787) for cells containing \"Casal de Barri Comunitari Can Travi de la Vall d'Hebron\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Gòtic - Andreu Nin",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693335",
+      "name": "Biblioteca Gòtic-Andreu Nin‎",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Gòtic-Andreu Nin‎ (Q85693335) for cells containing \"Biblioteca El Gòtic - Andreu Nin\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal Mas Guinardó",
+    "judgment": "matched",
+    "match": {
+      "id": "Q18004504",
+      "name": "Mas Guinardó",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Mas Guinardó (Q18004504) for cells containing \"Casal Mas Guinardó\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Comercial Arenas de Barcelona",
+    "judgment": "matched",
+    "match": {
+      "id": "Q4302885",
+      "name": "Arenas de Barcelona",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Arenas de Barcelona (Q4302885) for cells containing \"Centre Comercial Arenas de Barcelona\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Espai Jove Palau Alòs",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11939839",
+      "name": "Palau Alòs",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Palau Alòs (Q11939839) for cells containing \"Espai Jove Palau Alòs\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca L'Esquerra de l'Eixample - Agustí Centelles",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693327",
+      "name": "Biblioteca Esquerra de l'Eixample-Agustí Centelles",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Esquerra de l'Eixample-Agustí Centelles (Q85693327) for cells containing \"Biblioteca L'Esquerra de l'Eixample - Agustí Centelles\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Fundació Privada Enllaç",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130241047",
+      "name": "Fundació Enllaç",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Fundació Enllaç (Q130241047) for cells containing \"Fundació Privada Enllaç\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca El Camp de l'Arpa - Caterina Albert",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85692764",
+      "name": "Biblioteca Camp de l'Arpa-Caterina Albert",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Camp de l'Arpa-Caterina Albert (Q85692764) for cells containing \"Biblioteca El Camp de l'Arpa - Caterina Albert\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Cívic Can Verdaguer",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17592329",
+      "name": "Can Verdaguer",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Can Verdaguer (Q17592329) for cells containing \"Centre Cívic Can Verdaguer\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Biblioteca Joan Maragall",
+    "judgment": "matched",
+    "match": {
+      "id": "Q85693421",
+      "name": "Biblioteca Sant Gervasi-Joan Maragall",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Biblioteca Sant Gervasi-Joan Maragall (Q85693421) for cells containing \"Biblioteca Joan Maragall\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Museu Etnològic i de Cultures del Món *c. Montcada",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11938072",
+      "name": "Museu de Cultures del Món",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Museu de Cultures del Món (Q11938072) for cells containing \"Museu Etnològic i de Cultures del Món *c. Montcada\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Ateneu d'Innovació Digital i Democràtica - Canòdrom",
+    "judgment": "matched",
+    "match": {
+      "id": "Q24058370",
+      "name": "Canòdrom de la Meridiana",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Canòdrom de la Meridiana (Q24058370) for cells containing \"Ateneu d'Innovació Digital i Democràtica - Canòdrom\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "La Lleialtat Santsenca",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11932221",
+      "name": "Lleialtat santsenca",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Lleialtat santsenca (Q11932221) for cells containing \"La Lleialtat Santsenca\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari Torre de la Sagrera",
+    "judgment": "matched",
+    "match": {
+      "id": "Q111745380",
+      "name": "Torre de la Sagrera",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Torre de la Sagrera (Q111745380) for cells containing \"Casal de Barri Comunitari Torre de la Sagrera\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Aula Ambiental de la Casa de l'Aigua de Trinitat Nova",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19887796",
+      "name": "Casa de l'Aigua",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa de l'Aigua (Q19887796) for cells containing \"Aula Ambiental de la Casa de l'Aigua de Trinitat Nova\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari La Llacuna",
+    "judgment": "matched",
+    "match": {
+      "id": "Q141779871",
+      "name": "Edificis per a gent gran, CAP i Casal La Llacuna",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Edificis per a gent gran, CAP i Casal La Llacuna (Q141779871) for cells containing \"Casal de Barri Comunitari La Llacuna\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari de Trinitat Nova",
+    "judgment": "matched",
+    "match": {
+      "id": "Q131443269",
+      "name": "Casal de Trinitat Nova",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casal de Trinitat Nova (Q131443269) for cells containing \"Casal de Barri Comunitari de Trinitat Nova\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre d'Innovació Urbana Ca l'Alier",
+    "judgment": "matched",
+    "match": {
+      "id": "Q109436461",
+      "name": "Ca l'Alier",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ca l'Alier (Q109436461) for cells containing \"Centre d'Innovació Urbana Ca l'Alier\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri ComunitariTransformadors",
+    "judgment": "matched",
+    "match": {
+      "id": "Q124801042",
+      "name": "Casal Transformadors",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casal Transformadors (Q124801042) for cells containing \"Casal de Barri ComunitariTransformadors\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Casal de Barri Comunitari Can Carol",
+    "judgment": "matched",
+    "match": {
+      "id": "Q97771670",
+      "name": "Can Carol",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Can Carol (Q97771670) for cells containing \"Casal de Barri Comunitari Can Carol\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Pavellons Poliesportius Municipals Camp del Ferro",
+    "judgment": "matched",
+    "match": {
+      "id": "Q130315944",
+      "name": "Complex Esportiu Camp del Ferro",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Complex Esportiu Camp del Ferro (Q130315944) for cells containing \"Pavellons Poliesportius Municipals Camp del Ferro\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Supermercat Foodcoop BCN",
+    "judgment": "matched",
+    "match": {
+      "id": "Q110867996",
+      "name": "Foodcoop BCN",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Foodcoop BCN (Q110867996) for cells containing \"Supermercat Foodcoop BCN\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Santa Maria de Sants",
+    "judgment": "matched",
+    "match": {
+      "id": "Q19367965",
+      "name": "Santa Maria de Sants",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Santa Maria de Sants (Q19367965) for cells containing \"Parròquia de Santa Maria de Sants\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Crist Rei",
+    "judgment": "matched",
+    "match": {
+      "id": "Q98756043",
+      "name": "el Crist Rei",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item el Crist Rei (Q98756043) for cells containing \"Parròquia de Crist Rei\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Santa Agnès",
+    "judgment": "matched",
+    "match": {
+      "id": "Q98756034",
+      "name": "Santa Agnès",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Santa Agnès (Q98756034) for cells containing \"Parròquia de Santa Agnès\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Sant Vicenç de Sarrià",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17389628",
+      "name": "església de Sant Vicenç de Sarrià",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item església de Sant Vicenç de Sarrià (Q17389628) for cells containing \"Parròquia de Sant Vicenç de Sarrià\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Parròquia de Sant Miquel del Port",
+    "judgment": "matched",
+    "match": {
+      "id": "Q17301260",
+      "name": "Sant Miquel del Port",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Sant Miquel del Port (Q17301260) for cells containing \"Parròquia de Sant Miquel del Port\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Fundació Privada Casa Asil de Sant Andreu de Palomar",
+    "judgment": "matched",
+    "match": {
+      "id": "Q11912685",
+      "name": "Casa Asil de Sant Andreu",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Casa Asil de Sant Andreu (Q11912685) for cells containing \"Fundació Privada Casa Asil de Sant Andreu de Palomar\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Escola Mercè Rodoreda",
+    "judgment": "matched",
+    "match": {
+      "id": "Q111339119",
+      "name": "Escola Mercè Rodoreda",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Escola Mercè Rodoreda (Q111339119) for cells containing \"Escola Mercè Rodoreda\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Espai comunitari Torre Júlia",
+    "judgment": "matched",
+    "match": {
+      "id": "Q131404117",
+      "name": "Torre Júlia",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Torre Júlia (Q131404117) for cells containing \"Espai comunitari Torre Júlia\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Institut Escola Trinitat Nova",
+    "judgment": "matched",
+    "match": {
+      "id": "Q61743599",
+      "name": "Institut Escola Trinitat Nova",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Institut Escola Trinitat Nova (Q61743599) for cells containing \"Institut Escola Trinitat Nova\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Les Corts",
+    "judgment": "matched",
+    "match": {
+      "id": "Q87766905",
+      "name": "Complex Esportiu Municipal Les Corts",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Complex Esportiu Municipal Les Corts (Q87766905) for cells containing \"Centre Esportiu Municipal Les Corts\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Can Caralleu",
+    "judgment": "matched",
+    "match": {
+      "id": "Q87918207",
+      "name": "Complex Esportiu MunicipalCan Caralleu",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Complex Esportiu MunicipalCan Caralleu (Q87918207) for cells containing \"Centre Esportiu Municipal Can Caralleu\" in column facility_name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "similarValue": "Centre Esportiu Municipal Bac de Roda",
+    "judgment": "matched",
+    "match": {
+      "id": "Q87918210",
+      "name": "Complex Esportiu Municipal Bac de Roda",
+      "types": [],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Complex Esportiu Municipal Bac de Roda (Q87918210) for cells containing \"Centre Esportiu Municipal Bac de Roda\" in column facility_name"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "facility_name",
+    "expression": "grel:if(cell.recon.judgment == \"matched\", cell.recon.match.id, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "wikidata_id",
+    "columnInsertIndex": 6,
+    "description": "Create column wikidata_id at index 6 based on column facility_name using expression grel:if(cell.recon.judgment == \"matched\", cell.recon.match.id, \"\")"
+  },
+  {
+    "op": "core/recon-discard-judgments",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "facility_name",
+    "clearData": true,
+    "description": "Discard recon judgments and clear recon data for cells in column facility_name"
+  }
+]

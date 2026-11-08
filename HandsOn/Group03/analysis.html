@@ -53,9 +53,8 @@
   <p><strong>Group:</strong> Group 03</p>
   <p><strong>Primary Dataset:</strong> <a href="https://datos.madrid.es/dataset/215885-0-contaminacion-ruido" target="_blank">Contaminación acústica. Datos diarios (215885)</a></p>
   <p><strong>Complementary Datasets:</strong> <a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas" target="_blank">Contaminación acústica. Estaciones de medida (211346)</a> &amp; <a href="https://datos.madrid.es/dataset/200085-0-censo-locales" target="_blank">Censo de locales, sus actividades y terrazas de hostelería y restauración (200085)</a> (terraces file only)</p>
-  <p><strong>Analysis date:</strong> 12 October 2026. The full-history figures in Sections 1.3 and 1.4 describe the original noise CSV downloaded from the portal on 5 October 2026. The committed source file <code>csv/contaminacion_acustica.csv</code> contains only its rows from 2020 on (01/01/2020 – 04/10/2026): 295,853 rows, 31 stations, about 13&nbsp;MB, with the same encoding and format. Section 1.4a reports checks on this committed extract. The station catalog and terraces are submitted portal snapshots; the terrace loading date is 04/10/2026, while the station file contains no snapshot-date field.</p>
+  <p><strong>Analysis date:</strong> 12 October 2026; linking layer updated on 25 October 2026. The full-history figures in Sections 1.3 and 1.4 describe the original noise CSV downloaded from the portal on 5 October 2026. The committed source file <code>csv/contaminacion_acustica.csv</code> contains only its rows from 2020 on (01/01/2020 – 04/10/2026): 295,853 rows, 31 stations, about 13&nbsp;MB, with the same encoding and format. Section 1.4a reports checks on this committed extract. The station catalog and terraces are submitted portal snapshots; the terrace loading date is 04/10/2026, while the station file contains no snapshot-date field.</p>
 
-  <!-- ===================================================== -->
   <h2>1. Data and Schema Analysis</h2>
 
   <div class="req-card">
@@ -178,7 +177,7 @@
     <p>The <a href="https://datos.madrid.es/dataset/211346-0-estaciones-acusticas/resource/211346-2-estaciones-acusticas/download/211346-2-estaciones-acusticas.pdf" target="_blank">official station schema</a> identifies geographic coordinates as WGS84 and projected X/Y as ETRS89. Use ETRS89 / UTM 30N (EPSG:25830) for metre-based distance calculations, transforming to WGS84 (EPSG:4326) for map latitude/longitude. Catalog X spans 433,969–450,829 m and Y spans 4,466,527–4,485,540 m.</p>
     <p>All 31 geographic coordinate pairs contain an extra dot in the fractional part. For the observed pattern, preserve the sign and first decimal point and concatenate the following digit groups: <code>-3.691.509 → -3.691509</code> and <code>40.409.121 → 40.409121</code>. Validate the pattern and geographic bounds, and check against the transformed X/Y pair before using a repaired value. Other unexpected formats require inspection.</p>
     <p>There are 18 raw district spellings and 17 after trimming, plus 30 distinct neighbourhood names. For station district links, trim, uppercase, remove accents for comparison and normalize spaces around hyphens. Each of the 17 normalized district names maps uniquely to the terrace census <code>id_distrito_local</code>: Centro 1; Arganzuela 2; Retiro 3; Salamanca 4; Chamartín 5; Chamberí 7; Fuencarral–El Pardo 8; Moncloa–Aravaca 9; Latina 10; Carabanchel 11; Puente de Vallecas 13; Moratalaz 14; Ciudad Lineal 15; Hortaleza 16; Villaverde 17; Villa de Vallecas 18; Barajas 21. Preserve source labels as text. The catalog therefore covers 17 of the 21 districts; results describe the monitored locations rather than a complete census of neighbourhood noise.</p>
-    <p>Neighbourhood names need a separate checked mapping within their district: abbreviations such as <code>Pilar</code> and the spelling <code>Quitana</code> do not automatically match census labels. Geographic names and the verified district reconciliation are analysed for future enrichment. The current lightweight station model represents identifier, name and coordinates; station district/neighbourhood links, location description, altitude and registration date are outside its current scope.</p>
+    <p>Neighbourhood names need a separate checked mapping within their district: abbreviations such as <code>Pilar</code> and the spelling <code>Quitana</code> do not automatically match census labels. The assignment 5 linking layer uses this verified district reconciliation to add <code>dcterms:spatial</code> relationships from all 31 catalogue stations to 17 district resources. It keeps the eighteen local application properties unchanged: <code>mn:hasDistrict</code> retains its terrace domain. Station neighbourhood links, location description, altitude and registration date remain outside the model. Catalogue district membership does not establish a station’s historical location on each observation date. See <a href="README.md#hands-on-5-linked-data">the linking reproduction guide</a>.</p>
   </div>
 
   <div class="req-card">
@@ -227,7 +226,6 @@
     </ul>
   </div>
 
-  <!-- ===================================================== -->
   <h2>2. Licensing of the Data Source</h2>
 
   <div class="req-card">
@@ -294,13 +292,12 @@
     prov:wasDerivedFrom &lt;https://datos.madrid.es/dataset/200085-0-censo-locales&gt; .</code></pre>
   </div>
 
-  <!-- ===================================================== -->
   <h2 id="resource-naming">3. Resource Naming Strategy</h2>
 
   <div class="req-card">
     <div class="req-title">3.1 Domain and URI Form</div>
     <p>We adopt <code>https://madridnoise.linkeddata.es</code> as the designed base URI for our Madrid noise and terraces dataset. This keeps the naming strategy consistent with the dataset identifier in Section 2.4 and uses a project domain rather than the namespace generated by default in Protégé. All identifiers are absolute HTTPS URIs.</p>
-    <p><strong>Publication status:</strong> this is the namespace selected for the ontology and the RDF data to be generated. DNS delegation, permission to use the subdomain, HTTPS hosting and the HTTP routes described below must be arranged before publication. The assignment defines their intended behaviour; it does not claim that these URLs currently resolve.</p>
+    <p><strong>Publication status:</strong> this is the namespace selected for the ontology and RDF data. DNS delegation, permission to use the subdomain, HTTPS hosting and the HTTP routes described below must be arranged before publication. The assignment defines their intended behaviour; it does not claim that these URLs currently resolve.</p>
     <div class="table-wrap">
     <table>
       <tr><th>Purpose</th><th>URI or pattern</th></tr>
@@ -393,7 +390,7 @@ Vary: Accept</code></pre>
     <div class="req-title">3.6 Persistence and External Resources</div>
     <p>Once minted, an identifier is retained across CSV reorderings, added records, corrected labels, corrected measurements and changes in implementation. A corrected value for the same station/date/period updates the existing observation; a genuinely different observation key identifies a different observation. Retired stations retain their identifiers and available historical descriptions. Ontology or dataset release dates may be recorded in metadata without inserting a release version into every term or entity URI.</p>
     <p>Ontology terms must not be repurposed for incompatible meanings. New terms receive new local names; deprecated terms keep their original identifiers. If the publication infrastructure changes, preserve the public base and routes or maintain redirects and document any unavoidable migration.</p>
-    <p>Links to external entities and reused vocabularies keep the external provider's URI unchanged. Districts and neighbourhoods are intended as geographic linking resources for later assignments. Identity links will be added only after verification; a similar name or nearby coordinates alone do not establish identity. Our local identifier remains stable when an external link is added.</p>
+    <p>Links to external entities and reused vocabularies keep the external provider's URI unchanged. Assignment 5 links all 21 represented districts and all 129 represented neighbourhoods to verified Wikidata entities, retaining the census identifiers and original source labels. The reviewed identities and primary evidence are recorded in <code>linking/reconciliation-evidence.json</code>. Identity links are added only after verification; a similar name or nearby coordinates alone do not establish identity. Our local identifier remains stable when an external link is added.</p>
     <p>The separation of vocabulary, entity and document paths and the use of source keys follow the <a href="https://www.w3.org/TR/ld-bp/#uri-design-principles" target="_blank">W3C URI design principles</a> and <a href="https://www.w3.org/TR/ld-bp/#uri-policy-for-persistence" target="_blank">URI persistence guidance</a>.</p>
   </div>
 
@@ -409,11 +406,11 @@ Vary: Accept</code></pre>
       <tr><td><code>mn:DailyNoiseObservation</code></td><td>The acoustic indicators in one station/date/period CSV row; subclass of <code>sosa:Observation</code>.</td><td>Retrieve the <code>N</code>-period LAeq for a station and date range.</td></tr>
       <tr><td><code>mn:DayPeriod</code></td><td>The controlled D/E/N/T reporting periods.</td><td>Keep daytime, evening, night and total measurements distinct.</td></tr>
       <tr><td><code>mn:Terrace</code></td><td>A registered terrace identified by <code>id_terraza</code>; subclass of <code>geo:SpatialThing</code>.</td><td>Count distinct terrace IDs within a radius using usable approximate locations.</td></tr>
-      <tr><td><code>mn:District</code></td><td>A Madrid district identified by a verified census district code.</td><td>Geographic resource intended for later external linking.</td></tr>
-      <tr><td><code>mn:Neighbourhood</code></td><td>A Madrid neighbourhood identified by a verified census neighbourhood code.</td><td>Geographic resource intended for later external linking.</td></tr>
+      <tr><td><code>mn:District</code></td><td>A Madrid district identified by a verified census district code.</td><td>Geographic identity linked to Wikidata.</td></tr>
+      <tr><td><code>mn:Neighbourhood</code></td><td>A Madrid neighbourhood identified by a verified census neighbourhood code.</td><td>Geographic identity linked to Wikidata.</td></tr>
     </table>
     </div>
-    <p>Radius-dependent counts, averages and correlations are computed from these facts by the later application. The lightweight model retains station code/name/location, noise date/period/indicators, and terrace ID/location/district/neighbourhood. Station geographic names require reconciliation before coded relationships are added; the current <code>hasDistrict</code> and <code>hasNeighbourhood</code> properties describe terraces.</p>
+    <p>Radius-dependent counts, averages and correlations are computed from these facts by the later application. The lightweight model retains station code/name/location, noise date/period/indicators, and terrace ID/location/district/neighbourhood. Assignment 5 adds station district relationships through standard <code>dcterms:spatial</code> after the source-name reconciliation described in Section 1.5. The local <code>hasDistrict</code> and <code>hasNeighbourhood</code> properties continue to describe terraces.</p>
   </div>
 
   <div class="req-card">

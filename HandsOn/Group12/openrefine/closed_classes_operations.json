@@ -220,5 +220,93 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Transforma el texto de las celdas en la columna Distrito usando la expresión value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Centro deportivo",
+    "expression": "grel:\"Centro Deportivo Municipal \" + value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Centro deportivo usando la expresión grel:\"Centro Deportivo Municipal \" + value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Clase",
+    "expression": "grel:value.match(/.?(\\d{1,2}:\\d{2})./)[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "Hora inicial",
+    "columnInsertIndex": 3,
+    "description": "Crear la columna Hora inicial en el índice 3 basada en la columna Clase usando la expresión grel:value.match(/.?(\\d{1,2}:\\d{2})./)[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Clase",
+    "expression": "grel:value.match(/.?\\d{1,2}:\\d{2}.?(\\d{1,2}:\\d{2}).*/)[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "Hora final",
+    "columnInsertIndex": 3,
+    "description": "Crear la columna Hora final en el índice 3 basada en la columna Clase usando la expresión grel:value.match(/.?\\d{1,2}:\\d{2}.?(\\d{1,2}:\\d{2}).*/)[0]"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Nº Plazas Ofertadas",
+    "newColumnName": "Plazas",
+    "description": "Renombra la columna Nº Plazas Ofertadas a Plazas"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Nº Plazas Ocupadas",
+    "newColumnName": "Ocupadas",
+    "description": "Renombra la columna Nº Plazas Ocupadas a Ocupadas"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Nº Plazas Libres",
+    "newColumnName": "Libres",
+    "description": "Renombra la columna Nº Plazas Libres a Libres"
+  },
+  {
+    "op": "core/column-move-right",
+    "columnName": "Hora final",
+    "description": "Move column Hora final to the right"
+  },
+    {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Hora inicial",
+    "expression": "grel:with(value.trim(), v, if(v.length() == 4, \"0\" + v, v) + \":00\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Hora inicial usando la expresión grel:with(value.trim(), v, if(v.length() == 4, \"0\" + v, v) + \":00\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Hora final",
+    "expression": "grel:with(value.trim(), v, if(v.length() == 4, \"0\" + v, v) + \":00\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna Hora final usando la expresión grel:with(value.trim(), v, if(v.length() == 4, \"0\" + v, v) + \":00\")"
   }
 ]
