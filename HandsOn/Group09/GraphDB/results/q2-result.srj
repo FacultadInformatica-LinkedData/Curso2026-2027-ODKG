@@ -1,0 +1,1311 @@
+{
+  "head" : {
+    "vars" : [
+      "neighbourhood",
+      "neighbourhoodName",
+      "externalEntity"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ABRANTES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Abrantes"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773949"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ADELFAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Adelfas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3774001"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ALAMEDA%20DE%20OSUNA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Alameda de Osuna"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q760737"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ALMAGRO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Almagro"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10954432"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ALMENARA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Almenara"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2265427"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ALMENDRALES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Almendrales"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q9604761"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ALUCHE"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Aluĉo"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q31140"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/APOSTOL%20SANTIAGO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Apóstol Santiago"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11906303"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ARAPILES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Arapiles"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10856744"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ARAVACA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Aravaca"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3314682"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ARGUELLES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Argüelles"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q64874"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/BELLAS%20VISTAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Bellas Vistas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11908929"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/BUENAVISTA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Buenavista"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q953929"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CASCO%20H.VALLECAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "CASCO H.VALLECAS"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CANILLAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Canillas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q9694341"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CANILLEJAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Canillejas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q663013"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CASA%20DE%20CAMPO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Casa de Campo"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q16302441"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CASCO%20H.VICALVARO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Casco Histórico de Vicálvaro"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q16544374"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CASTELLANA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Castellana"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q4781"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CASTILLA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Castilla"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3813735"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CASTILLEJOS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Castillejos"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11913212"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CIUDAD%20JARDIN"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Ciudad Jardín"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773744"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CIUDAD%20UNIVERSITARIA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Ciudad Universitaria"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3319235"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/COMILLAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Comillas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q847329"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CONCEPCION"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Concepción"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11915156"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CORTES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Cortes"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q5789544"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/COSTILLARES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Costillares"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q331385"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CUATRO%20CAMINOS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Cuatro Caminos"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q5824684"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/EL%20PILAR"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "El Pilar"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773964"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/EL%20VISO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "El Viso"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q4778"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/EMBAJADORES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Embajadores"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2449844"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ENTREVIAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Entrevías"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q71756"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ESTRELLA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Estrella"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773738"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/FONTARRON"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Fontarrón"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10283284"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/FUENTE%20DEL%20BERRO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Fuente del Berro"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3814564"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/FUENTELARREINA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Fuentelarreina"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10286156"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/GAZTAMBIDE"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Gaztambide"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10288587"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/GOYA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Goya"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3814578"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/HISPANOAMERICA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Hispanoamérica"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3814573"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/IBIZA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Ibiza"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q15249910"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/IMPERIAL"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Imperial"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773740"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LOS%20JERONIMOS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Jerónimos"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10306766"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/JUSTICIA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Justicia"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1992319"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/CHOPERA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "La Chopera"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773750"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/GUINDALERA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "La Guindalera"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3814559"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LA%20PAZ"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "La Paz"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q5869740"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ACACIAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Las Acacias"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3319190"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/DELICIAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Las Delicias"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773736"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LAS%20AGUILAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Las Águilas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q5971372"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LISTA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Lista"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q4779"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LOS%20ROSALES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Los Rosales"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10319807"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LOS%20ANGELES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Los Ángeles"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q390462"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/LUCERO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Lucero"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q31162"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/MARROQUINA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Marroquina"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11935636"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/MEDIA%20LEGUA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Media Legua"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q9031035"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/MIRASIERRA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Mirasierra"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q31134"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/MOSCARDO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Moscardó"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11937679"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/NINO%20JESUS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Niño Jesús"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773746"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/NUEVA%20ESPANA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Nueva España"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10338128"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/OPANEL"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Opañel"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3813756"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PACIFICO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Pacífico"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3773753"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PALACIO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Palacio"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2136510"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PALOMERAS%20BAJAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Palomeras Bajas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10343902"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PALOS%20DE%20MOGUER"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Palos de la Frontera"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q521009"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PENA%20GRANDE"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Peñagrande"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3319582"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PINAR%20DEL%20REY"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Pinar del Rey"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10349788"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PRADOLONGO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Pradolongo"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10352360"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PROSPERIDAD"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Prosperidad"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q4776"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PUEBLO%20NUEVO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Pueblo Nuevo"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q71753"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/PUERTA%20DEL%20ANGEL"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Puerta del Ángel"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q31142"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/QUINTANA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Quintana"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q71810"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/RECOLETOS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Recoletos"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3814551"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/ROSAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Rosas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q18880469"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/RIOS%20ROSAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Ríos Rosas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10366270"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/EL%20SALVADOR"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Salvador"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10367095"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SAN%20DIEGO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "San Diego"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q11946851"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SAN%20ISIDRO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "San Isidro"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3813733"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SAN%20JUAN%20BAUTISTA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "San Juan Bautista"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q165609"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SAN%20PASCUAL"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "San Pascual"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q165612"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SANTA%20EUGENIA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Santa Eugenia"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q390463"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SIMANCAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Simancas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10371626"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/SOL"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Sol"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2465181"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/TRAFALGAR"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Trafalgar"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10384027"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/UNIVERSIDAD"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Universidad"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10387767"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VALDEACEDERAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Valdeacederas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10388711"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VALDEFUENTES"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Valdefuentes"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10388714"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VALDEZARZA"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Valdezarza"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10388728"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VALLEHERMOSO"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Vallehermoso"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q6122685"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VALVERDE"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Valverde"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q31132"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VENTAS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Ventas"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q71762"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VILLAVERDE%20ALTO%20C.H."
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Villaverde Alto, Casco Histórico de Villaverde"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q390435"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VINATEROS"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Vinateros"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q10391533"
+        }
+      },
+      {
+        "neighbourhood" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/neighbourhood/VISTA%20ALEGRE"
+        },
+        "neighbourhoodName" : {
+          "type" : "literal",
+          "value" : "Vista Alegre"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q3813741"
+        }
+      }
+    ]
+  }
+}
