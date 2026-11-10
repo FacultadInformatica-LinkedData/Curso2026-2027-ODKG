@@ -9,13 +9,16 @@
 @base           <http://smartcity.chicago.es/mappings/facilities-with-links#> .
 
 #################################################################
-# Chicago Park District Facilities
+# Chicago Park District Facilities (fixed version of mappings/facilities-with-links.rml)
 # Source: csv/CPD_Facilities_20261001-with-links.csv
 #
-# Individuals (see analysis.html, section 3.2):
-#   Park        http://smartcity.chicago.es/resource/ChicagoPark/{PARK_NO}
+# Individuals (see analysis.html, section 3.2). Every identifier is a readable
+# slug built from names in OpenRefine (fixed_json/CPD_Facilities_20261001-with-links.json):
+#   Park        http://smartcity.chicago.es/resource/ChicagoPark/{PARK_ID}
 #   Facility    http://smartcity.chicago.es/resource/Facility/{FACILITY_ID}
 #   Coordinates http://smartcity.chicago.es/resource/GeoCoordinates/Facility_{FACILITY_ID}
+#   e.g. ChicagoPark/Hamilton_Alexander, Facility/Hamilton_Alexander_Cultural_Center,
+#        GeoCoordinates/Facility_Hamilton_Alexander_Cultural_Center
 #
 # Links to other datasets (Hands-on 5):
 #   Park   owl:sameAs Wikidata item (WIKIDATA_PARK_URI)
@@ -28,7 +31,7 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "http://smartcity.chicago.es/resource/ChicagoPark/{PARK_NO}" ;
+    rr:template "http://smartcity.chicago.es/resource/ChicagoPark/{PARK_ID}" ;
     rr:class pe:ChicagoPark
   ] ;
 

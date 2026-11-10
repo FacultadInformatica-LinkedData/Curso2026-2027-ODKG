@@ -9,15 +9,18 @@
 @base           <http://smartcity.chicago.es/mappings/park-art-with-links#> .
 
 #################################################################
-# Chicago Park District Park Art
+# Chicago Park District Park Art (fixed version of mappings/park-art-with-links.rml)
 # Source: csv/CPD_Park_Art_20261001-with-links.csv
 #
-# Individuals (see analysis.html, section 3.2):
-#   Park        http://smartcity.chicago.es/resource/ChicagoPark/{PARK_NO}
+# Individuals (see analysis.html, section 3.2). Every identifier is a readable
+# slug built from names in OpenRefine (fixed_json/CPD_Park_Art_20261001-with-links.json):
+#   Park        http://smartcity.chicago.es/resource/ChicagoPark/{PARK_ID}
 #   Artwork     http://smartcity.chicago.es/resource/Artwork/{ARTWORK_ID}
 #   Coordinates http://smartcity.chicago.es/resource/GeoCoordinates/Artwork_{ARTWORK_ID}
 #   Artist      http://smartcity.chicago.es/resource/Artist/{ARTIST_ID}
 #   Owner       http://smartcity.chicago.es/resource/Owner/{OWNER_ID}
+#   e.g. ChicagoPark/Indian_Boundary, Artwork/Indian_Boundary_River_Suite,
+#        GeoCoordinates/Artwork_Indian_Boundary_River_Suite, Artist/Phil_Schuster
 #
 # Links to other datasets (Hands-on 5):
 #   Park   owl:sameAs Wikidata item (WIKIDATA_PARK_URI)
@@ -31,7 +34,7 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "http://smartcity.chicago.es/resource/ChicagoPark/{PARK_NO}" ;
+    rr:template "http://smartcity.chicago.es/resource/ChicagoPark/{PARK_ID}" ;
     rr:class pe:ChicagoPark
   ] ;
 

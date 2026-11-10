@@ -1,10 +1,3 @@
-# YARRRML mapping rules for csv/CPD_Facilities_20261001-with-links.csv (Hands-on 5)
-# Same rules as CPD_Facilities.yml, plus the links created by reconciliation in OpenRefine:
-#   Park   owl:sameAs Wikidata item (WIKIDATA_PARK_URI)
-# Empty link cells (not reconciled) produce no owl:sameAs triple.
-# `~iri` turns the full URI in the cell into an IRI (rml:reference + rr:IRI).
-# RML equivalent: facilities-with-links.rml
-
 prefixes:
   rr: http://www.w3.org/ns/r2rml#
   rml: http://semweb.mmlab.be/ns/rml#
@@ -42,11 +35,11 @@ mappings:
       - [schema:latitude, $(LATITUDE), xsd:decimal]
       - [schema:longitude, $(LONGITUDE), xsd:decimal]
 
-  # ---------- Park: one per PARK_NO (repeated rows collapse into one resource) ----------
+  # ---------- Park: one per PARK_ID (repeated rows collapse into one resource) ----------
   parkFromFacilities:
     sources:
       - [csv/CPD_Facilities_20261001-with-links.csv~csv]
-    s: http://smartcity.chicago.es/resource/ChicagoPark/$(PARK_NO)
+    s: http://smartcity.chicago.es/resource/ChicagoPark/$(PARK_ID)
     po:
       - [a, pe:ChicagoPark]
       - [rdfs:label, $(PARK_NAME), xsd:string]
