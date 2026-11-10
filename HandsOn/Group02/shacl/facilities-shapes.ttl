@@ -1,0 +1,88 @@
+@prefix : <http://weso.es/shapes/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ChicagoPark a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:in ( <http://smartcity.chicago.es/ontology/ParkExplorer#ChicagoPark> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#parkNumber> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#parkName> ],
+        [ a sh:PropertyShape ;
+            sh:minCount 1 ;
+            sh:node :Facility ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#hasFacility> ] ;
+    sh:targetClass <http://smartcity.chicago.es/ontology/ParkExplorer#ChicagoPark> .
+
+:Facility a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:in ( <http://smartcity.chicago.es/ontology/ParkExplorer#Facility> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#facilityName> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:integer ;
+            sh:maxCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#facilityGisObjectId> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#facilityType> ],
+        [ a sh:PropertyShape ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:node :GeoCoordinates ;
+            sh:path <http://schema.org/geo> ] ;
+    sh:targetClass <http://smartcity.chicago.es/ontology/ParkExplorer#Facility> .
+
+:GeoCoordinates a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:dataType xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://schema.org/longitude> ],
+        [ a sh:PropertyShape ;
+            sh:in ( <http://schema.org/GeoCoordinates> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://schema.org/latitude> ] ;
+    sh:targetClass <http://schema.org/GeoCoordinates> .
+
