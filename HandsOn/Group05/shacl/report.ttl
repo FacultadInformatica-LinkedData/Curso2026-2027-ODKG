@@ -1,0 +1,19 @@
+PREFIX aq:      <https://w3id.org/valencia-airquality/ontology/airquality#>
+PREFIX city:    <https://w3id.org/valencia-airquality/resource/City/>
+PREFIX dash:    <http://datashapes.org/dash#>
+PREFIX graphql: <http://datashapes.org/graphql#>
+PREFIX obs:     <https://w3id.org/valencia-airquality/resource/Observation/>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX prop:    <https://w3id.org/valencia-airquality/resource/ObservableProperty/>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX station: <https://w3id.org/valencia-airquality/resource/MonitoringStation/>
+PREFIX swa:     <http://topbraid.org/swa#>
+PREFIX tosh:    <http://topbraid.org/tosh#>
+PREFIX wd:      <http://www.wikidata.org/entity/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+[ rdf:type     sh:ValidationReport;
+  sh:conforms  true
+] .
