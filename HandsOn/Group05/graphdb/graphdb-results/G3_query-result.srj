@@ -1,0 +1,93 @@
+{
+  "head" : {
+    "vars" : [
+      "stationName",
+      "time",
+      "value"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Avda. Francia"
+        },
+        "time" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2020-01-01T00:00:00"
+        },
+        "value" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "83.0"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Molí del Sol"
+        },
+        "time" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2020-01-14T19:00:00"
+        },
+        "value" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "81.0"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Politécnico"
+        },
+        "time" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2020-01-15T09:00:00"
+        },
+        "value" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "74.0"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "time" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2020-01-15T22:00:00"
+        },
+        "value" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "74.0"
+        }
+      },
+      {
+        "stationName" : {
+          "type" : "literal",
+          "value" : "Valencia Centro"
+        },
+        "time" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2020-01-01T00:00:00"
+        },
+        "value" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "73.0"
+        }
+      }
+    ]
+  }
+}

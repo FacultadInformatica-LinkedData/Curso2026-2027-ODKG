@@ -1,0 +1,253 @@
+{
+  "head" : {
+    "vars" : [
+      "day",
+      "avgO3",
+      "maxO3"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-01"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "20"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "61.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-02"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "29.5"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "55.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-03"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "61"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "82.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-04"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "67.6"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "90.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-05"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "57"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "75.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-06"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "75.8"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "120.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-07"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "54.9"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "113.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-08"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "67.4"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "128.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-09"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "59.7"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "98.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-10"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "55.7"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "111.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-11"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "36.9"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "105.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-12"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "13.3"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "59.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-13"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "18.1"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "64.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-14"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "15.4"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "50.0"
+        }
+      },
+      {
+        "day" : {
+          "type" : "literal",
+          "value" : "2020-01-15"
+        },
+        "avgO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "16.8"
+        },
+        "maxO3" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "type" : "literal",
+          "value" : "67.0"
+        }
+      }
+    ]
+  }
+}

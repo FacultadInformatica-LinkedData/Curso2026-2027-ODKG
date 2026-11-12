@@ -1,0 +1,35 @@
+# GraphDB repository configuration for the Valencia air quality knowledge graph (Group 05).
+# OPTIONAL: the course slides create the repository with the default parameters, and the defaults
+# of GraphDB are already the ones we need (ruleset RDFS-Plus (Optimized), owl:sameAs disabled).
+# This file only documents the configuration; it can be used with Setup > Repositories >
+# Create new repository > GraphDB Repository > "Upload config file".
+#
+# owl:sameAs reasoning must stay disabled: the stations are linked with owl:sameAs to the GVA web
+# pages and the magnitudes to Wikidata; with sameAs reasoning the query results would be duplicated.
+
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rep:     <http://www.openrdf.org/config/repository#> .
+@prefix sr:      <http://www.openrdf.org/config/repository/sail#> .
+@prefix sail:    <http://www.openrdf.org/config/sail#> .
+@prefix graphdb: <http://www.ontotext.com/config/graphdb#> .
+
+[] a rep:Repository ;
+    rep:repositoryID "valencia-airquality" ;
+    rdfs:label "Valencia hourly air quality 2016-2021 (ODKG Group 05)" ;
+    rep:repositoryImpl [
+        rep:repositoryType "graphdb:SailRepository" ;
+        sr:sailImpl [
+            sail:sailType "graphdb:Sail" ;
+            graphdb:ruleset "rdfsplus-optimized" ;
+            graphdb:disable-sameAs "true" ;
+            graphdb:check-for-inconsistencies "false" ;
+            graphdb:base-URL "https://w3id.org/valencia-airquality/resource/" ;
+            graphdb:enable-context-index "true" ;
+            graphdb:enablePredicateList "true" ;
+            graphdb:enable-literal-index "true" ;
+            graphdb:in-memory-literal-properties "true" ;
+            graphdb:query-timeout "0" ;
+            graphdb:query-limit-results "0" ;
+            graphdb:read-only "false"
+        ]
+    ] .

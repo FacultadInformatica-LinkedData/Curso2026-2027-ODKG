@@ -321470,7 +321470,8 @@ obs:Viveros_20200115T2300_WindSpeed a aq:Observation ;
     aq:resultValue 1.0 .
 
 city:Valencia a aq:City ;
-    rdfs:label "Valencia" .
+    rdfs:label "Valencia" ;
+    owl:sameAs wd:Q8818 .
 
 prop:NH3 a aq:ObservableProperty ;
     rdfs:label "Ammonia (NH3)" ;
