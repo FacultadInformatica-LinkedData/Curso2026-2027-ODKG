@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import map_box, rating %}
+{% from "_macros.html" import map_box %}
 {% block title %}{{ route_title }}{% endblock %}
 {% block content %}
 <section class="page-head">
@@ -47,7 +47,6 @@
             👁 {{ stop.candidate.dwell }} min visit ·
             arrive at +{{ stop.arrive_min|round|int }} min
           </p>
-          <p>{{ rating(stop.candidate.aggregate) }}</p>
           <p class="reasons">{% for r in stop.candidate.reasons %}<span class="tag">{{ r }}</span>{% endfor %}</p>
         </div>
       </li>
@@ -64,7 +63,7 @@
   <h2>Recommended facilities nearby <span class="muted">({{ form.interests|join(", ") }})</span></h2>
   {% if recommendations %}
   <table class="table">
-    <thead><tr><th>#</th><th>Facility</th><th>Park</th><th>Distance</th><th>Rating</th><th>Why</th></tr></thead>
+    <thead><tr><th>#</th><th>Facility</th><th>Park</th><th>Distance</th><th>Why</th></tr></thead>
     <tbody>
     {% for rec in recommendations %}
       <tr>
@@ -72,7 +71,6 @@
         <td><a href="{{ rec.place.url }}">{{ rec.place.name }}</a>{% if rec.group.facilities|length > 1 %} <span class="muted">×{{ rec.group.facilities|length }}</span>{% endif %}</td>
         <td><a href="{{ rec.group.park.url }}">{{ rec.group.park.name }}</a></td>
         <td>{{ '%.1f'|format(rec.distance_km) }} km</td>
-        <td>{{ rating(rec.aggregate) }}</td>
         <td class="reasons">{% for r in rec.reasons %}<span class="tag">{{ r }}</span>{% endfor %}</td>
       </tr>
     {% endfor %}
@@ -81,7 +79,7 @@
   {% else %}
     <p class="muted">No facility matches {{ form.interests|join(", ") }} nearby{% if form.interests == ["Sculpture"] %}: sculpture is about artworks, which are in the route above{% endif %}.</p>
   {% endif %}
-  <p class="hint">Ranking: interest match, minus distance, plus visitor ratings and tags.
+  <p class="hint">Ranking: interest match, minus distance.
      <a href="{{ url_for('main.about') }}#scoring">How the scoring works</a>.</p>
 </section>
 {% endblock %}

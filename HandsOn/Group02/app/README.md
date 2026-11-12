@@ -15,8 +15,7 @@ Spec: [`../requirements/applicationRequirements.html`](../requirements/applicati
 | FR-02 Facility recommendation | `recommend_facilities()` in `recommender.py`; table at the bottom of `/explore`. |
 | FR-03 Art itinerary | `build_itinerary()` in `recommender.py` (greedy value-per-minute + 2-opt); never exceeds the budget. |
 | FR-04 Interactive map | Leaflet + OpenStreetMap (`static/js/maps.js`): numbered route, start, recommended facilities; `★ Save route` stores the route in the browser (localStorage) and lists it on `/`. `/map` loads places for the visible area only (`/api/places?bbox=`). |
-| FR-05 Reviews, ratings, tags, photos | Form on every facility/artwork page (`templates/place.html`); stored by `reviews.py` in SQLite (`data/reviews.db`), photos in `data/uploads/` (JPEG/PNG checked by content, ≤ 5 MB, random file names). |
-| FR-06 Reviews in the ranking | `review_boost()` in `recommender.py` (formula below). |
+| FR-05, FR-06 Reviews | Removed: the app has no reviews, ratings, tags or photos, and the ranking uses only the knowledge graph. |
 | Disclaimer | Footer of every page (`templates/base.html`), text from the requirements. |
 | Linked data | Resource pages mirror the URIs: `http://smartcity.chicago.es/resource/Artwork/X` → `/resource/Artwork/X`. Each page has a "Linked data" panel with its triples and a Turtle export (`?format=ttl`). Parks and artists with `owl:sameAs` show Wikidata facts and a Commons image (`wikidata.py`). |
 
@@ -26,8 +25,7 @@ Spec: [`../requirements/applicationRequirements.html`](../requirements/applicati
 Browser (Leaflet map, forms)
    │ HTTP
    ▼
-app.py (Flask) ──► recommender.py   ranking, route, review boost
-   │               reviews.py       SQLite + uploaded photos (app-generated data)
+app.py (Flask) ──► recommender.py   ranking, route
    │ SPARQL (queries.py)
    ▼
 kg.py ── rdflib in-memory graph (default) or any SPARQL endpoint (SPARQL_ENDPOINT)
@@ -42,8 +40,6 @@ wikidata.py ── https://query.wikidata.org/sparql, cached in wikidata_seed.js
 * **`catalog.py`**: at start-up, `ALL_PARKS`, `ALL_FACILITIES`, `ALL_ARTWORKS` and `ARTWORK_CREATORS`
   are run once and kept in memory. The route search compares every candidate with every other one,
   so this avoids running thousands of queries per request. Detail pages query the graph live.
-* **Reviews are kept out of the RDF** on purpose. They are app-generated, change constantly and are
-  not the City of Chicago's data. They are keyed by the resource URI, so they join the graph cleanly.
 
 | Query | Answers |
 |---|---|
@@ -60,12 +56,8 @@ wikidata.py ── https://query.wikidata.org/sparql, cached in wikidata_seed.js
 * **Interest match**: a facility scores 1 for each selected interest that its `pe:facilityName`
   serves (mapping in `INTEREST_FACILITIES`). Artworks have no type in the data, so they score 1.0 for
   Sculpture, 0.8 for Culture and 0.4 for Walking.
-* **Recommendation score (FR-02)** = match − 0.5 × distance_km + review boost. Candidates must be
+* **Recommendation score (FR-02)** = match − 0.5 × distance_km. Candidates must be
   within the search radius: half the budget spent walking, between 1 and 5 km.
-* **Review boost (FR-06)** = 0.6 × (avg − 3) × n/(n+2)
-  \+ 0.3 × (share of reviews carrying a tag that suits the interests)
-  − 0.3 × (share tagged *crowded*).
-  The n/(n+2) factor means one 5-star review counts for a third of its weight.
 * **Route (FR-03)**: walking at 5 km/h on streets 1.25× longer than straight lines; visits take 10 min
   (artwork) or 15 min (facility). Starting at the start point, the route repeatedly adds the candidate
   with the best `value / (walk + visit minutes)` that still fits the budget. 2-opt then shortens the
@@ -78,15 +70,14 @@ cd HandsOn/Group02/app
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
 python app.py          # http://127.0.0.1:5050
-pytest                 # 35 tests: counts from the graph, routing, reviews, pages
+pytest                 # 31 tests: counts from the graph, routing, pages
 ```
 
 Environment variables (all optional):
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `SECRET_KEY` | random per start | signs the flash messages; set it in production |
-| `DATA_DIR` | `app/data` | reviews database, uploaded photos, runtime Wikidata cache |
+| `DATA_DIR` | `app/data` | runtime Wikidata cache |
 | `RDF_DIR` | `../rdf` | where the `.nt` files are |
 | `SPARQL_ENDPOINT` | unset | query a GraphDB/Fuseki repository instead of loading the files |
 | `WIKIDATA_ENABLED` | `1` | `0` = use only the cached Wikidata answers |
@@ -119,13 +110,10 @@ Wikidata is slow. Re-run the script when the RDF links change.
    * **Virtualenv**: `/home/<username>/.virtualenvs/explorer`
    * **Static files**: URL `/static/` → directory `/home/<username>/Curso2026-2027-ODKG/HandsOn/Group02/app/static`
 6. **WSGI file.** Click the *WSGI configuration file* link and replace everything in it with the
-   following. To make a secret key, run `python3 -c "import secrets; print(secrets.token_hex(32))"`
-   in the console.
+   following.
    ```python
-   import os
    import sys
 
-   os.environ["SECRET_KEY"] = "paste-the-generated-key-here"
    path = "/home/<username>/Curso2026-2027-ODKG/HandsOn/Group02/app"
    if path not in sys.path:
        sys.path.insert(0, path)
@@ -142,8 +130,8 @@ Wikidata is slow. Re-run the script when the RDF links change.
 * Outbound HTTP is limited to an allowlist. `.wikidata.org` is on it, and the seed cache covers
   every linked entity anyway. The map tiles, Leaflet and Commons images load in the visitor's browser,
   so the allowlist does not apply to them.
-* Reviews and photos are stored under `app/data/`, which persists. It is git-ignored, so
-  `git pull` never touches it. The free disk quota is 512 MB.
+* The app writes only its runtime Wikidata cache, under `app/data/` (git-ignored, so `git pull`
+  never touches it). The free disk quota is 512 MB.
 * Free web apps are switched off after three months unless you log in and press
   *Run until 3 months from today* on the Web tab.
 

@@ -19,8 +19,7 @@
   <pre class="diagram">Browser (Leaflet map, forms)
    │  HTTP
    ▼
-Flask app (app.py) ──► recommender.py   FR-02 ranking, FR-03 route, FR-06 review boost
-   │                    reviews.py       FR-05 ratings, tags, photos (SQLite + uploads/)
+Flask app (app.py) ──► recommender.py   FR-02 ranking, FR-03 route
    │ SPARQL (queries.py)
    ▼
 kg.py ── rdflib in-memory graph   (or any SPARQL endpoint via SPARQL_ENDPOINT)
@@ -37,9 +36,6 @@ wikidata.py ── query.wikidata.org/sparql (cached in wikidata_seed.json + dat
     <li><strong>Distance.</strong> Recommendations lose 0.5 points per km. Walking time assumes {{ settings.walk_speed }} km/h and
         streets {{ settings.detour }}× longer than a straight line; each stop adds a visit of
         {{ settings.dwell.artwork }} min (artwork) or {{ settings.dwell.facility }} min (facility).</li>
-    <li><strong>Visitor feedback (FR-06).</strong> +0.6 × (average rating − 3) × n/(n+2), so a few reviews count less than many;
-        +0.3 × share of reviews with a tag that suits the interests (e.g. <em>family-friendly</em> for Family, <em>quiet</em> for Walking);
-        −0.3 × share tagged <em>crowded</em>.</li>
     <li><strong>Route (FR-03).</strong> Greedy: from the current point, add the stop with the best value per minute (walk + visit)
         that still fits the budget; then shorten the path with 2-opt and use the saved time for more stops. At most one stop
         per facility type, so a walk is not five basketball courts.</li>
@@ -68,7 +64,6 @@ wikidata.py ── query.wikidata.org/sparql (cached in wikidata_seed.json + dat
   <h2>Licensing</h2>
   <p>Park and art data: City of Chicago Data Portal, under its
      <a href="https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html">terms of use</a> (disclaimer in the footer).
-     Wikidata facts are CC0; images are shown from Wikimedia Commons under each file's own licence, linked from every image.
-     Reviews and photos are submitted by visitors and stored by this app only.</p>
+     Wikidata facts are CC0; images are shown from Wikimedia Commons under each file's own licence, linked from every image.</p>
 </section>
 {% endblock %}

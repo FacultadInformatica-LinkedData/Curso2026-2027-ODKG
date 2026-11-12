@@ -1,4 +1,4 @@
-# Runtime data: reviews database, uploaded photos, Wikidata answers fetched at runtime
+# Runtime data: Wikidata answers fetched at runtime
 data/
 __pycache__/
 .pytest_cache/

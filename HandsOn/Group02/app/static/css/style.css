@@ -68,17 +68,15 @@ main.wrap { padding-top: 24px; padding-bottom: 40px; }
 .flash { border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; }
 .flash p { margin: 2px 0; }
 .flash-error { background: #fde8e4; border: 1px solid #f5b7a8; color: #842029; }
-.flash-success { background: var(--accent); border: 1px solid #95d5b2; color: var(--primary); }
 
 .badge { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: #e9ecef; color: #495057; text-decoration: none; vertical-align: middle; }
 .badge-link { background: #e7f0fa; color: var(--blue); }
 .tag { display: inline-block; font-size: 0.78rem; background: var(--accent); color: var(--primary); border-radius: 999px; padding: 2px 9px; margin: 2px 4px 2px 0; }
-.tag-crowded { background: #fde8e4; color: #842029; }
 .reasons { margin: 4px 0 0; }
 
 /* Forms */
 label { display: block; font-weight: 600; font-size: 0.92rem; margin: 10px 0 4px; }
-input[type="text"], input[type="search"], input:not([type]), input[list], textarea, input[type="file"] {
+input[type="text"], input[type="search"], input:not([type]), input[list], textarea {
   width: 100%; padding: 9px 12px; border: 1px solid #ced4da; border-radius: 8px; font: inherit; background: #fff;
 }
 input[type="range"] { width: 100%; accent-color: var(--primary-light); }
@@ -96,15 +94,6 @@ legend { font-weight: 600; font-size: 0.92rem; padding: 0; }
 .chip input:checked + span { background: var(--primary-light); border-color: var(--primary-light); color: #fff; }
 .chip input:checked + span::after { content: " ✓"; }
 .chip input:focus-visible + span { outline: 2px solid var(--highlight); outline-offset: 2px; }
-
-.star-input { display: inline-flex; flex-direction: row-reverse; gap: 2px; }
-.star-input legend { width: 100%; }
-.star-input input { position: absolute; opacity: 0; }
-.star-input label { font-size: 2rem; color: #ced4da; cursor: pointer; margin: 0; line-height: 1; }
-.star-input label:hover, .star-input label:hover ~ label,
-.star-input input:checked ~ label { color: #f4a261; }
-.star-input input:focus-visible + label { outline: 2px solid var(--highlight); }
-.stars { color: #f4a261; letter-spacing: 1px; }
 
 .inline-search { display: flex; gap: 8px; }
 .inline-search input { min-width: 240px; }
@@ -157,13 +146,6 @@ legend { font-weight: 600; font-size: 0.92rem; padding: 0; }
 @media (max-width: 600px) { .facility-list, .art-list { columns: 1; } }
 
 /* Detail pages */
-.placeholder { background: #f1f3f5; border: 2px dashed var(--border); border-radius: 8px; text-align: center; padding: 50px 20px; }
-.photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
-.photos img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
-.review { border-top: 1px solid var(--border); padding: 10px 0; }
-.review:first-of-type { border-top: 0; }
-.review p { margin: 2px 0; }
-.review-photo { max-width: 220px; max-height: 160px; border-radius: 8px; margin-top: 6px; }
 .wikidata figure { margin: 0 0 10px; }
 .wikidata img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; }
 .wikidata figcaption { font-size: 0.75rem; color: var(--muted); }

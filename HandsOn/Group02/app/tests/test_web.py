@@ -1,5 +1,3 @@
-import io
-
 ARTWORK = "/resource/Artwork/Indian_Boundary_River_Suite"
 
 
@@ -52,6 +50,7 @@ def test_turtle_export(client):
     assert res.status_code == 200
     assert res.mimetype == "text/turtle"
     assert b"pe:artworkName" in res.data
+    assert b"artwork:Indian_Boundary_River_Suite" in res.data and b"schema:geo" in res.data
 
 
 def test_api_places(client):
@@ -62,35 +61,11 @@ def test_api_places(client):
     assert client.get("/api/places?bbox=oops").status_code == 400
 
 
-def test_submit_review_with_photo(client, services, png):
-    res = client.post(
-        ARTWORK + "/reviews",
-        data={"rating": "5", "comment": "Lovely", "tags": ["quiet", "historic"], "photo": (png, "x.png")},
-        content_type="multipart/form-data",
-    )
-    assert res.status_code == 302
+def test_no_reviews(client):
+    """Reviews were removed: no form on the page, no review routes."""
     page = client.get(ARTWORK)
-    assert b"Lovely" in page.data
-    agg = services.reviews.aggregate(["http://smartcity.chicago.es/resource" + ARTWORK[len("/resource"):]])
-    assert agg.count >= 1 and agg.tags["quiet"] >= 1
-    photo = services.reviews.for_resource("http://smartcity.chicago.es/resource" + ARTWORK[len("/resource"):])[0]["photo"]
-    assert client.get(f"/uploads/{photo}").status_code == 200
-
-
-def test_review_validation(client, services):
-    uri = "http://smartcity.chicago.es/resource" + ARTWORK[len("/resource"):]
-    before = services.reviews.aggregate([uri]).count
-    for data in (
-        {"rating": "9"},
-        {"rating": "4", "tags": ["evil"]},
-        {"rating": "4", "photo": (io.BytesIO(b"<script>alert(1)</script>"), "x.png")},
-    ):
-        res = client.post(ARTWORK + "/reviews", data=data, content_type="multipart/form-data")
-        assert res.status_code == 302
-    assert services.reviews.aggregate([uri]).count == before
-    assert client.post("/resource/ChicagoPark/Lincoln_Abraham/reviews", data={"rating": "5"}).status_code == 404
-
-
-def test_uploads_reject_bad_names(client):
-    assert client.get("/uploads/..%2Fapp.py").status_code == 404
-    assert client.get("/uploads/notes.txt").status_code == 404
+    assert page.status_code == 200
+    assert b"<form" not in page.data and b"review" not in page.data.lower()
+    for url in ("/reviews.nt", "/reviews.ttl", "/uploads/x.png"):
+        assert client.get(url).status_code == 404
+    assert client.post(ARTWORK + "/reviews", data={"rating": "5"}).status_code in (404, 405)

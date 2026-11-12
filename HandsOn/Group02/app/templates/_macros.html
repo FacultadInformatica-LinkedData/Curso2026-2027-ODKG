@@ -1,14 +1,3 @@
-{% macro rating(agg) -%}
-  {%- if agg and agg.count -%}
-    <span class="rating" title="{{ '%.1f'|format(agg.average) }} out of 5">
-      <span class="stars">{{ agg.average|stars }}</span>
-      {{ '%.1f'|format(agg.average) }} <span class="muted">({{ agg.count }} review{{ 's' if agg.count != 1 }})</span>
-    </span>
-  {%- else -%}
-    <span class="rating muted">No reviews yet</span>
-  {%- endif -%}
-{%- endmacro %}
-
 {% macro map_box(id, data, height="420px") -%}
   <div class="map" id="{{ id }}" data-map="{{ id }}-data" style="height: {{ height }}"></div>
   <script type="application/json" id="{{ id }}-data">{{ data|tojson }}</script>

@@ -9,15 +9,11 @@ import logging
 import math
 import os
 import re
-import secrets
 from dataclasses import dataclass
 from pathlib import Path
 
-from flask import (
-    Blueprint, Flask, Response, abort, current_app, flash, jsonify, redirect,
-    render_template, request, send_from_directory, url_for,
-)
-from rdflib import Namespace, URIRef
+from flask import Blueprint, Flask, Response, abort, current_app, jsonify, render_template, request
+from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import OWL, RDF, RDFS, XSD
 
 import queries as Q
@@ -27,15 +23,12 @@ from recommender import (
     DETOUR_FACTOR, DWELL_MINUTES, INTEREST_FACILITIES, INTERESTS, WALK_SPEED_KMH,
     build_itinerary, recommend_facilities, search_radius_km,
 )
-from reviews import MAX_COMMENT, TAGS, ReviewError, ReviewStore
 from wikidata import WikidataClient
 
 APP_DIR = Path(__file__).resolve().parent
 RDF_FILES = ("facilities-with-links-fixed.nt", "park-art-with-links-fixed.nt")
 KINDS = ("ChicagoPark", "Facility", "Artwork", "Artist", "Owner")
-REVIEWABLE = ("Facility", "Artwork")
 SLUG = re.compile(r"^[A-Za-z0-9_]{1,200}$")
-UPLOAD_NAME = re.compile(r"^[0-9a-f]{32}\.(jpg|png)$")
 CHICAGO_BBOX = (41.60, -87.95, 42.10, -87.50)  # south, west, north, east
 BUDGET_MIN, BUDGET_MAX, BUDGET_DEFAULT = 30, 180, 90
 MAX_API_PLACES = 500
@@ -60,6 +53,17 @@ PREFIXES = {
     "wd": "http://www.wikidata.org/entity/",
 }
 
+# Turtle exports: one prefix per class, because a prefixed name cannot contain "/".
+TURTLE_PREFIXES = {
+    "pe": PE, "schema": "http://schema.org/", "rdf": str(RDF), "rdfs": str(RDFS),
+    "owl": str(OWL), "xsd": str(XSD), "wd": "http://www.wikidata.org/entity/",
+    **{name.lower(): f"{RESOURCE_BASE}{name}/" for name in (
+        "ChicagoPark", "Facility", "Artwork", "Artist", "Owner", "GeoCoordinates",
+    )},
+}
+TURTLE_PREFIXES["park"] = TURTLE_PREFIXES.pop("chicagopark")
+TURTLE_PREFIXES["geo"] = TURTLE_PREFIXES.pop("geocoordinates")
+
 log = logging.getLogger("explorer")
 bp = Blueprint("main", __name__)
 
@@ -68,7 +72,6 @@ bp = Blueprint("main", __name__)
 class Services:
     kg: KnowledgeGraph
     catalog: Catalog
-    reviews: ReviewStore
     wikidata: WikidataClient
     stats: dict
 
@@ -81,17 +84,13 @@ def create_app(overrides: dict | None = None) -> Flask:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     app = Flask(__name__)
     app.config.from_mapping(
-        SECRET_KEY=os.environ.get("SECRET_KEY") or secrets.token_hex(32),
         RDF_DIR=os.environ.get("RDF_DIR", str(APP_DIR.parent / "rdf")),
         SPARQL_ENDPOINT=os.environ.get("SPARQL_ENDPOINT") or None,
         DATA_DIR=os.environ.get("DATA_DIR", str(APP_DIR / "data")),
         WIKIDATA_ENABLED=os.environ.get("WIKIDATA_ENABLED", "1") != "0",
-        MAX_CONTENT_LENGTH=6 * 1024 * 1024,  # 5 MB photo + form fields
     )
     if overrides:
         app.config.update(overrides)
-    if not os.environ.get("SECRET_KEY") and not app.testing:
-        log.warning("SECRET_KEY is not set; flash messages reset whenever the app restarts.")
 
     data_dir = Path(app.config["DATA_DIR"])
     data_dir.mkdir(parents=True, exist_ok=True)
@@ -112,7 +111,6 @@ def create_app(overrides: dict | None = None) -> Flask:
     app.extensions["explorer"] = Services(
         kg=kg,
         catalog=catalog,
-        reviews=ReviewStore(data_dir / "reviews.db", data_dir / "uploads"),
         wikidata=WikidataClient(
             data_dir / "wikidata_cache.json",
             seed_path=APP_DIR / "wikidata_seed.json",
@@ -121,7 +119,7 @@ def create_app(overrides: dict | None = None) -> Flask:
         stats=stats,
     )
     app.register_blueprint(bp)
-    app.jinja_env.filters.update(curie=curie, local=lambda uri: local_path(uri) or uri, pretty=pretty_name, stars=stars)
+    app.jinja_env.filters.update(curie=curie, local=lambda uri: local_path(uri) or uri, pretty=pretty_name)
 
     @app.context_processor
     def inject_globals():
@@ -130,12 +128,6 @@ def create_app(overrides: dict | None = None) -> Flask:
     @app.errorhandler(404)
     def not_found(_):
         return render_template("error.html", code=404, message="We could not find that page or resource."), 404
-
-    @app.errorhandler(413)
-    def too_large(_):
-        flash("That upload is too large: photos can be at most 5 MB.", "error")
-        target = request.path.rsplit("/reviews", 1)[0]
-        return redirect(target + "#review-form" if target.startswith("/resource/") else url_for("main.index"))
 
     return app
 
@@ -150,9 +142,13 @@ def curie(uri) -> str:
     return text
 
 
-def stars(average: float) -> str:
-    full = int(round(average))
-    return "★" * full + "☆" * (5 - full)
+def turtle_response(triples) -> Response:
+    graph = Graph(bind_namespaces="none")
+    for prefix, ns in TURTLE_PREFIXES.items():
+        graph.bind(prefix, Namespace(ns))
+    for triple in triples:
+        graph.add(triple)
+    return Response(graph.serialize(format="turtle"), mimetype="text/turtle")
 
 
 def resource_uri(kind: str, slug: str) -> URIRef:
@@ -273,9 +269,8 @@ def explore():
         return render_template("index.html", form=form, errors=errors, **_search_context(s)), 400
 
     start, interests, budget = form["start"], form["interests"], form["budget"]
-    aggregates = s.reviews.all_aggregates()
-    itinerary = build_itinerary(s.catalog, start, interests, budget, aggregates)
-    recommendations = recommend_facilities(s.catalog, start, interests, budget, aggregates)
+    itinerary = build_itinerary(s.catalog, start, interests, budget)
+    recommendations = recommend_facilities(s.catalog, start, interests, budget)
 
     markers = [
         marker(stop.place, number=stop.order, sub=s.catalog.park_of(stop.place).name)
@@ -348,15 +343,6 @@ def about():
     )
 
 
-@bp.get("/uploads/<name>")
-def upload(name: str):
-    if not UPLOAD_NAME.match(name):
-        abort(404)
-    response = send_from_directory(svc().reviews.upload_dir, name, max_age=86400)
-    response.headers["X-Content-Type-Options"] = "nosniff"
-    return response
-
-
 # --- resource pages (one per class of the ontology) ------------------------
 
 @bp.get("/resource/<kind>/<slug>")
@@ -366,9 +352,7 @@ def resource(kind: str, slug: str):
         graph = svc().kg.describe(uri)
         if len(graph) == 0:
             abort(404)
-        for prefix, ns in PREFIXES.items():
-            graph.bind(prefix, Namespace(ns), override=True)
-        return Response(graph.serialize(format="turtle"), mimetype="text/turtle")
+        return turtle_response(graph)
     return {
         "ChicagoPark": park_page,
         "Facility": place_page,
@@ -430,7 +414,6 @@ def place_page(kind: str, uri: URIRef):
     siblings = []
     if kind == "Facility" and place:
         siblings = [f for f in s.catalog.park_of(place).facilities if f.raw_name == place.raw_name and f.uri != place.uri]
-    reviews = s.reviews.for_resource(str(uri))
     name = pretty_name(detail["name"])
     return render_template(
         "place.html",
@@ -442,11 +425,6 @@ def place_page(kind: str, uri: URIRef):
         owners=owners,
         siblings=siblings,
         park_wikidata=s.wikidata.entity(detail["parkWikidata"]),
-        reviews=reviews,
-        photos=[r["photo"] for r in reviews if r["photo"]],
-        aggregate=s.reviews.aggregate([str(uri)]),
-        tags=TAGS,
-        max_comment=MAX_COMMENT,
         map_data={"markers": [{"lat": detail["lat"], "lon": detail["lon"], "name": name, "url": None, "kind": kind.lower()}]},
         linked=linked_data(uri),
     )
@@ -476,31 +454,6 @@ def agent_page(kind: str, uri: URIRef):
         map_data={"markers": markers},
         linked=linked_data(uri),
     )
-
-
-@bp.post("/resource/<kind>/<slug>/reviews")
-def add_review(kind: str, slug: str):
-    if kind not in REVIEWABLE:
-        abort(404)
-    uri = resource_uri(kind, slug)
-    s = svc()
-    if s.catalog.place(str(uri)) is None:
-        abort(404)
-    page = url_for("main.resource", kind=kind, slug=slug)
-    photo = request.files.get("photo")
-    try:
-        s.reviews.add(
-            str(uri),
-            request.form.get("rating"),
-            request.form.get("comment", ""),
-            request.form.getlist("tags"),
-            photo.stream if photo and photo.filename else None,
-        )
-    except ReviewError as exc:
-        flash(str(exc), "error")
-        return redirect(page + "#review-form")
-    flash("Thanks! Your review was saved and now counts towards recommendations.", "success")
-    return redirect(page + "#reviews")
 
 
 if __name__ == "__main__":

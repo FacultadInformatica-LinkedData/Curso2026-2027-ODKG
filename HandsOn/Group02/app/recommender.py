@@ -1,4 +1,4 @@
-"""Recommendation (FR-02, FR-06) and itinerary building (FR-03).
+"""Recommendation (FR-02) and itinerary building (FR-03).
 
 Every tunable number is a constant at the top of this file and is documented
 in README.md.
@@ -9,7 +9,6 @@ import math
 from dataclasses import dataclass, field
 
 from catalog import Catalog, FacilityGroup, Place
-from reviews import Aggregate, TAGS
 
 INTERESTS = ("Sculpture", "Sports", "Family", "Walking", "Culture")
 
@@ -42,27 +41,12 @@ INTEREST_FACILITIES: dict[str, set[str]] = {
 # Artworks are not typed in the source data, so they match these interests.
 ARTWORK_INTEREST_WEIGHT = {"Sculpture": 1.0, "Culture": 0.8, "Walking": 0.4}
 
-# FR-06: what a tag says about an interest (+) and tags that count against a place (-).
-TAG_INTERESTS: dict[str, set[str]] = {
-    "family-friendly": {"Family"},
-    "quiet": {"Walking", "Sculpture", "Culture"},
-    "historic": {"Sculpture", "Culture"},
-    "well-maintained": set(INTERESTS),
-    "accessible": set(INTERESTS),
-}
-NEGATIVE_TAGS = {"crowded": 0.3}
-RATING_WEIGHT = 0.6      # per star above / below 3
-TAG_WEIGHT = 0.3         # if every review carries the tag
-CONFIDENCE_PRIOR = 2     # n / (n + prior): 1 review counts 1/3, 4 reviews 2/3
-
 # Routing
 WALK_SPEED_KMH = 5.0
 DETOUR_FACTOR = 1.25     # streets are longer than straight lines
 DWELL_MINUTES = {"artwork": 10, "facility": 15}
 DISTANCE_PENALTY = 0.5   # recommendation score lost per km
 MIN_RADIUS_KM, MAX_RADIUS_KM = 1.0, 5.0
-
-assert set(TAG_INTERESTS) | set(NEGATIVE_TAGS) == set(TAGS)
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -91,24 +75,6 @@ def interest_match(place: Place, interests: list[str]) -> tuple[float, list[str]
     return float(len(matched)), matched
 
 
-def review_boost(agg: Aggregate | None, interests: list[str]) -> tuple[float, list[str]]:
-    """FR-06: aggregated ratings and tags as a secondary ranking signal."""
-    if agg is None or agg.count == 0:
-        return 0.0, []
-    confidence = agg.count / (agg.count + CONFIDENCE_PRIOR)
-    boost = RATING_WEIGHT * (agg.average - 3) * confidence
-    reasons = [f"★ {agg.average:.1f} ({agg.count} review{'s' if agg.count != 1 else ''})"]
-    for tag, n in agg.tags.items():
-        share = n / agg.count
-        if tag in NEGATIVE_TAGS:
-            boost -= NEGATIVE_TAGS[tag] * share
-            reasons.append(f"tagged {tag}")
-        elif TAG_INTERESTS.get(tag, set()) & set(interests):
-            boost += TAG_WEIGHT * share
-            reasons.append(f"tagged {tag}")
-    return boost, reasons
-
-
 @dataclass
 class Recommendation:
     group: FacilityGroup
@@ -116,7 +82,6 @@ class Recommendation:
     score: float
     matched: list[str]
     reasons: list[str]
-    aggregate: Aggregate
 
     @property
     def place(self) -> Place:
@@ -127,16 +92,11 @@ class Recommendation:
         return walk_minutes(self.distance_km)
 
 
-def _group_aggregate(group_uris: list[str], aggregates: dict[str, Aggregate]) -> Aggregate:
-    return Aggregate.merge(aggregates[u] for u in group_uris if u in aggregates)
-
-
 def recommend_facilities(
     catalog: Catalog,
     start: tuple[float, float],
     interests: list[str],
     budget_min: int,
-    aggregates: dict[str, Aggregate],
     limit: int = 10,
 ) -> list[Recommendation]:
     """FR-02: facilities near the start that match the interests, best first."""
@@ -150,13 +110,11 @@ def recommend_facilities(
         dist = haversine_km(start[0], start[1], rep.lat, rep.lon)
         if dist > radius:
             continue
-        agg = _group_aggregate(group.uris, aggregates)
-        boost, review_reasons = review_boost(agg, interests)
-        score = match - DISTANCE_PENALTY * dist + boost
+        score = match - DISTANCE_PENALTY * dist
         reasons = [f"matches {', '.join(matched)}", f"{dist:.1f} km away (~{walk_minutes(dist):.0f} min walk)"]
         if len(group.facilities) > 1:
             reasons.append(f"{len(group.facilities)} in this park")
-        results.append(Recommendation(group, dist, score, matched, reasons + review_reasons, agg))
+        results.append(Recommendation(group, dist, score, matched, reasons))
     results.sort(key=lambda r: (-r.score, r.distance_km))
     return results[:limit]
 
@@ -167,8 +125,6 @@ class Candidate:
     value: float
     matched: list[str]
     reasons: list[str]
-    aggregate: Aggregate
-    uris: list[str]  # reviews of every facility of a group count
 
     @property
     def dwell(self) -> int:
@@ -204,21 +160,18 @@ class Itinerary:
         return sum(s.leg_km for s in self.stops)
 
 
-def _candidates(catalog, start, interests, budget_min, aggregates) -> list[Candidate]:
+def _candidates(catalog, start, interests, budget_min) -> list[Candidate]:
     radius = search_radius_km(budget_min)
     found = []
-    sources: list[tuple[Place, list[str]]] = [(a, [a.uri]) for a in catalog.artworks.values()]
-    sources += [(g.representative, g.uris) for g in catalog.facility_groups]
-    for place, uris in sources:
+    sources: list[Place] = list(catalog.artworks.values())
+    sources += [g.representative for g in catalog.facility_groups]
+    for place in sources:
         match, matched = interest_match(place, interests)
         if match <= 0:
             continue
         if haversine_km(start[0], start[1], place.lat, place.lon) > radius:
             continue
-        agg = Aggregate.merge(aggregates[u] for u in uris if u in aggregates)
-        boost, review_reasons = review_boost(agg, interests)
-        value = max(0.1, match + boost)
-        found.append(Candidate(place, value, matched, [f"matches {', '.join(matched)}"] + review_reasons, agg, uris))
+        found.append(Candidate(place, match, matched, [f"matches {', '.join(matched)}"]))
     return found
 
 
@@ -285,10 +238,9 @@ def build_itinerary(
     start: tuple[float, float],
     interests: list[str],
     budget_min: int,
-    aggregates: dict[str, Aggregate],
 ) -> Itinerary:
     """FR-03: a walk from the start through the best stops that fits the time budget."""
-    pool = _candidates(catalog, start, interests, budget_min, aggregates)
+    pool = _candidates(catalog, start, interests, budget_min)
     route: list[Candidate] = []
     for _ in range(4):  # greedy fill, shorten, refill the time 2-opt saved
         grew = _extend(start, route, pool, budget_min)
