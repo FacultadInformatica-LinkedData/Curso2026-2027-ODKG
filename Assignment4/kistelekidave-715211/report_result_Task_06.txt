@@ -1,0 +1,28 @@
+TASK 6.1 OK
+TASK 6.2 OK
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#hasHomePage> <http://www.w3.org/2000/01/rdf-schema#label> "hasHomePage"^^<http://www.w3.org/2001/XMLSchema#string>
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#hasHomePage> <http://www.w3.org/2000/01/rdf-schema#domain> <http://oeg.fi.upm.es/def/people#FullProfessor>
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#affiliatedWith> <http://www.w3.org/2000/01/rdf-schema#label> "affiliatedWith"^^<http://www.w3.org/2001/XMLSchema#string>
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#affiliatedWith> <http://www.w3.org/2000/01/rdf-schema#range> <http://oeg.fi.upm.es/def/people#University>
+ERROR IN TASK 6.3
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#hasHomePage> <http://www.w3.org/2000/01/rdf-schema#label> "hasHomePage"^^<http://www.w3.org/2001/XMLSchema#string>
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#affiliatedWith> <http://www.w3.org/2000/01/rdf-schema#label> "affiliatedWith"^^<http://www.w3.org/2001/XMLSchema#string>
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#affiliatedWith> <http://www.w3.org/2000/01/rdf-schema#range> <http://oeg.fi.upm.es/def/people#University>
+ERROR IN TASK 6.3
+ERROR: Missing statement: <http://oeg.fi.upm.es/def/people#affiliatedWith> <http://www.w3.org/2000/01/rdf-schema#range> <http://oeg.fi.upm.es/def/people#University>
+ERROR IN TASK 6.3
+TASK 6.3 OK
+ERROR: Missing statement: <http://oeg.fi.upm.es/resource/person/Raul> <http://oeg.fi.upm.es/def/people#hasColleague> <http://oeg.fi.upm.es/resource/person/Juan>
+ERROR: Missing statement: <http://oeg.fi.upm.es/resource/person/Juan> <http://oeg.fi.upm.es/def/people#hasColleague> <http://oeg.fi.upm.es/resource/person/Sven>
+ERROR: Missing statement: <http://oeg.fi.upm.es/resource/person/Sven> <http://www.w3.org/2000/01/rdf-schema#label> "Sven"^^<http://www.w3.org/2001/XMLSchema#string>
+ERROR IN TASK 6.4
+ERROR: Missing statement: <http://oeg.fi.upm.es/resource/person/Raul> <http://oeg.fi.upm.es/def/people#hasColleague> <http://oeg.fi.upm.es/resource/person/Juan>
+ERROR: Missing statement: <http://oeg.fi.upm.es/resource/person/Juan> <http://oeg.fi.upm.es/def/people#hasColleague> <http://oeg.fi.upm.es/resource/person/Sven>
+ERROR IN TASK 6.4
+TASK 6.4 OK
+ERROR: Missing statement: <http://oeg.fi.upm.es/resource/person/Juan> <http://xmlns.com/foaf/0.1/familyName> "Cano de Benito"^^<http://www.w3.org/2001/XMLSchema#string>
+ERROR IN TASK 6.5
+TASK 6.5 OK
+TASK 6.6 OK
+TASK 6.6 OK
+TASK 6.7 OK

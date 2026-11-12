@@ -1,0 +1,23 @@
+TASK 7.1a OK
+TASK 7.1b OK
+TASK 7.2a OK
+TASK 7.2a OK
+TASK 7.2b OK
+ERROR: Missing result (rdflib.term.Literal('Juan'), rdflib.term.URIRef('http://oeg.fi.upm.es/def/people#AssistantProfessor')) (1 time(s))
+ERROR IN TASK 7.3
+ERROR: Missing result (rdflib.term.Literal('Juan'), rdflib.term.URIRef('http://oeg.fi.upm.es/def/people#AssistantProfessor')) (1 time(s))
+ERROR IN TASK 7.3
+ERROR: Missing result (rdflib.term.Literal('Juan'), rdflib.term.URIRef('http://oeg.fi.upm.es/def/people#AssistantProfessor')) (1 time(s))
+ERROR IN TASK 7.3
+TASK 7.3 OK
+TASK 7.3 OK
+TASK 7.2b OK
+TASK 7.2b OK
+TASK 7.3 OK
+ERROR: Missing result (rdflib.term.Literal('Asun'),) (1 time(s))
+ERROR: Missing result (rdflib.term.Literal('Juan'),) (1 time(s))
+ERROR: Missing result (rdflib.term.Literal('Oscar'),) (1 time(s))
+ERROR: Missing result (rdflib.term.Literal('Raul'),) (1 time(s))
+ERROR IN TASK 7.4
+TASK 7.4 OK
+TASK 7.4 OK
