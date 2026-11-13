@@ -1,0 +1,85 @@
+# Query 1
+PREFIX pe: <http://smartcity.chicago.es/ontology/ParkExplorer#>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?artworkName ?lat ?long
+WHERE {
+  # Looking up a specific park
+  <http://smartcity.chicago.es/resource/ChicagoPark/Indian_Boundary> pe:hasArtwork ?artwork .
+  
+  ?artwork pe:artworkName ?artworkName ;
+           schema:geo ?geo .
+           
+  ?geo schema:latitude ?lat ;
+       schema:longitude ?long .
+}
+
+
+
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
+# Query 2
+
+PREFIX pe: <http://smartcity.chicago.es/ontology/ParkExplorer#>
+
+SELECT DISTINCT ?parkName ?facilityName
+WHERE {
+  ?park a pe:ChicagoPark ;
+        pe:parkName ?parkName ;
+        pe:hasFacility ?facility .
+        
+  ?facility pe:facilityName ?facilityName .
+  
+  # Filters the facility names to find anything containing sports names
+  FILTER(REGEX(?facilityName, "tennis|basketball|baseball|golf|polo|skat", "i"))
+
+}
+ORDER BY ?parkName
+LIMIT 20
+
+
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
+#query 3
+
+PREFIX pe: <http://smartcity.chicago.es/ontology/ParkExplorer#>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?parkName ?facilityName
+WHERE {
+  <http://smartcity.chicago.es/resource/ChicagoPark/Indian_Boundary>
+        pe:parkName ?parkName ;
+        pe:hasFacility ?facility .
+        
+  ?facility pe:facilityName ?facilityName .
+  
+  # Filters the facility names to find anything containing sports names
+  FILTER(REGEX(?facilityName, "tennis|basketball|baseball|golf|polo|skat", "i"))
+
+}
+
+
+
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
+# Query 4
+
+PREFIX pe: <http://smartcity.chicago.es/ontology/ParkExplorer#>
+
+SELECT ?parkName (COUNT(DISTINCT ?facility) AS ?totalFacilities) (COUNT(DISTINCT ?artwork) AS ?totalArtworks)
+WHERE {
+  ?park a pe:ChicagoPark ;
+        pe:parkName ?parkName .
+        
+  OPTIONAL { ?park pe:hasFacility ?facility . }
+  OPTIONAL { ?park pe:hasArtwork ?artwork . }
+}
+GROUP BY ?parkName
+# Orders by the parks with the most art, then the most facilities
+ORDER BY DESC(?totalArtworks) DESC(?totalFacilities)
+LIMIT 15

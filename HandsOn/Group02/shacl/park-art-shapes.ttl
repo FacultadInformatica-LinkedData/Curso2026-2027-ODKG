@@ -1,0 +1,129 @@
+@prefix : <http://weso.es/shapes/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ChicagoPark a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:minCount 1 ;
+            sh:node :Artwork ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#hasArtwork> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#parkNumber> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#parkName> ],
+        [ a sh:PropertyShape ;
+            sh:in ( <http://smartcity.chicago.es/ontology/ParkExplorer#ChicagoPark> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ] ;
+    sh:targetClass <http://smartcity.chicago.es/ontology/ParkExplorer#ChicagoPark> .
+
+:Artist a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:in ( <http://smartcity.chicago.es/ontology/ParkExplorer#Artist> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#artistName> ] ;
+    sh:targetClass <http://smartcity.chicago.es/ontology/ParkExplorer#Artist> .
+
+:Artwork a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:node :GeoCoordinates ;
+            sh:path <http://schema.org/geo> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:integer ;
+            sh:maxCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#artworkGisObjectId> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#artworkName> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:in ( <http://smartcity.chicago.es/ontology/ParkExplorer#Artwork> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:node :Artist ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#madeBy> ],
+        [ a sh:PropertyShape ;
+            sh:node :Owner ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#owner> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#officialName> ] ;
+    sh:targetClass <http://smartcity.chicago.es/ontology/ParkExplorer#Artwork> .
+
+:GeoCoordinates a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:in ( <http://schema.org/GeoCoordinates> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://schema.org/latitude> ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://schema.org/longitude> ] ;
+    sh:targetClass <http://schema.org/GeoCoordinates> .
+
+:Owner a sh:NodeShape ;
+    sh:property [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path <http://smartcity.chicago.es/ontology/ParkExplorer#ownerName> ],
+        [ a sh:PropertyShape ;
+            sh:in ( <http://smartcity.chicago.es/ontology/ParkExplorer#Owner> ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdf:type ],
+        [ a sh:PropertyShape ;
+            sh:dataType xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass <http://smartcity.chicago.es/ontology/ParkExplorer#Owner> .
+

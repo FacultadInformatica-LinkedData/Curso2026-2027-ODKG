@@ -1,0 +1,69 @@
+{% macro map_box(id, data, height="420px") -%}
+  <div class="map" id="{{ id }}" data-map="{{ id }}-data" style="height: {{ height }}"></div>
+  <script type="application/json" id="{{ id }}-data">{{ data|tojson }}</script>
+{%- endmacro %}
+
+{% macro wikidata_card(wd, heading) -%}
+  {% if wd %}
+  <section class="card wikidata">
+    <h3>{{ heading }} <span class="badge badge-link">Wikidata {{ wd.qid }}</span></h3>
+    {% if wd.image %}
+      <figure>
+        <img src="{{ wd.image.thumb }}" alt="{{ wd.label or 'Image from Wikimedia Commons' }}" loading="lazy">
+        <figcaption>Image: <a href="{{ wd.image.page }}" rel="noopener">{{ wd.image.file }}</a>, Wikimedia Commons (see the file page for author and licence).</figcaption>
+      </figure>
+    {% endif %}
+    {% if wd.label %}<p class="wd-label">{{ wd.label }}</p>{% endif %}
+    {% if wd.description %}<p class="muted">{{ wd.description }}</p>{% endif %}
+    <dl class="facts">
+      {% if wd.birth %}<dt>Born</dt><dd>{{ wd.birth }}</dd>{% endif %}
+      {% if wd.death %}<dt>Died</dt><dd>{{ wd.death }}</dd>{% endif %}
+      {% if wd.citizenships %}<dt>Citizenship</dt><dd>{{ wd.citizenships|join(', ') }}</dd>{% endif %}
+      {% if wd.occupations %}<dt>Occupation</dt><dd>{{ wd.occupations|join(', ') }}</dd>{% endif %}
+      {% if wd.inception %}<dt>Established</dt><dd>{{ wd.inception[:4] }}</dd>{% endif %}
+      {% if wd.area %}<dt>Area</dt><dd>{{ wd.area }} (Wikidata unit, usually acres)</dd>{% endif %}
+      {% if wd.website %}<dt>Website</dt><dd><a href="{{ wd.website }}" rel="noopener">{{ wd.website|replace('https://', '')|truncate(48) }}</a></dd>{% endif %}
+    </dl>
+    <p class="links">
+      <a href="{{ wd.uri }}" rel="noopener">View on Wikidata ↗</a>
+      {% if wd.article %} · <a href="{{ wd.article }}" rel="noopener">Wikipedia ↗</a>{% endif %}
+    </p>
+  </section>
+  {% endif %}
+{%- endmacro %}
+
+{% macro linked_data_panel(linked) -%}
+  <details class="card linked">
+    <summary>Linked data: the RDF behind this page</summary>
+    <p>URI: <code>{{ linked.uri }}</code> ·
+       <a href="?format=ttl">Download as Turtle</a></p>
+    <table class="triples">
+      <thead><tr><th>Predicate</th><th>Object</th></tr></thead>
+      <tbody>
+      {% for t in linked.outgoing %}
+        <tr>
+          <td><code>{{ t.p|curie }}</code></td>
+          <td>
+            {% if t.o is string and t.o.startswith('http') %}
+              <a href="{{ t.o|local }}"><code>{{ t.o|curie }}</code></a>{% if t.oLabel %} <span class="muted">({{ t.oLabel }})</span>{% endif %}
+            {% else %}
+              “{{ t.o }}”
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% if linked.incoming %}
+      <h4>Pointing here</h4>
+      <table class="triples">
+        <thead><tr><th>Subject</th><th>Predicate</th></tr></thead>
+        <tbody>
+        {% for t in linked.incoming %}
+          <tr><td><a href="{{ t.s|local }}"><code>{{ t.s|curie }}</code></a>{% if t.sLabel %} <span class="muted">({{ t.sLabel }})</span>{% endif %}</td><td><code>{{ t.p|curie }}</code></td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </details>
+{%- endmacro %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Map{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1>Map of parks, facilities and art</h1>
+    <p class="muted" id="map-status">Loading…</p>
+  </div>
+  <div class="actions">
+    <label class="chip"><input type="checkbox" id="show-artworks" checked><span>Artworks</span></label>
+    <label class="chip"><input type="checkbox" id="show-facilities" checked><span>Facilities (zoom in)</span></label>
+  </div>
+</section>
+<div class="map map-full" id="explore-map" data-api="{{ url_for('main.api_places') }}"></div>
+<p class="legend"><span class="dot dot-artwork"></span> artwork <span class="dot dot-facility"></span> facility</p>
+{% endblock %}

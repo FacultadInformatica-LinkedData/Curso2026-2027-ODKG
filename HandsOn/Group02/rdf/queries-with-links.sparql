@@ -9,10 +9,13 @@ PREFIX owl:    <http://www.w3.org/2002/07/owl#>
 # Hands-on Assignment 5: Linking Data SPARQL Verification Queries
 # Group 02 - Chicago Park & Art Explorer
 #
-# These 6 queries verify the external links (owl:sameAs) established
+# Q1-Q6 verify the external links (owl:sameAs) established
 # to Wikidata for ChicagoPark and Artist entities, checking checklist
 # requirements, schema compliance, link consistency, and cross-dataset
-# traversals.
+# traversals. Q7, added in this fixed version, checks that every individual
+# URI is human-readable (hands-on evaluation).
+#
+# Graph: rdf/facilities-with-links.nt + rdf/park-art-with-links.nt
 # ===============================================================
 
 # ---------------------------------------------------------------
@@ -121,3 +124,24 @@ WHERE {
 }
 ORDER BY ?parkName ?artworkName
 
+# ---------------------------------------------------------------
+# Q7. Individual URIs that do not follow the resource naming strategy
+#     (analysis.html 3.2): every identifier is built from names, so it
+#     starts with a letter and is never a bare number
+#     (e.g. ChicagoPark/Indian_Boundary, Facility/Hamilton_Alexander_Cultural_Center)
+# Expected: no rows
+# ---------------------------------------------------------------
+SELECT ?class (COUNT(?s) AS ?nonConforming)
+WHERE {
+  VALUES (?class ?pattern) {
+    (pe:ChicagoPark        "^http://smartcity\\.chicago\\.es/resource/ChicagoPark/[A-Z][A-Za-z0-9_]*$")
+    (pe:Facility           "^http://smartcity\\.chicago\\.es/resource/Facility/[A-Z][A-Za-z0-9_]*$")
+    (pe:Artwork            "^http://smartcity\\.chicago\\.es/resource/Artwork/[A-Z][A-Za-z0-9_]*$")
+    (pe:Artist             "^http://smartcity\\.chicago\\.es/resource/Artist/[A-Za-z][A-Za-z0-9_]*$")
+    (pe:Owner              "^http://smartcity\\.chicago\\.es/resource/Owner/[A-Za-z][A-Za-z0-9_]*$")
+    (schema:GeoCoordinates "^http://smartcity\\.chicago\\.es/resource/GeoCoordinates/(Artwork|Facility)_[A-Z][A-Za-z0-9_]*$")
+  }
+  ?s rdf:type ?class .
+  FILTER (!REGEX(STR(?s), ?pattern))
+}
+GROUP BY ?class
