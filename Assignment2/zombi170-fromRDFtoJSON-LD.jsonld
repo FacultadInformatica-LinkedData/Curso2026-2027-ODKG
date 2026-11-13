@@ -1,6 +1,10 @@
 {
   "@context": {
-    "@vocab": "http://class01.gov/"
+    "@vocab": "http://class01.gov/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "atTime": {
+      "@type": "xsd:dateTime"
+    }
   },
   "@id": "Class01",
   "includes": [

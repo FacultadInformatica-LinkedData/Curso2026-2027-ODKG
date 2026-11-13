@@ -1,0 +1,13 @@
+@prefix ns: <http://data.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns:Class01 ns:includes ns:Sensor029, ns:Computer101 .
+
+ns:Sensor029 ns:hasMeasurement ns:Measurement8401 .
+
+ns:Computer101 ns:hasOwner ns:User10A .
+
+ns:Measurement8401 ns:hasTemperature 29 ;
+                   ns:atTime "2010-06-12T12:00:12"^^xsd:dateTime .
+
+ns:User10A ns:hasName "Pedro" .
