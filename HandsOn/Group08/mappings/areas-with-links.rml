@@ -13,18 +13,26 @@
 # one row per district (10) and one per neighbourhood (73). The columns WIKIDATA-DISTRICTE and
 # WIKIDATA-BARRI hold the QIDs found by reconciling NOM_DISTRICTE and NOM_BARRI in OpenRefine
 # (lodrefine/fonts-beure-2026-with-links.json); they become owl:sameAs links to Wikidata.
+#
+# URIs of the individuals (feedback on HO4): the identifier is a slug of the name, readable and meaningful,
+# never the numeric code of the source. slug = lower case, accents removed, the middle dot of "l·l" removed,
+# every other run of characters that are not letters or digits replaced by a hyphen
+# (e.g. "Sant Martí de Provençals" -> sant-marti-de-provencals, "l'Antiga Esquerra de l'Eixample" ->
+# l-antiga-esquerra-de-l-eixample). Every mapping computes the slug of a neighbourhood in the same way,
+# so the links between datasets keep pointing to the same URI.
 
 <#District> a rr:TriplesMap ;
   rml:logicalSource [
     rml:query """
-      SELECT DISTINCT CODI_DISTRICTE, NOM_DISTRICTE, "WIKIDATA-DISTRICTE" AS wikidata
+      SELECT DISTINCT NOM_DISTRICTE, "WIKIDATA-DISTRICTE" AS wikidata,
+             lower(trim(regexp_replace(strip_accents(replace(NOM_DISTRICTE, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS district_slug
       FROM read_csv('csv/fonts-beure-2026-with-links.csv', header = true, all_varchar = true)
     """ ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{CODI_DISTRICTE}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_slug}" ;
     rr:class hr:District
   ] ;
 
@@ -41,14 +49,16 @@
 <#Neighbourhood> a rr:TriplesMap ;
   rml:logicalSource [
     rml:query """
-      SELECT DISTINCT CODI_BARRI, NOM_BARRI, CODI_DISTRICTE, "WIKIDATA-BARRI" AS wikidata
+      SELECT DISTINCT NOM_BARRI, "WIKIDATA-BARRI" AS wikidata,
+             lower(trim(regexp_replace(strip_accents(replace(NOM_BARRI, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS neighbourhood_slug,
+             lower(trim(regexp_replace(strip_accents(replace(NOM_DISTRICTE, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS district_slug
       FROM read_csv('csv/fonts-beure-2026-with-links.csv', header = true, all_varchar = true)
     """ ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{CODI_BARRI}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_slug}" ;
     rr:class hr:Neighbourhood
   ] ;
 
@@ -64,5 +74,5 @@
 
   rr:predicateObjectMap [
     rr:predicate hr:isPartOfDistrict ;
-    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{CODI_DISTRICTE}" ]
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_slug}" ]
   ] .
