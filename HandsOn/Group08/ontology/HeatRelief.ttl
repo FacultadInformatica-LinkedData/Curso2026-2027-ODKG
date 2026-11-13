@@ -80,11 +80,11 @@ hr:TreeSpecies rdf:type owl:Class ;
 
 hr:Neighbourhood rdf:type owl:Class ;
     rdfs:label "Neighbourhood"@en ;
-    rdfs:comment "One of the 73 neighbourhoods (barris) of Barcelona, identified by its two-digit code. Neighbourhoods are linked to their Wikidata items."@en .
+    rdfs:comment "One of the 73 neighbourhoods (barris) of Barcelona. Neighbourhoods are linked to their Wikidata items."@en .
 
 hr:District rdf:type owl:Class ;
     rdfs:label "District"@en ;
-    rdfs:comment "One of the 10 districts of Barcelona, identified by its two-digit code. Districts are linked to their Wikidata items."@en .
+    rdfs:comment "One of the 10 districts of Barcelona. Districts are linked to their Wikidata items."@en .
 
 #################################################################
 #    Object properties
@@ -112,7 +112,7 @@ hr:isHostedBy rdf:type owl:ObjectProperty ;
     rdfs:domain hr:ClimateShelter ;
     rdfs:range hr:Facility ;
     rdfs:label "is hosted by"@en ;
-    rdfs:comment "Links a climate shelter to the place that hosts it, identified by its Wikidata item."@en .
+    rdfs:comment "Links a climate shelter to the place that hosts it. The place is linked to its Wikidata item with owl:sameAs."@en .
 
 hr:hasSpecies rdf:type owl:ObjectProperty ;
     rdfs:domain hr:StreetTree ;

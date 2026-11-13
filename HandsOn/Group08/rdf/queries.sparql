@@ -46,7 +46,7 @@ SELECT (COUNT(?fountain) AS ?namedAfterCode)
 WHERE {
   ?fountain a hr:DrinkingFountain ;
             rdfs:label ?label .
-  FILTER (STR(?label) = CONCAT("Font ", STRAFTER(STR(?fountain), "DrinkingFountain/")))
+  FILTER (REGEX(STR(?label), "^Font [0-9]{2}-[0-9]+$"))
 }
 
 # Q6. Climate shelters, drinking fountains and street trees with no neighbourhood.
