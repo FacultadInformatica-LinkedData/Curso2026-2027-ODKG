@@ -79,7 +79,6 @@
             font-weight: bold;
         }
         .badge-core { background: #d1e7dd; color: #0f5132; }
-        .badge-extra { background: #fff3cd; color: #664d03; }
 
         /* Mockup Wireframe Styling */
         .mockup-wrapper {
@@ -231,7 +230,7 @@
             The <strong>Personalized Chicago Park &amp; Art Explorer</strong> is a smart city web application designed to help Chicago residents and tourists discover public parks, outdoor facilities, and public artworks tailored to their geographic location, available time, and individual interests (e.g., sports, culture, family activities, sculpture walks).
         </p>
         <p>
-            By integrating open datasets from the Chicago Park District (Facilities and Artworks) with user-generated reviews, ratings, tags, and optional visitor photos, the system generates customized spatial recommendations and time-restricted art walking itineraries. 
+            By integrating open datasets from the Chicago Park District (Facilities and Artworks), the system generates customized spatial recommendations and time-restricted art walking itineraries.
         </p>
     </section>
 
@@ -271,23 +270,9 @@
                     <td>The system shall display park facilities, artworks, and generated routes on an interactive map with turn-by-turn itinerary waypoints.</td>
                     <td><span class="badge badge-core">Core</span></td>
                 </tr>
-                <tr>
-                    <td><strong>FR-05</strong></td>
-                    <td>Facility &amp; Artwork Feedback (Reviews, Ratings &amp; Photos)</td>
-                    <td>Users shall be able to submit star ratings (1–5), write text comments, assign qualitative tags (e.g., <i>family-friendly</i>, <i>well-maintained</i>, <i>crowded</i>), and optionally upload a photo with their review for a specific facility or artwork.</td>
-                    <td><span class="badge badge-extra">App-Generated</span></td>
-                </tr>
-                <tr>
-                    <td><strong>FR-06</strong></td>
-                    <td>Aggregated Review Filtering</td>
-                    <td>The recommendation algorithm shall utilize aggregated user ratings and tags as supplementary ranking criteria for personalized recommendations.</td>
-                    <td><span class="badge badge-extra">App-Generated</span></td>
-                </tr>
             </tbody>
         </table>
     </section>
-
-    
 
     <section>
         <h2>3. User Interface Mockups &amp; Descriptions</h2>
@@ -359,71 +344,19 @@
                         <div class="card">
                             <strong>Stop 1: Schiller Monument</strong>
                             <p style="font-size:0.85rem; margin:4px 0;">Lincoln Park • Bronze Sculpture • ~20 mins walk/view</p>
-                            <span class="badge badge-extra">★ 4.7 (12 reviews)</span>
                         </div>
                         <div class="card">
                             <strong>Stop 2: Standing Lincoln Statue</strong>
                             <p style="font-size:0.85rem; margin:4px 0;">Lincoln Park Plaza • Historic Artwork • ~30 mins</p>
-                            <span class="badge badge-extra">★ 4.9 (28 reviews)</span>
                         </div>
                         <div class="card">
                             <strong>Stop 3: South Pond Conservatory Garden</strong>
                             <p style="font-size:0.85rem; margin:4px 0;">Nature &amp; Public Art • ~35 mins walking</p>
-                            <span class="badge badge-extra">★ 4.8 (19 reviews)</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <p><strong>Description:</strong> Displays the calculated route on an interactive map alongside a step-by-step breakdown showing artworks, facilities, expected walking/viewing durations, and community ratings.</p>
-        </div>
-
-        <!-- Mockup 3 -->
-        <div class="mockup-wrapper">
-            <div class="mockup-header">
-                <span>Mockup 3: Facility / Artwork Detail &amp; User Review Interface</span>
-                <span class="badge badge-extra">App-Generated Data Feature</span>
-            </div>
-            <div class="mockup-frame">
-                <div class="mockup-nav">
-                    <strong>Artwork Detail: Schiller Monument</strong>
-                    <span>[ Back ]</span>
-                </div>
-                <div class="mockup-body grid-2col">
-                    <div>
-                        <div style="background:#e9ecef; height:180px; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#6c757d; text-align:center; padding:0 15px;">
-                            [ No official image available ]<br>
-                            <span style="font-size:0.8rem;">Photos are contributed by visitors through reviews.</span>
-                        </div>
-                        <h3>Schiller Monument</h3>
-                        <p><strong>Park:</strong> Lincoln Park | <strong>Artist:</strong> Ernst Rau</p>
-                        <p><strong>Tags:</strong> <span class="pill">Historic</span> <span class="pill">Well-Maintained</span> <span class="pill">Quiet</span></p>
-                    </div>
-                    <div>
-                        <div class="card" style="background:#f8f9fa;">
-                            <strong>User Rating &amp; Review Form</strong>
-                            <div class="form-group" style="margin-top:8px;">
-                                <label>Your Rating:</label>
-                                <span style="color:#f39c12; font-size:1.2rem;">★ ★ ★ ★ ★</span>
-                            </div>
-                            <div class="form-group">
-                                <label>Add Tags:</label>
-                                <input type="text" class="form-control" placeholder="e.g. family-friendly, accessible">
-                            </div>
-                            <div class="form-group">
-                                <label>Your Review:</label>
-                                <textarea class="form-control" rows="2" placeholder="Write your comments..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Add a Photo <span style="font-weight:normal; color:#6c757d;">(optional)</span>:</label>
-                                <input type="file" class="form-control" accept="image/*">
-                                <small style="color:#6c757d;">Share a photo of this park or artwork to help other visitors.</small>
-                            </div>
-                            <button class="btn" style="padding:6px 12px; font-size:0.85rem;">Submit Feedback</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p><strong>Description:</strong> Enables visitors to inspect artwork and facility details, view aggregated metadata, submit star ratings, post comments, apply qualitative tags used by the recommendation engine, and optionally contribute a photo with their review. Since the source datasets do not provide park or artwork images, displayed photos are user-generated rather than dataset-provided.</p>
+            <p><strong>Description:</strong> Displays the calculated route on an interactive map alongside a step-by-step breakdown showing artworks, facilities, and expected walking/viewing durations.</p>
         </div>
     </section>
 
