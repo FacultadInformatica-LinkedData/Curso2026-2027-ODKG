@@ -2,7 +2,7 @@
 
 The Group02 application for *Open Data and Knowledge Graphs* (UPM, 2026-27). It is a web app that
 plans walking routes through Chicago's public art and park facilities. All of its park, facility
-and artwork data comes from the knowledge graph built in the hands-on (`../rdf/*-with-links-fixed.nt`),
+and artwork data comes from the knowledge graph built in the hands-on (`../rdf/*-with-links.nt`),
 queried with SPARQL. The `owl:sameAs` links are followed to Wikidata.
 
 Spec: [`../requirements/applicationRequirements.html`](../requirements/applicationRequirements.html).

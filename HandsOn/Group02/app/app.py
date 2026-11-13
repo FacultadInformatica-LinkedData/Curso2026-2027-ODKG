@@ -26,7 +26,7 @@ from recommender import (
 from wikidata import WikidataClient
 
 APP_DIR = Path(__file__).resolve().parent
-RDF_FILES = ("facilities-with-links-fixed.nt", "park-art-with-links-fixed.nt")
+RDF_FILES = ("facilities-with-links.nt", "park-art-with-links.nt")
 KINDS = ("ChicagoPark", "Facility", "Artwork", "Artist", "Owner")
 SLUG = re.compile(r"^[A-Za-z0-9_]{1,200}$")
 CHICAGO_BBOX = (41.60, -87.95, 42.10, -87.50)  # south, west, north, east

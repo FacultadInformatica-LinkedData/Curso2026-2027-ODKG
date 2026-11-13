@@ -1,7 +1,7 @@
 """Every SPARQL query the application runs, in one place.
 
 The queries are written against the Group02 ontology (ontology/ontology.ttl)
-and the linked RDF in rdf/*-with-links-fixed.nt. Variables listed under
+and the linked RDF in rdf/*-with-links.nt. Variables listed under
 "binds" are filled in per request (rdflib initBindings locally, a VALUES
 clause on a remote endpoint), so user input never becomes query text.
 

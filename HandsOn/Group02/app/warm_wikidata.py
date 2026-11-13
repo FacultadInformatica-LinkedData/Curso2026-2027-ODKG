@@ -17,7 +17,7 @@ from kg import KnowledgeGraph
 from wikidata import WikidataClient, qid_of
 
 APP_DIR = Path(__file__).resolve().parent
-RDF_FILES = ("facilities-with-links-fixed.nt", "park-art-with-links-fixed.nt")
+RDF_FILES = ("facilities-with-links.nt", "park-art-with-links.nt")
 TARGETS = """
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 SELECT DISTINCT ?target WHERE { ?s owl:sameAs ?target }

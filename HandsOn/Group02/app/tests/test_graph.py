@@ -1,4 +1,4 @@
-"""The SPARQL layer returns what the RDF contains (counts from queries-with-links-fixed.sparql)."""
+"""The SPARQL layer returns what the RDF contains (counts from queries-with-links.sparql)."""
 import pytest
 from rdflib import Literal, URIRef
 
