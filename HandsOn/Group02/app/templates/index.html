@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_macros.html" import map_box %}
+{% block title %}Plan a walk{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Discover Chicago's parks and public art</h1>
+  <p>Tell us where you start, how much time you have and what you like. We build a walking route through
+     public artworks and park facilities, using the Chicago Park District open data as a knowledge graph.</p>
+  <ul class="stat-chips">
+    <li><strong>{{ counts.parks }}</strong> parks</li>
+    <li><strong>{{ counts.facilities }}</strong> facilities</li>
+    <li><strong>{{ counts.artworks }}</strong> artworks</li>
+    <li><strong>{{ counts.linked_parks }}</strong> parks linked to Wikidata</li>
+  </ul>
+</section>
+
+{% if errors %}
+  <div class="flash flash-error" role="alert">
+    {% for e in errors %}<p>{{ e }}</p>{% endfor %}
+  </div>
+{% endif %}
+
+<form class="card search" action="{{ url_for('main.explore') }}" method="get" id="search-form">
+  <div class="grid-2">
+    <div>
+      <h2>1. Where do you start?</h2>
+      <label for="park">Park or neighbourhood park</label>
+      <input id="park" name="park" list="park-list" value="{{ form.park }}" placeholder="e.g. Lincoln (Abraham)" autocomplete="off">
+      <datalist id="park-list">
+        {% for p in parks %}<option value="{{ p.name }}">{% endfor %}
+      </datalist>
+      <input type="hidden" name="lat" id="lat" value="{{ form.lat }}">
+      <input type="hidden" name="lon" id="lon" value="{{ form.lon }}">
+      <p class="hint">
+        <button type="button" class="btn btn-ghost" id="locate">📍 Use my location</button>
+        or click the map to drop a start point.
+      </p>
+      <p class="hint" id="start-point" hidden>
+        Starting from <strong id="start-point-text"></strong>
+        <button type="button" class="link-button" id="clear-start">clear</button>
+      </p>
+
+      <h2>2. How much time do you have?</h2>
+      <label for="budget">Available time: <output id="budget-out" for="budget">{{ form.budget }}</output> minutes</label>
+      <input type="range" id="budget" name="budget" min="{{ budget_range[0] }}" max="{{ budget_range[1] }}" step="15" value="{{ form.budget }}">
+
+      <h2>3. What do you like?</h2>
+      <div class="chips">
+        {% set icons = {"Sculpture": "🗿", "Sports": "🏀", "Family": "🧒", "Walking": "🚶", "Culture": "🎭"} %}
+        {% for i in interests %}
+          <label class="chip">
+            <input type="checkbox" name="interests" value="{{ i }}" {% if i in form.interests %}checked{% endif %}>
+            <span>{{ icons[i] }} {{ i }}</span>
+          </label>
+        {% endfor %}
+      </div>
+
+      <button class="btn btn-primary btn-big" type="submit">🔍 Generate Explorer Itinerary</button>
+      <p class="hint">Example: <a href="{{ url_for('main.explore', park='Lincoln (Abraham)', budget=90, interests=['Sculpture', 'Walking']) }}">90 minutes of sculpture and walking from Lincoln Park</a></p>
+    </div>
+    <div>
+      {{ map_box("pick-map", {"picker": true, "center": [41.88, -87.66], "zoom": 11, "markers": []}, "100%") }}
+    </div>
+  </div>
+</form>
+
+<section class="card" id="saved-routes" hidden>
+  <h2>Your saved routes</h2>
+  <ul class="saved-list"></ul>
+</section>
+{% endblock %}

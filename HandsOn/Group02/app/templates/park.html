@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from "_macros.html" import map_box, wikidata_card, linked_data_panel %}
+{% block title %}{{ park.name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="crumbs"><a href="{{ url_for('main.parks') }}">← All parks</a></p>
+    <h1>{{ park.name }}</h1>
+    <p class="muted">
+      Chicago Park District park{% if detail.number is not none %} no. {{ detail.number }}{% endif %} ·
+      {{ facility_groups|length }} kinds of facility · {{ artworks|length }} artwork{{ 's' if artworks|length != 1 }}
+      {% if detail.wikidata %} · <a href="{{ detail.wikidata }}" rel="noopener">owl:sameAs Wikidata ↗</a>{% endif %}
+    </p>
+  </div>
+  <div class="actions">
+    <a class="btn btn-primary" href="{{ url_for('main.index', park=park.name) }}">Plan a walk from here</a>
+  </div>
+</section>
+
+<div class="grid-map">
+  <div>{{ map_box("park-map", map_data, "480px") }}
+    <p class="legend"><span class="dot dot-artwork"></span> artwork <span class="dot dot-facility"></span> facility</p>
+  </div>
+  <div>
+    {{ wikidata_card(wikidata, "From Wikidata") }}
+    {% if not wikidata and detail.wikidata %}
+      <p class="card muted">This park is linked to <a href="{{ detail.wikidata }}">{{ detail.wikidata }}</a>, but Wikidata could not be reached just now.</p>
+    {% endif %}
+  </div>
+</div>
+
+<div class="grid-2">
+  <section class="card">
+    <h2>Facilities</h2>
+    {% if facility_groups %}
+    <ul class="facility-list">
+      {% for name, items in facility_groups %}
+        <li><a href="{{ items[0].facility|local }}">{{ name|pretty }}</a>{% if items|length > 1 %} <span class="muted">×{{ items|length }}</span>{% endif %}
+            <span class="badge">{{ items[0].type|title }}</span></li>
+      {% endfor %}
+    </ul>
+    {% else %}<p class="muted">No facilities recorded.</p>{% endif %}
+  </section>
+  <section class="card">
+    <h2>Public art</h2>
+    {% if artworks %}
+    <ul class="art-list">
+      {% for a in artworks %}
+        <li><a href="{{ a.artwork|local }}">{{ a.name }}</a>{% if a.artists %} <span class="muted">by {{ a.artists|join(", ") }}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% else %}<p class="muted">No artworks recorded in this park.</p>{% endif %}
+  </section>
+</div>
+
+{{ linked_data_panel(linked) }}
+{% endblock %}

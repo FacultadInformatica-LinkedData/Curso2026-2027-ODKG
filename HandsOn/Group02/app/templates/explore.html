@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% from "_macros.html" import map_box %}
+{% block title %}{{ route_title }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="crumbs"><a href="{{ url_for('main.index', park=form.park) }}">← Change search</a></p>
+    <h1>{{ route_title }} <span class="muted">(~{{ itinerary.total_min|round|int }} min)</span></h1>
+    <p class="muted">
+      {{ itinerary.stops|length }} stop{{ 's' if itinerary.stops|length != 1 }} ·
+      {{ '%.1f'|format(itinerary.total_km) }} km straight-line walking ·
+      {{ itinerary.total_min|round|int }} of {{ form.budget }} minutes used ·
+      candidates within {{ '%.1f'|format(radius_km) }} km
+    </p>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" id="save-route" data-title="{{ route_title }} (~{{ itinerary.total_min|round|int }} min)" data-url="{{ share_url }}">★ Save route</button>
+    <button class="btn btn-ghost" id="copy-link" data-url="{{ share_url }}">Copy link</button>
+  </div>
+</section>
+
+<div class="grid-map">
+  <div>{{ map_box("route-map", map_data, "560px") }}
+    <p class="legend">
+      <span class="dot dot-start"></span> start
+      <span class="dot dot-stop"></span> route stop
+      <span class="dot dot-recommendation"></span> recommended facility
+    </p>
+  </div>
+  <ol class="stops">
+    {% for stop in itinerary.stops %}
+      {% set p = stop.place %}
+      <li class="stop card" data-stop="{{ stop.order }}">
+        <span class="stop-number">{{ stop.order }}</span>
+        <div>
+          <h3><a href="{{ p.url }}">{{ p.name }}</a></h3>
+          <p class="muted">
+            {{ catalog.park_of(p).name }} ·
+            {% if p.kind == "artwork" %}
+              Artwork{% if p.artists %} by {{ p.artists|map(attribute=1)|join(", ") }}{% endif %}
+            {% else %}
+              {{ p.facility_type|title }} facility
+            {% endif %}
+          </p>
+          <p class="timing">
+            🚶 {{ stop.leg_min|round|int }} min walk ({{ (stop.leg_km * 1000)|round|int }} m) ·
+            👁 {{ stop.candidate.dwell }} min visit ·
+            arrive at +{{ stop.arrive_min|round|int }} min
+          </p>
+          <p class="reasons">{% for r in stop.candidate.reasons %}<span class="tag">{{ r }}</span>{% endfor %}</p>
+        </div>
+      </li>
+    {% else %}
+      <li class="card empty">
+        <p>Nothing matching these interests is within walking distance in {{ form.budget }} minutes.
+           Try a longer time budget, more interests, or a different start.</p>
+      </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<section class="card">
+  <h2>Recommended facilities nearby <span class="muted">({{ form.interests|join(", ") }})</span></h2>
+  {% if recommendations %}
+  <table class="table">
+    <thead><tr><th>#</th><th>Facility</th><th>Park</th><th>Distance</th><th>Why</th></tr></thead>
+    <tbody>
+    {% for rec in recommendations %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><a href="{{ rec.place.url }}">{{ rec.place.name }}</a>{% if rec.group.facilities|length > 1 %} <span class="muted">×{{ rec.group.facilities|length }}</span>{% endif %}</td>
+        <td><a href="{{ rec.group.park.url }}">{{ rec.group.park.name }}</a></td>
+        <td>{{ '%.1f'|format(rec.distance_km) }} km</td>
+        <td class="reasons">{% for r in rec.reasons %}<span class="tag">{{ r }}</span>{% endfor %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p class="muted">No facility matches {{ form.interests|join(", ") }} nearby{% if form.interests == ["Sculpture"] %}: sculpture is about artworks, which are in the route above{% endif %}.</p>
+  {% endif %}
+  <p class="hint">Ranking: interest match, minus distance.
+     <a href="{{ url_for('main.about') }}#scoring">How the scoring works</a>.</p>
+</section>
+{% endblock %}

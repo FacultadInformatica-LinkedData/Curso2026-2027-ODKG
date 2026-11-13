@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "_macros.html" import map_box, wikidata_card, linked_data_panel %}
+{% block title %}{{ name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="crumbs"><a href="{{ detail.park|local }}">← {{ detail.parkName|pretty }}</a></p>
+    <h1><span class="muted">{{ "Artwork" if kind == "Artwork" else "Facility" }}:</span> {{ name }}</h1>
+  </div>
+</section>
+
+<div class="grid-2">
+  <section class="card">
+    <h2>What the knowledge graph says</h2>
+    <dl class="facts">
+      <dt>Park</dt><dd><a href="{{ detail.park|local }}">{{ detail.parkName|pretty }}</a></dd>
+      {% if kind == "Artwork" %}
+        {% if detail.official %}<dt>Official name</dt><dd>{{ detail.official }}</dd>{% endif %}
+        <dt>Artist{{ 's' if artists|length > 1 }}</dt>
+        <dd>{% for a in artists %}<a href="{{ a.artist|local }}">{{ a.artistName }}</a>{% if a.wikidata %} <a class="badge badge-link" href="{{ a.wikidata }}" rel="noopener">Wikidata</a>{% endif %}{{ ", " if not loop.last }}{% else %}<span class="muted">unknown</span>{% endfor %}</dd>
+        <dt>Owner{{ 's' if owners|length > 1 }}</dt>
+        <dd>{% for o in owners %}<a href="{{ o.owner|local }}">{{ o.ownerName }}</a>{{ ", " if not loop.last }}{% else %}<span class="muted">unknown</span>{% endfor %}</dd>
+      {% else %}
+        <dt>Type</dt><dd>{{ detail.type|title }}</dd>
+        {% if siblings %}<dt>Same in this park</dt><dd>{% for f in siblings %}<a href="{{ f.url }}">#{{ loop.index + 1 }}</a> {% endfor %}</dd>{% endif %}
+      {% endif %}
+      {% if detail.gis is not none %}<dt>GIS object id</dt><dd>{{ detail.gis }}</dd>{% endif %}
+      <dt>Coordinates</dt><dd>{{ '%.5f'|format(detail.lat) }}, {{ '%.5f'|format(detail.lon) }}</dd>
+    </dl>
+    {{ map_box("place-map", map_data, "300px") }}
+  </section>
+
+  <div>
+    {% for a in artists if a.wd %}
+      {{ wikidata_card(a.wd, "About the artist: " ~ a.artistName) }}
+    {% endfor %}
+    {{ wikidata_card(park_wikidata, "About the park") }}
+  </div>
+</div>
+
+{{ linked_data_panel(linked) }}
+{% endblock %}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Explore{% endblock %} · Chicago Park &amp; Art Explorer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="{{ url_for('main.index') }}">🌳 Chicago Park &amp; Art Explorer</a>
+      <nav>
+        <a href="{{ url_for('main.index') }}">Plan a walk</a>
+        <a href="{{ url_for('main.parks') }}">Parks</a>
+        <a href="{{ url_for('main.full_map') }}">Map</a>
+        <a href="{{ url_for('main.about') }}">About the data</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="disclaimer">{{ DISCLAIMER }}</p>
+      <p class="credits">
+        Data: Chicago Park District <em>Facilities</em> and <em>Park Art</em> datasets from the
+        <a href="https://data.cityofchicago.org/">City of Chicago Data Portal</a>, transformed into RDF by Group02 ·
+        Linked facts from <a href="https://www.wikidata.org/">Wikidata</a> (CC0) ·
+        Images from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a> ·
+        Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.
+        <br>Open Data and Knowledge Graphs, Universidad Politécnica de Madrid, 2026-27.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="{{ url_for('static', filename='js/maps.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
