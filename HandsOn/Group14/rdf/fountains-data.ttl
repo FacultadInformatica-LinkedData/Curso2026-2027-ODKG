@@ -16276,7 +16276,6 @@
     ns1:hasStreetName "Mayorazgo" .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/9697988> a ns1:Fountain ;
-    ns1:hasDistrict <http://smartcity.linkeddata.es/madrid/fountains/resource/District/OTROS%20MUNICIPIOS> ;
     ns1:hasLatitude "40.59195449"^^xsd:float ;
     ns1:hasLongitude "-3.71347568"^^xsd:float ;
     ns1:hasNeighbourhood <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/TRES%20CANTOS> ;
@@ -16284,7 +16283,6 @@
     ns1:hasStreetName "Carretera M-607" .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/9697989> a ns1:Fountain ;
-    ns1:hasDistrict <http://smartcity.linkeddata.es/madrid/fountains/resource/District/OTROS%20MUNICIPIOS> ;
     ns1:hasLatitude "40.58974576"^^xsd:float ;
     ns1:hasLongitude "-3.7144428"^^xsd:float ;
     ns1:hasNeighbourhood <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/TRES%20CANTOS> ;
@@ -16308,8 +16306,6 @@
     ns1:hasStreetName "LLANES" .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/COLINA> a ns1:Neighbourhood .
-
-<http://smartcity.linkeddata.es/madrid/fountains/resource/District/OTROS%20MUNICIPIOS> a ns1:District .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/AEROPUERTO> a ns1:Neighbourhood .
 
