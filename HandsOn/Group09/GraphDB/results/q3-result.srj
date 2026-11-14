@@ -1,0 +1,1812 @@
+{
+  "head" : {
+    "vars" : [
+      "observation",
+      "parking"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2019-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2020-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ARQUITECTO%20RIBERA%20%28BARCELO%29_2021-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ARQUITECTO%20RIBERA%20%28BARCELO%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2019-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2020-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/AVENIDA%20AMERICA%20%28intercambiador%29_2021-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/AVENIDA%20AMERICA%20%28intercambiador%29"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2019-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2020-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/ORIENTE_2021-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/ORIENTE"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2019-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2020-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/SANTA%20ANA_2021-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/SANTA%20ANA"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2019-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2020-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-1"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-10"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-11"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-12"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-2"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-3"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-4"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-5"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-6"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-7"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-8"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      },
+      {
+        "observation" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/monthly-occupancy/VILLA%20DE%20PARiS_2021-9"
+        },
+        "parking" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/parking/VILLA%20DE%20PARiS"
+        }
+      }
+    ]
+  }
+}

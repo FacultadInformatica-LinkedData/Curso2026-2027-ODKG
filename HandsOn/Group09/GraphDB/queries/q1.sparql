@@ -1,0 +1,11 @@
+SELECT ?district ?districtName ?districtCode ?externalEntity
+WHERE {
+    ?district a pm:District ;
+              pm:hasDistrictName ?districtName ;
+              pm:hasDistrictCode ?districtCode .
+
+    OPTIONAL {
+        ?district owl:sameAs ?externalEntity .
+    }
+}
+ORDER BY ?districtCode

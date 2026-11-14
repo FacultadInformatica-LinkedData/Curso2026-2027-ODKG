@@ -1,0 +1,14 @@
+PREFIX pm:   <https://parking-madrid.example.org/ontology#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?neighbourhood ?neighbourhoodName ?externalEntity
+WHERE {
+    ?neighbourhood a pm:Neighbourhood ;
+                   rdfs:label ?neighbourhoodName .
+
+    OPTIONAL {
+        ?neighbourhood owl:sameAs ?externalEntity .
+    }
+}
+ORDER BY ?neighbourhoodName

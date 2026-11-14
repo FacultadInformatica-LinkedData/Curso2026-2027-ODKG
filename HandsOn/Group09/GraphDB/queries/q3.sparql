@@ -1,0 +1,8 @@
+PREFIX pm: <https://parking-madrid.example.org/ontology#>
+
+SELECT ?observation ?parking
+WHERE {
+    ?observation a pm:MonthlyOccupancy ;
+                 pm:isOccupancyOf ?parking .
+    FILTER NOT EXISTS { ?parking a pm:ParkingFacility }
+}

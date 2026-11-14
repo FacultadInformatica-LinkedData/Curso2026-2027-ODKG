@@ -1,0 +1,413 @@
+{
+  "head" : {
+    "vars" : [
+      "district",
+      "districtName",
+      "districtCode",
+      "externalEntity"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/CENTRO"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Centro"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1763376"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/ARGANZUELA"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Arganzuela"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2000929"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/RETIRO"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Retiro"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2002296"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/SALAMANCA"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Salamanca"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1773521"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/CHAMARTIN"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Chamartín"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1766348"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/TETUAN"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Tetuán"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "6"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1773540"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/CHAMBERI"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Chamberí"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "7"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1763370"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/FUENCARRAL-EL%20PARDO"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Fuencarral-El Pardo"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q656196"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/MONCLOA-ARAVACA"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Moncloa-Aravaca"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "9"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2017682"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/LATINA"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Latina"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "10"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q794954"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/CARABANCHEL"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Carabanchel"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "11"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1001991"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/USERA"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Usera"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "12"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q953368"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/PUENTE%20DE%20VALLECAS"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Puente de Vallecas"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "13"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2003054"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/MORATALAZ"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Moratalaz"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "14"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2076109"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/CIUDAD%20LINEAL"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Ciudad Lineal"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "15"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1763694"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/HORTALEZA"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Hortaleza"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "16"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1928529"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/VILLAVERDE"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Villaverde"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "17"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q919536"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/VILLA%20DE%20VALLECAS"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Villa de Vallecas"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "18"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q1947988"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/VICALVARO"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Vicálvaro"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "19"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q589403"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/SAN%20BLAS-CANILLEJAS"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "San Blas-Canillejas"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "20"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q2001937"
+        }
+      },
+      {
+        "district" : {
+          "type" : "uri",
+          "value" : "https://parking-madrid.example.org/resource/district/BARAJAS"
+        },
+        "districtName" : {
+          "type" : "literal",
+          "value" : "Barajas"
+        },
+        "districtCode" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "21"
+        },
+        "externalEntity" : {
+          "type" : "uri",
+          "value" : "http://www.wikidata.org/entity/Q807230"
+        }
+      }
+    ]
+  }
+}
