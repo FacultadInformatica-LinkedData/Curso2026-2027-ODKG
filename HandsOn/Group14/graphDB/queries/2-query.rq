@@ -1,0 +1,5 @@
+PREFIX vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#>
+SELECT ?district (COUNT(DISTINCT ?fountain) AS ?count)
+WHERE { ?fountain a vocab:Fountain ; vocab:hasDistrict ?district . }
+GROUP BY ?district
+ORDER BY DESC(?count) ?district

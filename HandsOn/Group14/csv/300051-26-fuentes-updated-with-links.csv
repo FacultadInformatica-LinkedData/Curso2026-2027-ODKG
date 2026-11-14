@@ -2004,7 +2004,7 @@ ID,BARRIO,same_as_wikidata_barrio,DISTRITO,same_as_wikidata_distrito,ESTADO,LATI
 9697956,Casco Histórico de Vallecas,https://wikidata.org/entity/Q16544370,Villa de Vallecas,https://wikidata.org/entity/Q1947988,OPERATIVO,40.36648351,-3.62811571,Avda,Mayorazgo,26
 9697959,Casco Histórico de Vallecas,https://wikidata.org/entity/Q16544370,Villa de Vallecas,https://wikidata.org/entity/Q1947988,OPERATIVO,40.36512946,-3.62332547,Avda,Mayorazgo,26
 9697962,Casco Histórico de Vallecas,https://wikidata.org/entity/Q16544370,Villa de Vallecas,https://wikidata.org/entity/Q1947988,OPERATIVO,40.36476436,-3.63249030,Avda,Mayorazgo,26
-9697988,TRES CANTOS,https://wikidata.org/entity/Q910410,OTROS MUNICIPIOS,,OPERATIVO,40.59195449,-3.71347568,CARRETERA,Carretera M-607,2100
+9697988,TRES CANTOS,https://wikidata.org/entity/Q910410,,,OPERATIVO,40.59195449,-3.71347568,CARRETERA,Carretera M-607,2100
 9577927,El Pilar,https://wikidata.org/entity/Q3773964,Fuencarral-El Pardo,https://wikidata.org/entity/Q656196,OPERATIVO,40.47249115,-3.71012109,CALLE,RIBADAVIA,9 B
 9578764,El Cañaveral,https://wikidata.org/entity/Q5821309,Vicálvaro,https://wikidata.org/entity/Q589403,OPERATIVO,40.40418351,-3.55764495,AVENIDA,MIGUEL DELIBES,95
 9578816,Cuatro Vientos,https://wikidata.org/entity/Q5191881,Latina,https://wikidata.org/entity/Q794954,OPERATIVO,40.36598326,-3.76346091,CALLE,LONJA DE LA SEDA,43
@@ -2036,5 +2036,5 @@ ID,BARRIO,same_as_wikidata_barrio,DISTRITO,same_as_wikidata_distrito,ESTADO,LATI
 9697961,Casco Histórico de Vallecas,https://wikidata.org/entity/Q16544370,Villa de Vallecas,https://wikidata.org/entity/Q1947988,OPERATIVO,40.36385442,-3.62902254,Avda,Mayorazgo,26
 9697963,Casco Histórico de Vallecas,https://wikidata.org/entity/Q16544370,Villa de Vallecas,https://wikidata.org/entity/Q1947988,OPERATIVO,40.36565402,-3.63156615,Avda,Mayorazgo,26
 9873460,Puerta Bonita,https://wikidata.org/entity/Q3813762,Carabanchel,https://wikidata.org/entity/Q1001991,OPERATIVO,40.37616653,-3.73693224,CALLE,ANCIU,6
-9697989,TRES CANTOS,https://wikidata.org/entity/Q910410,OTROS MUNICIPIOS,,OPERATIVO,40.58974576,-3.71444280,CARRETERA,Carretera M-607,2100
+9697989,TRES CANTOS,https://wikidata.org/entity/Q910410,,,OPERATIVO,40.58974576,-3.71444280,CARRETERA,Carretera M-607,2100
 9987724,Simancas,https://wikidata.org/entity/Q10371626,San Blas-Canillejas,https://wikidata.org/entity/Q2001937,FUERA_DE_SERVICIO,40.42937556,-3.63071361,CALLE,LLANES,6

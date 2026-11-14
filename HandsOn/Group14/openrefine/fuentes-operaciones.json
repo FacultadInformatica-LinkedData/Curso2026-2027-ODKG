@@ -100,5 +100,18 @@
       "mode": "row-based"
     },
     "description": "Remove rows"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "grel:if(value == \"OTROS MUNICIPIOS\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 0,
+    "description": "Leave the district blank for fountains outside Madrid"
   }
 ]

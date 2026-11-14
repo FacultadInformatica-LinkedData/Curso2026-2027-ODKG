@@ -1,0 +1,13 @@
+PREFIX vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT DISTINCT ?fountain ?street ?lat ?lon
+WHERE {
+  ?fountain a vocab:Fountain ;
+    vocab:hasStatus "OPERATIVO" ;
+    vocab:hasStreetName ?street ;
+    vocab:hasLatitude ?lat ; vocab:hasLongitude ?lon ;
+    vocab:hasDistrict ?district .
+  ?district owl:sameAs <https://wikidata.org/entity/Q1763376> .
+}
+ORDER BY ?fountain
+LIMIT 20

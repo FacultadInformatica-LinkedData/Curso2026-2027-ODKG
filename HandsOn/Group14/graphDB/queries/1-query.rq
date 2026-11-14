@@ -1,0 +1,8 @@
+PREFIX vocab: <http://smartcity.linkeddata.es/madrid/fountains/ontology/WaterFountains#>
+SELECT ?class (COUNT(DISTINCT ?resource) AS ?count)
+WHERE {
+  ?resource a ?class .
+  FILTER (?class IN (vocab:Fountain, vocab:District, vocab:Neighbourhood))
+}
+GROUP BY ?class
+ORDER BY ?class

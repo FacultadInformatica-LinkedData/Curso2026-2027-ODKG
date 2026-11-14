@@ -16277,7 +16277,6 @@
     vocab:hasStreetName "Mayorazgo" .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/9697988> a vocab:Fountain ;
-    vocab:hasDistrict <http://smartcity.linkeddata.es/madrid/fountains/resource/District/OTROS%20MUNICIPIOS> ;
     vocab:hasLatitude "40.59195449"^^xsd:float ;
     vocab:hasLongitude "-3.71347568"^^xsd:float ;
     vocab:hasNeighbourhood <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/TRES%20CANTOS> ;
@@ -16285,7 +16284,6 @@
     vocab:hasStreetName "Carretera M-607" .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Fountain/9697989> a vocab:Fountain ;
-    vocab:hasDistrict <http://smartcity.linkeddata.es/madrid/fountains/resource/District/OTROS%20MUNICIPIOS> ;
     vocab:hasLatitude "40.58974576"^^xsd:float ;
     vocab:hasLongitude "-3.7144428"^^xsd:float ;
     vocab:hasNeighbourhood <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/TRES%20CANTOS> ;
@@ -16310,8 +16308,6 @@
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/Colina> a vocab:Neighbourhood ;
     owl:sameAs <https://wikidata.org/entity/Q18475981> .
-
-<http://smartcity.linkeddata.es/madrid/fountains/resource/District/OTROS%20MUNICIPIOS> a vocab:District .
 
 <http://smartcity.linkeddata.es/madrid/fountains/resource/Neighbourhood/Aeropuerto> a vocab:Neighbourhood ;
     owl:sameAs <https://wikidata.org/entity/Q9586697> .
