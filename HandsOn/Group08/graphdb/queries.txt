@@ -1,0 +1,170 @@
+# CQ1 : Which climate shelters are in a given neighbourhood and of what category are they? (Raval)
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?shelterName ?categoryName
+WHERE {
+  ?shelter a hr:ClimateShelter ;
+           hr:isLocatedInNeighbourhood ?neighbourhood ;
+           hr:hasShelterCategory ?category .
+           
+  ?neighbourhood rdfs:label ?neighbourhoodName .
+  FILTER(CONTAINS(LCASE(STR(?neighbourhoodName)), "raval"))
+  
+  OPTIONAL { ?shelter rdfs:label ?shelterName . }
+  OPTIONAL { ?category rdfs:label ?categoryName . }
+}
+
+
+# CQ2 : How many drinking fountains does each district have?
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?districtName (COUNT(?fountain) AS ?fountainCount)
+WHERE {
+  ?fountain a hr:DrinkingFountain ;
+            hr:isLocatedInNeighbourhood ?neighbourhood .
+            
+  ?neighbourhood hr:isPartOfDistrict ?district .
+  OPTIONAL { ?district rdfs:label ?districtName . }
+}
+GROUP BY ?districtName
+ORDER BY DESC(?fountainCount)
+
+
+# CQ3 : Which are the most frequent tree species in a given neighbourhood? (Raval)
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?speciesName (COUNT(?tree) AS ?treeCount)
+WHERE {
+  ?tree a hr:StreetTree ;
+        hr:isLocatedInNeighbourhood ?neighbourhood ;
+        hr:hasSpecies ?species .
+        
+  ?neighbourhood rdfs:label ?neighbourhoodName .
+  FILTER(CONTAINS(LCASE(STR(?neighbourhoodName)), "raval"))
+  
+  OPTIONAL { ?species rdfs:label ?speciesName . }
+}
+GROUP BY ?speciesName
+ORDER BY DESC(?treeCount)
+LIMIT 5
+
+
+# CQ4 : Which neighbourhoods have no shelter of a given category? (library)
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?neighbourhoodName
+WHERE {
+  ?neighbourhood a hr:Neighbourhood ;
+                 rdfs:label ?neighbourhoodName .
+                 
+  MINUS {
+    ?shelter a hr:ClimateShelter ;
+             hr:isLocatedInNeighbourhood ?neighbourhood ;
+             hr:hasShelterCategory ?category .
+             
+    OPTIONAL { ?category rdfs:label ?categoryName . }
+    FILTER(
+      CONTAINS(LCASE(STR(?categoryName)), "library") || 
+      CONTAINS(LCASE(STR(?category)), "library")
+    )
+  }
+}
+ORDER BY ?neighbourhoodName
+
+
+# CQ5 : How many trees were planted since a given year in each district? (2010)
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?districtName (COUNT(?tree) AS ?treeCount)
+WHERE {
+  ?tree a hr:StreetTree ;
+        hr:plantingDate ?date ;
+        hr:isLocatedInNeighbourhood ?neighbourhood .
+        
+  ?neighbourhood hr:isPartOfDistrict ?district .
+  OPTIONAL { ?district rdfs:label ?districtName . }
+  
+  FILTER(STR(?date) >= "2010")
+}
+GROUP BY ?districtName
+ORDER BY ?districtName
+
+
+# CQ6 : Which resources (shelters, fountains) and how many trees are in a given neighbourhood? (Raval)
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?resourceName ?resourceType (COUNT(DISTINCT ?tree) AS ?totalTreesInNeighbourhood)
+WHERE {
+  ?neighbourhood a hr:Neighbourhood ;
+                 rdfs:label ?neighbourhoodName .
+  FILTER(CONTAINS(LCASE(STR(?neighbourhoodName)), "raval"))
+  
+  ?resource hr:isLocatedInNeighbourhood ?neighbourhood ;
+            a ?type .
+  FILTER(?type IN (hr:ClimateShelter, hr:DrinkingFountain))
+  
+  OPTIONAL { ?resource rdfs:label ?resourceName . }
+  BIND(REPLACE(STR(?type), "^.*#", "") AS ?resourceType)
+  
+  OPTIONAL {
+    ?tree a hr:StreetTree ;
+          hr:isLocatedInNeighbourhood ?neighbourhood .
+  }
+}
+GROUP BY ?resourceName ?resourceType
+
+
+# CQ7 : Which shelters correspond to a facility that has a Wikidata item?
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?shelter ?shelterName ?facility ?wikidataItem
+WHERE {
+  ?shelter a hr:ClimateShelter ;
+           hr:isHostedBy ?facility .
+           
+  ?facility owl:sameAs ?wikidataItem .
+  
+  OPTIONAL { ?shelter rdfs:label ?shelterName . }
+}
+ORDER BY ?shelterName
+
+
+# CQ8 : Which species of a neighbourhood are linked to Wikidata and what are their common names? (Raval)
+
+PREFIX hr: <https://w3id.org/barcelona-heat-relief/ontology/HeatRelief#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?scientificName (GROUP_CONCAT(DISTINCT ?catalanName; separator=", ") AS ?catalanNames) ?link ?wikidataItem
+WHERE {
+  ?tree a hr:StreetTree ;
+        hr:isLocatedInNeighbourhood ?neighbourhood ;
+        hr:hasSpecies ?species .
+        
+  ?neighbourhood rdfs:label ?neighbourhoodName .
+  FILTER(CONTAINS(LCASE(STR(?neighbourhoodName)), "raval"))
+  
+  VALUES ?link { owl:sameAs skos:broadMatch }
+  ?species ?link ?wikidataItem .
+  
+  OPTIONAL { ?species hr:scientificName ?scientificName . }
+  OPTIONAL { ?species hr:catalanName ?catalanName . }
+}
+GROUP BY ?scientificName ?link ?wikidataItem
+ORDER BY ?scientificName
