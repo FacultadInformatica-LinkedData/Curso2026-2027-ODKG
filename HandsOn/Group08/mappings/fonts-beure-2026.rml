@@ -17,8 +17,17 @@
 #   - street_address: street, plus the street number when the source has it
 #     (66 fountains have a street but no number and 2 have the placeholder number 0: all of them keep
 #     the street only; 3 have neither street nor number and get no address);
+#   - fountain_slug: slug of the name followed by the code CODI, because 1088 names are shared by
+#     1411 fountains (e.g. sant-carles-01-004); the fountains without a name get font-<code> (font-05-162);
 #   - empty cells, which DuckDB reads as NULL, are turned into empty strings, so that Morph-KGC
 #     generates no triple for them.
+#
+# URIs of the individuals (feedback on HO4): the identifier is a slug of the name, readable and meaningful,
+# never the numeric code of the source. slug = lower case, accents removed, the middle dot of "l·l" removed,
+# every other run of characters that are not letters or digits replaced by a hyphen
+# (e.g. "Sant Martí de Provençals" -> sant-marti-de-provencals, "l'Antiga Esquerra de l'Eixample" ->
+# l-antiga-esquerra-de-l-eixample). Every mapping computes the slug of a neighbourhood in the same way,
+# so the links between datasets keep pointing to the same URI.
 
 <#DrinkingFountain> a rr:TriplesMap ;
   rml:logicalSource [
@@ -26,6 +35,8 @@
       SELECT coalesce(COLUMNS(*), '') FROM (
       SELECT *,
         coalesce(NULLIF(NOM, '-'), 'Font ' || CODI) AS label,
+        lower(trim(regexp_replace(strip_accents(replace(coalesce(NULLIF(NOM, '-'), 'Font') || ' ' || CODI, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS fountain_slug,
+        lower(trim(regexp_replace(strip_accents(replace(NOM_BARRI, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS neighbourhood_slug,
         CASE
           WHEN NUMERO_CARRER IS NULL OR NUMERO_CARRER = '0' THEN CARRER
           ELSE CARRER || ', ' || NUMERO_CARRER
@@ -37,7 +48,7 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/DrinkingFountain/{CODI}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/DrinkingFountain/{fountain_slug}" ;
     rr:class hr:DrinkingFountain
   ] ;
 
@@ -73,5 +84,5 @@
 
   rr:predicateObjectMap [
     rr:predicate hr:isLocatedInNeighbourhood ;
-    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{CODI_BARRI}" ]
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_slug}" ]
   ] .

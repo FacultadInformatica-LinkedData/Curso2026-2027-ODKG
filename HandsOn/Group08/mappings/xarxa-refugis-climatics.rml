@@ -18,9 +18,18 @@
 #     a blank or a placeholder number (4 in total) keep the street only;
 #   - timetable: the hidden character U+FEFF is removed and the control character U+0092 is replaced
 #     by the apostrophe it stands for (U+2019);
+#   - shelter_slug: slug of the name; 10 names are shared by 89 shelters (e.g. "Piscina coberta"),
+#     so for those the neighbourhood is added (piscina-coberta-el-raval) and, if still shared, the address;
 #   - empty cells, which DuckDB reads as NULL, are turned into empty strings, so that Morph-KGC
 #     generates no triple for them;
 #   - category_label: readable label of the category, e.g. SwimmingPool -> "Swimming pool".
+#
+# URIs of the individuals (feedback on HO4): the identifier is a slug of the name, readable and meaningful,
+# never the numeric code of the source. slug = lower case, accents removed, the middle dot of "l·l" removed,
+# every other run of characters that are not letters or digits replaced by a hyphen
+# (e.g. "Sant Martí de Provençals" -> sant-marti-de-provencals, "l'Antiga Esquerra de l'Eixample" ->
+# l-antiga-esquerra-de-l-eixample). Every mapping computes the slug of a neighbourhood in the same way,
+# so the links between datasets keep pointing to the same URI.
 
 #################################################################
 #    Climate shelters
@@ -30,6 +39,17 @@
   rml:logicalSource [
     rml:query """
       SELECT coalesce(COLUMNS(*), '') FROM (
+      SELECT * EXCLUDE (s1, s2, s3),
+        CASE WHEN count(*) OVER (PARTITION BY s1) = 1 THEN s1
+             WHEN count(*) OVER (PARTITION BY s2) = 1 THEN s2
+             ELSE s3 END AS shelter_slug
+      FROM (
+      SELECT *,
+        lower(trim(regexp_replace(strip_accents(replace(name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS s1,
+        lower(trim(regexp_replace(strip_accents(replace(name || ' ' || addresses_neighborhood_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS s2,
+        lower(trim(regexp_replace(strip_accents(replace(name || ' ' || street_address, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS s3,
+        lower(trim(regexp_replace(strip_accents(replace(addresses_neighborhood_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS neighbourhood_slug
+      FROM (
       SELECT * REPLACE (replace(replace(timetable, chr(65279), ''), chr(146), chr(8217)) AS timetable),
         CASE
           WHEN addresses_start_street_number IS NULL
@@ -42,12 +62,14 @@
         END AS street_address
       FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
       )
+      )
+      )
     """ ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/ClimateShelter/{register_id}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/ClimateShelter/{shelter_slug}" ;
     rr:class hr:ClimateShelter
   ] ;
 
@@ -108,7 +130,7 @@
 
   rr:predicateObjectMap [
     rr:predicate hr:isLocatedInNeighbourhood ;
-    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{addresses_neighborhood_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_slug}" ]
   ] .
 
 #################################################################

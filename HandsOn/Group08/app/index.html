@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barcelona Heat Relief</title>
+  <meta name="description" content="Climate shelters, drinking fountains and street trees of Barcelona, from the Barcelona Heat Relief knowledge graph linked to Wikidata.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/map">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      Barcelona Heat Relief
+    </a>
+    <nav class="tabs" aria-label="Views">
+      <a href="#/map" data-nav="map">Map</a>
+      <a href="#/catalogue" data-nav="catalogue">Catalogue</a>
+      <a href="#/neighbourhoods" data-nav="neighbourhoods">Neighbourhoods</a>
+      <a href="#/queries" data-nav="queries">Queries</a>
+    </nav>
+    <div class="loading-bar" id="loading" role="progressbar" aria-label="Querying the knowledge graph" hidden></div>
+  </header>
+
+  <div class="banner" id="banner" hidden></div>
+  <form class="filter-bar" id="filter-bar" aria-label="Filters" onsubmit="return false" hidden></form>
+
+  <main>
+    <section class="view view-map" id="view-map" hidden></section>
+    <section class="view view-page" id="view-catalogue" hidden></section>
+    <section class="view view-page" id="view-neighbourhoods" hidden></section>
+    <section class="view view-page" id="view-queries" hidden></section>
+  </main>
+
+  <footer class="footer">
+    <p>Data: <a href="https://opendata-ajuntament.barcelona.cat/" target="_blank" rel="noopener">Ajuntament de Barcelona, Open Data BCN</a> (CC BY 4.0)
+      · <a href="https://www.wikidata.org/" target="_blank" rel="noopener">Wikidata</a> (CC0)
+      · map tiles © OpenStreetMap contributors.</p>
+    <p class="muted">Knowledge graph of the ODKG course, Group 08 · SPARQL endpoint <code id="endpoint"></code> <span id="triples"></span></p>
+  </footer>
+</body>
+</html>

@@ -16,7 +16,7 @@
 # the shelter itself (a library, a museum, a market...). The column wikidata_id holds the QID of the facility,
 # found by reconciling facility_name in OpenRefine (lodrefine/xarxa-refugis-climatics-with-links.json); it is
 # filled only when the match was verified, so a shelter without a QID has no hr:isHostedBy link.
-# Each facility is a resource of the dataset (resource/Facility/{QID}) linked with owl:sameAs to its Wikidata item.
+# Each facility is a resource of the dataset (resource/Facility/{slug of its name}) linked with owl:sameAs to its Wikidata item.
 # Paths are relative to the HandsOn/Group08 directory, where Morph-KGC is run.
 #
 # The logical sources are SQL views over the CSV file (rml:query, executed by Morph-KGC with DuckDB),
@@ -26,11 +26,20 @@
 #     a blank or a placeholder number (4 in total) keep the street only;
 #   - timetable: the hidden character U+FEFF is removed and the control character U+0092 is replaced
 #     by the apostrophe it stands for (U+2019);
+#   - shelter_slug: slug of the name; 10 names are shared by 89 shelters (e.g. "Piscina coberta"),
+#     so for those the neighbourhood is added (piscina-coberta-el-raval) and, if still shared, the address;
 #   - empty cells, which DuckDB reads as NULL, are turned into empty strings, so that Morph-KGC
 #     generates no triple for them;
 #   - category_label: readable label of the category, e.g. SwimmingPool -> "Swimming pool";
 #   - facilities: one row per QID, labelled with the name of the facility in the source (the first in
 #     alphabetical order if two names of the source have the same QID).
+#
+# URIs of the individuals (feedback on HO4): the identifier is a slug of the name, readable and meaningful,
+# never the numeric code of the source. slug = lower case, accents removed, the middle dot of "l·l" removed,
+# every other run of characters that are not letters or digits replaced by a hyphen
+# (e.g. "Sant Martí de Provençals" -> sant-marti-de-provencals, "l'Antiga Esquerra de l'Eixample" ->
+# l-antiga-esquerra-de-l-eixample). Every mapping computes the slug of a neighbourhood in the same way,
+# so the links between datasets keep pointing to the same URI.
 
 #################################################################
 #    Climate shelters
@@ -40,6 +49,19 @@
   rml:logicalSource [
     rml:query """
       SELECT coalesce(COLUMNS(*), '') FROM (
+      SELECT * EXCLUDE (s1, s2, s3),
+        CASE WHEN count(*) OVER (PARTITION BY s1) = 1 THEN s1
+             WHEN count(*) OVER (PARTITION BY s2) = 1 THEN s2
+             ELSE s3 END AS shelter_slug
+      FROM (
+      SELECT *,
+        lower(trim(regexp_replace(strip_accents(replace(name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS s1,
+        lower(trim(regexp_replace(strip_accents(replace(name || ' ' || addresses_neighborhood_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS s2,
+        lower(trim(regexp_replace(strip_accents(replace(name || ' ' || street_address, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS s3,
+        lower(trim(regexp_replace(strip_accents(replace(addresses_neighborhood_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS neighbourhood_slug,
+        CASE WHEN wikidata_id IS NOT NULL
+          THEN lower(trim(regexp_replace(strip_accents(replace(min(facility_name) OVER (PARTITION BY wikidata_id), '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) END AS facility_slug
+      FROM (
       SELECT * REPLACE (replace(replace(timetable, chr(65279), ''), chr(146), chr(8217)) AS timetable),
         CASE
           WHEN addresses_start_street_number IS NULL
@@ -52,12 +74,14 @@
         END AS street_address
       FROM read_csv('csv/xarxa-refugis-climatics-with-links.csv', header = true, all_varchar = true)
       )
+      )
+      )
     """ ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/ClimateShelter/{register_id}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/ClimateShelter/{shelter_slug}" ;
     rr:class hr:ClimateShelter
   ] ;
 
@@ -118,12 +142,12 @@
 
   rr:predicateObjectMap [
     rr:predicate hr:isHostedBy ;
-    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Facility/{wikidata_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Facility/{facility_slug}" ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate hr:isLocatedInNeighbourhood ;
-    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{addresses_neighborhood_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_slug}" ]
   ] .
 
 #################################################################
@@ -160,7 +184,8 @@
 <#Facility> a rr:TriplesMap ;
   rml:logicalSource [
     rml:query """
-      SELECT wikidata_id, min(facility_name) AS facility_name
+      SELECT wikidata_id, min(facility_name) AS facility_name,
+             lower(trim(regexp_replace(strip_accents(replace(min(facility_name), '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS facility_slug
       FROM read_csv('csv/xarxa-refugis-climatics-with-links.csv', header = true, all_varchar = true)
       WHERE wikidata_id IS NOT NULL
       GROUP BY wikidata_id
@@ -169,7 +194,7 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/Facility/{wikidata_id}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/Facility/{facility_slug}" ;
     rr:class hr:Facility
   ] ;
 

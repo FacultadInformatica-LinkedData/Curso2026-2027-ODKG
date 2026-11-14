@@ -13,23 +13,34 @@
 # OpenRefine cleaning (hands-on 3) both files use the official codes and names, and together with the
 # street trees (D3) they contain the same 73 neighbourhoods and 10 districts, so every
 # hr:isLocatedInNeighbourhood link of the three datasets points to a neighbourhood described here.
+#
+# URIs of the individuals (feedback on HO4): the identifier is a slug of the name, readable and meaningful,
+# never the numeric code of the source. slug = lower case, accents removed, the middle dot of "l·l" removed,
+# every other run of characters that are not letters or digits replaced by a hyphen
+# (e.g. "Sant Martí de Provençals" -> sant-marti-de-provencals, "l'Antiga Esquerra de l'Eixample" ->
+# l-antiga-esquerra-de-l-eixample). Every mapping computes the slug of a neighbourhood in the same way,
+# so the links between datasets keep pointing to the same URI.
 
 <#Neighbourhood> a rr:TriplesMap ;
   rml:logicalSource [
     rml:query """
-      SELECT DISTINCT addresses_neighborhood_id AS neighbourhood_code,
-                      addresses_neighborhood_name AS neighbourhood_name,
-                      addresses_district_id AS district_code
-      FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
-      UNION
-      SELECT DISTINCT CODI_BARRI, NOM_BARRI, CODI_DISTRICTE
-      FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+      SELECT neighbourhood_name,
+             lower(trim(regexp_replace(strip_accents(replace(neighbourhood_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS neighbourhood_slug,
+             lower(trim(regexp_replace(strip_accents(replace(district_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS district_slug
+      FROM (
+        SELECT DISTINCT addresses_neighborhood_name AS neighbourhood_name,
+                        addresses_district_name AS district_name
+        FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
+        UNION
+        SELECT DISTINCT NOM_BARRI, NOM_DISTRICTE
+        FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+      )
     """ ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_code}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/Neighbourhood/{neighbourhood_slug}" ;
     rr:class hr:Neighbourhood
   ] ;
 
@@ -40,24 +51,26 @@
 
   rr:predicateObjectMap [
     rr:predicate hr:isPartOfDistrict ;
-    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_code}" ]
+    rr:objectMap [ rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_slug}" ]
   ] .
 
 <#District> a rr:TriplesMap ;
   rml:logicalSource [
     rml:query """
-      SELECT DISTINCT addresses_district_id AS district_code,
-                      addresses_district_name AS district_name
-      FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
-      UNION
-      SELECT DISTINCT CODI_DISTRICTE, NOM_DISTRICTE
-      FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+      SELECT district_name, lower(trim(regexp_replace(strip_accents(replace(district_name, '·', '')), '[^A-Za-z0-9]+', '-', 'g'), '-')) AS district_slug
+      FROM (
+        SELECT DISTINCT addresses_district_name AS district_name
+        FROM read_csv('csv/xarxa-refugis-climatics-updated.csv', header = true, all_varchar = true)
+        UNION
+        SELECT DISTINCT NOM_DISTRICTE
+        FROM read_csv('csv/fonts-beure-2026-updated.csv', header = true, all_varchar = true)
+      )
     """ ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_code}" ;
+    rr:template "https://w3id.org/barcelona-heat-relief/resource/District/{district_slug}" ;
     rr:class hr:District
   ] ;
 
